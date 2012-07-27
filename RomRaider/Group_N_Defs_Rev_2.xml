@@ -1,0 +1,118 @@
+<roms>
+ <!--TERMS, CONDITIONS, AND DISCLAIMERS
+- - - - - - - - - - - - - - - - - - - - - - - - -
+WARNING: Creator is not responsible for any damage or injury to car, property, or body, nor responsible for any laws broken by using these definitions.
+
+These definitions are created for FREE without any sort of guarantee. USE AT YOUR OWN RISK!-->
+ <rom>
+  <romid>
+   <xmlid>16BITBASE</xmlid>
+   <market>USDM</market>
+   <make>Subaru</make>
+   <model>Impreza</model>
+   <submodel>WRX</submodel>
+   <transmission>MT/AT</transmission>
+   <filesize>192kb</filesize>
+   <memmodel>68HC16Y5</memmodel>
+   <flashmethod>wrx02</flashmethod>
+  </romid>
+  <table type="Switch" name="Force Pass Readiness Monitors" category="Misc. - Switches" sizey="2" beforeram="true">
+   <description>Off-road and racing use only. Must NEVER be enabled on vehicles that will be driven on public roads.</description>
+   <state name="on" data="17 25" />
+   <state name="off" data="28 80" />
+  </table>
+  <table type="Switch" name="Enable LC" category="Misc. - Switches" sizey="1" beforeram="true">
+   <description>Enable LC without antilag being active. Assumes Mode Byte is set to have ALS/LC DISABLED. To enable LC ONLY, make sure the box is checked. WARNING, FBKC may NOT be active with this option selected. Off road use only.</description>
+   <state name="on" data="2B" />
+   <state name="off" data="2A" />
+  </table>
+  <table type="Switch" name="Invert NPS" category="Misc. - Switches" sizey="1" beforeram="true">
+   <description>Invert the NPS(For JDM 6 speed swaps). To invert the NPS, make sure the box above is unchecked.</description>
+   <state name="on" data="2B" />
+   <state name="off" data="2A" />
+  </table>
+  <table type="2D" name="Min Idle Speed A/C (MT)" category="Idle Control" storagetype="uint16" endian="big" sizey="1" userlevel="1">
+   <scaling units="Engine Speed (RPM)" expression="x*.1953125" to_byte="x/.1953125" format="#" fineincrement="50" coarseincrement="100" />
+   <table type="Static Y Axis" name="" sizey="1">
+    <data>Minimum Target Idle Speed with A/C On</data>
+   </table>
+   <description>Minimum target idle speed when A/C is on - Manual transmission vehicles.</description>
+  </table>
+  <table type="2D" name="Min Idle Speed A/C (AT)" category="Idle Control" storagetype="uint16" endian="big" sizey="1" userlevel="1">
+   <scaling units="Engine Speed (RPM)" expression="x*.1953125" to_byte="x/.1953125" format="#" fineincrement="50" coarseincrement="100" />
+   <table type="Static Y Axis" name="" sizey="1">
+    <data>Minimum Target Idle Speed with A/C On</data>
+   </table>
+   <description>Minimum target idle speed when A/C is on - Automatic transmission vehicles.</description>
+  </table>
+  <table type="2D" name="Min Idle Speed Startup (MT)" category="Idle Control" storagetype="uint16" endian="big" sizey="1" userlevel="1">
+   <scaling units="Engine Speed (RPM)" expression="x*.1953125" to_byte="x/.1953125" format="#" fineincrement="50" coarseincrement="100" />
+   <table type="Static Y Axis" name="" sizey="1">
+    <data>Minimum Target Idle Speed During Warm-Up</data>
+   </table>
+   <description>Minimum target idle speed during warm-up after initial startup - Manual transmission vehicles.</description>
+  </table>
+  <table type="2D" name="Min Idle Speed Startup (AT)" category="Idle Control" storagetype="uint16" endian="big" sizey="1" userlevel="1">
+   <scaling units="Engine Speed (RPM)" expression="x*.1953125" to_byte="x/.1953125" format="#" fineincrement="50" coarseincrement="100" />
+   <table type="Static Y Axis" name="" sizey="1">
+    <data>Minimum Target Idle Speed During Warm-Up</data>
+   </table>
+   <description>Minimum target idle speed during warm-up after initial startup - Automatic transmission vehicles.</description>
+  </table>
+  <table type="2D" name="Min Idle Speed High Electrical Load (MT)" category="Idle Control" storagetype="uint16" endian="big" sizey="1" userlevel="1">
+   <scaling units="Engine Speed (RPM)" expression="x*.1953125" to_byte="x/.1953125" format="#" fineincrement="50" coarseincrement="100" />
+   <table type="Static Y Axis" name="" sizey="1">
+    <data>Minimum Target Idle Speed During High Electrical Load</data>
+   </table>
+   <description>Minimum target idle speed during high electrical load - Manual transmission vehicles.</description>
+  </table>
+  <table type="2D" name="Min Idle Speed High Electrical Load (AT)" category="Idle Control" storagetype="uint16" endian="big" sizey="1" userlevel="1">
+   <scaling units="Engine Speed (RPM)" expression="x*.1953125" to_byte="x/.1953125" format="#" fineincrement="50" coarseincrement="100" />
+   <table type="Static Y Axis" name="" sizey="1">
+    <data>Minimum Target Idle Speed During High Electrical Load</data>
+   </table>
+   <description>Minimum target idle speed during high electrical load - Automatic transmission vehicles.</description>
+  </table>
+  <table type="3D" name="Ignition Dwell" category="Ignition Timing - Compensation" storagetype="uint8" endian="big" sizex="16" sizey="5" userlevel="1">
+   <scaling units="Ignition Dwell(ms)" expression="x*.0625" to_byte="x/.0625" format="0.00" fineincrement=".01" coarseincrement=".1" />
+   <table type="X Axis" name="Engine Speed" storagetype="uint16" endian="big" logparam="P8">
+    <scaling units="RPM" expression="x*.1953125" to_byte="x/.1953125" format="#" fineincrement="50" coarseincrement="100" />
+   </table>
+   <table type="Y Axis" name="Battery" storagetype="uint8" endian="big">
+    <scaling units="Volts" expression="x*.078125" to_byte="x/.078125" format="0.00" fineincrement=".5" coarseincrement="1" />
+   </table>
+   <description>This map contains the current ignition dwell settings based on battery voltage and engine speed.</description>
+  </table>
+ </rom>
+ <rom base="16BITBASE">
+  <romid>
+   <xmlid>A4TJ1X00</xmlid>
+   <internalidaddress>200</internalidaddress>
+   <internalidstring>A4TJ1X00</internalidstring>
+   <ecuid>3D04EA4605</ecuid>
+   <year />
+   <market>JDM</market>
+   <make>Subaru</make>
+   <model>Impreza</model>
+   <submodel>STi</submodel>
+   <transmission>MT/AT</transmission>
+   <memmodel>68HC16Y5</memmodel>
+   <flashmethod>wrx02</flashmethod>
+   <filesize>192kb</filesize>
+  </romid>
+  <table name="Force Pass Readiness Monitors" storageaddress="0x1338C" />
+  <table name="Enable LC" storageaddress="0x0AEC6" />
+  <table name="Enable Group-N via Flash Block" storageaddress="0x0AF34" />
+  <table name="Invert NPS" storageaddress="0x01C00" />
+  <table name="Min Idle Speed High Electrical Load (AT)" storageaddress="0x2A270" />
+  <table name="Min Idle Speed High Electrical Load (MT)" storageaddress="0x2A27C" />
+  <table name="Min Idle Speed Startup (AT)" storageaddress="0x2A274" />
+  <table name="Min Idle Speed Startup (MT)" storageaddress="0x2A27E" />
+  <table name="Min Idle Speed A/C (AT)" storageaddress="0x2A08D" />
+  <table name="Min Idle Speed A/C (MT)" storageaddress="0x2A08B" />
+  <table name="Ignition Dwell" storageaddress="0x29D48">
+   <table type="X Axis" storageaddress="0x29D26" />
+   <table type="Y Axis" storageaddress="0x29D20" />
+  </table>
+ </rom>
+</roms>  

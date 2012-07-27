@@ -1,0 +1,93 @@
+<rom>
+  <romid>
+    <xmlid>AZ1G601R</xmlid>
+    <internalidaddress>2004</internalidaddress>
+    <internalidstring>AZ1G601R</internalidstring>
+    <ecuid>6C12506007</ecuid>
+    <year>09/10</year>
+    <market>USDM</market>
+    <make>Subaru</make>
+    <model>Forester</model>
+    <submodel>XT</submodel>
+    <transmission>MT</transmission>
+    <memmodel>SH7058</memmodel>
+    <flashmethod>subarucan</flashmethod>
+    <checksummodule>subarudbw</checksummodule>
+  </romid>
+  <include>32BITBASE</include>
+
+	<table name="Target Boost_" address="c0DD4">
+		<table name="Requested Torque" address="c0D6c"/>
+		<table name="Engine Speed" address="c0D98"/>
+	</table>
+	<table name="Boost Limit (Fuel Cut)_" address="cee30">
+		<table name="Atmospheric Pressure" address="cee00"/>
+		<table name="Engine Speed" address="cee18"/>
+	</table>
+	<table name="Initial Wastegate Duty_" address="c0be4">
+		<table name="Requested Torque" address="c0b74" elements="15"/>
+		<table name="Engine Speed" address="c0bb0" elements="13"/>
+	</table>
+
+	<table name="Max Wastegate Duty_" address="c09ec">
+		<table name="Requested Torque" address="c097c" elements="15"/>
+		<table name="Engine Speed" address="c09b8" elements="13"/>
+	</table>
+
+	<table name="Primary Open Loop Fueling" address="cccfc">
+		<table name="Engine Load" address="ccc78"/>
+		<table name="Engine Speed" address="cccb4"/>
+	</table>
+
+	<table name="Primary Open Loop Fueling (Failsafe)" address="cce90">
+		<table name="Engine Load" address="cce0c"/>
+		<table name="Engine Speed" address="cce48"/>
+	</table>
+	<table name="MAF Sensor Scaling" address="d51EC">
+		<table name="MAF sensor" address="d5114"/>
+	</table>
+	<table name="Base Timing Primary Cruise" address="D0E34">
+		<table name="Engine Load" address="D0DB0"/>
+		<table name="Engine Speed" address="D0DEC"/>
+	</table>
+
+	<table name="Base Timing Reference Cruise (AVCS related)" address="D115C">
+		<table name="Engine Load" address="D10D8"/>
+		<table name="Engine Speed" address="D1114"/>
+	</table>
+
+	<table name="Base Timing Primary Non-Cruise" address="D0FC8">
+		<table name="Engine Load" address="D0F44"/>
+		<table name="Engine Speed" address="D0F80"/>
+	</table>
+
+	<table name="Base Timing Reference Non-Cruise (AVCS related)" address="D12F0">
+		<table name="Engine Load" address="D126C"/>
+		<table name="Engine Speed" address="D12A8"/>
+	</table>
+	<table name="Knock Correction Advance Max Cruise" address="D1E1C">
+		<table name="Engine Load" address="D1D98" elements="15"/>
+		<table name="Engine Speed" address="D1DD4"/>
+	</table>
+
+	<table name="Knock Correction Advance Max Non-Cruise" address="D1FB0">
+		<table name="Engine Load" address="D1F2C" elements="15"/>
+		<table name="Engine Speed" address="D1F68"/>
+	</table>
+	<table name="Intake Cam Advance Angle Cruise (AVCS)" address="D6E00">
+		<table name="Engine Load" address="D6D84" elements="15"/>
+		<table name="Engine Speed" address="D6DC0" elements="16"/>
+	</table>
+
+	<table name="Intake Cam Advance Angle Non-Cruise (AVCS)" address="D705C">
+		<table name="Engine Load" address="D6FE0" elements="15"/>
+		<table name="Engine Speed" address="D701C" elements="16"/>
+	</table>
+	<table name="Speed Limiting A (Throttle)" address="dc644">
+	</table>
+
+	<table name="Speed Limiting B (Throttle)" address="dc65c">
+	</table>
+
+
+</rom>
