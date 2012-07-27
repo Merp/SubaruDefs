@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!ELEMENT address ( #PCDATA ) >
+<!ATTLIST address length CDATA #IMPLIED >
+<!ATTLIST address bit ( 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 ) #IMPLIED >
+
+<!ELEMENT ecu ( address ) >
+<!ATTLIST ecu id CDATA #REQUIRED >
+
+<!ELEMENT ref EMPTY >
+<!ATTLIST ref ecuparam CDATA #IMPLIED >
+<!ATTLIST ref parameter IDREF #IMPLIED >
+
+<!ELEMENT depends ( ref+ ) >
+
+<!ELEMENT replace EMPTY >
+<!ATTLIST replace value CDATA #REQUIRED >
+<!ATTLIST replace with CDATA #REQUIRED >
+
+<!ELEMENT conversion ( replace* ) >
+<!ATTLIST conversion expr CDATA #REQUIRED >
+<!ATTLIST conversion format ( 0 | 0.0 | 0.00 | 0.000 | 0.0000 ) #REQUIRED >
+<!ATTLIST conversion storagetype ( uint8 | uint16 | float ) #IMPLIED >
+<!ATTLIST conversion units CDATA #REQUIRED >
+<!ATTLIST conversion gauge_min CDATA #IMPLIED >
+<!ATTLIST conversion gauge_max CDATA #IMPLIED >
+<!ATTLIST conversion gauge_step CDATA #IMPLIED >
+
+<!ELEMENT conversions ( conversion+ ) >
+
+<!ELEMENT parameter ( ( address, conversions?) | (depends, conversions) ) >
+<!ATTLIST parameter target CDATA #REQUIRED >
+<!ATTLIST parameter ecubit ( 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 ) #IMPLIED >
+<!ATTLIST parameter ecubyteindex CDATA #IMPLIED >
+<!ATTLIST parameter desc CDATA #REQUIRED >
+<!ATTLIST parameter name CDATA #REQUIRED >
+<!ATTLIST parameter id ID #REQUIRED >
+
+<!ELEMENT parameters ( parameter+ ) >
+
+<!ELEMENT switch EMPTY >
+<!ATTLIST switch target CDATA #REQUIRED >
+<!ATTLIST switch ecubyteindex CDATA #IMPLIED >
+<!ATTLIST switch bit ( 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 ) #REQUIRED >
+<!ATTLIST switch byte CDATA #REQUIRED >
+<!ATTLIST switch desc CDATA #REQUIRED >
+<!ATTLIST switch name CDATA #REQUIRED >
+<!ATTLIST switch id ID #REQUIRED >
+
+<!ELEMENT switches ( switch+ ) >
+
+<!ELEMENT ecuparam ( ecu+, conversions? ) >
+<!ATTLIST ecuparam target CDATA #REQUIRED >
+<!ATTLIST ecuparam desc CDATA #REQUIRED >
+<!ATTLIST ecuparam name CDATA #REQUIRED >
+<!ATTLIST ecuparam id ID #REQUIRED >
+
+<!ELEMENT ecuparams ( ecuparam+ ) >
+
+<!ELEMENT type (#PCDATA) >
+<!ELEMENT carmass (#PCDATA) >
+<!ELEMENT finalratio (#PCDATA) >
+<!ELEMENT rollcoeff (#PCDATA) >
+<!ELEMENT dragcoeff (#PCDATA) >
+<!ELEMENT frontalarea (#PCDATA) >
+<!ELEMENT transmission (#PCDATA) >
+<!ELEMENT gearratio1 (#PCDATA) >
+<!ELEMENT gearratio2 (#PCDATA) >
+<!ELEMENT gearratio3 (#PCDATA) >
+<!ELEMENT gearratio4 (#PCDATA) >
+<!ELEMENT gearratio5 (#PCDATA) >
+<!ELEMENT gearratio6 (#PCDATA)  >
+<!ELEMENT tirewidth (#PCDATA) >
+<!ELEMENT tireaspect (#PCDATA) >
+<!ELEMENT wheelsize (#PCDATA) >
+
+<!ELEMENT car (type,carmass,finalratio,rollcoeff,dragcoeff,frontalarea,transmission,gearratio1,gearratio2,gearratio3,gearratio4,gearratio5?,gearratio6?,tirewidth,tireaspect,wheelsize) >
+
+<!ELEMENT dyno ( car+ ) >
+
+<!ELEMENT protocol ( parameters?, switches?, ecuparams?, dyno? ) >
+<!ATTLIST protocol id ID #REQUIRED >
+<!ATTLIST protocol baud CDATA #REQUIRED >
+<!ATTLIST protocol databits CDATA #REQUIRED >
+<!ATTLIST protocol stopbits CDATA #REQUIRED >
+<!ATTLIST protocol parity CDATA #REQUIRED >
+<!ATTLIST protocol connect_timeout CDATA #REQUIRED >
+<!ATTLIST protocol send_timeout CDATA #REQUIRED >
+
+<!ELEMENT protocols ( protocol+ ) >
+
+<!ELEMENT logger ( protocols ) >
+<!ATTLIST logger version CDATA #IMPLIED >
