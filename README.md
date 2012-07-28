@@ -1,8 +1,8 @@
 # Subaru ECU Definitions
 
 This repository is used to develop Subaru ECU definitions for use with:
-+Romraider http://www.romraider.com
-+ECUFlash http://www.tactrix.com
+*   Romraider http://www.romraider.com
+*	ECUFlash http://www.tactrix.com
 
 Discussion thread at RomRaider for this repo: http://www.romraider.com/forum/viewtopic.php?f=34&t=8635
 
