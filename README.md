@@ -15,7 +15,7 @@ Benefits of using Git:
 *	Easier to collaborate and stay organized.
 *	By pointing RomRaider or ECUFlash at the local repo, you can easily switch between different branches for quick tests/comparisons.
 
-#WARNING
+#WARNING: These definitions are EXPERIMENTAL!
 
 These definition files are created as the result of the extremely
 complex and time consuming process of reverse-engineering the factory ECU.
