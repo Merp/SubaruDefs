@@ -6,7 +6,7 @@ This repository is used to develop Subaru ECU definitions for use with:
 
 Discussion thread at RomRaider for this repo: http://www.romraider.com/forum/viewtopic.php?f=34&t=8635
 
-As of this commit, the master branch contains the latest, up to date, NON-experimental definitions. The experimental branch contains all of the definitions posted at RomRaider.com into the RomRaider directory (including the unified logger def), and the "/ECUFlash/subaru standard" directory (including 32BITBASE).
+As of this commit, the Stable branch contains the latest, up to date, NON-experimental definitions. The experimental branch contains all of the definitions posted at RomRaider.com into the RomRaider directory (including the unified logger def), and the "/ECUFlash/subaru standard" directory (including 32BITBASE).
 
 Benefits of using Git:
 *	Better tracking of definition history/changes.
