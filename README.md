@@ -9,11 +9,11 @@ Discussion thread at RomRaider for this repo: http://www.romraider.com/forum/vie
 As of this commit, the master branch contains the latest, up to date, NON-experimental definitions. The experimental branch contains all of the definitions posted at RomRaider.com into the RomRaider directory (including the unified logger def), and the "/ECUFlash/subaru standard" directory (including 32BITBASE).
 
 Benefits of using Git:
-Better tracking of definition history/changes.
-Easier to implement standardization of new tables, scalings, descriptions, formats, etc.
-Ease of use for end users, no more scouring a forum to find definitions or get an updated def.
-Easier to collaborate and stay organized.
-By pointing RomRaider or ECUFlash at the local repo, you can easily switch between different branches for quick tests/comparisons.
+*	Better tracking of definition history/changes.
+*	Easier to implement standardization of new tables, scalings, descriptions, formats, etc.
+*	Ease of use for end users, no more scouring a forum to find definitions or get an updated def.
+*	Easier to collaborate and stay organized.
+*	By pointing RomRaider or ECUFlash at the local repo, you can easily switch between different branches for quick tests/comparisons.
 
 #WARNING
 
