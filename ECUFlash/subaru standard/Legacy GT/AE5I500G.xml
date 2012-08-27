@@ -16,6 +16,330 @@
 	</romid>
 
 	<include>32BITBASE</include>
+	<scaling name="AF3 Lambda" units="Lambda Additive" toexpr="x" frexpr="x" format="%.4f" min="0" max="255" inc="1" storagetype="float" endian="big"/>
+	<scaling name="Hot Restart 1" units="units" toexpr="x" frexpr="x" format="%.4f" min="0" max="255" inc="1" storagetype="float" endian="big"/>
+	<scaling name="Hot Restart 2" units="units" toexpr="x" frexpr="x" format="%.0f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
+	<scaling name="IDC" units="Injector Duty Cycle" toexpr="x*0.7371358727094787" frexpr="x/0.7371358727094787" format="%.2f" min="0" max="255" inc="1" storagetype="float" endian="big"/>
+	<scaling name="Idle Stability" units="MAP related" toexpr="(x*0.0078125)-256" frexpr="(x+256)/0.0078125" format="%.2f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
+	<scaling name="Intake Air Temp (Map Switch)" units="units" toexpr="x*0.00390625-256" frexpr="(x+256)/0.00390625" format="%.0f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
+	<scaling name="Knock" units="units" toexpr="x" frexpr="x" format="%.2f" min="0" max="255" inc="1" storagetype="float" endian="big"/>
+	<scaling name="Knock2" units="units" toexpr="x" frexpr="x" format="%.0f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
+	<scaling name="Knock3" units="units" toexpr="x" frexpr="x" format="%.0f" min="0" max="255" inc="1" storagetype="uint8" endian="big"/>
+	<scaling name="Knock4" units="units" toexpr="x*0.000015258789" frexpr="x/0.000015258789" format="%.4f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
+	<scaling name="Map_Switch_Ramping_Adder" units="units" toexpr="x" frexpr="x" format="%.4f" min="0" max="255" inc="1" storagetype="float" endian="big"/>
+	<scaling name="Map_Switching_Cruise_Switch_Min_Delay" units="units" toexpr="x" frexpr="x" format="%.0f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
+	<scaling name="Misfire DTC" units="units" toexpr="x" frexpr="x" format="%.0f" min="0" max="255" inc="1" storagetype="uint8" endian="big"/>
+	<scaling name="Overrun Fueling" units="units" toexpr="x*0.1953125" frexpr="x/0.1953125" format="%.0f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
+	<scaling name="Post_Start_Enrich_Decay" units="units" toexpr="x*0.00024414062" frexpr="x/0.00024414062" format="%.4f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
+	<scaling name="Post_Start_Enrich_Decay1" units="units" toexpr="x*0.00390625" frexpr="x/0.00390625" format="%.3f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
+	<scaling name="Post_Start_Enrich_Decay2" units="units" toexpr="x*0.00000095367432" frexpr="x/0.00000095367432" format="%.5f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
+	<scaling name="Post_Start_Enrich_Decay3" units="units" toexpr="x" frexpr="x" format="%.0f" min="0" max="255" inc="1" storagetype="uint8" endian="big"/>
+	<scaling name="Post_Start_Enrich_Decay4" units="units" toexpr="x*0.0078125" frexpr="x/0.0078125" format="%.3f" min="0" max="255" inc="1" storagetype="uint8" endian="big"/>
+	<scaling name="Pressure (bar)" units="units" toexpr="x/750" frexpr="x*750" format="%.2f" min="0" max="255" inc="1" storagetype="float" endian="big"/>
+	<scaling name="Requested Torque (Map Switch)" units="units" toexpr="x*0.0062499996" frexpr="x/0.0062499996" format="%.0f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
+	<scaling name="TargetThrottlePlateOpeningAngle(%)2" units="units" toexpr="x*0.0019073486" frexpr="x/0.0019073486" format="%.2f" min="0" max="255" inc="1" storagetype="uint8" endian="big"/>
+	<scaling name="negative" units="units" toexpr="-x" frexpr="-x" format="%.4f" min="0" max="255" inc="1" storagetype="float" endian="big"/>
+
+	<table name="AF 3 Correction Limits" category="Experimental" address="31f7c" type="2D" level="1" scaling="A/FLearning#1Limits(%)">
+		<table name="X" type="Static X Axis" elements="2">
+			<data>High</data>
+			<data>Low</data>
+		</table>
+	</table>
+
+	<table name="AF 3 Learning Limits" category="Experimental" type="2D" level="1" scaling="A/FLearning#1Limits(%)">
+		<table name="X" type="Static X Axis" elements="2">
+			<data>High</data>
+			<data>Low</data>
+		</table>
+	</table>
+
+	<table name="Closed_loop_fueling_target_comp_RearO2" category="Experimental" address="30884" type="2D" level="1" scaling="AF3 Lambda">
+		<table name="X" type="Static X Axis" elements="2">
+			<data>High</data>
+			<data>Low</data>
+		</table>
+	</table>
+
+	<table name="Af learning Max threshhold" type="1D" level="1" scaling="rawecuvalue"/>
+
+	<table name="Af learning Min threshhold" type="1D" level="1" scaling="rawecuvalue"/>
+
+	<table name="Ignition Timing Compensation Retard on Shift" category="EXPERIMENTAL MISC" address="cf484" type="2D" level="1" scaling="IgnitionTimingCorrection(degrees)">
+		<table name="Accelerator Pedal Opening %" address="cf468" type="Y Axis" elements="7" scaling="rawecuvalue"/>
+	</table>
+
+	<table name="Cruise_Control_Speed_Limit_Min_A" category="EXPERIMENTAL MISC" address="c218c" type="1D" level="1" scaling="rawecuvalue"/>
+
+	<table name="Cruise_Control_Speed_Limit_Min_B" category="EXPERIMENTAL MISC" address="c2194" type="1D" level="1" scaling="rawecuvalue"/>
+
+	<table name="Cruise_Control_Speed_Limit_Max_A" category="EXPERIMENTAL MISC" address="c2190" type="1D" level="1" scaling="rawecuvalue"/>
+
+	<table name="Cruise_Control_Speed_Limit_Max_B" category="EXPERIMENTAL MISC" address="c2198" type="1D" level="1" scaling="rawecuvalue"/>
+
+	<table name="Ignition Timing Compensation Overrun" category="EXPERIMENTAL MISC" address="cf457" type="2D" level="1" scaling="IgnitionTimingCorrection(degrees)">
+		<table name="Coolant Temperature" address="ceff8" type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
+	</table>
+
+	<table name="Ign_Timing_Comp_Overrun_RPM_Delta" category="EXPERIMENTAL MISC" type="1D" level="1" scaling="rawecuvalue"/>
+
+	<table name="Overrun_Enrich_RPM_Delta_Activation" category="EXPERIMENTAL MISC" address="c9080" type="1D" level="1" scaling="rawecuvalue"/>
+
+	<table name="Overrun_initial_enrichment" category="EXPERIMENTAL MISC" address="c9084" type="1D" level="1" scaling="ms"/>
+
+	<table name="Speed_Limits_Throttle_reduction_A" category="EXPERIMENTAL MISC" address="dc604" type="1D" level="1" scaling="RPM"/>
+
+	<table name="Speed_Limits_Throttle_reduction_B" category="EXPERIMENTAL MISC" address="dc608" type="1D" level="1" scaling="RPM"/>
+
+	<table name="Map_Switching_Cruise_Switch_Min_Delay" category="Map Switching" address="d6986" type="1D" level="1" scaling="Map_Switching_Cruise_Switch_Min_Delay"/>
+
+	<table name="Map_Switching_Cruise_Thresholds_Min_Delay" category="Map Switching" address="d6988" type="1D" level="1" scaling="Map_Switching_Cruise_Switch_Min_Delay"/>
+
+	<table name="Idle_Airflow_Min_Target_Decel_Adder" category="EXPERIMENTAL - idle tables" address="d3934" type="3D" level="1" scaling="Advance(degrees)1">
+		<table name="Engine Speed" address="d38bc" type="X Axis" elements="16" scaling="RPM"/>
+		<table name="Coolant Temp" address="d38fc" type="Y Axis" elements="13" scaling="CoolantTemp(DegreesF)"/>
+	</table>
+
+	<table name="Idle Speed Stability A" category="EXPERIMENTAL - idle tables" address="d3b84" type="3D" level="1" scaling="Idle Stability">
+		<table name="Idle Speed Error" address="d3af4" type="X Axis" elements="25" scaling="RPM"/>
+		<table name="Engine Speed Delta" address="d3b58" type="Y Axis" elements="11" scaling="RPM"/>
+	</table>
+
+	<table name="Idle Speed Stability B" category="EXPERIMENTAL - idle tables" address="d3e3c" type="3D" level="1" scaling="Idle Stability">
+		<table name="Idle Speed Error" address="d3dac" type="X Axis" elements="25" scaling="RPM"/>
+		<table name="Engine Speed Delta" address="d3e10" type="Y Axis" elements="11" scaling="RPM"/>
+	</table>
+
+	<table name="Idle_Airflow_Min_Target_Decel_Adder_Active_Veh_Speed" category="EXPERIMENTAL - idle tables" address="d208c" type="1D" level="1" scaling="VehicleSpeed(MPH)"/>
+
+	<table name="Idle_Airflow_Min_Target_Decel_Initial_Idle_Min_Airflow" category="EXPERIMENTAL - idle tables" address="d2090" type="1D" level="1" scaling="rawecuvalue"/>
+
+	<table name="Idle_Airflow_Min_Target_Decel_Initial_Idle_Activation_Max_Mode_Counter" category="EXPERIMENTAL - idle tables" address="d1f02" type="1D" level="1" scaling="Map_Switching_Cruise_Switch_Min_Delay"/>
+
+	<table name="Idle_Airflow_Min_Target_Decel_Ramping_Adder_Decreasing" category="EXPERIMENTAL - idle tables" address="d20b0" type="1D" level="1" scaling="negative"/>
+
+	<table name="Idle_Airflow_Min_Target_Decel_Ramping_Adder_Increasing" category="EXPERIMENTAL - idle tables" address="d20b4" type="1D" level="1" scaling="rawecuvalue"/>
+
+	<table name="Overrun_Fueling_Cut_Counter_RPM_Threshold" category="EXPERIMENTAL MISC" address="c90ec" type="2D" level="1" scaling="RPM">
+		<table name="RPM" type="Static X Axis" elements="3">
+			<data>Low</data>
+			<data>Med</data>
+			<data>High</data>
+		</table>
+	</table>
+
+	<table name="Overun Fueling Resume RPM Threshholds" category="EXPERIMENTAL MISC" address="cb83c" type="2D" level="1" scaling="Overrun Fueling">
+		<table name="Coolant Temperature" address="c91c0" type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
+	</table>
+
+	<table name="MAP_Switch_Cruise_REq_Torque_Thresh_Max_A" category="Map Switching" address="d6b50" type="2D" level="1" scaling="Requested Torque (Map Switch)">
+		<table name="Engine Speed" address="d6b10" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="MAP_Switch_Accel_Switch_REq_Torque_Thresh_Min_A" category="Map Switching" address="d6af0" type="2D" level="1" scaling="Requested Torque (Map Switch)">
+		<table name="Engine Speed" address="d6ab0" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Table_MAP_Switch_Cruise_REq_Torque_Thresh_Max_B" category="Map Switching" address="d6b50" type="2D" level="1" scaling="Requested Torque (Map Switch)">
+		<table name="Engine Speed" address="d6b10" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="MAP_Switch_Accel_Switch_REq_Torque_Thresh_Min_B" category="Map Switching" address="d6bb0" type="2D" level="1" scaling="Requested Torque (Map Switch)">
+		<table name="Engine Speed" address="d6b70" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="MAP_Switch_Cruise_REq_Torque_Thresh_Max_C" category="Map Switching" address="d6c10" type="2D" level="1" scaling="Requested Torque (Map Switch)">
+		<table name="Engine Speed" address="d6bd0" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="MAP_Switch_Accel_Switch_REq_Torque_Thresh_Min_C" category="Map Switching" address="d6c70" type="2D" level="1" scaling="Requested Torque (Map Switch)">
+		<table name="Engine Speed" address="d6c30" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Map_Switching_AccelSwitch_Min_Intake_Temp" category="Map Switching" address="d6d1c" type="2D" level="1" scaling="Intake Air Temp (Map Switch)">
+		<table name="Intake Air Temp" address="d6cf0" type="X Axis" elements="11" scaling="rawecuvalue"/>
+	</table>
+
+	<table name="MAP_Switch_Cruise_Accel_Airflow_enable_below" category="Map Switching" address="d69b0" type="1D" level="1" scaling="rawecuvalue"/>
+
+	<table name="MAP_Switch_Cruise_Accel_Airflow_disable_above" category="Map Switching" address="d69b4" type="1D" level="1" scaling="rawecuvalue"/>
+
+	<table name="MAP_Switch_AccelSwitch_Min_Coolant_Temp" category="Map Switching" address="d69b8" type="2D" level="1" scaling="rawecuvalue">
+		<table name="Coolant Temp" type="Static X Axis" elements="2">
+		</table>
+	</table>
+
+	<table name="Map_Switch_Ramping_Adder_Accel" category="Map Switching" address="d69c8" type="1D" level="1" scaling="Map_Switch_Ramping_Adder"/>
+
+	<table name="Map_Switch_Ramping_Adder_Cruise" category="Map Switching" address="d69cc" type="1D" level="1" scaling="negative"/>
+
+	<table name="Knock_Sensor_Calibration" category="Knock Sensor" address="cfd18" type="2D" level="1" scaling="rawecuvalue">
+		<table name="Volts" address="cfc14" type="X Axis" elements="65" scaling="rawecuvalue"/>
+	</table>
+
+	<table name="Knock_threshold_filter_Final_Limit_Min" category="Knock Sensor" address="cfe44" type="2D" level="1" scaling="Knock">
+		<table name="Volts" address="cfe1c" type="X Axis" elements="10" scaling="RPM"/>
+	</table>
+
+	<table name="Knock_threshold_filter_Final_Limit_Max_Cyl_1" category="Knock Sensor" address="cfe94" type="2D" level="1" scaling="Knock">
+		<table name="Volts" address="cfe6c" type="X Axis" elements="10" scaling="RPM"/>
+	</table>
+
+	<table name="Knock_threshold_filter_Final_Limit_Max_Cyl_2" category="Knock Sensor" address="cfee4" type="2D" level="1" scaling="Knock">
+		<table name="Volts" address="cfebc" type="X Axis" elements="10" scaling="RPM"/>
+	</table>
+
+	<table name="Knock_threshold_filter_Final_Limit_Max_Cyl_3" category="Knock Sensor" address="cff34" type="2D" level="1" scaling="Knock">
+		<table name="Volts" address="cff0c" type="X Axis" elements="10" scaling="RPM"/>
+	</table>
+
+	<table name="Knock_threshold_filter_Final_Limit_Max_Cyl_4" category="Knock Sensor" address="cff84" type="2D" level="1" scaling="Knock">
+		<table name="Volts" address="cff5c" type="X Axis" elements="10" scaling="RPM"/>
+	</table>
+
+	<table name="Knock_threshold_filter_Final_Limit_Min" category="Knock Sensor" type="2D" level="1" scaling="Knock">
+		<table name="Volts" type="X Axis" elements="10" scaling="RPM"/>
+	</table>
+
+	<table name="Knock_threshold_weight_factor_RPM_Load_Cyl_1" category="Knock Sensor" address="d1570" type="3D" level="1" scaling="Knock">
+		<table name="X" address="d151c" type="X Axis" elements="18" scaling="RPM"/>
+		<table name="Y" address="d1564" type="Y Axis" elements="3" scaling="Knock"/>
+	</table>
+
+	<table name="Knock_threshold_weight_factor_RPM_Load_Cyl_2" category="Knock Sensor" address="d169c" type="3D" level="1" scaling="Knock">
+		<table name="X" address="d1648" type="X Axis" elements="18" scaling="RPM"/>
+		<table name="Y" address="d1690" type="Y Axis" elements="3" scaling="Knock"/>
+	</table>
+
+	<table name="Knock_threshold_weight_factor_RPM_Load_Cyl_3" category="Knock Sensor" address="d17c8" type="3D" level="1" scaling="Knock">
+		<table name="X" address="d1774" type="X Axis" elements="18" scaling="RPM"/>
+		<table name="Y" address="d17bc" type="Y Axis" elements="3" scaling="Knock"/>
+	</table>
+
+	<table name="Knock_threshold_weight_factor_RPM_Load_Cyl_4" category="Knock Sensor" address="d18f4" type="3D" level="1" scaling="Knock">
+		<table name="X" address="d18a0" type="X Axis" elements="18" scaling="RPM"/>
+		<table name="Y" address="d18e8" type="Y Axis" elements="3" scaling="Knock"/>
+	</table>
+
+	<table name="Knock_threshold_filter_Background_Noise_interval_Weighting_Factor_Low_RPM_Delta" category="Knock Sensor" address="cf97c" type="2D" level="1" scaling="Knock4">
+		<table name="Volts" address="cf960" type="X Axis" elements="7" scaling="RPM"/>
+	</table>
+
+	<table name="Background_Noise_Delta_Smoothing_Weighting_Factor_RPM_Delta_Threshold_Imm" category="Knock Sensor" address="cea9c" type="1D" level="1" scaling="Knock"/>
+
+	<table name="Background_Noise_Delta_Smoothing_Weighting_Factor_RPM_Delta_Threshold_Short" category="Knock Sensor" address="ceaa0" type="1D" level="1" scaling="Knock"/>
+
+	<table name="Background_Noise_Delta_Weighting_Factor_Low_RPM_Delta" category="Knock Sensor" address="ceaa4" type="1D" level="1" scaling="Knock"/>
+
+	<table name="Background_Noise_Base_Smoothing_Factor_High_Rpm_Delta" category="Knock Sensor" address="ceaa8" type="1D" level="1" scaling="Knock"/>
+
+	<table name="Background_Noise_Delta_Weighting_Factor_High_RPM_Delta" category="Knock Sensor" address="ceaac" type="1D" level="1" scaling="Knock"/>
+
+	<table name="Background_Noise_Base_Smoothing_Factor_Low_Rpm_Delta" category="Knock Sensor" address="ceab0" type="1D" level="1" scaling="Knock"/>
+
+	<table name="Knock_threshhold_Filter_background_noise_interv_weight_factor_RPM_Delta_Short" category="Knock Sensor" address="ceab4" type="1D" level="1" scaling="Knock"/>
+
+	<table name="Knock_threshhold_Filter_background_noise_interv_weight_factor_High_RPM_Delta_Limit_max" category="Knock Sensor" address="ceab8" type="1D" level="1" scaling="Knock"/>
+
+	<table name="Knock_threshhold_Filter_background_noise_interv_weight_factor_High_RPM_Delta_Rpm_delta_ratio" category="Knock Sensor" address="ceabc" type="1D" level="1" scaling="Knock"/>
+
+	<table name="Knock_threshhold_Filter_Final_Limit_max_modify_pre_final_limit" category="Knock Sensor" address="ceac0" type="1D" level="1" scaling="Knock"/>
+
+	<table name="Knock_Threshhold_Level_Final_Limit_Min" category="Knock Sensor" address="ceac4" type="1D" level="1" scaling="Knock"/>
+
+	<table name="Knock_Threshhold_Level_Final_Limit_Max" category="Knock Sensor" address="ceac8" type="1D" level="1" scaling="Knock"/>
+
+	<table name="Filter_Noise_Level_Weighting_Factor" category="Knock Sensor" address="cead0" type="1D" level="1" scaling="Knock"/>
+
+	<table name="Filter_Ref_Max_Range_Hysteresis_Corr_Knock_Sen_output_modify" category="Knock Sensor" address="ce9e9" type="1D" level="1" scaling="Knock3"/>
+
+	<table name="Knock_Detection_Minimum_Engine_Run_Time" category="Knock Sensor" address="cea24" type="1D" level="1" scaling="Knock2"/>
+
+	<table name="Misfire Count MAP Threshold" category="Misfire" address="c720c" type="2D" level="1" scaling="Pressure (bar)">
+		<table name="X" category="Misfire" address="c71e4" type="X Axis" elements="10" scaling="RPM"/>
+	</table>
+
+	<table name="Misfire DTC Threshold" category="Misfire" address="c73b4" type="3D" level="1" scaling="Misfire DTC">
+		<table name="Engine Load" address="c7354" type="X Axis" elements="10" scaling="EngineLoad(g/rev)1"/>
+		<table name="Engine Speed" address="c737c" type="Y Axis" elements="14" scaling="RPM"/>
+	</table>
+
+	<table name="hot_restart_enrich_decay_delay" category="Hot Restart" address="c897c" type="1D" level="1" scaling="Hot Restart 2"/>
+
+	<table name="hot_restart_enrich_decay_step_value" category="Hot Restart" address="c8e14" type="1D" level="1" scaling="Hot Restart 1"/>
+
+	<table name="hot_restart_enrich_initial_high" category="Hot Restart" address="c8e08" type="1D" level="1" scaling="Hot Restart 1"/>
+
+	<table name="hot_restart_enrich_initial_high_activat_min_coolant_temp" category="Hot Restart" address="c8df8" type="1D" level="1" scaling="Hot Restart 1"/>
+
+	<table name="hot_restart_enrich_initial_high_activat_min_intake_temp" category="Hot Restart" address="c8dfc" type="1D" level="1" scaling="Hot Restart 1"/>
+
+	<table name="hot_restart_enrich_initial_low" category="Hot Restart" address="c8e0c" type="1D" level="1" scaling="Hot Restart 1"/>
+
+	<table name="hot_restart_enrich_initial_low_activat_min_coolant_temp" category="Hot Restart" address="c8e00" type="1D" level="1" scaling="Hot Restart 1"/>
+
+	<table name="hot_restart_enrich_initial_low_activat_min_intake_temp" category="Hot Restart" address="c8e04" type="1D" level="1" scaling="Hot Restart 1"/>
+
+	<table name="hot_restart_enrich_max_non_idle" category="Hot Restart" address="c8e18" type="1D" level="1" scaling="Hot Restart 1"/>
+
+	<table name="hot_restart_enrich_max_non_idle_activation_max_run_time" category="Hot Restart" address="c8980" type="1D" level="2" scaling="Hot Restart 2"/>
+
+	<table name="hot_restart_enrich_min_lim_activat_max_run_time" category="Hot Restart" address="c897e" type="1D" level="1" scaling="Hot Restart 2"/>
+
+	<table name="hot_restart_enrich_min_limit" category="Hot Restart" address="c8e10" type="1D" level="1" scaling="Hot Restart 1"/>
+
+	<table name="Table_Post_Start_Enrich_High_Speed_Decay_Initial_Start_1A" category="Post Start Enrichment" address="c9ece" type="2D" level="1" scaling="Post_Start_Enrich_Decay">
+		<table name="Coolant Temperature" address="c91c0" type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
+	</table>
+
+	<table name="Table_Post_Start_Enrich_High_Speed_Decay_Initial_Start_1B" category="Post Start Enrichment" address="c9f2e" type="2D" level="1" scaling="Post_Start_Enrich_Decay">
+		<table name="Coolant Temperature" address="c91c0" type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
+	</table>
+
+	<table name="Table_Post_Start_Enrich_High_Speed_Decay_Initial_Start_2A" category="Post Start Enrichment" address="c9f6e" type="2D" level="1" scaling="Post_Start_Enrich_Decay">
+		<table name="Coolant Temperature" address="c91c0" type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
+	</table>
+
+	<table name="Table_Post_Start_Enrich_High_Speed_Decay_Initial_Start_2B" category="Post Start Enrichment" address="c9fce" type="2D" level="1" scaling="Post_Start_Enrich_Decay">
+		<table name="Coolant Temperature" address="c91c0" type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
+	</table>
+
+	<table name="Table_Post_Start_Enrich_Low_Speed_Decay_Initial_1A" category="Post Start Enrichment" address="c9e2e" type="2D" level="1" scaling="Post_Start_Enrich_Decay1">
+		<table name="Coolant Temperature" address="c91c0" type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
+	</table>
+
+	<table name="Table_Post_Start_Enrich_Low_Speed_Decay_Initial_1B" category="Post Start Enrichment" address="c9e4e" type="2D" level="1" scaling="Post_Start_Enrich_Decay1">
+		<table name="Coolant Temperature" address="c91c0" type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
+	</table>
+
+	<table name="Table_Post_Start_Enrich_Low_Speed_Decay_Initial_2A" category="Post Start Enrichment" address="c9e6e" type="2D" level="1" scaling="Post_Start_Enrich_Decay1">
+		<table name="Coolant Temperature" address="c91c0" type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
+	</table>
+
+	<table name="Table_Post_Start_Enrich_Low_Speed_Decay_Initial_2B" category="Post Start Enrichment" address="c9e8e" type="2D" level="1" scaling="Post_Start_Enrich_Decay1">
+		<table name="Coolant Temperature" address="c91c0" type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
+	</table>
+
+	<table name="Table_Post_Start_Enrich_High_Speed_Decay_Step_Value_1" category="Post Start Enrichment" address="ca02e" type="2D" level="1" scaling="Post_Start_Enrich_Decay2">
+		<table name="Coolant Temperature" address="c91c0" type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
+	</table>
+
+	<table name="Table_Post_Start_Enrich_High_Speed_Decay_Step_Value_2" category="Post Start Enrichment" address="ca06e" type="2D" level="1" scaling="Post_Start_Enrich_Decay2">
+		<table name="Coolant Temperature" address="c91c0" type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
+	</table>
+
+	<table name="Table_Post_Start_Enrich_Low_Speed_Decay_Delay_1" category="Post Start Enrichment" address="c947d" type="2D" level="1" scaling="Post_Start_Enrich_Decay3">
+		<table name="Coolant Temperature" address="c91c0" type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
+	</table>
+
+	<table name="Table_Post_Start_Enrich_Low_Speed_Decay_Delay_2" category="Post Start Enrichment" address="c948d" type="2D" level="1" scaling="Post_Start_Enrich_Decay3">
+		<table name="Coolant Temperature" address="c91c0" type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
+	</table>
+
+	<table name="Table_Post_Start_Enrich_Low_Speed_Decay_Delay_Multiplier" category="Post Start Enrichment" address="c949d" type="2D" level="1" scaling="Post_Start_Enrich_Decay4">
+		<table name="Coolant Temperature" address="c91c0" type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
+	</table>
+
 	<table name="Target Boost_" address="c10e8">
 		<table name="Requested Torque" address="c1074" elements="14"/>
 		<table name="Engine Speed" address="c10ac" elements="15"/>
