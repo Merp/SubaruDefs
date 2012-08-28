@@ -15,6 +15,62 @@
     <checksummodule>subarudbw</checksummodule>
   </romid>
   <include>32BITBASE</include>
+  
+  <!-- alpha AF sensor smoothing scaling and table -->
+	<scaling name="SmoothingFactor" units="Smoothing Factor (%)" toexpr="(x*(-100))+100" frexpr="(x-100)/(-100)" format="%.1f" min="0" max="100" inc="5" storagetype="float" endian="big"/>
+	<table name="Front AF Sensor Smoothing Table" category="MERP - TESTING" type="3D" level="2" scaling="SmoothingFactor" address="D1E50">
+		<description>Front AF Sensor Smoothing Factor Table, lower values = less smoothing, DO NOT SET TO ZERO OR LOWER.</description>
+		<table name="Smoothed MAF" type="X Axis" elements="4" scaling="g/s" address="D1E30" />
+		<table name="Engine Load" type="Y Axis" elements="4" scaling="g/rev" address="D1E40" />
+   </table>
+ 
+  	<table name="Hotstart Enrichment Decay Delay" category="Hotstart" address="C81E2" type="1D" level="1" scaling="Hotstart Counter uint16">
+		<description>Delay before the Initial Hotstart Enrichment is decayed by the decay step value.</description>
+	</table>
+	
+	<table name="Hotstart Enrichment Decay Step" category="Hotstart" address="C8664" type="1D" level="1" scaling="Hotstart Enrichment">
+		<description>Step value that is decayed from the initial enrichment every time the counter increments.</description>
+	</table>
+	
+	<table name="Initial Hotstart Enrichment (High)" category="Hotstart" address="C8658" type="1D" level="1" scaling="Hotstart Enrichment">
+		<description>Initial High Enrichment. This is applied when BOTH high enrichment thresholds are met.</description>
+	</table>
+	
+	<table name="Hotstart High Enrichment Activation Threshold (Coolant Temperature)" category="Hotstart" address="C8648" type="1D" level="1" scaling="CoolantTemp(DegreesF)">
+		<description>Minimum Coolant Temperature threshold for high enrichment.</description>
+	</table>
+	<table name="Hotstart High Enrichment Activation Threshold (Intake Air Temperature)" category="Hotstart" address="C8650" type="1D" level="1" scaling="DegreesF">
+		<description>Minimum Intake Air Temperature threshold for high enrichment.</description>
+	</table>
+
+	<table name="Initial Hotstart Enrichment (Low)" category="Hotstart" address="C865C" type="1D" level="1" scaling="Hotstart Enrichment">
+		<description>Initial Low Enrichment. This is applied when ANY high enrichment threshold is not met AND both low enrichment thresholds are met.</description>
+	</table>
+
+	<table name="Hotstart Low Enrichment Activation Threshold (Coolant Temperature)" category="Hotstart" address="C864C" type="1D" level="1" scaling="CoolantTemp(DegreesF)">
+		<description>Minimum Coolant Temperature threshold for low enrichment.</description>
+	</table>
+
+	<table name="Hotstart Low Enrichment Activation Threshold (Minimum Intake Air Temperature)" category="Hotstart" address="C8654" type="1D" level="1" scaling="DegreesF">
+		<description>Minimum Intake Air Temperature threshold for low enrichment.</description>
+	</table>
+
+	<table name="Maximum Non-Idle Hotstart Enrichment (Post Delay)" category="Hotstart" address="C8668" type="1D" level="1" scaling="Hotstart Enrichment">
+	<description>Maximum Non-Idle enrichment after the Hotstart Maximum Non-Idle Enrichment delay.</description>
+	</table>
+	
+	<table name="Hotstart Maximum Non-Idle Enrichment Delay" category="Hotstart" address="C81E6" type="1D" level="2" scaling="Hotstart Counter uint16">
+	<description>Delay before Maximum Non-Idle Hotstart Enrichment limit is applied.</description>
+	</table>
+	
+	<table name="Hotstart Minimum Enrichment Limit Runtime" category="Hotstart" address="C81E4" type="1D" level="1" scaling="Hotstart Counter uint16">
+	<description>Determines how long the minimum enrichment limit is enabled.</description>
+	</table>
+
+	<table name="Hotstart Minimum Enrichment (During Delay and Runtime)" category="Hotstart" address="C8660" type="1D" level="1" scaling="Hotstart Enrichment">
+	<description>Minimum enrichment limit that is only active during decay delay and hotstart minimum enrichment runtime.</description>
+	</table>
+	
   <table name="Target Boost" address="c0c34">
     <table name="X" address="c0be8" />
     <table name="Y" address="c0c08" elements="11" />
