@@ -1,0 +1,31 @@
+	<!-- OverRun Fueling Scalings & Tables -->
+	
+	<scaling name="OverRun Fueling " units="units" toexpr="x*0.1953125" frexpr="x/0.1953125" format="%.0f" min="0" max="5000" inc="1" storagetype="uint16" endian="big"/>
+
+	<table name="Overrun Fueling RPM Resume Threshold" category ="OverRun Fueling" address="0" type="2D" level="1" scaling="OverRun Fueling ">
+		<description>This 2D table determines (on an ECT x axis) at what RPM the injectors switch back on from coasting (i.e. full lean, and injector pulse width at zero). This would be useful to those with much larger injectors than stock that have a problem with stalling out as the vehicle comes to stop / idle.</description>
+		<table name="Coolant Temperature" address="0" type="X Axis" elements="16" scaling="DegreesF"/>
+	</table>
+		
+	<table name="Overrun Enrich RPM Delta Activation" category ="OverRun Fueling" address="0" type="2D" level="1" scaling="rawecuvalue">
+		<description>This table sets the required RPM delta for overrun enrichment to activate.</description>
+		<table name="OverRun" type="Static Y Axis" elements="1">
+			<data>RPM Delta</data>
+		</table>
+	</table>
+
+	<table name="Overrun initial injector enrichment (pulsewidth)" category ="OverRun Fueling" address="0" type="2D" level="1" scaling="ms">
+		<description>This table sets the initial overrun enrichment when active.</description>
+		<table name="OverRun" type="Static Y Axis" elements="1">
+			<data>Initial Enrichment (pulsewidth)</data>
+		</table>
+		</table>
+   
+	<table name="Overrun Fueling Cut Counter RPM Threshold" category ="OverRun Fueling" address="0" type="2D" level="1" scaling="RPM">
+		<description>These counters determine the RPM count before injectors cut off during overrun.</description>
+		<table name="RPM" type="Static Y Axis" elements="3">
+			<data>Low</data>
+			<data>Med</data>
+			<data>High</data>
+		</table>
+	</table>
