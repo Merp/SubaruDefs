@@ -53,6 +53,62 @@
    <description>This table is added to target idle airflow depending on the direction of error.</description>
    </table>
    
+   <!-- Alpha hot start tables: -->
+      
+   
+ 
+   
+   	<scaling name="Hotstart Enrichment" units="Lambda Enrichment (Additive)" toexpr="x" frexpr="x" format="%.4f" min="0" max="255" inc="1" storagetype="float" endian="big"/>
+	<scaling name="Hotstart Counter uint16" units="Hotstart Counter Cycles" toexpr="x" frexpr="x" format="%6.2f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
+	
+	<table name="Hotstart Enrichment Decay Delay" category="Hotstart" address="C86F6" type="1D" level="1" scaling="Hotstart Counter uint16">
+		<description>Delay before the Initial Hotstart Enrichment is decayed by the decay step value.</description>
+	</table>
+	
+	<table name="Hotstart Enrichment Decay Step" category="Hotstart" address="C8B0C" type="1D" level="1" scaling="Hotstart Enrichment">
+		<description>Step value that is decayed from the initial enrichment every time the counter increments.</description>
+	</table>
+	
+	<table name="Initial Hotstart Enrichment (High)" category="Hotstart" address="C8B00" type="1D" level="1" scaling="Hotstart Enrichment">
+		<description>Initial High Enrichment. This is applied when BOTH high enrichment thresholds are met.</description>
+	</table>
+	
+	<table name="Hotstart High Enrichment Activation Threshold (Coolant Temperature)" category="Hotstart" address="C8AF0" type="1D" level="1" scaling="CoolantTemp(DegreesF)">
+		<description>Minimum Coolant Temperature threshold for high enrichment.</description>
+	</table>
+	<table name="Hotstart High Enrichment Activation Threshold (Intake Air Temperature)" category="Hotstart" address="C8AF8" type="1D" level="1" scaling="DegreesF">
+		<description>Minimum Intake Air Temperature threshold for high enrichment.</description>
+	</table>
+
+	<table name="Initial Hotstart Enrichment (Low)" category="Hotstart" address="C8B04" type="1D" level="1" scaling="Hotstart Enrichment">
+		<description>Initial Low Enrichment. This is applied when ANY high enrichment threshold is not met AND both low enrichment thresholds are met.</description>
+	</table>
+
+	<table name="Hotstart Low Enrichment Activation Threshold (Coolant Temperature)" category="Hotstart" address="C8AF4" type="1D" level="1" scaling="CoolantTemp(DegreesF)">
+		<description>Minimum Coolant Temperature threshold for low enrichment.</description>
+	</table>
+
+	<table name="Hotstart Low Enrichment Activation Threshold (Minimum Intake Air Temperature)" category="Hotstart" address="C8AFC" type="1D" level="1" scaling="DegreesF">
+		<description>Minimum Intake Air Temperature threshold for low enrichment.</description>
+	</table>
+
+	<table name="Maximum Non-Idle Hotstart Enrichment (Post Delay)" category="Hotstart" address="C8B10" type="1D" level="1" scaling="Hotstart Enrichment">
+	<description>Maximum Non-Idle enrichment after the Hotstart Maximum Non-Idle Enrichment delay.</description>
+	</table>
+	
+	<table name="Hotstart Maximum Non-Idle Enrichment Delay" category="Hotstart" address="C86FC" type="1D" level="2" scaling="Hotstart Counter uint16">
+	<description>Delay before Maximum Non-Idle Hotstart Enrichment limit is applied.</description>
+	</table>
+	
+	<table name="Hotstart Minimum Enrichment Limit Runtime" category="Hotstart" address="C86FA" type="1D" level="1" scaling="Hotstart Counter uint16">
+	<description>Determines how long the minimum enrichment limit is enabled.</description>
+	</table>
+
+	<table name="Hotstart Minimum Enrichment (During Delay and Runtime)" category="Hotstart" address="C8B08" type="1D" level="1" scaling="Hotstart Enrichment">
+	<description>Minimum enrichment limit that is only active during decay delay and hotstart minimum enrichment runtime.</description>
+	</table>
+	
+	<!-- stable/beta definiitons -->
   <table name="Target Boost (KCA Additive B Low)" address="c0f84">
     <table name="X" address="c0f2c" />
     <table name="Y" address="c0f4c" elements="14" />
