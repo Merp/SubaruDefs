@@ -17,6 +17,7 @@
 		<table name="Coolant Temp" address="40" type="Y Axis" elements="13" scaling="CoolantTemp(DegreesF)"/>
 	</table>
    
+   <!-- this table may be 24 elements on the x axis -->
    <table name="Idle Speed Stability A" category="Idle Control" address="90" type="3D" level="1" scaling="Idle Stability">
    <description>This table contains a MAP related correction to idle airflow based on the delta between target idle and actual idle.</description>
       <table name="Idle Speed Error" address="0" type="X Axis" elements="25" scaling="RPM"/>
@@ -45,11 +46,11 @@
    <description>Idle airflow will be limited to a minimum value as determined by this table, for a time determined by Idle Airflow Min Target Decel Initial Idle Activation Max Mode Counter</description>
    </table>
    
-   <table name="Idle Airflow Min Target Decel Initial Idle Activation Max Mode Counter" category="Idle Control" address="0" type="1D" level="1" scaling="Map Switching Cruise Switch Min Delay">
+   <table name="Idle Airflow Min Target Decel Initial Idle Activation Max Mode Counter" category="Idle Control" address="0" type="1D" level="1" scaling="rawecuvalue">
 	<description>Determines how long Idle Airflow Min Target Decel Initial Idle Min Airflow limit is applied.</description>
    </table>
    
-   <table name="Idle Airflow Min Target Decel Ramping Adder Decreasing" category="Idle Control" address="0" type="1D" level="1" scaling="negative">
+   <table name="Idle Airflow Min Target Decel Ramping Adder Decreasing" category="Idle Control" address="0" type="1D" level="1" scaling="rawecuvalue">
 	<description>This table is added to target idle airflow depending on the direction of error.</description>
    </table>
    
