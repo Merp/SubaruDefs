@@ -19,6 +19,16 @@
 	 <!-- Alpha idle stability tables: -->
 	<scaling name="Idle Stability" units="MAP related" toexpr="(x*0.0078125)-256" frexpr="(x+256)/0.0078125" format="%.2f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
    
+    <table name="Idle Airflow Min Target Decel Adder_B" category="Idle Control" address="CFCEC" type="2D" level="1" scaling="Advance(degrees)1">
+      <description>This table is added to idle airflow when the minimum activation threshold based on vehicle speed is reached</description>
+		<table name="Engine Speed" address="CFCAC" type="X Axis" elements="16" scaling="RPM"/>
+    </table>
+	   
+	<table name="Idle Airflow Min Target Decel Adder A" category="Idle Control" address="CFCA8" type="2D" level="1" scaling="Advance(degrees)1">
+      <description>This table is added to idle airflow when the minimum activation threshold based on vehicle speed is reached</description>
+		<table name="Engine Speed" address="CFCA0" type="X Axis" elements="2" scaling="RPM"/>
+    </table>
+	   
    <table name="Idle Speed Stability A" category="Idle Control" address="D0ABC" type="3D" level="1" scaling="Idle Stability">
    <description>This table contains a MAP related correction to idle airflow based on the delta between target idle and actual idle.</description>
       <table name="Idle Speed Error" address="D0A30" type="X Axis" elements="24" scaling="RPM"/>
