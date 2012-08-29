@@ -15,6 +15,16 @@
     <checksummodule>subarudbw</checksummodule>
   </romid>
   <include>32BITBASE</include>
+  
+	<!-- alpha Fuel pump duty table -->
+	<table name="Fuel Pump Duty" category="Fueling - Injectors" address="3B704" type="2D" level="1" scaling="rawecuvalue">
+		<description>The ECU will set fuel pump duty cycle to 0%, 100%, or one of these two values.</description>
+		<table name="Fuel Pump Duty" type="Static Y Axis" elements="2">
+			<data>Medium</data>
+			<data>Low</data>
+		</table>
+	</table>
+
     <!-- alpha Front AF sensor smoothing scaling & tables -->
 	<scaling name="SmoothingFactor" units="Smoothing Factor (%)" toexpr="(x*(-100))+100" frexpr="(x-100)/(-100)" format="%.1f" min="0" max="100" inc="5" storagetype="float" endian="big"/>
 	
