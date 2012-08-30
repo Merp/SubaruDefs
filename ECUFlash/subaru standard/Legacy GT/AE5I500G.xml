@@ -16,9 +16,80 @@
 	</romid>
 
 	<include>32BITBASE</include>
+	
+	<!-- Idle stability airflow scaling & tables-->
+
+	<table name="Idle Airflow Min Target Decel Adder" address="d3934">
+		<table name="Engine Speed" address="d38bc" elements="16"/>
+		<table name="Coolant Temp" address="d38fc" elements="13"/>
+	</table>
+   
+   <table name="Idle Speed Stability A" address="d3b4a">
+		<table name="Idle Speed Error" address="d3af4" elements="25"/>
+		<table name="Engine Speed Delta" address="d3b58" elements="11"/>
+	</table>
+   
+   <table name="Idle Speed Stability B" address="d3e3c">
+		<table name="Idle Speed Error" address="d3dac" elements="25"/>
+		<table name="Engine Speed Delta" address="d3e10" elements="11"/>
+   </table>
+   
+   <table name="Idle Airflow Min Target Decel Adder Active Veh Speed" address="d208c"/>
+   
+   <table name="Idle Airflow Min Target Decel Initial Idle Min Airflow" address="d2090"/>
+   
+   <table name="Idle Airflow Min Target Decel Initial Idle Activation Max Mode Counter" address="d1f02"/>
+   
+   <table name="Idle Airflow Min Target Decel Ramping Adder Decreasing" address="d20b0"/>
+   
+   <table name="Idle Airflow Min Target Decel Ramping Adder Increasing" address="d20b4"/>
+   
+	<!-- Hot start enrichment scalings & tables -->
+	
+	<table name="Hotstart Enrichment Decay Delay"  address="c897c"/>
+	
+	<table name="Hotstart Enrichment Decay Step"  address="c8e14"/>
+	
+	<table name="Initial Hotstart Enrichment (High)"  address="c8e08"/>
+	
+	<table name="Hotstart High Enrichment Activation Threshold (Coolant Temperature)"  address="c8df8"/>
+	
+	<table name="Hotstart High Enrichment Activation Threshold (Intake Air Temperature)"  address="c8dfc"/>
+
+	<table name="Initial Hotstart Enrichment (Low)"  address="c8e0c"/>
+
+	<table name="Hotstart Low Enrichment Activation Threshold (Coolant Temperature)"  address="c8e00"/>
+
+	<table name="Hotstart Low Enrichment Activation Threshold (Minimum Intake Air Temperature)"  address="c8e04"/>
+
+	<table name="Maximum Non-Idle Hotstart Enrichment (Post Delay)"  address="c8e18"/>
+	
+	<table name="Hotstart Maximum Non-Idle Enrichment Delay"  address="c8980"/>
+	
+	<table name="Hotstart Minimum Enrichment Limit Runtime"  address="c897e"/>
+
+	<table name="Hotstart Minimum Enrichment (During Delay and Runtime)"  address="c8e10"/>
+
+	<!-- OverRun Fueling Scalings & Tables -->
+	
+	<table name="Overrun Fueling RPM Resume Threshold" address="cb83c">
+		<table name="Coolant Temperature" address="c91c0" type="X Axis" elements="16" scaling="DegreesF"/>
+	</table>
+		
+	<table name="Overrun Enrich RPM Delta Activation" address="c9080"/>
+
+	<table name="Overrun initial injector enrichment (pulsewidth)" address="c9084"/>
+   
+	<table name="Overrun Fueling Cut Counter RPM Threshold" address="c90ec"/>
+	
+	<!-- Fuel Pump Duty -->
+   
+   	<table name="Fuel Pump Duty" address="47240">
+	</table>
+
+	<!-- Undocumented/unformatted alpha definitions -->
+	
 	<scaling name="AF3 Lambda" units="Lambda Additive" toexpr="x" frexpr="x" format="%.4f" min="0" max="255" inc="1" storagetype="float" endian="big"/>
-	<scaling name="Hot Restart 1" units="units" toexpr="x" frexpr="x" format="%.4f" min="0" max="255" inc="1" storagetype="float" endian="big"/>
-	<scaling name="Hot Restart 2" units="units" toexpr="x" frexpr="x" format="%.0f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
 	<scaling name="IDC" units="Injector Duty Cycle" toexpr="x*0.7371358727094787" frexpr="x/0.7371358727094787" format="%.2f" min="0" max="255" inc="1" storagetype="float" endian="big"/>
 	<scaling name="Idle Stability" units="MAP related" toexpr="(x*0.0078125)-256" frexpr="(x+256)/0.0078125" format="%.2f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
 	<scaling name="Intake Air Temp (Map Switch)" units="units" toexpr="x*0.00390625-256" frexpr="(x+256)/0.00390625" format="%.0f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
@@ -29,7 +100,6 @@
 	<scaling name="Map_Switch_Ramping_Adder" units="units" toexpr="x" frexpr="x" format="%.4f" min="0" max="255" inc="1" storagetype="float" endian="big"/>
 	<scaling name="Map_Switching_Cruise_Switch_Min_Delay" units="units" toexpr="x" frexpr="x" format="%.0f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
 	<scaling name="Misfire DTC" units="units" toexpr="x" frexpr="x" format="%.0f" min="0" max="255" inc="1" storagetype="uint8" endian="big"/>
-	<scaling name="Overrun Fueling" units="units" toexpr="x*0.1953125" frexpr="x/0.1953125" format="%.0f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
 	<scaling name="Post_Start_Enrich_Decay" units="units" toexpr="x*0.00024414062" frexpr="x/0.00024414062" format="%.4f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
 	<scaling name="Post_Start_Enrich_Decay1" units="units" toexpr="x*0.00390625" frexpr="x/0.00390625" format="%.3f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
 	<scaling name="Post_Start_Enrich_Decay2" units="units" toexpr="x*0.00000095367432" frexpr="x/0.00000095367432" format="%.5f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
@@ -83,10 +153,7 @@
 
 	<table name="Ign_Timing_Comp_Overrun_RPM_Delta" category="EXPERIMENTAL MISC" type="1D" level="1" scaling="rawecuvalue"/>
 
-	<table name="Overrun_Enrich_RPM_Delta_Activation" category="EXPERIMENTAL MISC" address="c9080" type="1D" level="1" scaling="rawecuvalue"/>
-
-	<table name="Overrun_initial_enrichment" category="EXPERIMENTAL MISC" address="c9084" type="1D" level="1" scaling="ms"/>
-
+	
 	<table name="Speed_Limits_Throttle_reduction_A" category="EXPERIMENTAL MISC" address="dc604" type="1D" level="1" scaling="RPM"/>
 
 	<table name="Speed_Limits_Throttle_reduction_B" category="EXPERIMENTAL MISC" address="dc608" type="1D" level="1" scaling="RPM"/>
@@ -95,42 +162,8 @@
 
 	<table name="Map_Switching_Cruise_Thresholds_Min_Delay" category="Map Switching" address="d6988" type="1D" level="1" scaling="Map_Switching_Cruise_Switch_Min_Delay"/>
 
-	<table name="Idle_Airflow_Min_Target_Decel_Adder" category="EXPERIMENTAL - idle tables" address="d3934" type="3D" level="1" scaling="Advance(degrees)1">
-		<table name="Engine Speed" address="d38bc" type="X Axis" elements="16" scaling="RPM"/>
-		<table name="Coolant Temp" address="d38fc" type="Y Axis" elements="13" scaling="CoolantTemp(DegreesF)"/>
-	</table>
 
-	<table name="Idle Speed Stability A" category="EXPERIMENTAL - idle tables" address="d3b84" type="3D" level="1" scaling="Idle Stability">
-		<table name="Idle Speed Error" address="d3af4" type="X Axis" elements="25" scaling="RPM"/>
-		<table name="Engine Speed Delta" address="d3b58" type="Y Axis" elements="11" scaling="RPM"/>
-	</table>
-
-	<table name="Idle Speed Stability B" category="EXPERIMENTAL - idle tables" address="d3e3c" type="3D" level="1" scaling="Idle Stability">
-		<table name="Idle Speed Error" address="d3dac" type="X Axis" elements="25" scaling="RPM"/>
-		<table name="Engine Speed Delta" address="d3e10" type="Y Axis" elements="11" scaling="RPM"/>
-	</table>
-
-	<table name="Idle_Airflow_Min_Target_Decel_Adder_Active_Veh_Speed" category="EXPERIMENTAL - idle tables" address="d208c" type="1D" level="1" scaling="VehicleSpeed(MPH)"/>
-
-	<table name="Idle_Airflow_Min_Target_Decel_Initial_Idle_Min_Airflow" category="EXPERIMENTAL - idle tables" address="d2090" type="1D" level="1" scaling="rawecuvalue"/>
-
-	<table name="Idle_Airflow_Min_Target_Decel_Initial_Idle_Activation_Max_Mode_Counter" category="EXPERIMENTAL - idle tables" address="d1f02" type="1D" level="1" scaling="Map_Switching_Cruise_Switch_Min_Delay"/>
-
-	<table name="Idle_Airflow_Min_Target_Decel_Ramping_Adder_Decreasing" category="EXPERIMENTAL - idle tables" address="d20b0" type="1D" level="1" scaling="negative"/>
-
-	<table name="Idle_Airflow_Min_Target_Decel_Ramping_Adder_Increasing" category="EXPERIMENTAL - idle tables" address="d20b4" type="1D" level="1" scaling="rawecuvalue"/>
-
-	<table name="Overrun_Fueling_Cut_Counter_RPM_Threshold" category="EXPERIMENTAL MISC" address="c90ec" type="2D" level="1" scaling="RPM">
-		<table name="RPM" type="Static X Axis" elements="3">
-			<data>Low</data>
-			<data>Med</data>
-			<data>High</data>
-		</table>
-	</table>
-
-	<table name="Overun Fueling Resume RPM Threshholds" category="EXPERIMENTAL MISC" address="cb83c" type="2D" level="1" scaling="Overrun Fueling">
-		<table name="Coolant Temperature" address="c91c0" type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
-	</table>
+	
 
 	<table name="MAP_Switch_Cruise_REq_Torque_Thresh_Max_A" category="Map Switching" address="d6b50" type="2D" level="1" scaling="Requested Torque (Map Switch)">
 		<table name="Engine Speed" address="d6b10" type="Y Axis" elements="16" scaling="RPM"/>
@@ -264,30 +297,7 @@
 		<table name="Engine Speed" address="c737c" type="Y Axis" elements="14" scaling="RPM"/>
 	</table>
 
-	<table name="hot_restart_enrich_decay_delay" category="Hot Restart" address="c897c" type="1D" level="1" scaling="Hot Restart 2"/>
-
-	<table name="hot_restart_enrich_decay_step_value" category="Hot Restart" address="c8e14" type="1D" level="1" scaling="Hot Restart 1"/>
-
-	<table name="hot_restart_enrich_initial_high" category="Hot Restart" address="c8e08" type="1D" level="1" scaling="Hot Restart 1"/>
-
-	<table name="hot_restart_enrich_initial_high_activat_min_coolant_temp" category="Hot Restart" address="c8df8" type="1D" level="1" scaling="Hot Restart 1"/>
-
-	<table name="hot_restart_enrich_initial_high_activat_min_intake_temp" category="Hot Restart" address="c8dfc" type="1D" level="1" scaling="Hot Restart 1"/>
-
-	<table name="hot_restart_enrich_initial_low" category="Hot Restart" address="c8e0c" type="1D" level="1" scaling="Hot Restart 1"/>
-
-	<table name="hot_restart_enrich_initial_low_activat_min_coolant_temp" category="Hot Restart" address="c8e00" type="1D" level="1" scaling="Hot Restart 1"/>
-
-	<table name="hot_restart_enrich_initial_low_activat_min_intake_temp" category="Hot Restart" address="c8e04" type="1D" level="1" scaling="Hot Restart 1"/>
-
-	<table name="hot_restart_enrich_max_non_idle" category="Hot Restart" address="c8e18" type="1D" level="1" scaling="Hot Restart 1"/>
-
-	<table name="hot_restart_enrich_max_non_idle_activation_max_run_time" category="Hot Restart" address="c8980" type="1D" level="2" scaling="Hot Restart 2"/>
-
-	<table name="hot_restart_enrich_min_lim_activat_max_run_time" category="Hot Restart" address="c897e" type="1D" level="1" scaling="Hot Restart 2"/>
-
-	<table name="hot_restart_enrich_min_limit" category="Hot Restart" address="c8e10" type="1D" level="1" scaling="Hot Restart 1"/>
-
+	
 	<table name="Table_Post_Start_Enrich_High_Speed_Decay_Initial_Start_1A" category="Post Start Enrichment" address="c9ece" type="2D" level="1" scaling="Post_Start_Enrich_Decay">
 		<table name="Coolant Temperature" address="c91c0" type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
 	</table>
@@ -339,6 +349,8 @@
 	<table name="Table_Post_Start_Enrich_Low_Speed_Decay_Delay_Multiplier" category="Post Start Enrichment" address="c949d" type="2D" level="1" scaling="Post_Start_Enrich_Decay4">
 		<table name="Coolant Temperature" address="c91c0" type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
 	</table>
+	
+	<!-- Stable/Beta Tables -->
 
 	<table name="Target Boost_" address="c10e8">
 		<table name="Requested Torque" address="c1074" elements="14"/>
@@ -974,9 +986,6 @@
 
 	<table name="Coolant Temp Sensor Scaling" address="d6214">
 		<table name="Coolant Temp Sensor" address="d61a4"/>
-	</table>
-
-	<table name="Fuel Pump Duty" address="47240">
 	</table>
 
 	<table name="Radiator Fan Modes A (ECT)" address="d65fc">
