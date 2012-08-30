@@ -1,57 +1,39 @@
 	<!-- Hot Start Enrichment
+	Current RomRaider discussion thread:
+	http://www.romraider.com/forum/viewtopic.php?f=25&t=8566
+	
 	Currently Implemented in the following definitions:
-	A8DH200X - Merp
+	A8DH200X - Merp TODO: Convert to base inheritance
 	A2UJ000J - Merp
+	AE5I500G - td-d & Merp TODO: Convert to base inheritance
+	
+	Changelog:
+	8/29/12 Merp: Converted to base inheritance for A2UJ000J
 	-->
 	
-	<!-- Hot start enrichment scalings & tables -->
+	<!-- Alpha hot start tables: -->
+      
+	<table name="Hotstart Enrichment Decay Delay" address=""/>
 	
-	<scaling name="Hotstart Enrichment" units="Lambda Enrichment (Additive)" toexpr="x" frexpr="x" format="%.4f" min="0" max="255" inc="1" storagetype="float" endian="big"/>
-	<scaling name="Hotstart Counter uint16" units="Hotstart Counter Cycles" toexpr="x" frexpr="x" format="%6.2f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
+	<table name="Hotstart Enrichment Decay Step" address=""/>
 	
-	<table name="Hotstart Enrichment Decay Delay" category="Hotstart" address="" type="1D" level="1" scaling="Hotstart Counter uint16">
-		<description>Delay before the Initial Hotstart Enrichment is decayed by the decay step value.</description>
-	</table>
+	<table name="Initial Hotstart Enrichment (High)" address=""/>
 	
-	<table name="Hotstart Enrichment Decay Step" category="Hotstart" address="" type="1D" level="1" scaling="Hotstart Enrichment">
-		<description>Step value that is decayed from the initial enrichment every time the counter increments.</description>
-	</table>
+	<table name="Hotstart High Enrichment Activation Threshold (Coolant Temperature)" address=""/>
 	
-	<table name="Initial Hotstart Enrichment (High)" category="Hotstart" address="" type="1D" level="1" scaling="Hotstart Enrichment">
-		<description>Initial High Enrichment. This is applied when BOTH high enrichment thresholds are met.</description>
-	</table>
-	
-	<table name="Hotstart High Enrichment Activation Threshold (Coolant Temperature)" category="Hotstart" address="" type="1D" level="1" scaling="CoolantTemp(DegreesF)">
-		<description>Minimum Coolant Temperature threshold for high enrichment.</description>
-	</table>
-	<table name="Hotstart High Enrichment Activation Threshold (Intake Air Temperature)" category="Hotstart" address="" type="1D" level="1" scaling="DegreesF">
-		<description>Minimum Intake Air Temperature threshold for high enrichment.</description>
-	</table>
+	<table name="Hotstart High Enrichment Activation Threshold (Intake Air Temperature)" address=""/>
 
-	<table name="Initial Hotstart Enrichment (Low)" category="Hotstart" address="" type="1D" level="1" scaling="Hotstart Enrichment">
-		<description>Initial Low Enrichment. This is applied when ANY high enrichment threshold is not met AND both low enrichment thresholds are met.</description>
-	</table>
+	<table name="Initial Hotstart Enrichment (Low)" address=""/>
 
-	<table name="Hotstart Low Enrichment Activation Threshold (Coolant Temperature)" category="Hotstart" address="" type="1D" level="1" scaling="CoolantTemp(DegreesF)">
-		<description>Minimum Coolant Temperature threshold for low enrichment.</description>
-	</table>
+	<table name="Hotstart Low Enrichment Activation Threshold (Coolant Temperature)" address=""/>
 
-	<table name="Hotstart Low Enrichment Activation Threshold (Minimum Intake Air Temperature)" category="Hotstart" address="" type="1D" level="1" scaling="DegreesF">
-		<description>Minimum Intake Air Temperature threshold for low enrichment.</description>
-	</table>
+	<table name="Hotstart Low Enrichment Activation Threshold (Minimum Intake Air Temperature)" address=""/>
 
-	<table name="Maximum Non-Idle Hotstart Enrichment (Post Delay)" category="Hotstart" address="" type="1D" level="1" scaling="Hotstart Enrichment">
-	<description>Maximum Non-Idle enrichment after the Hotstart Maximum Non-Idle Enrichment delay.</description>
-	</table>
+	<table name="Maximum Non-Idle Hotstart Enrichment (Post Delay)" address=""/>
 	
-	<table name="Hotstart Maximum Non-Idle Enrichment Delay" category="Hotstart" address="" type="1D" level="2" scaling="Hotstart Counter uint16">
-	<description>Delay before Maximum Non-Idle Hotstart Enrichment limit is applied.</description>
-	</table>
+	<table name="Hotstart Maximum Non-Idle Enrichment Delay" address=""/>
 	
-	<table name="Hotstart Minimum Enrichment Limit Runtime" category="Hotstart" address="" type="1D" level="1" scaling="Hotstart Counter uint16">
-	<description>Determines how long the minimum enrichment limit is enabled.</description>
-	</table>
+	<table name="Hotstart Minimum Enrichment Limit Runtime" address=""/>
 
-	<table name="Hotstart Minimum Enrichment (During Delay and Runtime)" category="Hotstart" address="" type="1D" level="1" scaling="Hotstart Enrichment">
-	<description>Minimum enrichment limit that is only active during decay delay and hotstart minimum enrichment runtime.</description>
-	</table>
+	<table name="Hotstart Minimum Enrichment (During Delay and Runtime)" address=""/>
+	
