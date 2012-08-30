@@ -14,13 +14,75 @@
 		<memmodel>SH7058</memmodel>
 		<checksummodule>subarudbw</checksummodule>
 	</romid>
-
 	<include>32BITBASE</include>
+	
+	<!-- Idle stability airflow scaling & tables-->
+	<table name="Idle Speed Stability A" address="d46c4">
+		<table name="Idle Speed Error" address="d4634" elements="25"/>
+		<table name="Engine Speed Delta" address="d4698" elements="11"/>
+	</table>
+   
+	<table name="Idle Speed Stability B" address="d497c">
+		<table name="Idle Speed Error" address="d48ec" elements="25"/>
+		<table name="Engine Speed Delta" address="d4950" elements="11"/>
+	</table>	
+
+	<table name="Idle Airflow Min Target Decel Adder" address="d4474">
+		<table name="Engine Speed" address="d43fc" elements="16"/>
+		<table name="Coolant Temp" address="d443c" elements="13"/>
+	</table>
+   
+	<table name="Idle Airflow Min Target Decel Adder Active Veh Speed" address="d2a9c"/>
+   
+	<table name="Idle Airflow Min Target Decel Initial Idle Min Airflow" address="d2aa0"/>
+
+	<table name="Idle Airflow Min Target Decel Initial Idle Activation Max Mode Counter" address="d2928"/>
+   
+	<table name="Idle Airflow Min Target Decel Ramping Adder Decreasing" address="d2ac0"/>
+   
+	<table name="Idle Airflow Min Target Decel Ramping Adder Increasing" address="d2aa0"/>
+
+	<!-- OverRun Fueling Scalings & Tables -->
+	
+	<table name="Overrun Fueling RPM Resume Threshold" address="cbdaa">
+		<table name="X" address="c96ac"/>
+	</table>
+		
+	<table name="Overrun Enrich RPM Delta Activation" address="c956c"/>
+
+	<table name="Overrun initial injector enrichment (pulsewidth)" address="c9570"/>
+	
+	<table name="Overrun Fueling Cut Counter RPM Threshold" address="c95d8"/>
+	
+	<!-- Alpha hot start tables: -->
+      
+	<table name="Hotstart Enrichment Decay Delay" address="c8e1c"/>
+	
+	<table name="Hotstart Enrichment Decay Step" address="c92f8"/>
+	
+	<table name="Initial Hotstart Enrichment (High)" address="c92ec"/>
+	
+	<table name="Hotstart High Enrichment Activation Threshold (Coolant Temperature)" address="c92dc"/>
+	
+	<table name="Hotstart High Enrichment Activation Threshold (Intake Air Temperature)" address="c92e0"/>
+
+	<table name="Initial Hotstart Enrichment (Low)" address="c92f0"/>
+
+	<table name="Hotstart Low Enrichment Activation Threshold (Coolant Temperature)" address="c92e4"/>
+
+	<table name="Hotstart Low Enrichment Activation Threshold (Minimum Intake Air Temperature)" address="c92e8"/>
+
+	<table name="Maximum Non-Idle Hotstart Enrichment (Post Delay)" address="c92fc"/>
+	
+	<table name="Hotstart Maximum Non-Idle Enrichment Delay" address="c8e20"/>
+	
+	<table name="Hotstart Minimum Enrichment Limit Runtime" address="c8e1e1"/>
+
+	<table name="Hotstart Minimum Enrichment (During Delay and Runtime)" address="c92f4"/>
+
+	<!-- Undefined/unformatted alpha defs -->
 	<scaling name="AF3 Lambda" units="Lambda Additive" toexpr="x" frexpr="x" format="%.4f" min="0" max="255" inc="1" storagetype="float" endian="big"/>
-	<scaling name="Hot Restart 1" units="units" toexpr="x" frexpr="x" format="%.4f" min="0" max="255" inc="1" storagetype="float" endian="big"/>
-	<scaling name="Hot Restart 2" units="units" toexpr="x" frexpr="x" format="%.0f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
 	<scaling name="IDC" units="Injector Duty Cycle" toexpr="x*0.7371358727094787" frexpr="x/0.7371358727094787" format="%.2f" min="0" max="255" inc="1" storagetype="float" endian="big"/>
-	<scaling name="Idle Stability" units="MAP related" toexpr="(x*0.0078125)-256" frexpr="(x+256)/0.0078125" format="%.2f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
 	<scaling name="Intake Air Temp (Map Switch)" units="units" toexpr="x*0.00390625-256" frexpr="(x+256)/0.00390625" format="%.0f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
 	<scaling name="Knock" units="units" toexpr="x" frexpr="x" format="%.2f" min="0" max="255" inc="1" storagetype="float" endian="big"/>
 	<scaling name="Knock2" units="units" toexpr="x" frexpr="x" format="%.0f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
@@ -29,7 +91,6 @@
 	<scaling name="Map_Switch_Ramping_Adder" units="units" toexpr="x" frexpr="x" format="%.4f" min="0" max="255" inc="1" storagetype="float" endian="big"/>
 	<scaling name="Map_Switching_Cruise_Switch_Min_Delay" units="units" toexpr="x" frexpr="x" format="%.0f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
 	<scaling name="Misfire DTC" units="units" toexpr="x" frexpr="x" format="%.0f" min="0" max="255" inc="1" storagetype="uint8" endian="big"/>
-	<scaling name="Overrun Fueling" units="units" toexpr="x*0.1953125" frexpr="x/0.1953125" format="%.0f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
 	<scaling name="Post_Start_Enrich_Decay" units="units" toexpr="x*0.00024414062" frexpr="x/0.00024414062" format="%.4f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
 	<scaling name="Post_Start_Enrich_Decay1" units="units" toexpr="x*0.00390625" frexpr="x/0.00390625" format="%.3f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
 	<scaling name="Post_Start_Enrich_Decay2" units="units" toexpr="x*0.00000095367432" frexpr="x/0.00000095367432" format="%.5f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
@@ -40,7 +101,6 @@
 	<scaling name="TPS" units="Counter" toexpr="x" frexpr="x" format="%.0f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
 	<scaling name="TPS Throttle" units="Throttle Position %" toexpr="x*0.0022706530952381" frexpr="x/0.0022706530952381" format="%.2f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
 	<scaling name="TargetThrottlePlateOpeningAngle(%)2" units="units" toexpr="x*0.0019073486" frexpr="x/0.0019073486" format="%.2f" min="0" max="255" inc="1" storagetype="uint8" endian="big"/>
-	<scaling name="negative" units="units" toexpr="-x" frexpr="-x" format="%.4f" min="0" max="255" inc="1" storagetype="float" endian="big"/>
 
 	<table name="AF 3 Correction Limits" category="Experimental" address="34f34" type="2D" level="1" scaling="A/FLearning#1Limits(%)">
 		<table name="X" type="Static X Axis" elements="2">
@@ -76,9 +136,6 @@
 		<table name="Coolant Temperature" address="cf6e0" type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
 	</table>
 
-	<table name="Overrun_Enrich_RPM_Delta_Activation" category="EXPERIMENTAL MISC" address="c956c" type="1D" level="1" scaling="rawecuvalue"/>
-
-	<table name="Overrun_initial_enrichment" category="EXPERIMENTAL MISC" address="c9570" type="1D" level="1" scaling="ms"/>
 
 	<table name="Speed_Limits_Throttle_reduction_A" category="EXPERIMENTAL MISC" address="dc604" type="1D" level="1" scaling="RPM"/>
 
@@ -88,31 +145,7 @@
 
 	<table name="Map_Switching_Cruise_Thresholds_Min_Delay" category="Map Switching" address="d789c" type="1D" level="1" scaling="Map_Switching_Cruise_Switch_Min_Delay"/>
 
-	<table name="Idle_Airflow_Min_Target_Decel_Adder" category="EXPERIMENTAL - idle tables" address="d4474" type="3D" level="1" scaling="Advance(degrees)1">
-		<table name="Engine Speed" address="d43fc" type="X Axis" elements="16" scaling="RPM"/>
-		<table name="Coolant Temp" address="d443c" type="Y Axis" elements="14" scaling="CoolantTemp(DegreesF)"/>
-	</table>
-
-	<table name="Idle Speed Stability A" category="EXPERIMENTAL - idle tables" address="d46c4" type="3D" level="1" scaling="Idle Stability">
-		<table name="Idle Speed Error" address="d4634" type="X Axis" elements="25" scaling="RPM"/>
-		<table name="Engine Speed Delta" address="d4698" type="Y Axis" elements="11" scaling="RPM"/>
-	</table>
-
-	<table name="Idle Speed Stability B" category="EXPERIMENTAL - idle tables" address="d497c" type="3D" level="1" scaling="Idle Stability">
-		<table name="Idle Speed Error" address="d48ec" type="X Axis" elements="25" scaling="RPM"/>
-		<table name="Engine Speed Delta" address="d4950" type="Y Axis" elements="11" scaling="RPM"/>
-	</table>
-
-	<table name="Idle_Airflow_Min_Target_Decel_Adder_Active_Veh_Speed" category="EXPERIMENTAL - idle tables" address="d2a9c" type="1D" level="1" scaling="VehicleSpeed(MPH)"/>
-
-	<table name="Idle_Airflow_Min_Target_Decel_Initial_Idle_Min_Airflow" category="EXPERIMENTAL - idle tables" address="d2aa0" type="1D" level="1" scaling="rawecuvalue"/>
-
-	<table name="Idle_Airflow_Min_Target_Decel_Initial_Idle_Activation_Max_Mode_Counter" category="EXPERIMENTAL - idle tables" address="d2928" type="1D" level="1" scaling="Map_Switching_Cruise_Switch_Min_Delay"/>
-
-	<table name="Idle_Airflow_Min_Target_Decel_Ramping_Adder_Decreasing" category="EXPERIMENTAL - idle tables" address="d2ac0" type="1D" level="1" scaling="negative"/>
-
-	<table name="Idle_Airflow_Min_Target_Decel_Ramping_Adder_Increasing" category="EXPERIMENTAL - idle tables" address="d2ac4" type="1D" level="1" scaling="rawecuvalue"/>
-
+	
 		<table name="Target Throttle_Angle_Idle_Airflow_Target" category="EXPERIMENTAL - idle tables" address="DCA40" type="2D" level="1" scaling="%1">
 		<table name="Target Throttle Plate Position %" address="DC9E0" type="X Axis" elements="24" scaling="%"/>
 	</table>
@@ -125,17 +158,7 @@
 	<table name="Target Throttle_Angle_Idle_Airflow_Target_Base_Min_App_Max" category="EXPERIMENTAL - idle tables" address="D2E14" type="1D" level="1" scaling="%1"/>
 
 
-	<table name="Overrun_Fueling_Cut_Counter_RPM_Threshold" category="EXPERIMENTAL MISC" address="c95d8" type="2D" level="1" scaling="RPM">
-		<table name="RPM" type="Static X Axis" elements="3">
-			<data>Low</data>
-			<data>Med</data>
-			<data>High</data>
-		</table>
-	</table>
-
-	<table name="Overun Fueling Resume RPM Threshholds" category="EXPERIMENTAL MISC" address="cbdaa" type="2D" level="1" scaling="Overrun Fueling">
-		<table name="Coolant Temperature" address="c96ac" type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
-	</table>
+	
 
 	<table name="MAP_Switch_Cruise_REq_Torque_Thresh_Max_A" category="Map Switching" address="d7a04" type="2D" level="1" scaling="Requested Torque (Map Switch)">
 		<table name="Engine Speed" address="d79c4" type="Y Axis" elements="16" scaling="RPM"/>
@@ -264,30 +287,7 @@
 		<table name="Engine Speed" address="c6b64" type="Y Axis" elements="14" scaling="RPM"/>
 	</table>
 
-	<table name="hot_restart_enrich_decay_delay" category="Hot Restart" address="c8e1c" type="1D" level="1" scaling="Hot Restart 2"/>
-
-	<table name="hot_restart_enrich_decay_step_value" category="Hot Restart" address="c92f8" type="1D" level="1" scaling="Hot Restart 1"/>
-
-	<table name="hot_restart_enrich_initial_high" category="Hot Restart" address="c92ec" type="1D" level="1" scaling="Hot Restart 1"/>
-
-	<table name="hot_restart_enrich_initial_high_activat_min_coolant_temp" category="Hot Restart" address="c92dc" type="1D" level="1" scaling="Hot Restart 1"/>
-
-	<table name="hot_restart_enrich_initial_high_activat_min_intake_temp" category="Hot Restart" address="c92e0" type="1D" level="1" scaling="Hot Restart 1"/>
-
-	<table name="hot_restart_enrich_initial_low" category="Hot Restart" address="c92f0" type="1D" level="1" scaling="Hot Restart 1"/>
-
-	<table name="hot_restart_enrich_initial_low_activat_min_coolant_temp" category="Hot Restart" address="c92e4" type="1D" level="1" scaling="Hot Restart 1"/>
-
-	<table name="hot_restart_enrich_initial_low_activat_min_intake_temp" category="Hot Restart" address="c92e8" type="1D" level="1" scaling="Hot Restart 1"/>
-
-	<table name="hot_restart_enrich_max_non_idle" category="Hot Restart" address="c92fc" type="1D" level="1" scaling="Hot Restart 1"/>
-
-	<table name="hot_restart_enrich_max_non_idle_activation_max_run_time" category="Hot Restart" address="c8e20" type="1D" level="2" scaling="Hot Restart 2"/>
-
-	<table name="hot_restart_enrich_min_lim_activat_max_run_time" category="Hot Restart" address="c8e1e" type="1D" level="1" scaling="Hot Restart 2"/>
-
-	<table name="hot_restart_enrich_min_limit" category="Hot Restart" address="c92f4" type="1D" level="1" scaling="Hot Restart 1"/>
-
+	
 	<table name="Table_Post_Start_Enrich_High_Speed_Decay_Initial_Start_1A" category="Post Start Enrichment" address="ca3b2" type="2D" level="1" scaling="Post_Start_Enrich_Decay">
 		<table name="Coolant Temperature" address="c96ac" type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
 	</table>
@@ -392,6 +392,8 @@
 	<table address="cf6dc" type="Static X Axis" elements="1" scaling="rawecuvalue">
 		<data>Multiplier</data> 
 	</table>
+	
+	<!--Stable defs -->
 
 	<table name="Target Boost_" address="c0bf8">
 		<table name="Requested Torque" address="c0b84" elements="14"/>
