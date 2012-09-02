@@ -16,6 +16,38 @@
 	</romid>
 
 	<include>32BITBASE</include>
+	
+	   <table name="Tau Input A Falling Load Activation A" address="C8D16">
+      <table name="X" address="C7C54"/>
+   </table>
+
+   <table name="Tau Input A Falling Load Activation B" address="C8D36" >
+      <table name="X" address="C7C54"/>
+   </table>
+   
+      <table name="Tau Input A Falling Load Activation C" address="C8D56" >
+      <table name="X" address="C7C54"/>
+   </table>
+
+   <table name="Tau Input B Activation" address="C91C8" >
+      <table name="X" address="C919C"/>
+   </table>
+
+   <table name="Tau Input A Rising Load Activation A" address="CC388">
+      <table name="X" address="C7C54"/>
+      <table name="Y" address="CC37C"/>
+   </table>
+
+   <table name="Tau Input A Rising Load Activation B" address="CC3F4">
+      <table name="X" address="C7C54"/>
+      <table name="Y" address="CC3E8"/>
+   </table>
+
+   <table name="Tau Input A Rising Load Activation C" address="CC460">
+      <table name="X" address="C7C54"/>
+      <table name="Y" address="CC454"/>
+   </table>
+   
 	<scaling name="Hotstart Enrichment" units="Lambda Enrichment (Additive)" toexpr="x" frexpr="x" format="%.4f" min="0" max="255" inc="1" storagetype="float" endian="big"/>
 	<scaling name="Hotstart Counter uint16" units="Hotstart Counter Cycles" toexpr="x" frexpr="x" format="%6.2f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
 	<scaling name="Idle Stability" units="MAP related" toexpr="(x*0.0078125)-256" frexpr="(x+256)/0.0078125" format="%.2f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
