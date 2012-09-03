@@ -2,17 +2,12 @@
 	Currently Implemented in the following definitions:
 	A2UJ000J - td-d & Merp
 	AE5I500G - td-d & Merp
+	AZ1G101N - td-d & Merp
 	
 	Changelog:
 	8/29/12 Merp: Added negative (rawecudata) scaling to template
 	8/29/12 Merp: Converted to base inheritance schema
 	-->
-	
-    <!-- Idle stability airflow scaling & tables-->
-	
-	<scaling name="Idle Stability" units="MAP related" toexpr="(x*0.0078125)-256" frexpr="(x+256)/0.0078125" format="%.2f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
-	<scaling name="negative_rawecuvalue" units="units" toexpr="-x" frexpr="-x" format="%.4f" min="0" max="255" inc="1" storagetype="float" endian="big"/>
-
 
 	<!-- the following tables are used for A/B -->
     <table name="Idle Airflow Min Target Decel Adder A" address="">
