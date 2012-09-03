@@ -17,12 +17,26 @@ These definitions are created for FREE without any sort of guarantee. The develo
     <make>Subaru</make>
   </romid>
   
+  <!-- AF 3 CL Target Compensation Limits
+	RomRaider discussion thread: 
+	http://www.romraider.com/forum/viewtopic.php?f=34&t=8595
+	-->
+	
+	<scaling name="AF3 Lambda" units="Lambda Additive" toexpr="x" frexpr="x" format="%.4f" min="0" max="255" inc="1" storagetype="float" endian="big"/>
+
+    <table name="AF 3 CL Target Compensation Limits" category="ALPHA AF 3 (Rear O2 Sensor)" type="2D" level="1" scaling="AF3 Lambda">
+      <table name="X" type="Static X Axis" elements="2">
+         <data>High</data>
+         <data>Low</data>
+      </table>
+   </table>
+   
   <!-- AF 3 Correction Limits
 	RomRaider discussion thread:
 	http://www.romraider.com/forum/viewtopic.php?f=34&t=8131
 	-->
   
-	<table name="AF 3 Correction Limits" category="ALPHA AF 3 Correction" type="2D" level="1" scaling="A/FLearning#1Limits(%)">
+	<table name="AF 3 Correction Limits" category="ALPHA AF 3 (Rear O2 Sensor)" type="2D" level="1" scaling="A/FLearning#1Limits(%)">
 		<description>These limits determine the maximum AF #3 Correction (Rear O2 Sensor Feedback) applied during closed loop fueling. By setting them to zero you can disable the effect of the rear O2 sensor on closed loop fueling.</description>
 		<table name="X" type="Static X Axis" elements="2">
 			<data>High</data>
