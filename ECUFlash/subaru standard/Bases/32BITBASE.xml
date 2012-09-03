@@ -21,49 +21,59 @@ These definitions are created for FREE without any sort of guarantee. The develo
 	RomRaider discussion thread:
 	http://www.romraider.com/forum/viewtopic.php?f=25&t=7442
 	-->
-	<scaling name="Tau" units="Tau" toexpr="x*0.00048828125" frexpr="x/0.00048828125" format="%.2f" min="0" max="20" inc="0.5" storagetype="uint16" endian="big"/>
+	<scaling name="Tau" units="Enrichment Adder Multiplier" toexpr="x*0.00048828125" frexpr="x/0.00048828125" format="%.2f" min="0" max="20" inc="0.5" storagetype="uint16" endian="big"/>
    <scaling name="TauMrp" units="psi relative (sea level)" toexpr="(x*1.933677)-14.6959452" frexpr="(x+14.6959452)/1.933677" format="%.2f" min="0" max="30" inc="0.5" storagetype="float" endian="big"/>
 
+    <table name="Tau Input A Falling Load Activation" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau">
+      <description>This table determines the Tau A enrichment multiplier when engine load is decreasing.</description>
+	  <table name="Coolant Temperature" type="Y Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
+   </table>
+   
    <table name="Tau Input A Falling Load Activation A" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau">
-      <description></description>
+      <description>This table determines the Tau A enrichment multiplier when engine load is decreasing.</description>
 	  <table name="Coolant Temperature" type="Y Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
    </table>
 
    <table name="Tau Input A Falling Load Activation B" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau">
-      <description></description>
+      <description>This table determines the Tau A enrichment multiplier when engine load is decreasing.</description>
 	  <table name="Coolant Temperature" type="Y Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
    </table>
    
     <table name="Tau Input A Falling Load Activation C" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau">
-      <description></description>
+      <description>This table determines the Tau A enrichment multiplier when engine load is decreasing.</description>
 	  <table name="Coolant Temperature" type="Y Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
    </table>
 
    <table name="Tau Input B Activation" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau">
-      <description></description>
-	  <table name="Manifold Pressure" type="Y Axis" elements="11" scaling="TauMrp"/>
+      <description>This table determines the Tau B enrichment multiplier.</description>
+	  <table type="Y Axis" elements="11" scaling="TauMrp"/>
+   </table>
+   
+   <table name="Tau Input B Activation (Engine Load)" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau">
+      <description>This table determines the Tau B enrichment multiplier.</description>
+	  <table name="Engine Load" type="Y Axis" elements="11" scaling="g/rev"/>
    </table>
 
    <table name="Tau Input A Rising Load Activation" category="ALPHA Transient Fueling (Tau)" type="3D" level="1" scaling="Tau">
-      <description></description>
+      <description>This table determines the Tau A enrichment multiplier when engine load is increasing.</description>
 	  <table name="Coolant Temperature" type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
-      <table name="Manifold Pressure" type="Y Axis" elements="3" scaling="TauMrp"/>
+      <table name="Engine Load" type="Y Axis" elements="3" scaling="g/rev"/>
    </table>
    
    <table name="Tau Input A Rising Load Activation A" category="ALPHA Transient Fueling (Tau)" type="3D" level="1" scaling="Tau">
-      <description></description>
+      <description>This table determines the Tau A enrichment multiplier when engine load is increasing.</description>
 	  <table name="Coolant Temperature" type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
       <table name="Manifold Pressure" type="Y Axis" elements="3" scaling="TauMrp"/>
    </table>
 
    <table name="Tau Input A Rising Load Activation B" category="ALPHA Transient Fueling (Tau)" type="3D" level="1" scaling="Tau">
-      <description></description>
+      <description>This table determines the Tau A enrichment multiplier when engine load is increasing.</description>
 	  <table name="Coolant Temperature" type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
       <table name="Manifold Pressure" type="Y Axis" elements="3" scaling="TauMrp"/>
    </table>
 
    <table name="Tau Input A Rising Load Activation C" category="ALPHA Transient Fueling (Tau)" type="3D" level="1" scaling="Tau">
-      <description></description>
+      <description>This table determines the Tau A enrichment multiplier when engine load is increasing.</description>
 	  <table name="Coolant Temperature" type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
       <table name="Manifold Pressure" type="Y Axis" elements="3" scaling="TauMrp"/>
    </table>
