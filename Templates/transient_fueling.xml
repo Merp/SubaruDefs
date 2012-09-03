@@ -4,35 +4,45 @@
 	
 	Currently Implemented in the following definitions:
 	AZ1G101N - td-d & Merp
+	A8DK100P - td-d & Merp
 	
 	Changelog: 
 	
 	-->
 
 	<!-- Transient Fueling Tables -->
+	<table name="Tau Input A Falling Load Activation" address="">
+      <table name="Y" address=""/>
+   </table>
 
-   <table name="Tau Input A Falling Load Activation A" address="C8D16">
-      <table name="X" address="C7C54"/>
+	<table name="Tau Input A Rising Load Activation" address="">
+		<table name="X" address=""/>
+		<table name="Y" address=""/>
+	</table>
+  
+	<!-- Option to use Manifold pressure or Engine load on this table
+	Typically all prior to 2008 use engine load-->
+	<table name="Tau Input B Activation (Engine Load)" address="">
+		<table name="Y" address=""/>
+	</table>
+	
+	<table name="Tau Input B Activation" address="">
+		<table name="Y" address=""/>
+	</table>
+	
+	<!-- 08+ Roms may have 3 branches (A, B, and C) for Input A -->
+      
+   <table name="Tau Input A Falling Load Activation A" address="">
+      <table name="Y" address=""/>
    </table>
 
    <table name="Tau Input A Falling Load Activation B" address="C8D36" >
-      <table name="X" address="C7C54"/>
+      <table name="Y" address="C7C54"/>
    </table>
    
       <table name="Tau Input A Falling Load Activation C" address="C8D56" >
-      <table name="X" address="C7C54"/>
+      <table name="Y" address="C7C54"/>
    </table>
-
-   <table name="Tau Input B Activation" address="C91C8" >
-      <table name="X" address="C919C"/>
-   </table>
-
-   <table name="Tau Input A Rising Load Activation" address="CC388">
-      <table name="X" address="C7C54"/>
-      <table name="Y" address="CC37C"/>
-   </table>
-   
-   <!-- 08+ Roms may have 3 branches (A, B, and C) for Input A rising load activation -->
    
    <table name="Tau Input A Rising Load Activation A" address="CC388">
       <table name="X" address="C7C54"/>
