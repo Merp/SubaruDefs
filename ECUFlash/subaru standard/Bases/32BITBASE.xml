@@ -17,6 +17,32 @@ These definitions are created for FREE without any sort of guarantee. The develo
     <make>Subaru</make>
   </romid>
   
+	<!-- alpha Fuel Pump Duty Table
+	RomRaider forum discussion thread:
+	http://www.romraider.com/forum/viewtopic.php?f=34&t=6356 - Duty cycle table
+	http://www.romraider.com/forum/viewtopic.php?f=34&t=8655 - High/Medium Determinations
+	-->
+	
+	<table name="Fuel Pump Duty" category="ALPHA Fuel Pump" type="2D" level="1" scaling="rawecuvalue">
+		<description>The ECU will set fuel pump duty cycle to 0%, 100%, or one of these two values.</description>
+		<table name="Fuel Pump Duty" type="Static Y Axis" elements="2" >
+			<data>Medium</data>
+			<data>Low</data>
+		</table>
+	</table>
+	
+	<scaling name="IDC" units="Injector Duty Cycle" toexpr="x*0.7371358727094787" frexpr="x/0.7371358727094787" format="%.2f" min="0" max="255" inc="1" storagetype="float" endian="big"/>
+
+	<table name="Fuel Pump Duty High Injector Duty Cycle" category="ALPHA Fuel Pump" type="3D" level="1" scaling="IDC">
+		<table name="Battery Voltage" type="X Axis" elements="2" scaling="rawecuvalue"/>
+		<table name="Manifold Relative Pressure" type="Y Axis" elements="2" scaling="psirelativesealevel"/>
+	</table>
+
+	<table name="Fuel Pump Duty Medium Injector Duty Cycle" category="ALPHA Fuel Pump" type="3D" level="1" scaling="IDC">
+		<table name="Battery Voltage" type="X Axis" elements="2" scaling="rawecuvalue"/>
+		<table name="Manifold Relative Pressure" type="Y Axis" elements="2" scaling="psirelativesealevel"/>
+	</table>
+  
   	<!-- A/F #1 Learning Min/Max Thresholds
 	RomRaider discussion thread: 
 	http://www.romraider.com/forum/viewtopic.php?f=34&t=8121
@@ -4459,13 +4485,6 @@ These definitions are created for FREE without any sort of guarantee. The develo
       <data>Multiplier (psi/v)</data>
     </table>
     <description>This is the scaling for the atmospheric pressure sensor. The multiplier is applied to atmospheric pressure sensor voltage and the offset is added to the result. The atmospheric pressure sensor is located inside the ECU.</description>
-  </table>
-  <table name="Fuel Pump Duty" category="Miscellaneous - Thresholds" type="2D" level="1" scaling="rawecuvalue">
-    <description>The ECU will set fuel pump duty cycle to 0%, 100%, or one of these two values.</description>
-    <table name="Fuel Pump Duty" type="Static Y Axis" elements="2" >
-      <data>Medium</data>
-      <data>Low</data>
-    </table>
   </table>
   <table name="Radiator Fan Modes (ECT)" category="Miscellaneous - Thresholds" type="2D" level="2" scaling="CoolantTemp(DegreesF)">
     <table name="Mode Determination (coolant temp change)" type="Static Y Axis" elements="4">
