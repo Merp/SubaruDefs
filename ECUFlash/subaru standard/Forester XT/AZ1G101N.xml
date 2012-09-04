@@ -17,6 +17,20 @@
 
 	<include>32BITBASE</include>
 	
+	<!-- Alpha Fuel pump duty tables -->
+	
+	<table name="Fuel Pump Duty" address="43ac4"/>
+	
+	<table name="Fuel Pump Duty High Injector Duty Cycle" address="D0E5C">
+		<table name="X" address="D0E4C"/>
+		<table name="Y" address="D0E54"/>
+	</table>
+
+	<table name="Fuel Pump Duty Medium Injector Duty Cycle" address="D0E7C">
+		<table name="X" address="D0E6C"/>
+		<table name="Y" address="D0E74"/>
+	</table>
+	
 	  <!-- A/F #1 Learning Min/Max Thresholds -->
 	
 	<table name="A/F #1 Learning Max Threshold" address="C7740"/>
@@ -1043,14 +1057,6 @@
 
 	<table name="Coolant Temp Sensor Scaling" address="d37e0">
 		<table name="Coolant Temp Sensor" address="d3770"/>
-	</table>
-
-	<table name="Fuel Pump Duty" category="NSFW Beta" address="43ac4" type="2D" level="1" scaling="rawecuvalue">
-		<description>The ECU will set fuel pump duty cycle to 0%, 100%, or one of these two values.</description>
-		<table name="Fuel Pump Duty" type="Static Y Axis" elements="2">
-			<data>Medium</data>
-			<data>Low</data>
-		</table>
 	</table>
 
 	<table name="Radiator Fan Modes A (ECT)" address="d3e68">
