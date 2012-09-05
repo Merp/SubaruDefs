@@ -17,6 +17,23 @@ These definitions are created for FREE without any sort of guarantee. The develo
     <make>Subaru</make>
   </romid>
   
+	<!-- Per Gear Requested Torque Limits
+	RomRaider discussion thread:
+	http://www.romraider.com/forum/viewtopic.php?f=34&t=7048
+	-->
+	
+    <table name="Requested Torque Limit A (Per Gear/Engine Speed)" category="ALPHA Per Gear Requested Torque" type="3D" level="4" scaling="RequestedTorque(rawecuvalue)">
+		<table name="Engine Speed" type="X Axis" elements="16" scaling="RPM" />
+		<table name="Gear" type="Y Axis" elements="6" scaling="Gear" />
+		<description>This table determines the Max requested torque based on calculated Gear and engine speed.</description>
+	</table>
+	
+	<table name="Requested Torque Limit B (Per Gear/Engine Speed)" category="ALPHA Per Gear Requested Torque" type="3D" level="4" scaling="RequestedTorque(rawecuvalue)">
+		<table name="Engine Speed" type="X Axis" elements="16" scaling="RPM" />
+		<table name="Gear" type="Y Axis" elements="6" scaling="Gear" />
+		<description>This table determines the Max requested torque based on calculated Gear and engine speed.</description>
+	</table>
+  
 	<!-- Engine Load Limit B Multiplier
 	RomRaider discussion thread: 
 	http://www.romraider.com/forum/viewtopic.php?f=34&t=8401
@@ -4346,16 +4363,6 @@ These definitions are created for FREE without any sort of guarantee. The develo
     <table name="Requested Torque" type="X Axis" elements="17" scaling="rawecuvalue" />
     <table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM" />
     <description>The target from the 'Requested Torque (Accelerator Pedal)' table and engine speed are used to determine the maximum limit target throttle plate opening. This maximum target throttle plate opening is used to limit the final target throttle plate opening determined by the A/B tables.</description>
-  </table>
-  <table name="Requested Torque Limit A (Per Gear/Engine Speed)" category="Drive-by-Wire Throttle (DBW)" type="3D" level="4" scaling="RequestedTorque(rawecuvalue)">
-    <table name="Engine Speed" type="X Axis" elements="16" scaling="RPM" />
-    <table name="Gear" type="Y Axis" elements="6" scaling="Gear" />
-   <description>This table determines the Max requested torque based on calculated Gear and engine speed.</description>
-  </table>
-  <table name="Requested Torque Limit B (Per Gear/Engine Speed)" category="Drive-by-Wire Throttle (DBW)" type="3D" level="4" scaling="RequestedTorque(rawecuvalue)">
-    <table name="Engine Speed" type="X Axis" elements="16" scaling="RPM" />
-    <table name="Gear" type="Y Axis" elements="6" scaling="Gear" />
-   <description>This table determines the Max requested torque based on calculated Gear and engine speed.</description>
   </table>
   <table name="Rev Limit (Fuel Cut)" category="Miscellaneous - Limits" type="2D" level="4" scaling="EngineSpeed(RPM)1">
     <table name="Rev Limit Fuel Cut" type="Static Y Axis" elements="2">
