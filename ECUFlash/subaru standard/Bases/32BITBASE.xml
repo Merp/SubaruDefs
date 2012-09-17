@@ -17,6 +17,18 @@ These definitions are created for FREE without any sort of guarantee. The develo
     <make>Subaru</make>
   </romid>
   
+	<!-- Ignition Dwell Table
+	RomRaider discussion thread: 
+	http://www.romraider.com/forum/viewtopic.php?f=34&t=5603
+	-->
+	
+	<scaling name="igndwell" units="ms" toexpr="x*0.001" frexpr="x/0.001" format="%.2f" min="0" max="10" inc="0.25" storagetype="uint16" endian="big"/>
+
+	<table name="Ignition Dwell" category="ALPHA Ignition Dwell" type="3D" level="1" scaling="igndwell">
+		<table type="X Axis" name="Engine Speed" scaling="RPM" elements="16"/>
+		<table type="Y Axis" name="Battery Volts" scaling="volts" elements="5"/>
+	</table>
+  
 	<!-- Per Gear Requested Torque Limits
 	RomRaider discussion thread:
 	http://www.romraider.com/forum/viewtopic.php?f=34&t=7048
