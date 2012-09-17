@@ -1,0 +1,93 @@
+	<!-- A/F #1 Correction Tables
+	RomRaider discussion thread: 
+	http://www.romraider.com/forum/viewtopic.php?f=34&t=8746
+
+	Currently Implemented in the following definitions:
+	A2UJ000J - Merp
+
+	Changelog:
+	
+	-->
+	
+	<!-- A/F #1 Correction Tables -->
+	
+	<table name="A/F #1 Correction Limits" address="2B388"/>
+	
+	<table name="A/F #1 Correction Proportional Gain Determination" address="C99A8">
+		<table name="Y" address="C9974"/>
+	</table>
+	
+	<table name="A/F #1 Correction Proportional Gain Determination Lookup Low Limit" address="2C030"/>
+	<table name="A/F #1 Correction Proportional Gain Determination Low Lookup Constant" address="2C034"/>
+	
+	
+	<!-- Test parameters for A2UJ000J A/F #1 Correction Tables -->
+				<ecuparam id="E1000" name="TEST A/F #1 Correction Proportional Gain Determination Lookup" desc="TEST A/F #1 Correction Proportional Gain Determination Lookup">
+                   
+               <ecu id="4D12784206">
+                        <address length="1">0xFF73F4</address>
+                    </ecu>
+               
+               <conversions>
+                        <conversion units="rawdata" storagetype="float" expr="x" format="0.00" gauge_min="0" gauge_max="500" gauge_step="10" />
+                    </conversions>
+               
+                </ecuparam>
+            <ecuparam id="E1001" name="TEST A/F #1 Correction Derivative Gain Direct" desc="TEST A/F #1 Correction Derivative Gain Direct">
+                   
+               <ecu id="4D12784206">
+                        <address length="1">0xFF72B0</address>
+                    </ecu>
+               
+               <conversions>
+                        <conversion units="rawdata" storagetype="float" expr="x" format="0.00" gauge_min="0" gauge_max="500" gauge_step="10" />
+                    </conversions>
+               
+                </ecuparam>
+				<ecuparam id="E1002" name="TEST A/F #1 Correction Proportioanl Gain Direct" desc="TEST A/F #1 Correction Proportional Gain Direct">
+                   
+               <ecu id="4D12784206">
+                        <address length="1">0xFF72A8</address>
+                    </ecu>
+               
+               <conversions>
+                        <conversion units="rawdata" storagetype="float" expr="x" format="0.00" gauge_min="0" gauge_max="500" gauge_step="10" />
+                    </conversions>
+               
+                </ecuparam>
+            <ecuparam id="E1003" name="TEST A/F #1 Correction Proportioanl Gain Determination Unknown" desc="TEST A/F #1 Correction Proportioanl Gain Determination Unknown">
+                   
+               <ecu id="4D12784206">
+                        <address length="1">0xFF7278</address>
+                    </ecu>
+               
+               <conversions>
+                        <conversion units="rawdata" storagetype="float" expr="x" format="0.00" gauge_min="0" gauge_max="500" gauge_step="10" />
+                    </conversions>
+               
+                </ecuparam>
+
+            <ecuparam id="E1004" name="TEST A/F #1 Correction Low Limit" desc="TEST A/F #1 Correction Low Limit">
+                   
+               <ecu id="4D12784206">
+                        <address length="1">0xFF73BC</address>
+                    </ecu>
+               
+               <conversions>
+                        <conversion units="rawdata" storagetype="float" expr="x" format="0.00" gauge_min="0" gauge_max="500" gauge_step="10" />
+                    </conversions>
+               
+                </ecuparam>
+
+            <ecuparam id="E1005" name="TEST A/F #1 Correction High Limit" desc="TEST A/F #1 Correction High Limit">
+                   
+               <ecu id="4D12784206">
+                        <address length="1">0xFF7220</address>
+                    </ecu>
+               
+               <conversions>
+                        <conversion units="rawdata" storagetype="float" expr="x" format="0.00" gauge_min="0" gauge_max="500" gauge_step="10" />
+                    </conversions>
+               
+                </ecuparam>
+ 

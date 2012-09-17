@@ -28,6 +28,37 @@ These definitions are created for FREE without any sort of guarantee. The develo
 		<table type="X Axis" name="Engine Speed" scaling="RPM" elements="16"/>
 		<table type="Y Axis" name="Battery Volts" scaling="volts" elements="5"/>
 	</table>
+
+	<!-- A/F #1 Correction Tables
+	RomRaider discussion thread: 
+	http://www.romraider.com/forum/viewtopic.php?f=34&t=8746
+	-->
+	
+	<scaling name="af1correction" units="%" toexpr="(x*100)-100" frexpr="(x+100)/100" format="%.2f" min="0" max="1000" inc="0.1" storagetype="float" endian="big"/>
+
+	<table name="A/F #1 Correction Limits" category="ALPHA A/F #1 Correction Tables" type="2D" level="1" scaling="af1correction">
+	<description>These values limit the applied A/F #1 (Front O2 Sensor) feedback correction.</description>
+		<table type="Static Y Axis" name="" elements="2">
+			<data>Minimum Limit</data>
+			<data>Maximum Limit</data>
+		</table>
+	</table>
+	
+	<scaling name="af1propgain" units="Unknown" toexpr="x*0.000015258789" frexpr="x/0.000015258789" format="%.2f" min="0" max="10" inc="0.1" storagetype="uint16" endian="big"/>
+
+	<table name="A/F #1 Correction Proportional Gain Determination"category="ALPHA A/F #1 Correction Tables" type="2D" level="1" scaling="af1propgain">
+		<description>This table is used to determine the A/F #1 (Front O2 Sensor) proportional feedback gain using the following equation. Gain ~= ( - 2 * value ) / ( 1 - value ). 
+		When the lookup for this table is lower than the "Lookup Low Limit", the table value is superceded by the "Low Lookup Constant".</description>
+		<table name="A/F #1 Correction Proportional Gain Determination Lookup" type="Y Axis" elements="13" scaling="rawecuvalue"/>
+	</table>
+	
+	<table name="A/F #1 Correction Proportional Gain Determination Lookup Low Limit" category="ALPHA A/F #1 Correction Tables" type="1D" level="1" scaling="rawecuvalue">
+		<description>When A/F #1 Correction Proportional Gain Determination Lookup is lower than this limit, the "Low Lookup Constant" is used in place of the 2D determination table.</description>
+	</table>
+	
+	<table name="A/F #1 Correction Proportional Gain Determination Low Lookup Constant" category="ALPHA A/F #1 Correction Tables" type="1D" level="1" scaling="rawecuvalue">
+		<description>This value is used in place of the 2D determination table when A/F #1 Correction Proportional Gain Determination Lookup is lower than the "Lookup Low Limit"</description>
+	</table>
   
 	<!-- Per Gear Requested Torque Limits
 	RomRaider discussion thread:
