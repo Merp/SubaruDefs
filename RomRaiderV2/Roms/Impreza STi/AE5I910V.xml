@@ -1,0 +1,743 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rom>
+    <romid>
+        <xmlid>AE5I910V</xmlid>
+        <internalidaddress>2004</internalidaddress>
+        <internalidstring>AE5I910V</internalidstring>
+        <ecuid>7412597007</ecuid>
+        <year>2011</year>
+        <market>USDM</market>
+        <make>Subaru</make>
+        <model>Impreza</model>
+        <submodel>STI</submodel>
+        <transmission>MT</transmission>
+        <memmodel>SH7058</memmodel>
+        <flashmethod>subarucan</flashmethod>
+        <checksummodule>subarudbw</checksummodule>
+    </romid>
+    <include>32BITBASE</include>
+    <!-- Alpha Fuel pump duty tables -->
+    <table1d name="Fuel Pump Duty" address="49144" />
+    <!-- A/F #1 Learning Min/Max Thresholds -->
+    <table1d name="A/F #1 Learning Max Threshold" address="CA568" />
+    <table1d name="A/F #1 Learning Min Threshold" address="CA558" />
+    <!-- AF 3 Correction Limits -->
+    <table1d name="AF 3 Correction Limits" address="3447C" />
+    <!-- AF 3 CL Target Compensation Limits -->
+    <table1d name="AF 3 CL Target Compensation Limits" address="328A4" />
+    <!-- Alpha hot start tables: -->
+    <table1d name="Hotstart Enrichment Decay Delay" address="CA188" />
+    <table1d name="Hotstart Enrichment Decay Step" address="CA738" />
+    <table1d name="Initial Hotstart Enrichment (High)" address="CA72C" />
+    <table1d name="Hotstart High Enrichment Activation Threshold (Coolant Temperature)" address="CA71C" />
+    <table1d name="Hotstart High Enrichment Activation Threshold (Intake Air Temperature)" address="CA720" />
+    <table1d name="Initial Hotstart Enrichment (Low)" address="CA730" />
+    <table1d name="Hotstart Low Enrichment Activation Threshold (Coolant Temperature)" address="CA724" />
+    <table1d name="Hotstart Low Enrichment Activation Threshold (Minimum Intake Air Temperature)" address="CA728" />
+    <table1d name="Maximum Non-Idle Hotstart Enrichment (Post Delay)" address="CA740" />
+    <table1d name="Hotstart Maximum Non-Idle Enrichment Delay" address="CA18C" />
+    <table1d name="Hotstart Minimum Enrichment Limit Runtime" address="CA18A" />
+    <table1d name="Hotstart Minimum Enrichment (During Delay and Runtime)" address="CA734" />
+    <table3d name="Target Boost_" address="c1024">
+        <xaxis address="c0fb4" elements="14" />
+        <yaxis address="c0fec" elements="14" />
+    </table3d>
+    <table2d name="Target Boost Compensation (ECT)" address="c0b38">
+        <yaxis address="c0a58" />
+    </table2d>
+    <table1d name="Target Boost Compensation (1st Gear)" address="c0a50" />
+    <table1d name="Target Boost Compensation (1st Gear) Speed Disable" address="c0a4c" />
+    <table2d name="Target Boost Compensation (IAT)_" address="c0c94">
+        <yaxis address="c0c68" elements="11" />
+    </table2d>
+    <table3d name="Target Boost Compensation (Atm. Pressure)_" address="c0d30">
+        <xaxis address="c0d00" />
+        <yaxis address="c0d18" />
+    </table3d>
+    <table3d name="Boost Limit (Fuel Cut)_" address="d0a28">
+        <xaxis address="d09f8" />
+        <yaxis address="d0a10" />
+    </table3d>
+    <table1d name="Boost Control Disable (IAM)" address="c0a40" />
+    <table1d name="Boost Control Disable (Fine Correction)" address="c0a3c" />
+    <table1d name="Boost Control Disable Delay (Fine Correction)" address="c09f1" />
+    <table3d name="Initial Wastegate Duty_" address="c0ed8">
+        <xaxis address="c0e84" elements="11" />
+        <yaxis address="c0eb0" elements="10" />
+    </table3d>
+    <table3d name="Max Wastegate Duty_" address="c0da8">
+        <xaxis address="c0d54" elements="11" />
+        <yaxis address="c0d80" elements="10" />
+    </table3d>
+    <table1d name="Max Wastegate Duty Limit Post-Compensation" address="13c94" />
+    <table2d name="Initial/Max Wastegate Duty Compensation (IAT)" address="c0ad8">
+        <yaxis address="c0a98" />
+    </table2d>
+    <table2d name="Initial/Max Wastegate Duty Compensation (ECT)" address="c0af8">
+        <yaxis address="c0a58" />
+    </table2d>
+    <table3d name="Initial/Max Wastegate Duty Compensation (Atm. Pressure)" address="c0ce8">
+        <xaxis address="c0cc0" />
+        <yaxis address="c0cd8" />
+    </table3d>
+    <table2d name="Turbo Dynamics Proportional" address="c0b6c">
+        <yaxis address="c0b48" />
+    </table2d>
+    <table2d name="Turbo Dynamics Integral Positive" address="c0bdc">
+        <yaxis address="c0bb8" />
+    </table2d>
+    <table2d name="Turbo Dynamics Integral Negative" address="c0ba4">
+        <yaxis address="c0b80" />
+    </table2d>
+    <table2d name="TD Proportional Compensation (IAT)" address="c0b08">
+        <yaxis address="c0a98" elements="16" />
+    </table2d>
+    <table2d name="TD Integral Positive Compensation (IAT)" address="c0b28">
+        <yaxis address="c0a98" elements="16" />
+    </table2d>
+    <table2d name="TD Integral Negative Compensation (IAT)" address="c0b18">
+        <yaxis address="c0a98" elements="16" />
+    </table2d>
+    <table1d name="TD Activation Thresholds (RPM)" address="c0a2c" />
+    <table1d name="TD Activation Thresholds (Target Boost)_" address="c0a18" />
+    <table1d name="TD Integral Cumulative Range (WGDC Correction)" address="c0a34" />
+    <table1d name="TD Integral Negative Activation (Boost Error)" address="c0a20" />
+    <table1d name="TD Integral Positive Activation (Boost Error)" address="c0a24" />
+    <table1d name="TD Integral Negative Activation (Wastegate Duty)" address="c0a28" />
+    <table1d name="Manifold Pressure Sensor Scaling_" address="d7014" />
+    <table1d name="Manifold Pressure Sensor Limits (CEL)" address="d6f6c" />
+    <table1d name="Manifold Pressure Sensor CEL Delays" address="d6f1e" />
+    <table3d name="Primary Open Loop Fueling (KCA Additive B Low)" address="ce6a4">
+        <xaxis address="ce610" elements="19" />
+        <yaxis address="ce65c" />
+    </table3d>
+    <table3d name="Primary Open Loop Fueling (KCA Additive B High)" address="ce890">
+        <xaxis address="ce7fc" elements="19" />
+        <yaxis address="ce848" />
+    </table3d>
+    <table3d name="Primary Open Loop Fueling (Failsafe)" address="cea7c">
+        <xaxis address="ce9e8" elements="19" />
+        <yaxis address="cea34" />
+    </table3d>
+    <table3d name="Primary Open Loop Fueling (KCA Alternate Mode)" address="ce2b8">
+        <xaxis address="ce224" elements="19" />
+        <yaxis address="ce270" />
+    </table3d>
+    <table3d name="Primary Open Loop Fueling (Failsafe)(KCA Alternate Mode)" address="ce4a4">
+        <xaxis address="ce410" elements="19" />
+        <yaxis address="ce45c" />
+    </table3d>
+    <table1d name="Primary Open Loop Fuel Map Switch (IAM)" address="ca654" />
+    <table1d name="Minimum Active Primary Open Loop Enrichment" address="ca658" />
+    <table2d name="Minimum Primary Open Loop Enrichment (Throttle)" address="cb218">
+        <yaxis address="cb200" />
+    </table2d>
+    <table2d name="Minimum Primary Open Loop Enrichment (Accelerator)" address="cb23c">
+        <yaxis address="cb220" elements="7" />
+    </table2d>
+    <table2d name="Primary Open Loop Fueling Compensation (ECT)" address="ccb30">
+        <yaxis address="caadc" />
+    </table2d>
+    <table2d name="Primary Open Loop Fueling Compensation (Timing Compensation)_" address="cb1a8">
+        <yaxis address="cb190" />
+    </table2d>
+    <table2d name="Front Oxygen Sensor Scaling" address="d72a8">
+        <yaxis address="d7274" />
+    </table2d>
+    <table1d name="Front Oxygen Sensor Rich Limit" address="21af8" />
+    <table2d name="Front Oxygen Sensor Compensation (Atm. Pressure)" address="c328c">
+        <yaxis address="c327c" />
+    </table2d>
+    <table3d name="CL Fueling Target Compensation A (Load)" address="cfa00">
+        <xaxis address="cf9a4" elements="12" />
+        <yaxis address="cf9d4" elements="11" />
+    </table3d>
+    <table3d name="CL Fueling Target Compensation B (Load)" address="cfcd8">
+        <xaxis address="cfc6c" elements="14" />
+        <yaxis address="cfca4" elements="13" />
+    </table3d>
+    <table3d name="CL Fueling Target Compensation Imm. Cruise (ECT)" address="cf8d8">
+        <xaxis address="caadc" />
+        <yaxis address="cf8cc" />
+    </table3d>
+    <table3d name="CL Fueling Target Compensation Imm. Non-Cruise (ECT)" address="cf944">
+        <xaxis address="caadc" />
+        <yaxis address="cf938" />
+    </table3d>
+    <table1d name="CL Fueling Target Compensation (ECT) Disable" address="ca490" />
+    <table1d name="CL to OL Delay_" address="ca180" />
+    <table1d name="CL to OL Delay/Switch SI-DRIVE Intelligent" address="ca17a" />
+    <table2d name="CL to OL Transition with Delay (Throttle)" address="cb1f0">
+        <yaxis address="cb1b0" />
+    </table2d>
+    <table1d name="CL to OL Transition with Delay Throttle Hysteresis" address="ca660" />
+    <table2d name="CL to OL Transition with Delay (Base Pulse Width)" address="cca5c">
+        <yaxis address="cca1c" />
+    </table2d>
+    <table1d name="CL to OL Transition with Delay BPW Hysteresis" address="ca65c" />
+    <table2d name="CL to OL Transition Counter Step Value (MAF)" address="ccaa4">
+        <yaxis address="cca7c" />
+    </table2d>
+    <table1d name="CL Delay Maximum (Throttle)" address="ca6c0" />
+    <table1d name="CL Delay Maximum (Vehicle Speed)" address="ca6dc" />
+    <table1d name="CL Delay Minimum (ECT)" address="ca664" />
+    <table1d name="CL Delay Maximum (Engine Load)" address="ca6ec" />
+    <table1d name="CL Delay Engine Load Counter Threshold" address="ca178" />
+    <table1d name="CL Delay Maximum Engine Speed (Per Gear)" address="ca668" />
+    <table1d name="CL Delay Maximum Engine Speed (Neutral)" address="ca690" />
+    <table3d name="Injector Latency_" address="cf498">
+        <xaxis address="cf478" />
+        <yaxis address="cf48c" />
+    </table3d>
+    <table1d name="Injector Flow Scaling" address="ca318" />
+    <table3d name="Per Injector Pulse Width Compensation A" address="cecbc">
+        <xaxis address="cec3c" elements="16" />
+        <yaxis address="cec7c" />
+    </table3d>
+    <table3d name="Per Injector Pulse Width Compensation B" address="cee3c">
+        <xaxis address="cedbc" elements="16" />
+        <yaxis address="cedfc" />
+    </table3d>
+    <table3d name="Per Injector Pulse Width Compensation C" address="cefbc">
+        <xaxis address="cef3c" elements="16" />
+        <yaxis address="cef7c" />
+    </table3d>
+    <table3d name="Per Injector Pulse Width Compensation D" address="cf13c">
+        <xaxis address="cf0bc" elements="16" />
+        <yaxis address="cf0fc" />
+    </table3d>
+    <table2d name="Cranking Fuel Injector Pulse Width A (ECT)" address="cb762">
+        <yaxis address="caadc" />
+    </table2d>
+    <table2d name="Cranking Fuel Injector Pulse Width B (ECT)" address="cb782">
+        <yaxis address="caadc" />
+    </table2d>
+    <table2d name="Cranking Fuel Injector Pulse Width C (ECT)" address="cb7a2">
+        <yaxis address="caadc" />
+    </table2d>
+    <table2d name="Cranking Fuel Injector Pulse Width D (ECT)" address="cb7c2">
+        <yaxis address="caadc" />
+    </table2d>
+    <table2d name="Cranking Fuel Injector Pulse Width E (ECT)" address="cb7e2">
+        <yaxis address="caadc" />
+    </table2d>
+    <table2d name="Cranking Fuel Injector Pulse Width F (ECT)" address="cb802">
+        <yaxis address="caadc" />
+    </table2d>
+    <table3d name="Cranking Fuel IPW Compensation Imm. Cruise (RPM)" address="cdc58">
+        <xaxis address="cdc28" />
+        <yaxis address="cdc3c" />
+    </table3d>
+    <table3d name="Cranking Fuel IPW Compensation Imm. Non-Cruise (RPM)" address="cdc04">
+        <xaxis address="cdbd4" />
+        <yaxis address="cdbe8" />
+    </table3d>
+    <table2d name="Cranking Fuel IPW Compensation (MAP)" address="cace0">
+        <yaxis address="cacb8" />
+    </table2d>
+    <table2d name="Cranking Fuel IPW Compensation (Accelerator)" address="cad14">
+        <yaxis address="cacec" elements="10" />
+    </table2d>
+    <table2d name="Cranking Fuel IPW Compensation (IAT)" address="cad34">
+        <yaxis address="cad20" />
+    </table2d>
+    <table2d name="Throttle Tip-in Enrichment A" address="cd2b4">
+        <yaxis address="cd26c" />
+    </table2d>
+    <table2d name="Throttle Tip-in Enrichment B" address="cd320">
+        <yaxis address="cd2d8" />
+    </table2d>
+    <table1d name="Minimum Tip-in Enrichment Activation" address="ca988" />
+    <table1d name="Minimum Tip-in Enrichment Activation (Throttle)" address="ca984" />
+    <table2d name="Tip-in Enrichment Compensation (Boost Error)" address="cb5c8">
+        <yaxis address="cb5a4" />
+    </table2d>
+    <table2d name="Tip-in Enrichment Compensation (RPM)" address="cb594">
+        <yaxis address="cb554" elements="16" />
+    </table2d>
+    <table2d name="Tip-in Enrichment Compensation A (ECT)" address="cb5d1">
+        <yaxis address="caadc" />
+    </table2d>
+    <table2d name="Tip-in Enrichment Compensation B (ECT)" address="cd344">
+        <yaxis address="caadc" />
+    </table2d>
+    <table2d name="Tip-in Enrichment Compensation C (ECT)" address="cd364">
+        <yaxis address="caadc" />
+    </table2d>
+    <table2d name="Tip-in Enrichment Compensation D (ECT)" address="cd3a4">
+        <yaxis address="cab1c" />
+    </table2d>
+    <table1d name="Tip-in Enrichment Compensation D (ECT) Activation" address="ca98c" />
+    <table2d name="Tip-in Enrichment Disable Applied Counter Threshold A (ECT)" address="cb5e1">
+        <yaxis address="caadc" />
+    </table2d>
+    <table2d name="Tip-in Enrichment Disable Applied Counter Threshold B (ECT)" address="cb5f1">
+        <yaxis address="caadc" />
+    </table2d>
+    <table1d name="Tip-in Enrichment Applied Counter Reset" address="ca12a" />
+    <table2d name="Tip-in Enrichment Disable Throttle Cumulative Threshold A (ECT)" address="cd3c4">
+        <yaxis address="caadc" />
+    </table2d>
+    <table2d name="Tip-in Enrichment Disable Throttle Cumulative Threshold B (ECT)" address="cd3e4">
+        <yaxis address="caadc" />
+    </table2d>
+    <table1d name="Tip-in Throttle Cumulative Reset" address="ca12b" />
+    <table3d name="Min Primary Base Enrichment 1 Cruise" address="cdeb0">
+        <xaxis address="caadc" />
+        <yaxis address="cde8c" elements="9" />
+    </table3d>
+    <table3d name="Min Primary Base Enrichment 1 Non-Cruise" address="cde0c">
+        <xaxis address="caadc" />
+        <yaxis address="cddec" />
+    </table3d>
+    <table2d name="Min Primary Base Enrichment 1 (Non-Primary OL)_" address="cad99">
+        <yaxis address="caadc" />
+    </table2d>
+    <table1d name="A/F Learning #1 Limits" address="ca54c" />
+    <table1d name="A/F Learning #1 Airflow Ranges" address="ca55c" />
+    <table1d name="MAF Limit (Maximum)" address="c2cf4" />
+    <table2d name="MAF Sensor Scaling" address="d719c">
+        <yaxis address="d70c4" />
+    </table2d>
+    <table3d name="MAF Compensation (IAT)" address="c356c">
+        <xaxis address="c3538" />
+        <yaxis address="c354c" />
+    </table3d>
+    <table1d name="Engine Load Limit A (Maximum)" address="20190" />
+    <table2d name="Engine Load Limit B Maximum (RPM)" address="c318c">
+        <yaxis address="c3184" />
+    </table2d>
+    <table3d name="Engine Load Compensation Cruise (MP)" address="c361c">
+        <xaxis address="c3594" />
+        <yaxis address="c35c0" elements="23" />
+    </table3d>
+    <table3d name="Engine Load Compensation Non-Cruise (MP)" address="c379c">
+        <xaxis address="c371c" />
+        <yaxis address="c3748" elements="21" />
+    </table3d>
+    <table3d name="Base Timing Primary Cruise" address="d2a04">
+        <xaxis address="d2970" elements="19" />
+        <yaxis address="d29bc" />
+    </table3d>
+    <table3d name="Base Timing Reference Cruise (AVCS related)" address="d2ddc">
+        <xaxis address="d2d48" elements="19" />
+        <yaxis address="d2d94" />
+    </table3d>
+    <table3d name="Base Timing Primary Non-Cruise" address="d2bf0">
+        <xaxis address="d2b5c" elements="19" />
+        <yaxis address="d2ba8" />
+    </table3d>
+    <table3d name="Base Timing Reference Non-Cruise (AVCS related)" address="d2fc8">
+        <xaxis address="d2f34" elements="19" />
+        <yaxis address="d2f80" />
+    </table3d>
+    <table2d name="Base Timing Idle A (In-Gear)" address="d160e">
+        <yaxis address="d13f4" />
+    </table2d>
+    <table2d name="Base Timing Idle B (In-Gear)" address="d161e">
+        <yaxis address="d13f4" />
+    </table2d>
+    <table2d name="Base Timing Idle A (Neutral)" address="d162e">
+        <yaxis address="d13f4" />
+    </table2d>
+    <table2d name="Base Timing Idle B (Neutral)" address="d163e">
+        <yaxis address="d13f4" />
+    </table2d>
+    <table2d name="Base Timing Idle Minimum" address="d1605">
+        <yaxis address="d1474" />
+    </table2d>
+    <table1d name="Base Timing Idle Minimum Vehicle Speed Enable" address="d0f9c" />
+    <table3d name="Knock Correction Advance Max Additive A (Knock Conditions)(IAM)" address="d3930">
+        <xaxis address="d389c" elements="19" />
+        <yaxis address="d38e8" />
+    </table3d>
+    <table3d name="Knock Correction Advance Max Additive B (Knock Conditions)" address="d3ef4">
+        <xaxis address="d3e60" elements="19" />
+        <yaxis address="d3eac" />
+    </table3d>
+    <table3d name="Knock Correction Advance Max Primary Cruise (IAM)" address="d3b1c">
+        <xaxis address="d3a88" elements="19" />
+        <yaxis address="d3ad4" />
+    </table3d>
+    <table3d name="Knock Correction Advance Max Primary Non-Cruise (IAM)" address="d3d08">
+        <xaxis address="d3c74" elements="19" />
+        <yaxis address="d3cc0" />
+    </table3d>
+    <table1d name="Knock Correction Advance Additive Range (RPM)" address="d12fc" />
+    <tableblob name="Knock Correction Advance Alternate Mode__" address="d0e63" />
+    <table2d name="Timing Compensation A (IAT)" address="d16f0">
+        <yaxis address="d16b0" />
+    </table2d>
+    <table3d name="Timing Compensation A (IAT) Activation" address="d3160">
+        <xaxis address="d3120" />
+        <yaxis address="d3140" />
+    </table3d>
+    <table2d name="Timing Compensation B (IAT)" address="d1c98">
+        <yaxis address="d1c58" />
+    </table2d>
+    <table1d name="Timing Compensation B (IAT) IAM Activation" address="d1154" />
+    <table1d name="Timing Compensation B (IAT) Max Additive" address="d1138" />
+    <table2d name="Timing Compensation Imm. Cruise A (ECT)" address="d168e">
+        <yaxis address="d13f4" />
+    </table2d>
+    <table2d name="Timing Compensation Imm. Cruise B (ECT)" address="d169e">
+        <yaxis address="d13f4" />
+    </table2d>
+    <table2d name="Timing Compensation Imm. Non-Cruise A (ECT)" address="d166e">
+        <yaxis address="d13f4" />
+    </table2d>
+    <table2d name="Timing Compensation Imm. Non-Cruise B (ECT)" address="d167e">
+        <yaxis address="d13f4" />
+    </table2d>
+    <table3d name="Timing Compensation Per Cylinder A" address="d36c4">
+        <xaxis address="d367c" />
+        <yaxis address="d36b4" />
+    </table3d>
+    <table3d name="Timing Compensation Per Cylinder B" address="d3744">
+        <xaxis address="d36fc" />
+        <yaxis address="d3734" />
+    </table3d>
+    <table3d name="Timing Compensation Per Cylinder C" address="d37c4">
+        <xaxis address="d377c" />
+        <yaxis address="d37b4" />
+    </table3d>
+    <table3d name="Timing Compensation Per Cylinder D" address="d3844">
+        <xaxis address="d37fc" />
+        <yaxis address="d3834" />
+    </table3d>
+    <table1d name="Timing Comp Minimum Load (Per Cylinder)" address="d11fc" />
+    <table1d name="Timing Comp Maximum RPM (Per Cylinder)" address="d11f8" />
+    <table1d name="Timing Comp Minimum Coolant Temp (Per Cylinder)" address="d1200" />
+    <table3d name="Timing Compensation Per Gear (1st)" address="d35d0">
+        <xaxis address="d35b4" />
+        <yaxis address="d35c4" />
+    </table3d>
+    <table3d name="Timing Compensation Per Gear (2nd)" address="d35f8">
+        <xaxis address="d35dc" />
+        <yaxis address="d35ec" />
+    </table3d>
+    <table3d name="Timing Compensation Per Gear (3rd)" address="d3620">
+        <xaxis address="d3604" />
+        <yaxis address="d3614" />
+    </table3d>
+    <table3d name="Timing Compensation Per Gear (4th)" address="d3648">
+        <xaxis address="d362c" />
+        <yaxis address="d363c" />
+    </table3d>
+    <table3d name="Timing Compensation Per Gear (5th)" address="d3670">
+        <xaxis address="d3654" />
+        <yaxis address="d3664" />
+    </table3d>
+    <table1d name="Timing Compensation Per Gear Activation (RPM)" address="d1198" />
+    <table1d name="Timing Compensation Per Gear Activation (Load)" address="d11a0" />
+    <table1d name="Feedback Correction Range (RPM)" address="d120c" />
+    <table1d name="Feedback Correction Minimum Load" address="d1204" />
+    <table1d name="Feedback Correction Retard Value" address="d122c" />
+    <table1d name="Feedback Correction Retard Limit" address="d1228" />
+    <table1d name="Feedback Correction Negative Advance Value" address="d1230" />
+    <table1d name="Feedback Correction Negative Advance Delay" address="d0e9e" />
+    <table1d name="Extended Feedback Correction High RPM Compensation" address="d1238" />
+    <table1d name="Fine Correction Range (RPM)" address="d13d4" />
+    <table1d name="Fine Correction Range (Load)" address="d13e4" />
+    <table1d name="Fine Correction Rows (RPM)" address="d1374" />
+    <table1d name="Fine Correction Columns (Load)" address="d1390" />
+    <table1d name="Fine Correction Retard Value" address="d13b8" />
+    <table1d name="Fine Correction Retard Limit" address="d13b4" />
+    <table1d name="Fine Correction Advance Value" address="d13b0" />
+    <table1d name="Fine Correction Advance Limit" address="d13ac" />
+    <table1d name="Fine Correction Advance Delay" address="d0eae" />
+    <table1d name="Rough Correction Range (RPM)" address="d131c" />
+    <table1d name="Rough Correction Range (Load)" address="d132c" />
+    <table1d name="Rough Correction Minimum KC Advance Map Value" address="d133c" />
+    <table2d name="Rough Correction Learning Delay (Increasing)_" address="d1f64">
+        <yaxis address="d1f3c" />
+    </table2d>
+    <table1d name="Advance Multiplier (Initial)" address="d1340" />
+    <table1d name="Advance Multiplier Step Value" address="d1344" />
+    <table3d name="Intake Cam Advance Angle Cruise (AVCS)" address="d9388">
+        <xaxis address="d92F4" elements="19" />
+        <yaxis address="d9340" />
+    </table3d>
+    <table3d name="Intake Cam Advance Angle Non-Cruise (AVCS)" address="d96c8">
+        <xaxis address="d9634" elements="19" />
+        <yaxis address="d9680" />
+    </table3d>
+    <table3d name="Exhaust Cam Retard Angle Cruise (AVCS)" address="d9dd0">
+        <xaxis address="d9d3c" elements="19" />
+        <yaxis address="d9d88" />
+    </table3d>
+    <table3d name="Exhaust Cam Retard Angle Non-Cruise (AVCS)" address="da110">
+        <xaxis address="da07c" elements="19" />
+        <yaxis address="da0c8" />
+    </table3d>
+    <table3d name="Requested Torque (Accelerator Pedal) SI-DRIVE Sport" address="dd870">
+        <xaxis address="dd7ec" elements="16" />
+        <yaxis address="dd82c" />
+    </table3d>
+    <table3d name="Requested Torque (Accelerator Pedal) SI-DRIVE Sport Sharp" address="ddb14">
+        <xaxis address="dda90" elements="16" />
+        <yaxis address="ddad0" />
+    </table3d>
+    <table3d name="Requested Torque (Accelerator Pedal) SI-DRIVE Intelligent" address="dddb8">
+        <xaxis address="ddd34" elements="16" />
+        <yaxis address="ddd74" />
+    </table3d>
+    <table2d name="Requested Torque Base (RPM)" address="dc80c">
+        <yaxis address="dc7cc" />
+    </table2d>
+    <table3d name="Target Throttle Plate Position Cruise (Requested Torque Ratio)" address="dccd8">
+        <xaxis address="dcc3c" />
+        <yaxis address="dcc98" />
+    </table3d>
+    <table3d name="Target Throttle Plate Position Non-Cruise (Requested Torque Ratio)" address="dd054">
+        <xaxis address="dcfb8" />
+        <yaxis address="dd014" />
+    </table3d>
+    <table3d name="Target Throttle Plate Position Maximum (Requested Torque Ratio)" address="dd3d0">
+        <xaxis address="dd334" />
+        <yaxis address="dd390" />
+    </table3d>
+    <table1d name="Rev Limit (Fuel Cut)" address="ca9e4" />
+    <table1d name="Rev Limit Fuel Resume (Boost)" address="ca9ec" />
+    <table1d name="Speed Limiting Enable (Fuel Cut)" address="ca9f4" />
+    <tableblob name="Speed Limiting Disable (Fuel Cut)" address="ca9fc" />
+    <table1d name="Speed Limiting A (Throttle) SI-DRIVE Sport/Sport Sharp" address="dc648" />
+    <table1d name="Speed Limiting B (Throttle) SI-DRIVE Sport/Sport Sharp" address="dc660" />
+    <table1d name="Speed Limiting (Throttle) SI-DRIVE Intelligent" address="dc654" />
+    <table2d name="Fuel Temp Sensor Scaling" address="d7524">
+        <yaxis address="d74ac" />
+    </table2d>
+    <table2d name="Intake Temp Sensor Scaling" address="d7434">
+        <yaxis address="d73bc" />
+    </table2d>
+    <table2d name="Coolant Temp Sensor Scaling" address="d734c">
+        <yaxis address="d72dc" />
+    </table2d>
+    <table1d name="Fuel Pump Duty" address="49144" />
+    <table1d name="Radiator Fan Modes A (ECT)" address="d791c" />
+    <table1d name="Radiator Fan Modes B (ECT)" address="d792c" />
+    <table1d name="Radiator Fan Modes (Veh. Speed)" address="d793c" />
+    <table1d name="Gear Determination Thresholds A" address="c3060" />
+    <table1d name="Gear Determination Thresholds B" address="c3074" />
+    <table1d name="Gear Determination Thresholds C" address="c3088" />
+    <table3d name="Ignition Dwell" address="d77d0">
+        <xaxis address="d777c" />
+        <yaxis address="d77bc" />
+    </table3d>
+    <table2d name="Idle Speed Target A" address="d527e">
+        <yaxis address="d4bf8" />
+    </table2d>
+    <table2d name="Idle Speed Target B" address="d52be">
+        <yaxis address="d4bf8" />
+    </table2d>
+    <table2d name="Idle Speed Target C" address="d52fe">
+        <yaxis address="d4bf8" />
+    </table2d>
+    <tableblob name="Force Pass Readiness Monitors_" address="9e8fc" />
+    <tableblob address="928FC" name="(P0335) CRANKSHAFT POS. SENSOR A MALFUNCTION" />
+    <tableblob address="928FD" name="(P0336) CRANKSHAFT POS. SENSOR A RANGE/PERF" />
+    <!--<table address="928FE" name="(P0341) CAMSHAFT POS. SENSOR A RANGE/PERF" />-->
+    <!--<table address="928FF" name="(P0340) CAMSHAFT POS. SENSOR A MALFUNCTION" />-->
+    <tableblob address="92900" name="(P0604) CONTROL MODULE RAM ERROR" />
+    <tableblob address="92901" name="(P0102) MAF SENSOR LOW INPUT" />
+    <tableblob address="92902" name="(P0103) MAF SENSOR HIGH INPUT" />
+    <tableblob address="92903" name="(P0500) VEHICLE SPEED SENSOR A" />
+    <!--<table address="92904" name="(P0332) KNOCK SENSOR 2 LOW INPUT" />-->
+    <!--<table address="92905" name="(P0333) KNOCK SENSOR 2 HIGH INPUT" />-->
+    <tableblob address="92906" name="(P0327) KNOCK SENSOR 1 LOW INPUT" />
+    <tableblob address="92907" name="(P0328) KNOCK SENSOR 1 HIGH INPUT" />
+    <tableblob address="92908" name="(P0122) TPS A LOW INPUT" />
+    <tableblob address="92909" name="(P0123) TPS A HIGH INPUT" />
+    <tableblob address="9290A" name="(P0117) COOLANT TEMP SENSOR LOW INPUT" />
+    <tableblob address="9290B" name="(P0118) COOLANT TEMP SENSOR HIGH INPUT" />
+    <tableblob address="9290C" name="(P0464) FUEL LEVEL SENSOR INTERMITTENT" />
+    <tableblob address="9290D" name="(P0125) INSUFFICIENT COOLANT TEMP (FUELING)" />
+    <tableblob address="9290E" name="(P0462) FUEL LEVEL SENSOR LOW INPUT" />
+    <tableblob address="9290F" name="(P0463) FUEL LEVEL SENSOR HIGH INPUT" />
+    <tableblob address="92910" name="(P0461) FUEL LEVEL SENSOR RANGE/PERF" />
+    <tableblob address="92911" name="(P1518) STARTER SWITCH LOW INPUT" />
+    <tableblob address="92912" name="(P0512) STARTER REQUEST CIRCUIT" />
+    <tableblob address="92913" name="(P0452) EVAP PRESSURE SENSOR LOW INPUT" />
+    <tableblob address="92914" name="(P0453) EVAP PRESSURE SENSOR HIGH INPUT" />
+    <tableblob address="92915" name="(P0451) EVAP PRESSURE SENSOR RANGE/PERF" />
+    <tableblob address="92916" name="(P0851) NEUTRAL SWITCH INPUT LOW" />
+    <tableblob address="92917" name="(P0182) FUEL TEMP SENSOR A LOW INPUT" />
+    <tableblob address="92918" name="(P0183) FUEL TEMP SENSOR A HIGH INPUT" />
+    <tableblob address="92919" name="(P0181) FUEL TEMP SENSOR A RANGE/PERF" />
+    <tableblob address="9291A" name="(P0852) NEUTRAL SWITCH INPUT HIGH" />
+    <!--<table address="9291B" name="(P1492) EGR SOLENOID SIGNAL 1 MALFUNCTION (LOW)" />-->
+    <!--<table address="9291C" name="(P1493) EGR SOLENOID SIGNAL 1 MALFUNCTION (HIGH)" />-->
+    <!--<table address="9291D" name="(P1494) EGR SOLENOID SIGNAL 2 MALFUNCTION (LOW)" />-->
+    <!--<table address="9291E" name="(P1495) EGR SOLENOID SIGNAL 2 MALFUNCTION (HIGH)" />-->
+    <!--<table address="9291F" name="(P1496) EGR SIGNAL 3 CIRCUIT LOW" />-->
+    <!--<table address="92920" name="(P1497) EGR SOLENOID SIGNAL 3 MALFUNCTION (HIGH)" />-->
+    <!--<table address="92921" name="(P1498) EGR SIGNAL 4 CIRCUIT LOW" />-->
+    <!--<table address="92922" name="(P1499) EGR SIGNAL 4 CIRCUIT HIGH" />-->
+    <tableblob address="92923" name="(P0506) IDLE CONTROL RPM LOWER THAN EXPECTED" />
+    <tableblob address="92924" name="(P0507) IDLE CONTROL RPM HIGH THAN EXPECTED" />
+    <tableblob address="92925" name="(P0011) CAMSHAFT POS. - TIMING OVER-ADVANCED 1" />
+    <tableblob address="92926" name="(P0021) CAMSHAFT POS. - TIMING OVER-ADVANCED 2" />
+    <tableblob address="92927" name="(P1400) FUEL TANK PRESSURE SOL. LOW" />
+    <tableblob address="92928" name="(P1420) FUEL TANK PRESSURE SOL. HIGH INPUT" />
+    <tableblob address="92929" name="(P0458) EVAP PURGE VALVE CIRCUIT LOW" />
+    <tableblob address="9292A" name="(P0459) EVAP PURGE VALVE CIRCUIT HIGH" />
+    <tableblob address="9292B" name="(P1443) VENT CONTROL SOLENOID FUNCTION PROBLEM" />
+    <tableblob address="9292C" name="(P0447) EVAP VENT CONTROL CIRCUIT OPEN" />
+    <tableblob address="9292D" name="(P0448) EVAP VENT CONTROL CIRCUIT SHORTED" />
+    <tableblob address="9292E" name="(P0141) REAR O2 SENSOR MALFUNCTION" />
+    <!--<table address="9292F" name="(P0133) FRONT O2 SENSOR SLOW RESPONSE" />-->
+    <tableblob address="92930" name="(P0139) REAR O2 SENSOR SLOW RESPONSE" />
+    <tableblob address="92931" name="(P1152) FRONT O2 SENSOR RANGE/PERF LOW B1 S1" />
+    <tableblob address="92932" name="(P1153) FRONT O2 SENSOR RANGE/PERF HIGH B1 S1" />
+    <!--<table address="92933" name="(P0174) SYSTEM TOO LEAN B2" />-->
+    <!--<table address="92934" name="(P0175) SYSTEM TOO RICH B2" />-->
+    <tableblob address="92935" name="(P0420) CAT EFFICIENCY BELOW THRESHOLD" />
+    <tableblob address="92936" name="(P0442) EVAP LEAK DETECTED (SMALL)" />
+    <tableblob address="92937" name="(P0456) EVAP LEAK DETECTED (VERY SMALL)" />
+    <!--<table address="92938" name="(P0400) EGR FLOW" />-->
+    <tableblob address="92939" name="(P0171) SYSTEM TOO LEAN" />
+    <tableblob address="9293A" name="(P0172) SYSTEM TOO RICH" />
+    <tableblob address="9293B" name="(P0301) MISFIRE CYLINDER 1" />
+    <tableblob address="9293C" name="(P0302) MISFIRE CYLINDER 2" />
+    <tableblob address="9293D" name="(P0303) MISFIRE CYLINDER 3" />
+    <tableblob address="9293E" name="(P0304) MISFIRE CYLINDER 4" />
+    <!--<table address="9293F" name="(P0305) MISFIRE CYLINDER 5" />-->
+    <!--<table address="92940" name="(P0306) MISFIRE CYLINDER 6" />-->
+    <tableblob address="92941" name="(P0457) EVAP LEAK DETECTED (FUEL CAP)" />
+    <tableblob address="92942" name="(P0000) PASS CODE (NO DTC DETECTED)_" />
+    <tableblob address="92943" name="(P0000) PASS CODE (NO DTC DETECTED)_" />
+    <tableblob address="92944" name="(P0137) REAR O2 SENSOR LOW VOLTAGE" />
+    <tableblob address="92945" name="(P0131) FRONT O2 SENSOR LOW INPUT" />
+    <!--<table address="92946" name="(P0151) O2 SENSOR CIRCUIT LOW B2 S1" />-->
+    <tableblob address="92947" name="(P0132) FRONT O2 SENSOR HIGH INPUT" />
+    <!--<table address="92948" name="(P0152) O2 SENSOR CIRCUIT HIGH B2 S1" />-->
+    <tableblob address="92949" name="(P0138) REAR O2 SENSOR HIGH VOLTAGE" />
+    <!--<table address="9294A" name="(P0153) O2 SENSOR CIRCUIT SLOW RESPONSE B2 S1" />-->
+    <tableblob address="9294B" name="(P0112) IAT SENSOR LOW INPUT" />
+    <tableblob address="9294C" name="(P0113) IAT SENSOR HIGH INPUT" />
+    <tableblob address="9294D" name="(P0111) IAT SENSOR RANGE/PERF" />
+    <tableblob address="9294E" name="(P0038) REAR O2 SENSOR HIGH INPUT" />
+    <tableblob address="9294F" name="(P0032) FRONT O2 SENSOR HIGH INPUT" />
+    <tableblob address="92950" name="(P0037) REAR O2 SENSOR LOW INPUT" />
+    <tableblob address="92951" name="(P0031) FRONT O2 SENSOR LOW INPUT" />
+    <tableblob address="92952" name="(P0107) MAP SENSOR LOW INPUT" />
+    <tableblob address="92953" name="(P0108) MAP SENSOR HIGH INPUT" />
+    <!--<table address="92954" name="(P1154) O2 SENSOR RANGE/PERF LOW B2 S1" />-->
+    <!--<table address="92955" name="(P1155) O2 SENSOR RANGE/PERF HIGH B2 S1" />-->
+    <!--<table address="92956" name="(P0052) HO2S CIRCUIT HIGH B2 S1" />-->
+    <!--<table address="92957" name="(P0051) HO2S CIRCUIT LOW B2 S1" />-->
+    <tableblob address="92958" name="(P0128) THERMOSTAT MALFUNCTION" />
+    <tableblob address="92959" name="(P1491) PCV (BLOWBY) FUNCTION PROBLEM" />
+    <tableblob address="9295A" name="(P1560) BACK-UP VOLTAGE MALFUNCTION" />
+    <!--<table address="9295B" name="(P0562) SYSTEM VOLTAGE LOW" />-->
+    <!--<table address="9295C" name="(P0563) SYSTEM VOLTAGE HIGH" />-->
+    <tableblob address="9295D" name="(P0245) WASTEGATE SOLENOID A LOW" />
+    <tableblob address="9295E" name="(P0246) WASTEGATE SOLENOID A HIGH" />
+    <tableblob address="9295F" name="(P0244) WASTEGATE SOLENOID A RANGE/PERF" />
+    <!--<table address="92960" name="(P0502) VEHICLE SPEED SENSOR LOW INPUT" />-->
+    <tableblob address="92961" name="(P0230) FUEL PUMP PRIMARY CIRCUIT" />
+    <tableblob address="92962" name="(P0068) MAP SENSOR RANGE/PERF" />
+    <tableblob address="92963" name="(P0101) MAF SENSOR RANGE/PERF" />
+    <!--<table address="92964" name="(P0154) O2 SENSOR CIRCUIT OPEN B2 S1" />-->
+    <tableblob address="92965" name="(P0134) FRONT O2 SENSOR NO ACTIVITY" />
+    <!--<table address="92966" name="(P0050) HO2S CIRCUIT RANGE/PERF B2 S1" />-->
+    <tableblob address="92967" name="(P0030) FRONT O2 SENSOR RANGE/PERF" />
+    <!--<table address="92968" name="(P0503) VEHICLE SPEED SENSOR INTERMITTENT" />-->
+    <!--<table address="92969" name="(P0159) O2 SENSOR CIRCUIT SLOW RESPONSE B2 S2" />-->
+    <!--<table address="9296A" name="(P0057) HO2S CIRCUIT LOW B2 S2" />-->
+    <!--<table address="9296B" name="(P0058) HO2S CIRCUIT HIGH B2 S2" />-->
+    <!--<table address="9296C" name="(P0157) O2 SENSOR CIRCUIT LOW B2 S2" />-->
+    <!--<table address="9296D" name="(P0158) O2 SENSOR CIRCUIT HIGH B2 S2" />-->
+    <tableblob address="9296E" name="(P2109) TPS A MINIMUM STOP PERF" />
+    <tableblob address="9296F" name="(P0222) TPS B LOW INPUT" />
+    <tableblob address="92970" name="(P0223) TPS B HIGH INPUT" />
+    <tableblob address="92971" name="(P1160) ABNORMAL RETURN SPRING" />
+    <tableblob address="92972" name="(P2102) THROTTLE ACTUATOR CIRCUIT LOW" />
+    <tableblob address="92973" name="(P2103) THROTTLE ACTUATOR CIRCUIT HIGH" />
+    <tableblob address="92974" name="(P2101) THROTTLE ACTUATOR CIRCUIT RANGE/PERF" />
+    <tableblob address="92975" name="(P2096) POST CATALYST TOO LEAN B1" />
+    <tableblob address="92976" name="(P0638) THROTTLE ACTUATOR RANGE/PERF" />
+    <tableblob address="92977" name="(P0607) CONTROL MODULE PERFORMANCE" />
+    <tableblob address="92978" name="(P2138) TPS D/E VOLTAGE" />
+    <tableblob address="92979" name="(P2127) TPS E CIRCUIT LOW INPUT" />
+    <tableblob address="9297A" name="(P2128) TPS E CIRCUIT HIGH INPUT" />
+    <tableblob address="9297B" name="(P2122) TPS D CIRCUIT LOW INPUT" />
+    <tableblob address="9297C" name="(P2123) TPS D CIRCUIT HIGH INPUT" />
+    <tableblob address="9297D" name="(P2135) TPS A/B VOLTAGE" />
+    <tableblob address="9297E" name="(P2097) POST CATALYST TOO RICH B1" />
+    <!--<table address="9297F" name="(P0600) SERIAL COMMUNICATION LINK" />-->
+    <tableblob address="92980" name="(P0390) CAMSHAFT POS. SENSOR B BANK 2" />
+    <tableblob address="92981" name="(P0365) CAMSHAFT POS. SENSOR B BANK 1" />
+    <tableblob address="92982" name="(P0345) CAMSHAFT POS. SENSOR A BANK 2" />
+    <tableblob address="92983" name="(P0340) CAMSHAFT POS. SENSOR A MALFUNCTION" />
+    <tableblob address="92984" name="(P0605) CONTROL MODULE ROM ERROR" />
+    <tableblob address="92985" name="(P2095) OCV SOLENOID B2 CIRCUIT SHORT" />
+    <tableblob address="92986" name="(P2094) OCV SOLENOID B2 CIRCUIT OPEN" />
+    <tableblob address="92987" name="(P2091) OCV SOLENOID B1 CIRCUIT SHORT" />
+    <tableblob address="92988" name="(P2090) OCV SOLENOID B1 CIRCUIT OPEN" />
+    <tableblob address="92989" name="(P2093) OCV SOLENOID A2 CIRCUIT SHORT" />
+    <tableblob address="9298A" name="(P2092) OCV SOLENOID A2 CIRCUIT OPEN" />
+    <tableblob address="9298B" name="(P2089) OCV SOLENOID A1 CIRCUIT SHORT" />
+    <tableblob address="9298C" name="(P2088) OCV SOLENOID A1 CIRCUIT OPEN" />
+    <!--<table address="9298D" name="(P0197) OIL TEMP SENSOR LOW" />-->
+    <!--<table address="9298E" name="(P2099) POST CATALYST TOO RICH B2" />-->
+    <!--<table address="9298F" name="(P2098) POST CATALYST TOO LEAN B2" />-->
+    <!--<table address="92990" name="(P0700) TRANSMISSION CONTROL SYSTEM" />-->
+    <!--<table address="92991" name="(P0028) OSV SOLENOID VALVE CIRCUIT RANGE/PERF B2" />-->
+    <!--<table address="92992" name="(P0083) INTAKE VALVE CONTROL HIGH (BANK 2)" />-->
+    <!--<table address="92993" name="(P0082) INTAKE VALVE CONTROL LOW (BANK 2)" />-->
+    <!--<table address="92994" name="(P0026) OSV SOLENOID VALVE CIRCUIT RANGE/PERF B1" />-->
+    <!--<table address="92995" name="(P0077) INTAKE VALVE CONTROL HIGH (BANK 1)" />-->
+    <!--<table address="92996" name="(P0076) INTAKE VALVE CIRCUIT LOW (BANK 1)" />-->
+    <!--<table address="92997" name="(P0196) OIL TEMP SENSOR RANGE/PERF" />-->
+    <!--<table address="92998" name="(P0198) OIL TEMP SENSOR HIGH" />-->
+    <tableblob address="92999" name="(P2004) TGV - INTAKE MANIFOLD RUNNER 1 STUCK OPEN" />
+    <tableblob address="9299A" name="(P2006) TGV - INTAKE MANIFOLD RUNNER 1 STUCK CLOSED" />
+    <tableblob address="9299B" name="(P2005) TGV - INTAKE MANIFOLD RUNNER 2 STUCK OPEN" />
+    <tableblob address="9299C" name="(P2007) TGV - INTAKE MANIFOLD RUNNER 2 STUCK CLOSED" />
+    <!--<table address="9299D" name="(P2227) BARO. PRESSURE CIRCUIT RANGE/PERF" />-->
+    <tableblob address="9299E" name="(P0126) INSUFFICIENT COOLANT TEMP (OPERATION)" />
+    <!--<table address="9299F" name="(P2229) BARO. PRESSURE CIRCUIT HIGH INPUT" />-->
+    <!--<table address="929A0" name="(P2228) BARO. PRESSURE CIRCUIT LOW INPUT" />-->
+    <tableblob address="929A1" name="(P2016) TGV - INTAKE MANIFOLD RUNNER 1 POS. SENSOR LOW" />
+    <tableblob address="929A2" name="(P2017) TGV - INTAKE MANIFOLD RUNNER 1 POS. SENSOR HIGH" />
+    <tableblob address="929A3" name="(P2021) TGV - INTAKE MANIFOLD RUNNER 2 POS. SENSOR LOW" />
+    <tableblob address="929A4" name="(P2022) TGV - INTAKE MANIFOLD RUNNER 2 POS. SENSOR HIGH" />
+    <tableblob address="929A5" name="(P2009) TGV - INTAKE MANIFOLD RUNNER 1 CIRCUIT LOW" />
+    <tableblob address="929A6" name="(P2012) TGV - INTAKE MANIFOLD RUNNER 2 CIRCUIT LOW" />
+    <tableblob address="929A7" name="(P2008) TGV - INTAKE MANIFOLD RUNNER 1 CIRCUIT OPEN" />
+    <tableblob address="929A8" name="(P2011) TGV - INTAKE MANIFOLD RUNNER 2 CIRCUIT OPEN" />
+    <tableblob address="929A9" name="(P2444) SECONDARY AIR PUMP 1 STUCK ON B1" />
+    <tableblob address="929AA" name="(P0411) SECONDARY AIR PUMP INCORRECT FLOW" />
+    <tableblob address="929AB" name="(P0410) SECONDARY AIR PUMP SYSTEM" />
+    <tableblob address="929AC" name="(P2431) SECONDARY AIR PUMP CIRCUIT RANGE/PERF" />
+    <tableblob address="929AD" name="(P2433) SECONDARY AIR PUMP CIRCUIT HIGH" />
+    <tableblob address="929AE" name="(P2432) SECONDARY AIR PUMP CIRCUIT LOW" />
+    <tableblob address="929AF" name="(P0413) SECONDARY AIR PUMP A OPEN" />
+    <tableblob address="929B0" name="(P0418) SECONDARY AIR PUMP RELAY A" />
+    <tableblob address="929B1" name="(P0140) REAR O2 SENSOR NO ACTIVITY" />
+    <!--<table address="929B2" name="(P0160) O2 SENSOR NO ACTIVITY B2 S2" />-->
+    <tableblob address="929B3" name="(P0414) SECONDARY AIR PUMP A SHORTED" />
+    <tableblob address="929B4" name="(P1418) SECONDARY AIR PUMP CIRCUIT SHORTED" />
+    <tableblob address="929B5" name="(P0018) CRANKSHAFT/CAMSHAFT CORRELATION 2A" />
+    <tableblob address="929B6" name="(P0016) CRANKSHAFT/CAMSHAFT CORRELATION 1A" />
+    <tableblob address="929B7" name="(P1410) SECONDARY AIR PUMP VALVE STUCK OPEN" />
+    <tableblob address="929B8" name="(P2443) SECONDARY AIR PUMP 2 STUCK CLOSED" />
+    <tableblob address="929B9" name="(P2442) SECONDARY AIR PUMP VALVE 2 STUCK OPEN" />
+    <tableblob address="929BA" name="(P2441) SECONDARY AIR PUMP VALVE 1 STUCK CLOSED" />
+    <tableblob address="929BB" name="(P2440) SECONDARY AIR PUMP VALVE 1 STUCK OPEN" />
+    <tableblob address="929BC" name="(P0417) SECONDARY AIR PUMP B SHORTED" />
+    <tableblob address="929BD" name="(P0416) SECONDARY AIR PUMP B OPEN" />
+    <tableblob address="929BE" name="(P0024) EXHAUST AVCS SYSTEM 2 RANGE/PERF" />
+    <tableblob address="929BF" name="(P0014) EXHAUST AVCS SYSTEM 1 RANGE/PERF" />
+    <tableblob address="929C0" name="(P1616) SBDS INTERACTIVE CODES" />
+    <tableblob address="929C1" name="(P1520) IMRC CIRCUIT MALFUNCTION" />
+    <tableblob address="929C2" name="(P1519) IMRC STUCK CLOSED" />
+    <tableblob address="929C3" name="(P0441) EVAP INCORRECT PURGE FLOW" />
+    <tableblob address="929C4" name="(P2419) EVAP SWITCHING VALVE LOW" />
+    <tableblob address="929C5" name="(P2420) EVAP SWITCHING VALVE HIGH" />
+    <!--<table address="929C6" name="(P0091) FUEL PRESSURE REGULATOR 1 CONTROL LOW" />-->
+    <!--<table address="929C7" name="(P0092) FUEL PRESSURE REGULATOR 1 CONTROL HIGH" />-->
+    <tableblob address="929C8" name="(P0019) CRANK/CAM TIMING B FAILURE 2" />
+    <tableblob address="929C9" name="(P0017) CRANK/CAM TIMING B FAILURE 1" />
+</rom>
