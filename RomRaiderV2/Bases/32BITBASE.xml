@@ -25,28 +25,6 @@ These definitions are created for FREE without any sort of guarantee. The develo
         <xaxis name="Engine Speed" scaling="RPM" elements="16" />
         <yaxis name="Battery Volts" scaling="volts" elements="5" />
     </table3d>
-    <!-- A/F #1 Correction Tables
-	RomRaider discussion thread: 
-	http://www.romraider.com/forum/viewtopic.php?f=34&t=8746
-	-->
-    <table2d name="A/F #1 Correction Limits" category="ALPHA A/F #1 Correction Tables" level="1" scaling="af1correction">
-        <description>These values limit the applied A/F #1 (Front O2 Sensor) feedback correction.</description>
-        <staticyaxis name="" elements="2">
-            <data>Minimum Limit</data>
-            <data>Maximum Limit</data>
-        </staticyaxis>
-    </table2d>
-    <table2d name="A/F #1 Correction Proportional Gain Determination" category="ALPHA A/F #1 Correction Tables" level="1" scaling="af1propgain">
-        <description>This table is used to determine the A/F #1 (Front O2 Sensor) proportional feedback gain using the following equation. Gain ~= ( - 2 * value ) / ( 1 - value ). 
-		When the lookup for this table is lower than the "Lookup Low Limit", the table value is superceded by the "Low Lookup Constant".</description>
-        <yaxis name="A/F #1 Correction Proportional Gain Determination Lookup" elements="13" scaling="rawecuvalue" />
-    </table2d>
-    <table1d name="A/F #1 Correction Proportional Gain Determination Lookup Low Limit" category="ALPHA A/F #1 Correction Tables" level="1" scaling="rawecuvalue">
-        <description>When A/F #1 Correction Proportional Gain Determination Lookup is lower than this limit, the "Low Lookup Constant" is used in place of the 2D determination table.</description>
-    </table1d>
-    <table1d name="A/F #1 Correction Proportional Gain Determination Low Lookup Constant" category="ALPHA A/F #1 Correction Tables" level="1" scaling="rawecuvalue">
-        <description>This value is used in place of the 2D determination table when A/F #1 Correction Proportional Gain Determination Lookup is lower than the "Lookup Low Limit"</description>
-    </table1d>
     <!-- Per Gear Requested Torque Limits
 	RomRaider discussion thread:
 	http://www.romraider.com/forum/viewtopic.php?f=34&t=7048
