@@ -22,9 +22,10 @@ These definitions are created for FREE without any sort of guarantee. The develo
 	http://www.romraider.com/forum/viewtopic.php?f=34&t=5603
 	-->
 	
-	<scaling name="igndwell" units="ms" toexpr="x*0.004" frexpr="x/0.004" format="%.2f" min="0" max="10" inc="0.25" storagetype="uint16" endian="big"/>
+	<scaling name="IgnitionDwell(ms)" units="Ignition Dwell (ms)" toexpr="x*.004" frexpr="x/.004" format="%.3f" min="0" max="25" inc=".01" storagetype="uint16" endian="big" />
 
-	<table name="Ignition Dwell" category="ALPHA Ignition Dwell" type="3D" level="1" scaling="igndwell">
+	<table name="Ignition Dwell" category="ALPHA Ignition Dwell" type="3D" level="1" scaling="IgnitionDwell(ms)">
+		<description>UNVERIFIED - This table defines the amount of time before a spark event that the ECU needs to start charging the ignition system. Since the time needed to charge up the ignition doesn't change as engine speed increases, you need to start that event sooner to compensate for the piston moving faster.</description>
 		<table type="X Axis" name="Engine Speed" scaling="RPM" elements="16"/>
 		<table type="Y Axis" name="Battery Volts" scaling="volts" elements="5"/>
 	</table>
@@ -415,7 +416,6 @@ These definitions are created for FREE without any sort of guarantee. The develo
   <scaling name="g/rev" units="g/rev" toexpr="x" frexpr="x" format="%.2f" min="0" max="5.00" inc=".01" storagetype="float" endian="big" />
   <scaling name="g/s" units="g/s" toexpr="x" frexpr="x" format="%.2f" min="0" max="400.00" inc=".1" storagetype="float" endian="big" />
   <scaling name="IgnitionAdvanceMultiplier(IAM)" units="Ignition Advance Multiplier (IAM)" toexpr="x" frexpr="x" format="%.4f" min="-1.00" max="1.00" inc=".0625" storagetype="float" endian="big" />
-  <scaling name="IgnitionDwell(ms)" units="Ignition Dwell (ms)" toexpr="x*.004" frexpr="x/.004" format="%.3f" min="0" max="25" inc=".01" storagetype="uint16" endian="big" />
   <scaling name="IgnitionTimingCorrection(degrees)" units="Ignition Timing Correction (degrees)" toexpr="(x*.3515625)-45" frexpr="(x+45)/.3515625" format="%.2f" min="-8.09" max="15.12" inc=".2" storagetype="uint8" endian="big" />
   <scaling name="Initial/MaxWastegateDutyCompensation(%relative)" units="Initial/Max Wastegate Duty Compensation (% relative)" toexpr="(x*.78125)-100" frexpr="(x+100)/.78125" format="%.1f" min="-100.00" max="100.00" inc=".4" storagetype="uint8" endian="big" />
   <scaling name="InitialAfterstartOffset" units="Initial Afterstart Offset" toexpr="x*.0002441406" frexpr="x/.0002441406" format="%.4f" min="0.05" max="1.25" inc=".001" storagetype="uint16" endian="big" />
@@ -4696,11 +4696,6 @@ These definitions are created for FREE without any sort of guarantee. The develo
   <table name="Idle Speed Target F (AT)" category="Idle Control" type="2D" level="4" scaling="EngineSpeed(RPM)">
     <table name="Coolant Temperature" type="Y Axis" elements="16" scaling="DegreesF" />
     <description>Idle speed target at different coolant temperatures.</description>
-  </table>
-  <table name="Ignition Dwell" category="EXPERIMENTAL - Untested" type="3D" level="1" scaling="IgnitionDwell(ms)">
-    <table name="Engine Speed" type="X Axis" elements="16" scaling="RPM" />
-    <table name="Battery" type="Y Axis" elements="5" scaling="volts" />
-    <description>UNVERIFIED - This table defines the amount of time before a spark event that the ECU needs to start charging the ignition system. Since the time needed to charge up the ignition doesn't change as engine speed increases, you need to start that event sooner to compensate for the piston moving faster.</description>
   </table>
   <table name="Checksum Fix" category="Checksum Fix" type="1D" scaling="ChecksumFix" description="The checksum issue will be fixed automatically when the rom is saved (regardless of check box)." />
   <table name="Force Pass Readiness Monitors" category="OBD-II" type="1D" scaling="ForcePassReadinessMonitors" description="Off-road and racing use only. Must NEVER be enabled on vehicles that will be driven on public roads." />
