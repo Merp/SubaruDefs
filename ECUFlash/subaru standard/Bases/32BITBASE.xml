@@ -23,12 +23,23 @@ These definitions are created for FREE without any sort of guarantee. The develo
   	-->
 
   	<table name="Low Pulse Width Fuel Injector Compensation" category="ALPHA Low PW Injector Comp" type="2D" level="1" scaling="InjectorPulseWidthCompensation">
-      <table name="IPW compensation %" type="X Axis" elements="8" scaling="BasePulseWidth(ms)"/>
+  		<description>This compensation is applied to the injector pulsewidth when the RPM and IPW thresholds are met. It is used to compensate for nonlinear injector response at low pulsewidth. This portion of the response is known as the 'knee'</description> 
+      <table name="Injector Pulse Width" type="Y Axis" elements="8" scaling="BasePulseWidth(ms)"/>
    </table>
    
-      <table name="Low pulse width fuel injector compensation maximum RPM" category="ALPHA Low PW Injector Comp" type="1D" level="1" scaling="RPM"/>
+      <table name="Low pulse width fuel injector compensation maximum RPM" category="ALPHA Low PW Injector Comp" type="2D" level="1" scaling="RPM">
+      	<description>This is the maximum RPM that the Low Pulse Width Fuel Injector Compensation is applied</description>
+      	<table name="" type="Static Y Axis"elements="1">
+   			<data>Maximum RPM Limit</data>
+   		</table>
+      </table>
 
-   <table name="Low pulse width fuel injector compensation maximum IPW" category="ALPHA Low PW Injector Comp" type="1D" level="1" scaling="BasePulseWidth(ms)"/>
+   <table name="Low pulse width fuel injector compensation maximum IPW" category="ALPHA Low PW Injector Comp" type="2D" level="1" scaling="BasePulseWidth(ms)">
+   		<description>This is the maximum IPW that the Low Pulse Width Fuel Injector Compensation is applied</description>
+   		<table name="" type="Static Y Axis" elements="1">
+   			<data>Maximum IPW Limit</data>
+   		</table>
+      </table>
 
 	<!-- Ignition Dwell Table
 	RomRaider discussion thread: 
