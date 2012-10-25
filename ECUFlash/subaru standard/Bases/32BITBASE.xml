@@ -17,13 +17,141 @@ These definitions are created for FREE without any sort of guarantee. The develo
     <make>Subaru</make>
   </romid>
 
+  	<!-- MERPMOD ALPHA DEFS -->
+
+  	<scaling name="FuelingMode" storagetype="bloblist">
+    <data name="MAF SENSOR" value="00000001" />
+    <data name="SPEED DENSITY" value="00000002" />
+    <data name="MAF/SD BLENDING" value="00000003" />
+  </scaling>
+  <scaling name="LoadFilter" units="Smoothing Factor (%)" toexpr="(x*(-100))+100" frexpr="(x-100)/(-100)" format="%.1f" min="0" max="100" inc="5" storagetype="float" endian="big"/>
+  <scaling name="VE(%)" units="VE(%)" toexpr="x*.0000457763672" frexpr="x/.0000457763672" format="%.2f" min="0.3" max="1.1" inc="0.025" storagetype="uint16" endian="big"/>
+  <scaling name="VEcomp" units="VE Compensation" toexpr="x*0.000061037" frexpr="x/.000061037" format="%.2f" min="0" max="2" inc="0.2" storagetype="uint16" endian="big"/>
+  <scaling name="engine displacement" units="cc" toexpr="x" frexpr="x" format="%.2f" min="0" max="1" inc="0.01" storagetype="float" endian="big"/>
+  <scaling name="celflashcounter" units="counts" toexpr="x" frexpr="x" format="%.0f" min="0" max="1" inc="1" storagetype="uint8" endian="big"/>
+  <scaling name="fbkcthreshold" units="degrees" toexpr="x" frexpr="x" format="%.1f" min="-128" max="-127" inc="0.5" storagetype="float" endian="big"/>
+  <scaling name="Blending(%)" units="Blending(%)" toexpr="x*.003921568627*100" frexpr="(x/100)/0.003921568627" format="%.2f" min="0" max="100" inc="0.025" storagetype="uint8" endian="big"/>
+  <scaling name="sdc" units="x" toexpr="x" frexpr="x" format="%.6f" min="0" max="0.0000000000000001" inc="0.00001" storagetype="float" endian="big"/>
+  <scaling name="psirelativesealevelSD" units="psi relative sea level" toexpr="(x-760)*.01933677" frexpr="(x/.01933677)+760" format="%.2f" min="-11.80" max="25" inc=".01" storagetype="float" endian="big" />
+  <scaling name="psiabsoluteSD" units="psi absolute" toexpr="(x)*.01933677" frexpr="(x/.01933677)" format="%.2f" min="0" max="40" inc=".01" storagetype="float" endian="big" />
+  <scaling name="VehicleSpeed(MPH)SD" units="Vehicle Speed (MPH)" toexpr="x*.621" frexpr="x/.621" format="%.0f" min="0" max="1" inc="1" storagetype="float" endian="big" />
+  <scaling name="EngineSpeed(RPM)SD" units="Engine Speed (RPM)" toexpr="x" frexpr="x" format="%.0f" min="0" max="2000.00" inc="50" storagetype="float" endian="big" />
+  <scaling name="RPMSD" units="RPMSD" toexpr="x" frexpr="x" format="%.0f" min="0" max="10000.00" inc="50" storagetype="float" endian="big" />
+  <scaling name="GearRatio" units="ratio" toexpr="x" frexpr="x" format="%.4f" min="0" max="4" inc="0.1" storagetype="float" endian="big" />
+  
+  <table name="FBKC Flash Threshold" category="Merp CEL Flash" offset="0" type="2D" level="2" scaling="fbkcthreshold">
+    <description>FBKC Threshold to cause CEL flash</description>
+    <table type="Static Y Axis" elements="1">
+      <data>FBKC Threshold</data>
+    </table>
+  </table>
+  
+  <table name="FBKC Flash Speed" category="Merp CEL Flash" offset="0" type="2D" level="2" scaling="celflashcounter">
+    <description>Determines FBKC Cel flash speed, lower is faster</description>
+    <table type="Static Y Axis" elements="1">
+      <data>FBKC Flash Speed</data>
+    </table>
+  </table>
+  
+  <table name="FBKC Flash Count" category="Merp CEL Flash" offset="0" type="2D" level="2" scaling="celflashcounter">
+    <description>Number of flashes per FBKC event</description>
+    <table type="Static Y Axis" elements="1">
+      <data>FBKC Flash Count</data>
+    </table>
+  </table>
+  
+  <table name="IAM Recall Flash Speed" category="Merp CEL Flash" offset="0" type="2D" level="2" scaling="celflashcounter">
+    <description>IAM Recall Flash Speed</description>
+    <table type="Static Y Axis" elements="1">
+      <data>Determines IAM Recall flash speed, lower is faster</data>
+    </table>
+  </table>
+  <table name="Rev Limit (Redline)" category="Merp Rev Limit" offset="0" type="2D" level="4" scaling="EngineSpeed(RPM)SD">
+    <description>These are the engine speeds at which the rev limiter is engaged and disengaged.</description>
+    <table name="Rev Limit Rev Limit" type="Static Y Axis" elements="2">
+      <data>Cut Fuel Above</data>
+      <data>Hysteresis (RPM)</data>
+    </table>
+  </table>
+  <table name="Rev Limit (Launch Control)" category="Merp Rev Limit" offset="0" type="2D" level="4" scaling="EngineSpeed(RPM)SD">
+    <description>These are the engine speeds at which the rev limiter is engaged and disengaged when the clutch is pressed and vehicle speed is below the FFS threshold.</description>
+    <table name="Launch Control Rev Limit" type="Static Y Axis" elements="2">
+      <data>Cut Fuel Above</data>
+      <data>Hysteresis (RPM)</data>
+    </table>
+  </table>
+  <table name="Rev Limit (Flat Foot Shift Threshold)" category="Merp Rev Limit" offset="0" type="2D" level="4" scaling="VehicleSpeed(MPH)SD">
+    <description>Above this vehicle speed, the FFS rev limit is in effect.  Below this speed, the Launch Control fuel rev limit is in effect.</description>
+    <table name="Launch Control Rev Limit" type="Static Y Axis" elements="1">
+      <data>Threshold</data>
+    </table>
+  </table>
+  <table name="Flat Foot Shift Delta" category="Merp Rev Limit" offset="0" type="2D" level="4" scaling="EngineSpeed(RPM)SD">
+    <description>This is the delta from the calculated FFS rev limit that will be used during ffs. If the algorithm calculates a limit of 4500 RPM and you set a delta of -50 RPM, the rev limit used while FFS is engaged becomes 4450 RPM</description>
+    <table name="Flat Foot Shift RPM Delta" type="Static Y Axis" elements="1">
+      <data>Delta</data>
+    </table>
+  </table>
+  <table name="Gear Ratios" category="Merp Rev Limit" offset="0" type="2D" level="2" scaling="GearRatio">
+    <description>Transmission gear ratios</description>
+    <table type="Static Y Axis" elements="6">
+      <data>1st Gear</data>
+      <data>2nd Gear</data>
+      <data>3rd Gear</data>
+      <data>4th Gear</data>
+      <data>5th Gear</data>
+      <data>6th Gear</data>
+    </table>
+  </table>
+  
+  <table name="Speed Density Constant" category="Merp Speed Density" offset="0" type="2D" level="2" scaling="sdc">
+    <description>SD Constant</description>
+    <table type="Static Y Axis" elements="1">
+      <data>SD Constant</data>
+    </table>
+  </table>
+  
+  <table name="Engine Displacement" category="Merp Speed Density" offset="0" type="2D" level="2" scaling="engine displacement">
+    <description>Engine size in cc</description>
+    <table type="Static Y Axis" elements="1">
+      <data>Engine Displacement (cc)</data>
+    </table>
+  </table>
+
+  <table name="Speed Density Mode" category="Merp Speed Density" offset="0" type="1D" scaling="FuelingMode"/>
+  
+  
+  <table name="Volumetric Efficiency Table 1" category="Merp Speed Density" offset="C0" type="3D" level="2" scaling="VE(%)">
+    <description>This is the Volumetric efficiency of the engine.</description>
+    <table name="Manifold Pressure" offset="0" type="X Axis" elements="24" scaling="psirelativesealevelSD"/>
+    <table name="Engine Speed" offset="60" type="Y Axis" elements="24" scaling="RPMSD"/>
+  </table>
+  
+  <table name="Volumetric Efficiency Table 2" category="Merp Speed Density" offset="C0" type="3D" level="2" scaling="VE(%)">
+    <description>This is the Volumetric efficiency of the engine.</description>
+    <table name="Manifold Pressure" offset="0" type="X Axis" elements="24" scaling="psirelativesealevelSD"/>
+    <table name="Engine Speed" offset="60" type="Y Axis" elements="24" scaling="RPMSD"/>
+  </table>
+  
+    <table name="Atmospheric Pressure Compensation" category="Merp Speed Density" offset="38" type="3D" level="2" scaling="VEcomp">
+    <description>This is the Volumetric efficiency of the engine.</description>
+    <table name="Manifold Pressure" offset="0" type="X Axis" elements="7" scaling="psiabsoluteSD"/>
+    <table name="Atmospheric Pressure" offset="1C" type="Y Axis" elements="7" scaling="psiabsoluteSD"/>
+  </table>
+  
+  <table name="SD Blending Table" category="Merp Speed Density" offset="50" type="3D" level="2" scaling="Blending(%)">
+    <description>This is the amount of SD blended into the MAF output. Only active when in blending mode.</description>
+    <table name="Manifold Pressure" offset="0" type="X Axis" elements="10" scaling="psirelativesealevelSD"/>
+    <table name="Engine Speed" offset="28" type="Y Axis" elements="10" scaling="RPMSD"/>
+  </table>
+  
   <!-- Rolling Idle Tables -->
   
   <table name="Idle Rolling in Gear Limit A" type="1D" level="1" scaling="RPM"/>
   <table name="Idle Rolling in Gear Limit B" type="1D" level="1" scaling="RPM"/>
   <table name="Idle Rolling in Gear Limit C" type="1D" level="1" scaling="RPM"/>
   <table name="Idle Rolling in Gear Limit D" type="1D" level="1" scaling="RPM"/>
-  
+
   	<!-- Low pulse width injector tables
   	RomRaider discussion thread:
   	http://www.romraider.com/forum/viewtopic.php?f=25&t=8883
