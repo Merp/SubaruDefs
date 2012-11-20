@@ -82,19 +82,19 @@ Visit #RomRaider IRC Channel on FreeNode for support!
 If urgent, e-Mail or gChat to merrill@sharptuning.com
 
 SD Test
-*	Log RPM, Manifold Relative Pressure, and all "MerpMod SD" parameters.
+*	Log RPM, Manifold Relative Pressure, and all "MM SD" parameters.
 *	Log idle and normal driving.
 
 Rev Limit Test
-*	Log RPM and all "MerpMod" "LC", "Launch Control", "RevLimit Active", "Clutch Flags", and "Brake Flags" parameters.
+*	Log RPM and all "MM LC/Launch Control", "MM RevLimit Active", "MM Clutch Flags", and "MM Brake Flags" parameters.
 *	Log idle and test by fully pressing clutch, no brakes, and try to raise RPM over limit.
 
 FFS Test
-*	Log RPM and all "MerpMod" "FFS" parameters.
+*	Log RPM, "MM FFS", and "MM ** Flags" parameters.
 *	Log while driving. Hold throttle 100% in a higher gear and press clutch in. Release clutch when fueling resumes.
 
 CEL Test
-*	Log all "MerpMod" "Flags" parameters.
+*	Log all "MM ** Flags" parameters.
 *	With ignition on, test IAM recall: Press clutch and cruise control resume. Note behavior of CEL light.
 *	While driving, log RPM, Engine Load, FBKC, AF sensor 1 resistance, and "MerpMod CEL Signal". Note behavior of CEL light and compare to logs.
 
