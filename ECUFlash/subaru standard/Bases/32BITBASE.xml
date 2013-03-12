@@ -29,6 +29,11 @@ These definitions are created for FREE without any sort of guarantee. The develo
     <data name="Static" value="01" />
     <data name="Automatic" value="02" />
   </scaling>
+  <scaling name="LCFuelMode" storagetype="bloblist">
+    <data name="Disabled" value="01" />
+    <data name="Compensated" value="02" />
+    <data name="Locked" value="03" />
+  </scaling>
   <scaling name="af1res" units="ohms" toexpr="x" frexpr="x" format="%.1f" min="-128" max="-127" inc="0.5" storagetype="float" endian="big"/>
   <scaling name="LoadFilter" units="Smoothing Factor (%)" toexpr="(x*(-100))+100" frexpr="(x-100)/(-100)" format="%.1f" min="0" max="100" inc="5" storagetype="float" endian="big"/>
   <scaling name="VE(%)" units="VE(%)" toexpr="x*.0000457763672" frexpr="x/.0000457763672" format="%.2f" min="0.3" max="1.1" inc="0.025" storagetype="uint16" endian="big"/>
@@ -46,210 +51,211 @@ These definitions are created for FREE without any sort of guarantee. The develo
   <scaling name="RPMSD" units="RPMSD" toexpr="x" frexpr="x" format="%.0f" min="0" max="10000.00" inc="50" storagetype="float" endian="big" />
   <scaling name="GearRatio" units="ratio" toexpr="x" frexpr="x" format="%.4f" min="0" max="4" inc="0.1" storagetype="float" endian="big" />
   <scaling name="LoadFilter" units="Smoothing Factor (%)" toexpr="(x*(-100))+100" frexpr="(x-100)/(-100)" format="%.1f" min="0" max="100" inc="5" storagetype="float" endian="big"/>
+  <scaling name="EstimatedAir/FuelRatioAdditive" units="Estimated Air/Fuel Ratio (Additive)" toexpr="(14.7/(1+x*.0078125))-14.7" frexpr="(14.7/(x+14.7)-1)/.0078125" format="%.2f" min="-5" max="0" inc=".06" storagetype="uint8" endian="big" />
+  <scaling name="MapRatio" units="ratio" toexpr="x+1" frexpr="x-1" format="%.4f" min="0" max="4" inc="0.1" storagetype="float" endian="big" />
   
-  
-  <table name="Engine Load Smoothing Factor A" category="Merp Speed Density" offset="0" type="2D" level="2" scaling="LoadFilter">
+  <table name="Engine Load Smoothing Factor A" category="Merp Speed Density" type="2D" level="2" scaling="LoadFilter">
     <description>Engine Load Smoothing Factor A: Determines the amount of smoothing of the engine load parameter immediately after MAF/SD Calculation. Decreasing the smoothing factor may help with idle issues running pure speed density. DO NOT SET TO ZERO OR LOWER</description>
     <table type="Static Y Axis" elements="1">
       <data>Load Smoothing Factor A</data>
     </table>
   </table>
   
-  <table name="Engine Load Smoothing Factor B" category="Merp Speed Density" offset="0" type="2D" level="2" scaling="LoadFilter">
+  <table name="Engine Load Smoothing Factor B" category="Merp Speed Density" type="2D" level="2" scaling="LoadFilter">
     <description>Engine Load Smoothing Factor B: Determines the amount of smoothing of the engine load parameter immediately after MAF/SD Calculation. Decreasing the smoothing factor may help with idle issues running pure speed density. DO NOT SET TO ZERO OR LOWER</description>
     <table type="Static Y Axis" elements="1">
       <data>Load Smoothing Factor B</data>
     </table>
   </table>
   
-  <table name="Engine Load Smoothing Factor Alternate" category="Merp Speed Density" offset="0" type="2D" level="2" scaling="LoadFilter">
+  <table name="Engine Load Smoothing Factor Alternate" category="Merp Speed Density" type="2D" level="2" scaling="LoadFilter">
     <description>Engine Load Smoothing Factor Alternate: Determines the amount of smoothing of the engine load parameter immediately after MAF/SD Calculation. Decreasing the smoothing factor may help with idle issues running pure speed density. DO NOT SET TO ZERO OR LOWER</description>
     <table type="Static Y Axis" elements="1">
       <data>Load Smoothing Factor Alternate</data>
     </table>
   </table>
   
-  <table name="Engine Load Smoothing Factor Final" category="Merp Speed Density" offset="0" type="2D" level="2" scaling="LoadFilter">
+  <table name="Engine Load Smoothing Factor Final" category="Merp Speed Density" type="2D" level="2" scaling="LoadFilter">
     <description>Engine Load Smoothing Factor Final: Determines the amount of smoothing of the engine load parameter immediately after MAF/SD Calculation. Decreasing the smoothing factor may help with idle issues running pure speed density. DO NOT SET TO ZERO OR LOWER</description>
     <table type="Static Y Axis" elements="1">
       <data>Load Smoothing Factor Final</data>
     </table>
   </table>
 
-  <table name="FBKC Threshold" category="Merp CEL Flash" offset="0" type="2D" level="2" scaling="fbkcthreshold">
+  <table name="FBKC Threshold" category="Merp CEL Flash" type="2D" level="2" scaling="fbkcthreshold">
     <description>FBKC Threshold to cause CEL flash</description>
     <table type="Static Y Axis" elements="1">
       <data>FBKC Threshold</data>
     </table>
   </table>
 
-  <table name="FBKC Severe Knock Threshold" category="Merp CEL Flash" offset="0" type="2D" level="2" scaling="fbkcthreshold">
+  <table name="FBKC Severe Knock Threshold" category="Merp CEL Flash" type="2D" level="2" scaling="fbkcthreshold">
     <description>FBKC Threshold for to cause 'severe knock' CEL flash</description>
     <table type="Static Y Axis" elements="1">
       <data>FBKC Threshold</data>
     </table>
   </table>
 
-  <table name="FBKC Load Threshold" category="Merp CEL Flash" offset="0" type="2D" level="2" scaling="g/rev">
+  <table name="FBKC Load Threshold" category="Merp CEL Flash" type="2D" level="2" scaling="g/rev">
     <description>FBKC Load Threshold to cause CEL flash</description>
     <table type="Static Y Axis" elements="1">
       <data>FBKC Load Threshold</data>
     </table>
   </table>
 
-  <table name="FBKC Flash Speed" category="Merp CEL Flash" offset="0" type="2D" level="2" scaling="celflashcounter">
+  <table name="FBKC Flash Speed" category="Merp CEL Flash" type="2D" level="2" scaling="celflashcounter">
     <description>Determines FBKC Cel flash speed, lower is faster</description>
     <table type="Static Y Axis" elements="1">
       <data>FBKC Flash Speed</data>
     </table>
   </table>
   
-  <table name="FBKC Flash Count" category="Merp CEL Flash" offset="0" type="2D" level="2" scaling="celflashcounter">
+  <table name="FBKC Flash Count" category="Merp CEL Flash" type="2D" level="2" scaling="celflashcounter">
     <description>Number of flashes per FBKC event</description>
     <table type="Static Y Axis" elements="1">
       <data>FBKC Flash Count</data>
     </table>
   </table>
 
-  <table name="FBKC Severe Knock Flash Speed" category="Merp CEL Flash" offset="0" type="2D" level="2" scaling="celflashcounter">
+  <table name="FBKC Severe Knock Flash Speed" category="Merp CEL Flash" type="2D" level="2" scaling="celflashcounter">
     <description>Determines FBKC 'severe knock' Cel flash speed, lower is faster</description>
     <table type="Static Y Axis" elements="1">
       <data>FBKC Flash Speed</data>
     </table>
   </table>
   
-  <table name="FBKC Severe Knock Flash Count" category="Merp CEL Flash" offset="0" type="2D" level="2" scaling="celflashcounter">
+  <table name="FBKC Severe Knock Flash Count" category="Merp CEL Flash" type="2D" level="2" scaling="celflashcounter">
     <description>Number of flashes per 'severe knock' FBKC event</description>
     <table type="Static Y Axis" elements="1">
       <data>FBKC Flash Count</data>
     </table>
   </table>
 
-  <table name="EGT AF1 Resistance Threshold" category="Merp CEL Flash" offset="0" type="2D" level="2" scaling="af1res">
+  <table name="EGT AF1 Resistance Threshold" category="Merp CEL Flash" type="2D" level="2" scaling="af1res">
     <description>EGT Front O2 Resistance Threshold to cause CEL flash</description>
     <table type="Static Y Axis" elements="1">
       <data>EGT AF1 Resistance Threshold</data>
     </table>
   </table>
 
-  <table name="EGT Load Threshold" category="Merp CEL Flash" offset="0" type="2D" level="2" scaling="g/rev">
+  <table name="EGT Load Threshold" category="Merp CEL Flash" type="2D" level="2" scaling="g/rev">
     <description>EGT Load Threshold to cause CEL flash</description>
     <table type="Static Y Axis" elements="1">
       <data>EGT Load Threshold</data>
     </table>
   </table>
 
-  <table name="EGT Flash Speed" category="Merp CEL Flash" offset="0" type="2D" level="2" scaling="celflashcounter">
+  <table name="EGT Flash Speed" category="Merp CEL Flash" type="2D" level="2" scaling="celflashcounter">
     <description>Determines EGT Cel flash speed, lower is faster</description>
     <table type="Static Y Axis" elements="1">
       <data>EGT Flash Speed</data>
     </table>
   </table>
   
-  <table name="EGT Flash Count" category="Merp CEL Flash" offset="0" type="2D" level="2" scaling="celflashcounter">
+  <table name="EGT Flash Count" category="Merp CEL Flash" type="2D" level="2" scaling="celflashcounter">
     <description>Number of flashes per EGT event</description>
     <table type="Static Y Axis" elements="1">
       <data>EGT Flash Count</data>
     </table>
   </table>
 
-  <table name="ECT Flash Temperature Threshold" category="Merp CEL Flash" offset="0" type="2D" level="2" scaling="CoolantTemp(DegreesF)">
+  <table name="ECT Flash Temperature Threshold" category="Merp CEL Flash" type="2D" level="2" scaling="CoolantTemp(DegreesF)">
     <description>ECT Temperature Threshold to cause CEL flash</description>
     <table type="Static Y Axis" elements="1">
       <data>ECT Temperature Threshold</data>
     </table>
   </table>
 
-  <table name="ECT Flash Speed" category="Merp CEL Flash" offset="0" type="2D" level="2" scaling="celflashcounter">
+  <table name="ECT Flash Speed" category="Merp CEL Flash" type="2D" level="2" scaling="celflashcounter">
     <description>Determines ECT Cel flash speed, lower is faster</description>
     <table type="Static Y Axis" elements="1">
       <data>ECT Flash Speed</data>
     </table>
   </table>
   
-  <table name="ECT Flash Count" category="Merp CEL Flash" offset="0" type="2D" level="2" scaling="celflashcounter">
+  <table name="ECT Flash Count" category="Merp CEL Flash" type="2D" level="2" scaling="celflashcounter">
     <description>Number of flashes per ECT event</description>
     <table type="Static Y Axis" elements="1">
       <data>ECT Flash Count</data>
     </table>
   </table>
   
-  <table name="IAM Recall Flash Speed" category="Merp CEL Flash" offset="0" type="2D" level="2" scaling="celflashcounter">
+  <table name="IAM Recall Flash Speed" category="Merp CEL Flash" type="2D" level="2" scaling="celflashcounter">
     <description>IAM Recall Flash Speed</description>
     <table type="Static Y Axis" elements="1">
       <data>Determines IAM Recall flash speed, lower is faster</data>
     </table>
   </table>
 
-  <table name="Flat Foot Shift Mode" category="Merp Rev Limit" offset="0" type="1D" scaling="FFSMode"/>
+  <table name="Flat Foot Shift Mode" category="Merp Rev Limit" type="1D" scaling="FFSMode"/>
   
-  <table name="LC Maximum Speed Threshold" category="Merp Rev Limit" offset="0" type="2D" level="4" scaling="VehicleSpeed(MPH)SD">
+  <table name="LC Maximum Speed Threshold" category="Merp Rev Limit" type="2D" level="4" scaling="VehicleSpeed(MPH)SD">
     <description>Maximum vehicle speed allowed before LC is disabled.</description>
     <table name="LC Max Speed" type="Static Y Axis" elements="1">
       <data>Threshold</data>
     </table>
   </table>
 
-  <table name="LC Minimum Throttle Threshold" category="Merp Rev Limit" offset="0" type="2D" level="2" scaling="ThrottlePlateOpeningAngle(%)">
+  <table name="LC Minimum Throttle Threshold" category="Merp Rev Limit" type="2D" level="2" scaling="ThrottlePlateOpeningAngle(%)">
     <description>Minimum Throttle % required to activate Launch Control</description>
     <table type="Static Y Axis" elements="1">
       <data>Min. Throttle</data>
     </table>
   </table>
 
-  <table name="FFS Minimum Throttle Threshold" category="Merp Rev Limit" offset="0" type="2D" level="2" scaling="ThrottlePlateOpeningAngle(%)">
+  <table name="FFS Minimum Throttle Threshold" category="Merp Rev Limit" type="2D" level="2" scaling="ThrottlePlateOpeningAngle(%)">
     <description>Minimum Throttle % required to activate Flat Foot Shift</description>
     <table type="Static Y Axis" elements="1">
       <data>Min. Throttle</data>
     </table>
   </table>
 
-  <table name="Rev Limit (Redline)" category="Merp Rev Limit" offset="0" type="2D" level="4" scaling="EngineSpeed(RPM)FFS">
+  <table name="Rev Limit (Redline)" category="Merp Rev Limit" type="2D" level="4" scaling="EngineSpeed(RPM)FFS">
     <description>These are the engine speeds at which the rev limiter is engaged and disengaged.</description>
     <table name="Rev Limit Rev Limit" type="Static Y Axis" elements="2">
       <data>Cut Fuel Above</data>
       <data>Hysteresis (RPM)</data>
     </table>
   </table>
-  <table name="Rev Limit (Launch Control)" category="Merp Rev Limit" offset="0" type="2D" level="4" scaling="EngineSpeed(RPM)FFS">
+  <table name="Rev Limit (Launch Control)" category="Merp Rev Limit" type="2D" level="4" scaling="EngineSpeed(RPM)FFS">
     <description>These are the engine speeds at which the rev limiter is engaged and disengaged when the clutch is pressed and vehicle speed is below the FFS threshold.</description>
     <table name="Launch Control Rev Limit" type="Static Y Axis" elements="2">
       <data>Cut Fuel Above</data>
       <data>Hysteresis (RPM)</data>
     </table>
   </table>
-  <table name="Flat Foot Shift Minimum Speed Threshold" category="Merp Rev Limit" offset="0" type="2D" level="4" scaling="VehicleSpeed(MPH)SD">
+  <table name="Flat Foot Shift Minimum Speed Threshold" category="Merp Rev Limit" type="2D" level="4" scaling="VehicleSpeed(MPH)SD">
     <description>Minimum vehicle speed required for FFS to be active.</description>
     <table name="Flat Foot Shift Speed Threshold" type="Static Y Axis" elements="1">
       <data>Threshold</data>
     </table>
   </table>
-  <table name="Flat Foot Shift Minimum RPM Threshold" category="Merp Rev Limit" offset="0" type="2D" level="4" scaling="EngineSpeed(RPM)FFS">
+  <table name="Flat Foot Shift Minimum RPM Threshold" category="Merp Rev Limit" type="2D" level="4" scaling="EngineSpeed(RPM)FFS">
     <description>Above this RPM, the Automatic FFS rev limit is in effect (if enabled).</description>
     <table name="Flat Foot Shift RPM Threshold" type="Static Y Axis" elements="1">
       <data>Threshold</data>
     </table>
   </table>
-  <table name="Flat Foot Shift Delta (Automatic Limit)" category="Merp Rev Limit" offset="0" type="2D" level="4" scaling="EngineSpeed(RPM)FFS">
+  <table name="Flat Foot Shift Delta (Automatic Limit)" category="Merp Rev Limit" type="2D" level="4" scaling="EngineSpeed(RPM)FFS">
     <description>This is the delta from the calculated FFS rev limit that will be used during ffs. If the algorithm calculates a limit of 4500 RPM and you set a delta of 50 RPM, the rev limit used while FFS is engaged becomes 4550 RPM</description>
     <table name="Flat Foot Shift RPM Delta" type="Static Y Axis" elements="1">
       <data>Delta</data>
     </table>
   </table>
-  <table name="Flat Foot Shift Delta (Static Limit)" category="Merp Rev Limit" offset="0" type="2D" level="4" scaling="EngineSpeed(RPM)FFS">
+  <table name="Flat Foot Shift Delta (Static Limit)" category="Merp Rev Limit" type="2D" level="4" scaling="EngineSpeed(RPM)FFS">
     <description>This is the delta from the redline rev limit that will be used during ffs. If Redline limit is set to 7000 RPM, and delta is 4000, effective FFS limit will be 3000 RPM.</description>
     <table name="Flat Foot Shift RPM Delta" type="Static Y Axis" elements="1">
       <data>Delta</data>
     </table>
   </table>
-  <table name="Launch Control Adjustment Step" category="Merp Rev Limit" offset="0" type="2D" level="4" scaling="EngineSpeed(RPM)FFS">
+  <table name="Launch Control Adjustment Step" category="Merp Rev Limit" type="2D" level="4" scaling="EngineSpeed(RPM)FFS">
     <description>This is the step value used to adjust launch control limits. Step is applied once per routine cycle when cruise resume/coast switch is set while launching.</description>
     <table name="LC Adjust Step" type="Static Y Axis" elements="1">
       <data>Step Value</data>
     </table>
   </table>
 
-  <table name="Gear Ratios" category="Merp Rev Limit" offset="0" type="2D" level="2" scaling="GearRatio">
+  <table name="Gear Ratios" category="Merp Rev Limit" type="2D" level="2" scaling="GearRatio">
     <description>Transmission gear ratios</description>
     <table type="Static Y Axis" elements="6">
       <data>1st Gear</data>
@@ -261,45 +267,77 @@ These definitions are created for FREE without any sort of guarantee. The develo
     </table>
   </table>
   
-  <table name="Speed Density Constant" category="Merp Speed Density" offset="0" type="2D" level="2" scaling="sdc">
+  <table name="Speed Density Constant" category="Merp Speed Density" type="2D" level="2" scaling="sdc">
     <description>SD Constant</description>
     <table type="Static Y Axis" elements="1">
       <data>SD Constant</data>
     </table>
   </table>
   
-  <table name="Engine Displacement" category="Merp Speed Density" offset="0" type="2D" level="2" scaling="engine displacement">
+  <table name="Engine Displacement" category="Merp Speed Density" type="2D" level="2" scaling="engine displacement">
     <description>Engine size in cc</description>
     <table type="Static Y Axis" elements="1">
       <data>Engine Displacement (cc)</data>
     </table>
   </table>
 
-  <table name="Speed Density Mode" category="Merp Speed Density" offset="0" type="1D" scaling="FuelingMode"/>
+  <table name="Speed Density Mode" category="Merp Speed Density" type="1D" scaling="FuelingMode"/>
   
   
-  <table name="Volumetric Efficiency Table 1" category="Merp Speed Density" offset="C0" type="3D" level="2" scaling="VE(%)">
+  <table name="Volumetric Efficiency Table 1" category="Merp Speed Density" type="3D" level="2" scaling="VE(%)">
     <description>This is the Volumetric efficiency of the engine.</description>
-    <table name="Manifold Pressure" offset="0" type="X Axis" elements="24" scaling="psirelativesealevelSD"/>
-    <table name="Engine Speed" offset="60" type="Y Axis" elements="24" scaling="RPMSD"/>
+    <table name="Manifold Pressure" type="X Axis" elements="24" scaling="psirelativesealevelSD"/>
+    <table name="Engine Speed" type="Y Axis" elements="24" scaling="RPMSD"/>
   </table>
   
-  <table name="Volumetric Efficiency Table 2" category="Merp Speed Density" offset="C0" type="3D" level="2" scaling="VE(%)">
+  <table name="Volumetric Efficiency Table 2" category="Merp Speed Density" type="3D" level="2" scaling="VE(%)">
     <description>This is the Volumetric efficiency of the engine.</description>
-    <table name="Manifold Pressure" offset="0" type="X Axis" elements="24" scaling="psirelativesealevelSD"/>
-    <table name="Engine Speed" offset="60" type="Y Axis" elements="24" scaling="RPMSD"/>
+    <table name="Manifold Pressure" type="X Axis" elements="24" scaling="psirelativesealevelSD"/>
+    <table name="Engine Speed" type="Y Axis" elements="24" scaling="RPMSD"/>
   </table>
   
-    <table name="Atmospheric Pressure Compensation" category="Merp Speed Density" offset="38" type="3D" level="2" scaling="VEcomp">
+    <table name="Atmospheric Pressure Compensation" category="Merp Speed Density" type="3D" level="2" scaling="VEcomp">
     <description>This is the Volumetric efficiency of the engine.</description>
-    <table name="Manifold Pressure" offset="0" type="X Axis" elements="7" scaling="psiabsoluteSD"/>
-    <table name="Atmospheric Pressure" offset="1C" type="Y Axis" elements="7" scaling="psiabsoluteSD"/>
+    <table name="Manifold Pressure" type="X Axis" elements="7" scaling="psiabsoluteSD"/>
+    <table name="Atmospheric Pressure" type="Y Axis" elements="7" scaling="psiabsoluteSD"/>
   </table>
   
-  <table name="SD Blending Table" category="Merp Speed Density" offset="50" type="3D" level="2" scaling="Blending(%)">
+  <table name="SD Blending Table" category="Merp Speed Density"  type="3D" level="2" scaling="Blending(%)">
     <description>This is the amount of SD blended into the MAF output. Only active when in blending mode.</description>
-    <table name="Manifold Pressure" offset="0" type="X Axis" elements="10" scaling="psirelativesealevelSD"/>
-    <table name="Engine Speed" offset="28" type="Y Axis" elements="10" scaling="RPMSD"/>
+    <table name="Manifold Pressure" type="X Axis" elements="10" scaling="psirelativesealevelSD"/>
+    <table name="Engine Speed" type="Y Axis" elements="10" scaling="RPMSD"/>
+  </table>
+
+  <table name="Launch Control Fueling Mode" category="Merp Fueling" type="1D" scaling="LCFuelMode"/>
+
+  <table name="Launch Control Enrichment (Lock Mode)" category="Merp Fueling" type="2D" level="4" scaling="EstimatedAir/FuelRatio">
+    <description>When using Launch Control Enrichment Lock Mode, this table sets the primary open loop enrichment target.</description>
+    <table name="LC Enrichment Lock" type="Static Y Axis" elements="1">
+      <data>Commanded AFR</data>
+    </table>
+  </table>
+
+    <table name="Launch Control Fuel Enrichment" category="Merp Fueling" type="3D" level="4" scaling="EstimatedAir/FuelRatioAdditive">
+    <table name="Vehicle Speed" type="X Axis" elements="5" scaling="VehicleSpeed(MPH)" />
+    <table name="Engine Speed" type="Y Axis" elements="12" scaling="RPM" />
+    <description>When using Launch Control Enrichment Compensation Mode, this table is added to the current Primary Open Loop fueling enrichment.</description>
+  </table>
+
+<table name="Primary Open Loop Fueling Table 1" category="Merp Fueling" type="3D" level="4" scaling="EstimatedAir/FuelRatio">
+    <table name="Engine Load" type="X Axis" elements="20" scaling="g/rev" />
+    <table name="Engine Speed" type="Y Axis" elements="20" scaling="RPM" />
+    <description>This fuel map is used in open loop when the ignition advance multiplier (IAM) is greater than or equal to the threshold specified by the 'Primary Open Loop Fuel Map Switch (IAM)' table. Because there is no feedback in open loop, the actual AFR may differ from the values presented in this table. In addition, the ECU applies a long-term correction (A/F Learning) to open loop fueling from patterns it recognizes in closed loop fueling. Other compensations and minimum enrichment factors exist as well. Because the underlying values of this table are enrichment offsets relative to stoichiometric, AFRs leaner than 14.7, as presented, are not valid.</description>
+  </table>
+
+  <table name="Primary Open Loop Fueling Table 2" category="Merp Fueling" type="3D" level="4" scaling="EstimatedAir/FuelRatio">
+    <table name="Engine Load" type="X Axis" elements="20" scaling="g/rev" />
+    <table name="Engine Speed" type="Y Axis" elements="20" scaling="RPM" />
+    <description>This fuel map is used in open loop when the ignition advance multiplier (IAM) is greater than or equal to the threshold specified by the 'Primary Open Loop Fuel Map Switch (IAM)' table. Because there is no feedback in open loop, the actual AFR may differ from the values presented in this table. In addition, the ECU applies a long-term correction (A/F Learning) to open loop fueling from patterns it recognizes in closed loop fueling. Other compensations and minimum enrichment factors exist as well. Because the underlying values of this table are enrichment offsets relative to stoichiometric, AFRs leaner than 14.7, as presented, are not valid.</description>
+  </table>
+
+  <table name="Map Switch Ratio" category="Merp Map Switching" type="1D" scaling="MapRatio">
+    <description>This is the default map switching ratio. When set to 1, map 1 is used. When set to 2, map 2 is used. Set between 1 and 2 will blend between the two map sets.
+    </description>
   </table>
   
   <!-- Rolling Idle Tables -->
