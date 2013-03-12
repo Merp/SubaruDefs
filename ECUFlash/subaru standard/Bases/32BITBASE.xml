@@ -335,8 +335,10 @@ These definitions are created for FREE without any sort of guarantee. The develo
     <description>This fuel map is used in open loop when the ignition advance multiplier (IAM) is greater than or equal to the threshold specified by the 'Primary Open Loop Fuel Map Switch (IAM)' table. Because there is no feedback in open loop, the actual AFR may differ from the values presented in this table. In addition, the ECU applies a long-term correction (A/F Learning) to open loop fueling from patterns it recognizes in closed loop fueling. Other compensations and minimum enrichment factors exist as well. Because the underlying values of this table are enrichment offsets relative to stoichiometric, AFRs leaner than 14.7, as presented, are not valid.</description>
   </table>
 
-  <table name="Map Switch Ratio" category="Merp Map Switching" type="1D" scaling="MapRatio">
-    <description>This is the default map switching ratio. When set to 1, map 1 is used. When set to 2, map 2 is used. Set between 1 and 2 will blend between the two map sets.
+  <table name="Map Switch Ratio" category="Merp Map Switching" type="2D" scaling="MapRatio">
+    <table type="Static Y Axis" elements="1">
+      <data>Map Switch</data>
+    </table><description>This is the default map switching ratio. When set to 1, map 1 is used. When set to 2, map 2 is used. Set between 1 and 2 will blend between the two map sets.
     </description>
   </table>
   
