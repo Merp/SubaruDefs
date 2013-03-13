@@ -16,7 +16,24 @@
   </romid>
   <include>32BITBASE</include>
 
-  <!-- OverRun Fueling Scalings & Tables -->
+  
+	<!-- Front AF Sensor Smoothing Tables -->
+	
+	<table name="Front AF Sensor Smoothing Table" address="cc724">
+		<table name="Smoothed MAF" address="cc704"/>
+		<table name="Engine Load" address="cc714"/>
+	</table>
+
+	<!-- Idle Speed Stability -->
+
+	<table name="Idle Speed Stability A" address="cb670">
+		<table name="Idle Speed Error" address="cb618" 	elements="17"/>
+		<table name="Engine Speed Delta" address="cb65c" 	elements="5"/>
+	</table>
+	
+	
+
+	<!-- OverRun Fueling Scalings & Tables -->
   
   <table name="Overrun Fueling RPM Resume Threshold" address="C6C14">
     <table name="X" address="C60E0"/>
