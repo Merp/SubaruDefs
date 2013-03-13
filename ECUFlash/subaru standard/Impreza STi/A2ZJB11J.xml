@@ -16,7 +16,38 @@
   </romid>
   <include>32BITBASE</include>
   
-    	<!-- Low pulse width injector tables -->	
+	
+
+	<!-- Front AF Sensor Smoothing Table -->
+
+	<table name="Front AF Sensor Smoothing Table" address="cc620">
+		<table name="Smoothed MAF" address="cc600"/>
+		<table name="Engine Load" address="cc610"/>
+	</table>
+
+	<!-- Idle Speed Stability -->
+
+	<table name="Idle Speed Stability A" address="cb684">
+		<table name="Idle Speed Error" address="cb62c" elements="17"/>
+		<table name="Engine Speed Delta" address="cb670" elements="5"/>
+	</table>
+
+	<!-- AF#3 Limits -->
+
+	<table name="AF 3 Correction Limits" address="27f2c">
+	</table>
+
+	
+	<!-- Ignition Dwell -->
+
+	<table name="Ignition Dwell" address="cc560">
+		<table name="Engine Speed" address="cc50c"/>
+		<table name="Battery Volts" address="cc54c"/>
+	</table>
+    	
+
+  	
+	<!-- Low pulse width injector tables -->	
 
    	<table name="Low Pulse Width Fuel Injector Compensation" address="C6450">
       		<table name="Y" address="c884c"/>
