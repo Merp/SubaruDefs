@@ -121,6 +121,18 @@ These definitions are created for FREE without any sort of guarantee. The develo
   <scaling name="LoadFilter" units="Smoothing Factor (%)" toexpr="(x*(-100))+100" frexpr="(x-100)/(-100)" format="%.1f" min="0" max="100" inc="5" storagetype="float" endian="big"/>
   <scaling name="EstimatedAir/FuelRatioAdditive" units="Estimated Air/Fuel Ratio (Additive)" toexpr="(14.7/(1+x*.0078125))-14.7" frexpr="(14.7/(x+14.7)-1)/.0078125" format="%.2f" min="-5" max="0" inc=".06" storagetype="uint8" endian="big" />
   <scaling name="MapRatio" units="ratio" toexpr="x+1" frexpr="x-1" format="%.4f" min="0" max="4" inc="0.1" storagetype="float" endian="big" />
+
+  <scaling name="ECUID2" units="units" toexpr="x" frexpr="x" format="%02x" min="0" max="1e+02" inc="1" storagetype="uint8" endian="big"/>
+
+  <table name="ECU Identifier" category="Merp ROM Settings" type="2D" level="4" scaling="ECUID2">
+    <table type="Static X Axis" elements="5">
+      <data>Byte 1</data>
+      <data>Byte 2</data>
+      <data>Byte 3</data>
+      <data>Byte 4</data>
+      <data>Byte 5</data>
+    </table>
+  </table>
   
   <table name="Engine Load Smoothing Factor A" category="Merp Speed Density" type="2D" level="2" scaling="LoadFilter">
     <description>Engine Load Smoothing Factor A: Determines the amount of smoothing of the engine load parameter immediately after MAF/SD Calculation. Decreasing the smoothing factor may help with idle issues running pure speed density. DO NOT SET TO ZERO OR LOWER</description>
