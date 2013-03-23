@@ -182,9 +182,15 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
     <table name="Cranking Fuel IPW Compensation (IAT)" storageaddress="CF554">
       <table type="Y Axis" storageaddress="CF540" />
     </table>
-    <table name="Throttle Tip-in Enrichment A" storageaddress="D0E08">
+    	<table name="Overrun Fueling RPM Resume Threshold" storageaddress="D0F58">
+		<table type="X Axis" storageaddress="CF2C8"/>
+	</table>
+	<table name="Overrun Enrich RPM Delta Activation" storageaddress="CF14C"/>
+	 	<table name="Overrun initial injector enrichment (pulsewidth)" storageaddress="CF150"/> 
+	 	<table name="Overrun Fueling Cut Counter RPM Threshold" storageaddress="CF1C0"/> 	 		
+	    <table name="Throttle Tip-in Enrichment A" storageaddress="D0E08">
       <table type="Y Axis" storageaddress="D0DC0" />
-    </table>
+    </table>  
     <table name="Throttle Tip-in Enrichment B" storageaddress="D0E74">
       <table type="Y Axis" storageaddress="D0E2C" />
     </table>
@@ -2739,6 +2745,7 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
       </table>
       <description>This is the change to the 'Cranking Fuel Injector Pulse Width (ECT)', based on the accelerator pedal.</description>
     </table>
+	
     <table type="2D" name="Throttle Tip-in Enrichment" category="Fueling - Tip-in Enrichment" storagetype="uint16" endian="big" sizey="18" userlevel="2" logparam="E55">
       <scaling units="Additional Injector Pulse Width (ms)" expression="x*.004" to_byte="x/.004" format="0.000" fineincrement=".01" coarseincrement=".1" />
       <table type="Y Axis" name="Throttle Angle Change" storagetype="float" endian="little" logparam="E54">
@@ -6937,6 +6944,36 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
         <scaling units="Volts" expression="x" to_byte="x" format="0.00" fineincrement=".5" coarseincrement="1" />
       </table>
       <description>UNVERIFIED - This table defines the amount of time before a spark event that the ECU needs to start charging the ignition system. Since the time needed to charge up the ignition doesn't change as engine speed increases, you need to start that event sooner to compensate for the piston moving faster.</description>
+    </table>
+    	<table type="2D" name="Overrun Fueling RPM Resume Threshold" category="ALPHA OverRun Fueling" storagetype="uint16" endian="big" sizey="16" userlevel="5"> 
+		<scaling units="Engine Speed" expression="x*0.1953125" to_byte="x/0.1953125" format="0.0" fineincrement="1" coarseincrement="100" />
+		<table type="X Axis" name="Coolant Temperature" storagetype="float" endian="little" logparam="P2">
+        <scaling units="Degrees F" expression="(x*1.8)+32" to_byte="(x-32)/1.8" format="#" fineincrement="1" coarseincrement="5" />
+      </table>
+		<description>This 2D table determines (on an ECT x axis) at what RPM the injectors switch back on from coasting (i.e. full lean, and injector pulse width at zero). This would be useful to those with much larger injectors than stock that have a problem with stalling out as the vehicle comes to stop / idle.</description>
+	</table>
+	    <table type="2D" name="Overrun Enrich RPM Delta Activation" category="ALPHA OverRun Fueling" storagetype="float" endian="little" sizey="1" userlevel="5">
+      <scaling units="Engine Speed Delta" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="100" />
+      <table type="Static Y Axis" name="RPM Delta" sizey="1">
+        <data>Active 1st Gear Compensation</data>
+      </table>
+      <description>This table sets the required RPM delta for overrun enrichment to activate.</description>
+    </table>
+    <table type="2D" name="Overrun initial injector enrichment (pulsewidth)" category="ALPHA OverRun Fueling" storagetype="float" endian="little" sizey="1" userlevel="5">
+      <scaling units="Base Pulse Width (ms)" expression="x*.001" to_byte="x/.001" format="0.000" fineincrement=".01" coarseincrement=".1" />
+      <table type="Static Y Axis" name="Initial Enrichment (pulsewidth)" sizey="1">
+        <data>Active 1st Gear Compensation</data>
+      </table>
+      <description>This table sets the initial overrun enrichment when active.</description>
+    </table>
+        <table type="2D" name="Overrun Fueling Cut Counter RPM Threshold" category="ALPHA OverRun Fueling" storagetype="float" endian="little" sizey="3" userlevel="5">
+      <scaling units="Engine Speed" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="100" />
+      <table type="Static Y Axis" name="Limits" sizey="3">
+			<data>Low</data>
+			<data>Med</data>
+			<data>High</data>
+      </table>
+       <description>These counters determine the RPM count before injectors cut off during overrun.</description>
     </table>
   </rom>
 </roms>
