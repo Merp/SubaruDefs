@@ -415,12 +415,74 @@ These definitions are created for FREE without any sort of guarantee. The develo
     <description>This fuel map is used in open loop when the ignition advance multiplier (IAM) is greater than or equal to the threshold specified by the 'Primary Open Loop Fuel Map Switch (IAM)' table. Because there is no feedback in open loop, the actual AFR may differ from the values presented in this table. In addition, the ECU applies a long-term correction (A/F Learning) to open loop fueling from patterns it recognizes in closed loop fueling. Other compensations and minimum enrichment factors exist as well. Because the underlying values of this table are enrichment offsets relative to stoichiometric, AFRs leaner than 14.7, as presented, are not valid.</description>
   </table>
 
-  <table name="Map Switch Ratio" category="Merp Map Switching" type="2D" scaling="MapRatio">
+  <table name="Map Switch Ratio" category="Merp Map Switching" level="4" type="2D" scaling="MapRatio">
     <table type="Static Y Axis" elements="1">
       <data>Map Switch</data>
     </table><description>This is the default map switching ratio. When set to 1, map 1 is used. When set to 2, map 2 is used. Set between 1 and 2 will blend between the two map sets.
     </description>
   </table>
+
+  <table name="Per Gear Wastegate Table 1" category="Merp Boost Hacks" level="4" type="3D" scaling="WastegateDutyCycle(%)1">
+    <table name="Gear" type="X Axis" elements="6" scaling=""/>
+    <table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM" />
+    <description>This table is a gear based multiplier to both initial and max wastegate duty cycles for map 2.
+    </description>
+  </table>
+  <table name="Per Gear Wastegate Table 2" category="Merp Boost Hacks" level="4" type="3D" scaling="WastegateDutyCycle(%)1">
+    <table name="Gear" type="X Axis" elements="6" scaling=""/>
+    <table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM" />
+    <description>This table is a gear based multiplier to both initial and max wastegate duty cycles for map 2.
+    </description>
+  </table>
+  <table name="Per Gear Target Boost Table 1" category="Merp Boost Hacks" level="4" type="3D" scaling="WastegateDutyCycle(%)1">
+    <table name="Gear" type="X Axis" elements="6" scaling=""/>
+    <table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM" />
+    <description>This table is a gear based target boost table for map 1. Final target boost is determined by multiplying by the appropriate target boost multipler table.
+    </description>
+  </table>
+  <table name="Per Gear Target Boost Table 2" category="Merp Boost Hacks" level="4" type="3D" scaling="WastegateDutyCycle(%)1">
+    <table name="Gear" type="X Axis" elements="6" scaling=""/>
+    <table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM" />
+    <description>This table is a gear based target boost table for map 2. Final target boost is determined by multiplying by the appropriate target boost multipler table.
+    </description>
+  </table>
+
+  <table name="Max Wastegate Duty Multiplier Table 1" category="Merp Boost Hacks" level="4" type="3D" scaling="WastegateDutyCycle(%)1">
+    <table name="Throttle Plate Opening Angle" type="X Axis" elements="8" scaling="%1"/>
+    <table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM" />
+    <description>This table is multiplied with the per gear wastegate table to set the max wastegate duty for map 1.
+    </description>
+  </table>
+  <table name="Max Wastegate Duty Multiplier Table 2" category="Merp Boost Hacks" level="4" type="3D" scaling="WastegateDutyCycle(%)1">
+    <table name="Throttle Plate Opening Angle" type="X Axis" elements="8" scaling="%1"/>
+    <table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM" />
+    <description>This table is multiplied with the per gear wastegate table to set the max wastegate duty for map 2.
+    </description>
+  </table>
+  <table name="Initial Wastegate Duty Multiplier Table 1" category="Merp Boost Hacks" level="4" type="3D" scaling="WastegateDutyCycle(%)1">
+    <table name="Throttle Plate Opening Angle" type="X Axis" elements="8" scaling="%1"/>
+    <table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM" />
+    <description>This table is multiplied with the per gear wastegate table to set the initial wastegate duty for map 1.
+    </description>
+  </table>
+  <table name="Initial Wastegate Duty Multiplier Table 2" category="Merp Boost Hacks" level="4" type="3D" scaling="WastegateDutyCycle(%)1">
+    <table name="Throttle Plate Opening Angle" type="X Axis" elements="8" scaling="%1"/>
+    <table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM" />
+    <description>This table is multiplied with the per gear wastegate table to set the initial wastegate duty for map 2.
+    </description>
+  </table>
+
+  <table name="Target Boost Multiplier Table  1" category="Merp Boost Hacks" type="3D" level="4" scaling="BoostTarget(psirelativesealevel)">
+    <table name="Throttle Plate Opening Angle" type="X Axis" elements="8" scaling="%1" />
+    <table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM" />
+    <description>This map is multiplied by the per gear boost table to produce the desired boost targets for map 1.</description>
+  </table>
+  <table name="Target Boost Multiplier Table 2" category="Merp Boost Hacks" type="3D" level="4" scaling="BoostTarget(psirelativesealevel)">
+    <table name="Throttle Plate Opening Angle" type="X Axis" elements="8" scaling="%1" />
+    <table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM" />
+    <description>This map is multiplied by the per gear boost table to produce the desired boost targets for map 1.</description>
+  </table>
+
   
   <!-- Rolling Idle Tables -->
   
