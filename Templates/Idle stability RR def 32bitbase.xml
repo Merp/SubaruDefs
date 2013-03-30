@@ -1,0 +1,111 @@
+      <table type="3D" name="Idle Speed Stability A" category="ALPHA Idle Control" storagetype="uint16" endian="big" sizex="25" sizey="11" userlevel="1">
+      <scaling units="MAP related" expression="(x*0.0078125)-256" to_byte="(x+256)/0.0078125" format="0.00" fineincrement=".01" coarseincrement=".1" />
+      <table type="X Axis" name="Idle Speed Error" storagetype="float" endian="big">
+        <scaling units="RPM" expression="x" to_byte="x" format="#" fineincrement="10" coarseincrement="100" />
+      </table>
+      <table type="Y Axis" name="Engine Speed Delta" storagetype="float" endian="big">
+        <scaling units="RPM" expression="x" to_byte="x" format="0.00" fineincrement="10" coarseincrement="100" />
+      </table>      
+      <description>This table contains a MAP related correction to idle airflow based on the delta between target idle and actual idle.</description>
+    </table>
+        <table type="3D" name="Idle Speed Stability B" category="ALPHA Idle Control" storagetype="uint16" endian="big" sizex="25" sizey="11" userlevel="1">
+      <scaling units="MAP related" expression="(x*0.0078125)-256" to_byte="(x+256)/0.0078125" format="0.00" fineincrement=".01" coarseincrement=".1" />
+      <table type="X Axis" name="Idle Speed Error" storagetype="float" endian="big">
+        <scaling units="RPM" expression="x" to_byte="x" format="#" fineincrement="10" coarseincrement="100" />
+      </table>      
+      <table type="Y Axis" name="Engine Speed Delta" storagetype="float" endian="big">
+        <scaling units="RPM" expression="x" to_byte="x" format="0.00" fineincrement="10" coarseincrement="100" />
+      </table>
+      <description>This table contains a MAP related correction to idle airflow based on the delta between target idle and actual idle.</description>
+    </table>
+    
+    <table type="2D" name="Idle Airflow Min Target Decel Adder A" category="ALPHA Idle Control" storagetype="uint16" endian="big" sizex="2" userlevel="1">
+      <scaling units="Idle Airflow Target g/s" expression="x*.001525879" to_byte="x/.001525879" format="0.00" fineincrement=".5" coarseincrement="1" />
+      <table type="X Axis" name="Engine Speed" storagetype="float" endian="big">
+        <scaling units="RPM" expression="x" to_byte="x" format="#" fineincrement="10" coarseincrement="100" />
+      </table>
+      <description>This table is added to idle airflow when the minimum activation threshold based on vehicle speed is reached</description>
+      </table>
+      
+          <table type="2D" name="Idle Airflow Min Target Decel Adder B" category="ALPHA Idle Control" storagetype="uint16" endian="big" sizex="16" userlevel="1">
+      <scaling units="Idle Airflow Target g/s" expression="x*.001525879" to_byte="x/.001525879" format="0.00" fineincrement=".5" coarseincrement="1" />
+      <table type="X Axis" name="Engine Speed" storagetype="float" endian="big">
+        <scaling units="RPM" expression="x" to_byte="x" format="#" fineincrement="10" coarseincrement="100" />
+      </table>
+      <description>This table is added to idle airflow when the minimum activation threshold based on vehicle speed is reached</description>
+      </table>
+      
+          <table type="3D" name="Idle Airflow Min Target Decel Adder (RPM x ECT)" category="ALPHA Idle Control" storagetype="uint16" endian="big" sizex="16" sizey="13" userlevel="1">
+      <scaling units="Advance(degrees)" expression="x*.001525879" to_byte="x/.001525879" format="0.00" fineincrement=".5" coarseincrement="1" />
+      <table type="X Axis" name="Engine Speed" storagetype="float" endian="big">
+        <scaling units="RPM" expression="x" to_byte="x" format="#" fineincrement="10" coarseincrement="100" />
+      </table>
+      <table type="Y Axis" name="Coolant Temp" storagetype="float" endian="big">
+        <scaling units="CoolantTemp(DegreesF)" expression="(x*1.8)+32" to_byte="(x-32)/1.8" format="0.0" fineincrement="1" coarseincrement="10" />
+      </table>
+      <description>This table is an RPM by Engine Coolant table which is added to idle airflow when the minimum activation threshold based on vehicle speed is reached</description>
+    </table>
+    
+              <table type="2D" name="Idle Airflow Min Target Decel Adder (RPM)" category="ALPHA Idle Control" storagetype="uint16" endian="big" sizex="16" userlevel="1">
+      <scaling units="Idle Airflow Target g/s" expression="x*.001525879" to_byte="x/.001525879" format="0.00" fineincrement=".5" coarseincrement="1" />
+      <table type="X Axis" name="Engine Speed" storagetype="float" endian="big">
+        <scaling units="RPM" expression="x" to_byte="x" format="#" fineincrement="10" coarseincrement="100" />
+      </table>
+      <description>This table is added to idle airflow when the minimum activation threshold based on vehicle speed is reached</description>
+      </table>
+      
+          <table type="2D" name="Idle Airflow Min Target Decel Adder Active Veh Speed A" category="ALPHA Idle Control" storagetype="float" endian="little" sizey="1" userlevel="1">
+      <scaling units="Vehicle Speed (MPH)" expression="x*.621" to_byte="x/.621" format="#" fineincrement="1" coarseincrement="5" />
+      <table type="Static Y Axis" name="" sizey="1">
+        <data>Idle Airflow Min Target Decel Adder Active Veh Speed A</data>
+      </table>
+      <description>This table sets the activation threshold for the Idle Airflow Min Target Decel Adder table.</description>
+    </table>
+    
+              <table type="2D" name="Idle Airflow Min Target Decel Adder Active Veh Speed B" category="ALPHA Idle Control" storagetype="float" endian="little" sizey="1" userlevel="1">
+      <scaling units="Vehicle Speed (MPH)" expression="x*.621" to_byte="x/.621" format="#" fineincrement="1" coarseincrement="5" />
+      <table type="Static Y Axis" name="" sizey="1">
+        <data>Idle Airflow Min Target Decel Adder Active Veh Speed A</data>
+      </table>
+      <description>This table sets the activation threshold for the Idle Airflow Min Target Decel Adder table.</description>
+    </table>
+    
+                  <table type="2D" name="Idle Airflow Min Target Decel Initial Idle Min Airflow A" category="ALPHA Idle Control" storagetype="float" endian="little" sizey="1" userlevel="1">
+        <scaling units="g/s" expression="x" to_byte="x" format="0.00" fineincrement=".1" coarseincrement="1" />
+      <table type="Static Y Axis" name="" sizey="1">
+        <data>Idle Airflow Min Target Decel Initial Idle Min Airflow A</data>
+      </table>
+      <description>Idle airflow will be limited to a minimum value as determined by this table, for a time determined by Idle Airflow Min Target Decel Initial Idle Activation Max Mode Counter</description>
+    </table>
+    
+                      <table type="2D" name="Idle Airflow Min Target Decel Initial Idle Min Airflow B" category="ALPHA Idle Control" storagetype="float" endian="little" sizey="1" userlevel="1">
+        <scaling units="g/s" expression="x" to_byte="x" format="0.00" fineincrement=".1" coarseincrement="1" />
+      <table type="Static Y Axis" name="" sizey="1">
+        <data>Idle Airflow Min Target Decel Initial Idle Min Airflow A</data>
+      </table>
+      <description>Idle airflow will be limited to a minimum value as determined by this table, for a time determined by Idle Airflow Min Target Decel Initial Idle Activation Max Mode Counter</description>
+    </table>
+    
+       <table type="2D" name="Idle Airflow Min Target Decel Initial Idle Activation Max Mode Counter" category="ALPHA Idle Control" storagetype="uint16" endian="big" sizey="1" userlevel="1">
+        <scaling units="counter" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="5" />
+      <table type="Static Y Axis" name="" sizey="1">
+        <data>Idle Airflow Min Target Decel Initial Idle Activation Max Mode Counter</data>
+      </table>
+      <description>Determines how long Idle Airflow Min Target Decel Initial Idle Min Airflow limit is applied.</description>
+    </table>
+      
+        <table type="2D" name="Idle Airflow Min Target Decel Ramping Adder Decreasing" category="ALPHA Idle Control" storagetype="float" endian="little" sizey="1" userlevel="1">
+        <scaling units="g/s" expression="-x" to_byte="-x" format="0.00" fineincrement=".1" coarseincrement="1" />
+      <table type="Static Y Axis" name="" sizey="1">
+        <data>Idle Airflow Min Target Decel Initial Idle Min Airflow A</data>
+      </table>
+      <description>Idle airflow will be limited to a minimum value as determined by this table, for a time determined by Idle Airflow Min Target Decel Initial Idle Activation Max Mode Counter</description>
+    </table>
+    
+            <table type="2D" name="Idle Airflow Min Target Decel Ramping Adder Increasing" category="ALPHA Idle Control" storagetype="float" endian="little" sizey="1" userlevel="1">
+        <scaling units="g/s" expression="x" to_byte="x" format="0.00" fineincrement=".1" coarseincrement="1" />
+      <table type="Static Y Axis" name="" sizey="1">
+        <data>Idle Airflow Min Target Decel Initial Idle Min Airflow A</data>
+      </table>
+      <description>Idle airflow will be limited to a minimum value as determined by this table, for a time determined by Idle Airflow Min Target Decel Initial Idle Activation Max Mode Counter</description>
+    </table>
