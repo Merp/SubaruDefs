@@ -106,6 +106,7 @@ These definitions are created for FREE without any sort of guarantee. The develo
   <scaling name="LoadFilter" units="Smoothing Factor (%)" toexpr="(x*(-100))+100" frexpr="(x-100)/(-100)" format="%.1f" min="0" max="100" inc="5" storagetype="float" endian="big"/>
   <scaling name="VE(%)" units="VE(%)" toexpr="x*.0000457763672" frexpr="x/.0000457763672" format="%.2f" min="0.3" max="1.1" inc="0.025" storagetype="uint16" endian="big"/>
   <scaling name="VEcomp" units="VE Compensation" toexpr="x*0.000061037" frexpr="x/.000061037" format="%.2f" min="0" max="2" inc="0.2" storagetype="uint16" endian="big"/>
+  <scaling name="PGWGComp" units="Compensation (% of Per Gear Value)" toexpr="x*0.0061037" frexpr="x/.0061037" format="%.2f" min="0" max="200" inc="0.2" storagetype="uint16" endian="big"/>
   <scaling name="engine displacement" units="cc" toexpr="x" frexpr="x" format="%.2f" min="0" max="1" inc="0.01" storagetype="float" endian="big"/>
   <scaling name="celflashcounter" units="counts" toexpr="x" frexpr="x" format="%2.0f" min="0" max="1" inc="1" storagetype="uint8" endian="big"/>
   <scaling name="fbkcthreshold" units="degrees" toexpr="x" frexpr="x" format="%.1f" min="-128" max="-127" inc="0.5" storagetype="float" endian="big"/>
@@ -121,6 +122,7 @@ These definitions are created for FREE without any sort of guarantee. The develo
   <scaling name="LoadFilter" units="Smoothing Factor (%)" toexpr="(x*(-100))+100" frexpr="(x-100)/(-100)" format="%.1f" min="0" max="100" inc="5" storagetype="float" endian="big"/>
   <scaling name="EstimatedAir/FuelRatioAdditive" units="Estimated Air/Fuel Ratio (Additive)" toexpr="(14.7/(1+x*.0078125))-14.7" frexpr="(14.7/(x+14.7)-1)/.0078125" format="%.2f" min="-5" max="0" inc=".06" storagetype="uint8" endian="big" />
   <scaling name="MapRatio" units="ratio" toexpr="x+1" frexpr="x-1" format="%.4f" min="0" max="4" inc="0.1" storagetype="float" endian="big" />
+  <scaling name="DeltaMapSD" units="psi/cycle" toexpr="x" frexpr="x" format="%.1f" min="0" max="600" inc="20" storagetype="float" endian="big" />
 
   <scaling name="ECUID2" units="units" toexpr="x" frexpr="x" format="%02x" min="0" max="1e+02" inc="1" storagetype="uint8" endian="big"/>
 
@@ -377,9 +379,15 @@ These definitions are created for FREE without any sort of guarantee. The develo
   </table>
   
     <table name="Atmospheric Pressure Compensation" category="Merp Speed Density" type="3D" level="2" scaling="VEcomp">
-    <description>This is the Volumetric efficiency of the engine.</description>
+    <description>This compensation is applied to the Volumetric efficiency of the engine.</description>
     <table name="Manifold Pressure" type="X Axis" elements="7" scaling="psiabsoluteSD"/>
     <table name="Atmospheric Pressure" type="Y Axis" elements="7" scaling="psiabsoluteSD"/>
+  </table>
+
+  <table name="Delta MAP Compensation" category="Merp Speed Density" type="3D" level="2" scaling="VEcomp">
+    <description>This compensation is applied to the Volumetric efficiency of the engine.</description>
+    <table name="Delta Manifold Pressure" type="X Axis" elements="7" scaling="deltaMapSD"/>
+    <table name="Engine Speed" type="Y Axis" elements="7" scaling="RPMSD"/>
   </table>
   
   <table name="SD Blending Table" category="Merp Speed Density"  type="3D" level="2" scaling="Blending(%)">
@@ -423,67 +431,192 @@ These definitions are created for FREE without any sort of guarantee. The develo
   </table>
 
   <table name="Per Gear Wastegate Table 1" category="Merp Boost Hacks" level="4" type="3D" scaling="WastegateDutyCycle(%)1">
-    <table name="Gear" type="X Axis" elements="6" scaling=""/>
+    <table name="Gear" type="X Axis" elements="6" scaling="Gear"/>
     <table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM" />
     <description>This table is a gear based multiplier to both initial and max wastegate duty cycles for map 2.
     </description>
   </table>
   <table name="Per Gear Wastegate Table 2" category="Merp Boost Hacks" level="4" type="3D" scaling="WastegateDutyCycle(%)1">
-    <table name="Gear" type="X Axis" elements="6" scaling=""/>
+    <table name="Gear" type="X Axis" elements="6" scaling="Gear"/>
     <table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM" />
     <description>This table is a gear based multiplier to both initial and max wastegate duty cycles for map 2.
     </description>
   </table>
-  <table name="Per Gear Target Boost Table 1" category="Merp Boost Hacks" level="4" type="3D" scaling="WastegateDutyCycle(%)1">
-    <table name="Gear" type="X Axis" elements="6" scaling=""/>
+  <table name="Per Gear Wastegate Table 1 Intelligent" category="Merp Boost Hacks" level="4" type="3D" scaling="WastegateDutyCycle(%)1">
+    <table name="Gear" type="X Axis" elements="6" scaling="Gear"/>
+    <table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM" />
+    <description>This table is a gear based multiplier to both initial and max wastegate duty cycles for map 2.
+    </description>
+  </table>
+  <table name="Per Gear Wastegate Table 2 Intelligent" category="Merp Boost Hacks" level="4" type="3D" scaling="WastegateDutyCycle(%)1">
+    <table name="Gear" type="X Axis" elements="6" scaling="Gear"/>
+    <table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM" />
+    <description>This table is a gear based multiplier to both initial and max wastegate duty cycles for map 2.
+    </description>
+  </table>
+  <table name="Per Gear Wastegate Table 1 Sport" category="Merp Boost Hacks" level="4" type="3D" scaling="WastegateDutyCycle(%)1">
+    <table name="Gear" type="X Axis" elements="6" scaling="Gear"/>
+    <table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM" />
+    <description>This table is a gear based multiplier to both initial and max wastegate duty cycles for map 2.
+    </description>
+  </table>
+  <table name="Per Gear Wastegate Table 2 Sport" category="Merp Boost Hacks" level="4" type="3D" scaling="WastegateDutyCycle(%)1">
+    <table name="Gear" type="X Axis" elements="6" scaling="Gear"/>
+    <table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM" />
+    <description>This table is a gear based multiplier to both initial and max wastegate duty cycles for map 2.
+    </description>
+  </table>
+  <table name="Per Gear Wastegate Table 1 Sport Sharp" category="Merp Boost Hacks" level="4" type="3D" scaling="WastegateDutyCycle(%)1">
+    <table name="Gear" type="X Axis" elements="6" scaling="Gear"/>
+    <table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM" />
+    <description>This table is a gear based multiplier to both initial and max wastegate duty cycles for map 2.
+    </description>
+  </table>
+  <table name="Per Gear Wastegate Table 2 Sport Sharp" category="Merp Boost Hacks" level="4" type="3D" scaling="WastegateDutyCycle(%)1">
+    <table name="Gear" type="X Axis" elements="6" scaling="Gear"/>
+    <table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM" />
+    <description>This table is a gear based multiplier to both initial and max wastegate duty cycles for map 2.
+    </description>
+  </table>
+  <table name="Per Gear Target Boost Table 1" category="Merp Boost Hacks" level="4" type="3D" scaling="BoostTarget(psirelativesealevel)">
+    <table name="Gear" type="X Axis" elements="6" scaling="Gear"/>
     <table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM" />
     <description>This table is a gear based target boost table for map 1. Final target boost is determined by multiplying by the appropriate target boost multipler table.
     </description>
   </table>
-  <table name="Per Gear Target Boost Table 2" category="Merp Boost Hacks" level="4" type="3D" scaling="WastegateDutyCycle(%)1">
-    <table name="Gear" type="X Axis" elements="6" scaling=""/>
+  <table name="Per Gear Target Boost Table 2" category="Merp Boost Hacks" level="4" type="3D" scaling="BoostTarget(psirelativesealevel)">
+    <table name="Gear" type="X Axis" elements="6" scaling="Gear"/>
+    <table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM" />
+    <description>This table is a gear based target boost table for map 2. Final target boost is determined by multiplying by the appropriate target boost multipler table.
+    </description>
+  </table>
+  <table name="Per Gear Target Boost Table 1 Intelligent" category="Merp Boost Hacks" level="4" type="3D" scaling="BoostTarget(psirelativesealevel)">
+    <table name="Gear" type="X Axis" elements="6" scaling="Gear"/>
+    <table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM" />
+    <description>This table is a gear based target boost table for map 1. Final target boost is determined by multiplying by the appropriate target boost multipler table.
+    </description>
+  </table>
+  <table name="Per Gear Target Boost Table 2 Intelligent" category="Merp Boost Hacks" level="4" type="3D" scaling="BoostTarget(psirelativesealevel)">
+    <table name="Gear" type="X Axis" elements="6" scaling="Gear"/>
+    <table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM" />
+    <description>This table is a gear based target boost table for map 2. Final target boost is determined by multiplying by the appropriate target boost multipler table.
+    </description>
+  </table>
+  <table name="Per Gear Target Boost Table 1 Sport" category="Merp Boost Hacks" level="4" type="3D" scaling="BoostTarget(psirelativesealevel)">
+    <table name="Gear" type="X Axis" elements="6" scaling="Gear"/>
+    <table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM" />
+    <description>This table is a gear based target boost table for map 1. Final target boost is determined by multiplying by the appropriate target boost multipler table.
+    </description>
+  </table>
+  <table name="Per Gear Target Boost Table 2 Sport" category="Merp Boost Hacks" level="4" type="3D" scaling="BoostTarget(psirelativesealevel)">
+    <table name="Gear" type="X Axis" elements="6" scaling="Gear"/>
+    <table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM" />
+    <description>This table is a gear based target boost table for map 2. Final target boost is determined by multiplying by the appropriate target boost multipler table.
+    </description>
+  </table>
+  <table name="Per Gear Target Boost Table 1 Sport Sharp" category="Merp Boost Hacks" level="4" type="3D" scaling="BoostTarget(psirelativesealevel)">
+    <table name="Gear" type="X Axis" elements="6" scaling="Gear"/>
+    <table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM" />
+    <description>This table is a gear based target boost table for map 1. Final target boost is determined by multiplying by the appropriate target boost multipler table.
+    </description>
+  </table>
+  <table name="Per Gear Target Boost Table 2 Sport Sharp" category="Merp Boost Hacks" level="4" type="3D" scaling="BoostTarget(psirelativesealevel)">
+    <table name="Gear" type="X Axis" elements="6" scaling="Gear"/>
     <table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM" />
     <description>This table is a gear based target boost table for map 2. Final target boost is determined by multiplying by the appropriate target boost multipler table.
     </description>
   </table>
 
-  <table name="Max Wastegate Duty Multiplier Table 1" category="Merp Boost Hacks" level="4" type="3D" scaling="WastegateDutyCycle(%)1">
-    <table name="Throttle Plate Opening Angle" type="X Axis" elements="8" scaling="%1"/>
+  <table name="Max Wastegate Duty Multiplier Table 1" category="Merp Boost Hacks" level="4" type="3D" scaling="PGWGComp">
+    <table name="Requested Torque" type="X Axis" elements="16" scaling="RequestedTorque(rawecuvalue)1"/>
     <table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM" />
     <description>This table is multiplied with the per gear wastegate table to set the max wastegate duty for map 1.
     </description>
   </table>
-  <table name="Max Wastegate Duty Multiplier Table 2" category="Merp Boost Hacks" level="4" type="3D" scaling="WastegateDutyCycle(%)1">
-    <table name="Throttle Plate Opening Angle" type="X Axis" elements="8" scaling="%1"/>
+  <table name="Max Wastegate Duty Multiplier Table 2" category="Merp Boost Hacks" level="4" type="3D" scaling="PGWGComp">
+    <table name="Requested Torque" type="X Axis" elements="16" scaling="RequestedTorque(rawecuvalue)1"/>
     <table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM" />
     <description>This table is multiplied with the per gear wastegate table to set the max wastegate duty for map 2.
     </description>
   </table>
-  <table name="Initial Wastegate Duty Multiplier Table 1" category="Merp Boost Hacks" level="4" type="3D" scaling="WastegateDutyCycle(%)1">
-    <table name="Throttle Plate Opening Angle" type="X Axis" elements="8" scaling="%1"/>
+  <table name="Initial Wastegate Duty Multiplier Table 1" category="Merp Boost Hacks" level="4" type="3D" scaling="PGWGComp">
+    <table name="Requested Torque" type="X Axis" elements="16" scaling="RequestedTorque(rawecuvalue)1"/>
     <table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM" />
     <description>This table is multiplied with the per gear wastegate table to set the initial wastegate duty for map 1.
     </description>
   </table>
-  <table name="Initial Wastegate Duty Multiplier Table 2" category="Merp Boost Hacks" level="4" type="3D" scaling="WastegateDutyCycle(%)1">
-    <table name="Throttle Plate Opening Angle" type="X Axis" elements="8" scaling="%1"/>
+  <table name="Initial Wastegate Duty Multiplier Table 2" category="Merp Boost Hacks" level="4" type="3D" scaling="PGWGComp">
+    <table name="Requested Torque" type="X Axis" elements="16" scaling="RequestedTorque(rawecuvalue)1"/>
     <table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM" />
     <description>This table is multiplied with the per gear wastegate table to set the initial wastegate duty for map 2.
     </description>
   </table>
 
-  <table name="Target Boost Multiplier Table  1" category="Merp Boost Hacks" type="3D" level="4" scaling="BoostTarget(psirelativesealevel)">
-    <table name="Throttle Plate Opening Angle" type="X Axis" elements="8" scaling="%1" />
+  <table name="Target Boost Multiplier Table 1" category="Merp Boost Hacks" type="3D" level="4" scaling="PGWGComp">
+    <table name="Requested Torque" type="X Axis" elements="8" scaling="RequestedTorque(rawecuvalue)1" />
     <table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM" />
     <description>This map is multiplied by the per gear boost table to produce the desired boost targets for map 1.</description>
   </table>
-  <table name="Target Boost Multiplier Table 2" category="Merp Boost Hacks" type="3D" level="4" scaling="BoostTarget(psirelativesealevel)">
-    <table name="Throttle Plate Opening Angle" type="X Axis" elements="8" scaling="%1" />
+  <table name="Target Boost Multiplier Table 2" category="Merp Boost Hacks" type="3D" level="4" scaling="PGWGComp">
+    <table name="Requested Torque" type="X Axis" elements="16" scaling="RequestedTorque(rawecuvalue)1" />
     <table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM" />
     <description>This map is multiplied by the per gear boost table to produce the desired boost targets for map 1.</description>
   </table>
 
-  
+  <table name="Launch Control Timing Retard" category="Merp Timing" type="3D" level="4" scaling="BaseIgnitionTiming(degreesBTDC)1">
+    <table name="Vehicle Speed" type="X Axis" elements="5" scaling="VehicleSpeed(MPH)" />
+    <table name="Engine Speed" type="Y Axis" elements="12" scaling="RPM" />
+    <description>When using Launch Control Timing Retard Mode, this value is subtracted from the base timing value.</description>
+  </table>
+
+  <table name="Base Timing Table 1" category="Merp Timing" type="3D" level="4" scaling="BaseIgnitionTiming(degreesBTDC)1">
+    <table name="Engine Load" type="X Axis" elements="20" scaling="g/rev" />
+    <table name="Engine Speed" type="Y Axis" elements="20" scaling="RPM" />
+    <description>This is the base level of timing. Total timing = base timing + knock correction advance + other timing compensations. Knock correction advance = (knock correction advance max map value * current advance multiplier) + feedback knock correction + fine knock correction.</description>
+  </table>
+
+  <table name="Base Timing Table 2" category="Merp Timing" type="3D" level="4" scaling="BaseIgnitionTiming(degreesBTDC)1">
+    <table name="Engine Load" type="X Axis" elements="20" scaling="g/rev" />
+    <table name="Engine Speed" type="Y Axis" elements="20" scaling="RPM" />
+    <description>This is the base level of timing. Total timing = base timing + knock correction advance + other timing compensations. Knock correction advance = (knock correction advance max map value * current advance multiplier) + feedback knock correction + fine knock correction.</description>
+  </table>
+
+  <table name="Base Timing Table 1 Intelligent" category="Merp Timing" type="3D" level="4" scaling="BaseIgnitionTiming(degreesBTDC)1">
+    <table name="Engine Load" type="X Axis" elements="20" scaling="g/rev" />
+    <table name="Engine Speed" type="Y Axis" elements="20" scaling="RPM" />
+    <description>This is the base level of timing. Total timing = base timing + knock correction advance + other timing compensations. Knock correction advance = (knock correction advance max map value * current advance multiplier) + feedback knock correction + fine knock correction.</description>
+  </table>
+
+  <table name="Base Timing Table 2 Intelligent" category="Merp Timing" type="3D" level="4" scaling="BaseIgnitionTiming(degreesBTDC)1">
+    <table name="Engine Load" type="X Axis" elements="20" scaling="g/rev" />
+    <table name="Engine Speed" type="Y Axis" elements="20" scaling="RPM" />
+    <description>This is the base level of timing. Total timing = base timing + knock correction advance + other timing compensations. Knock correction advance = (knock correction advance max map value * current advance multiplier) + feedback knock correction + fine knock correction.</description>
+  </table>
+
+  <table name="Base Timing Table 1 Sport" category="Merp Timing" type="3D" level="4" scaling="BaseIgnitionTiming(degreesBTDC)1">
+    <table name="Engine Load" type="X Axis" elements="20" scaling="g/rev" />
+    <table name="Engine Speed" type="Y Axis" elements="20" scaling="RPM" />
+    <description>This is the base level of timing. Total timing = base timing + knock correction advance + other timing compensations. Knock correction advance = (knock correction advance max map value * current advance multiplier) + feedback knock correction + fine knock correction.</description>
+  </table>
+
+  <table name="Base Timing Table 2 Sport" category="Merp Timing" type="3D" level="4" scaling="BaseIgnitionTiming(degreesBTDC)1">
+    <table name="Engine Load" type="X Axis" elements="20" scaling="g/rev" />
+    <table name="Engine Speed" type="Y Axis" elements="20" scaling="RPM" />
+    <description>This is the base level of timing. Total timing = base timing + knock correction advance + other timing compensations. Knock correction advance = (knock correction advance max map value * current advance multiplier) + feedback knock correction + fine knock correction.</description>
+  </table>
+
+  <table name="Base Timing Table 1 Sport Sharp" category="Merp Timing" type="3D" level="4" scaling="BaseIgnitionTiming(degreesBTDC)1">
+    <table name="Engine Load" type="X Axis" elements="20" scaling="g/rev" />
+    <table name="Engine Speed" type="Y Axis" elements="20" scaling="RPM" />
+    <description>This is the base level of timing. Total timing = base timing + knock correction advance + other timing compensations. Knock correction advance = (knock correction advance max map value * current advance multiplier) + feedback knock correction + fine knock correction.</description>
+  </table>
+
+  <table name="Base Timing Table 2 Sport Sharp" category="Merp Timing" type="3D" level="4" scaling="BaseIgnitionTiming(degreesBTDC)1">
+    <table name="Engine Load" type="X Axis" elements="20" scaling="g/rev" />
+    <table name="Engine Speed" type="Y Axis" elements="20" scaling="RPM" />
+    <description>This is the base level of timing. Total timing = base timing + knock correction advance + other timing compensations. Knock correction advance = (knock correction advance max map value * current advance multiplier) + feedback knock correction + fine knock correction.</description>
+  </table>
+
   <!-- Rolling Idle Tables -->
   
   <table name="Idle Rolling in Gear Limit A" type="1D" level="1" scaling="RPM"/>
