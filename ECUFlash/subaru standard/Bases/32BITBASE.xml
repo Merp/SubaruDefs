@@ -17,6 +17,16 @@ These definitions are created for FREE without any sort of guarantee. The develo
     <make>Subaru</make>
   </romid>
 
+  <!-- Fuel Consumption Tables -->
+
+ <scaling name="clusterfueleffcomp" units="Estimated Fuel Efficiency Correction" toexpr="x" frexpr="x" format="%.3f" min="0" max="2" inc="0.1" storagetype="float" endian="big"/>
+
+  <table name="Cluster Display Fuel Consumption Correction" category="ALPHA Fueling - Injectors" type="2D" scaling="clusterfueleffcomp" level="2"><description>This is the correction applied to the fuel efficiency calculation to account for injector size change. Adjust this value by the same percentage as used for injector scaling. NewCorrection = CurrentCorrection * (NewInjectorScale / OldInjectorScale)</description>
+   <table name="" type="Static Y Axis" elements="1">
+    <data>Fuel Efficiency Correction</data>
+   </table>
+  </table>
+
   <!-- Rolling Idle Tables -->
   
   <table name="Idle Rolling in Gear Limit A" type="1D" level="1" scaling="RPM"/>
