@@ -20,7 +20,7 @@ As always, use at your own risk.
 
 These definitions are created for FREE without any sort of guarantee. The developers cannot be held liable for
 any damage or injury incurred as a result of these definitions. USE AT YOUR OWN RISK! -->
-<logger version="131">
+<logger>
   <protocols>
     <protocol id="SSM" baud="4800" databits="8" stopbits="1" parity="0" connect_timeout="2000" send_timeout="55">
       <parameters>
@@ -9520,8 +9520,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E31" name="IAM (4-byte)*" desc="E31-KCA = (KA (max) map value * IAM) + FBKC + FLKC. Total Timing = KCA + base timing + timing compensations" target="1">
-          <ecu id="13562144FF">
-            <address length="4">0xFF28F4</address>
+          <ecu id="13523142FF">
+            <address length="4">0xFF2D34</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFF854C</address>
@@ -10441,13 +10441,28 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF329C</address>
           </ecu>
+          <ecu id="73343C4207">
+            <address length="4">0xFF2CC4</address>
+          </ecu>
+          <ecu id="521A355007">
+            <address length="4">0xFF3310</address>
+          </ecu>
+          <ecu id="5222167007">
+            <address length="4">0xFF2E0C</address>
+          </ecu>
+          <ecu id="6C12506007">
+            <address length="4">0xFF3048</address>
+          </ecu>
+          <ecu id="8112587007">
+            <address length="4">0xFF3130</address>
+          </ecu>
           <conversions>
             <conversion units="multiplier" storagetype="float" expr="x" format="0.0000" />
           </conversions>
         </ecuparam>
         <ecuparam id="E32" name="Engine Load (4-Byte)*" desc="E32-This is the current engine load (g/rev) as determined by the ECU." target="1">
-          <ecu id="13562144FF">
-            <address length="4">0xFF660C</address>
+          <ecu id="13523142FF">
+            <address length="4">0xFF65D4</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFA648</address>
@@ -11385,13 +11400,34 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF6400</address>
           </ecu>
+          <ecu id="73343C4207">
+            <address length="4">0xFF657C</address>
+          </ecu>
+          <ecu id="521A355007">
+            <address length="4">0xFF6C44</address>
+          </ecu>
+          <ecu id="5222167007">
+            <address length="4">0xFF6498</address>
+          </ecu>
+          <ecu id="3722047206">
+            <address length="4">0xFFAF74</address>
+          </ecu>
+          <ecu id="3722057206">
+            <address length="4">0xFFAF74</address>
+          </ecu>
+          <ecu id="6C12506007">
+            <address length="4">0xFF65D0</address>
+          </ecu>
+          <ecu id="8112587007">
+            <address length="4">0xFF63F0</address>
+          </ecu>
           <conversions>
             <conversion units="g/rev" storagetype="float" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E33" name="CL/OL Fueling*" desc="E33-Fuel system status. [8 = CL (normal)][10 = OL (normal)][7 = OL insufficient ECT][14 = OL due to system failure]" target="1">
-          <ecu id="13562144FF">
-            <address>0xFF8945</address>
+          <ecu id="13523142FF">
+            <address>0xFF9CF1</address>
           </ecu>
           <ecu id="2E12495106">
             <address>0xFFBFED</address>
@@ -12290,13 +12326,31 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address>0xFFB1E9</address>
           </ecu>
+          <ecu id="73343C4207">
+            <address>0xFF9EED</address>
+          </ecu>
+          <ecu id="521A355007">
+            <address>0xFFA385</address>
+          </ecu>
+          <ecu id="3722047206">
+            <address>0xFFCAB1</address>
+          </ecu>
+          <ecu id="3722057206">
+            <address>0xFFCAB1</address>
+          </ecu>
+          <ecu id="6C12506007">
+            <address>0xFFA3F1</address>
+          </ecu>
+          <ecu id="8112587007">
+            <address>0xFFA911</address>
+          </ecu>
           <conversions>
             <conversion units="status" expr="x+6" format="0" />
           </conversions>
         </ecuparam>
         <ecuparam id="E34" name="Turbo Dynamics Integral (4-byte)*" desc="E34-Current WG duty corr (ABS) applied by the Turbo Dynamics Integral tables to achieve target boost. Can be Cumulative" target="1">
-          <ecu id="13562144FF">
-            <address length="4">0xFF63D0</address>
+          <ecu id="13523142FF">
+            <address length="4">0xFF5EF4</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFA2B4</address>
@@ -12961,13 +13015,19 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF5CB0</address>
           </ecu>
+          <ecu id="6C12506007">
+            <address length="4">0xFF5EA4</address>
+          </ecu>
+          <ecu id="8112587007">
+            <address length="4">0xFF5CAC</address>
+          </ecu>
           <conversions>
             <conversion units="absolute %" storagetype="float" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E35" name="Boost Error*" desc="E35-Difference between target boost (post-compensations) and actual boost (target boost - actual boost)" target="1">
-          <ecu id="13562144FF">
-            <address length="4">0xFF63C4</address>
+          <ecu id="13523142FF">
+            <address length="4">0xFF5EE4</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFA2A8</address>
@@ -13629,6 +13689,12 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF5CA0</address>
           </ecu>
+          <ecu id="6C12506007">
+            <address length="4">0xFF5E94</address>
+          </ecu>
+          <ecu id="8112587007">
+            <address length="4">0xFF5C9C</address>
+          </ecu>
           <conversions>
             <conversion units="psi" storagetype="float" expr="x*0.01933677" format="0.00" />
             <conversion units="bar" storagetype="float" expr="x*0.001333224" format="0.000" />
@@ -13637,8 +13703,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E36" name="Target Boost (4-byte)*" desc="E36-Current boost target as determined by the Target Boost table(s). This includes any compensation, if applicable." target="1">
-          <ecu id="13562144FF">
-            <address length="4">0xFF63C8</address>
+          <ecu id="13523142FF">
+            <address length="4">0xFF5EEC</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFA2AC</address>
@@ -14303,6 +14369,12 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF5CA8</address>
           </ecu>
+          <ecu id="6C12506007">
+            <address length="4">0xFF5E9C</address>
+          </ecu>
+          <ecu id="8112587007">
+            <address length="4">0xFF5CA4</address>
+          </ecu>
           <conversions>
             <conversion units="psi relative sea level" storagetype="float" expr="(x-760)*0.01933677" format="0.00" />
             <conversion units="psi absolute" storagetype="float" expr="x*0.01933677" format="0.00" />
@@ -14313,8 +14385,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E37" name="Turbo Dynamics Proportional (4-byte)*" desc="E37-Current WG duty correction (absolute) that is being applied by the Turbo Dynamics Proportional table." target="1">
-          <ecu id="13562144FF">
-            <address length="4">0xFF63CC</address>
+          <ecu id="13523142FF">
+            <address length="4">0xFF5EF0</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFA2B0</address>
@@ -14979,13 +15051,19 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF5CAC</address>
           </ecu>
+          <ecu id="6C12506007">
+            <address length="4">0xFF5EA0</address>
+          </ecu>
+          <ecu id="8112587007">
+            <address length="4">0xFF5CA8</address>
+          </ecu>
           <conversions>
             <conversion units="absolute %" storagetype="float" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E38" name="Throttle Plate Opening Angle (4-byte)*" desc="E38-Actual throttle plate opening percentage. More accurate than the standard Throttle Opening Angle % SSM parameter." target="1">
-          <ecu id="13562144FF">
-            <address length="4">0xFF6508</address>
+          <ecu id="13523142FF">
+            <address length="4">0xFF64C4</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFA554</address>
@@ -15806,13 +15884,28 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF62E8</address>
           </ecu>
+          <ecu id="73343C4207">
+            <address length="4">0xFF645C</address>
+          </ecu>
+          <ecu id="521A355007">
+            <address length="4">0xFF6B14</address>
+          </ecu>
+          <ecu id="5222167007">
+            <address length="4">0xFF6370</address>
+          </ecu>
+          <ecu id="6C12506007">
+            <address length="4">0xFF64B8</address>
+          </ecu>
+          <ecu id="8112587007">
+            <address length="4">0xFF62D8</address>
+          </ecu>
           <conversions>
             <conversion units="%" storagetype="float" expr="x/.84" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E39" name="Feedback Knock Correction (4-byte)*" desc="E39-This is the temporary negative correction to timing advance in response to what the ECU perceives as knock." target="1">
-          <ecu id="13562144FF">
-            <address length="4">0xFF72DC</address>
+          <ecu id="13523142FF">
+            <address length="4">0xFF7C40</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFAFA4</address>
@@ -16732,13 +16825,28 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF821C</address>
           </ecu>
+          <ecu id="73343C4207">
+            <address length="4">0xFF80CC</address>
+          </ecu>
+          <ecu id="521A355007">
+            <address length="4">0xFF8368</address>
+          </ecu>
+          <ecu id="5222167007">
+            <address length="4">0xFF8110</address>
+          </ecu>
+          <ecu id="6C12506007">
+            <address length="4">0xFF7F48</address>
+          </ecu>
+          <ecu id="8112587007">
+            <address length="4">0xFF7EF8</address>
+          </ecu>
           <conversions>
             <conversion units="degrees" storagetype="float" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E40" name="Knock Correction Advance (IAM only)*" desc="E40-Knock Correction Advance (IAM only)" target="1">
-          <ecu id="13562144FF">
-            <address length="4">0xFF7320</address>
+          <ecu id="13523142FF">
+            <address length="4">0xFF7CB0</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFAFE8</address>
@@ -17655,13 +17763,28 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF828C</address>
           </ecu>
+          <ecu id="73343C4207">
+            <address length="4">0xFF80F4</address>
+          </ecu>
+          <ecu id="521A355007">
+            <address length="4">0xFF8388</address>
+          </ecu>
+          <ecu id="5222167007">
+            <address length="4">0xFF8138</address>
+          </ecu>
+          <ecu id="6C12506007">
+            <address length="4">0xFF7FB8</address>
+          </ecu>
+          <ecu id="8112587007">
+            <address length="4">0xFF7F68</address>
+          </ecu>
           <conversions>
             <conversion units="degrees" storagetype="float" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E41" name="Fine Learning Knock Correction (4-byte)*" desc="E41-Current learned correction that is being applied which is stored and applied across specific load and rpm ranges." target="1">
-          <ecu id="13562144FF">
-            <address length="4">0xFF7338</address>
+          <ecu id="13523142FF">
+            <address length="4">0xFF7CDC</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFB000</address>
@@ -18584,14 +18707,26 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF82B8</address>
           </ecu>
+          <ecu id="73343C4207">
+            <address length="4">0xFF8124</address>
+          </ecu>
+          <ecu id="521A355007">
+            <address length="4">0xFF8398</address>
+          </ecu>
+          <ecu id="5222167007">
+            <address length="4">0xFF8148</address>
+          </ecu>
+          <ecu id="6C12506007">
+            <address length="4">0xFF7FE4</address>
+          </ecu>
+          <ecu id="8112587007">
+            <address length="4">0xFF7F94</address>
+          </ecu>
           <conversions>
             <conversion units="degrees" storagetype="float" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E42" name="Map Ratio (Primary)*" desc="E42-The ratio used to determine the portion of specific multiple maps which are combined to determine the target value." target="1">
-          <ecu id="13562144FF">
-            <address length="4">0xFF7D54</address>
-          </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFAFB4</address>
           </ecu>
@@ -18985,11 +19120,17 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12584007">
             <address length="4">0xFF90A4</address>
           </ecu>
+          <ecu id="8112587007">
+            <address length="4">0xFF8D9C</address>
+          </ecu>
           <conversions>
             <conversion units="multiplier" storagetype="float" expr="x" format="0.000" />
           </conversions>
         </ecuparam>
         <ecuparam id="E43" name="Knock Correction Advance (4-byte)*" desc="E43-Current learned correction that is being applied and which is stored and applied across specific load and rpm ranges." target="1">
+          <ecu id="13523142FF">
+            <address length="4">0xFF7C3C</address>
+          </ecu>
           <ecu id="2F1A357206">
             <address length="4">0xFF6E48</address>
           </ecu>
@@ -19455,13 +19596,25 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12584007">
             <address length="4">0xFF81E8</address>
           </ecu>
+          <ecu id="73343C4207">
+            <address length="4">0xFF80C8</address>
+          </ecu>
+          <ecu id="521A355007">
+            <address length="4">0xFF8364</address>
+          </ecu>
+          <ecu id="5222167007">
+            <address length="4">0xFF810C</address>
+          </ecu>
+          <ecu id="6C12506007">
+            <address length="4">0xFF7F44</address>
+          </ecu>
           <conversions>
             <conversion units="degrees" storagetype="float" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E44" name="A/F Learning #1 A (Stored)*" desc="E44-A/F learned correction to CL and OL fueling across specific air flow ranges based on short-term A/F Correction witin range." target="1">
-          <ecu id="13562144FF">
-            <address length="4">0xFF2890</address>
+          <ecu id="13523142FF">
+            <address length="4">0xFF2CA8</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFF84F8</address>
@@ -20399,13 +20552,34 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF31D4</address>
           </ecu>
+          <ecu id="73343C4207">
+            <address length="4">0xFF2C18</address>
+          </ecu>
+          <ecu id="521A355007">
+            <address length="4">0xFF3238</address>
+          </ecu>
+          <ecu id="5222167007">
+            <address length="4">0xFF2D70</address>
+          </ecu>
+          <ecu id="3722047206">
+            <address length="4">0xFF809C</address>
+          </ecu>
+          <ecu id="3722057206">
+            <address length="4">0xFF809C</address>
+          </ecu>
+          <ecu id="6C12506007">
+            <address length="4">0xFF2FB4</address>
+          </ecu>
+          <ecu id="8112587007">
+            <address length="4">0xFF3068</address>
+          </ecu>
           <conversions>
             <conversion units="%" storagetype="float" expr="x*100" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E45" name="A/F Learning #1 B (Stored)*" desc="E45-A/F learned correction to CL and OL fueling across specific air flow ranges based on short-term A/F Correction witin range." target="1">
-          <ecu id="13562144FF">
-            <address length="4">0xFF2898</address>
+          <ecu id="13523142FF">
+            <address length="4">0xFF2CB0</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFF8500</address>
@@ -21343,13 +21517,34 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF31DC</address>
           </ecu>
+          <ecu id="73343C4207">
+            <address length="4">0xFF2C20</address>
+          </ecu>
+          <ecu id="521A355007">
+            <address length="4">0xFF3240</address>
+          </ecu>
+          <ecu id="5222167007">
+            <address length="4">0xFF2D78</address>
+          </ecu>
+          <ecu id="3722047206">
+            <address length="4">0xFF80A4</address>
+          </ecu>
+          <ecu id="3722057206">
+            <address length="4">0xFF80A4</address>
+          </ecu>
+          <ecu id="6C12506007">
+            <address length="4">0xFF2FBC</address>
+          </ecu>
+          <ecu id="8112587007">
+            <address length="4">0xFF3070</address>
+          </ecu>
           <conversions>
             <conversion units="%" storagetype="float" expr="x*100" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E46" name="A/F Learning #1 C (Stored)*" desc="E46-A/F learned correction to CL and OL fueling across specific air flow ranges based on short-term A/F Correction witin range." target="1">
-          <ecu id="13562144FF">
-            <address length="4">0xFF28A0</address>
+          <ecu id="13523142FF">
+            <address length="4">0xFF2CB8</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFF8508</address>
@@ -22287,13 +22482,34 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF31E4</address>
           </ecu>
+          <ecu id="73343C4207">
+            <address length="4">0xFF2C28</address>
+          </ecu>
+          <ecu id="521A355007">
+            <address length="4">0xFF3248</address>
+          </ecu>
+          <ecu id="5222167007">
+            <address length="4">0xFF2D80</address>
+          </ecu>
+          <ecu id="3722047206">
+            <address length="4">0xFF80AC</address>
+          </ecu>
+          <ecu id="3722057206">
+            <address length="4">0xFF80AC</address>
+          </ecu>
+          <ecu id="6C12506007">
+            <address length="4">0xFF2FC4</address>
+          </ecu>
+          <ecu id="8112587007">
+            <address length="4">0xFF3078</address>
+          </ecu>
           <conversions>
             <conversion units="%" storagetype="float" expr="x*100" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E47" name="A/F Learning #1 D (Stored)*" desc="E47-A/F learned correction to CL and OL fueling across specific air flow ranges based on short-term A/F Correction witin range." target="1">
-          <ecu id="13562144FF">
-            <address length="4">0xFF28A8</address>
+          <ecu id="13523142FF">
+            <address length="4">0xFF2CC0</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFF8510</address>
@@ -23231,13 +23447,34 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF31EC</address>
           </ecu>
+          <ecu id="73343C4207">
+            <address length="4">0xFF2C30</address>
+          </ecu>
+          <ecu id="521A355007">
+            <address length="4">0xFF3250</address>
+          </ecu>
+          <ecu id="5222167007">
+            <address length="4">0xFF2D88</address>
+          </ecu>
+          <ecu id="3722047206">
+            <address length="4">0xFF80B4</address>
+          </ecu>
+          <ecu id="3722057206">
+            <address length="4">0xFF80B4</address>
+          </ecu>
+          <ecu id="6C12506007">
+            <address length="4">0xFF2FCC</address>
+          </ecu>
+          <ecu id="8112587007">
+            <address length="4">0xFF3080</address>
+          </ecu>
           <conversions>
             <conversion units="%" storagetype="float" expr="x*100" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E48" name="A/F Learning #1 (4-byte)*" desc="E48-Current A/F Learning being applied. Higher resolution then the standard SSM A/F Learning #1 parameter." target="1">
-          <ecu id="13562144FF">
-            <address length="4">0xFF6D88</address>
+          <ecu id="13523142FF">
+            <address length="4">0xFF7390</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFAB78</address>
@@ -24172,13 +24409,34 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF78A4</address>
           </ecu>
+          <ecu id="73343C4207">
+            <address length="4">0xFF77EC</address>
+          </ecu>
+          <ecu id="521A355007">
+            <address length="4">0xFF7BA0</address>
+          </ecu>
+          <ecu id="5222167007">
+            <address length="4">0xFF7848</address>
+          </ecu>
+          <ecu id="3722047206">
+            <address length="4">0xFFA8A8</address>
+          </ecu>
+          <ecu id="3722057206">
+            <address length="4">0xFFA8A8</address>
+          </ecu>
+          <ecu id="6C12506007">
+            <address length="4">0xFF7650</address>
+          </ecu>
+          <ecu id="8112587007">
+            <address length="4">0xFF75A8</address>
+          </ecu>
           <conversions>
             <conversion units="%" storagetype="float" expr="x*100" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E49" name="Idle Speed Map Selection*" desc="E49-Current Idle Speed Target MAP being used. 3 table ROM-&gt;[1=A],[2=B],[4=C]. 4 table ROM-&gt;[1=A],[2=B],[3=C],[4=D]" target="1">
-          <ecu id="13562144FF">
-            <address>0xFF7794</address>
+          <ecu id="13523142FF">
+            <address>0xFF834C</address>
           </ecu>
           <ecu id="2E12495106">
             <address>0xFFB258</address>
@@ -24993,13 +25251,34 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address>0xFF899C</address>
           </ecu>
+          <ecu id="73343C4207">
+            <address>0xFF8728</address>
+          </ecu>
+          <ecu id="521A355007">
+            <address>0xFF8974</address>
+          </ecu>
+          <ecu id="5222167007">
+            <address>0xFF872C</address>
+          </ecu>
+          <ecu id="3722047206">
+            <address>0xFFB2A8</address>
+          </ecu>
+          <ecu id="3722057206">
+            <address>0xFFB2A8</address>
+          </ecu>
+          <ecu id="6C12506007">
+            <address>0xFF8654</address>
+          </ecu>
+          <ecu id="8112587007">
+            <address>0xFF867C</address>
+          </ecu>
           <conversions>
             <conversion units="raw ecu value" expr="x" format="0" />
           </conversions>
         </ecuparam>
         <ecuparam id="E50" name="Fuel Injector #1 Latency (4-byte)*" desc="E50-Current injector latency as determined by the Injector Latency table." target="1">
-          <ecu id="13562144FF">
-            <address length="4">0xFF7078</address>
+          <ecu id="13523142FF">
+            <address length="4">0xFF6F44</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFADAC</address>
@@ -25934,13 +26213,34 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF7378</address>
           </ecu>
+          <ecu id="73343C4207">
+            <address length="4">0xFF7344</address>
+          </ecu>
+          <ecu id="521A355007">
+            <address length="4">0xFF7708</address>
+          </ecu>
+          <ecu id="5222167007">
+            <address length="4">0xFF7458</address>
+          </ecu>
+          <ecu id="3722047206">
+            <address length="4">0xFFA3EC</address>
+          </ecu>
+          <ecu id="3722057206">
+            <address length="4">0xFFA3EC</address>
+          </ecu>
+          <ecu id="6C12506007">
+            <address length="4">0xFF71F0</address>
+          </ecu>
+          <ecu id="8112587007">
+            <address length="4">0xFF7074</address>
+          </ecu>
           <conversions>
             <conversion units="ms" storagetype="float" expr="x*.001" format="0.0000" />
           </conversions>
         </ecuparam>
         <ecuparam id="E51" name="Manifold Absolute Pressure (4-byte)*" desc="E51-MAP is limited to about 37 psi absolute (about 22 psig at sea level). This parameter has no effective limit." target="1">
-          <ecu id="13562144FF">
-            <address length="4">0xFF6464</address>
+          <ecu id="13523142FF">
+            <address length="4">0xFF63FC</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFA4C4</address>
@@ -26854,8 +27154,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E52" name="Manifold Relative Sea Level Pressure (4-byte)*" desc="E52-Same as Manifold Absolute Pressure (Direct) except represented as relative pressure with the assumption of sea level." target="1">
-          <ecu id="13562144FF">
-            <address length="4">0xFF6464</address>
+          <ecu id="13523142FF">
+            <address length="4">0xFF63FC</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFA4C4</address>
@@ -27793,6 +28093,27 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF6218</address>
           </ecu>
+          <ecu id="73343C4207">
+            <address length="4">0xFF639C</address>
+          </ecu>
+          <ecu id="521A355007">
+            <address length="4">0xFF6A74</address>
+          </ecu>
+          <ecu id="5222167007">
+            <address length="4">0xFF62A8</address>
+          </ecu>
+          <ecu id="3722047206">
+            <address length="4">0xFFAE48</address>
+          </ecu>
+          <ecu id="3722057206">
+            <address length="4">0xFFAE48</address>
+          </ecu>
+          <ecu id="6C12506007">
+            <address length="4">0xFF63E8</address>
+          </ecu>
+          <ecu id="8112587007">
+            <address length="4">0xFF6208</address>
+          </ecu>
           <conversions>
             <conversion units="psi relative sea level" storagetype="float" expr="(x-760)*0.01933677" format="0.00" />
             <conversion units="bar relative sea level" storagetype="float" expr="(x-760)*0.001333224" format="0.000" />
@@ -27800,8 +28121,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E53" name="Ignition Base Timing*" desc="E53-Current base ignition timing as determined by the Base Timing tables." target="1">
-          <ecu id="13562144FF">
-            <address length="4">0xFF71A0</address>
+          <ecu id="13523142FF">
+            <address length="4">0xFF7988</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFAEC8</address>
@@ -28733,13 +29054,34 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF7F38</address>
           </ecu>
+          <ecu id="73343C4207">
+            <address length="4">0xFF7E04</address>
+          </ecu>
+          <ecu id="521A355007">
+            <address length="4">0xFF81E0</address>
+          </ecu>
+          <ecu id="5222167007">
+            <address length="4">0xFF7EA8</address>
+          </ecu>
+          <ecu id="3722047206">
+            <address length="4">0xFFA230</address>
+          </ecu>
+          <ecu id="3722057206">
+            <address length="4">0xFFA230</address>
+          </ecu>
+          <ecu id="6C12506007">
+            <address length="4">0xFF7C90</address>
+          </ecu>
+          <ecu id="8112587007">
+            <address length="4">0xFF7C38</address>
+          </ecu>
           <conversions>
             <conversion units="degrees" storagetype="float" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E54" name="Tip-in Throttle*" desc="E54-This is the current throttle angle change % used as an input by the Throttle Tip-in Enrichment table." target="1">
-          <ecu id="13562144FF">
-            <address length="4">0xFF6510</address>
+          <ecu id="13523142FF">
+            <address length="4">0xFF64D4</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFA558</address>
@@ -29680,13 +30022,34 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF62F0</address>
           </ecu>
+          <ecu id="73343C4207">
+            <address length="4">0xFF646C</address>
+          </ecu>
+          <ecu id="521A355007">
+            <address length="4">0xFF6B24</address>
+          </ecu>
+          <ecu id="5222167007">
+            <address length="4">0xFF6380</address>
+          </ecu>
+          <ecu id="3722047206">
+            <address length="4">0xFFAE70</address>
+          </ecu>
+          <ecu id="3722057206">
+            <address length="4">0xFFAE70</address>
+          </ecu>
+          <ecu id="6C12506007">
+            <address length="4">0xFF64C0</address>
+          </ecu>
+          <ecu id="8112587007">
+            <address length="4">0xFF62E0</address>
+          </ecu>
           <conversions>
             <conversion units="%" storagetype="float" expr="x" format="0.000" />
           </conversions>
         </ecuparam>
         <ecuparam id="E55" name="Tip-in Enrichment (Last Calculated)*" desc="E55-Current (or last) calculated tip-in enrichment value. The value is  not cleared, effectively shows the last calculated value." target="1">
-          <ecu id="13562144FF">
-            <address length="4">0xFF6FB0</address>
+          <ecu id="13523142FF">
+            <address length="4">0xFF76DC</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFACEC</address>
@@ -30615,13 +30978,34 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF7C5C</address>
           </ecu>
+          <ecu id="73343C4207">
+            <address length="4">0xFF7A8C</address>
+          </ecu>
+          <ecu id="521A355007">
+            <address length="4">0xFF7EF8</address>
+          </ecu>
+          <ecu id="5222167007">
+            <address length="4">0xFF7BBC</address>
+          </ecu>
+          <ecu id="3722047206">
+            <address length="4">0xFFAAF0</address>
+          </ecu>
+          <ecu id="3722057206">
+            <address length="4">0xFFAAF0</address>
+          </ecu>
+          <ecu id="6C12506007">
+            <address length="4">0xFF79E4</address>
+          </ecu>
+          <ecu id="8112587007">
+            <address length="4">0xFF7960</address>
+          </ecu>
           <conversions>
             <conversion units="raw ecu value" storagetype="float" expr="x" format="0" />
           </conversions>
         </ecuparam>
         <ecuparam id="E56" name="Requested Torque*" desc="E56-Current requested torque which is used as an input to the Target Throttle Plate Position (Requested Torque) table." target="1">
-          <ecu id="13562144FF">
-            <address length="4">0xFF75D0</address>
+          <ecu id="13523142FF">
+            <address length="4">0xFF7FA4</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFB0E0</address>
@@ -31547,13 +31931,34 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF8584</address>
           </ecu>
+          <ecu id="73343C4207">
+            <address length="4">0xFF8494</address>
+          </ecu>
+          <ecu id="521A355007">
+            <address length="4">0xFF864C</address>
+          </ecu>
+          <ecu id="5222167007">
+            <address length="4">0xFF83C4</address>
+          </ecu>
+          <ecu id="3722047206">
+            <address length="4">0xFFAEB8</address>
+          </ecu>
+          <ecu id="3722057206">
+            <address length="4">0xFFAEB8</address>
+          </ecu>
+          <ecu id="6C12506007">
+            <address length="4">0xFF82AC</address>
+          </ecu>
+          <ecu id="8112587007">
+            <address length="4">0xFF8264</address>
+          </ecu>
           <conversions>
             <conversion units="raw ecu value" storagetype="float" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E57" name="Target Throttle Plate Position*" desc="E57-Current target throttle plate position as determined by the Target Throttle Plate Position (Requested Torque) table." target="1">
-          <ecu id="13562144FF">
-            <address length="4">0xFF75C8</address>
+          <ecu id="13523142FF">
+            <address length="4">0xFF7F9C</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFB0DC</address>
@@ -32458,13 +32863,34 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF857C</address>
           </ecu>
+          <ecu id="73343C4207">
+            <address length="4">0xFF84E0</address>
+          </ecu>
+          <ecu id="521A355007">
+            <address length="4">0xFF8634</address>
+          </ecu>
+          <ecu id="5222167007">
+            <address length="4">0xFF83BC</address>
+          </ecu>
+          <ecu id="3722047206">
+            <address length="4">0xFFB0E4</address>
+          </ecu>
+          <ecu id="3722057206">
+            <address length="4">0xFFB0E4</address>
+          </ecu>
+          <ecu id="6C12506007">
+            <address length="4">0xFF82A4</address>
+          </ecu>
+          <ecu id="8112587007">
+            <address length="4">0xFF825C</address>
+          </ecu>
           <conversions>
             <conversion units="%" storagetype="float" expr="x/.84" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E58" name="Fine Learning Table Offset*" desc="E58-Current index position for the Fine Learning Knock Correction table being applied (and potentially adjusted), stored in ram." target="1">
-          <ecu id="13562144FF">
-            <address>0xFF733E</address>
+          <ecu id="13523142FF">
+            <address>0xFF7CE8</address>
           </ecu>
           <ecu id="2E12495106">
             <address>0xFFB009</address>
@@ -33366,13 +33792,25 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address>0xFF82C4</address>
           </ecu>
+          <ecu id="521A355007">
+            <address>0xFF83AE</address>
+          </ecu>
+          <ecu id="5222167007">
+            <address>0xFF8162</address>
+          </ecu>
+          <ecu id="6C12506007">
+            <address>0xFF7FF0</address>
+          </ecu>
+          <ecu id="8112587007">
+            <address>0xFF7FA0</address>
+          </ecu>
           <conversions>
             <conversion units="index position" expr="x+1" format="0" />
           </conversions>
         </ecuparam>
         <ecuparam id="E59" name="Gear (Calculated)*" desc="E59-Current manual transmission gear selection as estimated by the ECU based on vehicle speed and RPM." target="1">
-          <ecu id="13562144FF">
-            <address>0xFF68E5</address>
+          <ecu id="13523142FF">
+            <address>0xFF69FD</address>
           </ecu>
           <ecu id="2E12495106">
             <address>0xFFA865</address>
@@ -34274,13 +34712,34 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address>0xFF6839</address>
           </ecu>
+          <ecu id="73343C4207">
+            <address>0xFF69DA</address>
+          </ecu>
+          <ecu id="521A355007">
+            <address>0xFF7005</address>
+          </ecu>
+          <ecu id="5222167007">
+            <address>0xFF6825</address>
+          </ecu>
+          <ecu id="3722047206">
+            <address>0xFFB09D</address>
+          </ecu>
+          <ecu id="3722057206">
+            <address>0xFFB09D</address>
+          </ecu>
+          <ecu id="6C12506007">
+            <address>0xFF69D9</address>
+          </ecu>
+          <ecu id="8112587007">
+            <address>0xFF6809</address>
+          </ecu>
           <conversions>
             <conversion units="position" expr="x" format="0" />
           </conversions>
         </ecuparam>
         <ecuparam id="E60" name="Fuel Injector #1 Pulse Width (4-byte)*" desc="E60-Fuel Injector #1 PW with higher resolution. Note: This parameter does not include latency unlike the standard parameter." target="1">
-          <ecu id="13562144FF">
-            <address length="4">0xFF7064</address>
+          <ecu id="13523142FF">
+            <address length="4">0xFF782C</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFAD98</address>
@@ -35212,13 +35671,34 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF7DC0</address>
           </ecu>
+          <ecu id="73343C4207">
+            <address length="4">0xFF7C88</address>
+          </ecu>
+          <ecu id="521A355007">
+            <address length="4">0xFF8010</address>
+          </ecu>
+          <ecu id="5222167007">
+            <address length="4">0xFF7D18</address>
+          </ecu>
+          <ecu id="3722047206">
+            <address length="4">0xFFA3D8</address>
+          </ecu>
+          <ecu id="3722057206">
+            <address length="4">0xFFA3D8</address>
+          </ecu>
+          <ecu id="6C12506007">
+            <address length="4">0xFF7B44</address>
+          </ecu>
+          <ecu id="8112587007">
+            <address length="4">0xFF7AC0</address>
+          </ecu>
           <conversions>
             <conversion units="ms" storagetype="float" expr="x*.001" format="0.0000" />
           </conversions>
         </ecuparam>
         <ecuparam id="E61" name="A/F Learning Airflow Range (Current)*" desc="E61-Current stored A/F Learning index position. A value of 1-4 corresponds to airflow ranges A-D respectively." target="1">
-          <ecu id="13562144FF">
-            <address>0xFF6D91</address>
+          <ecu id="13523142FF">
+            <address>0xFF2CA8</address>
           </ecu>
           <ecu id="2E12495106">
             <address>0xFFAB81</address>
@@ -36150,6 +36630,27 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address>0xFF78AB</address>
           </ecu>
+          <ecu id="73343C4207">
+            <address>0xFF77F3</address>
+          </ecu>
+          <ecu id="521A355007">
+            <address>0xFF7BBB</address>
+          </ecu>
+          <ecu id="5222167007">
+            <address>0xFF784F</address>
+          </ecu>
+          <ecu id="3722047206">
+            <address>0xFFA8BB</address>
+          </ecu>
+          <ecu id="3722057206">
+            <address>0xFFA8BB</address>
+          </ecu>
+          <ecu id="6C12506007">
+            <address>0xFF7657</address>
+          </ecu>
+          <ecu id="8112587007">
+            <address>0xFF75AF</address>
+          </ecu>
           <conversions>
             <conversion units="offset" expr="x+1" format="0" />
           </conversions>
@@ -36223,6 +36724,9 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </ecu>
           <ecu id="671B344007">
             <address length="4">0xFF3224</address>
+          </ecu>
+          <ecu id="521A355007">
+            <address length="4">0xFF3258</address>
           </ecu>
           <conversions>
             <conversion units="%" storagetype="float" expr="x*100" format="0.00" />
@@ -36298,6 +36802,9 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="671B344007">
             <address length="4">0xFF322C</address>
           </ecu>
+          <ecu id="521A355007">
+            <address length="4">0xFF3260</address>
+          </ecu>
           <conversions>
             <conversion units="%" storagetype="float" expr="x*100" format="0.00" />
           </conversions>
@@ -36372,6 +36879,9 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="671B344007">
             <address length="4">0xFF3234</address>
           </ecu>
+          <ecu id="521A355007">
+            <address length="4">0xFF3268</address>
+          </ecu>
           <conversions>
             <conversion units="%" storagetype="float" expr="x*100" format="0.00" />
           </conversions>
@@ -36445,6 +36955,9 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </ecu>
           <ecu id="671B344007">
             <address length="4">0xFF323C</address>
+          </ecu>
+          <ecu id="521A355007">
+            <address length="4">0xFF3270</address>
           </ecu>
           <conversions>
             <conversion units="%" storagetype="float" expr="x*100" format="0.00" />
@@ -36523,6 +37036,9 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="761B347007">
             <address length="4">0xFF80B4</address>
           </ecu>
+          <ecu id="521A355007">
+            <address length="4">0xFF7BA4</address>
+          </ecu>
           <conversions>
             <conversion units="%" storagetype="float" expr="x*100" format="0.00" />
           </conversions>
@@ -36561,8 +37077,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E70" name="Primary Wastegate Duty Maximum* (4-byte)*" desc="E70-Current max WG duty as determined by the Max Wastegate Duty table(s) with all WG compensations applied." target="1">
-          <ecu id="13562144FF">
-            <address length="4">0xFF63EC</address>
+          <ecu id="13523142FF">
+            <address length="4">0xFF5F08</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFA2D0</address>
@@ -38751,8 +39267,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E77" name="Primary Wastegate Duty Maximum* (4-byte)*" desc="E77-Current max WG duty as determined by the Max Wastegate Duty table(s) with all WG compensations applied." target="1">
-          <ecu id="13562144FF">
-            <address length="4">0xFF63EC</address>
+          <ecu id="13523142FF">
+            <address length="4">0xFF5F08</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFA2D0</address>
@@ -39411,14 +39927,14 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF5CC4</address>
           </ecu>
+          <ecu id="8112587007">
+            <address length="4">0xFF5CC0</address>
+          </ecu>
           <conversions>
             <conversion units="%" storagetype="float" expr="x" format="0.000" />
           </conversions>
         </ecuparam>
         <ecuparam id="E78" name="Primary Wastegate Duty Maximum* (2-byte)**" desc="E78-Current max WG duty as determined by the Max Wastegate Duty table(s) with all WG compensations applied." target="1">
-          <ecu id="13562144FF">
-            <address length="2">0xFF68F4</address>
-          </ecu>
           <ecu id="2F12505106">
             <address length="2">0xFF52F8</address>
           </ecu>
@@ -39805,9 +40321,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E79" name="Turbo Dynamics Integral (2-byte)**" desc="E79-Current WG duty corr (ABS) applied by the Turbo Dynamics Integral tables to achieve target boost. Can be Cumulative" target="1">
-          <ecu id="13562144FF">
-            <address length="2">0xFF68F6</address>
-          </ecu>
           <ecu id="2F12505106">
             <address length="2">0xFF52FA</address>
           </ecu>
@@ -40194,9 +40707,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E80" name="Turbo Dynamics Proportional (2-byte)**" desc="E80-This is the current wastegate duty correction (absolute) that is being applied by the Turbo Dynamics Proportional table." target="1">
-          <ecu id="13562144FF">
-            <address length="2">0xFF68F8</address>
-          </ecu>
           <ecu id="2F12505106">
             <address length="2">0xFF52FC</address>
           </ecu>
@@ -40583,8 +41093,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E81" name="A/F Correction #1 (4-byte)*" desc="E81-A higher precision alternative to the standard SSM A/F Correction #1 parameter." target="1">
-          <ecu id="13562144FF">
-            <address length="4">0xFF6BCC</address>
+          <ecu id="13523142FF">
+            <address length="4">0xFF7210</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFAA30</address>
@@ -41516,13 +42026,34 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF7700</address>
           </ecu>
+          <ecu id="73343C4207">
+            <address length="4">0xFF76A0</address>
+          </ecu>
+          <ecu id="521A355007">
+            <address length="4">0xFF77B0</address>
+          </ecu>
+          <ecu id="5222167007">
+            <address length="4">0xFF7718</address>
+          </ecu>
+          <ecu id="3722047206">
+            <address length="4">0xFFA6A8</address>
+          </ecu>
+          <ecu id="3722057206">
+            <address length="4">0xFFA6A8</address>
+          </ecu>
+          <ecu id="6C12506007">
+            <address length="4">0xFF74C0</address>
+          </ecu>
+          <ecu id="8112587007">
+            <address length="4">0xFF73FC</address>
+          </ecu>
           <conversions>
             <conversion units="%" storagetype="float" expr="(x*100)-100" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E82" name="A/F Correction #1 (2-byte)**" desc="E82-A higher precision alternative to the standard SSM A/F Correction #1 parameter." target="1">
-          <ecu id="13562144FF">
-            <address length="2">0xFF68FC</address>
+          <ecu id="13523142FF">
+            <address length="2">0xFF6A2A</address>
           </ecu>
           <ecu id="2F04015206">
             <address length="2">0xFFBB7E</address>
@@ -42361,13 +42892,34 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="2">0xFF687E</address>
           </ecu>
+          <ecu id="73343C4207">
+            <address length="2">0xFF6F48</address>
+          </ecu>
+          <ecu id="521A355007">
+            <address length="2">0xFF705A</address>
+          </ecu>
+          <ecu id="5222167007">
+            <address length="2">0xFF6CC8</address>
+          </ecu>
+          <ecu id="3722047206">
+            <address length="2">0xFFBCF0</address>
+          </ecu>
+          <ecu id="3722057206">
+            <address length="2">0xFFBCF0</address>
+          </ecu>
+          <ecu id="6C12506007">
+            <address length="2">0xFF6A06</address>
+          </ecu>
+          <ecu id="8112587007">
+            <address length="2">0xFF684E</address>
+          </ecu>
           <conversions>
             <conversion units="%" expr="(x*.01220703)-100" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E83" name="A/F Learning #1 (2-byte)**" desc="E83-Current A/F Learning being applied. Higher resolution then the standard SSM A/F Learning #1 parameter." target="1">
-          <ecu id="13562144FF">
-            <address length="2">0xFF6900</address>
+          <ecu id="13523142FF">
+            <address length="2">0xFF6A2E</address>
           </ecu>
           <ecu id="2F04015206">
             <address length="2">0xFFBB80</address>
@@ -43137,13 +43689,31 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="2">0xFF6882</address>
           </ecu>
+          <ecu id="73343C4207">
+            <address length="2">0xFF6F4C</address>
+          </ecu>
+          <ecu id="5222167007">
+            <address length="2">0xFF6CCC</address>
+          </ecu>
+          <ecu id="3722047206">
+            <address length="2">0xFFBCF4</address>
+          </ecu>
+          <ecu id="3722057206">
+            <address length="2">0xFFBCF4</address>
+          </ecu>
+          <ecu id="6C12506007">
+            <address length="2">0xFF6A0A</address>
+          </ecu>
+          <ecu id="8112587007">
+            <address length="2">0xFF6852</address>
+          </ecu>
           <conversions>
             <conversion units="%" expr="(x*.04882812)-50" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E84" name="Primary Open Loop Map Enrichment (4-byte)*" desc="E84-Primary enrichment value based on the Primary Open Loop Fueling table(s) Note: this value is NOT the final fueling target." target="1">
-          <ecu id="13562144FF">
-            <address length="4">0xFF6E74</address>
+          <ecu id="13523142FF">
+            <address length="4">0xFF7458</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFABD0</address>
@@ -44075,6 +44645,27 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF79B8</address>
           </ecu>
+          <ecu id="73343C4207">
+            <address length="4">0xFF78B4</address>
+          </ecu>
+          <ecu id="521A355007">
+            <address length="4">0xFF7D1C</address>
+          </ecu>
+          <ecu id="5222167007">
+            <address length="4">0xFF7958</address>
+          </ecu>
+          <ecu id="3722047206">
+            <address length="4">0xFFAA10</address>
+          </ecu>
+          <ecu id="3722057206">
+            <address length="4">0xFFAA10</address>
+          </ecu>
+          <ecu id="6C12506007">
+            <address length="4">0xFF7760</address>
+          </ecu>
+          <ecu id="8112587007">
+            <address length="4">0xFF76B8</address>
+          </ecu>
           <conversions>
             <conversion units="estimated AFR" storagetype="float" expr="14.7/(1+x)" format="0.00" />
             <conversion units="lambda" storagetype="float" expr="1/(1+x)" format="0.00" />
@@ -44082,8 +44673,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E85" name="Primary Open Loop Map Enrichment (2-byte)**" desc="E85-Primary enrichment value based on the Primary Open Loop Fueling table(s) Note: this value is NOT the final fueling target." target="1">
-          <ecu id="13562144FF">
-            <address length="2">0xFF6902</address>
+          <ecu id="13523142FF">
+            <address length="2">0xFF6A32</address>
           </ecu>
           <ecu id="2F04015206">
             <address length="2">0xFFBB84</address>
@@ -44922,6 +45513,27 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="2">0xFF6888</address>
           </ecu>
+          <ecu id="73343C4207">
+            <address length="2">0xFF6F50</address>
+          </ecu>
+          <ecu id="521A355007">
+            <address length="2">0xFF7088</address>
+          </ecu>
+          <ecu id="5222167007">
+            <address length="2">0xFF6CD2</address>
+          </ecu>
+          <ecu id="3722047206">
+            <address length="2">0xFFBCFC</address>
+          </ecu>
+          <ecu id="3722057206">
+            <address length="2">0xFFBCFC</address>
+          </ecu>
+          <ecu id="6C12506007">
+            <address length="2">0xFF6A10</address>
+          </ecu>
+          <ecu id="8112587007">
+            <address length="2">0xFF6858</address>
+          </ecu>
           <conversions>
             <conversion units="estimated AFR" expr="14.7/(1+(x*.00003051758))" format="0.00" />
             <conversion units="lambda" expr="1/(1+(x*.00003051758))" format="0.00" />
@@ -44929,6 +45541,9 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E86" name="Engine Load (1-byte)**" desc="E86-This is the current engine load (g/rev) as determined by the ECU." target="1">
+          <ecu id="13523142FF">
+            <address>0xFF6A43</address>
+          </ecu>
           <ecu id="5112144007">
             <address>0xFF6CDE</address>
           </ecu>
@@ -45205,14 +45820,23 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address>0xFF6899</address>
           </ecu>
+          <ecu id="73343C4207">
+            <address>0xFF6F5B</address>
+          </ecu>
+          <ecu id="5222167007">
+            <address>0xFF6CDE</address>
+          </ecu>
+          <ecu id="6C12506007">
+            <address>0xFF6A22</address>
+          </ecu>
+          <ecu id="8112587007">
+            <address>0xFF6869</address>
+          </ecu>
           <conversions>
             <conversion units="g/rev" expr="x*.015625" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E87" name="Engine Load (2-byte)**" desc="E87-This is the current engine load (g/rev) as determined by the ECU." target="1">
-          <ecu id="13562144FF">
-            <address length="2">0xFF6908</address>
-          </ecu>
           <ecu id="2F12505106">
             <address length="2">0xFF530C</address>
           </ecu>
@@ -45599,8 +46223,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E88" name="Manifold Absolute Pressure (2-byte)**" desc="E88-MAP is limited to about 37 psi absolute (about 22 psig at sea level). This parameter has no effective limit." target="1">
-          <ecu id="13562144FF">
-            <address length="2">0xFF6916</address>
+          <ecu id="13523142FF">
+            <address length="2">0xFF6A10</address>
           </ecu>
           <ecu id="2F0A367306">
             <address length="2">0xFFC3D0</address>
@@ -46310,8 +46934,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E89" name="Manifold Relative Sea Level Pressure (2-byte)**" desc="E89-Same as Manifold Absolute Pressure (Direct) except represented as relative pressure with the assumption of sea level." target="1">
-          <ecu id="13562144FF">
-            <address length="2">0xFF6916</address>
+          <ecu id="13523142FF">
+            <address length="2">0xFF6A10</address>
           </ecu>
           <ecu id="2F0A367306">
             <address length="2">0xFFC3D0</address>
@@ -47030,6 +47654,21 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="2">0xFF6864</address>
           </ecu>
+          <ecu id="73343C4207">
+            <address length="2">0xFF6F30</address>
+          </ecu>
+          <ecu id="521A355007">
+            <address length="2">0xFF7070</address>
+          </ecu>
+          <ecu id="5222167007">
+            <address length="2">0xFF6CB0</address>
+          </ecu>
+          <ecu id="6C12506007">
+            <address length="2">0xFF69EC</address>
+          </ecu>
+          <ecu id="8112587007">
+            <address length="2">0xFF6834</address>
+          </ecu>
           <conversions>
             <conversion units="psi relative sea level" expr="(x-760)*0.01933677" format="0.00" />
             <conversion units="bar relative sea level" expr="(x-760)*0.001333224" format="0.000" />
@@ -47038,8 +47677,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E90" name="Target Boost (2-byte)**" desc="E90-Current boost target as determined by the Target Boost table(s). This includes any compensation, if applicable." target="1">
-          <ecu id="13562144FF">
-            <address length="2">0xFF691C</address>
+          <ecu id="13523142FF">
+            <address length="2">0xFF6A3E</address>
           </ecu>
           <ecu id="2F12505106">
             <address length="2">0xFF5320</address>
@@ -47605,6 +48244,12 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="2">0xFF6894</address>
           </ecu>
+          <ecu id="6C12506007">
+            <address length="2">0xFF6A1C</address>
+          </ecu>
+          <ecu id="8112587007">
+            <address length="2">0xFF6864</address>
+          </ecu>
           <conversions>
             <conversion units="psi relative sea level" expr="(x-760)*0.01933677" format="0.00" />
             <conversion units="psi absolute" expr="x*0.01933677" format="0.00" />
@@ -47615,8 +48260,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E91" name="A/F Sensor #1 (4-byte)*" desc="E91-A higher precision alternative to the standard SSM A/F Sensor #1 (AFR/lambda) parameter." target="1">
-          <ecu id="13562144FF">
-            <address length="4">0xFF676C</address>
+          <ecu id="13523142FF">
+            <address length="4">0xFF6730</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFA720</address>
@@ -48545,6 +49190,27 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF6564</address>
           </ecu>
+          <ecu id="73343C4207">
+            <address length="4">0xFF672C</address>
+          </ecu>
+          <ecu id="521A355007">
+            <address length="4">0xFF6D38</address>
+          </ecu>
+          <ecu id="5222167007">
+            <address length="4">0xFF6580</address>
+          </ecu>
+          <ecu id="3722047206">
+            <address length="4">0xFFB4D4</address>
+          </ecu>
+          <ecu id="3722057206">
+            <address length="4">0xFFB4D4</address>
+          </ecu>
+          <ecu id="6C12506007">
+            <address length="4">0xFF670C</address>
+          </ecu>
+          <ecu id="8112587007">
+            <address length="4">0xFF6534</address>
+          </ecu>
           <conversions>
             <conversion units="estimated AFR" storagetype="float" expr="x*14.7" format="0.00" />
             <conversion units="lambda" storagetype="float" expr="x" format="0.00" />
@@ -48552,8 +49218,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E92" name="A/F Sensor #1 (2-byte)**" desc="E92-A higher precision alternative to the standard SSM A/F Sensor #1 (AFR/lambda) parameter." target="1">
-          <ecu id="13562144FF">
-            <address length="2">0xFF691E</address>
+          <ecu id="13523142FF">
+            <address length="2">0xFF6A18</address>
           </ecu>
           <ecu id="2F04015206">
             <address length="2">0xFFBB74</address>
@@ -49392,6 +50058,27 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="2">0xFF686C</address>
           </ecu>
+          <ecu id="73343C4207">
+            <address length="2">0xFF6F38</address>
+          </ecu>
+          <ecu id="521A355007">
+            <address length="2">0xFF706A</address>
+          </ecu>
+          <ecu id="5222167007">
+            <address length="2">0xFF6CB8</address>
+          </ecu>
+          <ecu id="3722047206">
+            <address length="2">0xFFBCE0</address>
+          </ecu>
+          <ecu id="3722057206">
+            <address length="2">0xFFBCE0</address>
+          </ecu>
+          <ecu id="6C12506007">
+            <address length="2">0xFF69F4</address>
+          </ecu>
+          <ecu id="8112587007">
+            <address length="2">0xFF683C</address>
+          </ecu>
           <conversions>
             <conversion units="estimated AFR" expr="(x*.0001220703)*14.7" format="0.00" />
             <conversion units="lambda" expr="x*0.0001220703" format="0.00" />
@@ -49399,8 +50086,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E93" name="Throttle Plate Opening Angle (2-byte)**" desc="E93-Actual throttle plate opening percentage. More accurate than the standard Throttle Opening Angle % SSM parameter." target="1">
-          <ecu id="13562144FF">
-            <address length="2">0xFF6926</address>
+          <ecu id="13523142FF">
+            <address length="2">0xFF6A12</address>
           </ecu>
           <ecu id="2F12505106">
             <address length="2">0xFF532A</address>
@@ -49972,13 +50659,19 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="2">0xFF6866</address>
           </ecu>
+          <ecu id="6C12506007">
+            <address length="2">0xFF69EE</address>
+          </ecu>
+          <ecu id="8112587007">
+            <address length="2">0xFF6836</address>
+          </ecu>
           <conversions>
             <conversion units="%" expr="x*0.0022706535" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E94" name="Feedback Knock Correction (1-byte)**" desc="E94-This is the temporary negative correction to timing advance in response to what the ECU perceives as knock." target="1">
-          <ecu id="13562144FF">
-            <address>0xFF6930</address>
+          <ecu id="13523142FF">
+            <address>0xFF6A4D</address>
           </ecu>
           <ecu id="2F12505106">
             <address>0xFF5334</address>
@@ -50637,13 +51330,25 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address>0xFF68A3</address>
           </ecu>
+          <ecu id="73343C4207">
+            <address>0xFF6F63</address>
+          </ecu>
+          <ecu id="5222167007">
+            <address>0xFF6CE6</address>
+          </ecu>
+          <ecu id="6C12506007">
+            <address>0xFF6A2C</address>
+          </ecu>
+          <ecu id="8112587007">
+            <address>0xFF6873</address>
+          </ecu>
           <conversions>
             <conversion units="degrees" expr="(x*.3515625)-45" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E95" name="Fine Learning Knock Correction (1-byte)**" desc="E95-Current learned correction that is being applied which is stored and applied across specific load and rpm ranges." target="1">
-          <ecu id="13562144FF">
-            <address>0xFF6933</address>
+          <ecu id="13523142FF">
+            <address>0xFF6A50</address>
           </ecu>
           <ecu id="2F12505106">
             <address>0xFF5337</address>
@@ -51302,13 +52007,25 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address>0xFF68A6</address>
           </ecu>
+          <ecu id="73343C4207">
+            <address>0xFF6F66</address>
+          </ecu>
+          <ecu id="5222167007">
+            <address>0xFF6CE9</address>
+          </ecu>
+          <ecu id="6C12506007">
+            <address>0xFF6A2F</address>
+          </ecu>
+          <ecu id="8112587007">
+            <address>0xFF6876</address>
+          </ecu>
           <conversions>
             <conversion units="degrees" expr="(x*.3515625)-45" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E96" name="IAM (1-byte)**" desc="E96-KCA = (KA (max) map value * IAM) + FBKC + FLKC. Total Timing = KCA + base timing + timing compensations" target="1">
-          <ecu id="13562144FF">
-            <address>0xFF6935</address>
+          <ecu id="13523142FF">
+            <address>0xFF6A4F</address>
           </ecu>
           <ecu id="2F12505106">
             <address>0xFF5339</address>
@@ -51967,6 +52684,18 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address>0xFF68A5</address>
           </ecu>
+          <ecu id="73343C4207">
+            <address>0xFF6F65</address>
+          </ecu>
+          <ecu id="5222167007">
+            <address>0xFF6CE8</address>
+          </ecu>
+          <ecu id="6C12506007">
+            <address>0xFF6A2E</address>
+          </ecu>
+          <ecu id="8112587007">
+            <address>0xFF6875</address>
+          </ecu>
           <conversions>
             <conversion units="multiplier" expr="x*.0625" format="0.0000" />
           </conversions>
@@ -52092,6 +52821,12 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="62421A4007">
             <address>0xFF71EB</address>
           </ecu>
+          <ecu id="3722047206">
+            <address>0xFFBD05</address>
+          </ecu>
+          <ecu id="3722057206">
+            <address>0xFFBD05</address>
+          </ecu>
           <conversions>
             <conversion units="g/rev" expr="x*.0078125" format="0.00" />
           </conversions>
@@ -52216,6 +52951,12 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </ecu>
           <ecu id="62421A4007">
             <address length="2">0xFF71C8</address>
+          </ecu>
+          <ecu id="3722047206">
+            <address length="2">0xFFBCD4</address>
+          </ecu>
+          <ecu id="3722057206">
+            <address length="2">0xFFBCD4</address>
           </ecu>
           <conversions>
             <conversion units="psi absolute" expr="(x*0.0003688196892273)-2.9005155" format="0.00" />
@@ -52495,6 +53236,18 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12584007">
             <address length="2">0xFF684A</address>
           </ecu>
+          <ecu id="73343C4207">
+            <address length="2">0xFF6F40</address>
+          </ecu>
+          <ecu id="5222167007">
+            <address length="2">0xFF6CC0</address>
+          </ecu>
+          <ecu id="3722047206">
+            <address length="2">0xFFBCFE</address>
+          </ecu>
+          <ecu id="3722057206">
+            <address length="2">0xFFBCFE</address>
+          </ecu>
           <conversions>
             <conversion units="ms" expr="x*.004" format="0.000" />
           </conversions>
@@ -52558,6 +53311,9 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
             <address length="2">0xFF7018</address>
           </ecu>
           <ecu id="621A356007">
+            <address length="2">0xFF7024</address>
+          </ecu>
+          <ecu id="521A355007">
             <address length="2">0xFF7024</address>
           </ecu>
           <conversions>
@@ -52625,6 +53381,9 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="621A356007">
             <address>0xFF703C</address>
           </ecu>
+          <ecu id="521A355007">
+            <address>0xFF703C</address>
+          </ecu>
           <conversions>
             <conversion units="degrees" expr="(x*0.5)-64" format="0.00" />
           </conversions>
@@ -52688,6 +53447,9 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
             <address>0xFF7031</address>
           </ecu>
           <ecu id="621A356007">
+            <address>0xFF703D</address>
+          </ecu>
+          <ecu id="521A355007">
             <address>0xFF703D</address>
           </ecu>
           <conversions>
@@ -52755,6 +53517,9 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="621A356007">
             <address length="2">0xFF7040</address>
           </ecu>
+          <ecu id="521A355007">
+            <address length="2">0xFF7040</address>
+          </ecu>
           <conversions>
             <conversion units="ms" expr="x*.008" format="0.000" />
           </conversions>
@@ -52818,6 +53583,9 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
             <address length="2">0xFF7036</address>
           </ecu>
           <ecu id="621A356007">
+            <address length="2">0xFF7042</address>
+          </ecu>
+          <ecu id="521A355007">
             <address length="2">0xFF7042</address>
           </ecu>
           <conversions>
@@ -52894,6 +53662,9 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="761B347007">
             <address length="4">0xFF7E88</address>
           </ecu>
+          <ecu id="521A355007">
+            <address length="4">0xFF77B4</address>
+          </ecu>
           <conversions>
             <conversion units="%" storagetype="float" expr="(x*100)-100" format="0.00" />
           </conversions>
@@ -52968,6 +53739,9 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="761B347007">
             <address length="2">0xFF70CE</address>
           </ecu>
+          <ecu id="521A355007">
+            <address length="2">0xFF705C</address>
+          </ecu>
           <conversions>
             <conversion units="%" expr="(x*.01220703)-100" format="0.00" />
           </conversions>
@@ -53034,6 +53808,9 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
             <address length="2">0xFF6B0C</address>
           </ecu>
           <ecu id="621A356007">
+            <address length="2">0xFF705E</address>
+          </ecu>
+          <ecu id="521A355007">
             <address length="2">0xFF705E</address>
           </ecu>
           <conversions>
@@ -53110,6 +53887,9 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="761B347007">
             <address length="2">0xFF70D6</address>
           </ecu>
+          <ecu id="521A355007">
+            <address length="2">0xFF7060</address>
+          </ecu>
           <conversions>
             <conversion units="%" expr="(x*.04882812)-50" format="0.00" />
           </conversions>
@@ -53183,6 +53963,15 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </ecu>
           <ecu id="761B347007">
             <address length="4">0xFF68B4</address>
+          </ecu>
+          <ecu id="521A355007">
+            <address length="4">0xFF6D3C</address>
+          </ecu>
+          <ecu id="3722047206">
+            <address length="4">0xFFB4D8</address>
+          </ecu>
+          <ecu id="3722057206">
+            <address length="4">0xFFB4D8</address>
           </ecu>
           <conversions>
             <conversion units="estimated AFR" storagetype="float" expr="x*14.7" format="0.00" />
@@ -53260,6 +54049,9 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="761B347007">
             <address length="2">0xFF70BA</address>
           </ecu>
+          <ecu id="521A355007">
+            <address length="2">0xFF706C</address>
+          </ecu>
           <conversions>
             <conversion units="estimated AFR" expr="(x*.0001220703)*14.7" format="0.00" />
             <conversion units="lambda" expr="x*0.0001220703" format="0.00" />
@@ -53324,11 +54116,17 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="621A356007">
             <address>0xFF703B</address>
           </ecu>
+          <ecu id="521A355007">
+            <address>0xFF703B</address>
+          </ecu>
           <conversions>
             <conversion units="multiplier" expr="x*.03125" format="0.0000" />
           </conversions>
         </ecuparam>
         <ecuparam id="E112" name="Primary WGDC Maximum (1-byte)**" desc="E112-Current max WG duty as determined by the Max Wastegate Duty table(s) with all WG compensations applied." target="1">
+          <ecu id="13523142FF">
+            <address>0xFF6A59</address>
+          </ecu>
           <ecu id="5112504107">
             <address>0xFF6A04</address>
           </ecu>
@@ -53512,13 +54310,19 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address>0xFF68AF</address>
           </ecu>
+          <ecu id="6C12506007">
+            <address>0xFF6A38</address>
+          </ecu>
+          <ecu id="8112587007">
+            <address>0xFF687F</address>
+          </ecu>
           <conversions>
             <conversion units="%" expr="x*.3921568" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E113" name="Manifold Relative Pressure (4-byte)*" desc="E113-Actual relative boost pressure and therefore will match a boost gauge regardless of local atmospheric pressure. No limit." target="1">
-          <ecu id="13562144FF">
-            <address length="4">0xFF6468</address>
+          <ecu id="13523142FF">
+            <address length="4">0xFF6400</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFA4C8</address>
@@ -54432,6 +55236,27 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF621C</address>
           </ecu>
+          <ecu id="73343C4207">
+            <address length="4">0xFF63A0</address>
+          </ecu>
+          <ecu id="521A355007">
+            <address length="4">0xFF6A78</address>
+          </ecu>
+          <ecu id="5222167007">
+            <address length="4">0xFF62AC</address>
+          </ecu>
+          <ecu id="3722047206">
+            <address length="4">0xFFAE4C</address>
+          </ecu>
+          <ecu id="3722057206">
+            <address length="4">0xFFAE4C</address>
+          </ecu>
+          <ecu id="6C12506007">
+            <address length="4">0xFF63EC</address>
+          </ecu>
+          <ecu id="8112587007">
+            <address length="4">0xFF620C</address>
+          </ecu>
           <conversions>
             <conversion units="psi relative" storagetype="float" expr="x*0.01933677" format="0.00" />
             <conversion units="bar relative" storagetype="float" expr="x*0.001333224" format="0.000" />
@@ -54441,9 +55266,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E114" name="Knock Sum*" desc="E114-Knock event counter, determined by the ECU, after an execution with no knock event, this counter is incremented." target="1">
-          <ecu id="13562144FF">
-            <address>0xFF72B4</address>
-          </ecu>
           <ecu id="2F12044106">
             <address>0xFF6FD0</address>
           </ecu>
@@ -54942,14 +55764,17 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="62421A4007">
             <address>0xFF7F70</address>
           </ecu>
+          <ecu id="3722047206">
+            <address>0xFFADD9</address>
+          </ecu>
+          <ecu id="3722057206">
+            <address>0xFFADD9</address>
+          </ecu>
           <conversions>
             <conversion units="count" expr="x" format="0" />
           </conversions>
         </ecuparam>
         <ecuparam id="E115" name="Primary Enrichment Final (4-byte)*" desc="E115-This is the Primary Open Loop Map Enrichment value with the minimum warm-up enrichment factors applied. Not Final." target="1">
-          <ecu id="13562144FF">
-            <address length="4">0xFF6B54</address>
-          </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFA9B4</address>
           </ecu>
@@ -55468,6 +56293,9 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E118" name="Knock Correction Advance Max Primary*" desc="E118-Knock Correction Advance Max Primary" target="1">
+          <ecu id="13523142FF">
+            <address length="4">0xFF7CA8</address>
+          </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFAFE0</address>
           </ecu>
@@ -55798,6 +56626,18 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF8284</address>
           </ecu>
+          <ecu id="73343C4207">
+            <address length="4">0xFF80F0</address>
+          </ecu>
+          <ecu id="5222167007">
+            <address length="4">0xFF8134</address>
+          </ecu>
+          <ecu id="6C12506007">
+            <address length="4">0xFF7FB0</address>
+          </ecu>
+          <ecu id="8112587007">
+            <address length="4">0xFF7F60</address>
+          </ecu>
           <conversions>
             <conversion units="degrees" storagetype="float" expr="x" format="0.00" />
           </conversions>
@@ -55826,6 +56666,9 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E120" name="Target Boost Relative (4-byte)*" desc="E120-Target Boost Relative (4-byte)" target="1">
+          <ecu id="13523142FF">
+            <address length="4">0xFF5EE8</address>
+          </ecu>
           <ecu id="4B04505107">
             <address length="4">0xFF6474</address>
           </ecu>
@@ -56099,6 +56942,12 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF5CA4</address>
           </ecu>
+          <ecu id="6C12506007">
+            <address length="4">0xFF5E98</address>
+          </ecu>
+          <ecu id="8112587007">
+            <address length="4">0xFF5CA0</address>
+          </ecu>
           <conversions>
             <conversion units="psi relative" storagetype="float" expr="x*0.01933677" format="0.00" />
             <conversion units="bar relative" storagetype="float" expr="x*0.001333224" format="0.000" />
@@ -56107,8 +56956,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E121" name="Closed Loop Fueling Target (4-byte)*" desc="E121-This is the closed loop fueling lambda target which is used in determining short-term corrections (A/F Correction #1)." target="1">
-          <ecu id="13562144FF">
-            <address length="4">0xFF6C14</address>
+          <ecu id="13523142FF">
+            <address length="4">0xFF72F8</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFAA78</address>
@@ -57043,6 +57892,27 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF77F4</address>
           </ecu>
+          <ecu id="73343C4207">
+            <address length="4">0xFF7774</address>
+          </ecu>
+          <ecu id="521A355007">
+            <address length="4">0xFF77D0</address>
+          </ecu>
+          <ecu id="5222167007">
+            <address length="4">0xFF77E4</address>
+          </ecu>
+          <ecu id="3722047206">
+            <address length="4">0xFFA6CC</address>
+          </ecu>
+          <ecu id="3722057206">
+            <address length="4">0xFFA6CC</address>
+          </ecu>
+          <ecu id="6C12506007">
+            <address length="4">0xFF75A8</address>
+          </ecu>
+          <ecu id="8112587007">
+            <address length="4">0xFF74F0</address>
+          </ecu>
           <conversions>
             <conversion units="estimated AFR" storagetype="float" expr="x*14.7" format="0.00" />
             <conversion units="lambda" storagetype="float" expr="x" format="0.00" />
@@ -57050,8 +57920,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E122" name="Closed Loop Fueling Target (2-byte)*" desc="E122-This is the closed loop fueling lambda target which is used in determining short-term corrections (A/F Correction #1)." target="1">
-          <ecu id="13562144FF">
-            <address length="2">0xFF6924</address>
+          <ecu id="13523142FF">
+            <address length="2">0xFF6A2C</address>
           </ecu>
           <ecu id="2F04015206">
             <address length="2">0xFFBB7C</address>
@@ -57896,6 +58766,27 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="2">0xFF6880</address>
           </ecu>
+          <ecu id="73343C4207">
+            <address length="2">0xFF6F4A</address>
+          </ecu>
+          <ecu id="521A355007">
+            <address length="2">0xFF702A</address>
+          </ecu>
+          <ecu id="5222167007">
+            <address length="2">0xFF6CCA</address>
+          </ecu>
+          <ecu id="3722047206">
+            <address length="2">0xFFBCEE</address>
+          </ecu>
+          <ecu id="3722057206">
+            <address length="2">0xFFBCEE</address>
+          </ecu>
+          <ecu id="6C12506007">
+            <address length="2">0xFF6A08</address>
+          </ecu>
+          <ecu id="8112587007">
+            <address length="2">0xFF6850</address>
+          </ecu>
           <conversions>
             <conversion units="lambda" expr="x*0.0001220703" format="0.00" />
             <conversion units="estimated AFR" expr="x*.001794433" format="0.00" />
@@ -57903,8 +58794,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E123" name="Final Fueling Base (4-byte)*" desc="E123-This is the final fueling multiplier after corrections are applied but before per injector compensation." target="1">
-          <ecu id="13562144FF">
-            <address length="4">0xFF6B24</address>
+          <ecu id="13523142FF">
+            <address length="4">0xFF6F04</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFA984</address>
@@ -58839,6 +59730,27 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF7338</address>
           </ecu>
+          <ecu id="73343C4207">
+            <address length="4">0xFF7304</address>
+          </ecu>
+          <ecu id="521A355007">
+            <address length="4">0xFF76A8</address>
+          </ecu>
+          <ecu id="5222167007">
+            <address length="4">0xFF7418</address>
+          </ecu>
+          <ecu id="3722047206">
+            <address length="4">0xFFA3F0</address>
+          </ecu>
+          <ecu id="3722057206">
+            <address length="4">0xFFA3F0</address>
+          </ecu>
+          <ecu id="6C12506007">
+            <address length="4">0xFF71B0</address>
+          </ecu>
+          <ecu id="8112587007">
+            <address length="4">0xFF7034</address>
+          </ecu>
           <conversions>
             <conversion units="lambda" storagetype="float" expr="1/x" format="0.00" />
             <conversion units="estimated AFR" storagetype="float" expr="14.7/x" format="0.00" />
@@ -58846,8 +59758,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E124" name="Final Fueling Base (2-byte)*" desc="E124-This is the final fueling multiplier after corrections are applied but before per injector compensation." target="1">
-          <ecu id="13562144FF">
-            <address length="2">0xFF6906</address>
+          <ecu id="13523142FF">
+            <address length="2">0xFF6A26</address>
           </ecu>
           <ecu id="2F04015206">
             <address length="2">0xFFBB78</address>
@@ -59694,6 +60606,27 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </ecu>
           <ecu id="8A12784007">
             <address length="2">0xFF687A</address>
+          </ecu>
+          <ecu id="73343C4207">
+            <address length="2">0xFF6F44</address>
+          </ecu>
+          <ecu id="521A355007">
+            <address length="2">0xFF7026</address>
+          </ecu>
+          <ecu id="5222167007">
+            <address length="2">0xFF6CC4</address>
+          </ecu>
+          <ecu id="3722047206">
+            <address length="2">0xFFBCE6</address>
+          </ecu>
+          <ecu id="3722057206">
+            <address length="2">0xFFBCE6</address>
+          </ecu>
+          <ecu id="6C12506007">
+            <address length="2">0xFF6A02</address>
+          </ecu>
+          <ecu id="8112587007">
+            <address length="2">0xFF684A</address>
           </ecu>
           <conversions>
             <conversion units="lambda" expr="1/(x*.0004882812)" format="0.00" />
@@ -61160,16 +62093,16 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E1100" name="MM SD Mode Switch" desc="" length="2">
-          <ecu id="13562144FF">
-            <address length="1">0xFFA7F5</address>
+          <ecu id="13523142FF">
+            <address length="1">0xFFA869</address>
           </ecu>
           <conversions>
             <conversion storagetype="uint8" units="rawdata" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E1101" name="MM SD Volumetric Efficiency Direct" desc="">
-          <ecu id="13562144FF">
-            <address length="4">0xFFA7F8</address>
+          <ecu id="13523142FF">
+            <address length="4">0xFFA86C</address>
           </ecu>
           <conversions>
             <conversion storagetype="float" units="VE" expr="x" format="0.00" />
@@ -61181,32 +62114,32 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E1103" name="MM SD Atmospheric Compensation Direct" desc="">
-          <ecu id="13562144FF">
-            <address length="4">0xFFA804</address>
+          <ecu id="13523142FF">
+            <address length="4">0xFFA878</address>
           </ecu>
           <conversions>
             <conversion storagetype="float" units="Multiplier" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E1104" name="MM SD Blending Ratio Direct" desc="">
-          <ecu id="13562144FF">
-            <address length="4">0xFFA80C</address>
+          <ecu id="13523142FF">
+            <address length="4">0xFFA880</address>
           </ecu>
           <conversions>
             <conversion storagetype="float" units="ratio" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E1105" name="MM SD Airflow Blending Direct" desc="">
-          <ecu id="13562144FF">
-            <address length="4">0xFFA810</address>
+          <ecu id="13523142FF">
+            <address length="4">0xFFA884</address>
           </ecu>
           <conversions>
             <conversion storagetype="float" units="g/s" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E1106" name="MM SD Airflow Maf Sensor Direct" desc="">
-          <ecu id="13562144FF">
-            <address length="4">0xFFA800</address>
+          <ecu id="13523142FF">
+            <address length="4">0xFFA874</address>
           </ecu>
           <conversions>
             <conversion storagetype="float" units="g/s" expr="x" format="0.00" />
@@ -61223,72 +62156,72 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E1302" name="MM LC Engaged Signal" desc="">
-          <ecu id="13562144FF">
-            <address length="1">0xFFA81B</address>
+          <ecu id="13523142FF">
+            <address length="1">0xFFA88F</address>
           </ecu>
           <conversions>
             <conversion storagetype="uint8" units="rawdata" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E1303" name="MM FFS Engaged Signal" desc="">
-          <ecu id="13562144FF">
-            <address length="1">0xFFA81C</address>
+          <ecu id="13523142FF">
+            <address length="1">0xFFA890</address>
           </ecu>
           <conversions>
             <conversion storagetype="uint8" units="rawdata" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E1304" name="MM FFS Gear Monitor" desc="">
-          <ecu id="13562144FF">
-            <address length="4">0xFFA820</address>
+          <ecu id="13523142FF">
+            <address length="4">0xFFA894</address>
           </ecu>
           <conversions>
             <conversion storagetype="float" units="gear" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E1305" name="MM RevLimit Active Cut RPM" desc="">
-          <ecu id="13562144FF">
-            <address length="4">0xFFA824</address>
+          <ecu id="13523142FF">
+            <address length="4">0xFFA898</address>
           </ecu>
           <conversions>
             <conversion storagetype="float" units="RPM" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E1306" name="MM RevLimit Active Resume RPM" desc="">
-          <ecu id="13562144FF">
-            <address length="4">0xFFA828</address>
+          <ecu id="13523142FF">
+            <address length="4">0xFFA89C</address>
           </ecu>
           <conversions>
             <conversion storagetype="float" units="RPM" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E1307" name="MM RedLine Cut RPM" desc="">
-          <ecu id="13562144FF">
-            <address length="4">0xFFA82C</address>
+          <ecu id="13523142FF">
+            <address length="4">0xFFA8A0</address>
           </ecu>
           <conversions>
             <conversion storagetype="float" units="RPM" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E1308" name="MM RedLine Hysteresis" desc="">
-          <ecu id="13562144FF">
-            <address length="4">0xFFA830</address>
+          <ecu id="13523142FF">
+            <address length="4">0xFFA8A4</address>
           </ecu>
           <conversions>
             <conversion storagetype="float" units="RPM" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E1309" name="MM Launch Control RPM" desc="">
-          <ecu id="13562144FF">
-            <address length="4">0xFFA838</address>
+          <ecu id="13523142FF">
+            <address length="4">0xFFA8AC</address>
           </ecu>
           <conversions>
             <conversion storagetype="float" units="RPM" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E1310" name="MM Launch Control Hysteresis" desc="">
-          <ecu id="13562144FF">
-            <address length="4">0xFFA83C</address>
+          <ecu id="13523142FF">
+            <address length="4">0xFFA8B0</address>
           </ecu>
           <conversions>
             <conversion storagetype="float" units="RPM" expr="x" format="0.00" />
@@ -61305,72 +62238,81 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E1313" name="MM FFS Speed Threshold" desc="">
-          <ecu id="13562144FF">
-            <address length="4">0xFFA854</address>
+          <ecu id="13523142FF">
+            <address length="4">0xFFA8C8</address>
           </ecu>
           <conversions>
             <conversion storagetype="float" units="rawdata" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E1400" name="MM Clutch Flags" desc="">
-          <ecu id="13562144FF">
-            <address length="1">0xFF683B</address>
+          <ecu id="13523142FF">
+            <address length="1">0xFF67BF</address>
           </ecu>
           <conversions>
             <conversion storagetype="uint8" units="rawdata" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E1401" name="MM Brake Flags" desc="">
-          <ecu id="13562144FF">
-            <address length="1">0xFF622C</address>
+          <ecu id="13523142FF">
+            <address length="1">0xFF61B8</address>
           </ecu>
           <conversions>
             <conversion storagetype="uint8" units="rawdata" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E1402" name="MM Cruise Resume Flags" desc="">
-          <ecu id="13562144FF">
-            <address length="1">0xFF622B</address>
+          <ecu id="13523142FF">
+            <address length="1">0xFF61B7</address>
           </ecu>
           <conversions>
             <conversion storagetype="uint8" units="rawdata" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E1403" name="MM Cruise Coast Flags" desc="">
-          <ecu id="13562144FF">
-            <address length="1">0xFF622A</address>
+          <ecu id="13523142FF">
+            <address length="1">0xFF61B6</address>
           </ecu>
           <conversions>
             <conversion storagetype="uint8" units="rawdata" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E1102" name="MM SD Airflow SD VE" desc="">
-          <ecu id="13562144FF">
-            <address length="4">0xFFA7FC</address>
+          <ecu id="13523142FF">
+            <address length="4">0xFFA870</address>
           </ecu>
           <conversions>
             <conversion storagetype="float" units="g/s" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E1312" name="MM FFS Engagement RPM" desc="">
-          <ecu id="13562144FF">
-            <address length="4">0xFFA840</address>
+          <ecu id="13523142FF">
+            <address length="4">0xFFA8B4</address>
           </ecu>
           <conversions>
             <conversion storagetype="float" units="RPM" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E1800" name="MM CEL Signal" desc="">
+          <ecu id="13523142FF">
+            <address length="1">0xFFA8CC</address>
+          </ecu>
           <conversions>
             <conversion storagetype="uint8" units="rawdata" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E1801" name="MM CEL Speed Counter" desc="">
+          <ecu id="13523142FF">
+            <address length="1">0xFFA8D1</address>
+          </ecu>
           <conversions>
             <conversion storagetype="uint8" units="rawdata" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E1802" name="MM CEL Flash Counter" desc="">
+          <ecu id="13523142FF">
+            <address length="1">0xFFA8D2</address>
+          </ecu>
           <conversions>
             <conversion storagetype="uint8" units="rawdata" expr="x" format="0.00" />
           </conversions>
