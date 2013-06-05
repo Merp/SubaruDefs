@@ -1,27 +1,37 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
 <rom>
-  <romid>
-    <xmlid>AZ1G900C</xmlid>
-    <internalidaddress>2004</internalidaddress>
-    <internalidstring>AZ1G900C</internalidstring>
-    <ecuid>7452584007</ecuid>
-    <year>11</year>
-    <market>ADM</market>
-    <make>Subaru</make>
-    <model>Impreza</model>
-    <submodel>WRX</submodel>
-    <transmission>MT</transmission>
-    <memmodel>SH7058</memmodel>
-    <flashmethod>subarucan</flashmethod>
-    <checksummodule>subarudbw</checksummodule>
-  </romid>
-  <include>32BITBASE</include>
+	<romid>
+		<xmlid>AZ1G900C</xmlid>
+		<internalidaddress>2004</internalidaddress>
+		<internalidstring>AZ1G900C</internalidstring>
+		<ecuid>7452584007</ecuid>
+		<make>Subaru</make>
+		<market>ADM</market>
+		<model>Impreza</model>
+		<submodel>WRX</submodel>
+		<transmission>MT</transmission>
+		<year>11</year>
+		<flashmethod>subarucan</flashmethod>
+		<memmodel>SH7058</memmodel>
+		<checksummodule>subarudbw</checksummodule>
+	</romid>
+
+	<include>32BITBASE</include>
 
 	<table name="Rev Limit (Fuel Cut A)" address="c7d40"/>
 
 	<table name="Speed Limiting C (Throttle)" address="dc65c"/>
 
 	<table name="Cluster Display Fuel Consumption Correction" address="c10d0">
+	</table>
+
+	<table name="Low Pulse Width Fuel Injector Compensation" address="c8874">
+		<table name="Injector Pulse Width" address="c8854"/>
+	</table>
+
+	<table name="Low pulse width fuel injector compensation maximum RPM" address="c7c40">
+	</table>
+
+	<table name="Low pulse width fuel injector compensation maximum IPW" address="c7c44">
 	</table>
 
 	<table name="Requested Torque Limit A (Per Gear/Engine Speed)" address="dd470">
