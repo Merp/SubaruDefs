@@ -102,6 +102,13 @@ These definitions are created for FREE without any sort of guarantee. The develo
     <data name="Compensated" value="02" />
     <data name="Locked" value="03" />
   </scaling>
+  <scaling name="LCTimingMode" storagetype="bloblist">
+    <data name="Disabled" value="01" />
+    <data name="Compensated" value="02" />
+    <data name="Locked" value="03" />
+  </scaling>
+  <scaling name="LCTimingLock" units="Degrees BTDC" toexpr="x" frexpr="x" format="%.1f" min="-10" max="20" inc="0.5" storagetype="float" endian="big"/>
+  <scaling name="LCTimingMult" units="Multiplier" toexpr="x" frexpr="x" format="%.1f" min="0" max="1" inc="0.5" storagetype="float" endian="big"/>
   <scaling name="af1res" units="ohms" toexpr="x" frexpr="x" format="%.1f" min="-128" max="-127" inc="0.5" storagetype="float" endian="big"/>
   <scaling name="LoadFilter" units="Smoothing Factor (%)" toexpr="(x*(-100))+100" frexpr="(x-100)/(-100)" format="%.1f" min="0" max="100" inc="5" storagetype="float" endian="big"/>
   <scaling name="VE(%)" units="VE(%)" toexpr="x*.0000457763672" frexpr="x/.0000457763672" format="%.2f" min="0.3" max="1.1" inc="0.025" storagetype="uint16" endian="big"/>
@@ -629,6 +636,33 @@ These definitions are created for FREE without any sort of guarantee. The develo
     <table name="Engine Speed" type="Y Axis" elements="20" scaling="RPM" />
     <description>This is the base level of timing. Total timing = base timing + knock correction advance + other timing compensations. Knock correction advance = (knock correction advance max map value * current advance multiplier) + feedback knock correction + fine knock correction.</description>
   </table>
+
+  <table name="Knock Correction Retard Table 1" category="Merp Timing" type="3D" level="4" scaling="BaseIgnitionTiming(degreesBTDC)1">
+    <table name="Engine Load" type="X Axis" elements="20" scaling="g/rev" />
+    <table name="Engine Speed" type="Y Axis" elements="20" scaling="RPM" />
+    <description>This is the knock correction retard table, IAM * this table is subtracted from base timing.</description>
+  </table>
+
+  <table name="Knock Correction Retard Table 2" category="Merp Timing" type="3D" level="4" scaling="BaseIgnitionTiming(degreesBTDC)1">
+    <table name="Engine Load" type="X Axis" elements="20" scaling="g/rev" />
+    <table name="Engine Speed" type="Y Axis" elements="20" scaling="RPM" />
+    <description>This is the knock correction retard table, IAM * this table is subtracted from base timing.</description>
+  </table>
+
+  <table name="Launch Control Timing Mode" category="Merp Timing" type="1D" scaling="LCTimingMode"/>
+
+  <table name="Launch Control Timing Lock" category="Merp Timing" type="2D" level="4" scaling="LCTimingLock">
+    <table name="LC Timing Lock" type="Static Y Axis" elements="1">
+      <data>Commanded Timing Advance</data>
+    </table>
+  </table>
+
+  <table name="Default Launch Control Timing Retard Multiplier" category="Merp Timing" type="2D" level="4" scaling="LCTimingMult">
+    <table name="LC Timing Lock" type="Static Y Axis" elements="1">
+      <data>Commanded Timing Advance</data>
+    </table>
+  </table>
+
 
   <!-- Rolling Idle Tables -->
   
