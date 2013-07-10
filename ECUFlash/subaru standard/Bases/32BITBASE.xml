@@ -393,7 +393,26 @@ These definitions are created for FREE without any sort of guarantee. The develo
    <table name="Idle Airflow Min Target Decel Ramping Adder Increasing" category="ALPHA Idle Control" type="1D" level="1" scaling="rawecuvalue">
    <description>This table is added to target idle airflow depending on the direction of error.</description>
    </table>
+
+   <table name="Idle Target Throttle" category="ALPHA Idle Control" type="2D" level="1" scaling="TargetThrottlePlateOpeningAngle(%)1">
+   	<table name="Target Idle Airflow" type="X Axis" scaling="rawecuvalue" elements="17"/>
+   	<description>This table determines the target throttle plate position during idle based on the target idle airflow</description>
+   </table>
+
+   <table name="Idle Target Throttle Compensation (Atm. Pressure)" category="ALPHA Idle Control" type="2D" level="1" scaling="TargetThrottlePlateCompensation">
+   	<table name="Atmospheric Pressure" type="X Axis" scaling="psi1" elements="5"/>
+   	<description>This table determines the target throttle plate position during idle based on an unknown parameter (MAP based??)</description>
+   </table>
    
+   <table name="Idle Target Throttle Min" category="ALPHA Idle Control" type="1D" level="1" scaling="rawecuvalue">
+   	<description>This table sets the minimum idle target throttle.</description>
+   </table>
+
+   <table name="Idle Target Throttle Max" category="ALPHA Idle Control" type="1D" level="1" scaling="rawecuvalue">
+   	<description>This table sets the maximum idle target throttle.</description>
+   </table>
+
+
 	<!-- Hot start enrichment scalings & tables
 	Current RomRaider discussion thread:
 	http://www.romraider.com/forum/viewtopic.php?f=25&t=8566
@@ -561,6 +580,7 @@ These definitions are created for FREE without any sort of guarantee. The develo
   <scaling name="TargetBoost(psia)Compensation(%)1" units="Target Boost (psia) Compensation (%)" toexpr="(x*100)-100" frexpr="(x+100)/100" format="%.2f" min="-100.00" max="100.00" inc=".1" storagetype="float" endian="big" />
   <scaling name="TargetBoost(psirelative)" units="Target Boost (psi relative)" toexpr="x*.01933677" frexpr="x/.01933677" format="%.2f" min="-10.00" max="10.00" inc=".01" storagetype="float" endian="big" />
   <scaling name="TargetBoost(psirelativesealevel)" units="Target Boost (psi relative sea level)" toexpr="(x-760)*.01933677" frexpr="(x/.01933677)+760" format="%.2f" min="-14.89" max="10.00" inc=".01" storagetype="float" endian="big" />
+  <scaling name="TargetThrottlePlateCompensation" units="Target Throttle Plate Compensation" toexpr="x*.00003051758" frexpr="x/.00003051758" format="%.2f" min="1.00" max="1.40" inc=".01" storagetype="uint16" endian="big" />
   <scaling name="TargetThrottlePlateOpeningAngle(%)" units="Target Throttle Plate Opening Angle (%)" toexpr="x*.002270655357" frexpr="x/.002270655357" format="%.1f" min="0" max="102.40" inc=".1" storagetype="uint16" endian="big" />
   <scaling name="TargetThrottlePlateOpeningAngle(%)1" units="Target Throttle Plate Opening Angle (%)" toexpr="x" frexpr="x" format="%.1f" min="0" max="102.40" inc=".1" storagetype="float" endian="big" />
   <scaling name="TDIntegralCumulativeWastegateDutyCorrection(%absolute)" units="TD Integral Cumulative Wastegate Duty Correction (% absolute)" toexpr="x" frexpr="x" format="%.2f" min="-90.00" max="15.00" inc="1" storagetype="float" endian="big" />
