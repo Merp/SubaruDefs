@@ -39,6 +39,7 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
     <flashmethod>subarucan</flashmethod>
   </romid>
   <include>32BITBASE</include>
+    <scaling name="Advance(degrees)2" units="Advance (degrees)" toexpr="(x*.001525879)-40" frexpr="(x+40)/.001525879" format="%.2f" min="0" max="50.00" inc=".5" storagetype="uint16" endian="big" />
   <table name="Manifold Pressure Sensor Scaling_" address="d7900" />
   <table name="Manifold Pressure Sensor Limits (CEL)" address="d78c2" />
   <table name="Manifold Pressure Sensor CEL Delays" address="d7873" />
@@ -48,7 +49,7 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
   </table>
   <table name="Primary Open Loop Fueling Non-Cruise" address="cd430">
     <table name="X" address="cd3c4" elements="13" />
-    <table name="Y" address="cd3f8" />
+    <table name="Y" address="cd3f8" elements="14" />
   </table>
   <table name="Minimum Active Primary Open Loop Enrichment" address="ca788" />
   <table name="Front Oxygen Sensor Scaling" address="d7e60">
@@ -393,11 +394,11 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
   </table>
   <table name="Advance Multiplier (Initial)" address="d0064" />
   <table name="Advance Multiplier Step Value" address="d0068" />
-  <table name="Intake Cam Advance Angle Cruise (AVCS)__" address="d92fc">
+  <table name="Intake Cam Advance Angle Cruise (AVCS)__" scaling="Advance(degrees)2" address="d92fc">
     <table name="X" address="d9280" elements="15" />
     <table name="Y" address="d92bc" elements="16" />
   </table>
-  <table name="Intake Cam Advance Angle Non-Cruise (AVCS)__" address="d9558">
+  <table name="Intake Cam Advance Angle Non-Cruise (AVCS)__" scaling="Advance(degrees)2" address="d9558">
     <table name="X" address="d94dc" elements="15" />
     <table name="Y" address="d9518" elements="16" />
   </table>
