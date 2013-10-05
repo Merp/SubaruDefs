@@ -657,7 +657,27 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
     <table name="Minimum Port Injection Quantity" storageaddress="10DDEC" />
     <table name="Fuel Injection Ratio ECT Threshold A" storageaddress="10DE00" />
     <table name="Fuel Injection Ratio ECT Threshold B" storageaddress="10DE10" />
-        <table name="(P000A) CAMSHAFT POSITION A  TIMING SLOW RESPONSE BANK 1" storageaddress="11E138" />
+    
+     <table name="Low Pulse Width Fuel Injector Compensation" storageaddress="10F37C">
+      <table type="Y Axis" storageaddress="10F35C" />
+    </table>   
+    <table name="Low pulse width fuel injector compensation maximum RPM" storageaddress="10E50C" />
+    <table name="Low pulse width fuel injector compensation maximum IPW" storageaddress="10E510" />
+    
+<table name="Hotstart Enrichment Decay Delay" storageaddress="10DC5C" />
+<table name="Hotstart Enrichment Decay Step" storageaddress="10E370" />
+<table name="Initial Hotstart Enrichment (High)" storageaddress="10E35C" />
+<table name="Hotstart High Enrichment Activation Threshold (Coolant Temperature)" storageaddress="10E34C" />
+<table name="Hotstart High Enrichment Activation Threshold (Intake Air Temperature)" storageaddress="10E350" />
+<table name="Initial Hotstart Enrichment (Low)" storageaddress="10E360" />
+<table name="Hotstart Low Enrichment Activation Threshold (Coolant Temperature)" storageaddress="10E354" />
+<table name="Hotstart Low Enrichment Activation Threshold (Minimum Intake Air Temperature)" storageaddress="10E358" />
+<table name="Maximum Non-Idle Hotstart Enrichment (Post Delay)" storageaddress="10E374" />
+<table name="Hotstart Maximum Non-Idle Enrichment Delay" storageaddress="10DC60" />
+<table name="Hotstart Minimum Enrichment Limit Runtime" storageaddress="10DC5E" />
+<table name="Hotstart Minimum Enrichment (During Delay and Runtime)" storageaddress="10E36C" />
+
+<table name="(P000A) CAMSHAFT POSITION A  TIMING SLOW RESPONSE BANK 1" storageaddress="11E138" />
 <table name="(P000B) CAMSHAFT POSITION B  TIMING SLOW RESPONSE BANK 1" storageaddress="11E144" />
 <table name="(P000C) CAMSHAFT POSITION A  TIMING SLOW RESPONSE BANK 2" storageaddress="11E150" />
 <table name="(P000D) CAMSHAFT POSITION B  TIMING SLOW RESPONSE BANK 2" storageaddress="11E15C" />
@@ -7660,5 +7680,111 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
       </table>
       <description>no description</description>
     </table>
+<table type="2D" name="Low Pulse Width Fuel Injector Compensation" category="ALPHA Low PW Injector Comp" storagetype="uint8" endian="big" sizey="8" userlevel="4" logparam="unkn">
+	<scaling units="Injector Pulse Width Compensation (%)" expression="(x*.78125)-100" to_byte="(x+100)/.78125" format="0.00" fineincrement=".01" coarseincrement=".1" />
+	<table type="Y Axis" name="Injector Pulse Width" storagetype="float" endian="big" logparam="unkn" storageaddress="0x10F35C">
+		<scaling units="ms" expression="x" to_byte="x" format="#" fineincrement="1" coarseincrement="5" />
+	</table>
+	<description>This compensation is applied to the injector pulsewidth when the RPM and IPW thresholds are met. It is used to compensate for nonlinear injector response at low pulsewidth. This portion of the response is known as the 'knee'</description>
+</table>
+    <table type="2D" name="Low pulse width fuel injector compensation maximum RPM" category="ALPHA Low PW Injector Comp" storagetype="float" endian="big" sizey="1" userlevel="4">
+      <scaling units="RPM" expression="x" to_byte="x" format="#" fineincrement=".1" coarseincrement=".5" />
+      <table type="Static Y Axis" name="" sizey="1">
+        <data>Engine Speed</data>
+      </table>
+      <description>This is the maximum RPM that the Low Pulse Width Fuel Injector Compensation is applied</description>
+    </table> 
+     <table type="2D" name="Low pulse width fuel injector compensation maximum IPW" category="ALPHA Low PW Injector Comp" storagetype="float" endian="big" sizey="1" userlevel="4">
+      <scaling units="BasePulseWidth(ms)" expression="x" to_byte="x" format="#" fineincrement=".1" coarseincrement=".5" />
+      <table type="Static Y Axis" name="" sizey="1">
+        <data>Maximum IPW Limit</data>
+      </table>
+      <description>This is the maximum RPM that the Low Pulse Width Fuel Injector Compensation is applied</description>
+    </table> 
+    <table type="2D" name="Hotstart Enrichment Decay Delay" category="ALPHA Hotstart" storagetype="uint16" endian="big" sizey="1" userlevel="4">
+      <scaling units="Counter Cycles" expression="x" to_byte="x" format="#" fineincrement=".1" coarseincrement=".5" />
+      <table type="Static Y Axis" name="" sizey="1">
+        <data>Hotstart Counter Cycles</data>
+      </table>
+      <description>Delay before the Initial Hotstart Enrichment is decayed by the decay step value.</description>
+    </table> 
+    <table type="2D" name="Hotstart Enrichment Decay Step" category="ALPHA Hotstart" storagetype="float" endian="big" sizey="1" userlevel="4">
+      <scaling units="Lambda Enrichment (Additive)" expression="x" to_byte="x" format="0.000" fineincrement=".1" coarseincrement=".5" />
+      <table type="Static Y Axis" name="" sizey="1">
+        <data>Step Value</data>
+      </table>
+      <description>Step value that is decayed from the initial enrichment every time the counter increments.</description>
+    </table> 
+    <table type="2D" name="Initial Hotstart Enrichment (High)" category="ALPHA Hotstart" storagetype="float" endian="big" sizey="1" userlevel="4">
+      <scaling units="Lambda Enrichment (Additive)" expression="x" to_byte="x" format="0.000" fineincrement=".1" coarseincrement=".5" />
+      <table type="Static Y Axis" name="" sizey="1">
+        <data>Hotstart Enrichment</data>
+      </table>
+      <description>Initial High Enrichment. This is applied when BOTH high enrichment thresholds are met.</description>
+    </table> 
+    <table type="2D" name="Hotstart High Enrichment Activation Threshold (Coolant Temperature)" category="ALPHA Hotstart" storagetype="float" endian="big" sizey="1" userlevel="4">
+        <scaling units="DegreesF" expression="(x*1.8)+32" to_byte="(x-32)/1.8" format="0.0" fineincrement="1" coarseincrement="10" />
+      <table type="Static Y Axis" name="" sizey="1">
+        <data>Coolant Temp</data>
+      </table>
+      <description>Minimum Coolant Temperature threshold for high enrichment.</description>
+    </table> 
+     <table type="2D" name="Hotstart High Enrichment Activation Threshold (Intake Air Temperature)" category="ALPHA Hotstart" storagetype="float" endian="big" sizey="1" userlevel="4">
+        <scaling units="DegreesF" expression="(x*1.8)+32" to_byte="(x-32)/1.8" format="0.0" fineincrement="1" coarseincrement="10" />
+      <table type="Static Y Axis" name="" sizey="1">
+        <data>Intake Air Temp</data>
+      </table>
+      <description>Minimum Intake Air Temperature threshold for high enrichment.</description>
+    </table> 
+     <table type="2D" name="Initial Hotstart Enrichment (Low)" category="ALPHA Hotstart" storagetype="float" endian="big" sizey="1" userlevel="4">
+      <scaling units="Lambda Enrichment (Additive)" expression="x" to_byte="x" format="0.000" fineincrement=".1" coarseincrement=".5" />
+      <table type="Static Y Axis" name="" sizey="1">
+        <data>Hotstart Enrichment</data>
+      </table>
+      <description>Initial Low Enrichment. This is applied when ANY high enrichment threshold is not met AND both low enrichment thresholds are met.</description>
+    </table>  
+     <table type="2D" name="Hotstart Low Enrichment Activation Threshold (Coolant Temperature)" category="ALPHA Hotstart" storagetype="float" endian="big" sizey="1" userlevel="4">
+        <scaling units="DegreesF" expression="(x*1.8)+32" to_byte="(x-32)/1.8" format="0.0" fineincrement="1" coarseincrement="10" />
+      <table type="Static Y Axis" name="" sizey="1">
+        <data>Coolant Temp</data>
+      </table>
+      <description>Minimum Coolant Temperature threshold for low enrichment.</description>
+    </table> 
+      <table type="2D" name="Hotstart Low Enrichment Activation Threshold (Intake Air Temperature)" category="ALPHA Hotstart" storagetype="float" endian="big" sizey="1" userlevel="4">
+        <scaling units="DegreesF" expression="(x*1.8)+32" to_byte="(x-32)/1.8" format="0.0" fineincrement="1" coarseincrement="10" />
+      <table type="Static Y Axis" name="" sizey="1">
+        <data>Intake Air Temp</data>
+      </table>
+      <description>Minimum Intake Air Temperature threshold for low enrichment.</description>
+    </table> 
+      <table type="2D" name="Maximum Non-Idle Hotstart Enrichment (Post Delay)" category="ALPHA Hotstart" storagetype="float" endian="big" sizey="1" userlevel="4">
+      <scaling units="Lambda Enrichment (Additive)" expression="x" to_byte="x" format="0.000" fineincrement=".1" coarseincrement=".5" />
+      <table type="Static Y Axis" name="" sizey="1">
+        <data>Hotstart Enrichment</data>
+      </table>
+      <description>Maximum Non-Idle enrichment after the Hotstart Maximum Non-Idle Enrichment delay.</description>
+    </table>  
+     <table type="2D" name="Hotstart Maximum Non-Idle Enrichment Delay" category="ALPHA Hotstart" storagetype="uint16" endian="big" sizey="1" userlevel="4">
+      <scaling units="Counter Cycles" expression="x" to_byte="x" format="#" fineincrement=".1" coarseincrement=".5" />
+      <table type="Static Y Axis" name="" sizey="1">
+        <data>Hotstart Counter Cycles</data>
+      </table>
+      <description>Delay before Maximum Non-Idle Hotstart Enrichment limit is applied.</description>
+    </table> 
+    <table type="2D" name="Hotstart Minimum Enrichment Limit Runtime" category="ALPHA Hotstart" storagetype="uint16" endian="big" sizey="1" userlevel="4">
+      <scaling units="Counter Cycles" expression="x" to_byte="x" format="#" fineincrement=".1" coarseincrement=".5" />
+      <table type="Static Y Axis" name="" sizey="1">
+        <data>Hotstart Counter Cycles</data>
+      </table>
+      <description>Determines how long the minimum enrichment limit is enabled.</description>
+    </table> 
+ 
+       <table type="2D" name="Hotstart Minimum Enrichment (During Delay and Runtime)" category="ALPHA Hotstart" storagetype="float" endian="big" sizey="1" userlevel="4">
+      <scaling units="Lambda Enrichment (Additive)" expression="x" to_byte="x" format="0.000" fineincrement=".1" coarseincrement=".5" />
+      <table type="Static Y Axis" name="" sizey="1">
+        <data>Hotstart Enrichment</data>
+      </table>
+      <description>Minimum enrichment limit that is only active during decay delay and hotstart minimum enrichment runtime.</description>
+    </table>  
   </rom>
 </roms>
