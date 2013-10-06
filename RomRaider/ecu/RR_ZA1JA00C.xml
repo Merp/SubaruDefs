@@ -38,7 +38,7 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
     <table name="Manifold Pressure Sensor Scaling " storageaddress="11E560" />
     <table name="Manifold Pressure Sensor Limits (CEL)" storageaddress="11E51C" />
     <table name="Manifold Pressure Sensor CEL Delays" storageaddress="11E4AB" />
-    <table name="Primary Open Loop Fueling Cruise" storageaddress="112C8C" sizex="13" sizey="23">
+    <table name="Primary Open Loop Fueling" storageaddress="112C8C" sizex="13" sizey="23">
       <table type="X Axis" storageaddress="112BFC" />
       <table type="Y Axis" storageaddress="112C30" />
     </table>
@@ -574,6 +574,10 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
       <table type="X Axis" storageaddress="1165C4" />
       <table type="Y Axis" storageaddress="118394" />
     </table>
+    <table name="Transient Ignition Retard" storageaddress="11852c">
+      <table type="X Axis" storageaddress="1184b0" />
+      <table type="Y Axis" storageaddress="1184cc" />
+    </table>
     <table name="Transient Ignition Retard Temperature Compensation" storageaddress="118440">
       <table type="X Axis" storageaddress="1183E4" />
       <table type="Y Axis" storageaddress="118424" />
@@ -804,7 +808,7 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
 <table name="(P1160) ABNORMAL RETURN SPRING" storageaddress="11DDA8" />
 <table name="(P1170) PORT INJECTOR FUEL PERFORMANCE" storageaddress="11E2C4" />
 <table name="(P117B) DIRECT INJECTOR FUEL PERFORMANCE" storageaddress="11E2B8" />
-<table name="(P119F)E" storageaddress="11E3B4" />
+<table name="(P119E)" storageaddress="11E3B4" />
 <table name="(P119F)" storageaddress="11E3A8" />
 <table name="(P1235) HIGH PRESSURE FUEL PUMP CIRCUIT" storageaddress="11E2AC" />
 <table name="(P1261) DI INJECTOR CIRCUIT  OPEN  CYLINDER 1" storageaddress="11E264" />
@@ -813,9 +817,9 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
 <table name="(P1264) DI INJECTOR CIRCUIT  OPEN  CYLINDER 4" storageaddress="11E288" />
 <table name="(P1449) EVAPORATIVE EMISSION CONT. SYS. AIR FILTER CLOG" storageaddress="11E06C" />
 <table name="(P1451) EVAPORATIVE EMISSION CONT. SYS." storageaddress="11E060" />
-<table name="(P1530)" storageaddress="11E384" />
-<table name="(P1531)" storageaddress="11E378" />
-<table name="(P1532)" storageaddress="11E36C" />
+<table name="(P1530) BATTERY CURRENT SENSOR CIRCUIT (LOW)" storageaddress="11E384" />
+<table name="(P1531) BATTERY CURRENT SENSOR CIRCUIT (HIGH)" storageaddress="11E378" />
+<table name="(P1532) CHARGING CONTROL SYSTEM" storageaddress="11E36C" />
 <table name="(P1603) ENGINE STALL HISTORY" storageaddress="11E2D0" />
 <table name="(P1604) STARTABILITY MALFUNCTION" storageaddress="11E2DC" />
 <table name="(P2096) POST CATALYST TOO LEAN B1" storageaddress="11DDD8" />
@@ -6658,7 +6662,7 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
       <state name="on" data="01" />
       <state name="off" data="00" />
     </table>
-<table type="Switch" name="(P119F)E" category="Diagnostic Trouble Codes" sizey="1">
+<table type="Switch" name="(P119E)" category="Diagnostic Trouble Codes" sizey="1">
       <description>(P119F)E. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
       <state name="on" data="01" />
       <state name="off" data="00" />
@@ -6822,18 +6826,18 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
       <state name="off" data="00" />
     </table>
     
- <table type="Switch" name="(P1530)" category="Diagnostic Trouble Codes" sizey="1">
-      <description>(P1530). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+ <table type="Switch" name="(P1530) BATTERY CURRENT SENSOR CIRCUIT (LOW)" category="Diagnostic Trouble Codes" sizey="1">
+      <description>BATTERY CURRENT SENSOR CIRCUIT (LOW). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
       <state name="on" data="01" />
       <state name="off" data="00" />
     </table>
-<table type="Switch" name="(P1531)" category="Diagnostic Trouble Codes" sizey="1">
-      <description>(P1531). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+<table type="Switch" name="(P1531) BATTERY CURRENT SENSOR CIRCUIT (HIGH)" category="Diagnostic Trouble Codes" sizey="1">
+      <description>BATTERY CURRENT SENSOR CIRCUIT (HIGH). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
       <state name="on" data="01" />
       <state name="off" data="00" />
     </table>
-<table type="Switch" name="(P1532)" category="Diagnostic Trouble Codes" sizey="1">
-      <description>(P1532). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+<table type="Switch" name="(P1532) CHARGING CONTROL SYSTEM" category="Diagnostic Trouble Codes" sizey="1">
+      <description>CHARGING CONTROL SYSTEM. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
       <state name="on" data="01" />
       <state name="off" data="00" />
     </table>   
@@ -7889,7 +7893,16 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
       </table>
       <description>no description</description>
     </table>
-    <table type="3D" name="Transient Ignition Retard Temperature Compensation" category="Ignition Timing - Compensation" storagetype="uint8" endian="big" sizex="16" sizey="7" userlevel="4">
+    <table type="3D" name="Transient Ignition Retard" category="Alpha - BRZ" storagetype="uint8" endian="big" sizex="7" sizey="24" userlevel="4">
+      <scaling units="Ignition Timing Correction (degrees)" expression="(x*.3515625)-30" to_byte="(x+30)/.3515625" format="0.000" fineincrement=".2" coarseincrement="1" />
+      <table type="X Axis" name="Engine Load" storagetype="float" endian="little" logparam="E32">
+        <scaling units="g/rev" expression="x" to_byte="x" format="0.00" fineincrement=".01" coarseincrement=".1" />
+      </table>
+      <table type="Y Axis" name="Engine Speed" storagetype="float" endian="little" logparam="P8">
+        <scaling units="RPM" expression="x" to_byte="x" format="#" fineincrement="50" coarseincrement="100" />
+      </table>
+    </table>
+    <table type="3D" name="Transient Ignition Retard Temperature Compensation" category="Alpha - BRZ" storagetype="uint8" endian="big" sizex="16" sizey="7" userlevel="4">
       <scaling units="Ignition Timing Correction" expression="x*7.8125e-3" to_byte="x/7.8125e-3" format="0.000" fineincrement=".01" coarseincrement=".1" />
       <table type="X Axis" name="Coolant Temperature" storagetype="float" endian="big">
         <scaling units="Degrees F" expression="(x*1.8)+32" to_byte="(x-32)/1.8" format="#" fineincrement="1" coarseincrement="5" />
