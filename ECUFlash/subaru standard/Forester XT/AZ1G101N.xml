@@ -16,6 +16,7 @@
 	</romid>
 
 	<include>32BITBASE</include>
+	<scaling name="Idle Airflow Target" units="g/s" toexpr="x" frexpr="x" format="%.2f" min="0" max="255" inc="1" storagetype="float" endian="big"/>
 	<scaling name="Intake Air Temp (Map Switch)" units="units" toexpr="x*0.00390625-256" frexpr="(x+256)/0.00390625" format="%.0f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
 	<scaling name="Knock" units="units" toexpr="x" frexpr="x" format="%.2f" min="0" max="255" inc="1" storagetype="float" endian="big"/>
 	<scaling name="Knock2" units="units" toexpr="x" frexpr="x" format="%.0f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
@@ -1284,5 +1285,9 @@
 	<table name="(P2441) SECONDARY AIR PUMP VALVE 1 STUCK CLOSED" address="77542"/>
 
 	<table name="(P2444) SECONDARY AIR PUMP 1 STUCK ON B1" address="77530"/>
+
+	<table name="Throttle_Angle_Idle_Airflow_Target" address="dca8c" type="2D" level="1" scaling="%1">
+		<table name="Idle Airflow Target" address="dca2c" type="X Axis" elements="24" scaling="Idle Airflow Target"/>
+	</table>
 
 </rom>
