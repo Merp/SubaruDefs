@@ -17,6 +17,24 @@ These definitions are created for FREE without any sort of guarantee. The develo
     <make>Subaru</make>
   </romid>
 
+  <!-- BRZ Alpha Parameters -->
+
+  <scaling name="float" units="%" toexpr="x" frexpr="x" format="%.2f" min="0" max="105.00" inc=".1" storagetype="float" endian="big" />
+  <scaling name="EstimatedAir/FuelRatio2" units="Estimated Air/Fuel Ratio" toexpr="x*0.0078125" frexpr="x/0.0078125" format="%.4f" min="0" max="255" inc=".06" storagetype="uint8" endian="big" />
+
+
+    <table name="AFR Minimum Correction" category="Alpha - BRZ" type="2D" level="3" scaling="EstimatedAir/FuelRatio2">
+      <table name="Air Fuel Ratio" type="Y Axis" elements="9" scaling="float" />
+      <description>no description</description>
+    </table>
+
+    <table name="AFR Maximum Correction" category="Alpha - BRZ" type="2D" level="3" scaling="EstimatedAir/FuelRatio2">
+      <table name="Air Fuel Ratio" type="Y Axis" elements="9" scaling="float" />
+      <description>no description</description>
+    </table>
+   
+    <!-- End BRZ Alpha Parameters --> 
+
   <!-- Idle Ignition Timing Compensation -->
 
 <scaling name="Idle Ignition Timing" units="degrees" toexpr="(x*0.15625)-20" frexpr="(x+20)/0.15625" format="%.2f" min="0" max="255" inc="0.1" storagetype="uint8" endian="big"/>
