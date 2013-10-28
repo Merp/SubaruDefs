@@ -574,7 +574,13 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
       <table type="X Axis" storageaddress="1165C4" />
       <table type="Y Axis" storageaddress="118394" />
     </table>
-    <table name="Transient Ignition Retard" storageaddress="11852c">
+   
+    <table name="Transient Ignition Retard ECT Threshhold" storageaddress="11632C" />
+    <table name="Transient Ignition Retard RPM Threshhold" storageaddress="116330" />
+    <table name="Transient Ignition Retard TPS Angle Threshhold" storageaddress="116334" />
+    <table name="Transient Ignition Retard Engine Load Threshhold" storageaddress="116338" />
+    
+    <table name="Transient Ignition Retard" storageaddress="11852c">    	
       <table type="X Axis" storageaddress="1184b0" />
       <table type="Y Axis" storageaddress="1184cc" />
     </table>
@@ -7912,6 +7918,41 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
       </table>
       <description>no description</description>
     </table>
+        <table type="2D" name="Hotstart Minimum Enrichment (During Delay and Runtime)" category="ALPHA Hotstart" storagetype="float" endian="big" sizey="1" userlevel="4">
+      <scaling units="Lambda Enrichment (Additive)" expression="x" to_byte="x" format="0.000" fineincrement=".1" coarseincrement=".5" />
+      <table type="Static Y Axis" name="" sizey="1">
+        <data>Hotstart Enrichment</data>
+      </table>
+      <description>No Description</description>
+    </table>        
+    <table type="2D" name="Transient Ignition Retard ECT Threshhold" category="Alpha - BRZ" storagetype="float" endian="big" sizey="1" userlevel="4">
+        <scaling units="Degrees F" expression="(x*1.8)+32" to_byte="(x-32)/1.8" format="#" fineincrement="1" coarseincrement="5" />
+      <table type="Static Y Axis" name="" sizey="1">
+        <data>Disable above</data>
+      </table>
+      <description>Transient Ignition Retard will be disabled above this threshhold</description>
+    </table> 
+    <table type="2D" name="Transient Ignition Retard RPM Threshhold" category="Alpha - BRZ" storagetype="float" endian="big" sizey="1" userlevel="4">
+        <scaling units="RPM" expression="x" to_byte="x" format="#" fineincrement="50" coarseincrement="100" />
+      <table type="Static Y Axis" name="" sizey="1">
+        <data>Disable above</data>
+      </table>
+      <description>Transient Ignition Retard will be disabled above this threshhold</description>
+    </table> 
+    <table type="2D" name="Transient Ignition Retard TPS Angle Threshhold" category="Alpha - BRZ" storagetype="float" endian="big" sizey="1" userlevel="4">
+        <scaling units="%" expression="x/.84" to_byte="x*.84" format="0.0" fineincrement=".3" coarseincrement="1" />
+      <table type="Static Y Axis" name="" sizey="1">
+        <data>Disable above</data>
+      </table>
+      <description>Transient Ignition Retard will be disabled above this threshhold</description>
+    </table> 
+    <table type="2D" name="Transient Ignition Retard Engine Load Threshhold" category="Alpha - BRZ" storagetype="float" endian="big" sizey="1" userlevel="4">
+        <scaling units="g/rev" expression="x" to_byte="x" format="0.00" fineincrement="1" coarseincrement="5" />
+      <table type="Static Y Axis" name="" sizey="1">
+        <data>Disable above</data>
+      </table>
+      <description>Transient Ignition Retard will be disabled above this threshhold</description>
+    </table>            
     <table type="3D" name="Desired Overrun Mass Airflow A" category="Alpha - BRZ" storagetype="uint16" endian="big" sizex="21" sizey="16" userlevel="4">
       <scaling units="Unknown" expression="x*1.52587891e-3" to_byte="x/1.52587891e-3" format="0.00" fineincrement=".01" coarseincrement=".1" />
       <table type="X Axis" name="Engine Speed" storagetype="float" endian="big">
