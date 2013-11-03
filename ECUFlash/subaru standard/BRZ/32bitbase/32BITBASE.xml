@@ -1428,6 +1428,8 @@
 	<scaling name="tip-inenrichmentappliedcounter" units="tip-in enrichment applied counter" toexpr="x" frexpr="x" format="%.0f" min="0" max="30" inc="1" storagetype="uint8" endian="big"/>
 	<scaling name="tip-inlastappliedcounterperiod" units="tip-in last applied counter period" toexpr="x" frexpr="x" format="%.0f" min="0" max="70" inc="1" storagetype="uint8" endian="big"/>
 	<scaling name="volts" units="volts" toexpr="x" frexpr="x" format="%.2f" min="0.2" max="16.5" inc="0.01" storagetype="float" endian="big"/>
+	<scaling name="TransientIgnitionRetard" units="Ignition Timing Correction (degrees)" toexpr="x*.3515625-30" frexpr="(x+30)/.3515625" format="%.2f" min="0" max="26.72" inc="0.2" storagetype="uint8" endian="big"/>
+	<scaling name="TransientIgnitionRetard1" units="Ignition Timing Correction (degrees)" toexpr="x*.3515625-50" frexpr="(x+50)/.3515625" format="%.2f" min="0" max="26.72" inc="0.2" storagetype="uint8" endian="big"/>
 
 	<table name="AFR Minimum Correction" category="Alpha - BRZ" type="2D" level="3" scaling="EstimatedAir/FuelRatio2">
 		<description>no description</description>
@@ -1674,19 +1676,16 @@
 		<table name="Unknown" type="Y Axis" elements="3" scaling="float"/>
 	</table>
 
-	<scaling name="Transient Ignition Retard" units="Ignition Timing Correction (degrees)" toexpr="x*.3515625-30" frexpr="(x+30)/.3515625" format="%.2f" min="0" max="26.72" inc="0.2" storagetype="uint8" endian="big"/>
-	<scaling name="Transient Ignition Retard1" units="Ignition Timing Correction (degrees)" toexpr="x*.3515625-50" frexpr="(x+50)/.3515625" format="%.2f" min="0" max="26.72" inc="0.2" storagetype="uint8" endian="big"/>
-
-	<table name="Transient Ignition Retard" category="Alpha - BRZ" type="3D" scaling="Transient Ignition Retard">
-		<description>no description</description>
+	<table name="Transient_Ignition_Retard_" category="Alpha - BRZ" type="3D" scaling="TransientIgnitionRetard1">
 		<table name="Engine Load" type="X Axis" elements="7" scaling="g/rev"/>
 		<table name="Engine Speed" type="Y Axis" elements="24" scaling="EngineSpeed(RPM)1"/>
+		<description>no description</description>
 	</table>
 
-	<table name="Transient Ignition Retard " category="Alpha - BRZ" type="3D" scaling="Transient Ignition Retard1">
-		<description>no description</description>
+	<table name="Transient Ignition Retard" category="Alpha - BRZ" type="3D" scaling="TransientIgnitionRetard">
 		<table name="Engine Load" type="X Axis" elements="7" scaling="g/rev"/>
 		<table name="Engine Speed" type="Y Axis" elements="24" scaling="EngineSpeed(RPM)1"/>
+		<description>no description</description>
 	</table>
 
 	<table name="Transient Ignition Retard Temperature Compensation" category="Alpha - BRZ" type="3D" scaling="EstimatedAir/FuelRatio2">
