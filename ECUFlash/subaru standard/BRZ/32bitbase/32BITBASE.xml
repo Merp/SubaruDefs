@@ -1695,6 +1695,34 @@
 		<table name="Intake Temperature" type="Y Axis" elements="7" scaling="DegreesF"/>
 	</table>
 
+	<table name="Transient Ignition Retard ECT Threshhold" category="Alpha - BRZ" type="2D" level="2" scaling="CoolantTemp(DegreesF)">
+		<description>Transient Ignition Retard will be disabled above this threshhold</description>
+		<table type="Static Y Axis" elements="1">
+        <data>Disable above</data>
+		</table>
+	</table>	
+	
+	<table name="Transient Ignition Retard RPM Threshhold" category="Alpha - BRZ" type="2D" level="2" scaling="EngineSpeed(RPM)1">
+		<description>Transient Ignition Retard will be disabled above this threshhold</description>
+		<table type="Static Y Axis" elements="1">
+        <data>Disable above</data>
+		</table>
+	</table>
+
+	<table name="Transient Ignition Retard TPS Angle Threshhold" category="Alpha - BRZ" type="2D" level="2" scaling="ThrottlePlateOpeningAngle(%)">
+		<description>Transient Ignition Retard will be disabled below this threshhold</description>
+		<table type="Static Y Axis" elements="1">
+        <data>Disable below</data>
+		</table>
+	</table>
+
+	<table name="Transient Ignition Retard Engine Load Threshhold" category="Alpha - BRZ" type="2D" level="2" scaling="g/rev">
+		<description>Transient Ignition Retard will be disabled below this threshhold</description>
+		<table type="Static Y Axis" elements="1">
+        <data>Disable below</data>
+		</table>
+	</table>
+	
 	<scaling name="Airflow Overrun" units="Unknown" toexpr="x*.001525879" frexpr="x/.001525879" format="%.2f" min="0" max="40" inc="0.5" storagetype="uint16" endian="big"/>
 
 	<table name="Desired Overrun Mass Airflow A" category="Alpha - BRZ" type="3D" scaling="Airflow Overrun">
@@ -1929,7 +1957,12 @@
 		<description>no description</description>
 		<table name="Coolant Temperature" type="Y Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
 	</table>
-		
+
+	<table name="Fuel Multiplier Display Offset" category="Alpha - BRZ" type="2D" scaling="Volts">
+		<description>no description</description>
+		<table name="Rail Pressure" type="Y Axis" elements="5" scaling="Fuel Pressure"/>
+	</table>	
+
 	<table name="Ignition Timing Compensation Idle Target In Error Range A" category="ALPHA Idle Control" type="3D" level="1" scaling="Idle Ignition Timing">
 		<description>This table is a compensation to idle ignition timing when idle speed error is within a specific range, and engine load is not changing</description>
 		<table name="Idle Speed Error" type="X Axis" elements="9" scaling="RPM"/>
@@ -3501,6 +3534,18 @@
 	</table>
 
 	<table name="Per Injector Pulse Width Compensation F" category="Fueling - Injectors" type="3D" level="1" scaling="InjectorPulseWidthCompensation">
+		<description>This determines the compensation (per injector) to the current calculated injector duration based on the last calculated injector duration and engine speed. The calculated injector pulse width is based on engine load and a number of other correction factors necessary to achieve the desired fueling. It is not currently known which table corresponds to which injector. WARNING: UNTESTED</description>
+		<table name="Last Calculated Base Pulse Width" type="X Axis" elements="17" scaling="ms"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Per Injector Pulse Width Compensation G" category="Fueling - Injectors" type="3D" level="1" scaling="InjectorPulseWidthCompensation">
+		<description>This determines the compensation (per injector) to the current calculated injector duration based on the last calculated injector duration and engine speed. The calculated injector pulse width is based on engine load and a number of other correction factors necessary to achieve the desired fueling. It is not currently known which table corresponds to which injector. WARNING: UNTESTED</description>
+		<table name="Last Calculated Base Pulse Width" type="X Axis" elements="17" scaling="ms"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Per Injector Pulse Width Compensation H" category="Fueling - Injectors" type="3D" level="1" scaling="InjectorPulseWidthCompensation">
 		<description>This determines the compensation (per injector) to the current calculated injector duration based on the last calculated injector duration and engine speed. The calculated injector pulse width is based on engine load and a number of other correction factors necessary to achieve the desired fueling. It is not currently known which table corresponds to which injector. WARNING: UNTESTED</description>
 		<table name="Last Calculated Base Pulse Width" type="X Axis" elements="17" scaling="ms"/>
 		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
@@ -5738,6 +5783,11 @@
 		<table name="Coolant Temperature" type="Y Axis" elements="16" scaling="DegreesF"/>
 	</table>
 
+	<table name="Idle Speed Target G" category="Idle Control" type="2D" level="4" scaling="EngineSpeed(RPM)">
+		<description>Idle speed target at different coolant temperatures.</description>
+		<table name="Coolant Temperature" type="Y Axis" elements="16" scaling="DegreesF"/>
+	</table>
+
 	<table name="Idle Speed Target A (MT)" category="Idle Control" type="2D" level="4" scaling="EngineSpeed(RPM)">
 		<description>Idle speed target at different coolant temperatures.</description>
 		<table name="Coolant Temperature" type="Y Axis" elements="16" scaling="DegreesF"/>
@@ -7238,6 +7288,10 @@
 		<description>INTAKE AIR TEMPERATURE CIRCUIT HIGH INPUT. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
 
+	<table name="(P0116) ENGINE COOLANT TEMPERATURE CIRCUIT RANGE  PERFORMANCE PROBLEM" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>ENGINE COOLANT TEMPERATURE CIRCUIT RANGE  PERFORMANCE PROBLEM. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+
 	<table name="(P0117) COOLANT TEMP SENSOR LOW INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>ENGINE COOLANT TEMPERATURE CIRCUIT LOW INPUT. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
@@ -8489,5 +8543,6 @@
 	<table name="(U0422) CAN INVALID DATA RECEIVED FROM BIU" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>CAN INVALID DATA RECEIVED FROM BIU. Change to disabled to deactivate. Off-road use only.</description>
 	</table>
+
 
 </rom>
