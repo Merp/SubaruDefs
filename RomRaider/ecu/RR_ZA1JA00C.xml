@@ -81,7 +81,7 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
     <table name="CL Delay Maximum (Throttle) (Low Atm. Pressure)" storageaddress="10E2E8" />
     <table name="CL Delay Maximum (Throttle) (High Atm. Pressure)" storageaddress="10E2F0" />
     <table name="CL Delay Throttle A Counter Threshold" storageaddress="10DC4A" />
-    <table name="CL Delay Maximum Engine Speed Per Gear" storageaddress="10E2B4" />
+    <table name="CL Delay Maximum Engine Speed (Per Gear)" storageaddress="10E2B4" />
     <table name="Injector Latency " storageaddress="113DEC">
       <table type="X Axis" storageaddress="113DCC" />
       <table type="Y Axis" storageaddress="113DE0" />
@@ -119,25 +119,28 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
       <table type="X Axis" storageaddress="113560" />
       <table type="Y Axis" storageaddress="113584" />
     </table>
-    <table name="Cranking Fuel Injector Pulse Width A (ECT)" storageaddress="113AFC" sizey="3">
+    <table name="Cranking Fuel Injector Pulse Width A (ECT) " storageaddress="113AFC" sizex="16" sizey="3">
       <table type="X Axis" storageaddress="10E7D0" />
       <table type="Y Axis" storageaddress="113AF0" />
     </table>
-    <table name="Cranking Fuel Injector Pulse Width B (ECT)" storageaddress="113BF4" sizey="2">
+    <table name="Cranking Fuel Injector Pulse Width B (ECT) " storageaddress="113BF4" sizex="16" sizey="2">
       <table type="X Axis" storageaddress="10E7D0" />
       <table type="Y Axis" storageaddress="113BEC" />
     </table>
-    <table name="Cranking Fuel Injector Pulse Width C (ECT)" storageaddress="113C3C" sizey="2">
+    <table name="Cranking Fuel Injector Pulse Width C (ECT) " storageaddress="113C3C" sizex="16" sizey="2">
       <table type="X Axis" storageaddress="10E7D0" />
       <table type="Y Axis" storageaddress="113C34" />
     </table>
-    <table name="Cranking Fuel Injector Pulse Width D (ECT)" storageaddress="113D14" sizey="2">
+    <table name="Cranking Fuel Injector Pulse Width D (ECT) " storageaddress="113D14" sizex="16" sizey="2">
       <table type="X Axis" storageaddress="10E7D0" />
       <table type="Y Axis" storageaddress="113D0C" />
     </table>
-    <table name="Cranking Fuel Injector Pulse Width E (ECT)" storageaddress="113D5C" sizey="2">
+    <table name="Cranking Fuel Injector Pulse Width E (ECT) " storageaddress="113D5C" sizex="16" sizey="2">
       <table type="X Axis" storageaddress="10E7D0" />
       <table type="Y Axis" storageaddress="113D54" />
+    </table>
+    <table name="Cranking Fuel Injector Pulse Width F (ECT)" storageaddress="10F796" sizex="16">
+      <table type="X Axis" storageaddress="10E7D0" />
     </table>
     <table name="Cranking Fuel IPW Compensation A (RPM)" storageaddress="112488">
       <table type="X Axis" storageaddress="112458" />
@@ -2536,6 +2539,56 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
         <scaling units="RPM" expression="x" to_byte="x" format="#" fineincrement="50" coarseincrement="100" />
       </table>
       <description>This determines the compensation (per injector) to the current calculated injector duration based on the last calculated injector duration and engine speed. The calculated injector pulse width is based on engine load and a number of other correction factors necessary to achieve the desired fueling. It is not currently known which table corresponds to which injector. WARNING: UNTESTED</description>
+    </table>
+    <table type="3D" name="Cranking Fuel Injector Pulse Width A (ECT) " category="Fueling - Cranking" storagetype="uint16" endian="big" sizex="16" sizey="3" userlevel="5">
+      <scaling units="Injector Pulse Width (ms)" expression="x*.008" to_byte="x/.008" format="0.00" fineincrement=".01" coarseincrement=".1" />
+      <table type="X Axis" name="Coolant Temperature" storagetype="float" endian="little" logparam="P2">
+        <scaling units="Degrees F" expression="(x*1.8)+32" to_byte="(x-32)/1.8" format="#" fineincrement="1" coarseincrement="5" />
+      </table>
+      <table type="Y Axis" name="Cranking State Number" storagetype="float" endian="little">
+        <scaling units="" expression="x" to_byte="x" format="#" fineincrement="1" coarseincrement="5" />
+      </table>
+      <description>This is the injector pulse width based on coolant temp when cranking the motor. Compensation tables may impact the final pulse width. Although the exact conditions for map switching is not entirely known, some of it is based on whether the ignition switch is on or off and whether the motor has begun to start or not at any given time in the cranking process. TGV status may also be involved. WARNING: UNTESTED</description>
+    </table>
+    <table type="3D" name="Cranking Fuel Injector Pulse Width B (ECT) " category="Fueling - Cranking" storagetype="uint16" endian="big" sizex="16" sizey="2" userlevel="5">
+      <scaling units="Injector Pulse Width (ms)" expression="x*.008" to_byte="x/.008" format="0.00" fineincrement=".01" coarseincrement=".1" />
+      <table type="X Axis" name="Coolant Temperature" storagetype="float" endian="little" logparam="P2">
+        <scaling units="Degrees F" expression="(x*1.8)+32" to_byte="(x-32)/1.8" format="#" fineincrement="1" coarseincrement="5" />
+      </table>
+      <table type="Y Axis" name="Cranking State Number" storagetype="float" endian="little">
+        <scaling units="" expression="x" to_byte="x" format="#" fineincrement="1" coarseincrement="5" />
+      </table>
+      <description>This is the injector pulse width based on coolant temp when cranking the motor. Compensation tables may impact the final pulse width. Although the exact conditions for map switching is not entirely known, some of it is based on whether the ignition switch is on or off and whether the motor has begun to start or not at any given time in the cranking process. TGV status may also be involved. WARNING: UNTESTED</description>
+    </table>
+    <table type="3D" name="Cranking Fuel Injector Pulse Width C (ECT) " category="Fueling - Cranking" storagetype="uint16" endian="big" sizex="16" sizey="2" userlevel="5">
+      <scaling units="Injector Pulse Width (ms)" expression="x*.008" to_byte="x/.008" format="0.00" fineincrement=".01" coarseincrement=".1" />
+      <table type="X Axis" name="Coolant Temperature" storagetype="float" endian="little" logparam="P2">
+        <scaling units="Degrees F" expression="(x*1.8)+32" to_byte="(x-32)/1.8" format="#" fineincrement="1" coarseincrement="5" />
+      </table>
+      <table type="Y Axis" name="Cranking State Number" storagetype="float" endian="little">
+        <scaling units="" expression="x" to_byte="x" format="#" fineincrement="1" coarseincrement="5" />
+      </table>
+      <description>This is the injector pulse width based on coolant temp when cranking the motor. Compensation tables may impact the final pulse width. Although the exact conditions for map switching is not entirely known, some of it is based on whether the ignition switch is on or off and whether the motor has begun to start or not at any given time in the cranking process. TGV status may also be involved. WARNING: UNTESTED</description>
+    </table>
+    <table type="3D" name="Cranking Fuel Injector Pulse Width D (ECT) " category="Fueling - Cranking" storagetype="uint16" endian="big" sizex="16" sizey="2" userlevel="5">
+      <scaling units="Injector Pulse Width (ms)" expression="x*.008" to_byte="x/.008" format="0.00" fineincrement=".01" coarseincrement=".1" />
+      <table type="X Axis" name="Coolant Temperature" storagetype="float" endian="little" logparam="P2">
+        <scaling units="Degrees F" expression="(x*1.8)+32" to_byte="(x-32)/1.8" format="#" fineincrement="1" coarseincrement="5" />
+      </table>
+      <table type="Y Axis" name="Cranking State Number" storagetype="float" endian="little">
+        <scaling units="" expression="x" to_byte="x" format="#" fineincrement="1" coarseincrement="5" />
+      </table>
+      <description>This is the injector pulse width based on coolant temp when cranking the motor. Compensation tables may impact the final pulse width. Although the exact conditions for map switching is not entirely known, some of it is based on whether the ignition switch is on or off and whether the motor has begun to start or not at any given time in the cranking process. TGV status may also be involved. WARNING: UNTESTED</description>
+    </table>
+    <table type="3D" name="Cranking Fuel Injector Pulse Width E (ECT) " category="Fueling - Cranking" storagetype="uint16" endian="big" sizex="16" sizey="2" userlevel="5">
+      <scaling units="Injector Pulse Width (ms)" expression="x*.008" to_byte="x/.008" format="0.00" fineincrement=".01" coarseincrement=".1" />
+      <table type="X Axis" name="Coolant Temperature" storagetype="float" endian="little" logparam="P2">
+        <scaling units="Degrees F" expression="(x*1.8)+32" to_byte="(x-32)/1.8" format="#" fineincrement="1" coarseincrement="5" />
+      </table>
+      <table type="Y Axis" name="Cranking State Number" storagetype="float" endian="little">
+        <scaling units="" expression="x" to_byte="x" format="#" fineincrement="1" coarseincrement="5" />
+      </table>
+      <description>This is the injector pulse width based on coolant temp when cranking the motor. Compensation tables may impact the final pulse width. Although the exact conditions for map switching is not entirely known, some of it is based on whether the ignition switch is on or off and whether the motor has begun to start or not at any given time in the cranking process. TGV status may also be involved. WARNING: UNTESTED</description>
     </table>
     <table type="2D" name="Cranking Fuel Injector Pulse Width A (ECT)" category="Fueling - Cranking" storagetype="uint16" endian="big" sizey="16" userlevel="5">
       <scaling units="Injector Pulse Width (ms)" expression="x*.008" to_byte="x/.008" format="0.00" fineincrement=".01" coarseincrement=".1" />
