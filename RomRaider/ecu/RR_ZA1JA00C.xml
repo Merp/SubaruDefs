@@ -673,7 +673,12 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
     </table>   
     <table name="Low pulse width fuel injector compensation maximum RPM" storageaddress="10E50C" />
     <table name="Low pulse width fuel injector compensation maximum IPW" storageaddress="10E510" />
-    
+    <table name="Overrun Fueling RPM Resume Threshold" storageaddress="110C70">
+      <table type="X Axis" storageaddress="10E7D0" />
+    </table>
+    <table name="Overrun Enrich RPM Delta Activation" storageaddress="10E53C" />
+    <table name="Overrun initial injector enrichment (pulsewidth)" storageaddress="10E540" />
+    <table name="Overrun Fueling Cut Counter RPM Threshold" storageaddress="10E5C4" />      
 <table name="Hotstart Enrichment Decay Delay" storageaddress="10DC5C" />
 <table name="Hotstart Enrichment Decay Step" storageaddress="10E370" />
 <table name="Initial Hotstart Enrichment (High)" storageaddress="10E35C" />
@@ -7323,7 +7328,7 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
     <table type="2D" name="Overrun Enrich RPM Delta Activation" category="ALPHA OverRun Fueling" storagetype="float" endian="little" sizey="1" userlevel="5">
       <scaling units="Engine Speed Delta" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="100" />
       <table type="Static Y Axis" name="RPM Delta" sizey="1">
-        <data>Active 1st Gear Compensation</data>
+        <data></data>
       </table>
       <description>This table sets the required RPM delta for overrun enrichment to activate.</description>
     </table>
