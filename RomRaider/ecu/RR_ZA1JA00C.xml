@@ -87,6 +87,7 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
       <table type="Y Axis" storageaddress="113DE0" />
     </table>
     <table name="Injector Flow Scaling" storageaddress="10DDDC" />
+    <table name="Injector Flow Scaling BRZ" storageaddress="10DDA8" />
     <table name="Per Injector Pulse Width Compensation A " storageaddress="113074" sizex="9" sizey="12">
       <table type="X Axis" storageaddress="113020" />
       <table type="Y Axis" storageaddress="113044" />
@@ -2400,6 +2401,13 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
       </table>
       <description>This is the fuel injector constant represented with an estimated flow rating (gas only). The underlying raw value does NOT represent the injector flow rate and there is no standard for measuring the flow rate of injectors. Therefore, it should NOT be thought of as a value that is going to exactly match published rates for your injectors but as a means to get you in the general ball park as a starting point to tune from.</description>
     </table>
+<table type="2D" name="Injector Flow Scaling BRZ" category="Fueling - Injectors" storagetype="float" endian="big" sizey="1" userlevel="2">
+<scaling units="ESTIMATED Flow Rate - Gas Only (cc/min)" expression="60000/x" to_byte="60000/x" format="#.00" fineincrement="1" coarseincrement="10" />
+<table type="Static Y Axis" name="" sizey="1">
+<data>Injector Flow Constant</data>
+</table>
+<description>This is the fuel injector constant represented with an estimated flow rating (gas only). The underlying raw value does NOT represent the injector flow rate and there is no standard for measuring the flow rate of injectors. Therefore, it should NOT be thought of as a value that is going to exactly match published rates for your injectors but as a means to get you in the general ball park as a starting point to tune from.</description>
+</table>
     <table type="3D" name="Per Injector Primary Fuel Offset Compensation A" category="Fueling - Injectors" storagetype="uint8" endian="big" sizex="8" sizey="14" userlevel="5">
       <scaling units="Injector Fuel Offset Additive" expression="(x*.0078125)-1" to_byte="(x+1)/.0078125" format="0.000" fineincrement=".01" coarseincrement=".05" />
       <table type="X Axis" name="Last Calculated Base Pulse Width" storagetype="float" endian="little">
