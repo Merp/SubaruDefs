@@ -161,6 +161,7 @@
 	<scaling name="ThrottleAngleChange(%)" units="Throttle Angle Change (%)" toexpr="x" frexpr="x" format="%.1f" min="0.5" max="12" inc="0.3" storagetype="float" endian="big"/>
 	<scaling name="ThrottlePlateOpeningAngle(%)" units="Throttle Plate Opening Angle (%)" toexpr="x/.84" frexpr="x*.84" format="%.1f" min="4.6" max="108.3" inc="0.3" storagetype="float" endian="big"/>
 	<scaling name="ThrottlePlateOpeningAngle(%)1" units="Throttle Plate Opening Angle (%)" toexpr="x*.581287202" frexpr="x/.581287202" format="%.1f" min="0" max="107" inc="0.3" storagetype="uint8" endian="big"/>
+  <scaling name="ThrottlePlateOpeningAngle(%)2" units="Throttle Plate Opening Angle (%)" toexpr="x/.84" frexpr="x*.84" format="%.2f" min="4.6" max="108.3" inc="0.3" storagetype="float" endian="big"/>
 	<scaling name="ThrottleTip-inEnrichmentCompensation(%)" units="Throttle Tip-in Enrichment Compensation (%)" toexpr="(x*.78125)-100" frexpr="(x+100)/.78125" format="%.2f" min="-100" max="99.22" inc="0.4" storagetype="uint8" endian="big"/>
 	<scaling name="ThrottleTip-inEnrichmentCompensation(%)1" units="Throttle Tip-in Enrichment Compensation (%)" toexpr="(x*.04882812)-99.99998976" frexpr="(x+99.99998976)/.04882812" format="%.2f" min="0" max="321" inc="0.1" storagetype="uint16" endian="big"/>
 	<scaling name="ThrottleTip-inEnrichmentCompensation(%)2" units="Throttle Tip-in Enrichment Compensation (%)" toexpr="(x*.01220703125)-100" frexpr="(x+100)/.01220703125" format="%.2f" min="0" max="1100" inc="0.1" storagetype="uint16" endian="big"/>
@@ -3680,6 +3681,18 @@
 			<data>Disable Below</data>
 		</table>
 	</table>
+	
+		<table name="Timing Compensation Overrun RPM Delta" category="Ignition Timing - Compensation" type="2D" level="1" scaling="EngineSpeed(RPM)1">
+		<description>If the overrun engine speed delta is over this value, ignition overrun may be enabled.</description>
+		<table type="Static Y Axis" elements="1">
+			<data>RPM Delta</data>
+		</table>
+	</table>
+	
+		<table name="Timing Overrun" category="Ignition Timing - Compensation" type="2D" level="1" scaling="IgnitionTimingCorrection(degrees)">
+    <description>Compensation to ignition timing under overrrun conditions.</description>
+  <table name="Coolant Temp" type="Y Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
+	</table>
 
 	<table name="Feedback Correction Range (RPM)" category="Ignition Timing - Knock Control" type="2D" level="2" scaling="EngineSpeed(RPM)1">
 		<description>This is the engine speed range in which feedback corrections can be made by the ECU. Feedback correction is the immediate negative correction to timing advance due to knock as determined by the knock sensor.</description>
@@ -4263,6 +4276,18 @@
 		<table name="Requested Torque" type="X Axis" elements="17" scaling="rawecuvalue"/>
 		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
 	</table>
+	
+	<table name="Target Throttle Plate Position (Idle)" category="Drive-by-Wire Throttle (DBW)" type="2D" level="1" scaling="ThrottlePlateOpeningAngle(%)2">
+    <description>The idle airflow target is used to determing the the target throttle opening during idle, which is then added to the target throttle angle to arrive at the final target throttle angle.</description>
+		<table name="Idle Airflow Target" type="X Axis" elements="17" scaling="MassAirflow(g/s)1"/>
+	</table>
+
+	<table name="Target Throttle Plate Position (Idle) Minimum" category="Drive-by-Wire Throttle (DBW)" type="2D" level="1" scaling="ThrottlePlateOpeningAngle(%)2">
+		<description>This is the minimum target throttle opening during idle which can be added to the target throttle angle to arrive at the final target throttle angle.</description>
+		<table type="Static Y Axis" elements="1">
+			<data>Minimum TPS (Idle) Position</data>
+		</table>
+	</table>
 
 	<table name="Rev Limit (Fuel Cut)" category="Miscellaneous - Limits" type="2D" level="4" scaling="EngineSpeed(RPM)1">
 		<description>These are the engine speeds at which the rev limiter is engaged and disengaged. When engine speed is equal to or exceeds the 'On' value, fuel cut is active, after which, if engine speed drops below the 'Off' value, fueling is resumed.</description>
@@ -4652,6 +4677,1258 @@
 
 	<table name="Force Pass Readiness Monitors_" category="OBD-II" type="1D" scaling="ForcePassReadinessMonitors_">
 		<description>Off-road and racing use only. Must NEVER be enabled on vehicles that will be driven on public roads.</description>
+	</table>
+
+	<table name="(P0000) PASS CODE (NO DTC DETECTED)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>PASS CODE (NO DTC DETECTED). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0000) PASS CODE (NO DTC DETECTED)_" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>PASS CODE (NO DTC DETECTED). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0011) CAMSHAFT POS. - TIMING OVER-ADVANCED 1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>EXHAUST AVCS SYSTEM 1 RANGE/PERFORMANCE. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0014) EXHAUST AVCS SYSTEM 1 RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>EXHAUST AVCS SYSTEM 1 RANGE/PERFORMANCE. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0016) CRANKSHAFT/CAMSHAFT CORRELATION 1A" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CRANKSHAFT POSITION - CAMSHAFT POSITION CORRELATION BANK 1 SENSOR A. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0017) CRANK/CAM TIMING B FAILURE 1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CRANK AND CAM TIMING B SYSTEM FAILURE (BANK 1). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0018) CRANKSHAFT/CAMSHAFT CORRELATION 2A" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CRANKSHAFT POSITION - CAMSHAFT POSITION CORRELATION BANK 2 SENSOR A. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0019) CRANK/CAM TIMING B FAILURE 2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CRANK AND CAM TIMING B SYSTEM FAILURE (BANK 2). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0021) CAMSHAFT POS. - TIMING OVER-ADVANCED 2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CAMSHAFT POSITION - TIMING OVER-ADVANCED OR SYSTEM PERFORMANCE (BANK 2). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0024) EXHAUST AVCS SYSTEM 2 RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>EXHAUST AVCS SYSTEM 2 RANGE/PERFORMANCE. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0026) OSV SOLENOID VALVE CIRCUIT RANGE/PERF B1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>INTAKE VALVE CONTROL SOLENOID CIRCUIT RANGE/PERFORMANCE (BANK 1). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0028) OSV SOLENOID VALVE CIRCUIT RANGE/PERF B2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>INTAKE VALVE CONTROL SOLENOID CIRCUIT RANGE/PERFORMANCE (BANK 2). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0030) FRONT O2 SENSOR RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>FRONT OXYGEN SENSOR CONTROL CIRCUIT (BANK 1 SENSOR 1). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0031) FRONT O2 SENSOR LOW INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>FRONT OXYGEN SENSOR CIRCUIT LOW (BANK 1 SENSOR 1). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0032) FRONT O2 SENSOR HIGH INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>FRONT OXYGEN SENSOR CIRCUIT HIGH (BANK 1 SENSOR 1). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0037) REAR O2 SENSOR LOW INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>REAR OXYGEN SENSOR CIRCUIT LOW (BANK 1 SENSOR 2). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0038) REAR O2 SENSOR HIGH INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>REAR OXYGEN SENSOR CIRCUIT HIGH (BANK 1 SENSOR 2). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0043) HO2S CIRCUIT LOW B1 S3" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>HO2S HEATER CONTROL CIRCUIT LOW BANK 1 SENSOR 3. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0044) HO2S CIRCUIT HIGH B1 S3" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>H02S HEATER CONTROL CIRCUIT HIGH BANK 1 SENSOR 3. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0050) HO2S CIRCUIT RANGE/PERF B2 S1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>HO2S HEATER CONTROL CIRCUIT RANGE/PERFORMANCE (BANK 2, SENSOR 1). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0051) HO2S CIRCUIT LOW B2 S1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>HO2S HEATER CONTROL CIRCUIT LOW  (BANK 2 SENSOR 1). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0052) HO2S CIRCUIT HIGH B2 S1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>HO2S HEATER CONTROL CIRCUIT HIGH (BANK 2 SENSOR 1). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0057) HO2S CIRCUIT LOW B2 S2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>HO2S HEATER CONTROL CIRCUIT LOW BANK 2 SENSOR 2. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0058) HO2S CIRCUIT HIGH B2 S2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>HO2S HEATER CONTROL CIRCUIT HIGH BANK 2 SENSOR 2. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0068) MAP SENSOR RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>MANIFOLD ABSOLUTE PRESSURE/BAROMETRIC PRESSURE CIRCUIT RANGE/PERFORMANCE. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0076) INTAKE VALVE CIRCUIT LOW (BANK 1)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>OSV SOLENOID VALVE L CIRCUIT MALFUNCTION LOW. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0077) INTAKE VALVE CONTROL HIGH (BANK 1)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>OSV SOLENOID VALVE L CIRCUIT MALFUNCTION HIGH. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0082) INTAKE VALVE CONTROL LOW (BANK 2)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>OSV SOLENOID VALVE L CIRCUIT MALFUNCTION LOW. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0083) INTAKE VALVE CONTROL HIGH (BANK 2)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>OSV SOLENOID VALVE L CIRCUIT MALFUNCTION HIGH. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0101) MAF SENSOR RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>MASS AIR FLOW CIRCUIT RANGE/PERFORMANCE. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0102) MAF SENSOR LOW INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>MASS AIR FLOW CIRCUIT LOW INPUT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0103) MAF SENSOR HIGH INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>MASS AIR FLOW CIRCUIT HIGH INPUT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0107) MAP SENSOR LOW INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>PRESSURE SENSOR CIRCUIT LOW INPUT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0108) MAP SENSOR HIGH INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>PRESSURE SENSOR CIRCUIT HIGH INPUT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0111) IAT SENSOR RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>INTAKE AIR TEMPERATURE CIRCUIT RANGE/PERFORMANCE. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0112) IAT SENSOR LOW INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>INTAKE AIR TEMPERATURE CIRCUIT LOW INPUT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0113) IAT SENSOR HIGH INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>INTAKE AIR TEMPERATURE CIRCUIT HIGH INPUT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0117) COOLANT TEMP SENSOR LOW INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>ENGINE COOLANT TEMPERATURE CIRCUIT LOW INPUT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0118) COOLANT TEMP SENSOR HIGH INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>ENGINE COOLANT TEMPERATURE CIRCUIT HIGH INPUT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0121) TPS RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>THROTTLE POSITION SENSOR CIRCUIT RANGE/PERFORMANCE PROBLEM (HIGH INPUT). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0122) TPS A LOW INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>THROTTLE/PEDAL POSITION SENSOR/SWITCH 'A' CIRCUIT LOW INPUT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0123) TPS A HIGH INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>THROTTLE/PEDAL POSITION SENSOR/SWITCH 'A' CIRCUIT HIGH INPUT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0125) INSUFFICIENT COOLANT TEMP (FUELING)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>INSUFFICIENT COOLANT TEMPERATURE FOR CLOSED LOOP FUEL CONTROL. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0126) INSUFFICIENT COOLANT TEMP (OPERATION)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>INSUFFICIENT COOLANT TEMPERATURE FOR STABLE OPERATION. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0128) THERMOSTAT MALFUNCTION" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>COOLANT THERMOSTAT (COOLANT TEMPERATURE BELOW THERMOSTAT REGULATING TEMPERATURE). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0129) ATMOS. PRESSURE SENSOR RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>ATMOSPHERIC PRESSURE SENSOR CIRCUIT RANGE/PERFORMANCE. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0131) FRONT O2 SENSOR LOW INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>FRONT OXYGEN (A/F) SENSOR CIRCUIT RANGE/PERFORMANCE PROBLEM (LOW INPUT). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0132) FRONT O2 SENSOR HIGH INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>FRONT OXYGEN (A/F) SENSOR CIRCUIT RANGE/PERFORMANCE PROBLEM (HIGH INPUT). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0133) FRONT O2 SENSOR SLOW RESPONSE" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>FRONT OXYGEN SENSOR CIRCUIT SLOW RESPONSE. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0134) FRONT O2 SENSOR NO ACTIVITY" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>FRONT O2 SENSOR CIRCUIT NO ACTIVITY DETECTED (BANK 1 SENSOR 1). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0137) REAR O2 SENSOR LOW VOLTAGE" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>REAR O2 SENSOR CIRCUIT LOW VOLTAGE (BANK 1 SENSOR 2). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0138) REAR O2 SENSOR HIGH VOLTAGE" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>REAR O2 SENSOR CIRCUIT HIGH VOLTAGE (BANK 1 SENSOR 2). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0139) REAR O2 SENSOR SLOW RESPONSE" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>REAR O2 SENSOR CIRCUIT SLOW RESPONSE (BANK 1 SENSOR 2). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P013A) O2 SENSOR SLOW RESPONSE RICH TO LEAN B1 S2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>O2 SENSOR SLOW RESPONSE RICH TO LEAN B1 S2. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P013B) O2 SENSOR SLOW RESPONSE LEAN TO RICH B1 S2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>O2 SENSOR SLOW RESPONSE LEAN TO RICH B1 S2. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P013E) O2 SENSOR DELAYED RESPONSE RICH TO LEAN B1 S2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>O2 SENSOR DELAYED RESPONSE RICH TO LEAN B1 S2. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P013F) O2 SENSOR DELAYED RESPONSE LEAN TO RICH B1 S2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>O2 SENSOR DELAYED RESPONSE LEAN TO RICH B1 S2. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0140) REAR O2 SENSOR NO ACTIVITY" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>REAR O2 CIRCUIT NO ACTIVITY DETECTED (BANK 1, SENSOR 2). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0141) REAR O2 SENSOR MALFUNCTION" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>REAR O2 CIRCUIT MALFUNCTION DETECTED (BANK 1, SENSOR 2). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0143) O2 SENSOR CIRCUIT LOW B1 S3" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>O2 SENSOR CIRCUIT LOW VOLTAGE BANK 1 SENSOR 3. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0144) O2 SENSOR CIRCUIT HIGH B1 S3" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>O2 SENSOR CIRCUIT HIGH VOLTAGE BANK 1 SENSOR 3. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0145) O2 SENSOR CIRCUIT SLOW RESPONSE B1 S3" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>O2 SENSOR CIRCUIT SLOW RESPONSE BANK 1 SENSOR 3. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+<table name="(P014C) O2 SENSOR SLOW RESPONSE RICH TO LEAN B1 S1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable" description="O2 SENSOR SLOW RESPONSE RICH TO LEAN B1 S1. Change to disabled to deactivate. Off-road use only." />
+<table name="(P014D) O2 SENSOR SLOW RESPONSE LEAN TO RICH B1 S1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable" description="O2 SENSOR SLOW RESPONSE LEAN TO RICH B1 S1. Change to disabled to deactivate. Off-road use only." />
+<table name="(P015A) O2 SENSOR DELAYED RESPONSE RICH TO LEAN B1 S1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable" description="O2 SENSOR DELAYED RESPONSE RICH TO LEAN B1 S1. Change to disabled to deactivate. Off-road use only." />
+<table name="(P015B) O2 SENSOR DELAYED RESPONSE LEAN TO RICH B1 S1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable" description="O2 SENSOR DELAYED RESPONSE LEAN TO RICH B1 S1. Change to disabled to deactivate. Off-road use only." />    
+
+	<table name="(P0151) O2 SENSOR CIRCUIT LOW B2 S1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>O2 SENSOR CIRCUIT LOW VOLTAGE (BANK 2 SENSOR 1). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0152) O2 SENSOR CIRCUIT HIGH B2 S1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>O2 SENSOR CIRCUIT HIGH VOLTAGE (BANK 2 SENSOR 1). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0153) O2 SENSOR CIRCUIT SLOW RESPONSE B2 S1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>O2 SENSOR CIRCUIT SLOW RESPONSE (BANK 2 SENSOR 1). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0154) O2 SENSOR CIRCUIT OPEN B2 S1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>O2 SENSOR CIRCUIT OPEN BANK 2 SENSOR 1. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0157) O2 SENSOR CIRCUIT LOW B2 S2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>O2 SENSOR CIRCUIT LOW VOLTAGE BANK 2 SENSOR 2. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0158) O2 SENSOR CIRCUIT HIGH B2 S2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>O2 SENSOR CIRCUIT HIGH VOLTAGE BANK 2 SENSOR 2. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0159) O2 SENSOR CIRCUIT SLOW RESPONSE B2 S2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>O2 SENSOR CIRCUIT SLOW RESPONSE BANK 2 SENSOR 2. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0160) O2 SENSOR NO ACTIVITY B2 S2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>O2 CIRCUIT NO ACTIVITY DETECTED (BANK 2, SENSOR 2). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+<table name="(P0161) O2 SENSOR HEATER CIRCUIT MALFUNCTION B2 S2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable" description="SENSOR HEATER CIRCUIT MALFUNCTION (BANK 2, SENSOR 2). Change to disabled to deactivate. Off-road use only." />
+
+
+	<table name="(P0171) SYSTEM TOO LEAN" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>SYSTEM TOO LEAN (BANK 1). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0172) SYSTEM TOO RICH" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>SYSTEM TOO RICH (BANK 1). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0174) SYSTEM TOO LEAN B2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>SYSTEM TOO LEAN (BANK 2). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0175) SYSTEM TOO RICH B2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>SYSTEM TOO RICH (BANK 2). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0181) FUEL TEMP SENSOR A RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>FUEL TEMPERATURE SENSOR 'A' CIRCUIT RANGE/PERFORMANCE. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0182) FUEL TEMP SENSOR A LOW INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>FUEL TEMPERATURE SENSOR 'A' CIRCUIT LOW INPUT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0183) FUEL TEMP SENSOR A HIGH INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>FUEL TEMPERATURE SENSOR 'A' CIRCUIT HIGH INPUT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0196) OIL TEMP SENSOR RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>OIL TEMPERATURE SENSOR CIRCUIT RANGE/PERFORMANCE PROBLEM. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0197) OIL TEMP SENSOR LOW" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>OIL TEMPERATURE SENSOR CIRCUIT MALFUNCTION LOW. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0198) OIL TEMP SENSOR HIGH" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>OIL TEMPERATURE SENSOR CIRCUIT MALFUNCTION HIGH. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0201) INJECTOR CIRCUIT MALFUNCTION CYLINDER 1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>INJECTOR CIRCUIT MALFUNCTION CYLINDER 1. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0202) INJECTOR CIRCUIT MALFUNCTION CYLINDER 2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>INJECTOR CIRCUIT MALFUNCTION CYLINDER 2. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0203) INJECTOR CIRCUIT MALFUNCTION CYLINDER 3" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>INJECTOR CIRCUIT MALFUNCTION CYLINDER 3. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0204) INJECTOR CIRCUIT MALFUNCTION CYLINDER 4" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>INJECTOR CIRCUIT MALFUNCTION CYLINDER 4. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0222) TPS B LOW INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>THROTTLE/PEDAL POSITION SENSOR/SWITCH 'B' CIRCUIT LOW INPUT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0223) TPS B HIGH INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>THROTTLE/PEDAL POSITION SENSOR/SWITCH 'B' CIRCUIT HIGH INPUT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0230) FUEL PUMP PRIMARY CIRCUIT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>FUEL PUMP PRIMARY CIRCUIT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0244) WASTEGATE SOLENOID A RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>WASTEGATE SOLENOID 'A' RANGE/PERFORMANCE. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0245) WASTEGATE SOLENOID A LOW" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>WASTEGATE SOLENOID 'A' LOW. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0246) WASTEGATE SOLENOID A HIGH" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>WASTEGATE SOLENOID 'A' HIGH. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0261) FUEL INJECTOR #1 CIRCUIT LOW" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CYLINDER 1 INJECTOR CIRCUIT LOW. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0264) FUEL INJECTOR #2 CIRCUIT LOW" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CYLINDER 2 INJECTOR CIRCUIT LOW. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0267) FUEL INJECTOR #3 CIRCUIT LOW" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CYLINDER 3 INJECTOR CIRCUIT LOW. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0270) FUEL INJECTOR #4 CIRCUIT LOW" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CYLINDER 4 INJECTOR CIRCUIT LOW. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0301) MISFIRE CYLINDER 1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CYLINDER 1 MISFIRE DETECTED. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0302) MISFIRE CYLINDER 2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CYLINDER 2 MISFIRE DETECTED. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0303) MISFIRE CYLINDER 3" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CYLINDER 3 MISFIRE DETECTED. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0304) MISFIRE CYLINDER 4" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CYLINDER 4 MISFIRE DETECTED. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0305) MISFIRE CYLINDER 5" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CYLINDER 5 MISFIRE DETECTED. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0306) MISFIRE CYLINDER 6" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CYLINDER 6 MISFIRE DETECTED. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0327) KNOCK SENSOR 1 LOW INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>KNOCK SENSOR 1 CIRCUIT LOW INPUT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0328) KNOCK SENSOR 1 HIGH INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>KNOCK SENSOR 1 CIRCUIT HIGH INPUT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0332) KNOCK SENSOR 2 LOW INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>KNOCK SENSOR 2 CIRCUIT LOW INPUT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0333) KNOCK SENSOR 2 HIGH INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>KNOCK SENSOR 2 CIRCUIT HIGH INPUT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0335) CRANKSHAFT POS. SENSOR A MALFUNCTION" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CRANKSHAFT POSITION SENSOR 'A' CIRCUIT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0336) CRANKSHAFT POS. SENSOR A RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CRANKSHAFT POSITION SENSOR 'A' CIRCUIT RANGE/PERFORMANCE. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0340) CAMSHAFT POS. SENSOR A MALFUNCTION" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CAMSHAFT POSITION SENSOR 'A' CIRCUIT (BANK 1 OR SINGLE SENSOR). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0340) CAMSHAFT POS. SENSOR A MALFUNCTION_" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CAMSHAFT POSITION SENSOR 'A' CIRCUIT (BANK 1 OR SINGLE SENSOR). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0341) CAMSHAFT POS. SENSOR A RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CAMSHAFT POSITION SENSOR 'A' CIRCUIT RANGE/PERFORMANCE (BANK 1 OR SINGLE SENSOR). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0345) CAMSHAFT POS. SENSOR A BANK 2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CAMSHAFT POSITION SENSOR 'A' CIRCUIT (BANK 2). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0350) IGNITION COIL PRIMARY/SECONDARY" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>IGNITION COIL PRIMARY/SECONDARY CIRCUIT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0351) IGNITION COIL A PRIMARY/SECONDARY CIRCUIT MALFUNCTION" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>IGNITION COIL A PRIMARY/SECONDARY CIRCUIT MALFUNCTION. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0352) IGNITION COIL B PRIMARY/SECONDARY CIRCUIT MALFUNCTION" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>IGNITION COIL B PRIMARY/SECONDARY CIRCUIT MALFUNCTION. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0353) IGNITION COIL C PRIMARY/SECONDARY CIRCUIT MALFUNCTION" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>IGNITION COIL C PRIMARY/SECONDARY CIRCUIT MALFUNCTION. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0354) IGNITION COIL D PRIMARY/SECONDARY CIRCUIT MALFUNCTION" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>IGNITION COIL D PRIMARY/SECONDARY CIRCUIT MALFUNCTION. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0365) CAMSHAFT POS. SENSOR B BANK 1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CAMSHAFT POSITION SENSOR 'B' CIRCUIT (BANK 1). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0365) CAMSHAFT POS. SENSOR B BANK 1_" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CAMSHAFT POSITION SENSOR 'B' CIRCUIT (BANK 1). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0390) CAMSHAFT POS. SENSOR B BANK 2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CAMSHAFT POSITION SENSOR 'B' CIRCUIT (BANK 2). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0390) CAMSHAFT POS. SENSOR B BANK 2_" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CAMSHAFT POSITION SENSOR 'B' CIRCUIT (BANK 2). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0400) EGR FLOW" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>EXHAUST GAS RECIRCULATION FLOW. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0410) SECONDARY AIR PUMP SYSTEM" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>SECONDARY AIR INJECTION SYSTEM. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0411) SECONDARY AIR PUMP INCORRECT FLOW" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>SECONDARY AIR INJECTION INCORRECT UPSTREAM FLOW DETECTED. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0413) SECONDARY AIR PUMP A OPEN" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>SECONDARY AIR INJECTION SWITCHING VALVE A CIRCUIT OPEN. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0414) SECONDARY AIR PUMP A SHORTED" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>SECONDARY AIR INJECTION SWITCHING VALVE A CIRCUIT SHORTED. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0416) SECONDARY AIR PUMP B OPEN" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>SECONDARY AIR INJECTION SWITCHING VALVE B CIRCUIT OPEN. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0417) SECONDARY AIR PUMP B SHORTED" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>SECONDARY AIR INJECTION SWITCHING VALVE B CIRCUIT SHORTED. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0418) SECONDARY AIR PUMP RELAY A" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>SECONDARY AIR INJECTION SYSTEM RELAY A CONTROL CIRCUIT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0420) CAT EFFICIENCY BELOW THRESHOLD" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CATALYST SYSTEM EFFICIENCY BELOW THRESHOLD (BANK 1). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0441) EVAP INCORRECT PURGE FLOW" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>EVAPORATIVE EMISSION SYSTEM INCORRECT PURGE FLOW. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0442) EVAP LEAK DETECTED (SMALL)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>EVAPORATIVE EMISSION CONTROL SYSTEM LEAK DETECTED (SMALL LEAK). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0447) EVAP VENT CONTROL CIRCUIT OPEN" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>EVAPORATIVE EMISSION CONTROL SYSTEM VENT CONTROL CIRCUIT OPEN. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0448) EVAP VENT CONTROL CIRCUIT SHORTED" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>EVAPORATIVE EMISSION CONTROL SYSTEM VENT CONTROL CIRCUIT SHORTED. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0451) EVAP PRESSURE SENSOR RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>EVAPORATIVE EMISSION CONTROL SYSTEM PRESSURE SENSOR RANGE/PERFORMANCE. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0452) EVAP PRESSURE SENSOR LOW INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>EVAPORATIVE EMISSION CONTROL SYSTEM PRESSURE SENSOR LOW INPUT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0453) EVAP PRESSURE SENSOR HIGH INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>EVAPORATIVE EMISSION CONTROL SYSTEM PRESSURE SENSOR HIGH INPUT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0455) EVAP EMISSION CONTROL SYSTEM LEAK DETECTED (GROSS LEAK)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>EVAP EMISSION CONTROL SYSTEM LEAK DETECTED (GROSS LEAK). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0456) EVAP LEAK DETECTED (VERY SMALL)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>EVAPORATIVE EMISSION CONTROL SYSTEM LEAK DETECTED (VERY SMALL LEAK). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0457) EVAP LEAK DETECTED (FUEL CAP)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>EVAPORATIVE EMISSION CONTROL SYSTEM LEAK DETECTED (FUEL CAP LOOSE/OFF). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0458) EVAP PURGE VALVE CIRCUIT LOW" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>EVAPORATIVE EMISSION CONTROL SYSTEM PURGE CONTROL VALVE CIRCUIT LOW. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0459) EVAP PURGE VALVE CIRCUIT HIGH" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>EVAPORATIVE EMISSION CONTROL SYSTEM PURGE CONTROL VALVE CIRCUIT HIGH. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0461) FUEL LEVEL SENSOR RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>FUEL LEVEL SENSOR CIRCUIT RANGE/PERFORMANCE. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0462) FUEL LEVEL SENSOR LOW INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>FUEL LEVEL SENSOR CIRCUIT LOW INPUT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0463) FUEL LEVEL SENSOR HIGH INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>FUEL LEVEL SENSOR CIRCUIT HIGH INPUT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0464) FUEL LEVEL SENSOR INTERMITTENT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>FUEL LEVEL SENSOR CIRCUIT INTERMITTENT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0483) RADIATOR FAN RATIONALITY CHECK" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>COOLING FAN RATIONALITY CHECK. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0500) VEHICLE SPEED SENSOR A" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>VEHICLE SPEED SENSOR A. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0502) VEHICLE SPEED SENSOR LOW INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>VEHICLE SPEED SENSOR LOW INPUT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0503) VEHICLE SPEED SENSOR INTERMITTENT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>VEHICLE SPEED SENSOR INTERMITTENT/ERRATIC/HIGH. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0506) IDLE CONTROL RPM LOWER THAN EXPECTED" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>IDLE CONTROL SYSTEM RPM LOWER THAN EXPECTED. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0507) IDLE CONTROL RPM HIGH THAN EXPECTED" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>IDLE CONTROL SYSTEM RPM HIGHER THAN EXPECTED. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0508) IDLE CONTROL CIRCUIT LOW" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>IDLE CONTROL SYSTEM CIRCUIT LOW. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0509) IDLE CONTROL CIRCUIT HIGH" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>IDLE CONTROL SYSTEM CIRCUIT HIGH. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P050A) COLD START IDLE AIR CONTROL SYSTEM PERFORMANCE" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>COLD START IDLE AIR CONTROL SYSTEM PERFORMANCE. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P050B) COLD START IGNITION TIMING PERFORMANCE" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>COLD START IGNITION TIMING PERFORMANCE. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0512) STARTER REQUEST CIRCUIT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>STARTER REQUEST CIRCUIT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0519) IDLE CONTROL MALFUNCTION (FAIL-SAFE)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>IDLE CONTROL SYSTEM MALFUNCTION (FAIL-SAFE). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0545) EGT SENSOR CIRCUIT LOW" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>EXHAUST GAS TEMPERATURE SENSOR CIRCUIT LOW (BANK 1). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0546) EGT SENSOR CIRCUIT HIGH" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>EXHAUST GAS TEMPERATURE SENSOR CIRCUIT HIGH (BANK 1). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0558) ALTERNATOR CIRCUIT LOW" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>ALTERNATOR CIRCUIT LOW. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0559) ALTERNATOR CIRCUIT HIGH" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>ALTERNATOR CIRCUIT HIGH. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0562) SYSTEM VOLTAGE LOW" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>SYSTEM VOLTAGE LOW. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0563) SYSTEM VOLTAGE HIGH" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>SYSTEM VOLTAGE HIGH. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0565) CRUISE CONTROL SET SIGNAL" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CRUISE CONTROL SET SIGNAL. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0600) SERIAL COMMUNICATION LINK" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>SERIAL COMMUNICATION LINK. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0602) CONTROL MODULE PROG. ERROR" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>POWERTRAIN CONTROL MODULE PROGRAMMING ERROR. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0604) CONTROL MODULE RAM ERROR" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>INTERNAL CONTROL MODULE RANDOM ACCESS MEMORY (RAM) ERROR. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0605) CONTROL MODULE ROM ERROR" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>INTERNAL CONTROL MODULE READ ONLY MEMORY (ROM) ERROR. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0607) CONTROL MODULE PERFORMANCE" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CONTROL MODULE PERFORMANCE. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0638) THROTTLE ACTUATOR RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>THROTTLE ACTUATOR CONTROL RANGE/PERFORMANCE (BANK 1). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0691) RADIATOR FAN CIRCUIT LOW" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>COOLING FAN 1 CONTROL CIRCUIT LOW. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0692) RADIATOR FAN CIRCUIT HIGH" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>COOLING FAN 1 CONTROL CIRCUIT HIGH. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0700) TRANSMISSION CONTROL SYSTEM" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>TRANSMISSION CONTROL SYSTEM (MIL REQUEST). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0703) BRAKE SWITCH INPUT MALFUNCTION" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>BRAKE SWITCH INPUT MALFUNCTION. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0705) TRANSMISSION RANGE SENSOR MALFUNCTION" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>TRANSMISSION RANGE SENSOR CIRCUIT MALFUNCTION. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0710) ATF TEMP SENSOR MALFUNCTION" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>ATF TEMP SENSOR CIRCUIT MALFUNCTION. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0716) TORQUE CONVERTER TURBINE SPEED RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>TORQUE CONVERTER TURBINE SPEED SIGNAL CIRCUIT RANGE/PERFORMANCE. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0720) AT VEHICLE SPEED SENSOR HIGH" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>AT VEHICLE SPEED SENSOR CIRCUIT HIGH. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0726) ENGINE SPEED INPUT RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>ENGINE SPEED INPUT CIRCUIT RANGE/PERFORMANCE. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0731) GEAR 1 INCORRECT RATIO" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>GEAR 1 INCORRECT RATIO. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0732) GEAR 2 INCORRECT RATIO" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>GEAR 2 INCORRECT RATIO. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0733) GEAR 3 INCORRECT RATIO" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>GEAR 3 INCORRECT RATIO. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0734) GEAR 4 INCORRECT RATIO" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>GEAR 4 INCORRECT RATIO. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0741) TORQUE CONVERTER CLUTCH MALFUNCTION" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>TORQUE CONVERTER CLUTCH CIRCUIT MALFUNCTION. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0743) TORQUE CONVERTER CLUTCH LOCK-UP DUTY SOLENOID" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>TORQUE CONVERTER CLUTCH SYSTEM (LOCK-UP DUTY SOL.) ELECTRICAL. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0748) PRESSURE CONTROL LINE PRESSURE DUTY SOLENOID" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>PRESSURE CONTROL SOLENOID (LINE PRESSURE DUTY SOL.) ELECTRICAL. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0753) SHIFT SOLENOID A ELECTRICAL" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>SHIFT SOLENOID A ELECTRICAL. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0758) SHIFT SOLENOID B ELECTRICAL" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>SHIFT SOLENOID B ELECTRICAL. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0771) AT LOW CLUTCH TIMING SOLENOID MALFUNCTION" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>AT LOW CLUTCH TIMING SOLENOID VALVE CIRCUIT MALFUNCTION. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0778) AT 2-4 BRAKE PRESSURE SOLENOID MALFUNCTION" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>AT 2-4 BRAKE PRESSURE SOLENOID VALVE CIRCUIT MALFUNCTION. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0785) AT 2-4 BRAKE TIMING SOLENOID MALFUNCTION" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>AT 2-4 BRAKE TIMING SOLENOID VALVE CIRCUIT MALFUNCTION. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0851) NEUTRAL SWITCH INPUT LOW" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>NEUTRAL SWITCH INPUT CIRCUIT LOW. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0852) NEUTRAL SWITCH INPUT HIGH" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>NEUTRAL SWITCH INPUT CIRCUIT HIGH. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0864) TCM COMMUNICATION RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>TCM COMMUNICATION CIRCUIT RANGE/PERFORMANCE. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0865) TCM COMMUNICATION CIRCUIT LOW" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>TCM COMMUNICATION CIRCUIT LOW. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0866) TCM COMMUNICATION CIRCUIT HIGH" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>TCM COMMUNICATION CIRCUIT HIGH. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1026) VVL SYSTEMS 1 PERFORMANCE" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>VVL SYSTEMS 1 PERFORMANCE. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1028) VVL SYSTEMS 2 PERFORMANCE" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>VVL SYSTEMS 2 PERFORMANCE. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1086) TGV POS. 2 CIRCUIT LOW" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>TUMBLE GENERATED VALVE POSITION SENSOR 2 CIRCUIT LOW. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1087) TGV POS. 2 CIRCUIT HIGH" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>TUMBLE GENERATED VALVE POSITION SENSOR 2 CIRCUIT HIGH. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1088) TGV POS. 1 CIRCUIT LOW" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>TUMBLE GENERATED VALVE POSITION SENSOR 1 CIRCUIT LOW. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1089) TGV POS. 1 CIRCUIT HIGH" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>TUMBLE GENERATED VALVE POSITION SENSOR 1 CIRCUIT HIGH. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1090) TGV SYSTEM 1 (VALVE OPEN)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>TUMBLE GENERATED VALVE SYSTEM 1 (VALVE OPEN). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1091) TGV SYSTEM 1 (VALVE CLOSE)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>TUMBLE GENERATED VALVE SYSTEM 1 (VALVE CLOSE). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1092) TGV SYSTEM 2 (VALVE OPEN)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>TUMBLE GENERATED VALVE SYSTEM 2 (VALVE OPEN). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1093) TGV SYSTEM 2 (VALVE CLOSE)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>TUMBLE GENERATED VALVE SYSTEM 2 (VALVE CLOSE). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1094) TGV SIGNAL 1 (OPEN)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>TUMBLE GENERATED VALVE SIGNAL 1 CIRCUIT MALFUNCTION (OPEN). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1095) TGV SIGNAL 1 (SHORT)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>TUMBLE GENERATED VALVE SIGNAL 1 CIRCUIT MALFUNCTION (SHORT). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1096) TGV SIGNAL 2 (OPEN)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>TUMBLE GENERATED VALVE SIGNAL 2 CIRCUIT MALFUNCTION (OPEN). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1097) TGV SIGNAL 2 (SHORT)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>TUMBLE GENERATED VALVE SIGNAL 2 CIRCUIT MALFUNCTION (SHORT). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1110) ATMOS. PRESSURE SENSOR LOW INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>ATMOSPHERIC PRESSURE SENSOR CIRCUIT MALFUNCTION (LOW INPUT). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1111) ATMOS. PRESSURE SENSOR HIGH INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>ATMOSPHERIC PRESSURE SENSOR CIRCUIT MALFUNCTION (HIGH INPUT). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1152) FRONT O2 SENSOR RANGE/PERF LOW B1 S1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>FRONT O2 SENSOR CIRCUIT RANGE/PERFORMANCE (LOW) (BANK1 SENSOR1). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1153) FRONT O2 SENSOR RANGE/PERF HIGH B1 S1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>FRONT O2 SENSOR CIRCUIT RANGE/PERFORMANCE (HIGH) (BANK1 SENSOR1). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1154) O2 SENSOR RANGE/PERF LOW B2 S1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>O2 SENSOR CIRCUIT RANGE/PERFORMANCE (LOW) BANK 2 SENSOR 1. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1155) O2 SENSOR RANGE/PERF HIGH B2 S1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>O2 SENSOR CIRCUIT RANGE/PERFORMANCE (HIGH) BANK 2 SENSOR 1. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1160) ABNORMAL RETURN SPRING" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>ABNORMAL RETURN SPRING. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1282) PCV SYSTEM CIRCUIT (OPEN)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>PCV SYSTEM CIRCUIT (OPEN). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1301) MISFIRE (HIGH TEMP EXHAUST GAS)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>MISFIRE DETECTED (HIGH TEMPERATURE EXHAUST GAS). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1312) EGT SENSOR MALFUNCTION" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>EXHAUST GAS TEMPERATURE SENSOR MALFUNCTION. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1400) FUEL TANK PRESSURE SOL. LOW" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>FUEL TANK PRESSURE CONTROL SOLENOID VALVE CIRCUIT LOW. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1410) SECONDARY AIR PUMP VALVE STUCK OPEN" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>SECONDARY AIR INJECTION SYSTEM SWITCHING VALVE STUCK OPEN. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1418) SECONDARY AIR PUMP CIRCUIT SHORTED" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>SECONDARY AIR INJECTION SYSTEM CONTROL A CIRCUIT SHORTED. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1420) FUEL TANK PRESSURE SOL. HIGH INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>FUEL TANK PRESSURE CONTROL SOLENOID HIGH INPUT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1443) VENT CONTROL SOLENOID FUNCTION PROBLEM" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>EVAP CONTROL SYSTEM VENT CONTROL FUNCTION PROBLEM. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1446) FUEL TANK SENSOR CONTROL CIRCUIT LOW" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>FUEL TANK SENSOR CONTROL VALVE CIRCUIT LOW. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1447) FUEL TANK SENSOR CONTROL CIRCUIT HIGH" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>FUEL TANK SENSOR CONTROL VALVE CIRCUIT HIGH. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1448) FUEL TANK SENSOR CONTROL RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>FUEL TANK SENSOR CONTROL VALVE RANGE/PERFORMANCE. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1449) EVAPORATIVE EMISSION CONT. SYS. AIR FILTER CLOG" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>EVAPORATIVE EMISSION CONT. SYS. AIR FILTER CLOG. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1451) EVAPORATIVE EMISSION CONT. SYS." category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>EVAPORATIVE EMISSION CONT. SYS.. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1458) CANISTER PURGE CONTROL SOLENOID VALVE 2 LOW" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CANISTER PURGE CONTROL SOLENOID VALVE 2 LOW. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1459) CANISTER PURGE CONTROL SOLENOID VALVE 2 HIGH" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CANISTER PURGE CONTROL SOLENOID VALVE 2 HIGH. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1491) PCV (BLOWBY) FUNCTION PROBLEM" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>POSITIVE CRANKCASE VENTILATION (BLOWBY) FUNCTION PROBLEM. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1492) EGR SOLENOID SIGNAL 1 MALFUNCTION (LOW)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>EGR SOLENOID VALVE SIGNAL #1 CIRCUIT MALFUNCTION (LOW INPUT). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1493) EGR SOLENOID SIGNAL 1 MALFUNCTION (HIGH)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>EGR SOLENOID VALVE SIGNAL #1 CIRCUIT MALFUNCTION (HIGH INPUT). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1494) EGR SOLENOID SIGNAL 2 MALFUNCTION (LOW)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>EGR SOLENOID VALVE SIGNAL #2 CIRCUIT MALFUNCTION (LOW INPUT). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1495) EGR SOLENOID SIGNAL 2 MALFUNCTION (HIGH)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>EGR SOLENOID VALVE SIGNAL #2 CIRCUIT MALFUNCTION (HIGH INPUT). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1496) EGR SIGNAL 3 CIRCUIT LOW" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>EGR SIGNAL 3 CIRCUIT (LOW). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1497) EGR SOLENOID SIGNAL 3 MALFUNCTION (HIGH)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>EGR SOLENOID VALVE SIGNAL #3 CIRCUIT MALFUNCTION (HIGH INPUT). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1498) EGR SIGNAL 4 CIRCUIT LOW" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>EGR SIGNAL 4 CIRCUIT (LOW). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1499) EGR SIGNAL 4 CIRCUIT HIGH" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>EGR SIGNAL 4 CIRCUIT (HIGH). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1518) STARTER SWITCH LOW INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>STARTER SWITCH CIRCUIT LOW INPUT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1519) IMRC STUCK CLOSED" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>INTAKE MANIFOLD RUNNER CONTROL (STUCK CLOSED). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1520) IMRC CIRCUIT MALFUNCTION" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>INTAKE MANIFOLD RUNNER CONTROL CIRCUIT MALFUNCTION. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1544) EGT TOO HIGH" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>EXHAUST GAS TEMPERATURE TOO HIGH. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1560) BACK-UP VOLTAGE MALFUNCTION" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>BACK-UP VOLTAGE CIRCUIT MALFUNCTION. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1602) CONTROL MODULE PROGRAMMING ERROR" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CONTROL MODULE PROGRAMMING ERROR. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1616) SBDS INTERACTIVE CODES" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>SBDS INTERACTIVE CODES. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1700) TPS CIRCUIT MALFUNCTION (AT)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>THROTTLE POSITION SENSOR CIRCUIT MALFUNCTION FOR AT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2004) TGV - INTAKE MANIFOLD RUNNER 1 STUCK OPEN" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>TGV - INTAKE MANIFOLD RUNNER CONTROL STUCK OPEN (BANK 1). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2005) TGV - INTAKE MANIFOLD RUNNER 2 STUCK OPEN" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>TGV - INTAKE MANIFOLD RUNNER CONTROL STUCK OPEN (BANK 2). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2006) TGV - INTAKE MANIFOLD RUNNER 1 STUCK CLOSED" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>TGV - INTAKE MANIFOLD RUNNER CONTROL STUCK CLOSED (BANK 1). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2007) TGV - INTAKE MANIFOLD RUNNER 2 STUCK CLOSED" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>TGV - INTAKE MANIFOLD RUNNER CONTROL STUCK CLOSED (BANK 2). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2008) TGV - INTAKE MANIFOLD RUNNER 1 CIRCUIT OPEN" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>TGV - INTAKE MANIFOLD RUNNER CONTROL CIRCUIT / OPEN (BANK 1). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2009) TGV - INTAKE MANIFOLD RUNNER 1 CIRCUIT LOW" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>TGV - INTAKE MANIFOLD RUNNER CONTROL CIRCUIT LOW (BANK 1). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2011) TGV - INTAKE MANIFOLD RUNNER 2 CIRCUIT OPEN" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>TGV - INTAKE MANIFOLD RUNNER CONTROL CIRCUIT / OPEN (BANK 2). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2012) TGV - INTAKE MANIFOLD RUNNER 2 CIRCUIT LOW" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>TGV - INTAKE MANIFOLD RUNNER CONTROL CIRCUIT LOW (BANK 2). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2016) TGV - INTAKE MANIFOLD RUNNER 1 POS. SENSOR LOW" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>TGV - INTAKE MANIFOLD RUNNER POSITION SENSOR/ SWITCH CIRCUIT LOW (BANK 1). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2017) TGV - INTAKE MANIFOLD RUNNER 1 POS. SENSOR HIGH" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>TGV - INTAKE MANIFOLD RUNNER POSITION SENSOR/ SWITCH CIRCUIT HIGH (BANK 1). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2021) TGV - INTAKE MANIFOLD RUNNER 2 POS. SENSOR LOW" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>TGV - INTAKE MANIFOLD RUNNER POSITION SENSOR/ SWITCH CIRCUIT LOW (BANK 2). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2022) TGV - INTAKE MANIFOLD RUNNER 2 POS. SENSOR HIGH" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>TGV - INTAKE MANIFOLD RUNNER POSITION SENSOR/ SWITCH CIRCUIT HIGH (BANK 2). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2088) OCV SOLENOID A1 CIRCUIT OPEN" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>OCV SOLENOID VALVE SIGNAL A CIRCUIT OPEN (BANK 1). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2089) OCV SOLENOID A1 CIRCUIT SHORT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>OCV SOLENOID VALVE SIGNAL A CIRCUIT SHORT (BANK 1). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2090) OCV SOLENOID B1 CIRCUIT OPEN" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>OCV SOLENOID VALVE SIGNAL B CIRCUIT OPEN BANK 1. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2091) OCV SOLENOID B1 CIRCUIT SHORT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>OCV SOLENOID VALVE SIGNAL B CIRCUIT SHORT BANK 1. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2092) OCV SOLENOID A2 CIRCUIT OPEN" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>OCV SOLENOID VALVE SIGNAL A CIRCUIT OPEN (BANK 2). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2093) OCV SOLENOID A2 CIRCUIT SHORT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>OCV SOLENOID VALVE SIGNAL A CIRCUIT SHORT (BANK 2). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2094) OCV SOLENOID B2 CIRCUIT OPEN" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>OCV SOLENOID VALVE SIGNAL B CIRCUIT OPEN BANK 2. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2095) OCV SOLENOID B2 CIRCUIT SHORT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>OCV SOLENOID VALVE SIGNAL B CIRCUIT SHORT BANK 2. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2096) POST CATALYST TOO LEAN B1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>POST CATALYST FUEL TRIM SYSTEM TOO LEAN BANK 1. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2097) POST CATALYST TOO RICH B1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>POST CATALYST FUEL TRIM SYSTEM TOO RICH BANK 1. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2098) POST CATALYST TOO LEAN B2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>POST CATALYST FUEL TRIM SYSTEM TOO LEAN BANK 2. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2099) POST CATALYST TOO RICH B2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>POST CATALYST FUEL TRIM SYSTEM TOO RICH BANK 2. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2101) THROTTLE ACTUATOR CIRCUIT RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>THROTTLE ACTUATOR CONTROL MOTOR CIRCUIT RANGE/PERFORMANCE. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2102) THROTTLE ACTUATOR CIRCUIT LOW" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>THROTTLE ACTUATOR CONTROL MOTOR CIRCUIT LOW. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2103) THROTTLE ACTUATOR CIRCUIT HIGH" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>THROTTLE ACTUATOR CONTROL MOTOR CIRCUIT HIGH. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2109) TPS A MINIMUM STOP PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>THROTTLE/PEDAL POSITION SENSOR A MINIMUM STOP PERFORMANCE. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2122) TPS D CIRCUIT LOW INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>THROTTLE/PEDAL POSITION SENSOR/ SWITCH 'D' CIRCUIT LOW INPUT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2123) TPS D CIRCUIT HIGH INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>THROTTLE/PEDAL POSITION SENSOR/ SWITCH 'D' CIRCUIT HIGH INPUT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2127) TPS E CIRCUIT LOW INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>THROTTLE/PEDAL POSITION SENSOR/ SWITCH 'E' CIRCUIT LOW INPUT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2128) TPS E CIRCUIT HIGH INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>THROTTLE/PEDAL POSITION SENSOR/ SWITCH 'E' CIRCUIT HIGH INPUT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2135) TPS A/B VOLTAGE" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>THROTTLE/PEDAL POSITION SENSOR/ SWITCH 'A'/'B' VOLTAGE RATIONALITY. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2138) TPS D/E VOLTAGE" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>THROTTLE/PEDAL POSITION SENSOR/ SWITCH 'D'/'E' VOLTAGE RATIONALITY. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P219A) BANK 1 AFR IMBALANCE" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>BANK 1 AFR IMBALANCE. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P219B) BANK 2 AFR IMBALANCE" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>BANK 2 AFR IMBALANCE. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2227) BARO. PRESSURE CIRCUIT RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>BAROMETRIC PRESSURE CIRCUIT RANGE/ PERFORMANCE. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2228) BARO. PRESSURE CIRCUIT LOW INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>BAROMETRIC PRESSURE CIRCUIT LOW INPUT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2229) BARO. PRESSURE CIRCUIT HIGH INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>BAROMETRIC PRESSURE CIRCUIT HIGH INPUT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2401) EVAP LEAK DETECTION PUMP CONTROL CIRCUIT LOW" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>EVAP LEAK DETECTION PUMP CONTROL CIRCUIT LOW. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2402) EVAP LEAK DETECTION PUMP CONTROL CIRCUIT HIGH" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>EVAP LEAK DETECTION PUMP CONTROL CIRCUIT HIGH. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2404) EVAP LEAK DETECTION PUMP SENSE CIRCUIT RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>EVAP LEAK DETECTION PUMP SENSE CIRCUIT RANGE/PERF. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2419) EVAP SWITCHING VALVE LOW" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>EVAPORATIVE EMISSION SYSTEM SWITCHING VALVE CONTROL CIRCUIT LOW. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2420) EVAP SWITCHING VALVE HIGH" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>EVAPORATIVE EMISSION SYSTEM SWITCHING VALVE CONTROL CIRCUIT HIGH. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2431) SECONDARY AIR PUMP CIRCUIT RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>SECONDARY AIR INJECTION SYSTEM AIR FLOW/PRESSURE SENSOR CIRCUIT RANGE/PERFORMANCE BANK 1. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2432) SECONDARY AIR PUMP CIRCUIT LOW" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>SECONDARY AIR INJECTION SYSTEM AIR FLOW/PRESSURE SENSOR CIRCUIT LOW BANK. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2433) SECONDARY AIR PUMP CIRCUIT HIGH" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>SECONDARY AIR INJECTION SYSTEM AIR FLOW/PRESSURE SENSOR CIRCUIT HIGH BANK 1. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2440) SECONDARY AIR PUMP VALVE 1 STUCK OPEN" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>SECONDARY AIR INJECTION SYSTEM SWITCHING VALVE STUCK OPEN BANK 1. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2441) SECONDARY AIR PUMP VALVE 1 STUCK CLOSED" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>SECONDARY AIR INJECTION SYSTEM SWITCHING VALVE STUCK CLOSED BANK 1. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2442) SECONDARY AIR PUMP VALVE 2 STUCK OPEN" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>SECONDARY AIR INJECTION SYSTEM SWITCHING VALVE STUCK OPEN BANK 2. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2443) SECONDARY AIR PUMP 2 STUCK CLOSED" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>SECONDARY AIR INJECTION SYSTEM SWITCHING VALVE STUCK CLOSED BANK 2. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2444) SECONDARY AIR PUMP 1 STUCK ON B1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>SECONDARY AIR INJECTION SYSTEM PUMP STUCK ON BANK 1. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2503) CHARGING SYSTEM VOLTAGE LOW" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CHARGING SYSTEM VOLTAGE LOW. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2504) CHARGING SYSTEM VOLTAGE HIGH" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CHARGING SYSTEM VOLTAGE HIGH. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2610) ECM/PCM INTERNAL ENGINE OFF TIMER PERFORMANCE" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>ECM/PCM INTERNAL ENGINE OFF TIMER PERFORMANCE. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(U0073) CAN COMMUNICATION BUS A OFF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CAN COMMUNICATION BUS A OFF. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(U0101) CAN LOST COMMUNICATION WITH TCM" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CAN LOST COMMUNICATION WITH TCM. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(U0122) CAN LOST COMMUNICATION WITH VDC" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CAN LOST COMMUNICATION WITH VDC. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(U0140) CAN LOST COMMUNICATION WITH BIU" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CAN LOST COMMUNICATION WITH BIU. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(U0402) CAN INVALID DATA RECEIVED FROM TCM" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CAN INVALID DATA RECEIVED FROM TCM. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(U0416) CAN INVALID DATA RECEIVED FROM VDC" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CAN INVALID DATA RECEIVED FROM VDC. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(U0422) CAN INVALID DATA RECEIVED FROM BIU" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CAN INVALID DATA RECEIVED FROM BIU. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0000) PASS CODE (NO DTC DETECTED)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>PASS CODE (NO DTC DETECTED). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
 
 	<table name="(P0000) PASS CODE (NO DTC DETECTED)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
@@ -5198,6 +6475,10 @@
 		<description>CAMSHAFT POSITION SENSOR 'B' CIRCUIT (BANK 2). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
 
+	<table name="(P0390) CAMSHAFT POS. SENSOR B BANK 2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CAMSHAFT POSITION SENSOR 'B' CIRCUIT (BANK 2). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+
 	<table name="(P0391) CAMSHAFT POSITION SENSOR B CIRCUIT RANGE  PERFORMANCE BANK 2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>CAMSHAFT POSITION SENSOR B CIRCUIT RANGE  PERFORMANCE BANK 2. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
@@ -5264,10 +6545,6 @@
 
 	<table name="(P0453) EVAP PRESSURE SENSOR HIGH INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>EVAPORATIVE EMISSION CONTROL SYSTEM PRESSURE SENSOR HIGH INPUT. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
-	</table>
-
-	<table name="(P0455) EVAP EMISSION CONTROL SYSTEM LEAK DETECTED (GROSS LEAK)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX_enable">
-		<description>EVAP EMISSION CONTROL SYSTEM LEAK DETECTED (GROSS LEAK). Change to disabled to deactivate. Off-road use only.</description>
 	</table>
 
 	<table name="(P0456) EVAP LEAK DETECTED (VERY SMALL)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
@@ -5730,14 +7007,6 @@
 		<description>EVAPORATIVE EMISSION CONT. SYS. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
 
-	<table name="(P1458) CANISTER PURGE CONTROL SOLENOID VALVE 2 LOW" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX_enable">
-		<description>CANISTER PURGE CONTROL SOLENOID VALVE 2 LOW. Change to disabled to deactivate. Off-road use only.</description>
-	</table>
-
-	<table name="(P1459) CANISTER PURGE CONTROL SOLENOID VALVE 2 HIGH" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX_enable">
-		<description>CANISTER PURGE CONTROL SOLENOID VALVE 2 HIGH. Change to disabled to deactivate. Off-road use only.</description>
-	</table>
-
 	<table name="(P1491) PCV (BLOWBY) FUNCTION PROBLEM" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>POSITIVE CRANKCASE VENTILATION (BLOWBY) FUNCTION PROBLEM. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
@@ -5976,10 +7245,6 @@
 
 	<table name="(P219A) BANK 1 AFR IMBALANCE" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>BANK 1 AFR IMBALANCE. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
-	</table>
-
-	<table name="(P219B) BANK 2 AFR IMBALANCE" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX_enable">
-		<description>BANK 2 AFR IMBALANCE. Change to disabled to deactivate. Off-road use only.</description>
 	</table>
 
 	<table name="(P2227) BARO. PRESSURE CIRCUIT RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
