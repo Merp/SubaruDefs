@@ -695,10 +695,6 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
 <table name="Hotstart Minimum Enrichment Limit Runtime" storageaddress="10DC5E" />
 <table name="Hotstart Minimum Enrichment (During Delay and Runtime)" storageaddress="10E36C" />
 
-<table name="Launch Control Disable Speed" storageaddress="D1080" />
-<table name="Launch Control RPM Delta" storageaddress="D1084" />
-<table name="Flat-Foot Shift RPM Delta" storageaddress="D1088" />
-
 <table name="(P000A) CAMSHAFT POSITION A  TIMING SLOW RESPONSE BANK 1" storageaddress="11E138" />
 <table name="(P000B) CAMSHAFT POSITION B  TIMING SLOW RESPONSE BANK 1" storageaddress="11E144" />
 <table name="(P000C) CAMSHAFT POSITION A  TIMING SLOW RESPONSE BANK 2" storageaddress="11E150" />
@@ -8366,27 +8362,6 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
       </table>
       <description>Minimum enrichment limit that is only active during decay delay and hotstart minimum enrichment runtime.</description>
     </table> 
- <table type="2D" name="Launch Control Disable Speed" category="Alpha - BRZ - FFS/LC" storagetype="float" endian="big" sizey="1" userlevel="4">
-        <scaling units="Vehicle Speed (MPH)" expression="x*.621" to_byte="x/.621" format="#" fineincrement="1" coarseincrement="5" />
-<table type="Static Y Axis" name="" sizey="1">
-<data>Disable above</data>
-</table>
-<description>Launch Control will be disabled above this speed</description>
-</table>
-<table type="2D" name="Launch Control RPM Delta" category="Alpha - BRZ - FFS/LC" storagetype="float" endian="big" sizey="1" userlevel="4">
-<scaling units="Engine Speed Delta" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="100" />
-<table type="Static Y Axis" name="RPM Delta" sizey="1">
-<data></data>
-</table>
-<description>This table sets the required RPM delta for launch control to activate: redline (7600) - delta = launch control activated RPM</description>
-</table>
-<table type="2D" name="Flat-Foot Shift RPM Delta" category="Alpha - BRZ - FFS/LC" storagetype="float" endian="big" sizey="1" userlevel="4">
-<scaling units="Engine Speed Delta" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="100" />
-<table type="Static Y Axis" name="RPM Delta" sizey="1">
-<data></data>
-</table>
-<description>This table sets the required RPM delta for launch control to activate: redline (7600) - delta = FFS activated RPM</description>
-</table>  
   </rom>
 
 </roms>
