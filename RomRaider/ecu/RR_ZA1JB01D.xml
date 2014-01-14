@@ -582,7 +582,7 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
     <table name="Transient Ignition Retard RPM Threshhold" storageaddress="11632C" />
     <table name="Transient Ignition Retard TPS Angle Threshhold" storageaddress="116330" />
     <table name="Transient Ignition Retard Engine Load Threshhold" storageaddress="116334" />
-    <table name="Transient Ignition Retard" storageaddress="118520">
+    <table name="Transient Ignition Retard " storageaddress="118520">
       <table type="X Axis" storageaddress="1184A4" />
       <table type="Y Axis" storageaddress="1184C0" />
     </table>
@@ -7862,6 +7862,15 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
     </table>
     <table type="3D" name="Transient Ignition Retard" category="Alpha - BRZ" storagetype="uint8" endian="big" sizex="7" sizey="24" userlevel="4">
       <scaling units="Ignition Timing Correction (degrees)" expression="(x*.3515625)-30" to_byte="(x+30)/.3515625" format="0.000" fineincrement=".2" coarseincrement="1" />
+      <table type="X Axis" name="Engine Load" storagetype="float" endian="little" logparam="E32">
+        <scaling units="g/rev" expression="x" to_byte="x" format="0.00" fineincrement=".01" coarseincrement=".1" />
+      </table>
+      <table type="Y Axis" name="Engine Speed" storagetype="float" endian="little" logparam="P8">
+        <scaling units="RPM" expression="x" to_byte="x" format="#" fineincrement="50" coarseincrement="100" />
+      </table>
+    </table>
+    <table type="3D" name="Transient Ignition Retard " category="Alpha - BRZ" storagetype="uint8" endian="big" sizex="7" sizey="24" userlevel="4">
+      <scaling units="Ignition Timing Correction (degrees)" expression="(x*.3515625)-50" to_byte="(x+50)/.3515625" format="0.000" fineincrement=".2" coarseincrement="1" />
       <table type="X Axis" name="Engine Load" storagetype="float" endian="little" logparam="E32">
         <scaling units="g/rev" expression="x" to_byte="x" format="0.00" fineincrement=".01" coarseincrement=".1" />
       </table>
