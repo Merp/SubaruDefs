@@ -73,6 +73,64 @@
 
 	<table name="Idle Speed F (Coolant Temp)" address="cc840"/>
 
+	<table name="Post Cranking Airflow Initial Reference Coolant" address="c3d40">
+		<table name="Coolant Temperature" address="c3c90"/>
+	</table>
+
+	<table name="Post Cranking Load Initial Reference Coolant" address="c3e2c">
+		<table name="Coolant Temperature" address="c3c90"/>
+	</table>
+
+	<table name="Low Pulse Width Fuel Injector Compensation" address="cd668">
+		<table name="Injector Pulse Width" address="cd648"/>
+	</table>
+
+	<table name="Low pulse width fuel injector compensation maximum RPM" address="ccd70">
+	</table>
+
+	<table name="Low pulse width fuel injector compensation maximum IPW" address="ccd74">
+	</table>
+
+	<table name="Ignition Dwell" address="d95f8">
+		<table name="Engine Speed" address="d95a4"/>
+		<table name="Battery Volts" address="d95e4"/>
+	</table>
+
+	<table name="Requested Torque Limit A (Per Gear/Engine Speed)" address="dcb18">
+		<table name="Engine Speed" address="dcaf8" elements="2"/>
+		<table name="Gear" address="dcb00"/>
+	</table>
+
+	<table name="Requested Torque Limit B (Per Gear/Engine Speed)" address="dcb50">
+		<table name="Engine Speed" address="dcb30" elements="2"/>
+		<table name="Gear" address="dcb38"/>
+	</table>
+
+	<table name="Fuel Pump Duty" address="4b7fc">
+	</table>
+
+	<table name="Fuel Pump Duty High Injector Duty Cycle" address="d4ad8">
+		<table name="Battery Voltage" address="d4ac8"/>
+		<table name="Manifold Relative Pressure" address="d4ad0"/>
+	</table>
+
+	<table name="Fuel Pump Duty Medium Injector Duty Cycle" address="d4af8">
+		<table name="Battery Voltage" address="d4ae8"/>
+		<table name="Manifold Relative Pressure" address="d4af0"/>
+	</table>
+
+	<table name="A/F #1 Learning Max Threshold" address="ccac4"/>
+
+	<table name="A/F #1 Learning Min Threshold" address="ccab4"/>
+
+	<table name="AF 3 Correction Limits" address="36568">
+	</table>
+
+	<table name="Idle Speed Stability A" address="d698c">
+		<table name="Idle Speed Error" address="d692c" elements="17"/>
+		<table name="Engine Speed Delta" address="d6970" elements="7"/>
+	</table>
+
 	<table name="Manifold Pressure Sensor Scaling" address="c00e0">
 	</table>
 
@@ -555,9 +613,6 @@
 		<table name="Coolant Temp Sensor" address="d92cc"/>
 	</table>
 
-	<table name="Fuel Pump Duty" address="4b7fc">
-	</table>
-
 	<table name="Radiator Fan Modes A (ECT)" address="d97b0">
 	</table>
 
@@ -603,16 +658,11 @@
 		<table name="Coolant Temperature" address="d52f4"/>
 	</table>
 
-	<table name="Ignition Dwell" address="d95f8">
-		<table name="Engine Speed" address="d95a4"/>
-		<table name="Battery" address="d95e4"/>
-	</table>
-
 	<table name="Checksum Fix" address="ffb80"/>
 
-	<table name="(P0000) PASS CODE (NO DTC DETECTED)" address="95d66"/>
-
 	<table name="(P0000) PASS CODE (NO DTC DETECTED)_" address="95d67"/>
+
+	<table name="(P0000) PASS CODE (NO DTC DETECTED)" address="95d66"/>
 
 	<table name="(P0011) CAMSHAFT POS. - TIMING OVER-ADVANCED 1" address="95d49"/>
 
