@@ -93,6 +93,7 @@
 	<scaling name="InitialAfterstartOffset" units="Initial Afterstart Offset" toexpr="x*.0002441406" frexpr="x/.0002441406" format="%.4f" min="0.05" max="1.25" inc="0.001" storagetype="uint16" endian="big"/>
 	<scaling name="InitialAfterstartOffset1" units="Initial Afterstart Offset" toexpr="x*.00390625" frexpr="x/.00390625" format="%.4f" min="0.05" max="6" inc="0.001" storagetype="uint16" endian="big"/>
 	<scaling name="InjectorFuelOffsetAdditive" units="Injector Fuel Offset Additive" toexpr="(x*.00003051758)-1" frexpr="(x+1)/.00003051758" format="%.3f" inc="0.01" storagetype="uint16" endian="big"/>
+	<scaling name="Injector_Flow_BRZ" units="ESTIMATED Flow Rate" toexpr="x" frexpr="x" format="%.2f" min="0" max="255" inc="0.06" storagetype="float" endian="big"/>
 	<scaling name="InjectorFuelOffsetAdditive1" units="Injector Fuel Offset Additive" toexpr="(x*.0078125)-1" frexpr="(x+1)/.0078125" format="%.3f" min="-0.06" max="0.16" inc="0.01" storagetype="uint8" endian="big"/>
 	<scaling name="InjectorPulseWidth(ms)" units="Injector Pulse Width (ms)" toexpr="x*.008" frexpr="x/.008" format="%.2f" min="0.01" max="250" inc="0.01" storagetype="uint16" endian="big"/>
 	<scaling name="InjectorPulseWidthCompensation" units="Injector Pulse Width Compensation" toexpr="(x*.78125)-100" frexpr="(x+100)/.78125" format="%.2f" min="-10.16" max="14.84" inc="0.01" storagetype="uint8" endian="big"/>
@@ -950,7 +951,7 @@
 		<description>This 2D table determines (on an ECT x axis) at what RPM the injectors switch back on from coasting (i.e. full lean, and injector pulse width at zero). This would be useful to those with much larger injectors than stock that have a problem with stalling out as the vehicle comes to stop / idle.</description>
 		<table name="Coolant Temperature" type="X Axis" elements="16" scaling="DegreesF"/>
 	</table>
-
+	
 	<table name="Overrun Enrich RPM Delta Activation" category="ALPHA OverRun Fueling" type="2D" level="1" scaling="rawecuvalue">
 		<description>This table sets the required RPM delta for overrun enrichment to activate.</description>
 		<table name="OverRun" type="Static Y Axis" elements="1">
@@ -971,6 +972,17 @@
 			<data>Low</data>
 			<data>Med</data>
 			<data>High</data>
+		</table>
+	</table>
+	
+	<table name="Overrun Fueling Cut Counter RPM Threshold_" category="ALPHA OverRun Fueling" type="2D" level="1" scaling="RPM">
+		<description>These counters determine the RPM count before injectors cut off during overrun.</description>
+		<table name="RPM" type="Static Y Axis" elements="5">
+			<data>A</data>
+			<data>B</data>
+			<data>C</data>
+			<data>D</data>
+			<data>E</data>
 		</table>
 	</table>
 
@@ -2231,6 +2243,13 @@
 
 	<table name="Injector Flow Scaling" category="Fueling - Injectors" type="2D" level="3" scaling="ESTIMATEDFlowRate-GasOnly(cc/min)1">
 		<description>This is the fuel injector constant represented with an estimated flow rating (gas only). The underlying raw value does NOT represent the injector flow rate and there is no standard for measuring the flow rate of injectors. Therefore, it should NOT be thought of as a value that is going to exactly match published rates for your injectors but as a means to get you in the general ball park as a starting point to tune from.</description>
+		<table type="Static Y Axis" elements="1">
+			<data>Injector Flow Constant</data>
+		</table>
+	</table>
+	
+	<table name="Injector Flow Scaling BRZ" category="Fueling - Injectors" type="2D" level="3" scaling="Injector_Flow_BRZ">
+		<description>This is the BRZ fuel injector constant.</description>
 		<table type="Static Y Axis" elements="1">
 			<data>Injector Flow Constant</data>
 		</table>
