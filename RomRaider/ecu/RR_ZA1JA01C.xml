@@ -199,6 +199,8 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
     <table name="Tip-in Throttle Cumulative Reset" storageaddress="10DBC3" />
     <table name="A/F Learning #1 Limits" storageaddress="10E0C8" />
     <table name="A/F Learning #1 Airflow Ranges" storageaddress="11113C" />
+	<table name="A/F Learning #1 Min Threshold" storageaddress="111138" />
+	<table name="A/F Learning #1 Max Threshold" storageaddress="111148" />
     <table name="MAF Limit (Maximum)" storageaddress="103FAC" />
     <table name="MAF Sensor Scaling" storageaddress="11FDAC">
       <table type="Y Axis" storageaddress="11FCD4" />
@@ -3266,6 +3268,20 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
       </table>
       <description>These are the airflow ranges in which the different long-term fuel trims are calculated in closed loop and applied to the same airflow ranges for both closed loop and open loop.</description>
     </table>
+    <table type="2D" name="A/F Learning #1 Min Threshold" category="Fueling - AF Correction / Learning" storagetype="float" endian="little" sizey="1" userlevel="4">
+  <scaling units="Mass Airflow (g/s)" expression="x" to_byte="x" format="0.00" fineincrement=".1" coarseincrement="1" />
+  <table type="Static Y Axis" name="Capped Limit" sizey="1">
+    <data>Min Threshold</data>
+  </table>
+  <description>Minimum required airflow for A/F Learning #1 Airflow Ranges to update.</description>
+</table>
+<table type="2D" name="A/F Learning #1 Max Threshold" category="Fueling - AF Correction / Learning" storagetype="float" endian="little" sizey="1" userlevel="4">
+  <scaling units="Mass Airflow (g/s)" expression="x" to_byte="x" format="0.00" fineincrement=".1" coarseincrement="1" />
+  <table type="Static Y Axis" name="Capped Limit" sizey="1">
+    <data>Max Threshold</data>
+  </table>
+  <description>Setting the maximum threshold to lower than the D Min Range value of the A/F Learning #1 Airflow Ranges causes the open loop fuelling to ignore the D learned correction value.</description>
+</table>
     <table type="2D" name="MAF Limit (Maximum)" category="Mass Airflow / Engine Load" storagetype="float" endian="little" sizey="1" userlevel="2">
       <scaling units="Mass Airflow (g/s)" expression="x" to_byte="x" format="0.00" fineincrement=".1" coarseincrement="1" />
       <table type="Static Y Axis" name="Capped Limit" sizey="1">
