@@ -1428,6 +1428,7 @@
 	<scaling name="Multiplier1" units="Multiplier" toexpr="x*.0078125" frexpr="x/.0078125" format="%.4f" min="0" max="1" inc="1" storagetype="uint8" endian="big"/>
 	<scaling name="OverRun Fueling" units="units" toexpr="x*0.1953125" frexpr="x/0.1953125" format="%.0f" min="0" max="5000" inc="1" storagetype="uint16" endian="big"/>
 	<scaling name="PGWGComp" units="Compensation (% of Per Gear Value)" toexpr="x*0.0061037" frexpr="x/.0061037" format="%.2f" min="0" max="200" inc="0.2" storagetype="uint16" endian="big"/>
+	<scaling name="PGWGCompMax" units="Compensation (% of Per Gear Value)" toexpr="x" frexpr="x" format="%.2f" min="0" max="125" inc="0.2" storagetype="uint16" endian="big"/>
 	<scaling name="PerGearIgnitionCompensation (degreesofcorrection)" units="Timing Compensation (degrees)" toexpr="x*-0.12" frexpr="x/-0.12" format="%.2f" min="-30.48" max="0" inc="0.12" storagetype="uint8" endian="big"/>
 	<scaling name="Periodin-betweendecaymultiplierapplication" units="Period in-between decay multiplier application" toexpr="x" frexpr="x" format="%.0f" min="1" max="10" inc="1" storagetype="uint8" endian="big"/>
 	<scaling name="PotentialChangeinCurrentFeedbackCorrectionperKnock'Event'(degreesofcorrection)" units="Potential Change in Current Feedback Correction per Knock 'Event' (degrees of correction)" toexpr="-x" frexpr="-x" format="%.2f" min="-1.4" max="-0.5" inc="0.1" storagetype="float" endian="big"/>
@@ -1999,13 +2000,49 @@
 		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
 	</table>
 
-	<table name="Max Wastegate Duty Multiplier Table 1" category="Merp Boost Hacks" type="3D" level="4" scaling="PGWGComp">
+	<table name="Max Wastegate Duty Multiplier Table 1" category="Merp Boost Hacks" type="3D" level="4" scaling="PGWGCompMax">
 		<description>This table is multiplied with the per gear wastegate table to set the max wastegate duty for map 1.</description>
 		<table name="Requested Torque" type="X Axis" elements="16" scaling="RequestedTorque(rawecuvalue)1"/>
 		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
 	</table>
 
-	<table name="Max Wastegate Duty Multiplier Table 2" category="Merp Boost Hacks" type="3D" level="4" scaling="PGWGComp">
+	<table name="Max Wastegate Duty Multiplier Table 2" category="Merp Boost Hacks" type="3D" level="4" scaling="PGWGCompMax">
+		<description>This table is multiplied with the per gear wastegate table to set the max wastegate duty for map 2.</description>
+		<table name="Requested Torque" type="X Axis" elements="16" scaling="RequestedTorque(rawecuvalue)1"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Max Wastegate Duty Multiplier Table 1 Intelligent" category="Merp Boost Hacks" type="3D" level="4" scaling="PGWGCompMax">
+		<description>This table is multiplied with the per gear wastegate table to set the max wastegate duty for map 1.</description>
+		<table name="Requested Torque" type="X Axis" elements="16" scaling="RequestedTorque(rawecuvalue)1"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Max Wastegate Duty Multiplier Table 2 Intelligent" category="Merp Boost Hacks" type="3D" level="4" scaling="PGWGCompMax">
+		<description>This table is multiplied with the per gear wastegate table to set the max wastegate duty for map 2.</description>
+		<table name="Requested Torque" type="X Axis" elements="16" scaling="RequestedTorque(rawecuvalue)1"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Max Wastegate Duty Multiplier Table 1 Sport" category="Merp Boost Hacks" type="3D" level="4" scaling="PGWGCompMax">
+		<description>This table is multiplied with the per gear wastegate table to set the max wastegate duty for map 1.</description>
+		<table name="Requested Torque" type="X Axis" elements="16" scaling="RequestedTorque(rawecuvalue)1"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Max Wastegate Duty Multiplier Table 2 Sport" category="Merp Boost Hacks" type="3D" level="4" scaling="PGWGCompMax">
+		<description>This table is multiplied with the per gear wastegate table to set the max wastegate duty for map 2.</description>
+		<table name="Requested Torque" type="X Axis" elements="16" scaling="RequestedTorque(rawecuvalue)1"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+	
+	<table name="Max Wastegate Duty Multiplier Table 1 Sport Sharp" category="Merp Boost Hacks" type="3D" level="4" scaling="PGWGCompMax">
+		<description>This table is multiplied with the per gear wastegate table to set the max wastegate duty for map 1.</description>
+		<table name="Requested Torque" type="X Axis" elements="16" scaling="RequestedTorque(rawecuvalue)1"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Max Wastegate Duty Multiplier Table 2 Sport Sharp" category="Merp Boost Hacks" type="3D" level="4" scaling="PGWGCompMax">
 		<description>This table is multiplied with the per gear wastegate table to set the max wastegate duty for map 2.</description>
 		<table name="Requested Torque" type="X Axis" elements="16" scaling="RequestedTorque(rawecuvalue)1"/>
 		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
@@ -2023,6 +2060,42 @@
 		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
 	</table>
 
+	<table name="Initial Wastegate Duty Multiplier Table 1 Intelligent" category="Merp Boost Hacks" type="3D" level="4" scaling="PGWGComp">
+		<description>This table is multiplied with the per gear wastegate table to set the initial wastegate duty for map 1.</description>
+		<table name="Requested Torque" type="X Axis" elements="16" scaling="RequestedTorque(rawecuvalue)1"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Initial Wastegate Duty Multiplier Table 2 Intelligent" category="Merp Boost Hacks" type="3D" level="4" scaling="PGWGComp">
+		<description>This table is multiplied with the per gear wastegate table to set the initial wastegate duty for map 2.</description>
+		<table name="Requested Torque" type="X Axis" elements="16" scaling="RequestedTorque(rawecuvalue)1"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Initial Wastegate Duty Multiplier Table 1 Sport" category="Merp Boost Hacks" type="3D" level="4" scaling="PGWGComp">
+		<description>This table is multiplied with the per gear wastegate table to set the initial wastegate duty for map 1.</description>
+		<table name="Requested Torque" type="X Axis" elements="16" scaling="RequestedTorque(rawecuvalue)1"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Initial Wastegate Duty Multiplier Table 2 Sport" category="Merp Boost Hacks" type="3D" level="4" scaling="PGWGComp">
+		<description>This table is multiplied with the per gear wastegate table to set the initial wastegate duty for map 2.</description>
+		<table name="Requested Torque" type="X Axis" elements="16" scaling="RequestedTorque(rawecuvalue)1"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Initial Wastegate Duty Multiplier Table 1 Sport Sharp" category="Merp Boost Hacks" type="3D" level="4" scaling="PGWGComp">
+		<description>This table is multiplied with the per gear wastegate table to set the initial wastegate duty for map 1.</description>
+		<table name="Requested Torque" type="X Axis" elements="16" scaling="RequestedTorque(rawecuvalue)1"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Initial Wastegate Duty Multiplier Table 2 Sport Sharp" category="Merp Boost Hacks" type="3D" level="4" scaling="PGWGComp">
+		<description>This table is multiplied with the per gear wastegate table to set the initial wastegate duty for map 2.</description>
+		<table name="Requested Torque" type="X Axis" elements="16" scaling="RequestedTorque(rawecuvalue)1"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
 	<table name="Target Boost Multiplier Table 1" category="Merp Boost Hacks" type="3D" level="4" scaling="PGWGComp">
 		<description>This map is multiplied by the per gear boost table to produce the desired boost targets for map 1.</description>
 		<table name="Requested Torque" type="X Axis" elements="8" scaling="RequestedTorque(rawecuvalue)1"/>
@@ -2034,6 +2107,43 @@
 		<table name="Requested Torque" type="X Axis" elements="16" scaling="RequestedTorque(rawecuvalue)1"/>
 		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
 	</table>
+
+	<table name="Target Boost Multiplier Table 1 Intelligent" category="Merp Boost Hacks" type="3D" level="4" scaling="PGWGComp">
+		<description>This map is multiplied by the per gear boost table to produce the desired boost targets for map 1.</description>
+		<table name="Requested Torque" type="X Axis" elements="8" scaling="RequestedTorque(rawecuvalue)1"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Target Boost Multiplier Table 2 Intelligent" category="Merp Boost Hacks" type="3D" level="4" scaling="PGWGComp">
+		<description>This map is multiplied by the per gear boost table to produce the desired boost targets for map 1.</description>
+		<table name="Requested Torque" type="X Axis" elements="16" scaling="RequestedTorque(rawecuvalue)1"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Target Boost Multiplier Table 1 Sport" category="Merp Boost Hacks" type="3D" level="4" scaling="PGWGComp">
+		<description>This map is multiplied by the per gear boost table to produce the desired boost targets for map 1.</description>
+		<table name="Requested Torque" type="X Axis" elements="8" scaling="RequestedTorque(rawecuvalue)1"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Target Boost Multiplier Table 2 Sport" category="Merp Boost Hacks" type="3D" level="4" scaling="PGWGComp">
+		<description>This map is multiplied by the per gear boost table to produce the desired boost targets for map 1.</description>
+		<table name="Requested Torque" type="X Axis" elements="16" scaling="RequestedTorque(rawecuvalue)1"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Target Boost Multiplier Table 1 Sport Sharp" category="Merp Boost Hacks" type="3D" level="4" scaling="PGWGComp">
+		<description>This map is multiplied by the per gear boost table to produce the desired boost targets for map 1.</description>
+		<table name="Requested Torque" type="X Axis" elements="8" scaling="RequestedTorque(rawecuvalue)1"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Target Boost Multiplier Table 2 Sport Sharp" category="Merp Boost Hacks" type="3D" level="4" scaling="PGWGComp">
+		<description>This map is multiplied by the per gear boost table to produce the desired boost targets for map 1.</description>
+		<table name="Requested Torque" type="X Axis" elements="16" scaling="RequestedTorque(rawecuvalue)1"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
 
 	<table name="Launch Control Timing Retard Table" category="Merp Timing" type="3D" level="4" scaling="BaseIgnitionTiming(degreesBTDC)1">
 		<description>When using Launch Control Timing Retard Mode, this value is subtracted from the base timing value.</description>
