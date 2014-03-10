@@ -207,6 +207,14 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
       <table type="X Axis" storageaddress="104DD0" />
       <table type="Y Axis" storageaddress="104DE8" />
     </table>
+<table name="MAF Correction After Start (Neutral)" storageaddress="11C7B4">
+  <table type="X Axis" storageaddress="11C768" />
+  <table type="Y Axis" storageaddress="11C794" />
+</table>
+<table name="MAF Correction After Start (In Gear)" storageaddress="11C8B0">
+    <table type="X Axis" storageaddress="11C864" />
+    <table type="Y Axis" storageaddress="11C890" />
+</table>
     <table name="Engine Load Limit (Maximum)" storageaddress="4AC9C" />
     <table name="Engine Load Compensation (MP)" storageaddress="104ED4" sizex="14">
       <table type="X Axis" storageaddress="104E60" />
@@ -8240,6 +8248,24 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
         <data>Hotstart Enrichment</data>
       </table>
       <description>Minimum enrichment limit that is only active during decay delay and hotstart minimum enrichment runtime.</description>
+    </table>
+    <table type="3D" name="MAF Correction After Start (In Gear)" category="Mass Airflow / Engine Load" storagetype="uint16" endian="big" sizex="11" sizey="8" userlevel="4">
+      <scaling units="g/s" expression="x*0.004577637" to_byte="x/0.004577637" format="0.0" fineincrement="0.1" coarseincrement="1" />
+      <table type="X Axis" name="Coolant Temperature" storagetype="float" >
+        <scaling units="DegreesF" expression="(x*1.8)+32" to_byte="(x-32)/1.8" format="0.0" fineincrement="1" coarseincrement="10" />      
+        </table>
+      <table type="Y Axis" name="Idle Mode" storagetype="float" >
+        <scaling units="Mode Counter" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="5" />
+      </table>
+    </table>
+    <table type="3D" name="MAF Correction After Start (Neutral)" category="Mass Airflow / Engine Load" storagetype="uint16" endian="big" sizex="11" sizey="8" userlevel="4">
+      <scaling units="g/s" expression="x*0.004577637" to_byte="x/0.004577637" format="0.0" fineincrement="0.1" coarseincrement="1" />
+      <table type="X Axis" name="Coolant Temperature" storagetype="float" >
+        <scaling units="DegreesF" expression="(x*1.8)+32" to_byte="(x-32)/1.8" format="0.0" fineincrement="1" coarseincrement="10" />      
+        </table>
+      <table type="Y Axis" name="Idle Mode" storagetype="float" >
+        <scaling units="Mode Counter" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="5" />
+      </table>
     </table>
   </rom>
 </roms>
