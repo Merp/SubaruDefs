@@ -209,6 +209,14 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
       <table type="X Axis" storageaddress="104DD0" />
       <table type="Y Axis" storageaddress="104DE8" />
     </table>
+<table name="MAF Correction After Start (Neutral)" storageaddress="11C82C">
+  <table type="X Axis" storageaddress="11C7E0" />
+  <table type="Y Axis" storageaddress="11C80C" />
+</table>
+<table name="MAF Correction After Start (In Gear)" storageaddress="11C928">
+    <table type="X Axis" storageaddress="11C8DC" />
+    <table type="Y Axis" storageaddress="11C908" />
+</table>
     <table name="Engine Load Limit (Maximum)" storageaddress="4AC6C" />
     <table name="Engine Load Compensation (MP)" storageaddress="104ED4" sizex="14">
       <table type="X Axis" storageaddress="104E60" />
@@ -696,7 +704,6 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
 <table name="Hotstart Maximum Non-Idle Enrichment Delay" storageaddress="10DC60" />
 <table name="Hotstart Minimum Enrichment Limit Runtime" storageaddress="10DC5E" />
 <table name="Hotstart Minimum Enrichment (During Delay and Runtime)" storageaddress="10E36C" />
-
 <table name="(P000A) CAMSHAFT POSITION A  TIMING SLOW RESPONSE BANK 1" storageaddress="11E138" />
 <table name="(P000B) CAMSHAFT POSITION B  TIMING SLOW RESPONSE BANK 1" storageaddress="11E144" />
 <table name="(P000C) CAMSHAFT POSITION A  TIMING SLOW RESPONSE BANK 2" storageaddress="11E150" />
@@ -8378,6 +8385,23 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
       </table>
       <description>Minimum enrichment limit that is only active during decay delay and hotstart minimum enrichment runtime.</description>
     </table> 
+    <table type="3D" name="MAF Correction After Start (In Gear)" category="Mass Airflow / Engine Load" storagetype="uint16" endian="big" sizex="11" sizey="8" userlevel="4">
+      <scaling units="g/s" expression="x*0.004577637" to_byte="x/0.004577637" format="0.0" fineincrement="0.1" coarseincrement="1" />
+      <table type="X Axis" name="Coolant Temperature" storagetype="float" >
+        <scaling units="DegreesF" expression="(x*1.8)+32" to_byte="(x-32)/1.8" format="0.0" fineincrement="1" coarseincrement="10" />      
+        </table>
+      <table type="Y Axis" name="Idle Mode" storagetype="float" >
+        <scaling units="Mode Counter" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="5" />
+      </table>
+    </table>
+    <table type="3D" name="MAF Correction After Start (Neutral)" category="Mass Airflow / Engine Load" storagetype="uint16" endian="big" sizex="11" sizey="8" userlevel="4">
+      <scaling units="g/s" expression="x*0.004577637" to_byte="x/0.004577637" format="0.0" fineincrement="0.1" coarseincrement="1" />
+      <table type="X Axis" name="Coolant Temperature" storagetype="float" >
+        <scaling units="DegreesF" expression="(x*1.8)+32" to_byte="(x-32)/1.8" format="0.0" fineincrement="1" coarseincrement="10" />      
+        </table>
+      <table type="Y Axis" name="Idle Mode" storagetype="float" >
+        <scaling units="Mode Counter" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="5" />
+      </table>
+    </table>
   </rom>
-
 </roms>
