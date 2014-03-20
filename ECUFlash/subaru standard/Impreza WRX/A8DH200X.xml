@@ -15,6 +15,28 @@
     <checksummodule>subarudbw</checksummodule>
   </romid>
   <include>32BITBASE</include>
+
+	<!-- the following tables are used for A/B -->
+	<table name="Idle Airflow Min Target Decel Adder (RPM)" address="CD4CC">
+		<table name="Engine Speed" address="CD48C" elements="16"/>
+	</table>
+
+	<table name="Idle Speed Stability A" address="CDFAC">
+		<table name="Idle Speed Error" address="CDF20" elements="24"/>
+		<table name="Engine Speed Delta" address="CDF80" elements="11"/>
+	</table>
+   
+   
+   <table name="Idle Airflow Min Target Decel Adder Active Veh Speed A" address="CCD74"/>
+   
+   <table name="Idle Airflow Min Target Decel Initial Idle Min Airflow A" address="0CCD78"/>
+
+   <!-- The following tables are used in all types of roms -->
+   <table name="Idle Airflow Min Target Decel Initial Idle Activation Max Mode Counter" address="CCCEA"/>
+   
+   <table name="Idle Airflow Min Target Decel Ramping Adder Decreasing" address="CCD9C"/>
+   
+   <table name="Idle Airflow Min Target Decel Ramping Adder Increasing" address="CCDA0"/>
   
   	<!-- Ignition Dwell Table -->
 	
