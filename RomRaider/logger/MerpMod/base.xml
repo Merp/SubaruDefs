@@ -1786,244 +1786,241 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
         <switch id="S172" name="Diesel Particulate Filter (DPF) Regeneration" desc="(E) S172" byte="0x0001CE" bit="3" ecubyteindex="69" target="1" />
       </switches>
       <ecuparams>
-        <ecuparam id="E1100" name="MM SD Mode Switch" desc="" target="1">
+        <ecuparam id="E1100" name="MerpMod SD Mode Switch" desc="E1100-[ 1 = MAF Sensor ] | [ 2 = Speed Density ] | [ 3 = MAF/SD Blending ]" target="1">
           <conversions>
-            <conversion storagetype="uint8" units="rawdata" expr="x" format="0.00" />
+            <conversion units="rawdata" expr="x" format="0" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1101" name="MM SD Volumetric Efficiency Direct" desc="" target="1">
+        <ecuparam id="E1101" name="MerpMod SD Volumetric Efficiency" desc="E1101" target="1">
           <conversions>
-            <conversion storagetype="float" units="VE" expr="x" format="0.00" />
+            <conversion units="VE" storagetype="float" expr="x" format="0.00" gauge_min="0" gauge_max="120" gauge_step="12" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1102" name="MM SD Airflow Final Output" desc="" target="1">
+        <ecuparam id="E1102" name="MerpMod SD Airflow Final Output" desc="E1102" target="1">
           <conversions>
-            <conversion storagetype="float" units="g/s" expr="x" format="0.00" />
+            <conversion units="g/s" storagetype="float" expr="x" format="0.00" gauge_min="0" gauge_max="500" gauge_step="50" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1103" name="MM SD Atmospheric Compensation Direct" desc="" target="1">
+        <ecuparam id="E1103" name="MerpMod SD Atmospheric Compensation" desc="E1103" target="1">
           <conversions>
-            <conversion storagetype="float" units="Multiplier" expr="x" format="0.00" />
+            <conversion units="multiplier" storagetype="float" expr="x" format="0.00" gauge_min="0" gauge_max="1" gauge_step="0.1" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1104" name="MM SD Blending Ratio Direct" desc="" target="1">
+        <ecuparam id="E1104" name="MerpMod SD Blending Ratio" desc="E1104" target="1">
           <conversions>
-            <conversion storagetype="float" units="ratio" expr="x" format="0.00" />
+            <conversion units="ratio" storagetype="float" expr="x" format="0.00" gauge_min="0" gauge_max="1" gauge_step="0.1" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1105" name="MM SD Airflow Blending Direct" desc="" target="1">
+        <ecuparam id="E1105" name="MerpMod SD Airflow Blending" desc="E1105" target="1">
           <conversions>
-            <conversion storagetype="float" units="g/s" expr="x" format="0.00" />
+            <conversion units="g/s" storagetype="float" expr="x" format="0.00" gauge_min="0" gauge_max="500" gauge_step="50" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1106" name="MM SD Airflow Maf Sensor Direct" desc="" target="1">
+        <ecuparam id="E1106" name="MerpMod SD Airflow Maf Sensor" desc="E1106" target="1">
           <conversions>
-            <conversion storagetype="float" units="g/s" expr="x" format="0.00" />
+            <conversion units="g/s" storagetype="float" expr="x" format="0.00" gauge_min="0" gauge_max="500" gauge_step="50" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1107" name="MM SD Airflow SD VE" desc="" target="1">
+        <ecuparam id="E1200" name="MerpMod Vehicle Identifier" desc="E1200" target="1">
           <conversions>
-            <conversion storagetype="float" units="g/s" expr="x" format="0.00" />
+            <conversion units="rawdata" storagetype="int32" expr="x" format="0" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1108" name="MM SD MAF Blending Ratio Direct" desc="" target="1">
+        <ecuparam id="E1201" name="MerpMod Auth Pass/Fail" desc="E1201" target="1">
           <conversions>
-            <conversion storagetype="float" units="ratio" expr="x" format="0.00" />
+            <conversion units="rawdata" expr="x" format="0" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1200" name="MM Vehicle Identifier" desc="" target="1">
+        <ecuparam id="E1301" name="MerpMod LC Speed Threshold" desc="E1301" target="1">
           <conversions>
-            <conversion storagetype="int32" units="rawdata" expr="x" format="0.00" />
+            <conversion units="mph" storagetype="float" expr="x*0.621371192" format="0.0" gauge_min="0" gauge_max="250" gauge_step="25" />
+            <conversion units="km/h" storagetype="float" expr="x" format="0.0" gauge_min="0" gauge_max="300" gauge_step="30" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1201" name="MM Auth Pass/Fail" desc="" target="1">
+        <ecuparam id="E1302" name="MerpMod LC Engaged Signal" desc="E1302" target="1">
           <conversions>
-            <conversion storagetype="uint8" units="rawdata" expr="x" format="0.00" />
+            <conversion units="On/Off" expr="x" format="0" gauge_min="0" gauge_max="1" gauge_step="1" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1301" name="MM LC Speed Threshold" desc="" target="1">
+        <ecuparam id="E1303" name="MerpMod FFS Engaged Signal" desc="E1303" target="1">
           <conversions>
-            <conversion storagetype="float" units="MPH" expr="x" format="0.00" />
+            <conversion units="On/Off" expr="x" format="0" gauge_min="0" gauge_max="1" gauge_step="1" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1302" name="MM LC Engaged Signal" desc="" target="1">
+        <ecuparam id="E1304" name="MerpMod FFS Gear Monitor" desc="E1304" target="1">
           <conversions>
-            <conversion storagetype="uint8" units="rawdata" expr="x" format="0.00" />
+            <conversion units="gear" storagetype="float" expr="x" format="0" gauge_min="0" gauge_max="6" gauge_step="1" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1303" name="MM FFS Engaged Signal" desc="" target="1">
+        <ecuparam id="E1305" name="MerpMod RevLimit Active Cut RPM" desc="E1305" target="1">
           <conversions>
-            <conversion storagetype="uint8" units="rawdata" expr="x" format="0.00" />
+            <conversion units="RPM" storagetype="float" expr="x" format="0.00" gauge_min="0" gauge_max="10000"  gauge_step="1000" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1304" name="MM FFS Gear Monitor" desc="" target="1">
+        <ecuparam id="E1306" name="MerpMod RevLimit Active Resume RPM" desc="E1306" target="1">
           <conversions>
-            <conversion storagetype="float" units="gear" expr="x" format="0.00" />
+            <conversion units="RPM" storagetype="float" expr="x" format="0.00" gauge_min="0" gauge_max="10000" gauge_step="1000" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1305" name="MM RevLimit Active Cut RPM" desc="" target="1">
+        <ecuparam id="E1307" name="MerpMod RedLine Cut RPM" desc="E1307" target="1">
           <conversions>
-            <conversion storagetype="float" units="RPM" expr="x" format="0.00" />
+            <conversion units="RPM" storagetype="float" expr="x" format="0.00" gauge_min="0" gauge_max="10000" gauge_step="1000" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1306" name="MM RevLimit Active Resume RPM" desc="" target="1">
+        <ecuparam id="E1308" name="MerpMod RedLine Hysteresis" desc="E1308" target="1">
           <conversions>
-            <conversion storagetype="float" units="RPM" expr="x" format="0.00" />
+            <conversion units="RPM" storagetype="float" expr="x" format="0.00" gauge_min="0" gauge_max="10000" gauge_step="1000" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1307" name="MM RedLine Cut RPM" desc="" target="1">
+        <ecuparam id="E1309" name="MerpMod Launch Control RPM" desc="E1309" target="1">
           <conversions>
-            <conversion storagetype="float" units="RPM" expr="x" format="0.00" />
+            <conversion units="RPM" storagetype="float" expr="x" format="0.00" gauge_min="0" gauge_max="10000" gauge_step="1000" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1308" name="MM RedLine Hysteresis" desc="" target="1">
+        <ecuparam id="E1310" name="MerpMod Launch Control Hysteresis" desc="E1310" target="1">
           <conversions>
-            <conversion storagetype="float" units="RPM" expr="x" format="0.00" />
+            <conversion units="RPM" storagetype="float" expr="x" format="0.00" gauge_min="0" gauge_max="10000" gauge_step="1000" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1309" name="MM Launch Control RPM" desc="" target="1">
+        <ecuparam id="E1312" name="MerpMod FFS Engagement RPM" desc="E1312" target="1">
           <conversions>
-            <conversion storagetype="float" units="RPM" expr="x" format="0.00" />
+            <conversion units="RPM" storagetype="float" expr="x" format="0.00" gauge_min="0" gauge_max="10000" gauge_step="1000" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1310" name="MM Launch Control Hysteresis" desc="" target="1">
+        <ecuparam id="E1313" name="MerpMod FFS Speed Threshold" desc="E1313" target="1">
           <conversions>
-            <conversion storagetype="float" units="RPM" expr="x" format="0.00" />
+            <conversion units="mph" storagetype="float" expr="x*0.621371192" format="0.0" gauge_min="0" gauge_max="250" gauge_step="25" />
+            <conversion units="km/h" storagetype="float" expr="x" format="0.0" gauge_min="0" gauge_max="300" gauge_step="30" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1311" name="MM FFS Resume Delta" desc="" target="1">
+        <ecuparam id="E1314" name="MerpMod FFS Delta (Auto)" desc="E1314" target="1">
           <conversions>
-            <conversion storagetype="float" units="RPM" expr="x" format="0.00" />
+            <conversion units="RPM" storagetype="float" expr="x" format="0.00" gauge_min="0" gauge_max="10000" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1312" name="MM FFS Engagement RPM" desc="" target="1">
+        <ecuparam id="E1315" name="MerpMod FFS Delta (Static)" desc="E1315" target="1">
           <conversions>
-            <conversion storagetype="float" units="RPM" expr="x" format="0.00" />
+            <conversion units="RPM" storagetype="float" expr="x" format="0.00" gauge_min="0" gauge_max="10000" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1313" name="MM FFS Speed Threshold" desc="" target="1">
+        <ecuparam id="E1400" name="MerpMod Clutch Switch" desc="E1400" target="1">
           <conversions>
-            <conversion storagetype="float" units="rawdata" expr="x" format="0.00" />
+            <conversion units="On/Off" expr="x" format="0" gauge_min="0" gauge_max="1" gauge_step="1" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1314" name="MM FFS Resume Target RPM" desc="" target="1">
+        <ecuparam id="E1401" name="MerpMod Brake Switch" desc="E1401" target="1">
           <conversions>
-            <conversion storagetype="float" units="RPM" expr="x" format="0.00" />
+            <conversion units="On/Off" expr="x" format="0" gauge_min="0" gauge_max="1" gauge_step="1" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1400" name="MM Clutch Flags" desc="" target="1">
+        <ecuparam id="E1402" name="MerpMod Cruise Resume Switch" desc="E1402" target="1">
           <conversions>
-            <conversion storagetype="uint8" units="rawdata" expr="x" format="0.00" />
+            <conversion units="On/Off" expr="x" format="0" gauge_min="0" gauge_max="1" gauge_step="1" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1401" name="MM Brake Flags" desc="" target="1">
+        <ecuparam id="E1403" name="MerpMod Cruise Coast Switch" desc="E1403" target="1">
           <conversions>
-            <conversion storagetype="uint8" units="rawdata" expr="x" format="0.00" />
+            <conversion units="On/Off" expr="x" format="0" gauge_min="0" gauge_max="1" gauge_step="1" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1402" name="MM Cruise Resume Flags" desc="" target="1">
+        <ecuparam id="E1404" name="MerpMod Rev Limit Fuel Cut Switch" desc="E1404" target="1">
           <conversions>
-            <conversion storagetype="uint8" units="rawdata" expr="x" format="0.00" />
+            <conversion units="On/Off" expr="x" format="0" gauge_min="0" gauge_max="1" gauge_step="1" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1403" name="MM Cruise Coast Flags" desc="" target="1">
-          <conversions>
-            <conversion storagetype="uint8" units="rawdata" expr="x" format="0.00" />
-          </conversions>
-        </ecuparam>
-        <ecuparam id="E1500" name="MM Primary Open Loop Fueling Output" desc="" target="1">
+        <ecuparam id="E1500" name="MerpMod Primary Open Loop Fueling Output" desc="" target="1">
           <conversions>
             <conversion storagetype="float" units="lambda enrichment" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1501" name="MM LC Fueling Enrichment" desc="" target="1">
+        <ecuparam id="E1501" name="MerpMod LC Fueling Enrichment" desc="" target="1">
           <conversions>
             <conversion storagetype="float" units="lambda enrichment (additive)" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1502" name="MM LC Fueling Lock Enrichment" desc="" target="1">
+        <ecuparam id="E1502" name="MerpMod LC Fueling Lock Enrichment" desc="" target="1">
           <conversions>
             <conversion storagetype="float" units="lambda enrichment" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1503" name="MM Map Blending Ratio Direct" desc="" target="1">
+        <ecuparam id="E1503" name="MerpMod Map Blending Ratio Direct" desc="" target="1">
           <conversions>
             <conversion storagetype="float" units="ratio" expr="x+1" format="0.00" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1504" name="MM LC Fueling Enrichment Multiplier" desc="" target="1">
+        <ecuparam id="E1504" name="MerpMod LC Fueling Enrichment Multiplier" desc="" target="1">
           <conversions>
             <conversion storagetype="float" units="multiplier" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1505" name="MM Map Switch Direct" desc="" target="1">
+        <ecuparam id="E1505" name="MerpMod Map Switch Direct" desc="" target="1">
           <conversions>
             <conversion storagetype="uint8" units="mode" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1506" name="MM TGV Left Scaled" desc="" target="1">
+        <ecuparam id="E1506" name="MerpMod TGV Left Scaled" desc="" target="1">
           <conversions>
             <conversion storagetype="float" units="raw" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1507" name="MM TGV Right Scaled" desc="" target="1">
+        <ecuparam id="E1507" name="MerpMod TGV Right Scaled" desc="" target="1">
           <conversions>
             <conversion storagetype="float" units="raw" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1508" name="MM LC Timing Mode" desc="" target="1">
+        <ecuparam id="E1508" name="MerpMod LC Timing Mode" desc="" target="1">
           <conversions>
             <conversion storagetype="float" units="mode" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1509" name="MM LC Timing Retard" desc="" target="1">
+        <ecuparam id="E1509" name="MerpMod LC Timing Retard" desc="" target="1">
           <conversions>
             <conversion storagetype="float" units="degrees (retard)" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1510" name="MM LC Timing Retard Multiplier" desc="" target="1">
+        <ecuparam id="E1510" name="MerpMod LC Timing Retard Multiplier" desc="" target="1">
           <conversions>
             <conversion storagetype="uint8" units="multiplier" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1511" name="MM TGV Volts Left" desc="" target="1">
+        <ecuparam id="E1511" name="MerpMod TGV Volts Left" desc="" target="1">
           <conversions>
             <conversion storagetype="float" units="multiplier" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1512" name="MM TGV Volts Right" desc="" target="1">
+        <ecuparam id="E1512" name="MerpMod TGV Volts Right" desc="" target="1">
           <conversions>
             <conversion storagetype="float" units="multiplier" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1513" name="MM LC Fueling Mode" desc="" target="1">
+        <ecuparam id="E1513" name="MerpMod LC Fueling Mode" desc="" target="1">
           <conversions>
             <conversion storagetype="uint8" units="fueling mode" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1600" name="MM Master Init Flag" desc="" target="1">
+        <ecuparam id="E1600" name="MerpMod Master Init Flag" desc="" target="1">
           <conversions>
             <conversion storagetype="uint8" units="flag" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1800" name="MM CEL Signal OEM" desc="" target="1">
+        <ecuparam id="E1800" name="MerpMod CEL Signal OEM" desc="E1800" target="1">
           <conversions>
-            <conversion storagetype="uint8" units="rawdata" expr="x" format="0.00" />
+            <conversion units="rawdata" expr="x" format="0" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1801" name="MM CEL Speed Counter" desc="" target="1">
+        <ecuparam id="E1801" name="MerpMod CEL Speed Counter" desc="E1801" target="1">
           <conversions>
-            <conversion storagetype="uint8" units="rawdata" expr="x" format="0.00" />
+            <conversion units="rawdata" expr="x" format="0" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1802" name="MM CEL Flash Counter" desc="" target="1">
+        <ecuparam id="E1802" name="MerpMod CEL Flash Counter" desc="E1802" target="1">
           <conversions>
-            <conversion storagetype="uint8" units="rawdata" expr="x" format="0.00" />
+            <conversion units="rawdata" expr="x" format="0" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1803" name="MM CEL Signal" desc="" target="1">
+        <ecuparam id="E1803" name="MerpMod CEL Signal" desc="E1803" target="1">
           <conversions>
-            <conversion storagetype="uint8" units="rawdata" expr="x" format="0.00" />
+            <conversion units="rawdata" expr="x" format="0" />
           </conversions>
         </ecuparam>
       </ecuparams> 
