@@ -699,6 +699,11 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
     <table name="Hotstart Maximum Non-Idle Enrichment Delay" storageaddress="10BA82" />
     <table name="Hotstart Minimum Enrichment Limit Runtime" storageaddress="10BA80" />
     <table name="Hotstart Minimum Enrichment (During Delay and Runtime)" storageaddress="10C2F8" />
+    
+   
+<table name="AF 3 CL Target Compensation Limits" storageaddress="60218" />
+<table name="AF 3 Correction Limits" storageaddress="60A80" />
+
     <table name="(P0011) CAMSHAFT POS. - TIMING OVER-ADVANCED 1" storageaddress="11DB50" />
     <table name="(P0014) EXHAUST AVCS SYSTEM 1 RANGE PERF" storageaddress="11DE68" />
     <table name="(P0016) CRANKSHAFT/CAMSHAFT CORRELATION 1A" storageaddress="11DE50" />
@@ -8352,6 +8357,34 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
         <data>Hotstart Enrichment</data>
       </table>
       <description>Minimum enrichment limit that is only active during decay delay and hotstart minimum enrichment runtime.</description>
+    </table>
+ 
+      <table type="2D" name="AF 3 CL Target Compensation Limits" category="ALPHA AF 3 (Rear O2 Sensor)" storagetype="float" endian="little" sizey="2" userlevel="2">
+      <scaling units="Lambda" expression="x" to_byte="x" format="0.00" fineincrement=".01" coarseincrement="1" />
+      <table type="Static Y Axis" name="Limits" sizey="2">
+        <data>High</data>
+        <data>Low</data>        
+      </table>
+      <description>Change in target boost in 1st gear at vehicle speeds below the 'Target Boost Compensation (1st Gear) Speed Disable' value.</description>
+    </table>
+
+
+      <table type="2D" name="AF 3 Correction Limits" category="ALPHA AF 3 (Rear O2 Sensor)" storagetype="float" endian="little" sizey="2" userlevel="2">
+      <scaling units="%" expression="x*100" to_byte="x/100" format="0.00" fineincrement=".01" coarseincrement="1" />
+      <table type="Static Y Axis" name="Limits" sizey="2">
+        <data>High</data>
+        <data>Low</data>        
+      </table>
+      <description>These limits determine the maximum AF #3 Correction (Rear O2 Sensor Feedback) applied during closed loop fueling. By setting them to zero you can disable the effect of the rear O2 sensor on closed loop fueling.</description>
+    </table>
+
+      <table type="2D" name="AF 3 Learning Limits" category="ALPHA AF 3 (Rear O2 Sensor)" storagetype="float" endian="little" sizey="2" userlevel="2">
+      <scaling units="%" expression="x*100" to_byte="x/100" format="0.00" fineincrement=".01" coarseincrement="1" />
+      <table type="Static Y Axis" name="Limits" sizey="2">
+        <data>High</data>
+        <data>Low</data>        
+      </table>
+      <description>These limits determine the maximum AF #3 Correction (Rear O2 Sensor Feedback) applied during closed loop fueling. By setting them to zero you can disable the effect of the rear O2 sensor on closed loop fueling.</description>
     </table>
   </rom>
 </roms>
