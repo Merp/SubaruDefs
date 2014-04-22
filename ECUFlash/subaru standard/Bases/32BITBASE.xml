@@ -353,7 +353,7 @@
 
 	<table name="Delta MAP Compensation" category="MerpMod Speed Density" type="3D" level="2" scaling="VEcomp">
 		<description>This compensation is applied to the Volumetric efficiency of the engine.</description>
-		<table name="Delta Manifold Pressure" type="X Axis" elements="7" scaling="deltaMapSD"/>
+		<table name="Delta Manifold Pressure" type="X Axis" elements="7" scaling="DeltaMapSD"/>
 		<table name="Engine Speed" type="Y Axis" elements="7" scaling="RPMSD"/>
 	</table>
 
@@ -649,10 +649,16 @@
 
 	<table name="Default Map Blending Ratio" category="MerpMod Map Switching" type="2D" level="4" scaling="MerpModMapRatio">
 		<description>This is the default map blending ratio. When set to 1, map 1 is used. When set to 2, map 2 is used. Set between 1 and 2 will blend between the two map sets.</description>
+		<table name="Default Map Blending Ratio" type="Static Y Axis" elements="1">
+			<data>Map Blending Ratio</data>
+		</table>
 	</table>
 
 	<table name="Default Map Switch" category="MerpMod Map Switching" type="2D" level="4" scaling="MerpModMapSwitch">
 		<description>This is the default map switch used when neither si-drive or tgv inputs are used for switching. When set to 1 = intelligent map, 2 = sport map, 3 = sport sharp map</description>
+		<table name="Default Switch" type="Static Y Axis" elements="1">
+			<data>Map Switch</data>
+		</table>
 	</table>
 
 	<table name="TGV Left Input Scaling" category="MerpMod Map Switching" type="2D" level="4" scaling="MerpModTGVInput">
