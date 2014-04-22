@@ -147,6 +147,10 @@
 	</scaling>
 	<scaling name="MaximumKnockCorrectionTimingAdvance(degrees)" units="Maximum Knock Correction Timing Advance (degrees)" toexpr="x*.3515625" frexpr="x/.3515625" format="%.2f" min="0" max="26.72" inc="0.2" storagetype="uint8" endian="big"/>
 	<scaling name="MaximumKnockCorrectionTimingAdvanceAdditive(degrees)" units="Maximum Knock Correction Timing Advance Additive (degrees)" toexpr="x*.3515625" frexpr="x/.3515625" format="%.2f" min="0" max="9.14" inc="0.2" storagetype="uint8" endian="big"/>
+	<scaling name="MerpModEnable" storagetype="bloblist">
+		<data name="Disabled" value="00"/>
+		<data name="Enabled" value="01"/>
+	</scaling>
 	<scaling name="MerpModTGVInput" units="raw" toexpr="x*.00003051758" frexpr="x/.00003051758" format="%.2f" min="0" max="1" inc="0.1" storagetype="uint16" endian="big"/>
 	<scaling name="MerpModMapSwitchThreshold" units="Volts" toexpr="x" frexpr="x" format="%2.3f" min="0" max="1" inc="0.1" storagetype="float" endian="big"/>
 		<scaling name="MerpModInputMode" storagetype="bloblist">
@@ -600,6 +604,13 @@
 		<table name="Engine Speed" type="Y Axis" elements="12" scaling="RPM"/>
 	</table>
 
+	<table name="Primary Open Loop Fuel Hack Enable" category="MerpMod Fueling" type="2D" level="4" scaling="MerpModEnable">
+		<description>This will enable or disable all MerpMod Primary Open Loop Fueling Hacks.</description>
+		<table name="POLF Hack Enable" type="Static Y Axis" elements="1">
+			<data>POLF Hack Enable</data>
+		</table>
+	</table>
+
 	<table name="Primary Open Loop Fueling Table 1 Intelligent" category="MerpMod Fueling" type="3D" level="4" scaling="EstimatedAir/FuelRatio">
 		<description>This fuel map is used in open loop when the ignition advance multiplier (IAM) is greater than or equal to the threshold specified by the 'Primary Open Loop Fuel Map Switch (IAM)' table. Because there is no feedback in open loop, the actual AFR may differ from the values presented in this table. In addition, the ECU applies a long-term correction (A/F Learning) to open loop fueling from patterns it recognizes in closed loop fueling. Other compensations and minimum enrichment factors exist as well. Because the underlying values of this table are enrichment offsets relative to stoichiometric, AFRs leaner than 14.7, as presented, are not valid.</description>
 		<table name="Engine Load" type="X Axis" elements="20" scaling="g/rev"/>
@@ -668,6 +679,13 @@
 
 	<table name="Map Blending Input Mode" category="MerpMod Map Switching" type="1D" level="4" scaling="MerpModInputMode">
 		<description>Determines the input used to control map blending.</description>
+	</table>
+
+	<table name="Boost Hack Enable" category="MerpMod Boost Hacks" type="2D" level="4" scaling="MerpModEnable">
+		<description>This will enable or disable all MerpMod Boost Hacks.</description>
+		<table name="Boost Hack Enable" type="Static Y Axis" elements="1">
+			<data>Boost Hack Enable</data>
+		</table>
 	</table>
 
 	<table name="Per Gear Wastegate Table 1" category="MerpMod Boost Hacks" type="3D" level="4" scaling="WastegateDutyCycle(%)1">
@@ -806,6 +824,13 @@
 		<description>When using Launch Control Timing Retard Mode, this value is subtracted from the base timing value.</description>
 		<table name="Vehicle Speed" type="X Axis" elements="5" scaling="VehicleSpeed(MPH)"/>
 		<table name="Engine Speed" type="Y Axis" elements="12" scaling="RPM"/>
+	</table>
+
+	<table name="Timing Hack Enable" category="MerpMod Timing" type="2D" level="4" scaling="MerpModEnable">
+		<description>This will enable or disable all MerpMod Timing Hacks.</description>
+		<table name="Timing Hack Enable" type="Static Y Axis" elements="1">
+			<data>Timing Hack Enable</data>
+		</table>
 	</table>
 
 	<table name="Base Timing Table 1" category="MerpMod Timing" type="3D" level="4" scaling="BaseIgnitionTiming(degreesBTDC)1">
