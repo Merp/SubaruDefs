@@ -198,7 +198,8 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
     </table>
     <table name="Tip-in Throttle Cumulative Reset" storageaddress="10DBC3" />
     <table name="A/F Learning #1 Limits" storageaddress="10E0C8" />
-    <table name="A/F Learning #1 Airflow Ranges" storageaddress="11113C" />
+    <table name="A/F Learning #1 Airflow Ranges A" storageaddress="111138" />
+    <table name="A/F Learning #1 Airflow Ranges B" storageaddress="111160" />
 	<table name="A/F Learning #1 Min Threshold" storageaddress="111138" />
 	<table name="A/F Learning #1 Max Threshold" storageaddress="111148" />
     <table name="MAF Limit (Maximum)" storageaddress="103FAC" />
@@ -3268,6 +3269,28 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
         <data> Max Range A / Min Range B </data>
         <data> Max Range B / Min Range C </data>
         <data> Max Range C / Min Range D </data>
+      </table>
+      <description>These are the airflow ranges in which the different long-term fuel trims are calculated in closed loop and applied to the same airflow ranges for both closed loop and open loop.</description>
+    </table>
+    <table type="2D" name="A/F Learning #1 Airflow Ranges A" category="Fueling - AF Correction / Learning" storagetype="float" endian="little" sizey="5" userlevel="4">
+      <scaling units="Mass Airflow (g/s)" expression="x" to_byte="x" format="0.00" fineincrement=".1" coarseincrement="1" />
+      <table type="Static Y Axis" name="A/F Learning Store/Apply Ranges" sizey="5">
+        <data> A </data>
+        <data> B </data>
+        <data> C </data>
+        <data> D </data>
+        <data> E </data>
+      </table>
+      <description>These are the airflow ranges in which the different long-term fuel trims are calculated in closed loop and applied to the same airflow ranges for both closed loop and open loop.</description>
+    </table>
+    <table type="2D" name="A/F Learning #1 Airflow Ranges B" category="Fueling - AF Correction / Learning" storagetype="float" endian="little" sizey="5" userlevel="4">
+      <scaling units="Mass Airflow (g/s)" expression="x" to_byte="x" format="0.00" fineincrement=".1" coarseincrement="1" />
+      <table type="Static Y Axis" name="A/F Learning Store/Apply Ranges" sizey="5">
+        <data> A </data>
+        <data> B </data>
+        <data> C </data>
+        <data> D </data>
+        <data> E </data>
       </table>
       <description>These are the airflow ranges in which the different long-term fuel trims are calculated in closed loop and applied to the same airflow ranges for both closed loop and open loop.</description>
     </table>
