@@ -20,7 +20,7 @@ As always, use at your own risk.
 
 These definitions are created for FREE without any sort of guarantee. The developers cannot be held liable for
 any damage or injury incurred as a result of these definitions. USE AT YOUR OWN RISK! -->
-<logger>
+<logger version="131">
   <protocols>
     <protocol id="SSM" baud="4800" databits="8" stopbits="1" parity="0" connect_timeout="2000" send_timeout="55">
       <parameters>
@@ -1633,59 +1633,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
             <conversion units="Nm" expr="x-50" format="0" />
           </conversions>
         </parameter>
-        <parameter id="P239" name="Global Timing User Adjustment Value" desc="P239-This is the fixed amount of timing removed globally - set by the user" ecubyteindex="8" ecubit="0" target="1">
-          <address>0x00006F</address>
-          <conversions>
-            <conversion units="degrees" expr="0-x" format="0" gauge_min="-5" gauge_max="0" gauge_step="1" />
-          </conversions>
-        </parameter>
-        <parameter id="P240" name="Engine Idle Speed User Adjustment (A/C off)" desc="P240-This is the fixed amount of idle speed adjustmnet while the A/C is off - set by the user" ecubyteindex="8" ecubit="0" target="1">
-          <address>0x000070</address>
-          <conversions>
-            <conversion units="rpm" expr="x*25-3200" format="0" gauge_min="-100" gauge_max="300" gauge_step="25" />
-          </conversions>
-        </parameter>
-        <parameter id="P241" name="Engine Idle Speed User Adjustment (A/C on)" desc="P241-This is the fixed amount of idle speed adjustmnet while the A/C is on - set by the user" ecubyteindex="8" ecubit="0" target="1">
-          <address>0x000071</address>
-          <conversions>
-            <conversion units="rpm" expr="x*25-3200" format="0" gauge_min="-100" gauge_max="300" gauge_step="25" />
-          </conversions>
-        </parameter>
-        <parameter id="P242" name="Volumetric Efficiency 2.0L (Calculated)" desc="P242-VE calculated from IGL, MMA, MAF, IAT, absolute manifold pressure, assuming engine displacement of 122.04 CID (EJ207)" target="1">
-          <depends>
-            <ref parameter="P200" />
-            <ref parameter="P11" />
-            <ref parameter="P7" />
-          </depends>
-          <conversions>
-            <conversion units="%" expr="(P200*2*8.314472*([P11:C]+273.15))/([P7:kPa]*2.0*28.97)*100" format="0.00" gauge_min="0" gauge_max="100" gauge_step="10" />
-          </conversions>
-        </parameter>
-        <parameter id="P243" name="Volumetric Efficiency 2.5L (Calculated)" desc="P243-VE calculated from IGL, MMA, MAF, IAT, absolute manifold pressure, assuming engine displacement of 149.9 CID (EJ257)" target="1">
-          <depends>
-            <ref parameter="P200" />
-            <ref parameter="P11" />
-            <ref parameter="P7" />
-          </depends>
-          <conversions>
-            <conversion units="%" expr="(P200*2*8.314472*([P11:C]+273.15))/([P7:kPa]*2.5*28.97)*100" format="0.00" gauge_min="0" gauge_max="100" gauge_step="10" />
-          </conversions>
-        </parameter>
-        <parameter id="P244" name="Secondary Air Piping Pressure" desc="P244" ecubyteindex="41" ecubit="7" target="1">
-          <address>0x000108</address>
-          <conversions>
-            <conversion units="psi" expr="x*37/255" format="0.00" gauge_min="-20" gauge_max="40" gauge_step="5" />
-            <conversion units="bar" expr="x/100" format="0.000" gauge_min="-1.2" gauge_max="2.8" gauge_step="0.4" />
-            <conversion units="kPa" expr="x" format="0" gauge_min="-120" gauge_max="280" gauge_step="40" />
-            <conversion units="hPa" expr="x*10" format="0" gauge_min="-1200" gauge_max="2800" gauge_step="400" />
-          </conversions>
-        </parameter>
-        <parameter id="P245" name="Secondary Air Flow" desc="P245" ecubyteindex="41" ecubit="6" target="1">
-          <address length="2">0x000182</address>
-          <conversions>
-            <conversion units="g/s" expr="x/100" format="0.00" gauge_min="0" gauge_max="400" gauge_step="20" />
-          </conversions>
-        </parameter>
       </parameters>
       <switches>
         <switch id="S1" name="AT Vehicle ID" desc="(E) S1" byte="0x000061" bit="6" ecubyteindex="19" target="1" />
@@ -1861,597 +1808,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
         <switch id="S171" name="Clutch Switch for Smart-System" desc="(E) S171" byte="0x0001CE" bit="4" ecubyteindex="69" target="1" />
         <switch id="S172" name="Diesel Particulate Filter (DPF) Regeneration" desc="(E) S172" byte="0x0001CE" bit="3" ecubyteindex="69" target="1" />
       </switches>
-      <dtcodes>
-        <dtcode id="D1" name="P0335 CRANKSHAFT POS. SENSOR A MALFUNCTION" desc="D1" tmpaddr="0x00008E" memaddr="0x0000AE" bit="0" />
-        <dtcode id="D3" name="P0336 CRANKSHAFT POS. SENSOR A RANGE/PERF" desc="D3" tmpaddr="0x00008E" memaddr="0x0000AE" bit="2" />
-        <dtcode id="D4" name="P0341 CAMSHAFT POS. SENSOR A RANGE/PERF" desc="D4" tmpaddr="0x00008E" memaddr="0x0000AE" bit="3" />
-        <dtcode id="D5" name="P0340 CAMSHAFT POS. SENSOR A MALFUNCTION" desc="D5" tmpaddr="0x00008E" memaddr="0x0000AE" bit="4" />
-        <dtcode id="D7" name="P0604 CONTROL MODULE RAM ERROR" desc="D7" tmpaddr="0x00008E" memaddr="0x0000AE" bit="6" />
-        <dtcode id="D8" name="P0601 CONTROL MODULE MEMORY CHECKSUM ERROR" desc="D8" tmpaddr="0x00008E" memaddr="0x0000AE" bit="7" />
-        <dtcode id="D9" name="P0102 MAF SENSOR LOW INPUT" desc="D9" tmpaddr="0x00008F" memaddr="0x0000AF" bit="0" />
-        <dtcode id="D10" name="P0103 MAF SENSOR HIGH INPUT" desc="D10" tmpaddr="0x00008F" memaddr="0x0000AF" bit="1" />
-        <dtcode id="D11" name="P1141 MAF SENSOR RANGE/PERF (LOW)" desc="D11" tmpaddr="0x00008F" memaddr="0x0000AF" bit="2" />
-        <dtcode id="D12" name="P0101 MAF SENSOR RANGE/PERF" desc="D12" tmpaddr="0x00008F" memaddr="0x0000AF" bit="3" />
-        <dtcode id="D13" name="P0500 VEHICLE SPEED SENSOR A" desc="D13" tmpaddr="0x00008F" memaddr="0x0000AF" bit="4" />
-        <dtcode id="D14" name="P1540 VEHICLE SPEED SENSOR MALFUNCTION (LOW SPEED)" desc="D14" tmpaddr="0x00008F" memaddr="0x0000AF" bit="5" />
-        <dtcode id="D15" name="P0332 KNOCK SENSOR 2 LOW INPUT" desc="D15" tmpaddr="0x00008F" memaddr="0x0000AF" bit="6" />
-        <dtcode id="D16" name="P0333 KNOCK SENSOR 2 HIGH INPUT" desc="D16" tmpaddr="0x00008F" memaddr="0x0000AF" bit="7" />
-        <dtcode id="D17" name="P0325 KNOCK SENSOR 1 MALFUNCTION" desc="D17" tmpaddr="0x000090" memaddr="0x0000B0" bit="0" />
-        <dtcode id="D18" name="P0330 KNOCK SENSOR 2 MALFUNCTION" desc="D18" tmpaddr="0x000090" memaddr="0x0000B0" bit="1" />
-        <dtcode id="D19" name="P0327 KNOCK SENSOR 1 LOW INPUT" desc="D19" tmpaddr="0x000090" memaddr="0x0000B0" bit="2" />
-        <dtcode id="D20" name="P0328 KNOCK SENSOR 1 HIGH INPUT" desc="D20" tmpaddr="0x000090" memaddr="0x0000B0" bit="3" />
-        <dtcode id="D21" name="P0122 TPS A LOW INPUT" desc="D21" tmpaddr="0x000090" memaddr="0x0000B0" bit="4" />
-        <dtcode id="D22" name="P0123 TPS A HIGH INPUT" desc="D22" tmpaddr="0x000090" memaddr="0x0000B0" bit="5" />
-        <dtcode id="D23" name="P1142 TPS RANGE/PERF (LOW)" desc="D23" tmpaddr="0x000090" memaddr="0x0000B0" bit="6" />
-        <dtcode id="D24" name="P0121 TPS RANGE/PERF" desc="D24" tmpaddr="0x000090" memaddr="0x0000B0" bit="7" />
-        <dtcode id="D25" name="P0117 COOLANT TEMP SENSOR LOW INPUT" desc="D25" tmpaddr="0x000091" memaddr="0x0000B1" bit="0" />
-        <dtcode id="D26" name="P0118 COOLANT TEMP SENSOR HIGH INPUT" desc="D26" tmpaddr="0x000091" memaddr="0x0000B1" bit="1" />
-        <dtcode id="D27" name="P0464 FUEL LEVEL SENSOR INTERMITTENT" desc="D27" tmpaddr="0x000091" memaddr="0x0000B1" bit="2" />
-        <dtcode id="D28" name="P0125 INSUFFICIENT COOLANT TEMP (FUELING)" desc="D28" tmpaddr="0x000091" memaddr="0x0000B1" bit="3" />
-        <dtcode id="D29" name="P0462 FUEL LEVEL SENSOR LOW INPUT" desc="D29" tmpaddr="0x000091" memaddr="0x0000B1" bit="4" />
-        <dtcode id="D30" name="P0463 FUEL LEVEL SENSOR HIGH INPUT" desc="D30" tmpaddr="0x000091" memaddr="0x0000B1" bit="5" />
-        <dtcode id="D31" name="P0461 FUEL LEVEL SENSOR RANGE/PERF" desc="D31" tmpaddr="0x000091" memaddr="0x0000B1" bit="6" />
-        <dtcode id="D32" name="P1442 FUEL LEVEL SESNOR RANGE/PERF (TRAVEL DISTANCE)" desc="D32" tmpaddr="0x000091" memaddr="0x0000B1" bit="7" />
-        <dtcode id="D33" name="P0107 MAP SENSOR LOW INPUT" desc="D33" tmpaddr="0x000092" memaddr="0x0000B2" bit="0" />
-        <dtcode id="D34" name="P0108 MAP SENSOR HIGH INPUT" desc="D34" tmpaddr="0x000092" memaddr="0x0000B2" bit="1" />
-        <dtcode id="D35" name="P1143 MAP SENSOR RANGE/PERF (LOW)" desc="D35" tmpaddr="0x000092" memaddr="0x0000B2" bit="2" />
-        <dtcode id="D36" name="P1144 MAP SENSOR RANGE/PERF (HIGH)" desc="D36" tmpaddr="0x000092" memaddr="0x0000B2" bit="3" />
-        <dtcode id="D37" name="P0106 MAP SENSOR RANGE/PERF" desc="D37" tmpaddr="0x000092" memaddr="0x0000B2" bit="4" />
-        <dtcode id="D38" name="P0350 IGNITION COIL PRIMARY/SECONDARY" desc="D38" tmpaddr="0x000092" memaddr="0x0000B2" bit="5" />
-        <dtcode id="D39" name="P1518 STARTER SWITCH LOW INPUT" desc="D39" tmpaddr="0x000092" memaddr="0x0000B2" bit="6" />
-        <dtcode id="D40" name="P0512 STARTER REQUEST CIRCUIT" desc="D40" tmpaddr="0x000092" memaddr="0x0000B2" bit="7" />
-        <dtcode id="D41" name="P0452 EVAP PRESSURE SENSOR LOW INPUT" desc="D41" tmpaddr="0x000093" memaddr="0x0000B3" bit="0" />
-        <dtcode id="D42" name="P0453 EVAP PRESSURE SENSOR HIGH INPUT" desc="D42" tmpaddr="0x000093" memaddr="0x0000B3" bit="1" />
-        <dtcode id="D44" name="P0451 EVAP PRESSURE SENSOR RANGE/PERF" desc="D44" tmpaddr="0x000093" memaddr="0x0000B3" bit="3" />
-        <dtcode id="D45" name="P1237 ECV SOLENOID CIRCUIT LOW (POSITIVE PRES)" desc="D45" tmpaddr="0x000093" memaddr="0x0000B3" bit="4" />
-        <dtcode id="D46" name="P1238 ECV SOLENOID CIRCUIT HIGH (POSITIVE PRES)" desc="D46" tmpaddr="0x000093" memaddr="0x0000B3" bit="5" />
-        <dtcode id="D47" name="P1239 ECV SOLENOID CIRCUIT LOW (NEGATIVE PRES)" desc="D47" tmpaddr="0x000093" memaddr="0x0000B3" bit="6" />
-        <dtcode id="D48" name="P1240 ECV SOLENOID CIRCUIT HIGH (NEGATIVE PRES)" desc="D48" tmpaddr="0x000093" memaddr="0x0000B3" bit="7" />
-        <dtcode id="D49" name="P1590 NEUTRAL SWITCH HIGH (AT)" desc="D49" tmpaddr="0x000094" memaddr="0x0000B4" bit="0" />
-        <dtcode id="D50" name="P1591 NEUTRAL SWITCH LOW (AT)" desc="D50" tmpaddr="0x000094" memaddr="0x0000B4" bit="1" />
-        <dtcode id="D51" name="P1592 NEUTRAL SWITCH MALFUNCTION (MT)" desc="D51" tmpaddr="0x000094" memaddr="0x0000B4" bit="2" />
-        <dtcode id="D52" name="P0851 NEUTRAL SWITCH INPUT LOW" desc="D52" tmpaddr="0x000094" memaddr="0x0000B4" bit="3" />
-        <dtcode id="D53" name="P0182 FUEL TEMP SENSOR A LOW INPUT" desc="D53" tmpaddr="0x000094" memaddr="0x0000B4" bit="4" />
-        <dtcode id="D54" name="P0183 FUEL TEMP SENSOR A HIGH INPUT" desc="D54" tmpaddr="0x000094" memaddr="0x0000B4" bit="5" />
-        <dtcode id="D55" name="P0181 FUEL TEMP SENSOR A RANGE/PERF" desc="D55" tmpaddr="0x000094" memaddr="0x0000B4" bit="6" />
-        <dtcode id="D56" name="P0852 NEUTRAL SWITCH INPUT HIGH" desc="D56" tmpaddr="0x000094" memaddr="0x0000B4" bit="7" />
-        <dtcode id="D57" name="P1510 ISC SOLENOID SIGNAL 1 MALFUNCTION (LOW)" desc="D57" tmpaddr="0x000095" memaddr="0x0000B5" bit="0" />
-        <dtcode id="D58" name="P1511 ISC SOLENOID SIGNAL 1 MALFUNCTION (HIGH)" desc="D58" tmpaddr="0x000095" memaddr="0x0000B5" bit="1" />
-        <dtcode id="D59" name="P1512 ISC SOLENOID SIGNAL 2 MALFUNCTION (LOW)" desc="D59" tmpaddr="0x000095" memaddr="0x0000B5" bit="2" />
-        <dtcode id="D60" name="P1513 ISC SOLENOID SIGNAL 2 MALFUNCTION (HIGH)" desc="D60" tmpaddr="0x000095" memaddr="0x0000B5" bit="3" />
-        <dtcode id="D61" name="P1514 ISC SOLENOID SIGNAL 3 MALFUNCTION (LOW)" desc="D61" tmpaddr="0x000095" memaddr="0x0000B5" bit="4" />
-        <dtcode id="D62" name="P1515 ISC SOLENOID SIGNAL 3 MALFUNCTION (HIGH)" desc="D62" tmpaddr="0x000095" memaddr="0x0000B5" bit="5" />
-        <dtcode id="D63" name="P1516 ISC SOLENOID SIGNAL 4 MALFUNCTION (LOW)" desc="D63" tmpaddr="0x000095" memaddr="0x0000B5" bit="6" />
-        <dtcode id="D64" name="P1517 ISC SOLENOID SIGNAL 4 MALFUNCTION (HIGH)" desc="D64" tmpaddr="0x000095" memaddr="0x0000B5" bit="7" />
-        <dtcode id="D65" name="P1492 EGR SOLENOID SIGNAL 1 MALFUNCTION (LOW)" desc="D65" tmpaddr="0x000096" memaddr="0x0000B6" bit="0" />
-        <dtcode id="D66" name="P1493 EGR SOLENOID SIGNAL 1 MALFUNCTION (HIGH)" desc="D66" tmpaddr="0x000096" memaddr="0x0000B6" bit="1" />
-        <dtcode id="D67" name="P1494 EGR SOLENOID SIGNAL 2 MALFUNCTION (LOW)" desc="D67" tmpaddr="0x000096" memaddr="0x0000B6" bit="2" />
-        <dtcode id="D68" name="P1495 EGR SOLENOID SIGNAL 2 MALFUNCTION (HIGH)" desc="D68" tmpaddr="0x000096" memaddr="0x0000B6" bit="3" />
-        <dtcode id="D69" name="P1496 EGR SIGNAL 3 CIRCUIT LOW" desc="D69" tmpaddr="0x000096" memaddr="0x0000B6" bit="4" />
-        <dtcode id="D70" name="P1497 EGR SOLENOID SIGNAL 3 MALFUNCTION (HIGH)" desc="D70" tmpaddr="0x000096" memaddr="0x0000B6" bit="5" />
-        <dtcode id="D71" name="P1498 EGR SIGNAL 4 CIRCUIT LOW" desc="D71" tmpaddr="0x000096" memaddr="0x0000B6" bit="6" />
-        <dtcode id="D72" name="P1499 EGR SIGNAL 4 CIRCUIT HIGH" desc="D72" tmpaddr="0x000096" memaddr="0x0000B6" bit="7" />
-        <dtcode id="D73" name="P1102 PRESSURE SOURCE SWITCH SOLENOID (LOW)" desc="D73" tmpaddr="0x000097" memaddr="0x0000B7" bit="0" />
-        <dtcode id="D74" name="P1122 PRESSURE SOURCE SWITCH SOLENOID (HIGH)" desc="D74" tmpaddr="0x000097" memaddr="0x0000B7" bit="1" />
-        <dtcode id="D75" name="P1446 FUEL TANK SENSOR CONTROL CIRCUIT LOW" desc="D75" tmpaddr="0x000097" memaddr="0x0000B7" bit="2" />
-        <dtcode id="D76" name="P1447 FUEL TANK SENSOR CONTROL CIRCUIT HIGH" desc="D76" tmpaddr="0x000097" memaddr="0x0000B7" bit="3" />
-        <dtcode id="D77" name="P1090 TGV SYSTEM 1 (VALVE OPEN)" desc="D77" tmpaddr="0x000097" memaddr="0x0000B7" bit="4" />
-        <dtcode id="D78" name="P1091 TGV SYSTEM 1 (VALVE CLOSE)" desc="D78" tmpaddr="0x000097" memaddr="0x0000B7" bit="5" />
-        <dtcode id="D79" name="P1092 TGV SYSTEM 2 (VALVE OPEN)" desc="D79" tmpaddr="0x000097" memaddr="0x0000B7" bit="6" />
-        <dtcode id="D80" name="P1093 TGV SYSTEM 2 (VALVE CLOSE)" desc="D80" tmpaddr="0x000097" memaddr="0x0000B7" bit="7" />
-        <dtcode id="D81" name="P0508 IDLE CONTROL CIRCUIT LOW" desc="D81" tmpaddr="0x000098" memaddr="0x0000B8" bit="0" />
-        <dtcode id="D82" name="P0509 IDLE CONTROL CIRCUIT HIGH" desc="D82" tmpaddr="0x000098" memaddr="0x0000B8" bit="1" />
-        <dtcode id="D83" name="P1507 IDLE CONTROL MALFUNCTION (FAIL-SAFE)" desc="D83" tmpaddr="0x000098" memaddr="0x0000B8" bit="2" />
-        <dtcode id="D84" name="P0506 IDLE CONTROL RPM LOWER THAN EXPECTED" desc="D84" tmpaddr="0x000098" memaddr="0x0000B8" bit="3" />
-        <dtcode id="D85" name="P0507 IDLE CONTROL RPM HIGH THAN EXPECTED" desc="D85" tmpaddr="0x000098" memaddr="0x0000B8" bit="4" />
-        <dtcode id="D86" name="P1698 ENGINE TORQUE CUT MALFUNCTION (LOW)" desc="D86" tmpaddr="0x000098" memaddr="0x0000B8" bit="5" />
-        <dtcode id="D87" name="P1699 ENGINE TORQUE CUT MALFUNCTION (HIGH)" desc="D87" tmpaddr="0x000098" memaddr="0x0000B8" bit="6" />
-        <dtcode id="D88" name="P1448 FUEL TANK SENSOR CONTROL RANGE/PERF" desc="D88" tmpaddr="0x000098" memaddr="0x0000B8" bit="7" />
-        <dtcode id="D89" name="P0444 EVAP EMISSION CONTROL SYSTEM PURGE CONTROL VALVE CIRCUIT LOW" desc="D89" tmpaddr="0x000099" memaddr="0x0000B9" bit="0" />
-        <dtcode id="D90" name="P0445 EVAP EMISSION CONTROL SYSTEM PURGE CONTROL VALVE CIRCUIT SHORTED" desc="D90" tmpaddr="0x000099" memaddr="0x0000B9" bit="1" />
-        <dtcode id="D91" name="P0691 RADIATOR FAN CIRCUIT LOW" desc="D91" tmpaddr="0x000099" memaddr="0x0000B9" bit="2" />
-        <dtcode id="D92" name="P0692 RADIATOR FAN CIRCUIT HIGH" desc="D92" tmpaddr="0x000099" memaddr="0x0000B9" bit="3" />
-        <dtcode id="D93" name="P0480 RADIATOR FAN RELAY 1 CIRCUIT (LOW)" desc="D93" tmpaddr="0x000099" memaddr="0x0000B9" bit="4" />
-        <dtcode id="D94" name="P1480 RADIATOR FAN RELAY 1 CIRCUIT (HIGH)" desc="D94" tmpaddr="0x000099" memaddr="0x0000B9" bit="5" />
-        <dtcode id="D95" name="P0483 RADIATOR FAN RATIONALITY CHECK" desc="D95" tmpaddr="0x000099" memaddr="0x0000B9" bit="6" />
-        <dtcode id="D96" name="P0864 TCM COMMUNICATION RANGE/PERF" desc="D96" tmpaddr="0x000099" memaddr="0x0000B9" bit="7" />
-        <dtcode id="D97" name="P0365 CAMSHAFT POS. SENSOR B BANK 1" desc="D97" tmpaddr="0x00009A" memaddr="0x0000BA" bit="0" />
-        <dtcode id="D98" name="P0390 CAMSHAFT POS. SENSOR B BANK 2" desc="D98" tmpaddr="0x00009A" memaddr="0x0000BA" bit="1" />
-        <dtcode id="D99" name="P0011 CAMSHAFT POS. - TIMING OVER-ADVANCED 1" desc="D99" tmpaddr="0x00009A" memaddr="0x0000BA" bit="2" />
-        <dtcode id="D100" name="P0021 CAMSHAFT POS. - TIMING OVER-ADVANCED 2" desc="D100" tmpaddr="0x00009A" memaddr="0x0000BA" bit="3" />
-        <dtcode id="D101" name="P1400 FUEL TANK PRESSURE SOL. LOW" desc="D101" tmpaddr="0x00009A" memaddr="0x0000BA" bit="4" />
-        <dtcode id="D102" name="P1420 FUEL TANK PRESSURE SOL. HIGH INPUT" desc="D102" tmpaddr="0x00009A" memaddr="0x0000BA" bit="5" />
-        <dtcode id="D103" name="P0458 EVAP PURGE VALVE CIRCUIT LOW" desc="D103" tmpaddr="0x00009A" memaddr="0x0000BA" bit="6" />
-        <dtcode id="D104" name="P0459 EVAP PURGE VALVE CIRCUIT HIGH" desc="D104" tmpaddr="0x00009A" memaddr="0x0000BA" bit="7" />
-        <dtcode id="D105" name="P0865 TCM COMMUNICATION CIRCUIT LOW" desc="D105" tmpaddr="0x00009B" memaddr="0x0000BB" bit="0" />
-        <dtcode id="D106" name="P0866 TCM COMMUNICATION CIRCUIT HIGH" desc="D106" tmpaddr="0x00009B" memaddr="0x0000BB" bit="1" />
-        <dtcode id="D107" name="P1443 VENT CONTROL SOLENOID FUNCTION PROBLEM" desc="D107" tmpaddr="0x00009B" memaddr="0x0000BB" bit="2" />
-        <dtcode id="D108" name="P1559 AIR INTAKE SYSTEM" desc="D108" tmpaddr="0x00009B" memaddr="0x0000BB" bit="3" />
-        <dtcode id="D109" name="P0661 INTAKE MANIFOLD TUNING CIRCUIT (LOW)" desc="D109" tmpaddr="0x00009B" memaddr="0x0000BB" bit="4" />
-        <dtcode id="D110" name="P0662 INTAKE MANIFOLD TUNING CIRCUIT (HIGH)" desc="D110" tmpaddr="0x00009B" memaddr="0x0000BB" bit="5" />
-        <dtcode id="D111" name="P0447 EVAP VENT CONTROL CIRCUIT OPEN" desc="D111" tmpaddr="0x00009B" memaddr="0x0000BB" bit="6" />
-        <dtcode id="D112" name="P0448 EVAP VENT CONTROL CIRCUIT SHORTED" desc="D112" tmpaddr="0x00009B" memaddr="0x0000BB" bit="7" />
-        <dtcode id="D113" name="P0720 AT VEHICLE SPEED SENSOR HIGH" desc="D113" tmpaddr="0x00009C" memaddr="0x0000BC" bit="0" />
-        <dtcode id="D114" name="P0725 ENGINE SPEED INPUT CIRCUIT MALFUNCTION" desc="D114" tmpaddr="0x00009C" memaddr="0x0000BC" bit="1" />
-        <dtcode id="D115" name="P1700 THROTTLE POSITION SENSOR CIRCUIT MALFUNCTION FOR AT" desc="D115" tmpaddr="0x00009C" memaddr="0x0000BC" bit="2" />
-        <dtcode id="D116" name="P0710 ATF TEMP SENSOR MALFUNCTION" desc="D116" tmpaddr="0x00009C" memaddr="0x0000BC" bit="3" />
-        <dtcode id="D117" name="P0705 TRANSMISSION RANGE SENSOR MALFUNCTION" desc="D117" tmpaddr="0x00009C" memaddr="0x0000BC" bit="4" />
-        <dtcode id="D118" name="P1701 CRUISE CONTROL SET SIGNAL CIRCUIT MALFUNCTION FOR AT" desc="D118" tmpaddr="0x00009C" memaddr="0x0000BC" bit="5" />
-        <dtcode id="D119" name="P0703 BRAKE SWITCH INPUT MALFUNCTION" desc="D119" tmpaddr="0x00009C" memaddr="0x0000BC" bit="6" />
-        <dtcode id="D120" name="P0741 TORQUE CONVERTER CLUTCH MALFUNCTION" desc="D120" tmpaddr="0x00009C" memaddr="0x0000BC" bit="7" />
-        <dtcode id="D121" name="P0753 SHIFT SOLENOID A ELECTRICAL" desc="D121" tmpaddr="0x00009D" memaddr="0x0000BD" bit="0" />
-        <dtcode id="D122" name="P0758 SHIFT SOLENOID B ELECTRICAL" desc="D122" tmpaddr="0x00009D" memaddr="0x0000BD" bit="1" />
-        <dtcode id="D123" name="P1706 AT VEHICLE SPEED SENSOR CIRCUIT MALFUNCTION (REAR WHEEL)" desc="D123" tmpaddr="0x00009D" memaddr="0x0000BD" bit="2" />
-        <dtcode id="D124" name="P0748 PRESSURE CONTROL LINE PRESSURE DUTY SOLENOID" desc="D124" tmpaddr="0x00009D" memaddr="0x0000BD" bit="3" />
-        <dtcode id="D125" name="P0743 TORQUE CONVERTER CLUTCH LOCK-UP DUTY SOLENOID" desc="D125" tmpaddr="0x00009D" memaddr="0x0000BD" bit="4" />
-        <dtcode id="D126" name="P0731 GEAR 1 INCORRECT RATIO" desc="D126" tmpaddr="0x00009D" memaddr="0x0000BD" bit="5" />
-        <dtcode id="D127" name="P0732 GEAR 2 INCORRECT RATIO" desc="D127" tmpaddr="0x00009D" memaddr="0x0000BD" bit="6" />
-        <dtcode id="D128" name="P0733 GEAR 3 INCORRECT RATIO" desc="D128" tmpaddr="0x00009D" memaddr="0x0000BD" bit="7" />
-        <dtcode id="D129" name="P0734 GEAR 4 INCORRECT RATIO" desc="D129" tmpaddr="0x00009E" memaddr="0x0000BE" bit="0" />
-        <dtcode id="D130" name="P1707 AT AWD SOLENOID VALVE CIRCUIT MALFUNCTION" desc="D130" tmpaddr="0x00009E" memaddr="0x0000BE" bit="1" />
-        <dtcode id="D131" name="P1595 AT DIAGNOSTICS INPUT SIGNAL (LOW)" desc="D131" tmpaddr="0x00009E" memaddr="0x0000BE" bit="2" />
-        <dtcode id="D132" name="P1596 AT DIAGNOSTICS INPUT SIGNAL (HIGH)" desc="D132" tmpaddr="0x00009E" memaddr="0x0000BE" bit="3" />
-        <dtcode id="D133" name="P0135 REAR O2 SENSOR MALFUNCTION B1 S1" desc="D133" tmpaddr="0x00009E" memaddr="0x0000BE" bit="4" />
-        <dtcode id="D134" name="P0141 REAR O2 SENSOR MALFUNCTION" desc="D134" tmpaddr="0x00009E" memaddr="0x0000BE" bit="5" />
-        <dtcode id="D135" name="P1593 TCM COMMUNICATION MALFUNCTION" desc="D135" tmpaddr="0x00009E" memaddr="0x0000BE" bit="6" />
-        <dtcode id="D136" name="P1594 AT DIAGNOSTICS INPUT SIGNAL MALFUNCTION" desc="D136" tmpaddr="0x00009E" memaddr="0x0000BE" bit="7" />
-        <dtcode id="D137" name="P0133 FRONT O2 SENSOR SLOW RESPONSE" desc="D137" tmpaddr="0x00009F" memaddr="0x0000BF" bit="0" />
-        <dtcode id="D138" name="P0130 FRONT O2 SENSOR B1 S1" desc="D138" tmpaddr="0x00009F" memaddr="0x0000BF" bit="1" />
-        <dtcode id="D139" name="P0139 REAR O2 SENSOR SLOW RESPONSE" desc="D139" tmpaddr="0x00009F" memaddr="0x0000BF" bit="2" />
-        <dtcode id="D140" name="P0136 FRONT O2 SENSOR B1 S2" desc="D140" tmpaddr="0x00009F" memaddr="0x0000BF" bit="3" />
-        <dtcode id="D141" name="P1152 FRONT O2 SENSOR RANGE/PERF LOW B1 S1" desc="D141" tmpaddr="0x00009F" memaddr="0x0000BF" bit="4" />
-        <dtcode id="D142" name="P1153 FRONT O2 SENSOR RANGE/PERF HIGH B1 S1" desc="D142" tmpaddr="0x00009F" memaddr="0x0000BF" bit="5" />
-        <dtcode id="D143" name="P0174 SYSTEM TOO LEAN B2" desc="D143" tmpaddr="0x00009F" memaddr="0x0000BF" bit="6" />
-        <dtcode id="D144" name="P0175 SYSTEM TOO RICH B2" desc="D144" tmpaddr="0x00009F" memaddr="0x0000BF" bit="7" />
-        <dtcode id="D145" name="P0420 CAT EFFICIENCY BELOW THRESHOLD" desc="D145" tmpaddr="0x0000A0" memaddr="0x0000C0" bit="0" />
-        <dtcode id="D146" name="P0442 EVAP LEAK DETECTED (SMALL)" desc="D146" tmpaddr="0x0000A0" memaddr="0x0000C0" bit="1" />
-        <dtcode id="D147" name="P0170 FUEL TRIM B1" desc="D147" tmpaddr="0x0000A0" memaddr="0x0000C0" bit="2" />
-        <dtcode id="D148" name="P0456 EVAP LEAK DETECTED (VERY SMALL)" desc="D148" tmpaddr="0x0000A0" memaddr="0x0000C0" bit="3" />
-        <dtcode id="D149" name="P0400 EGR FLOW" desc="D149" tmpaddr="0x0000A0" memaddr="0x0000C0" bit="4" />
-        <dtcode id="D150" name="P1230 FUEL PUMP CONTROL MALFUNCTION" desc="D150" tmpaddr="0x0000A0" memaddr="0x0000C0" bit="5" />
-        <dtcode id="D151" name="P0171 SYSTEM TOO LEAN" desc="D151" tmpaddr="0x0000A0" memaddr="0x0000C0" bit="6" />
-        <dtcode id="D152" name="P0172 SYSTEM TOO RICH" desc="D152" tmpaddr="0x0000A0" memaddr="0x0000C0" bit="7" />
-        <dtcode id="D153" name="P0301 MISFIRE CYLINDER 1" desc="D153" tmpaddr="0x0000A1" memaddr="0x0000C1" bit="0" />
-        <dtcode id="D154" name="P0302 MISFIRE CYLINDER 2" desc="D154" tmpaddr="0x0000A1" memaddr="0x0000C1" bit="1" />
-        <dtcode id="D155" name="P0303 MISFIRE CYLINDER 3" desc="D155" tmpaddr="0x0000A1" memaddr="0x0000C1" bit="2" />
-        <dtcode id="D156" name="P0304 MISFIRE CYLINDER 4" desc="D156" tmpaddr="0x0000A1" memaddr="0x0000C1" bit="3" />
-        <dtcode id="D157" name="P0305 MISFIRE CYLINDER 5" desc="D157" tmpaddr="0x0000A1" memaddr="0x0000C1" bit="4" />
-        <dtcode id="D158" name="P0306 MISFIRE CYLINDER 6" desc="D158" tmpaddr="0x0000A1" memaddr="0x0000C1" bit="5" />
-        <dtcode id="D159" name="P1301 MISFIRE (HIGH TEMP EXHAUST GAS)" desc="D159" tmpaddr="0x0000A1" memaddr="0x0000C1" bit="6" />
-        <dtcode id="D160" name="P0457 EVAP LEAK DETECTED (FUEL CAP)" desc="D160" tmpaddr="0x0000A1" memaddr="0x0000C1" bit="7" />
-        <dtcode id="D161" name="P0000 PASS CODE (NO DTC DETECTED)" desc="D161" tmpaddr="0x0000A2" memaddr="0x0000C2" bit="0" />
-        <dtcode id="D162" name="P0000 PASS CODE (NO DTC DETECTED)" desc="D162" tmpaddr="0x0000A2" memaddr="0x0000C2" bit="1" />
-        <dtcode id="D163" name="P1235 INTAKE CONTROL VALVE SOLENOID CIRCUIT (LOW)" desc="D163" tmpaddr="0x0000A2" memaddr="0x0000C2" bit="2" />
-        <dtcode id="D164" name="P1236 INTAKE CONTROL VALVE SOLENOID CIRCUIT (HIGH)" desc="D164" tmpaddr="0x0000A2" memaddr="0x0000C2" bit="3" />
-        <dtcode id="D165" name="P1597 TCS SIGNAL CIRCUIT INPUT (LOW)" desc="D165" tmpaddr="0x0000A2" memaddr="0x0000C2" bit="4" />
-        <dtcode id="D166" name="P1598 TCS SIGNAL CIRCUIT INPUT (HIGH)" desc="D166" tmpaddr="0x0000A2" memaddr="0x0000C2" bit="5" />
-        <dtcode id="D167" name="P0034 TURBO CHARGER BYPASS VALVE CONTROL CIRCUIT (LOW)" desc="D167" tmpaddr="0x0000A2" memaddr="0x0000C2" bit="6" />
-        <dtcode id="D168" name="P0035 TURBO CHARGER BYPASS VALVE CONTROL CIRCUIT (HIGH)" desc="D168" tmpaddr="0x0000A2" memaddr="0x0000C2" bit="7" />
-        <dtcode id="D169" name="P0137 REAR O2 SENSOR LOW VOLTAGE" desc="D169" tmpaddr="0x0000A3" memaddr="0x0000C3" bit="0" />
-        <dtcode id="D170" name="P1134 AIR/FUEL SENSOR COMPUTER PROBLEM" desc="D170" tmpaddr="0x0000A3" memaddr="0x0000C3" bit="1" />
-        <dtcode id="D171" name="P0131 FRONT O2 SENSOR LOW INPUT" desc="D171" tmpaddr="0x0000A3" memaddr="0x0000C3" bit="2" />
-        <dtcode id="D172" name="P0151 O2 SENSOR CIRCUIT LOW B2 S1" desc="D172" tmpaddr="0x0000A3" memaddr="0x0000C3" bit="3" />
-        <dtcode id="D173" name="P0132 FRONT O2 SENSOR HIGH INPUT" desc="D173" tmpaddr="0x0000A3" memaddr="0x0000C3" bit="4" />
-        <dtcode id="D174" name="P0152 O2 SENSOR CIRCUIT HIGH B2 S1" desc="D174" tmpaddr="0x0000A3" memaddr="0x0000C3" bit="5" />
-        <dtcode id="D175" name="P0138 REAR O2 SENSOR HIGH VOLTAGE" desc="D175" tmpaddr="0x0000A3" memaddr="0x0000C3" bit="6" />
-        <dtcode id="D176" name="P0153 O2 SENSOR CIRCUIT SLOW RESPONSE B2 S1" desc="D176" tmpaddr="0x0000A3" memaddr="0x0000C3" bit="7" />
-        <dtcode id="D177" name="P0112 IAT SENSOR LOW INPUT" desc="D177" tmpaddr="0x0000A4" memaddr="0x0000C4" bit="0" />
-        <dtcode id="D178" name="P0113 IAT SENSOR HIGH INPUT" desc="D178" tmpaddr="0x0000A4" memaddr="0x0000C4" bit="1" />
-        <dtcode id="D179" name="P0111 IAT SENSOR RANGE/PERF" desc="D179" tmpaddr="0x0000A4" memaddr="0x0000C4" bit="2" />
-        <dtcode id="D180" name="P1546 EXHAUST GAS TEMPERATURE SENSOR 2 CIRCUIT INPUT (HIGH)" desc="D180" tmpaddr="0x0000A4" memaddr="0x0000C4" bit="3" />
-        <dtcode id="D181" name="P0038 REAR O2 SENSOR HIGH INPUT" desc="D181" tmpaddr="0x0000A4" memaddr="0x0000C4" bit="4" />
-        <dtcode id="D182" name="P0032 FRONT O2 SENSOR HIGH INPUT" desc="D182" tmpaddr="0x0000A4" memaddr="0x0000C4" bit="5" />
-        <dtcode id="D183" name="P0037 REAR O2 SENSOR LOW INPUT" desc="D183" tmpaddr="0x0000A4" memaddr="0x0000C4" bit="6" />
-        <dtcode id="D184" name="P0031 FRONT O2 SENSOR LOW INPUT" desc="D184" tmpaddr="0x0000A4" memaddr="0x0000C4" bit="7" />
-        <dtcode id="D185" name="P1110 ATMOS. PRESSURE SENSOR LOW INPUT" desc="D185" tmpaddr="0x0000A5" memaddr="0x0000C5" bit="0" />
-        <dtcode id="D186" name="P1111 ATMOS. PRESSURE SENSOR HIGH INPUT" desc="D186" tmpaddr="0x0000A5" memaddr="0x0000C5" bit="1" />
-        <dtcode id="D187" name="P1112 ATMOS. PRESSURE SENSOR RANGE/PERF" desc="D187" tmpaddr="0x0000A5" memaddr="0x0000C5" bit="2" />
-        <dtcode id="D188" name="P0106 MAP SENSOR RANGE/PERF (LOW)" desc="D188" tmpaddr="0x0000A5" memaddr="0x0000C5" bit="3" />
-        <dtcode id="D189" name="P0107 MAP SENSOR LOW INPUT" desc="D189" tmpaddr="0x0000A5" memaddr="0x0000C5" bit="4" />
-        <dtcode id="D190" name="P0108 MAP SENSOR HIGH INPUT" desc="D190" tmpaddr="0x0000A5" memaddr="0x0000C5" bit="5" />
-        <dtcode id="D191" name="P1545 EXHAUST GAS TEMPERATURE SENSOR 2 CIRCUIT INPUT (LOW)" desc="D191" tmpaddr="0x0000A5" memaddr="0x0000C5" bit="6" />
-        <dtcode id="D192" name="P1146 MAP SENSOR RANGE/PERF (HIGH)" desc="D192" tmpaddr="0x0000A5" memaddr="0x0000C5" bit="7" />
-        <dtcode id="D193" name="P1139 O2 SENSOR HEATER CIRCUIT RANGE/PERF B1 S1" desc="D193" tmpaddr="0x0000A6" memaddr="0x0000C6" bit="0" />
-        <dtcode id="D194" name="P1140 O2 SENSOR HEATER CIRCUIT RANGE/PERF B2 S1" desc="D194" tmpaddr="0x0000A6" memaddr="0x0000C6" bit="1" />
-        <dtcode id="D195" name="P1711 ENGINE TORQUE CONTROL SIGNAL #1 CIRCUIT MALFUNCTION" desc="D195" tmpaddr="0x0000A6" memaddr="0x0000C6" bit="2" />
-        <dtcode id="D196" name="P1712 ENGINE TORQUE CONTROL SIGNAL #2 CIRCUIT MALFUNCTION" desc="D196" tmpaddr="0x0000A6" memaddr="0x0000C6" bit="3" />
-        <dtcode id="D197" name="P0715 TORQUE CONVERTER TURBINE SPEED SENSOR CIRCUIT MALFUNCTION" desc="D197" tmpaddr="0x0000A6" memaddr="0x0000C6" bit="4" />
-        <dtcode id="D198" name="P1703 AT LOW CLUTCH TIMING SOLENOID VALVE CIRCUIT MALFUNCTION" desc="D198" tmpaddr="0x0000A6" memaddr="0x0000C6" bit="5" />
-        <dtcode id="D199" name="P0785 SHIFT/TIMING SOLENOID MALFUNCTION" desc="D199" tmpaddr="0x0000A6" memaddr="0x0000C6" bit="6" />
-        <dtcode id="D200" name="P0778 PRESSURE CONTROL SOLENOID B ELECTRICAL" desc="D200" tmpaddr="0x0000A6" memaddr="0x0000C6" bit="7" />
-        <dtcode id="D201" name="P1130 O2 SENSOR CIRCUIT (OPEN) B1 S1" desc="D201" tmpaddr="0x0000A7" memaddr="0x0000C7" bit="0" />
-        <dtcode id="D202" name="P1135 O2 SENSOR CIRCUIT (OPEN) B2 S1" desc="D202" tmpaddr="0x0000A7" memaddr="0x0000C7" bit="1" />
-        <dtcode id="D203" name="P1131 O2 SENSOR CIRCUIT (SHORT) B1 S1" desc="D203" tmpaddr="0x0000A7" memaddr="0x0000C7" bit="2" />
-        <dtcode id="D204" name="P1136 O2 SENSOR CIRCUIT (SHORT) B2 S1" desc="D204" tmpaddr="0x0000A7" memaddr="0x0000C7" bit="3" />
-        <dtcode id="D205" name="P1154 O2 SENSOR RANGE/PERF LOW B2 S1" desc="D205" tmpaddr="0x0000A7" memaddr="0x0000C7" bit="4" />
-        <dtcode id="D206" name="P1155 O2 SENSOR RANGE/PERF HIGH B2 S1" desc="D206" tmpaddr="0x0000A7" memaddr="0x0000C7" bit="5" />
-        <dtcode id="D207" name="P0052 HO2S CIRCUIT HIGH B2 S1" desc="D207" tmpaddr="0x0000A7" memaddr="0x0000C7" bit="6" />
-        <dtcode id="D208" name="P0051 HO2S CIRCUIT LOW B2 S1" desc="D208" tmpaddr="0x0000A7" memaddr="0x0000C7" bit="7" />
-        <dtcode id="D209" name="P0128 THERMOSTAT MALFUNCTION" desc="D209" tmpaddr="0x0000A8" memaddr="0x0000C8" bit="0" />
-        <dtcode id="D210" name="P1491 PCV (BLOWBY) FUNCTION PROBLEM" desc="D210" tmpaddr="0x0000A8" memaddr="0x0000C8" bit="1" />
-        <dtcode id="D211" name="P0066 AAI CONTROL CIRCUIT (LOW)" desc="D211" tmpaddr="0x0000A8" memaddr="0x0000C8" bit="2" />
-        <dtcode id="D212" name="P0067 AAI CONTROL CIRCUIT (HIGH)" desc="D212" tmpaddr="0x0000A8" memaddr="0x0000C8" bit="3" />
-        <dtcode id="D213" name="P0065 AAI CONTROL RANGE/PERF" desc="D213" tmpaddr="0x0000A8" memaddr="0x0000C8" bit="4" />
-        <dtcode id="D214" name="P0130 O2 SENSOR CIRCUIT LEAN B1 S1" desc="D214" tmpaddr="0x0000A8" memaddr="0x0000C8" bit="5" />
-        <dtcode id="D215" name="P1137 O2 SENSOR CIRCUIT (LAMBDA=1) B1 S1" desc="D215" tmpaddr="0x0000A8" memaddr="0x0000C8" bit="6" />
-        <dtcode id="D216" name="P1137 O2 SENSOR CIRCUIT (MID) B1 S1" desc="D216" tmpaddr="0x0000A8" memaddr="0x0000C8" bit="7" />
-        <dtcode id="D217" name="P1248 RELIEF VALVE CONTROL SOLENOID 1 CIRCUIT (HIGH)" desc="D217" tmpaddr="0x0000A9" memaddr="0x0000C9" bit="0" />
-        <dtcode id="D218" name="P1249 RELIEF VALVE CONTROL SOLENOID 2 CIRCUIT (LOW)" desc="D218" tmpaddr="0x0000A9" memaddr="0x0000C9" bit="1" />
-        <dtcode id="D219" name="P1250 RELIEF VALVE CONTROL SOLENOID 2 CIRCUIT (HIGH)" desc="D219" tmpaddr="0x0000A9" memaddr="0x0000C9" bit="2" />
-        <dtcode id="D220" name="P1560 BACK-UP VOLTAGE MALFUNCTION" desc="D220" tmpaddr="0x0000A9" memaddr="0x0000C9" bit="3" />
-        <dtcode id="D221" name="P0192 FUEL RAIL PRESSURE SENSOR CIRCUIT (LOW)" desc="D221" tmpaddr="0x0000A9" memaddr="0x0000C9" bit="4" />
-        <dtcode id="D222" name="P0193 FUEL RAIL PRESSURE SENSOR CIRCUIT (HIGH)" desc="D222" tmpaddr="0x0000A9" memaddr="0x0000C9" bit="5" />
-        <dtcode id="D223" name="P0562 SYSTEM VOLTAGE (LOW)" desc="D223" tmpaddr="0x0000A9" memaddr="0x0000C9" bit="6" />
-        <dtcode id="D224" name="P0563 SYSTEM VOLTAGE (HIGH)" desc="D224" tmpaddr="0x0000A9" memaddr="0x0000C9" bit="7" />
-        <dtcode id="D225" name="P0245 WASTEGATE SOLENOID A LOW" desc="D225" tmpaddr="0x0000AA" memaddr="0x0000CA" bit="0" />
-        <dtcode id="D226" name="P0246 WASTEGATE SOLENOID A HIGH" desc="D226" tmpaddr="0x0000AA" memaddr="0x0000CA" bit="1" />
-        <dtcode id="D227" name="P1244 WASTEGATE SOLENOID A RANGE/PERF (LOW)" desc="D227" tmpaddr="0x0000AA" memaddr="0x0000CA" bit="2" />
-        <dtcode id="D228" name="P0244 WASTEGATE SOLENOID A RANGE/PERF (HIGH)" desc="D228" tmpaddr="0x0000AA" memaddr="0x0000CA" bit="3" />
-        <dtcode id="D229" name="P1245 WASTEGATE SOLENOID A RANGE/PERF (FAIL-SAFE)" desc="D229" tmpaddr="0x0000AA" memaddr="0x0000CA" bit="4" />
-        <dtcode id="D230" name="P0249 WASTEGATE SOLENOID B (LOW)" desc="D230" tmpaddr="0x0000AA" memaddr="0x0000CA" bit="5" />
-        <dtcode id="D231" name="P0250 WASTEGATE SOLENOID B (HIGH)" desc="D231" tmpaddr="0x0000AA" memaddr="0x0000CA" bit="6" />
-        <dtcode id="D232" name="P1247 RELIEF VALVE CONTROL SOLENOID 1 CIRCUIT (LOW)" desc="D232" tmpaddr="0x0000AA" memaddr="0x0000CA" bit="7" />
-        <dtcode id="D233" name="P1577 IMMOBILIZER CONTROL MODULE EEPROM ERROR" desc="D233" tmpaddr="0x0000AB" memaddr="0x0000CB" bit="0" />
-        <dtcode id="D234" name="P1576 EGI CONTROL MODULE EEPROM ERROR" desc="D234" tmpaddr="0x0000AB" memaddr="0x0000CB" bit="1" />
-        <dtcode id="D235" name="P0513 INCORRECT IMMOBILIZER KEY" desc="D235" tmpaddr="0x0000AB" memaddr="0x0000CB" bit="2" />
-        <dtcode id="D236" name="P1574 KEY COMMUNICATION FAILURE" desc="D236" tmpaddr="0x0000AB" memaddr="0x0000CB" bit="3" />
-        <dtcode id="D237" name="P1578 METER FAILURE" desc="D237" tmpaddr="0x0000AB" memaddr="0x0000CB" bit="4" />
-        <dtcode id="D238" name="P1572 IMMOBILZER CIRCUIT FAILURE (EXCEPT ANTENNA CIRCUIT)" desc="D238" tmpaddr="0x0000AB" memaddr="0x0000CB" bit="5" />
-        <dtcode id="D239" name="P1571 REFERENCE CODE INCOMPATIBILITY" desc="D239" tmpaddr="0x0000AB" memaddr="0x0000CB" bit="6" />
-        <dtcode id="D240" name="P1570 ANTENNA" desc="D240" tmpaddr="0x0000AB" memaddr="0x0000CB" bit="7" />
-        <dtcode id="D241" name="P1095 TGV SIGNAL 1 (SHORT)" desc="D241" tmpaddr="0x0000AC" memaddr="0x0000CC" bit="0" />
-        <dtcode id="D242" name="P1097 TGV SIGNAL 2 (SHORT)" desc="D242" tmpaddr="0x0000AC" memaddr="0x0000CC" bit="1" />
-        <dtcode id="D243" name="P1094 TGV SIGNAL 1 (OPEN)" desc="D243" tmpaddr="0x0000AC" memaddr="0x0000CC" bit="2" />
-        <dtcode id="D244" name="P1096 TGV SIGNAL 2 (OPEN)" desc="D244" tmpaddr="0x0000AC" memaddr="0x0000CC" bit="3" />
-        <dtcode id="D245" name="P0261 FUEL INJECTOR #1 CIRCUIT LOW" desc="D245" tmpaddr="0x0000AC" memaddr="0x0000CC" bit="4" />
-        <dtcode id="D246" name="P0264 FUEL INJECTOR #2 CIRCUIT LOW" desc="D246" tmpaddr="0x0000AC" memaddr="0x0000CC" bit="5" />
-        <dtcode id="D247" name="P0267 FUEL INJECTOR #3 CIRCUIT LOW" desc="D247" tmpaddr="0x0000AC" memaddr="0x0000CC" bit="6" />
-        <dtcode id="D248" name="P0270 FUEL INJECTOR #4 CIRCUIT LOW" desc="D248" tmpaddr="0x0000AC" memaddr="0x0000CC" bit="7" />
-        <dtcode id="D249" name="P0545 EGT SENSOR CIRCUIT LOW" desc="D249" tmpaddr="0x0000AD" memaddr="0x0000CD" bit="0" />
-        <dtcode id="D250" name="P0546 EGT SENSOR CIRCUIT HIGH" desc="D250" tmpaddr="0x0000AD" memaddr="0x0000CD" bit="1" />
-        <dtcode id="D251" name="P1312 EGT SENSOR MALFUNCTION" desc="D251" tmpaddr="0x0000AD" memaddr="0x0000CD" bit="2" />
-        <dtcode id="D252" name="P1544 EGT TOO HIGH" desc="D252" tmpaddr="0x0000AD" memaddr="0x0000CD" bit="3" />
-        <dtcode id="D253" name="P1306 OCV 1 SIGNAL CIRCUIT MALFUNCTION (OPEN)" desc="D253" tmpaddr="0x0000AD" memaddr="0x0000CD" bit="4" />
-        <dtcode id="D254" name="P1308 OCV 2 SIGNAL CIRCUIT MALFUNCTION (OPEN)" desc="D254" tmpaddr="0x0000AD" memaddr="0x0000CD" bit="5" />
-        <dtcode id="D255" name="P1307 OCV 1 SIGNAL CIRCUIT MALFUNCTION (SHORT)" desc="D255" tmpaddr="0x0000AD" memaddr="0x0000CD" bit="6" />
-        <dtcode id="D256" name="P1309 OCV 2 SIGNAL CIRCUIT MALFUNCTION (SHORT)" desc="D256" tmpaddr="0x0000AD" memaddr="0x0000CD" bit="7" />
-        <dtcode id="D257" name="P1719 ECU COMMUNICATION CIRCUIT" desc="D257" tmpaddr="0x0000F0" memaddr="0x0000F4" bit="0" />
-        <dtcode id="D258" name="P1242 2-STAGE TWIN TURBO SYSTEM (TWIN)" desc="D258" tmpaddr="0x0000F0" memaddr="0x0000F4" bit="1" />
-        <dtcode id="D259" name="P1241 2-STAGE TWIN TURBO SYSTEM (SINGLE)" desc="D259" tmpaddr="0x0000F0" memaddr="0x0000F4" bit="2" />
-        <dtcode id="D260" name="P1199 DIFFERENTIAL PRESSURE SENSOR" desc="D260" tmpaddr="0x0000F0" memaddr="0x0000F4" bit="3" />
-        <dtcode id="D261" name="P1086 TGV POS. 2 CIRCUIT LOW" desc="D261" tmpaddr="0x0000F0" memaddr="0x0000F4" bit="4" />
-        <dtcode id="D262" name="P1087 TGV POS. 2 CIRCUIT HIGH" desc="D262" tmpaddr="0x0000F0" memaddr="0x0000F4" bit="5" />
-        <dtcode id="D263" name="P1088 TGV POS. 1 CIRCUIT LOW" desc="D263" tmpaddr="0x0000F0" memaddr="0x0000F4" bit="6" />
-        <dtcode id="D264" name="P1089 TGV POS. 1 CIRCUIT HIGH" desc="D264" tmpaddr="0x0000F0" memaddr="0x0000F4" bit="7" />
-        <dtcode id="D265" name="P0801 REVERSE INHIBIT CONTROL CIRCUIT" desc="D265" tmpaddr="0x0000F1" memaddr="0x0000F5" bit="0" />
-        <dtcode id="D266" name="P0768 SHIFT SOLENOID D ELECTRICAL" desc="D266" tmpaddr="0x0000F1" memaddr="0x0000F5" bit="1" />
-        <dtcode id="D267" name="P0763 SHIFT SOLENOID C ELECTRICAL" desc="D267" tmpaddr="0x0000F1" memaddr="0x0000F5" bit="2" />
-        <dtcode id="D268" name="P0736 REVERSE INCORRECT RATIO" desc="D268" tmpaddr="0x0000F1" memaddr="0x0000F5" bit="3" />
-        <dtcode id="D269" name="P0724 TORQUE CONVERTER BRAKE SWITCH B CIRCUIT HIGH" desc="D269" tmpaddr="0x0000F1" memaddr="0x0000F5" bit="4" />
-        <dtcode id="D270" name="P0719 TORQUE CONVERTER BRAKE SWITCH B CIRCUIT LOW" desc="D270" tmpaddr="0x0000F1" memaddr="0x0000F5" bit="5" />
-        <dtcode id="D271" name="P0713 TRANSMISSION FLUID TEMPERATURE SENSOR HIGH INPUT" desc="D271" tmpaddr="0x0000F1" memaddr="0x0000F5" bit="6" />
-        <dtcode id="D272" name="P0712 TRANSMISSION FLUID TEMPERATURE SENSOR LOW INPUT" desc="D272" tmpaddr="0x0000F1" memaddr="0x0000F5" bit="7" />
-        <dtcode id="D273" name="P1817 SPORTS MODE SWITCH CIRCUIT (MANUAL SWITCH)" desc="D273" tmpaddr="0x0000F2" memaddr="0x0000F6" bit="0" />
-        <dtcode id="D274" name="P1762 LATERAL ACCELERATION SENSOR CIRCUIT HIGH" desc="D274" tmpaddr="0x0000F2" memaddr="0x0000F6" bit="1" />
-        <dtcode id="D275" name="P1761 LATERAL ACCELERATION SENSOR CIRCUIT LOW" desc="D275" tmpaddr="0x0000F2" memaddr="0x0000F6" bit="2" />
-        <dtcode id="D276" name="P1760 LATERAL ACCELERATION SENSOR PERFORMANCE PROBLEM" desc="D276" tmpaddr="0x0000F2" memaddr="0x0000F6" bit="3" />
-        <dtcode id="D277" name="P1718 AT CAN COMMUNICATION CIRCUIT" desc="D277" tmpaddr="0x0000F2" memaddr="0x0000F6" bit="4" />
-        <dtcode id="D278" name="P1714 THROTTLE POSITION SENSOR POWER SUPPLY CIRCUIT" desc="D278" tmpaddr="0x0000F2" memaddr="0x0000F6" bit="5" />
-        <dtcode id="D279" name="P1709 THROTTLE POSITION SENSOR CIRCUIT HIGH INPUT" desc="D279" tmpaddr="0x0000F2" memaddr="0x0000F6" bit="6" />
-        <dtcode id="D280" name="P1708 THROTTLE POSITION SENSOR CIRCUIT LOW INPUT" desc="D280" tmpaddr="0x0000F2" memaddr="0x0000F6" bit="7" />
-        <dtcode id="D281" name="P1600 IMPROPER CAN COMMUNICATION" desc="D281" tmpaddr="0x0000F3" memaddr="0x0000F7" bit="0" />
-        <dtcode id="D282" name="P2709 SHIFT SOLENOID F ELECTRICAL" desc="D282" tmpaddr="0x0000F3" memaddr="0x0000F7" bit="1" />
-        <dtcode id="D283" name="P0773 SHIFT SOLENOID E ELECTRICAL" desc="D283" tmpaddr="0x0000F3" memaddr="0x0000F7" bit="2" />
-        <dtcode id="D284" name="P0735 GEAR 5 INCORRECT RATIO" desc="D284" tmpaddr="0x0000F3" memaddr="0x0000F7" bit="3" />
-        <dtcode id="D285" name="P1799 INTERLOCK" desc="D285" tmpaddr="0x0000F3" memaddr="0x0000F7" bit="4" />
-        <dtcode id="D286" name="P1798 GEAR 1 ENGINE BREAKS" desc="D286" tmpaddr="0x0000F3" memaddr="0x0000F7" bit="5" />
-        <dtcode id="D287" name="P1314 MISFIRE DETECTED SIGNAL CIRCUIT (LOW)" desc="D287" tmpaddr="0x0000F3" memaddr="0x0000F7" bit="6" />
-        <dtcode id="D288" name="P1313 MISFIRE DETECTED SIGNAL CIRCUIT (HIGH)" desc="D288" tmpaddr="0x0000F3" memaddr="0x0000F7" bit="7" />
-        <dtcode id="D289" name="P1710 TORQUE CONVERTER TURBINE 2 SPEED SIGNAL CIRCUIT MALFUNCTION" desc="D289" tmpaddr="0x000123" memaddr="0x00012B" bit="0" />
-        <dtcode id="D290" name="P1717 ATF TEMPERATURE SENSOR 2 CIRCUIT HIGH" desc="D290" tmpaddr="0x000123" memaddr="0x00012B" bit="1" />
-        <dtcode id="D291" name="P1716 ATF TEMPERATURE SENSOR 2 CIRCUIT LOW" desc="D291" tmpaddr="0x000123" memaddr="0x00012B" bit="2" />
-        <dtcode id="D292" name="P0771 SHIFT SOLENOID E PERFORMANCE OR STUCK OFF" desc="D292" tmpaddr="0x000123" memaddr="0x00012B" bit="3" />
-        <dtcode id="D293" name="P0716 TORQUE CONVERTER TURBINE SPEED SENSOR" desc="D293" tmpaddr="0x000123" memaddr="0x00012B" bit="4" />
-        <dtcode id="D294" name="P0726 ENGINE SPEED INPUT CIRCUIT RANGE/PERFORMANCE" desc="D294" tmpaddr="0x000123" memaddr="0x00012B" bit="5" />
-        <dtcode id="D295" name="P0720 AT VEHICLE SPEED SENSOR HIGH" desc="D295" tmpaddr="0x000123" memaddr="0x00012B" bit="6" />
-        <dtcode id="D296" name="P0722 AT VEHICLE SPEED SENSOR CIRCUIT (LOW)" desc="D296" tmpaddr="0x000123" memaddr="0x00012B" bit="7" />
-        <dtcode id="D297" name="P2707 SHIFT SOLENOID F MALFUNCTION" desc="D297" tmpaddr="0x000124" memaddr="0x00012C" bit="0" />
-        <dtcode id="D298" name="P0771 SHIFT SOLENOID E PERFORMANCE OR STUCK OFF" desc="D298" tmpaddr="0x000124" memaddr="0x00012C" bit="1" />
-        <dtcode id="D299" name="P0766 SHIFT SOLENOID D PERFORMANCE OR STUCK OFF" desc="D299" tmpaddr="0x000124" memaddr="0x00012C" bit="2" />
-        <dtcode id="D300" name="P0761 SHIFT SOLENOID C PERFORMANCE OR STUCK OFF" desc="D300" tmpaddr="0x000124" memaddr="0x00012C" bit="3" />
-        <dtcode id="D301" name="P0756 SHIFT SOLENOID B PERFORMANCE OR STUCK OFF" desc="D301" tmpaddr="0x000124" memaddr="0x00012C" bit="4" />
-        <dtcode id="D302" name="P0751 SHIFT SOLENOID A PERFORMANCE OR STUCK OFF" desc="D302" tmpaddr="0x000124" memaddr="0x00012C" bit="5" />
-        <dtcode id="D303" name="P1769 YAW RATE AND LATERAL G SENSOR ERROR" desc="D303" tmpaddr="0x000124" memaddr="0x00012C" bit="6" />
-        <dtcode id="D304" name="P1282 PCV SYSTEM CIRCUIT (OPEN)" desc="D304" tmpaddr="0x000124" memaddr="0x00012C" bit="7" />
-        <dtcode id="D305" name="P1844 TRANSMISSION FLUID PRESSURE SENSOR/SWITCH E CIRCUIT" desc="D305" tmpaddr="0x000125" memaddr="0x00012D" bit="0" />
-        <dtcode id="D306" name="P1843 TRANSMISSION FLUID PRESSURE SENSOR/SWITCH D CIRCUIT" desc="D306" tmpaddr="0x000125" memaddr="0x00012D" bit="1" />
-        <dtcode id="D307" name="P1842 TRANSMISSION FLUID PRESSURE SENSOR/SWITCH C CIRCUIT" desc="D307" tmpaddr="0x000125" memaddr="0x00012D" bit="2" />
-        <dtcode id="D308" name="P1841 TRANSMISSION FLUID PRESSURE SENSOR/SWITCH B CIRCUIT" desc="D308" tmpaddr="0x000125" memaddr="0x00012D" bit="3" />
-        <dtcode id="D309" name="P1840 TRANSMISSION FLUID PRESSURE SENSOR/SWITCH A CIRCUIT" desc="D309" tmpaddr="0x000125" memaddr="0x00012D" bit="4" />
-        <dtcode id="D310" name="P1875 CIRCUIT OF CENTER DIFFERENTIAL" desc="D310" tmpaddr="0x000125" memaddr="0x00012D" bit="5" />
-        <dtcode id="D311" name="P0558 BRAKE BOOSTER PRESSURE SENSOR CIRCUIT HIGH INPUT" desc="D311" tmpaddr="0x000125" memaddr="0x00012D" bit="6" />
-        <dtcode id="D312" name="P0559 ALTERNATOR CIRCUIT HIGH" desc="D312" tmpaddr="0x000125" memaddr="0x00012D" bit="7" />
-        <dtcode id="D313" name="P0502 VEHICLE SPEED SENSOR LOW INPUT" desc="D313" tmpaddr="0x000126" memaddr="0x00012E" bit="0" />
-        <dtcode id="D314" name="P0230 FUEL PUMP PRIMARY CIRCUIT" desc="D314" tmpaddr="0x000126" memaddr="0x00012E" bit="1" />
-        <dtcode id="D315" name="P0565 CRUISE CONTROL SET SIGNAL" desc="D315" tmpaddr="0x000126" memaddr="0x00012E" bit="2" />
-        <dtcode id="D316" name="P0068 MAP SENSOR RANGE/PERF" desc="D316" tmpaddr="0x000126" memaddr="0x00012E" bit="3" />
-        <dtcode id="D317" name="P0129 ATMOS. PRESSURE SENSOR RANGE/PERF" desc="D317" tmpaddr="0x000126" memaddr="0x00012E" bit="4" />
-        <dtcode id="D318" name="P0519 IDLE CONTROL MALFUNCTION (FAIL-SAFE)" desc="D318" tmpaddr="0x000126" memaddr="0x00012E" bit="5" />
-        <dtcode id="D319" name="P0345 CAMSHAFT POS. SENSOR A BANK 2" desc="D319" tmpaddr="0x000126" memaddr="0x00012E" bit="6" />
-        <dtcode id="D320" name="P0101 MAF SENSOR RANGE/PERF" desc="D320" tmpaddr="0x000126" memaddr="0x00012E" bit="7" />
-        <dtcode id="D321" name="P0154 O2 SENSOR CIRCUIT OPEN B2 S1" desc="D321" tmpaddr="0x000127" memaddr="0x00012F" bit="0" />
-        <dtcode id="D322" name="P0134 FRONT O2 SENSOR NO ACTIVITY" desc="D322" tmpaddr="0x000127" memaddr="0x00012F" bit="1" />
-        <dtcode id="D323" name="P0150 O2 SENSOR CIRCUIT B2 S1" desc="D323" tmpaddr="0x000127" memaddr="0x00012F" bit="2" />
-        <dtcode id="D324" name="P0130 O2 SENSOR CIRCUIT B1 S1" desc="D324" tmpaddr="0x000127" memaddr="0x00012F" bit="3" />
-        <dtcode id="D325" name="P0050 O2 SENSOR HEATER CIRCUIT RANGE/PERF B2 S1" desc="D325" tmpaddr="0x000127" memaddr="0x00012F" bit="4" />
-        <dtcode id="D326" name="P0030 O2 SENSOR HEATER CIRCUIT RANGE/PERF B1 S1" desc="D326" tmpaddr="0x000127" memaddr="0x00012F" bit="5" />
-        <dtcode id="D327" name="P0501 VEHICLE SPEED SENSOR MALFUNCTION AT LOW SPEED" desc="D327" tmpaddr="0x000127" memaddr="0x00012F" bit="6" />
-        <dtcode id="D328" name="P0503 VEHICLE SPEED SENSOR MALFUNCTION AT HIGH SPEED" desc="D328" tmpaddr="0x000127" memaddr="0x00012F" bit="7" />
-        <dtcode id="D329" name="P0142 O2 SENSOR CIRCUIT B1 S3" desc="D329" tmpaddr="0x000128" memaddr="0x000130" bit="0" />
-        <dtcode id="D330" name="P0145 O2 SENSOR CIRCUIT SLOW RESPONSE B1 S3" desc="D330" tmpaddr="0x000128" memaddr="0x000130" bit="1" />
-        <dtcode id="D331" name="P0156 O2 SENSOR CIRCUIT B2 S 2" desc="D331" tmpaddr="0x000128" memaddr="0x000130" bit="2" />
-        <dtcode id="D332" name="P0159 O2 SENSOR CIRCUIT SLOW RESPONSE B2 S2" desc="D332" tmpaddr="0x000128" memaddr="0x000130" bit="3" />
-        <dtcode id="D333" name="P0162 O2 SENSOR CIRCUIT B2 S 3" desc="D333" tmpaddr="0x000128" memaddr="0x000130" bit="4" />
-        <dtcode id="D334" name="P0165 O2 SENSOR CIRCUIT SLOW RESPONSE B2 S3" desc="D334" tmpaddr="0x000128" memaddr="0x000130" bit="5" />
-        <dtcode id="D335" name="P0043 HO2S HEATER CIRCUIT (LOW) B1 S3" desc="D335" tmpaddr="0x000128" memaddr="0x000130" bit="6" />
-        <dtcode id="D336" name="P0044 HO2S HEATER CIRCUIT (HIGH) B1 S3" desc="D336" tmpaddr="0x000128" memaddr="0x000130" bit="7" />
-        <dtcode id="D337" name="P0057 HO2S HEATER CIRCUIT (LOW) B2 S2" desc="D337" tmpaddr="0x000129" memaddr="0x000131" bit="0" />
-        <dtcode id="D338" name="P0058 HO2S HEATER CIRCUIT (HIGH) B2 S2" desc="D338" tmpaddr="0x000129" memaddr="0x000131" bit="1" />
-        <dtcode id="D339" name="P0063 HO2S HEATER CIRCUIT (LOW) B2 S3" desc="D339" tmpaddr="0x000129" memaddr="0x000131" bit="2" />
-        <dtcode id="D340" name="P0064 HO2S HEATER CIRCUIT (HIGH) B2 S3" desc="D340" tmpaddr="0x000129" memaddr="0x000131" bit="3" />
-        <dtcode id="D341" name="P0157 O2 SENSOR CIRCUIT (LOW) VOLTAGE B2 S2" desc="D341" tmpaddr="0x000129" memaddr="0x000131" bit="4" />
-        <dtcode id="D342" name="P0158 O2 SENSOR CIRCUIT (HIGH) VOLTAGE B2 S2" desc="D342" tmpaddr="0x000129" memaddr="0x000131" bit="5" />
-        <dtcode id="D343" name="P0143 O2 SENSOR CIRCUIT (LOW) VOLTAGE B1 S3" desc="D343" tmpaddr="0x000129" memaddr="0x000131" bit="6" />
-        <dtcode id="D344" name="P0144 O2 SENSOR CIRCUIT (HIGH) VOLTAGE B1 S3" desc="D344" tmpaddr="0x000129" memaddr="0x000131" bit="7" />
-        <dtcode id="D345" name="P2109 TPS A MINIMUM STOP PERF" desc="D345" tmpaddr="0x00012A" memaddr="0x000132" bit="0" />
-        <dtcode id="D346" name="P1759 LATERAL G SENSOR SYSTEM CIRCUIT" desc="D346" tmpaddr="0x00012A" memaddr="0x000132" bit="1" />
-        <dtcode id="D347" name="P1873 REAR RIGHT ABS SENSOR SIGNAL" desc="D347" tmpaddr="0x00012A" memaddr="0x000132" bit="2" />
-        <dtcode id="D348" name="P1872 REAR LEFT ABS SENSOR SIGNAL" desc="D348" tmpaddr="0x00012A" memaddr="0x000132" bit="3" />
-        <dtcode id="D349" name="P1871 FRONT RIGHT ABS SENSOR SIGNAL" desc="D349" tmpaddr="0x00012A" memaddr="0x000132" bit="4" />
-        <dtcode id="D350" name="P1870 FRONT LEFT ABS SENSOR SIGNAL" desc="D350" tmpaddr="0x00012A" memaddr="0x000132" bit="5" />
-        <dtcode id="D351" name="P2125 ACCELERATOR POSITION SENSOR E" desc="D351" tmpaddr="0x00012A" memaddr="0x000132" bit="6" />
-        <dtcode id="D352" name="P1700 THROTTLE POSITION SENSOR CIRCUIT MALFUNCTION FOR AT" desc="D352" tmpaddr="0x00012A" memaddr="0x000132" bit="7" />
-        <dtcode id="D353" name="P0222 TPS B (LOW) INPUT" desc="D353" tmpaddr="0x000150" memaddr="0x000155" bit="0" />
-        <dtcode id="D354" name="P0223 TPS B (HIGH) INPUT" desc="D354" tmpaddr="0x000150" memaddr="0x000155" bit="1" />
-        <dtcode id="D355" name="P1160 ABNORMAL RETURN SPRING" desc="D355" tmpaddr="0x000150" memaddr="0x000155" bit="2" />
-        <dtcode id="D356" name="P2102 THROTTLE ACTUATOR CIRCUIT LOW" desc="D356" tmpaddr="0x000150" memaddr="0x000155" bit="3" />
-        <dtcode id="D357" name="P2103 THROTTLE ACTUATOR CIRCUIT HIGH" desc="D357" tmpaddr="0x000150" memaddr="0x000155" bit="4" />
-        <dtcode id="D358" name="P2101 THROTTLE ACTUATOR CIRCUIT RANGE/PERF" desc="D358" tmpaddr="0x000150" memaddr="0x000155" bit="5" />
-        <dtcode id="D359" name="P2096 POST CATALYST TOO LEAN B1" desc="D359" tmpaddr="0x000150" memaddr="0x000155" bit="6" />
-        <dtcode id="D360" name="P0638 THROTTLE ACTUATOR RANGE/PERF" desc="D360" tmpaddr="0x000150" memaddr="0x000155" bit="7" />
-        <dtcode id="D361" name="P0607 CONTROL MODULE PERFORMANCE" desc="D361" tmpaddr="0x000151" memaddr="0x000156" bit="0" />
-        <dtcode id="D362" name="P2138 TPS D/E VOLTAGE" desc="D362" tmpaddr="0x000151" memaddr="0x000156" bit="1" />
-        <dtcode id="D363" name="P2127 TPS E CIRCUIT LOW INPUT" desc="D363" tmpaddr="0x000151" memaddr="0x000156" bit="2" />
-        <dtcode id="D364" name="P2128 TPS E CIRCUIT HIGH INPUT" desc="D364" tmpaddr="0x000151" memaddr="0x000156" bit="3" />
-        <dtcode id="D365" name="P2122 TPS D CIRCUIT LOW INPUT" desc="D365" tmpaddr="0x000151" memaddr="0x000156" bit="4" />
-        <dtcode id="D366" name="P2123 TPS D CIRCUIT HIGH INPUT" desc="D366" tmpaddr="0x000151" memaddr="0x000156" bit="5" />
-        <dtcode id="D367" name="P2135 TPS A/B VOLTAGE" desc="D367" tmpaddr="0x000151" memaddr="0x000156" bit="6" />
-        <dtcode id="D368" name="P2097 POST CATALYST TOO RICH B1" desc="D368" tmpaddr="0x000151" memaddr="0x000156" bit="7" />
-        <dtcode id="D369" name="P0600 SERIAL COMMUNICATION LINK" desc="D369" tmpaddr="0x000152" memaddr="0x000157" bit="0" />
-        <dtcode id="D370" name="P0390 CAMSHAFT POS. SENSOR B BANK 2" desc="D370" tmpaddr="0x000152" memaddr="0x000157" bit="1" />
-        <dtcode id="D371" name="P0365 CAMSHAFT POS. SENSOR B BANK 1" desc="D371" tmpaddr="0x000152" memaddr="0x000157" bit="2" />
-        <dtcode id="D372" name="P0345 CAMSHAFT POS. SENSOR A BANK 2" desc="D372" tmpaddr="0x000152" memaddr="0x000157" bit="3" />
-        <dtcode id="D373" name="P0340 CAMSHAFT POS. SENSOR A MALFUNCTION" desc="D373" tmpaddr="0x000152" memaddr="0x000157" bit="4" />
-        <dtcode id="D374" name="P0605 CONTROL MODULE ROM ERROR" desc="D374" tmpaddr="0x000152" memaddr="0x000157" bit="5" />
-        <dtcode id="D375" name="P1521 BRAKE SWITCH CIRCUIT RANGE/PERF (HIGH) INPUT" desc="D375" tmpaddr="0x000152" memaddr="0x000157" bit="6" />
-        <dtcode id="D376" name="P0579 CRUISE CONTROL SWITCH CIRCUIT RANGE/PERF (HIGH) INPUT" desc="D376" tmpaddr="0x000152" memaddr="0x000157" bit="7" />
-        <dtcode id="D377" name="P2095 OCV SOLENOID B2 CIRCUIT SHORT" desc="D377" tmpaddr="0x000153" memaddr="0x000158" bit="0" />
-        <dtcode id="D378" name="P2094 OCV SOLENOID B2 CIRCUIT OPEN" desc="D378" tmpaddr="0x000153" memaddr="0x000158" bit="1" />
-        <dtcode id="D379" name="P2091 OCV SOLENOID B1 CIRCUIT SHORT" desc="D379" tmpaddr="0x000153" memaddr="0x000158" bit="2" />
-        <dtcode id="D380" name="P2090 OCV SOLENOID B1 CIRCUIT OPEN" desc="D380" tmpaddr="0x000153" memaddr="0x000158" bit="3" />
-        <dtcode id="D381" name="P2093 OCV SOLENOID A2 CIRCUIT SHORT" desc="D381" tmpaddr="0x000153" memaddr="0x000158" bit="4" />
-        <dtcode id="D382" name="P2092 OCV SOLENOID A2 CIRCUIT OPEN" desc="D382" tmpaddr="0x000153" memaddr="0x000158" bit="5" />
-        <dtcode id="D383" name="P2089 OCV SOLENOID A1 CIRCUIT SHORT" desc="D383" tmpaddr="0x000153" memaddr="0x000158" bit="6" />
-        <dtcode id="D384" name="P2088 OCV SOLENOID A1 CIRCUIT OPEN" desc="D384" tmpaddr="0x000153" memaddr="0x000158" bit="7" />
-        <dtcode id="D385" name="P0197 OIL TEMP SENSOR LOW" desc="D385" tmpaddr="0x000154" memaddr="0x000159" bit="0" />
-        <dtcode id="D386" name="P1547 EGT SENSOR MALFUNCTION" desc="D386" tmpaddr="0x000154" memaddr="0x000159" bit="1" />
-        <dtcode id="D387" name="P1476 EXHAUST BY-PASS VALVE SOLENOID MALFUNCTION (HIGH)" desc="D387" tmpaddr="0x000154" memaddr="0x000159" bit="2" />
-        <dtcode id="D388" name="P1475 EXHAUST BY-PASS VALVE SOLENOID MALFUNCTION (LOW)" desc="D388" tmpaddr="0x000154" memaddr="0x000159" bit="3" />
-        <dtcode id="D389" name="P1477 EXHAUST BY-PASS VALVE FUNCTION" desc="D389" tmpaddr="0x000154" memaddr="0x000159" bit="4" />
-        <dtcode id="D390" name="P2099 POST CATALYST TOO RICH B2" desc="D390" tmpaddr="0x000154" memaddr="0x000159" bit="5" />
-        <dtcode id="D391" name="P2098 POST CATALYST TOO LEAN B2" desc="D391" tmpaddr="0x000154" memaddr="0x000159" bit="6" />
-        <dtcode id="D392" name="P0700 TRANSMISSION CONTROL SYSTEM" desc="D392" tmpaddr="0x000154" memaddr="0x000159" bit="7" />
-        <dtcode id="D393" name="P0028 OSV SOLENOID VALVE CIRCUIT RANGE/PERF B2" desc="D393" tmpaddr="0x000160" memaddr="0x000165" bit="0" />
-        <dtcode id="D394" name="P0083 INTAKE VALVE CONTROL HIGH (BANK 2)" desc="D394" tmpaddr="0x000160" memaddr="0x000165" bit="1" />
-        <dtcode id="D395" name="P0082 INTAKE VALVE CONTROL LOW (BANK 2)" desc="D395" tmpaddr="0x000160" memaddr="0x000165" bit="2" />
-        <dtcode id="D396" name="P0026 OSV SOLENOID VALVE CIRCUIT RANGE/PERF B1" desc="D396" tmpaddr="0x000160" memaddr="0x000165" bit="3" />
-        <dtcode id="D397" name="P0077 INTAKE VALVE CONTROL HIGH (BANK 1)" desc="D397" tmpaddr="0x000160" memaddr="0x000165" bit="4" />
-        <dtcode id="D398" name="P0076 INTAKE VALVE CIRCUIT LOW (BANK 1)" desc="D398" tmpaddr="0x000160" memaddr="0x000165" bit="5" />
-        <dtcode id="D399" name="P0196 OIL TEMP SENSOR RANGE/PERF" desc="D399" tmpaddr="0x000160" memaddr="0x000165" bit="6" />
-        <dtcode id="D400" name="P0198 OIL TEMP SENSOR HIGH" desc="D400" tmpaddr="0x000160" memaddr="0x000165" bit="7" />
-        <dtcode id="D401" name="P2100 THROTTLE CONTROL MOTOR CIRCUIT OPEN" desc="D401" tmpaddr="0x000161" memaddr="0x000166" bit="0" />
-        <dtcode id="D402" name="P2111 THROTTLE VALVE OPEN STICK" desc="D402" tmpaddr="0x000161" memaddr="0x000166" bit="1" />
-        <dtcode id="D403" name="P2504 CHARGING SYSTEM VOLTAGE HIGH" desc="D403" tmpaddr="0x000161" memaddr="0x000166" bit="2" />
-        <dtcode id="D404" name="P2503 CHARGING SYSTEM VOLTAGE LOW" desc="D404" tmpaddr="0x000161" memaddr="0x000166" bit="3" />
-        <dtcode id="D405" name="P1462 INTERCYLINDER FUEL PRESSURE SENSOR SYSTEM CIRCUIT (LOW)" desc="D405" tmpaddr="0x000161" memaddr="0x000166" bit="4" />
-        <dtcode id="D406" name="P1463 INTERCYLINDER FUEL PRESSURE SENSOR SYSTEM CIRCUIT (HIGH)" desc="D406" tmpaddr="0x000161" memaddr="0x000166" bit="5" />
-        <dtcode id="D407" name="P1028 VVL SYSTEMS 2 PERFORMANCE" desc="D407" tmpaddr="0x000161" memaddr="0x000166" bit="6" />
-        <dtcode id="D408" name="P1026 VVL SYSTEMS 1 PERFORMANCE" desc="D408" tmpaddr="0x000161" memaddr="0x000166" bit="7" />
-        <dtcode id="D409" name="P0958 BACKUP LIGHT RELAY CIRCUIT (HIGH)" desc="D409" tmpaddr="0x000162" memaddr="0x000167" bit="0" />
-        <dtcode id="D410" name="P0957 BACKUP LIGHT RELAY CIRCUIT (LOW)" desc="D410" tmpaddr="0x000162" memaddr="0x000167" bit="1" />
-        <dtcode id="D411" name="P0955 BACKUP LIGHT RELAY CIRCUIT (OPEN)" desc="D411" tmpaddr="0x000162" memaddr="0x000167" bit="2" />
-        <dtcode id="D412" name="P0883 PIVGN POWER SUPPLY CIRCUIT (HIGH)" desc="D412" tmpaddr="0x000162" memaddr="0x000167" bit="3" />
-        <dtcode id="D413" name="P0882 PIVGN POWER SUPPLY CIRCUIT (LOW)" desc="D413" tmpaddr="0x000162" memaddr="0x000167" bit="4" />
-        <dtcode id="D414" name="P0880 PIVGN POWER SUPPLY CIRCUIT" desc="D414" tmpaddr="0x000162" memaddr="0x000167" bit="5" />
-        <dtcode id="D415" name="P0817 STARTER DISABLE CIRCUIT" desc="D415" tmpaddr="0x000162" memaddr="0x000167" bit="6" />
-        <dtcode id="D416" name="P1601 TCM COMMUNICATION MALFUNCTION" desc="D416" tmpaddr="0x000162" memaddr="0x000167" bit="7" />
-        <dtcode id="D417" name="P2004 TGV - INTAKE MANIFOLD RUNNER 1 STUCK OPEN" desc="D417" tmpaddr="0x000163" memaddr="0x000168" bit="0" />
-        <dtcode id="D418" name="P2006 TGV - INTAKE MANIFOLD RUNNER 1 STUCK CLOSED" desc="D418" tmpaddr="0x000163" memaddr="0x000168" bit="1" />
-        <dtcode id="D419" name="P2005 TGV - INTAKE MANIFOLD RUNNER 2 STUCK OPEN" desc="D419" tmpaddr="0x000163" memaddr="0x000168" bit="2" />
-        <dtcode id="D420" name="P2007 TGV - INTAKE MANIFOLD RUNNER 2 STUCK CLOSED" desc="D420" tmpaddr="0x000163" memaddr="0x000168" bit="3" />
-        <dtcode id="D421" name="P2227 BARO. PRESSURE CIRCUIT RANGE/PERF" desc="D421" tmpaddr="0x000163" memaddr="0x000168" bit="4" />
-        <dtcode id="D422" name="P0126 INSUFFICIENT COOLANT TEMP (OPERATION)" desc="D422" tmpaddr="0x000163" memaddr="0x000168" bit="5" />
-        <dtcode id="D423" name="P2229 BARO. PRESSURE CIRCUIT HIGH INPUT" desc="D423" tmpaddr="0x000163" memaddr="0x000168" bit="6" />
-        <dtcode id="D424" name="P2228 BARO. PRESSURE CIRCUIT LOW INPUT" desc="D424" tmpaddr="0x000163" memaddr="0x000168" bit="7" />
-        <dtcode id="D425" name="P2016 TGV - INTAKE MANIFOLD RUNNER 1 POS. SENSOR LOW" desc="D425" tmpaddr="0x000164" memaddr="0x000169" bit="0" />
-        <dtcode id="D426" name="P2017 TGV - INTAKE MANIFOLD RUNNER 1 POS. SENSOR HIGH" desc="D426" tmpaddr="0x000164" memaddr="0x000169" bit="1" />
-        <dtcode id="D427" name="P2021 TGV - INTAKE MANIFOLD RUNNER 2 POS. SENSOR LOW" desc="D427" tmpaddr="0x000164" memaddr="0x000169" bit="2" />
-        <dtcode id="D428" name="P2022 TGV - INTAKE MANIFOLD RUNNER 2 POS. SENSOR HIGH" desc="D428" tmpaddr="0x000164" memaddr="0x000169" bit="3" />
-        <dtcode id="D429" name="P2009 TGV - INTAKE MANIFOLD RUNNER 1 CIRCUIT LOW" desc="D429" tmpaddr="0x000164" memaddr="0x000169" bit="4" />
-        <dtcode id="D430" name="P2012 TGV - INTAKE MANIFOLD RUNNER 2 CIRCUIT LOW" desc="D430" tmpaddr="0x000164" memaddr="0x000169" bit="5" />
-        <dtcode id="D431" name="P2008 TGV - INTAKE MANIFOLD RUNNER 1 CIRCUIT OPEN" desc="D431" tmpaddr="0x000164" memaddr="0x000169" bit="6" />
-        <dtcode id="D432" name="P2011 TGV - INTAKE MANIFOLD RUNNER 2 CIRCUIT OPEN" desc="D432" tmpaddr="0x000164" memaddr="0x000169" bit="7" />
-        <dtcode id="D433" name="P1579 REMOTE CONTROL STARTER ABNORMAL" desc="D433" tmpaddr="0x000174" memaddr="0x00017B" bit="0" />
-        <dtcode id="D441" name="P0850 NEUTRAL POSITION SWITCH CIRCUIT" desc="D441" tmpaddr="0x000175" memaddr="0x00017C" bit="0" />
-        <dtcode id="D442" name="P1721 DCCD ENGINE RPM SIGNAL SYSTEM CIRCUIT" desc="D442" tmpaddr="0x000175" memaddr="0x00017C" bit="1" />
-        <dtcode id="D443" name="P1720 DCCD CAN SYSTEM CIRCUIT" desc="D443" tmpaddr="0x000175" memaddr="0x00017C" bit="2" />
-        <dtcode id="D444" name="P1765 YAW RATE &amp; SIDE G SENSOR REFERENCE SYSTEM CIRCUIT" desc="D444" tmpaddr="0x000175" memaddr="0x00017C" bit="3" />
-        <dtcode id="D445" name="P1764 YAW RATE SENSOR SYSTEM CIRCUIT" desc="D445" tmpaddr="0x000175" memaddr="0x00017C" bit="4" />
-        <dtcode id="D446" name="P1767 DCCD STEERING ANGLE SENSOR CIRCUIT" desc="D446" tmpaddr="0x000175" memaddr="0x00017C" bit="5" />
-        <dtcode id="D447" name="P1723 ATF TEMPERATURE SENSOR 2 CIRCUIT RANGE/PERFORMANCE" desc="D447" tmpaddr="0x000175" memaddr="0x00017C" bit="6" />
-        <dtcode id="D448" name="P0711 TRANSMISSION FLUID TEMPERATURE SENSOR RANGE PERFORMANCE" desc="D448" tmpaddr="0x000175" memaddr="0x00017C" bit="7" />
-        <dtcode id="D449" name="P2444 SECONDARY AIR PUMP 1 STUCK ON B1" desc="D449" tmpaddr="0x000176" memaddr="0x00017D" bit="0" />
-        <dtcode id="D450" name="P0411 SECONDARY AIR PUMP INCORRECT FLOW" desc="D450" tmpaddr="0x000176" memaddr="0x00017D" bit="1" />
-        <dtcode id="D451" name="P0410 SECONDARY AIR PUMP SYSTEM" desc="D451" tmpaddr="0x000176" memaddr="0x00017D" bit="2" />
-        <dtcode id="D452" name="P2431 SECONDARY AIR PUMP CIRCUIT RANGE/PERF" desc="D452" tmpaddr="0x000176" memaddr="0x00017D" bit="3" />
-        <dtcode id="D453" name="P2433 SECONDARY AIR PUMP CIRCUIT HIGH" desc="D453" tmpaddr="0x000176" memaddr="0x00017D" bit="4" />
-        <dtcode id="D454" name="P2432 SECONDARY AIR PUMP CIRCUIT LOW" desc="D454" tmpaddr="0x000176" memaddr="0x00017D" bit="5" />
-        <dtcode id="D455" name="P0413 SECONDARY AIR PUMP A OPEN" desc="D455" tmpaddr="0x000176" memaddr="0x00017D" bit="6" />
-        <dtcode id="D456" name="P0418 SECONDARY AIR PUMP RELAY A" desc="D456" tmpaddr="0x000176" memaddr="0x00017D" bit="7" />
-        <dtcode id="D457" name="P0140 O2 SENSOR CIRCUIT RANGE/PERF B1 S2" desc="D457" tmpaddr="0x000177" memaddr="0x00017E" bit="0" />
-        <dtcode id="D458" name="P0160 O2 SENSOR CIRCUIT RANGE/PERF B2 S2" desc="D458" tmpaddr="0x000177" memaddr="0x00017E" bit="1" />
-        <dtcode id="D459" name="P0146 O2 SENSOR CIRCUIT RANGE/PERF B1 S3" desc="D459" tmpaddr="0x000177" memaddr="0x00017E" bit="2" />
-        <dtcode id="D460" name="P1602 CONTROL MODULE PROGRAMMING ERROR" desc="D460" tmpaddr="0x000177" memaddr="0x00017E" bit="3" />
-        <dtcode id="D461" name="P0414 SECONDARY AIR PUMP A SHORTED" desc="D461" tmpaddr="0x000177" memaddr="0x00017E" bit="4" />
-        <dtcode id="D462" name="P1418 SECONDARY AIR PUMP CIRCUIT SHORTED" desc="D462" tmpaddr="0x000177" memaddr="0x00017E" bit="5" />
-        <dtcode id="D463" name="P0018 CRANKSHAFT/CAMSHAFT CORRELATION 2A" desc="D463" tmpaddr="0x000177" memaddr="0x00017E" bit="6" />
-        <dtcode id="D464" name="P0016 CRANKSHAFT/CAMSHAFT CORRELATION 1A" desc="D464" tmpaddr="0x000177" memaddr="0x00017E" bit="7" />
-        <dtcode id="D465" name="P0602 CONTROL MODULE PROG. ERROR" desc="D465" tmpaddr="0x000178" memaddr="0x00017F" bit="0" />
-        <dtcode id="D466" name="P1410 SECONDARY AIR PUMP VALVE STUCK OPEN" desc="D466" tmpaddr="0x000178" memaddr="0x00017F" bit="1" />
-        <dtcode id="D467" name="P2443 SECONDARY AIR PUMP 2 STUCK CLOSED" desc="D467" tmpaddr="0x000178" memaddr="0x00017F" bit="2" />
-        <dtcode id="D468" name="P2442 SECONDARY AIR PUMP VALVE 2 STUCK OPEN" desc="D468" tmpaddr="0x000178" memaddr="0x00017F" bit="3" />
-        <dtcode id="D469" name="P2441 SECONDARY AIR PUMP VALVE 1 STUCK CLOSED" desc="D469" tmpaddr="0x000178" memaddr="0x00017F" bit="4" />
-        <dtcode id="D470" name="P2440 SECONDARY AIR PUMP VALVE 1 STUCK OPEN" desc="D470" tmpaddr="0x000178" memaddr="0x00017F" bit="5" />
-        <dtcode id="D471" name="P0417 SECONDARY AIR PUMP B SHORTED" desc="D471" tmpaddr="0x000178" memaddr="0x00017F" bit="6" />
-        <dtcode id="D472" name="P0416 SECONDARY AIR PUMP B OPEN" desc="D472" tmpaddr="0x000178" memaddr="0x00017F" bit="7" />
-        <dtcode id="D473" name="P0024 EXHAUST AVCS SYSTEM 2 RANGE/PERF" desc="D473" tmpaddr="0x000179" memaddr="0x000180" bit="0" />
-        <dtcode id="D474" name="P0014 EXHAUST AVCS SYSTEM 1 RANGE/PERF" desc="D474" tmpaddr="0x000179" memaddr="0x000180" bit="1" />
-        <dtcode id="D475" name="P1616 START RELAY LOCK SYSTEM CIRCUIT (LOW)" desc="D475" tmpaddr="0x000179" memaddr="0x000180" bit="2" />
-        <dtcode id="D476" name="P1520 IMRC CIRCUIT MALFUNCTION" desc="D476" tmpaddr="0x000179" memaddr="0x000180" bit="3" />
-        <dtcode id="D477" name="P1519 IMRC STUCK CLOSED" desc="D477" tmpaddr="0x000179" memaddr="0x000180" bit="4" />
-        <dtcode id="D478" name="P0441 EVAP INCORRECT PURGE FLOW" desc="D478" tmpaddr="0x000179" memaddr="0x000180" bit="5" />
-        <dtcode id="D479" name="P2419 EVAP SWITCHING VALVE LOW" desc="D479" tmpaddr="0x000179" memaddr="0x000180" bit="6" />
-        <dtcode id="D480" name="P2420 EVAP SWITCHING VALVE HIGH" desc="D480" tmpaddr="0x000179" memaddr="0x000180" bit="7" />
-        <dtcode id="D481" name="P2634 SUB FUEL PUMP RELAY (HIGH)" desc="D481" tmpaddr="0x00017A" memaddr="0x000181" bit="0" />
-        <dtcode id="D482" name="P2633 SUB FUEL PUMP RELAY (LOW)" desc="D482" tmpaddr="0x00017A" memaddr="0x000181" bit="1" />
-        <dtcode id="D485" name="P0091 FUEL PRESSURE REGULATOR 1 CONTROL LOW" desc="D485" tmpaddr="0x00017A" memaddr="0x000181" bit="4" />
-        <dtcode id="D486" name="P0092 FUEL PRESSURE REGULATOR 1 CONTROL HIGH" desc="D486" tmpaddr="0x00017A" memaddr="0x000181" bit="5" />
-        <dtcode id="D487" name="P0019 CRANK/CAM TIMING B FAILURE 2" desc="D487" tmpaddr="0x00017A" memaddr="0x000181" bit="6" />
-        <dtcode id="D488" name="P0017 CRANK/CAM TIMING B FAILURE 1" desc="D488" tmpaddr="0x00017A" memaddr="0x000181" bit="7" />
-        <dtcode id="D489" name="P0201 INJECTOR CIRCUIT MALFUNCTION CYLINDER 1" desc="D489" tmpaddr="0x0001C5" memaddr="0x0001CB" bit="0" />
-        <dtcode id="D490" name="P1213 INJECTOR DRIVER LOW CHARGE" desc="D490" tmpaddr="0x0001C5" memaddr="0x0001CB" bit="1" />
-        <dtcode id="D491" name="P2148 INJECTOR DRIVER (SHORT TO POSITIVE)" desc="D491" tmpaddr="0x0001C5" memaddr="0x0001CB" bit="2" />
-        <dtcode id="D492" name="P0704 CLUTCH SWITCH CIRCUIT MALFUNCTION" desc="D492" tmpaddr="0x0001C5" memaddr="0x0001CB" bit="3" />
-        <dtcode id="D493" name="P0096 IAT SENSOR 2 RANGE/PERF" desc="D493" tmpaddr="0x0001C5" memaddr="0x0001CB" bit="4" />
-        <dtcode id="D494" name="P0097 IAT SENSOR 2 CIRCUIT (LOW)" desc="D494" tmpaddr="0x0001C5" memaddr="0x0001CB" bit="5" />
-        <dtcode id="D495" name="P0098 IAT SENSOR 2 CIRCUIT (HIGH)" desc="D495" tmpaddr="0x0001C5" memaddr="0x0001CB" bit="6" />
-        <dtcode id="D496" name="P0116 ECT SENSOR CIRCUIT RANGE/PERF" desc="D496" tmpaddr="0x0001C5" memaddr="0x0001CB" bit="7" />
-        <dtcode id="D497" name="P0088 FUEL RAIL PRESSURE ABNORMAL (TOO HIGH)" desc="D497" tmpaddr="0x0001C6" memaddr="0x0001CC" bit="0" />
-        <dtcode id="D498" name="P0191 FUEL RAIL PRESSURE SENSOR CIRCUIT RANGE/PERF" desc="D498" tmpaddr="0x0001C6" memaddr="0x0001CC" bit="1" />
-        <dtcode id="D499" name="P1214 INJECTOR DRIVER OVER CHARGE" desc="D499" tmpaddr="0x0001C6" memaddr="0x0001CC" bit="2" />
-        <dtcode id="D500" name="P2149 FUEL INJECTOR POWER SUPPLY B OPEN CIRCUIT" desc="D500" tmpaddr="0x0001C6" memaddr="0x0001CC" bit="3" />
-        <dtcode id="D501" name="P2146 FUEL INJECTOR POWER SUPPLY A OPEN CIRCUIT" desc="D501" tmpaddr="0x0001C6" memaddr="0x0001CC" bit="4" />
-        <dtcode id="D502" name="P0204 INJECTOR CIRCUIT MALFUNCTION CYLINDER 4" desc="D502" tmpaddr="0x0001C6" memaddr="0x0001CC" bit="5" />
-        <dtcode id="D503" name="P0203 INJECTOR CIRCUIT MALFUNCTION CYLINDER 3" desc="D503" tmpaddr="0x0001C6" memaddr="0x0001CC" bit="6" />
-        <dtcode id="D504" name="P0202 INJECTOR CIRCUIT MALFUNCTION CYLINDER 2" desc="D504" tmpaddr="0x0001C6" memaddr="0x0001CC" bit="7" />
-        <dtcode id="D505" name="P0093 FUEL SYSTEM LEAK DETECTED LARGE LEAK" desc="D505" tmpaddr="0x00020A" memaddr="0x00020E" bit="0" />
-        <dtcode id="D506" name="P1234 FUEL PRESSURE ABNORMAL (PUMP FAILURE 2)" desc="D506" tmpaddr="0x00020A" memaddr="0x00020E" bit="1" />
-        <dtcode id="D507" name="P1233 FUEL PRESSURE ABNORMAL (PUMP FAILURE 1)" desc="D507" tmpaddr="0x00020A" memaddr="0x00020E" bit="2" />
-        <dtcode id="D508" name="P1232 FUEL PUMP MALFUNCTION" desc="D508" tmpaddr="0x00020A" memaddr="0x00020E" bit="3" />
-        <dtcode id="D509" name="P2635 FUEL PUMP SUCTION CONTROL VALVE STICKS" desc="D509" tmpaddr="0x00020A" memaddr="0x00020E" bit="4" />
-        <dtcode id="D510" name="P0628 FUEL PUMP SUCTION CONTROL VALVE CIRCUIT (SHORT TO GROUND)" desc="D510" tmpaddr="0x00020A" memaddr="0x00020E" bit="5" />
-        <dtcode id="D511" name="P0629 FUEL PUMP SUCTION CONTROL VALVE CIRCUIT (SHORT TO POSITIVE)" desc="D511" tmpaddr="0x00020A" memaddr="0x00020E" bit="6" />
-        <dtcode id="D512" name="P0089 FUEL PRESSURE REGULATOR PERF (OPEN PROBLEM)" desc="D512" tmpaddr="0x00020A" memaddr="0x00020E" bit="7" />
-        <dtcode id="D513" name="P0401 EGR FLOW INSUFFICIENT DETECTED" desc="D513" tmpaddr="0x00020B" memaddr="0x00020F" bit="0" />
-        <dtcode id="D514" name="P0402 EGR FLOW EXCESSIVE DETECTED" desc="D514" tmpaddr="0x00020B" memaddr="0x00020F" bit="1" />
-        <dtcode id="D515" name="P0299 BOOST PRESSURE ABNORMAL (UNDER-BOOST)" desc="D515" tmpaddr="0x00020B" memaddr="0x00020F" bit="2" />
-        <dtcode id="D516" name="P0234 BOOST PRESSURE ABNORMAL (OVER-BOOST)" desc="D516" tmpaddr="0x00020B" memaddr="0x00020F" bit="3" />
-        <dtcode id="D517" name="P0606 CPU FAILURE" desc="D517" tmpaddr="0x00020B" memaddr="0x00020F" bit="4" />
-        <dtcode id="D518" name="P1203 INJECTOR CODE INPUT FAILURE" desc="D518" tmpaddr="0x00020B" memaddr="0x00020F" bit="5" />
-        <dtcode id="D519" name="P1202 INJECTOR CODE DATA ABNORMAL" desc="D519" tmpaddr="0x00020B" memaddr="0x00020F" bit="6" />
-        <dtcode id="D520" name="P1201 INJECTOR CODE FAILURE (NOT WRITTEN)" desc="D520" tmpaddr="0x00020B" memaddr="0x00020F" bit="7" />
-        <dtcode id="D521" name="P1382 GLOW RELAY CIRCUIT (HIGH)" desc="D521" tmpaddr="0x00020C" memaddr="0x000210" bit="0" />
-        <dtcode id="D522" name="P0219 ENGINE OVERSPEED CONDITION" desc="D522" tmpaddr="0x00020C" memaddr="0x000210" bit="1" />
-        <dtcode id="D523" name="P0046 TURBOCHARGER BOOST CONTROL SOLENOID VALVE CIRCUIT RANGE/PERF" desc="D523" tmpaddr="0x00020C" memaddr="0x000210" bit="2" />
-        <dtcode id="D524" name="P0404 EGR OPERATION CIRCUIT ABNORMAL" desc="D524" tmpaddr="0x00020C" memaddr="0x000210" bit="3" />
-        <dtcode id="D525" name="P0403 EGR SYSTEM FAILURE (CIRCUIT DUTY)" desc="D525" tmpaddr="0x00020C" memaddr="0x000210" bit="4" />
-        <dtcode id="D526" name="P0409 EGR POSITION SENSOR PERFORMANCE" desc="D526" tmpaddr="0x00020C" memaddr="0x000210" bit="5" />
-        <dtcode id="D527" name="P0405 EGR POSITION SENSOR CIRCUIT (LOW)" desc="D527" tmpaddr="0x00020C" memaddr="0x000210" bit="6" />
-        <dtcode id="D528" name="P0406 EGR POSITION SENSOR CIRCUIT (HIGH)" desc="D528" tmpaddr="0x00020C" memaddr="0x000210" bit="7" />
-        <dtcode id="D530" name="P2413 EGR VALVE STICKING" desc="D530" tmpaddr="0x00020D" memaddr="0x000211" bit="1" />
-        <dtcode id="D531" name="P1009 SWIRL CONTROL VALVE CIRCUIT (LOW)" desc="D531" tmpaddr="0x00020D" memaddr="0x000211" bit="2" />
-        <dtcode id="D532" name="P1607 MONITORING CIRCUIT ABNORMAL" desc="D532" tmpaddr="0x00020D" memaddr="0x000211" bit="3" />
-        <dtcode id="D533" name="P2147 INJECTOR DRIVER (SHORT TO GROUND)" desc="D533" tmpaddr="0x00020D" memaddr="0x000211" bit="4" />
-        <dtcode id="D534" name="P2010 SWIRL CONTROL VALVE CIRCUIT (HIGH)" desc="D534" tmpaddr="0x00020D" memaddr="0x000211" bit="5" />
-        <dtcode id="D535" name="P0687 ECM/PCM SELF-SHUT RELAY FAILURE" desc="D535" tmpaddr="0x00020D" memaddr="0x000211" bit="6" />
-        <dtcode id="D536" name="P1380 GLOW RELAY CIRCUIT (LOW)" desc="D536" tmpaddr="0x00020D" memaddr="0x000211" bit="7" />
-        <dtcode id="D540" name="P1532 CHARGE CONTROL SYSTEM ABNORMAL" desc="D540" tmpaddr="0x000263" memaddr="0x000268" bit="3" />
-        <dtcode id="D541" name="P1531 BATTERY CURRENT SENSOR CIRCUIT (HIGH)" desc="D541" tmpaddr="0x000263" memaddr="0x000268" bit="4" />
-        <dtcode id="D542" name="P1530 BATTERY CURRENT SENSOR CIRCUIT (LOW)" desc="D542" tmpaddr="0x000263" memaddr="0x000268" bit="5" />
-        <dtcode id="D543" name="P0517 BATTERY TEMPERATURE SENSOR CIRCUIT (HIGH)" desc="D543" tmpaddr="0x000263" memaddr="0x000268" bit="6" />
-        <dtcode id="D544" name="P0516 BATTERY TEMPERATURE SENSOR CIRCUIT (LOW)" desc="D544" tmpaddr="0x000263" memaddr="0x000268" bit="7" />
-        <dtcode id="D545" name="U0422 CAN INVALID DATA RECEIVED FROM BIU" desc="D545" tmpaddr="0x000264" memaddr="0x000269" bit="0" />
-        <dtcode id="D546" name="U0140 CAN LOST COMMUNICATION WITH BIU" desc="D546" tmpaddr="0x000264" memaddr="0x000269" bit="1" />
-        <dtcode id="D547" name="U0402 CAN INVALID DATA RECEIVED FROM TCM" desc="D547" tmpaddr="0x000264" memaddr="0x000269" bit="2" />
-        <dtcode id="D548" name="U0101 CAN LOST COMMUNICATION WITH TCM" desc="D548" tmpaddr="0x000264" memaddr="0x000269" bit="3" />
-        <dtcode id="D549" name="U0416 CAN INVALID DATA RECEIVED FROM VDC" desc="D549" tmpaddr="0x000264" memaddr="0x000269" bit="4" />
-        <dtcode id="D550" name="U0122 CAN LOST COMMUNICATION WITH VDC" desc="D550" tmpaddr="0x000264" memaddr="0x000269" bit="5" />
-        <dtcode id="D551" name="U0073 CAN COMMUNICATION BUS A OFF" desc="D551" tmpaddr="0x000264" memaddr="0x000269" bit="6" />
-        <dtcode id="D552" name="P0161 O2 SENSOR HEATER CIRCUIT MALFUNCTION B2 S2" desc="D552" tmpaddr="0x000264" memaddr="0x000269" bit="7" />
-        <dtcode id="D553" name="P1468 OIL DILUTION" desc="D553" tmpaddr="0x000265" memaddr="0x00026A" bit="0" />
-        <dtcode id="D554" name="P1467 DPF ASH OVERFILL" desc="D554" tmpaddr="0x000265" memaddr="0x00026A" bit="1" />
-        <dtcode id="D555" name="P1466 DPF SUBSTRATE DAMAGED" desc="D555" tmpaddr="0x000265" memaddr="0x00026A" bit="2" />
-        <dtcode id="D556" name="P1465 DPF PARTICULATE OVERFILL" desc="D556" tmpaddr="0x000265" memaddr="0x00026A" bit="3" />
-        <dtcode id="D557" name="P1473 DPF INLET/OUTLET PRESSURE DEVIATION SENSOR (HIGH)" desc="D557" tmpaddr="0x000265" memaddr="0x00026A" bit="4" />
-        <dtcode id="D558" name="P1472 DPF INLET/OUTLET PRESSURE DEVIATION SENSOR (LOW)" desc="D558" tmpaddr="0x000265" memaddr="0x00026A" bit="5" />
-        <dtcode id="D559" name="P2033 EGT SENSOR 2 (HIGH)" desc="D559" tmpaddr="0x000265" memaddr="0x00026A" bit="6" />
-        <dtcode id="D560" name="P2032 EGT SENSOR 2 (LOW)" desc="D560" tmpaddr="0x000265" memaddr="0x00026A" bit="7" />
-        <dtcode id="D567" name="P1471 DPF DIFFERENTIAL PRESSURE SENSOR UPSTREAM PIPING TROUBLE" desc="D567" tmpaddr="0x000266" memaddr="0x00026B" bit="6" />
-        <dtcode id="D568" name="P1469 DPF LIMP-HOME MODE" desc="D568" tmpaddr="0x000266" memaddr="0x00026B" bit="7" />
-        <dtcode id="D569" name="P050B COLD START IGNITION TIMING PERFORMANCE" desc="D569" tmpaddr="0x000267" memaddr="0x00026C" bit="0" />
-        <dtcode id="D570" name="P050A COLD START IDLE AIR CONTROL SYSTEM PERFORMANCE" desc="D570" tmpaddr="0x000267" memaddr="0x00026C" bit="1" />
-        <dtcode id="D571" name="P2610 ECM/PCM INTERNAL ENGINE OFF TIMER PERFORMANCE" desc="D571" tmpaddr="0x000267" memaddr="0x00026C" bit="2" />
-        <dtcode id="D572" name="P2420 EVAP SWITCHING VALVE HIGH" desc="D572" tmpaddr="0x000267" memaddr="0x00026C" bit="3" />
-        <dtcode id="D573" name="P2419 EVAP SWITCHING VALVE LOW" desc="D573" tmpaddr="0x000267" memaddr="0x00026C" bit="4" />
-        <dtcode id="D574" name="P2401 EVAP LEAK DETECTION PUMP CONTROL CIRCUIT LOW" desc="D574" tmpaddr="0x000267" memaddr="0x00026C" bit="5" />
-        <dtcode id="D575" name="P0453 EVAP PRESSURE SENSOR HIGH INPUT" desc="D575" tmpaddr="0x000267" memaddr="0x00026C" bit="6" />
-        <dtcode id="D576" name="P0452 EVAP PRESSURE SENSOR LOW INPUT" desc="D576" tmpaddr="0x000267" memaddr="0x00026C" bit="7" />
-        <dtcode id="D577" name="P015D O2 SENSOR DELAYED RESPONSE LEAN TO RICH B2 S1" desc="D577" tmpaddr="0x0002A6" memaddr="0x0002AB" bit="0" />
-        <dtcode id="D578" name="P015C O2 SENSOR DELAYED RESPONSE RICH TO LEAN B2 S1" desc="D578" tmpaddr="0x0002A6" memaddr="0x0002AB" bit="1" />
-        <dtcode id="D579" name="P015B O2 SENSOR DELAYED RESPONSE LEAN TO RICH B1 S1" desc="D579" tmpaddr="0x0002A6" memaddr="0x0002AB" bit="2" />
-        <dtcode id="D580" name="P015A O2 SENSOR DELAYED RESPONSE RICH TO LEAN B1 S1" desc="D580" tmpaddr="0x0002A6" memaddr="0x0002AB" bit="3" />
-        <dtcode id="D581" name="P014F O2 SENSOR SLOW RESPONSE LEAN TO RICH B2 S1" desc="D581" tmpaddr="0x0002A6" memaddr="0x0002AB" bit="4" />
-        <dtcode id="D582" name="P014E O2 SENSOR SLOW RESPONSE RICH TO LEAN B2 S1" desc="D582" tmpaddr="0x0002A6" memaddr="0x0002AB" bit="5" />
-        <dtcode id="D583" name="P014D O2 SENSOR SLOW RESPONSE LEAN TO RICH B1 S1" desc="D583" tmpaddr="0x0002A6" memaddr="0x0002AB" bit="6" />
-        <dtcode id="D584" name="P014C O2 SENSOR SLOW RESPONSE RICH TO LEAN B1 S1" desc="D584" tmpaddr="0x0002A6" memaddr="0x0002AB" bit="7" />
-        <dtcode id="D585" name="P1458 CANISTER PURGE CONTROL SOLENOID VALVE 2 LOW" desc="D585" tmpaddr="0x0002A7" memaddr="0x0002AC" bit="0" />
-        <dtcode id="D586" name="P1451 EVAPORATIVE EMISSION CONT. SYS." desc="D586" tmpaddr="0x0002A7" memaddr="0x0002AC" bit="1" />
-        <dtcode id="D587" name="P1449 EVAPORATIVE EMISSION CONT. SYS. AIR FILTER CLOG" desc="D587" tmpaddr="0x0002A7" memaddr="0x0002AC" bit="2" />
-        <dtcode id="D588" name="P0455 EVAP EMISSION CONTROL SYSTEM LEAK DETECTED (GROSS LEAK)" desc="D588" tmpaddr="0x0002A7" memaddr="0x0002AC" bit="3" />
-        <dtcode id="D589" name="P0451 EVAP PRESSURE SENSOR RANGE/PERF" desc="D589" tmpaddr="0x0002A7" memaddr="0x0002AC" bit="4" />
-        <dtcode id="D590" name="P0441 EVAP INCORRECT PURGE FLOW" desc="D590" tmpaddr="0x0002A7" memaddr="0x0002AC" bit="5" />
-        <dtcode id="D591" name="P219B BANK 2 AFR IMBALANCE" desc="D591" tmpaddr="0x0002A7" memaddr="0x0002AC" bit="6" />
-        <dtcode id="D592" name="P219A BANK 1 AFR IMBALANCE" desc="D592" tmpaddr="0x0002A7" memaddr="0x0002AC" bit="7" />
-        <dtcode id="D598" name="P2404 EVAP LEAK DETECTION PUMP SENSE CIRCUIT RANGE/PERF" desc="D598" tmpaddr="0x0002A8" memaddr="0x0002AD" bit="5" />
-        <dtcode id="D599" name="P2402 EVAP LEAK DETECTION PUMP CONTROL CIRCUIT HIGH" desc="D599" tmpaddr="0x0002A8" memaddr="0x0002AD" bit="6" />
-        <dtcode id="D600" name="P1459 CANISTER PURGE CONTROL SOLENOID VALVE 2 HIGH" desc="D600" tmpaddr="0x0002A8" memaddr="0x0002AD" bit="7" />
-        <dtcode id="D601" name="P014B O2 SENSOR DELAYED RESPONSE LEAN TO RICH B2 S2" desc="D601" tmpaddr="0x0002A9" memaddr="0x0002AE" bit="0" />
-        <dtcode id="D602" name="P014A O2 SENSOR DELAYED RESPONSE RICH TO LEAN B2 S2" desc="D602" tmpaddr="0x0002A9" memaddr="0x0002AE" bit="1" />
-        <dtcode id="D603" name="P013F O2 SENSOR DELAYED RESPONSE LEAN TO RICH B1 S2" desc="D603" tmpaddr="0x0002A9" memaddr="0x0002AE" bit="2" />
-        <dtcode id="D604" name="P013E O2 SENSOR DELAYED RESPONSE RICH TO LEAN B1 S2" desc="D604" tmpaddr="0x0002A9" memaddr="0x0002AE" bit="3" />
-        <dtcode id="D605" name="P013D O2 SENSOR SLOW RESPONSE LEAN TO RICH B2 S2" desc="D605" tmpaddr="0x0002A9" memaddr="0x0002AE" bit="4" />
-        <dtcode id="D606" name="P013C O2 SENSOR SLOW RESPONSE RICH TO LEAN B2 S2" desc="D606" tmpaddr="0x0002A9" memaddr="0x0002AE" bit="5" />
-        <dtcode id="D607" name="P013B O2 SENSOR SLOW RESPONSE LEAN TO RICH B1 S2" desc="D607" tmpaddr="0x0002A9" memaddr="0x0002AE" bit="6" />
-        <dtcode id="D608" name="P013A O2 SENSOR SLOW RESPONSE RICH TO LEAN B1 S2" desc="D608" tmpaddr="0x0002A9" memaddr="0x0002AE" bit="7" />
-        <dtcode id="D609" name="P0356 IGNITION COIL F PRIMARY/SECONDARY CIRCUIT MALFUNCTION" desc="D609" tmpaddr="0x0002B6" memaddr="0x0002B8" bit="0" />
-        <dtcode id="D610" name="P0355 IGNITION COIL E PRIMARY/SECONDARY CIRCUIT MALFUNCTION" desc="D610" tmpaddr="0x0002B6" memaddr="0x0002B8" bit="1" />
-        <dtcode id="D611" name="P0354 IGNITION COIL D PRIMARY/SECONDARY CIRCUIT MALFUNCTION" desc="D611" tmpaddr="0x0002B6" memaddr="0x0002B8" bit="2" />
-        <dtcode id="D612" name="P0353 IGNITION COIL C PRIMARY/SECONDARY CIRCUIT MALFUNCTION" desc="D612" tmpaddr="0x0002B6" memaddr="0x0002B8" bit="3" />
-        <dtcode id="D613" name="P0352 IGNITION COIL B PRIMARY/SECONDARY CIRCUIT MALFUNCTION" desc="D613" tmpaddr="0x0002B6" memaddr="0x0002B8" bit="4" />
-        <dtcode id="D614" name="P0351 IGNITION COIL A PRIMARY/SECONDARY CIRCUIT MALFUNCTION" desc="D614" tmpaddr="0x0002B6" memaddr="0x0002B8" bit="5" />
-        <dtcode id="D615" name="P0206 INJECTOR CIRCUIT MALFUNCTION CYLINDER 6" desc="D615" tmpaddr="0x0002B6" memaddr="0x0002B8" bit="6" />
-        <dtcode id="D616" name="P0205 INJECTOR CIRCUIT MALFUNCTION CYLINDER 5" desc="D616" tmpaddr="0x0002B6" memaddr="0x0002B8" bit="7" />
-      </dtcodes>
       <ecuparams>
         <ecuparam id="E1" name="IAM*" desc="E1-KCA = (KA (max) map value * IAM) + FBKC + FLKC. Total Timing = KCA + base timing + timing compensations" target="1">
           <ecu id="1B04400405">
@@ -10164,8 +9520,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E31" name="IAM (4-byte)*" desc="E31-KCA = (KA (max) map value * IAM) + FBKC + FLKC. Total Timing = KCA + base timing + timing compensations" target="1">
-          <ecu id="135291419F">
-            <address length="4">0xFF32D8</address>
+          <ecu id="13521813FF">
+            <address length="4">0xFF2D34</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFF854C</address>
@@ -11085,28 +10441,13 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF329C</address>
           </ecu>
-          <ecu id="73343C4207">
-            <address length="4">0xFF2CC4</address>
-          </ecu>
-          <ecu id="521A355007">
-            <address length="4">0xFF3310</address>
-          </ecu>
-          <ecu id="5222167007">
-            <address length="4">0xFF2E0C</address>
-          </ecu>
-          <ecu id="6C12506007">
-            <address length="4">0xFF3048</address>
-          </ecu>
-          <ecu id="8112587007">
-            <address length="4">0xFF3130</address>
-          </ecu>
           <conversions>
             <conversion units="multiplier" storagetype="float" expr="x" format="0.0000" />
           </conversions>
         </ecuparam>
         <ecuparam id="E32" name="Engine Load (4-Byte)*" desc="E32-This is the current engine load (g/rev) as determined by the ECU." target="1">
-          <ecu id="135291419F">
-            <address length="4">0xFF63FC</address>
+          <ecu id="13521813FF">
+            <address length="4">0xFF65D4</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFA648</address>
@@ -12044,34 +11385,13 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF6400</address>
           </ecu>
-          <ecu id="73343C4207">
-            <address length="4">0xFF657C</address>
-          </ecu>
-          <ecu id="521A355007">
-            <address length="4">0xFF6C44</address>
-          </ecu>
-          <ecu id="5222167007">
-            <address length="4">0xFF6498</address>
-          </ecu>
-          <ecu id="3722047206">
-            <address length="4">0xFFAF74</address>
-          </ecu>
-          <ecu id="3722057206">
-            <address length="4">0xFFAF74</address>
-          </ecu>
-          <ecu id="6C12506007">
-            <address length="4">0xFF65D0</address>
-          </ecu>
-          <ecu id="8112587007">
-            <address length="4">0xFF63F0</address>
-          </ecu>
           <conversions>
             <conversion units="g/rev" storagetype="float" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E33" name="CL/OL Fueling*" desc="E33-Fuel system status. [8 = CL (normal)][10 = OL (normal)][7 = OL insufficient ECT][14 = OL due to system failure]" target="1">
-          <ecu id="135291419F">
-            <address>0xFFB141</address>
+          <ecu id="13521813FF">
+            <address>0xFF9CF1</address>
           </ecu>
           <ecu id="2E12495106">
             <address>0xFFBFED</address>
@@ -12970,31 +12290,13 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address>0xFFB1E9</address>
           </ecu>
-          <ecu id="73343C4207">
-            <address>0xFF9EED</address>
-          </ecu>
-          <ecu id="521A355007">
-            <address>0xFFA385</address>
-          </ecu>
-          <ecu id="3722047206">
-            <address>0xFFCAB1</address>
-          </ecu>
-          <ecu id="3722057206">
-            <address>0xFFCAB1</address>
-          </ecu>
-          <ecu id="6C12506007">
-            <address>0xFFA3F1</address>
-          </ecu>
-          <ecu id="8112587007">
-            <address>0xFFA911</address>
-          </ecu>
           <conversions>
             <conversion units="status" expr="x+6" format="0" />
           </conversions>
         </ecuparam>
         <ecuparam id="E34" name="Turbo Dynamics Integral (4-byte)*" desc="E34-Current WG duty corr (ABS) applied by the Turbo Dynamics Integral tables to achieve target boost. Can be Cumulative" target="1">
-          <ecu id="135291419F">
-            <address length="4">0xFF5CAC</address>
+          <ecu id="13521813FF">
+            <address length="4">0xFF5EF4</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFA2B4</address>
@@ -13659,19 +12961,13 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF5CB0</address>
           </ecu>
-          <ecu id="6C12506007">
-            <address length="4">0xFF5EA4</address>
-          </ecu>
-          <ecu id="8112587007">
-            <address length="4">0xFF5CAC</address>
-          </ecu>
           <conversions>
             <conversion units="absolute %" storagetype="float" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E35" name="Boost Error*" desc="E35-Difference between target boost (post-compensations) and actual boost (target boost - actual boost)" target="1">
-          <ecu id="135291419F">
-            <address length="4">0xFF5C9C</address>
+          <ecu id="13521813FF">
+            <address length="4">0xFF5EE4</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFA2A8</address>
@@ -14333,12 +13629,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF5CA0</address>
           </ecu>
-          <ecu id="6C12506007">
-            <address length="4">0xFF5E94</address>
-          </ecu>
-          <ecu id="8112587007">
-            <address length="4">0xFF5C9C</address>
-          </ecu>
           <conversions>
             <conversion units="psi" storagetype="float" expr="x*0.01933677" format="0.00" />
             <conversion units="bar" storagetype="float" expr="x*0.001333224" format="0.000" />
@@ -14347,8 +13637,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E36" name="Target Boost (4-byte)*" desc="E36-Current boost target as determined by the Target Boost table(s). This includes any compensation, if applicable." target="1">
-          <ecu id="135291419F">
-            <address length="4">0xFF5CA4</address>
+          <ecu id="13521813FF">
+            <address length="4">0xFF5EEC</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFA2AC</address>
@@ -15013,12 +14303,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF5CA8</address>
           </ecu>
-          <ecu id="6C12506007">
-            <address length="4">0xFF5E9C</address>
-          </ecu>
-          <ecu id="8112587007">
-            <address length="4">0xFF5CA4</address>
-          </ecu>
           <conversions>
             <conversion units="psi relative sea level" storagetype="float" expr="(x-760)*0.01933677" format="0.00" />
             <conversion units="psi absolute" storagetype="float" expr="x*0.01933677" format="0.00" />
@@ -15029,8 +14313,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E37" name="Turbo Dynamics Proportional (4-byte)*" desc="E37-Current WG duty correction (absolute) that is being applied by the Turbo Dynamics Proportional table." target="1">
-          <ecu id="135291419F">
-            <address length="4">0xFF5CA8</address>
+          <ecu id="13521813FF">
+            <address length="4">0xFF5EF0</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFA2B0</address>
@@ -15695,19 +14979,13 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF5CAC</address>
           </ecu>
-          <ecu id="6C12506007">
-            <address length="4">0xFF5EA0</address>
-          </ecu>
-          <ecu id="8112587007">
-            <address length="4">0xFF5CA8</address>
-          </ecu>
           <conversions>
             <conversion units="absolute %" storagetype="float" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E38" name="Throttle Plate Opening Angle (4-byte)*" desc="E38-Actual throttle plate opening percentage. More accurate than the standard Throttle Opening Angle % SSM parameter." target="1">
-          <ecu id="135291419F">
-            <address length="4">0xFF62E4</address>
+          <ecu id="13521813FF">
+            <address length="4">0xFF64C4</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFA554</address>
@@ -16528,28 +15806,13 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF62E8</address>
           </ecu>
-          <ecu id="73343C4207">
-            <address length="4">0xFF645C</address>
-          </ecu>
-          <ecu id="521A355007">
-            <address length="4">0xFF6B14</address>
-          </ecu>
-          <ecu id="5222167007">
-            <address length="4">0xFF6370</address>
-          </ecu>
-          <ecu id="6C12506007">
-            <address length="4">0xFF64B8</address>
-          </ecu>
-          <ecu id="8112587007">
-            <address length="4">0xFF62D8</address>
-          </ecu>
           <conversions>
             <conversion units="%" storagetype="float" expr="x/.84" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E39" name="Feedback Knock Correction (4-byte)*" desc="E39-This is the temporary negative correction to timing advance in response to what the ECU perceives as knock." target="1">
-          <ecu id="135291419F">
-            <address length="4">0xFF81E0</address>
+          <ecu id="13521813FF">
+            <address length="4">0xFF7C40</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFAFA4</address>
@@ -17469,28 +16732,13 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF821C</address>
           </ecu>
-          <ecu id="73343C4207">
-            <address length="4">0xFF80CC</address>
-          </ecu>
-          <ecu id="521A355007">
-            <address length="4">0xFF8368</address>
-          </ecu>
-          <ecu id="5222167007">
-            <address length="4">0xFF8110</address>
-          </ecu>
-          <ecu id="6C12506007">
-            <address length="4">0xFF7F48</address>
-          </ecu>
-          <ecu id="8112587007">
-            <address length="4">0xFF7EF8</address>
-          </ecu>
           <conversions>
             <conversion units="degrees" storagetype="float" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E40" name="Knock Correction Advance (IAM only)*" desc="E40-Knock Correction Advance (IAM only)" target="1">
-          <ecu id="135291419F">
-            <address length="4">0xFF8250</address>
+          <ecu id="13521813FF">
+            <address length="4">0xFF7CB0</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFAFE8</address>
@@ -18407,28 +17655,13 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF828C</address>
           </ecu>
-          <ecu id="73343C4207">
-            <address length="4">0xFF80F4</address>
-          </ecu>
-          <ecu id="521A355007">
-            <address length="4">0xFF8388</address>
-          </ecu>
-          <ecu id="5222167007">
-            <address length="4">0xFF8138</address>
-          </ecu>
-          <ecu id="6C12506007">
-            <address length="4">0xFF7FB8</address>
-          </ecu>
-          <ecu id="8112587007">
-            <address length="4">0xFF7F68</address>
-          </ecu>
           <conversions>
             <conversion units="degrees" storagetype="float" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E41" name="Fine Learning Knock Correction (4-byte)*" desc="E41-Current learned correction that is being applied which is stored and applied across specific load and rpm ranges." target="1">
-          <ecu id="135291419F">
-            <address length="4">0xFF827C</address>
+          <ecu id="13521813FF">
+            <address length="4">0xFF7CDC</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFB000</address>
@@ -19351,21 +18584,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF82B8</address>
           </ecu>
-          <ecu id="73343C4207">
-            <address length="4">0xFF8124</address>
-          </ecu>
-          <ecu id="521A355007">
-            <address length="4">0xFF8398</address>
-          </ecu>
-          <ecu id="5222167007">
-            <address length="4">0xFF8148</address>
-          </ecu>
-          <ecu id="6C12506007">
-            <address length="4">0xFF7FE4</address>
-          </ecu>
-          <ecu id="8112587007">
-            <address length="4">0xFF7F94</address>
-          </ecu>
           <conversions>
             <conversion units="degrees" storagetype="float" expr="x" format="0.00" />
           </conversions>
@@ -19764,14 +18982,14 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12584007">
             <address length="4">0xFF90A4</address>
           </ecu>
-          <ecu id="8112587007">
-            <address length="4">0xFF8D9C</address>
-          </ecu>
           <conversions>
             <conversion units="multiplier" storagetype="float" expr="x" format="0.000" />
           </conversions>
         </ecuparam>
         <ecuparam id="E43" name="Knock Correction Advance (4-byte)*" desc="E43-Current learned correction that is being applied and which is stored and applied across specific load and rpm ranges." target="1">
+          <ecu id="13521813FF">
+            <address length="4">0xFF7C3C</address>
+          </ecu>
           <ecu id="2F1A357206">
             <address length="4">0xFF6E48</address>
           </ecu>
@@ -20237,25 +19455,13 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12584007">
             <address length="4">0xFF81E8</address>
           </ecu>
-          <ecu id="73343C4207">
-            <address length="4">0xFF80C8</address>
-          </ecu>
-          <ecu id="521A355007">
-            <address length="4">0xFF8364</address>
-          </ecu>
-          <ecu id="5222167007">
-            <address length="4">0xFF810C</address>
-          </ecu>
-          <ecu id="6C12506007">
-            <address length="4">0xFF7F44</address>
-          </ecu>
           <conversions>
             <conversion units="degrees" storagetype="float" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E44" name="A/F Learning #1 A (Stored)*" desc="E44-A/F learned correction to CL and OL fueling across specific air flow ranges based on short-term A/F Correction witin range." target="1">
-          <ecu id="135291419F">
-            <address length="4">0xFF3210</address>
+          <ecu id="13521813FF">
+            <address length="4">0xFF2CA8</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFF84F8</address>
@@ -21193,34 +20399,13 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF31D4</address>
           </ecu>
-          <ecu id="73343C4207">
-            <address length="4">0xFF2C18</address>
-          </ecu>
-          <ecu id="521A355007">
-            <address length="4">0xFF3238</address>
-          </ecu>
-          <ecu id="5222167007">
-            <address length="4">0xFF2D70</address>
-          </ecu>
-          <ecu id="3722047206">
-            <address length="4">0xFF809C</address>
-          </ecu>
-          <ecu id="3722057206">
-            <address length="4">0xFF809C</address>
-          </ecu>
-          <ecu id="6C12506007">
-            <address length="4">0xFF2FB4</address>
-          </ecu>
-          <ecu id="8112587007">
-            <address length="4">0xFF3068</address>
-          </ecu>
           <conversions>
             <conversion units="%" storagetype="float" expr="x*100" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E45" name="A/F Learning #1 B (Stored)*" desc="E45-A/F learned correction to CL and OL fueling across specific air flow ranges based on short-term A/F Correction witin range." target="1">
-          <ecu id="135291419F">
-            <address length="4">0xFF3218</address>
+          <ecu id="13521813FF">
+            <address length="4">0xFF2CB0</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFF8500</address>
@@ -22158,34 +21343,13 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF31DC</address>
           </ecu>
-          <ecu id="73343C4207">
-            <address length="4">0xFF2C20</address>
-          </ecu>
-          <ecu id="521A355007">
-            <address length="4">0xFF3240</address>
-          </ecu>
-          <ecu id="5222167007">
-            <address length="4">0xFF2D78</address>
-          </ecu>
-          <ecu id="3722047206">
-            <address length="4">0xFF80A4</address>
-          </ecu>
-          <ecu id="3722057206">
-            <address length="4">0xFF80A4</address>
-          </ecu>
-          <ecu id="6C12506007">
-            <address length="4">0xFF2FBC</address>
-          </ecu>
-          <ecu id="8112587007">
-            <address length="4">0xFF3070</address>
-          </ecu>
           <conversions>
             <conversion units="%" storagetype="float" expr="x*100" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E46" name="A/F Learning #1 C (Stored)*" desc="E46-A/F learned correction to CL and OL fueling across specific air flow ranges based on short-term A/F Correction witin range." target="1">
-          <ecu id="135291419F">
-            <address length="4">0xFF3220</address>
+          <ecu id="13521813FF">
+            <address length="4">0xFF2CB8</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFF8508</address>
@@ -23123,34 +22287,13 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF31E4</address>
           </ecu>
-          <ecu id="73343C4207">
-            <address length="4">0xFF2C28</address>
-          </ecu>
-          <ecu id="521A355007">
-            <address length="4">0xFF3248</address>
-          </ecu>
-          <ecu id="5222167007">
-            <address length="4">0xFF2D80</address>
-          </ecu>
-          <ecu id="3722047206">
-            <address length="4">0xFF80AC</address>
-          </ecu>
-          <ecu id="3722057206">
-            <address length="4">0xFF80AC</address>
-          </ecu>
-          <ecu id="6C12506007">
-            <address length="4">0xFF2FC4</address>
-          </ecu>
-          <ecu id="8112587007">
-            <address length="4">0xFF3078</address>
-          </ecu>
           <conversions>
             <conversion units="%" storagetype="float" expr="x*100" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E47" name="A/F Learning #1 D (Stored)*" desc="E47-A/F learned correction to CL and OL fueling across specific air flow ranges based on short-term A/F Correction witin range." target="1">
-          <ecu id="135291419F">
-            <address length="4">0xFF3228</address>
+          <ecu id="13521813FF">
+            <address length="4">0xFF2CC0</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFF8510</address>
@@ -24088,34 +23231,13 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF31EC</address>
           </ecu>
-          <ecu id="73343C4207">
-            <address length="4">0xFF2C30</address>
-          </ecu>
-          <ecu id="521A355007">
-            <address length="4">0xFF3250</address>
-          </ecu>
-          <ecu id="5222167007">
-            <address length="4">0xFF2D88</address>
-          </ecu>
-          <ecu id="3722047206">
-            <address length="4">0xFF80B4</address>
-          </ecu>
-          <ecu id="3722057206">
-            <address length="4">0xFF80B4</address>
-          </ecu>
-          <ecu id="6C12506007">
-            <address length="4">0xFF2FCC</address>
-          </ecu>
-          <ecu id="8112587007">
-            <address length="4">0xFF3080</address>
-          </ecu>
           <conversions>
             <conversion units="%" storagetype="float" expr="x*100" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E48" name="A/F Learning #1 (4-byte)*" desc="E48-Current A/F Learning being applied. Higher resolution then the standard SSM A/F Learning #1 parameter." target="1">
-          <ecu id="135291419F">
-            <address length="4">0xFF7890</address>
+          <ecu id="13521813FF">
+            <address length="4">0xFF7390</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFAB78</address>
@@ -25050,34 +24172,13 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF78A4</address>
           </ecu>
-          <ecu id="73343C4207">
-            <address length="4">0xFF77EC</address>
-          </ecu>
-          <ecu id="521A355007">
-            <address length="4">0xFF7BA0</address>
-          </ecu>
-          <ecu id="5222167007">
-            <address length="4">0xFF7848</address>
-          </ecu>
-          <ecu id="3722047206">
-            <address length="4">0xFFA8A8</address>
-          </ecu>
-          <ecu id="3722057206">
-            <address length="4">0xFFA8A8</address>
-          </ecu>
-          <ecu id="6C12506007">
-            <address length="4">0xFF7650</address>
-          </ecu>
-          <ecu id="8112587007">
-            <address length="4">0xFF75A8</address>
-          </ecu>
           <conversions>
             <conversion units="%" storagetype="float" expr="x*100" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E49" name="Idle Speed Map Selection*" desc="E49-Current Idle Speed Target MAP being used. 3 table ROM-&gt;[1=A],[2=B],[4=C]. 4 table ROM-&gt;[1=A],[2=B],[3=C],[4=D]" target="1">
-          <ecu id="135291419F">
-            <address>0xFF8964</address>
+          <ecu id="13521813FF">
+            <address>0xFF834C</address>
           </ecu>
           <ecu id="2E12495106">
             <address>0xFFB258</address>
@@ -25892,34 +24993,13 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address>0xFF899C</address>
           </ecu>
-          <ecu id="73343C4207">
-            <address>0xFF8728</address>
-          </ecu>
-          <ecu id="521A355007">
-            <address>0xFF8974</address>
-          </ecu>
-          <ecu id="5222167007">
-            <address>0xFF872C</address>
-          </ecu>
-          <ecu id="3722047206">
-            <address>0xFFB2A8</address>
-          </ecu>
-          <ecu id="3722057206">
-            <address>0xFFB2A8</address>
-          </ecu>
-          <ecu id="6C12506007">
-            <address>0xFF8654</address>
-          </ecu>
-          <ecu id="8112587007">
-            <address>0xFF867C</address>
-          </ecu>
           <conversions>
             <conversion units="raw ecu value" expr="x" format="0" />
           </conversions>
         </ecuparam>
         <ecuparam id="E50" name="Fuel Injector #1 Latency (4-byte)*" desc="E50-Current injector latency as determined by the Injector Latency table." target="1">
-          <ecu id="135291419F">
-            <address length="4">0xFF735C</address>
+          <ecu id="13521813FF">
+            <address length="4">0xFF6F44</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFADAC</address>
@@ -26854,34 +25934,13 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF7378</address>
           </ecu>
-          <ecu id="73343C4207">
-            <address length="4">0xFF7344</address>
-          </ecu>
-          <ecu id="521A355007">
-            <address length="4">0xFF7708</address>
-          </ecu>
-          <ecu id="5222167007">
-            <address length="4">0xFF7458</address>
-          </ecu>
-          <ecu id="3722047206">
-            <address length="4">0xFFA3EC</address>
-          </ecu>
-          <ecu id="3722057206">
-            <address length="4">0xFFA3EC</address>
-          </ecu>
-          <ecu id="6C12506007">
-            <address length="4">0xFF71F0</address>
-          </ecu>
-          <ecu id="8112587007">
-            <address length="4">0xFF7074</address>
-          </ecu>
           <conversions>
             <conversion units="ms" storagetype="float" expr="x*.001" format="0.0000" />
           </conversions>
         </ecuparam>
         <ecuparam id="E51" name="Manifold Absolute Pressure (4-byte)*" desc="E51-MAP is limited to about 37 psi absolute (about 22 psig at sea level). This parameter has no effective limit." target="1">
-          <ecu id="135291419F">
-            <address length="4">0xFF6214</address>
+          <ecu id="13521813FF">
+            <address length="4">0xFF63FC</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFA4C4</address>
@@ -27795,8 +26854,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E52" name="Manifold Relative Sea Level Pressure (4-byte)*" desc="E52-Same as Manifold Absolute Pressure (Direct) except represented as relative pressure with the assumption of sea level." target="1">
-          <ecu id="135291419F">
-            <address length="4">0xFF6214</address>
+          <ecu id="13521813FF">
+            <address length="4">0xFF63FC</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFA4C4</address>
@@ -28734,27 +27793,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF6218</address>
           </ecu>
-          <ecu id="73343C4207">
-            <address length="4">0xFF639C</address>
-          </ecu>
-          <ecu id="521A355007">
-            <address length="4">0xFF6A74</address>
-          </ecu>
-          <ecu id="5222167007">
-            <address length="4">0xFF62A8</address>
-          </ecu>
-          <ecu id="3722047206">
-            <address length="4">0xFFAE48</address>
-          </ecu>
-          <ecu id="3722057206">
-            <address length="4">0xFFAE48</address>
-          </ecu>
-          <ecu id="6C12506007">
-            <address length="4">0xFF63E8</address>
-          </ecu>
-          <ecu id="8112587007">
-            <address length="4">0xFF6208</address>
-          </ecu>
           <conversions>
             <conversion units="psi relative sea level" storagetype="float" expr="(x-760)*0.01933677" format="0.00" />
             <conversion units="bar relative sea level" storagetype="float" expr="(x-760)*0.001333224" format="0.000" />
@@ -28762,8 +27800,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E53" name="Ignition Base Timing*" desc="E53-Current base ignition timing as determined by the Base Timing tables." target="1">
-          <ecu id="135291419F">
-            <address length="4">0xFF7F20</address>
+          <ecu id="13521813FF">
+            <address length="4">0xFF7988</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFAEC8</address>
@@ -29695,34 +28733,13 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF7F38</address>
           </ecu>
-          <ecu id="73343C4207">
-            <address length="4">0xFF7E04</address>
-          </ecu>
-          <ecu id="521A355007">
-            <address length="4">0xFF81E0</address>
-          </ecu>
-          <ecu id="5222167007">
-            <address length="4">0xFF7EA8</address>
-          </ecu>
-          <ecu id="3722047206">
-            <address length="4">0xFFA230</address>
-          </ecu>
-          <ecu id="3722057206">
-            <address length="4">0xFFA230</address>
-          </ecu>
-          <ecu id="6C12506007">
-            <address length="4">0xFF7C90</address>
-          </ecu>
-          <ecu id="8112587007">
-            <address length="4">0xFF7C38</address>
-          </ecu>
           <conversions>
             <conversion units="degrees" storagetype="float" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E54" name="Tip-in Throttle*" desc="E54-This is the current throttle angle change % used as an input by the Throttle Tip-in Enrichment table." target="1">
-          <ecu id="135291419F">
-            <address length="4">0xFF62EC</address>
+          <ecu id="13521813FF">
+            <address length="4">0xFF64D4</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFA558</address>
@@ -30663,34 +29680,13 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF62F0</address>
           </ecu>
-          <ecu id="73343C4207">
-            <address length="4">0xFF646C</address>
-          </ecu>
-          <ecu id="521A355007">
-            <address length="4">0xFF6B24</address>
-          </ecu>
-          <ecu id="5222167007">
-            <address length="4">0xFF6380</address>
-          </ecu>
-          <ecu id="3722047206">
-            <address length="4">0xFFAE70</address>
-          </ecu>
-          <ecu id="3722057206">
-            <address length="4">0xFFAE70</address>
-          </ecu>
-          <ecu id="6C12506007">
-            <address length="4">0xFF64C0</address>
-          </ecu>
-          <ecu id="8112587007">
-            <address length="4">0xFF62E0</address>
-          </ecu>
           <conversions>
             <conversion units="%" storagetype="float" expr="x" format="0.000" />
           </conversions>
         </ecuparam>
         <ecuparam id="E55" name="Tip-in Enrichment (Last Calculated)*" desc="E55-Current (or last) calculated tip-in enrichment value. The value is  not cleared, effectively shows the last calculated value." target="1">
-          <ecu id="135291419F">
-            <address length="4">0xFF7C48</address>
+          <ecu id="13521813FF">
+            <address length="4">0xFF76DC</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFACEC</address>
@@ -31619,34 +30615,13 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF7C5C</address>
           </ecu>
-          <ecu id="73343C4207">
-            <address length="4">0xFF7A8C</address>
-          </ecu>
-          <ecu id="521A355007">
-            <address length="4">0xFF7EF8</address>
-          </ecu>
-          <ecu id="5222167007">
-            <address length="4">0xFF7BBC</address>
-          </ecu>
-          <ecu id="3722047206">
-            <address length="4">0xFFAAF0</address>
-          </ecu>
-          <ecu id="3722057206">
-            <address length="4">0xFFAAF0</address>
-          </ecu>
-          <ecu id="6C12506007">
-            <address length="4">0xFF79E4</address>
-          </ecu>
-          <ecu id="8112587007">
-            <address length="4">0xFF7960</address>
-          </ecu>
           <conversions>
             <conversion units="raw ecu value" storagetype="float" expr="x" format="0" />
           </conversions>
         </ecuparam>
         <ecuparam id="E56" name="Requested Torque*" desc="E56-Current requested torque which is used as an input to the Target Throttle Plate Position (Requested Torque) table." target="1">
-          <ecu id="135291419F">
-            <address length="4">0xFF854C</address>
+          <ecu id="13521813FF">
+            <address length="4">0xFF7FA4</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFB0E0</address>
@@ -32572,34 +31547,13 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF8584</address>
           </ecu>
-          <ecu id="73343C4207">
-            <address length="4">0xFF8494</address>
-          </ecu>
-          <ecu id="521A355007">
-            <address length="4">0xFF864C</address>
-          </ecu>
-          <ecu id="5222167007">
-            <address length="4">0xFF83C4</address>
-          </ecu>
-          <ecu id="3722047206">
-            <address length="4">0xFFAEB8</address>
-          </ecu>
-          <ecu id="3722057206">
-            <address length="4">0xFFAEB8</address>
-          </ecu>
-          <ecu id="6C12506007">
-            <address length="4">0xFF82AC</address>
-          </ecu>
-          <ecu id="8112587007">
-            <address length="4">0xFF8264</address>
-          </ecu>
           <conversions>
             <conversion units="raw ecu value" storagetype="float" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E57" name="Target Throttle Plate Position*" desc="E57-Current target throttle plate position as determined by the Target Throttle Plate Position (Requested Torque) table." target="1">
-          <ecu id="135291419F">
-            <address length="4">0xFF8544</address>
+          <ecu id="13521813FF">
+            <address length="4">0xFF7F9C</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFB0DC</address>
@@ -33504,34 +32458,13 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF857C</address>
           </ecu>
-          <ecu id="73343C4207">
-            <address length="4">0xFF84E0</address>
-          </ecu>
-          <ecu id="521A355007">
-            <address length="4">0xFF8634</address>
-          </ecu>
-          <ecu id="5222167007">
-            <address length="4">0xFF83BC</address>
-          </ecu>
-          <ecu id="3722047206">
-            <address length="4">0xFFB0E4</address>
-          </ecu>
-          <ecu id="3722057206">
-            <address length="4">0xFFB0E4</address>
-          </ecu>
-          <ecu id="6C12506007">
-            <address length="4">0xFF82A4</address>
-          </ecu>
-          <ecu id="8112587007">
-            <address length="4">0xFF825C</address>
-          </ecu>
           <conversions>
             <conversion units="%" storagetype="float" expr="x/.84" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E58" name="Fine Learning Table Offset*" desc="E58-Current index position for the Fine Learning Knock Correction table being applied (and potentially adjusted), stored in ram." target="1">
-          <ecu id="135291419F">
-            <address>0xFF8288</address>
+          <ecu id="13521813FF">
+            <address>0xFF7CE8</address>
           </ecu>
           <ecu id="2E12495106">
             <address>0xFFB009</address>
@@ -34433,25 +33366,13 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address>0xFF82C4</address>
           </ecu>
-          <ecu id="521A355007">
-            <address>0xFF83AE</address>
-          </ecu>
-          <ecu id="5222167007">
-            <address>0xFF8162</address>
-          </ecu>
-          <ecu id="6C12506007">
-            <address>0xFF7FF0</address>
-          </ecu>
-          <ecu id="8112587007">
-            <address>0xFF7FA0</address>
-          </ecu>
           <conversions>
             <conversion units="index position" expr="x+1" format="0" />
           </conversions>
         </ecuparam>
         <ecuparam id="E59" name="Gear (Calculated)*" desc="E59-Current manual transmission gear selection as estimated by the ECU based on vehicle speed and RPM." target="1">
-          <ecu id="135291419F">
-            <address>0xFF6835</address>
+          <ecu id="13521813FF">
+            <address>0xFF69FD</address>
           </ecu>
           <ecu id="2E12495106">
             <address>0xFFA865</address>
@@ -35353,34 +34274,13 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address>0xFF6839</address>
           </ecu>
-          <ecu id="73343C4207">
-            <address>0xFF69DA</address>
-          </ecu>
-          <ecu id="521A355007">
-            <address>0xFF7005</address>
-          </ecu>
-          <ecu id="5222167007">
-            <address>0xFF6825</address>
-          </ecu>
-          <ecu id="3722047206">
-            <address>0xFFB09D</address>
-          </ecu>
-          <ecu id="3722057206">
-            <address>0xFFB09D</address>
-          </ecu>
-          <ecu id="6C12506007">
-            <address>0xFF69D9</address>
-          </ecu>
-          <ecu id="8112587007">
-            <address>0xFF6809</address>
-          </ecu>
           <conversions>
             <conversion units="position" expr="x" format="0" />
           </conversions>
         </ecuparam>
         <ecuparam id="E60" name="Fuel Injector #1 Pulse Width (4-byte)*" desc="E60-Fuel Injector #1 PW with higher resolution. Note: This parameter does not include latency unlike the standard parameter." target="1">
-          <ecu id="135291419F">
-            <address length="4">0xFF7DA8</address>
+          <ecu id="13521813FF">
+            <address length="4">0xFF782C</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFAD98</address>
@@ -36312,34 +35212,13 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF7DC0</address>
           </ecu>
-          <ecu id="73343C4207">
-            <address length="4">0xFF7C88</address>
-          </ecu>
-          <ecu id="521A355007">
-            <address length="4">0xFF8010</address>
-          </ecu>
-          <ecu id="5222167007">
-            <address length="4">0xFF7D18</address>
-          </ecu>
-          <ecu id="3722047206">
-            <address length="4">0xFFA3D8</address>
-          </ecu>
-          <ecu id="3722057206">
-            <address length="4">0xFFA3D8</address>
-          </ecu>
-          <ecu id="6C12506007">
-            <address length="4">0xFF7B44</address>
-          </ecu>
-          <ecu id="8112587007">
-            <address length="4">0xFF7AC0</address>
-          </ecu>
           <conversions>
             <conversion units="ms" storagetype="float" expr="x*.001" format="0.0000" />
           </conversions>
         </ecuparam>
         <ecuparam id="E61" name="A/F Learning Airflow Range (Current)*" desc="E61-Current stored A/F Learning index position. A value of 1-4 corresponds to airflow ranges A-D respectively." target="1">
-          <ecu id="135291419F">
-            <address>0xFF7897</address>
+          <ecu id="13521813FF">
+            <address>0xFF2CA8</address>
           </ecu>
           <ecu id="2E12495106">
             <address>0xFFAB81</address>
@@ -37271,27 +36150,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address>0xFF78AB</address>
           </ecu>
-          <ecu id="73343C4207">
-            <address>0xFF77F3</address>
-          </ecu>
-          <ecu id="521A355007">
-            <address>0xFF7BBB</address>
-          </ecu>
-          <ecu id="5222167007">
-            <address>0xFF784F</address>
-          </ecu>
-          <ecu id="3722047206">
-            <address>0xFFA8BB</address>
-          </ecu>
-          <ecu id="3722057206">
-            <address>0xFFA8BB</address>
-          </ecu>
-          <ecu id="6C12506007">
-            <address>0xFF7657</address>
-          </ecu>
-          <ecu id="8112587007">
-            <address>0xFF75AF</address>
-          </ecu>
           <conversions>
             <conversion units="offset" expr="x+1" format="0" />
           </conversions>
@@ -37365,9 +36223,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </ecu>
           <ecu id="671B344007">
             <address length="4">0xFF3224</address>
-          </ecu>
-          <ecu id="521A355007">
-            <address length="4">0xFF3258</address>
           </ecu>
           <conversions>
             <conversion units="%" storagetype="float" expr="x*100" format="0.00" />
@@ -37443,9 +36298,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="671B344007">
             <address length="4">0xFF322C</address>
           </ecu>
-          <ecu id="521A355007">
-            <address length="4">0xFF3260</address>
-          </ecu>
           <conversions>
             <conversion units="%" storagetype="float" expr="x*100" format="0.00" />
           </conversions>
@@ -37520,9 +36372,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="671B344007">
             <address length="4">0xFF3234</address>
           </ecu>
-          <ecu id="521A355007">
-            <address length="4">0xFF3268</address>
-          </ecu>
           <conversions>
             <conversion units="%" storagetype="float" expr="x*100" format="0.00" />
           </conversions>
@@ -37596,9 +36445,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </ecu>
           <ecu id="671B344007">
             <address length="4">0xFF323C</address>
-          </ecu>
-          <ecu id="521A355007">
-            <address length="4">0xFF3270</address>
           </ecu>
           <conversions>
             <conversion units="%" storagetype="float" expr="x*100" format="0.00" />
@@ -37677,9 +36523,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="761B347007">
             <address length="4">0xFF80B4</address>
           </ecu>
-          <ecu id="521A355007">
-            <address length="4">0xFF7BA4</address>
-          </ecu>
           <conversions>
             <conversion units="%" storagetype="float" expr="x*100" format="0.00" />
           </conversions>
@@ -37718,6 +36561,9 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E70" name="Primary Wastegate Duty Maximum* (4-byte)*" desc="E70-Current max WG duty as determined by the Max Wastegate Duty table(s) with all WG compensations applied." target="1">
+          <ecu id="13521813FF">
+            <address length="4">0xFF5F08</address>
+          </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFA2D0</address>
           </ecu>
@@ -39905,8 +38751,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E77" name="Primary Wastegate Duty Maximum* (4-byte)*" desc="E77-Current max WG duty as determined by the Max Wastegate Duty table(s) with all WG compensations applied." target="1">
-          <ecu id="135291419F">
-            <address length="4">0xFF5CC0</address>
+          <ecu id="13521813FF">
+            <address length="4">0xFF5F08</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFA2D0</address>
@@ -40564,9 +39410,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </ecu>
           <ecu id="8A12784007">
             <address length="4">0xFF5CC4</address>
-          </ecu>
-          <ecu id="8112587007">
-            <address length="4">0xFF5CC0</address>
           </ecu>
           <conversions>
             <conversion units="%" storagetype="float" expr="x" format="0.000" />
@@ -41731,8 +40574,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E81" name="A/F Correction #1 (4-byte)*" desc="E81-A higher precision alternative to the standard SSM A/F Correction #1 parameter." target="1">
-          <ecu id="135291419F">
-            <address length="4">0xFF76E4</address>
+          <ecu id="13521813FF">
+            <address length="4">0xFF7210</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFAA30</address>
@@ -42664,34 +41507,13 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF7700</address>
           </ecu>
-          <ecu id="73343C4207">
-            <address length="4">0xFF76A0</address>
-          </ecu>
-          <ecu id="521A355007">
-            <address length="4">0xFF77B0</address>
-          </ecu>
-          <ecu id="5222167007">
-            <address length="4">0xFF7718</address>
-          </ecu>
-          <ecu id="3722047206">
-            <address length="4">0xFFA6A8</address>
-          </ecu>
-          <ecu id="3722057206">
-            <address length="4">0xFFA6A8</address>
-          </ecu>
-          <ecu id="6C12506007">
-            <address length="4">0xFF74C0</address>
-          </ecu>
-          <ecu id="8112587007">
-            <address length="4">0xFF73FC</address>
-          </ecu>
           <conversions>
             <conversion units="%" storagetype="float" expr="(x*100)-100" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E82" name="A/F Correction #1 (2-byte)**" desc="E82-A higher precision alternative to the standard SSM A/F Correction #1 parameter." target="1">
-          <ecu id="135291419F">
-            <address length="2">0xFF687A</address>
+          <ecu id="13521813FF">
+            <address length="2">0xFF6A2A</address>
           </ecu>
           <ecu id="2F04015206">
             <address length="2">0xFFBB7E</address>
@@ -43530,34 +42352,13 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="2">0xFF687E</address>
           </ecu>
-          <ecu id="73343C4207">
-            <address length="2">0xFF6F48</address>
-          </ecu>
-          <ecu id="521A355007">
-            <address length="2">0xFF705A</address>
-          </ecu>
-          <ecu id="5222167007">
-            <address length="2">0xFF6CC8</address>
-          </ecu>
-          <ecu id="3722047206">
-            <address length="2">0xFFBCF0</address>
-          </ecu>
-          <ecu id="3722057206">
-            <address length="2">0xFFBCF0</address>
-          </ecu>
-          <ecu id="6C12506007">
-            <address length="2">0xFF6A06</address>
-          </ecu>
-          <ecu id="8112587007">
-            <address length="2">0xFF684E</address>
-          </ecu>
           <conversions>
             <conversion units="%" expr="(x*.01220703)-100" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E83" name="A/F Learning #1 (2-byte)**" desc="E83-Current A/F Learning being applied. Higher resolution then the standard SSM A/F Learning #1 parameter." target="1">
-          <ecu id="135291419F">
-            <address length="2">0xFF687E</address>
+          <ecu id="13521813FF">
+            <address length="2">0xFF6A2E</address>
           </ecu>
           <ecu id="2F04015206">
             <address length="2">0xFFBB80</address>
@@ -44327,31 +43128,13 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="2">0xFF6882</address>
           </ecu>
-          <ecu id="73343C4207">
-            <address length="2">0xFF6F4C</address>
-          </ecu>
-          <ecu id="5222167007">
-            <address length="2">0xFF6CCC</address>
-          </ecu>
-          <ecu id="3722047206">
-            <address length="2">0xFFBCF4</address>
-          </ecu>
-          <ecu id="3722057206">
-            <address length="2">0xFFBCF4</address>
-          </ecu>
-          <ecu id="6C12506007">
-            <address length="2">0xFF6A0A</address>
-          </ecu>
-          <ecu id="8112587007">
-            <address length="2">0xFF6852</address>
-          </ecu>
           <conversions>
             <conversion units="%" expr="(x*.04882812)-50" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E84" name="Primary Open Loop Map Enrichment (4-byte)*" desc="E84-Primary enrichment value based on the Primary Open Loop Fueling table(s) Note: this value is NOT the final fueling target." target="1">
-          <ecu id="135291419F">
-            <address length="4">0xFF79A0</address>
+          <ecu id="13521813FF">
+            <address length="4">0xFF7458</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFABD0</address>
@@ -45283,27 +44066,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF79B8</address>
           </ecu>
-          <ecu id="73343C4207">
-            <address length="4">0xFF78B4</address>
-          </ecu>
-          <ecu id="521A355007">
-            <address length="4">0xFF7D1C</address>
-          </ecu>
-          <ecu id="5222167007">
-            <address length="4">0xFF7958</address>
-          </ecu>
-          <ecu id="3722047206">
-            <address length="4">0xFFAA10</address>
-          </ecu>
-          <ecu id="3722057206">
-            <address length="4">0xFFAA10</address>
-          </ecu>
-          <ecu id="6C12506007">
-            <address length="4">0xFF7760</address>
-          </ecu>
-          <ecu id="8112587007">
-            <address length="4">0xFF76B8</address>
-          </ecu>
           <conversions>
             <conversion units="estimated AFR" storagetype="float" expr="14.7/(1+x)" format="0.00" />
             <conversion units="lambda" storagetype="float" expr="1/(1+x)" format="0.00" />
@@ -45311,8 +44073,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E85" name="Primary Open Loop Map Enrichment (2-byte)**" desc="E85-Primary enrichment value based on the Primary Open Loop Fueling table(s) Note: this value is NOT the final fueling target." target="1">
-          <ecu id="135291419F">
-            <address length="2">0xFF6884</address>
+          <ecu id="13521813FF">
+            <address length="2">0xFF6A32</address>
           </ecu>
           <ecu id="2F04015206">
             <address length="2">0xFFBB84</address>
@@ -46151,27 +44913,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="2">0xFF6888</address>
           </ecu>
-          <ecu id="73343C4207">
-            <address length="2">0xFF6F50</address>
-          </ecu>
-          <ecu id="521A355007">
-            <address length="2">0xFF7088</address>
-          </ecu>
-          <ecu id="5222167007">
-            <address length="2">0xFF6CD2</address>
-          </ecu>
-          <ecu id="3722047206">
-            <address length="2">0xFFBCFC</address>
-          </ecu>
-          <ecu id="3722057206">
-            <address length="2">0xFFBCFC</address>
-          </ecu>
-          <ecu id="6C12506007">
-            <address length="2">0xFF6A10</address>
-          </ecu>
-          <ecu id="8112587007">
-            <address length="2">0xFF6858</address>
-          </ecu>
           <conversions>
             <conversion units="estimated AFR" expr="14.7/(1+(x*.00003051758))" format="0.00" />
             <conversion units="lambda" expr="1/(1+(x*.00003051758))" format="0.00" />
@@ -46179,8 +44920,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E86" name="Engine Load (1-byte)**" desc="E86-This is the current engine load (g/rev) as determined by the ECU." target="1">
-          <ecu id="135291419F">
-            <address>0xFF6895</address>
+          <ecu id="13521813FF">
+            <address>0xFF6A43</address>
           </ecu>
           <ecu id="5112144007">
             <address>0xFF6CDE</address>
@@ -46457,18 +45198,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </ecu>
           <ecu id="8A12784007">
             <address>0xFF6899</address>
-          </ecu>
-          <ecu id="73343C4207">
-            <address>0xFF6F5B</address>
-          </ecu>
-          <ecu id="5222167007">
-            <address>0xFF6CDE</address>
-          </ecu>
-          <ecu id="6C12506007">
-            <address>0xFF6A22</address>
-          </ecu>
-          <ecu id="8112587007">
-            <address>0xFF6869</address>
           </ecu>
           <conversions>
             <conversion units="g/rev" expr="x*.015625" format="0.00" />
@@ -46861,8 +45590,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E88" name="Manifold Absolute Pressure (2-byte)**" desc="E88-MAP is limited to about 37 psi absolute (about 22 psig at sea level). This parameter has no effective limit." target="1">
-          <ecu id="135291419F">
-            <address length="2">0xFF6860</address>
+          <ecu id="13521813FF">
+            <address length="2">0xFF6A10</address>
           </ecu>
           <ecu id="2F0A367306">
             <address length="2">0xFFC3D0</address>
@@ -47572,8 +46301,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E89" name="Manifold Relative Sea Level Pressure (2-byte)**" desc="E89-Same as Manifold Absolute Pressure (Direct) except represented as relative pressure with the assumption of sea level." target="1">
-          <ecu id="135291419F">
-            <address length="2">0xFF6860</address>
+          <ecu id="13521813FF">
+            <address length="2">0xFF6A10</address>
           </ecu>
           <ecu id="2F0A367306">
             <address length="2">0xFFC3D0</address>
@@ -48292,21 +47021,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="2">0xFF6864</address>
           </ecu>
-          <ecu id="73343C4207">
-            <address length="2">0xFF6F30</address>
-          </ecu>
-          <ecu id="521A355007">
-            <address length="2">0xFF7070</address>
-          </ecu>
-          <ecu id="5222167007">
-            <address length="2">0xFF6CB0</address>
-          </ecu>
-          <ecu id="6C12506007">
-            <address length="2">0xFF69EC</address>
-          </ecu>
-          <ecu id="8112587007">
-            <address length="2">0xFF6834</address>
-          </ecu>
           <conversions>
             <conversion units="psi relative sea level" expr="(x-760)*0.01933677" format="0.00" />
             <conversion units="bar relative sea level" expr="(x-760)*0.001333224" format="0.000" />
@@ -48315,8 +47029,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E90" name="Target Boost (2-byte)**" desc="E90-Current boost target as determined by the Target Boost table(s). This includes any compensation, if applicable." target="1">
-          <ecu id="135291419F">
-            <address length="2">0xFF6890</address>
+          <ecu id="13521813FF">
+            <address length="2">0xFF6A3E</address>
           </ecu>
           <ecu id="2F12505106">
             <address length="2">0xFF5320</address>
@@ -48882,12 +47596,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="2">0xFF6894</address>
           </ecu>
-          <ecu id="6C12506007">
-            <address length="2">0xFF6A1C</address>
-          </ecu>
-          <ecu id="8112587007">
-            <address length="2">0xFF6864</address>
-          </ecu>
           <conversions>
             <conversion units="psi relative sea level" expr="(x-760)*0.01933677" format="0.00" />
             <conversion units="psi absolute" expr="x*0.01933677" format="0.00" />
@@ -48898,8 +47606,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E91" name="A/F Sensor #1 (4-byte)*" desc="E91-A higher precision alternative to the standard SSM A/F Sensor #1 (AFR/lambda) parameter." target="1">
-          <ecu id="135291419F">
-            <address length="4">0xFF6560</address>
+          <ecu id="13521813FF">
+            <address length="4">0xFF6730</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFA720</address>
@@ -49828,27 +48536,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF6564</address>
           </ecu>
-          <ecu id="73343C4207">
-            <address length="4">0xFF672C</address>
-          </ecu>
-          <ecu id="521A355007">
-            <address length="4">0xFF6D38</address>
-          </ecu>
-          <ecu id="5222167007">
-            <address length="4">0xFF6580</address>
-          </ecu>
-          <ecu id="3722047206">
-            <address length="4">0xFFB4D4</address>
-          </ecu>
-          <ecu id="3722057206">
-            <address length="4">0xFFB4D4</address>
-          </ecu>
-          <ecu id="6C12506007">
-            <address length="4">0xFF670C</address>
-          </ecu>
-          <ecu id="8112587007">
-            <address length="4">0xFF6534</address>
-          </ecu>
           <conversions>
             <conversion units="estimated AFR" storagetype="float" expr="x*14.7" format="0.00" />
             <conversion units="lambda" storagetype="float" expr="x" format="0.00" />
@@ -49856,8 +48543,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E92" name="A/F Sensor #1 (2-byte)**" desc="E92-A higher precision alternative to the standard SSM A/F Sensor #1 (AFR/lambda) parameter." target="1">
-          <ecu id="135291419F">
-            <address length="2">0xFF6868</address>
+          <ecu id="13521813FF">
+            <address length="2">0xFF6A18</address>
           </ecu>
           <ecu id="2F04015206">
             <address length="2">0xFFBB74</address>
@@ -50696,27 +49383,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="2">0xFF686C</address>
           </ecu>
-          <ecu id="73343C4207">
-            <address length="2">0xFF6F38</address>
-          </ecu>
-          <ecu id="521A355007">
-            <address length="2">0xFF706A</address>
-          </ecu>
-          <ecu id="5222167007">
-            <address length="2">0xFF6CB8</address>
-          </ecu>
-          <ecu id="3722047206">
-            <address length="2">0xFFBCE0</address>
-          </ecu>
-          <ecu id="3722057206">
-            <address length="2">0xFFBCE0</address>
-          </ecu>
-          <ecu id="6C12506007">
-            <address length="2">0xFF69F4</address>
-          </ecu>
-          <ecu id="8112587007">
-            <address length="2">0xFF683C</address>
-          </ecu>
           <conversions>
             <conversion units="estimated AFR" expr="(x*.0001220703)*14.7" format="0.00" />
             <conversion units="lambda" expr="x*0.0001220703" format="0.00" />
@@ -50724,8 +49390,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E93" name="Throttle Plate Opening Angle (2-byte)**" desc="E93-Actual throttle plate opening percentage. More accurate than the standard Throttle Opening Angle % SSM parameter." target="1">
-          <ecu id="135291419F">
-            <address length="2">0xFF6862</address>
+          <ecu id="13521813FF">
+            <address length="2">0xFF6A12</address>
           </ecu>
           <ecu id="2F12505106">
             <address length="2">0xFF532A</address>
@@ -51297,19 +49963,13 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="2">0xFF6866</address>
           </ecu>
-          <ecu id="6C12506007">
-            <address length="2">0xFF69EE</address>
-          </ecu>
-          <ecu id="8112587007">
-            <address length="2">0xFF6836</address>
-          </ecu>
           <conversions>
             <conversion units="%" expr="x*0.0022706535" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E94" name="Feedback Knock Correction (1-byte)**" desc="E94-This is the temporary negative correction to timing advance in response to what the ECU perceives as knock." target="1">
-          <ecu id="135291419F">
-            <address>0xFF689F</address>
+          <ecu id="13521813FF">
+            <address>0xFF6A4D</address>
           </ecu>
           <ecu id="2F12505106">
             <address>0xFF5334</address>
@@ -51968,25 +50628,13 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address>0xFF68A3</address>
           </ecu>
-          <ecu id="73343C4207">
-            <address>0xFF6F63</address>
-          </ecu>
-          <ecu id="5222167007">
-            <address>0xFF6CE6</address>
-          </ecu>
-          <ecu id="6C12506007">
-            <address>0xFF6A2C</address>
-          </ecu>
-          <ecu id="8112587007">
-            <address>0xFF6873</address>
-          </ecu>
           <conversions>
             <conversion units="degrees" expr="(x*.3515625)-45" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E95" name="Fine Learning Knock Correction (1-byte)**" desc="E95-Current learned correction that is being applied which is stored and applied across specific load and rpm ranges." target="1">
-          <ecu id="135291419F">
-            <address>0xFF68A2</address>
+          <ecu id="13521813FF">
+            <address>0xFF6A50</address>
           </ecu>
           <ecu id="2F12505106">
             <address>0xFF5337</address>
@@ -52645,25 +51293,13 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address>0xFF68A6</address>
           </ecu>
-          <ecu id="73343C4207">
-            <address>0xFF6F66</address>
-          </ecu>
-          <ecu id="5222167007">
-            <address>0xFF6CE9</address>
-          </ecu>
-          <ecu id="6C12506007">
-            <address>0xFF6A2F</address>
-          </ecu>
-          <ecu id="8112587007">
-            <address>0xFF6876</address>
-          </ecu>
           <conversions>
             <conversion units="degrees" expr="(x*.3515625)-45" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E96" name="IAM (1-byte)**" desc="E96-KCA = (KA (max) map value * IAM) + FBKC + FLKC. Total Timing = KCA + base timing + timing compensations" target="1">
-          <ecu id="135291419F">
-            <address>0xFF68A1</address>
+          <ecu id="13521813FF">
+            <address>0xFF6A4F</address>
           </ecu>
           <ecu id="2F12505106">
             <address>0xFF5339</address>
@@ -53322,18 +51958,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address>0xFF68A5</address>
           </ecu>
-          <ecu id="73343C4207">
-            <address>0xFF6F65</address>
-          </ecu>
-          <ecu id="5222167007">
-            <address>0xFF6CE8</address>
-          </ecu>
-          <ecu id="6C12506007">
-            <address>0xFF6A2E</address>
-          </ecu>
-          <ecu id="8112587007">
-            <address>0xFF6875</address>
-          </ecu>
           <conversions>
             <conversion units="multiplier" expr="x*.0625" format="0.0000" />
           </conversions>
@@ -53459,12 +52083,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="62421A4007">
             <address>0xFF71EB</address>
           </ecu>
-          <ecu id="3722047206">
-            <address>0xFFBD05</address>
-          </ecu>
-          <ecu id="3722057206">
-            <address>0xFFBD05</address>
-          </ecu>
           <conversions>
             <conversion units="g/rev" expr="x*.0078125" format="0.00" />
           </conversions>
@@ -53589,12 +52207,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </ecu>
           <ecu id="62421A4007">
             <address length="2">0xFF71C8</address>
-          </ecu>
-          <ecu id="3722047206">
-            <address length="2">0xFFBCD4</address>
-          </ecu>
-          <ecu id="3722057206">
-            <address length="2">0xFFBCD4</address>
           </ecu>
           <conversions>
             <conversion units="psi absolute" expr="(x*0.0003688196892273)-2.9005155" format="0.00" />
@@ -53874,18 +52486,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12584007">
             <address length="2">0xFF684A</address>
           </ecu>
-          <ecu id="73343C4207">
-            <address length="2">0xFF6F40</address>
-          </ecu>
-          <ecu id="5222167007">
-            <address length="2">0xFF6CC0</address>
-          </ecu>
-          <ecu id="3722047206">
-            <address length="2">0xFFBCFE</address>
-          </ecu>
-          <ecu id="3722057206">
-            <address length="2">0xFFBCFE</address>
-          </ecu>
           <conversions>
             <conversion units="ms" expr="x*.004" format="0.000" />
           </conversions>
@@ -53949,9 +52549,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
             <address length="2">0xFF7018</address>
           </ecu>
           <ecu id="621A356007">
-            <address length="2">0xFF7024</address>
-          </ecu>
-          <ecu id="521A355007">
             <address length="2">0xFF7024</address>
           </ecu>
           <conversions>
@@ -54019,9 +52616,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="621A356007">
             <address>0xFF703C</address>
           </ecu>
-          <ecu id="521A355007">
-            <address>0xFF703C</address>
-          </ecu>
           <conversions>
             <conversion units="degrees" expr="(x*0.5)-64" format="0.00" />
           </conversions>
@@ -54085,9 +52679,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
             <address>0xFF7031</address>
           </ecu>
           <ecu id="621A356007">
-            <address>0xFF703D</address>
-          </ecu>
-          <ecu id="521A355007">
             <address>0xFF703D</address>
           </ecu>
           <conversions>
@@ -54155,9 +52746,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="621A356007">
             <address length="2">0xFF7040</address>
           </ecu>
-          <ecu id="521A355007">
-            <address length="2">0xFF7040</address>
-          </ecu>
           <conversions>
             <conversion units="ms" expr="x*.008" format="0.000" />
           </conversions>
@@ -54221,9 +52809,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
             <address length="2">0xFF7036</address>
           </ecu>
           <ecu id="621A356007">
-            <address length="2">0xFF7042</address>
-          </ecu>
-          <ecu id="521A355007">
             <address length="2">0xFF7042</address>
           </ecu>
           <conversions>
@@ -54300,9 +52885,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="761B347007">
             <address length="4">0xFF7E88</address>
           </ecu>
-          <ecu id="521A355007">
-            <address length="4">0xFF77B4</address>
-          </ecu>
           <conversions>
             <conversion units="%" storagetype="float" expr="(x*100)-100" format="0.00" />
           </conversions>
@@ -54377,9 +52959,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="761B347007">
             <address length="2">0xFF70CE</address>
           </ecu>
-          <ecu id="521A355007">
-            <address length="2">0xFF705C</address>
-          </ecu>
           <conversions>
             <conversion units="%" expr="(x*.01220703)-100" format="0.00" />
           </conversions>
@@ -54446,9 +53025,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
             <address length="2">0xFF6B0C</address>
           </ecu>
           <ecu id="621A356007">
-            <address length="2">0xFF705E</address>
-          </ecu>
-          <ecu id="521A355007">
             <address length="2">0xFF705E</address>
           </ecu>
           <conversions>
@@ -54525,9 +53101,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="761B347007">
             <address length="2">0xFF70D6</address>
           </ecu>
-          <ecu id="521A355007">
-            <address length="2">0xFF7060</address>
-          </ecu>
           <conversions>
             <conversion units="%" expr="(x*.04882812)-50" format="0.00" />
           </conversions>
@@ -54601,15 +53174,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </ecu>
           <ecu id="761B347007">
             <address length="4">0xFF68B4</address>
-          </ecu>
-          <ecu id="521A355007">
-            <address length="4">0xFF6D3C</address>
-          </ecu>
-          <ecu id="3722047206">
-            <address length="4">0xFFB4D8</address>
-          </ecu>
-          <ecu id="3722057206">
-            <address length="4">0xFFB4D8</address>
           </ecu>
           <conversions>
             <conversion units="estimated AFR" storagetype="float" expr="x*14.7" format="0.00" />
@@ -54687,9 +53251,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="761B347007">
             <address length="2">0xFF70BA</address>
           </ecu>
-          <ecu id="521A355007">
-            <address length="2">0xFF706C</address>
-          </ecu>
           <conversions>
             <conversion units="estimated AFR" expr="(x*.0001220703)*14.7" format="0.00" />
             <conversion units="lambda" expr="x*0.0001220703" format="0.00" />
@@ -54754,16 +53315,13 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="621A356007">
             <address>0xFF703B</address>
           </ecu>
-          <ecu id="521A355007">
-            <address>0xFF703B</address>
-          </ecu>
           <conversions>
             <conversion units="multiplier" expr="x*.03125" format="0.0000" />
           </conversions>
         </ecuparam>
         <ecuparam id="E112" name="Primary WGDC Maximum (1-byte)**" desc="E112-Current max WG duty as determined by the Max Wastegate Duty table(s) with all WG compensations applied." target="1">
-          <ecu id="135291419F">
-            <address>0xFF68AB</address>
+          <ecu id="13521813FF">
+            <address>0xFF6A59</address>
           </ecu>
           <ecu id="5112504107">
             <address>0xFF6A04</address>
@@ -54948,19 +53506,13 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address>0xFF68AF</address>
           </ecu>
-          <ecu id="6C12506007">
-            <address>0xFF6A38</address>
-          </ecu>
-          <ecu id="8112587007">
-            <address>0xFF687F</address>
-          </ecu>
           <conversions>
             <conversion units="%" expr="x*.3921568" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E113" name="Manifold Relative Pressure (4-byte)*" desc="E113-Actual relative boost pressure and therefore will match a boost gauge regardless of local atmospheric pressure. No limit." target="1">
-          <ecu id="135291419F">
-            <address length="4">0xFF6218</address>
+          <ecu id="13521813FF">
+            <address length="4">0xFF6400</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFA4C8</address>
@@ -55874,27 +54426,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF621C</address>
           </ecu>
-          <ecu id="73343C4207">
-            <address length="4">0xFF63A0</address>
-          </ecu>
-          <ecu id="521A355007">
-            <address length="4">0xFF6A78</address>
-          </ecu>
-          <ecu id="5222167007">
-            <address length="4">0xFF62AC</address>
-          </ecu>
-          <ecu id="3722047206">
-            <address length="4">0xFFAE4C</address>
-          </ecu>
-          <ecu id="3722057206">
-            <address length="4">0xFFAE4C</address>
-          </ecu>
-          <ecu id="6C12506007">
-            <address length="4">0xFF63EC</address>
-          </ecu>
-          <ecu id="8112587007">
-            <address length="4">0xFF620C</address>
-          </ecu>
           <conversions>
             <conversion units="psi relative" storagetype="float" expr="x*0.01933677" format="0.00" />
             <conversion units="bar relative" storagetype="float" expr="x*0.001333224" format="0.000" />
@@ -56401,12 +54932,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </ecu>
           <ecu id="62421A4007">
             <address>0xFF7F70</address>
-          </ecu>
-          <ecu id="3722047206">
-            <address>0xFFADD9</address>
-          </ecu>
-          <ecu id="3722057206">
-            <address>0xFFADD9</address>
           </ecu>
           <conversions>
             <conversion units="count" expr="x" format="0" />
@@ -56931,8 +55456,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E118" name="Knock Correction Advance Max Primary*" desc="E118-Knock Correction Advance Max Primary" target="1">
-          <ecu id="135291419F">
-            <address length="4">0xFF8248</address>
+          <ecu id="13521813FF">
+            <address length="4">0xFF7CA8</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFAFE0</address>
@@ -57264,18 +55789,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF8284</address>
           </ecu>
-          <ecu id="73343C4207">
-            <address length="4">0xFF80F0</address>
-          </ecu>
-          <ecu id="5222167007">
-            <address length="4">0xFF8134</address>
-          </ecu>
-          <ecu id="6C12506007">
-            <address length="4">0xFF7FB0</address>
-          </ecu>
-          <ecu id="8112587007">
-            <address length="4">0xFF7F60</address>
-          </ecu>
           <conversions>
             <conversion units="degrees" storagetype="float" expr="x" format="0.00" />
           </conversions>
@@ -57304,8 +55817,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E120" name="Target Boost Relative (4-byte)*" desc="E120-Target Boost Relative (4-byte)" target="1">
-          <ecu id="135291419F">
-            <address length="4">0xFF5CA0</address>
+          <ecu id="13521813FF">
+            <address length="4">0xFF5EE8</address>
           </ecu>
           <ecu id="4B04505107">
             <address length="4">0xFF6474</address>
@@ -57580,12 +56093,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF5CA4</address>
           </ecu>
-          <ecu id="6C12506007">
-            <address length="4">0xFF5E98</address>
-          </ecu>
-          <ecu id="8112587007">
-            <address length="4">0xFF5CA0</address>
-          </ecu>
           <conversions>
             <conversion units="psi relative" storagetype="float" expr="x*0.01933677" format="0.00" />
             <conversion units="bar relative" storagetype="float" expr="x*0.001333224" format="0.000" />
@@ -57594,8 +56101,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E121" name="Closed Loop Fueling Target (4-byte)*" desc="E121-This is the closed loop fueling lambda target which is used in determining short-term corrections (A/F Correction #1)." target="1">
-          <ecu id="135291419F">
-            <address length="4">0xFF77D8</address>
+          <ecu id="13521813FF">
+            <address length="4">0xFF72F8</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFAA78</address>
@@ -58530,27 +57037,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF77F4</address>
           </ecu>
-          <ecu id="73343C4207">
-            <address length="4">0xFF7774</address>
-          </ecu>
-          <ecu id="521A355007">
-            <address length="4">0xFF77D0</address>
-          </ecu>
-          <ecu id="5222167007">
-            <address length="4">0xFF77E4</address>
-          </ecu>
-          <ecu id="3722047206">
-            <address length="4">0xFFA6CC</address>
-          </ecu>
-          <ecu id="3722057206">
-            <address length="4">0xFFA6CC</address>
-          </ecu>
-          <ecu id="6C12506007">
-            <address length="4">0xFF75A8</address>
-          </ecu>
-          <ecu id="8112587007">
-            <address length="4">0xFF74F0</address>
-          </ecu>
           <conversions>
             <conversion units="estimated AFR" storagetype="float" expr="x*14.7" format="0.00" />
             <conversion units="lambda" storagetype="float" expr="x" format="0.00" />
@@ -58558,8 +57044,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E122" name="Closed Loop Fueling Target (2-byte)*" desc="E122-This is the closed loop fueling lambda target which is used in determining short-term corrections (A/F Correction #1)." target="1">
-          <ecu id="135291419F">
-            <address length="2">0xFF687C</address>
+          <ecu id="13521813FF">
+            <address length="2">0xFF6A2C</address>
           </ecu>
           <ecu id="2F04015206">
             <address length="2">0xFFBB7C</address>
@@ -59404,27 +57890,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="2">0xFF6880</address>
           </ecu>
-          <ecu id="73343C4207">
-            <address length="2">0xFF6F4A</address>
-          </ecu>
-          <ecu id="521A355007">
-            <address length="2">0xFF702A</address>
-          </ecu>
-          <ecu id="5222167007">
-            <address length="2">0xFF6CCA</address>
-          </ecu>
-          <ecu id="3722047206">
-            <address length="2">0xFFBCEE</address>
-          </ecu>
-          <ecu id="3722057206">
-            <address length="2">0xFFBCEE</address>
-          </ecu>
-          <ecu id="6C12506007">
-            <address length="2">0xFF6A08</address>
-          </ecu>
-          <ecu id="8112587007">
-            <address length="2">0xFF6850</address>
-          </ecu>
           <conversions>
             <conversion units="lambda" expr="x*0.0001220703" format="0.00" />
             <conversion units="estimated AFR" expr="x*.001794433" format="0.00" />
@@ -59432,8 +57897,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E123" name="Final Fueling Base (4-byte)*" desc="E123-This is the final fueling multiplier after corrections are applied but before per injector compensation." target="1">
-          <ecu id="135291419F">
-            <address length="4">0xFF731C</address>
+          <ecu id="13521813FF">
+            <address length="4">0xFF6F04</address>
           </ecu>
           <ecu id="2E12495106">
             <address length="4">0xFFA984</address>
@@ -60368,27 +58833,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="4">0xFF7338</address>
           </ecu>
-          <ecu id="73343C4207">
-            <address length="4">0xFF7304</address>
-          </ecu>
-          <ecu id="521A355007">
-            <address length="4">0xFF76A8</address>
-          </ecu>
-          <ecu id="5222167007">
-            <address length="4">0xFF7418</address>
-          </ecu>
-          <ecu id="3722047206">
-            <address length="4">0xFFA3F0</address>
-          </ecu>
-          <ecu id="3722057206">
-            <address length="4">0xFFA3F0</address>
-          </ecu>
-          <ecu id="6C12506007">
-            <address length="4">0xFF71B0</address>
-          </ecu>
-          <ecu id="8112587007">
-            <address length="4">0xFF7034</address>
-          </ecu>
           <conversions>
             <conversion units="lambda" storagetype="float" expr="1/x" format="0.00" />
             <conversion units="estimated AFR" storagetype="float" expr="14.7/x" format="0.00" />
@@ -60396,8 +58840,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E124" name="Final Fueling Base (2-byte)*" desc="E124-This is the final fueling multiplier after corrections are applied but before per injector compensation." target="1">
-          <ecu id="135291419F">
-            <address length="2">0xFF6876</address>
+          <ecu id="13521813FF">
+            <address length="2">0xFF6A26</address>
           </ecu>
           <ecu id="2F04015206">
             <address length="2">0xFFBB78</address>
@@ -61245,27 +59689,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="8A12784007">
             <address length="2">0xFF687A</address>
           </ecu>
-          <ecu id="73343C4207">
-            <address length="2">0xFF6F44</address>
-          </ecu>
-          <ecu id="521A355007">
-            <address length="2">0xFF7026</address>
-          </ecu>
-          <ecu id="5222167007">
-            <address length="2">0xFF6CC4</address>
-          </ecu>
-          <ecu id="3722047206">
-            <address length="2">0xFFBCE6</address>
-          </ecu>
-          <ecu id="3722057206">
-            <address length="2">0xFFBCE6</address>
-          </ecu>
-          <ecu id="6C12506007">
-            <address length="2">0xFF6A02</address>
-          </ecu>
-          <ecu id="8112587007">
-            <address length="2">0xFF684A</address>
-          </ecu>
           <conversions>
             <conversion units="lambda" expr="1/(x*.0004882812)" format="0.00" />
             <conversion units="estimated AFR" expr="14.7/(x*.0004882812)" format="0.00" />
@@ -61273,9 +59696,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E125" name="Timing Compensation IAT A (4-byte)*" desc="E125-The current active IAT A timing compensation after being modified by IAT A Activation table." target="1">
-          <ecu id="135291419F">
-            <address length="4">0xFF7F80</address>
-          </ecu>
           <ecu id="5B42564107">
             <address length="4">0xFF7BC0</address>
           </ecu>
@@ -62134,9 +60554,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E152" name="Map Ratio 1 (Primary)*" desc="E152-The ratio used to determine the portion of specific multiple Cruise and Non-Cruise maps which are combined to determine the target value." target="1">
-          <ecu id="135291419F">
-            <address length="4">0xFF6658</address>
-          </ecu>
           <ecu id="5B025A4007">
             <address length="4">0xFF8D44</address>
           </ecu>
@@ -62529,9 +60946,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E165" name="Knock Sum Cylinder 1*" desc="E165-Knock count associated with cylinder 1" target="1">
-          <ecu id="135291419F">
-            <address>0xFF819D</address>
-          </ecu>
           <ecu id="5B025A4007">
             <address>0xFF7F29</address>
           </ecu>
@@ -62576,9 +60990,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E166" name="Knock Sum Cylinder 2*" desc="E166-Knock count associated with cylinder 2" target="1">
-          <ecu id="135291419F">
-            <address>0xFF819E</address>
-          </ecu>
           <ecu id="5B025A4007">
             <address>0xFF7F2B</address>
           </ecu>
@@ -62623,9 +61034,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E167" name="Knock Sum Cylinder 3*" desc="E167-Knock count associated with cylinder 3" target="1">
-          <ecu id="135291419F">
-            <address>0xFF819F</address>
-          </ecu>
           <ecu id="5B025A4007">
             <address>0xFF7F2A</address>
           </ecu>
@@ -62670,9 +61078,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E168" name="Knock Sum Cylinder 4*" desc="E168-Knock count associated with cylinder 4" target="1">
-          <ecu id="135291419F">
-            <address>0xFF81A0</address>
-          </ecu>
           <ecu id="5B025A4007">
             <address>0xFF7F2C</address>
           </ecu>
@@ -62748,204 +61153,255 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
             <conversion units="raw ecu value" storagetype="float" expr="x" format="0.000" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1100" name="MM SD Mode Switch" desc="" target="1">
-          <ecu id="135291419F">
-            <address length="1">0xFFB9AD</address>
+        <ecuparam id="E1100" name="MM SD Mode Switch" desc="" length="2">
+          <ecu id="13521813FF">
+            <address length="1">0xFFA855</address>
           </ecu>
           <conversions>
             <conversion storagetype="uint8" units="rawdata" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1101" name="MM SD Volumetric Efficiency Direct" desc="" target="1">
-          <ecu id="135291419F">
-            <address length="4">0xFFB9B0</address>
+        <ecuparam id="E1101" name="MM SD Volumetric Efficiency Direct" desc="">
+          <ecu id="13521813FF">
+            <address length="4">0xFFA858</address>
           </ecu>
           <conversions>
             <conversion storagetype="float" units="VE" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1103" name="MM SD Atmospheric Compensation Direct" desc="" target="1">
-          <ecu id="135291419F">
-            <address length="4">0xFFB9BC</address>
+        <ecuparam id="E1102" name="MM SD Airflow Final Output" desc="">
+          <conversions>
+            <conversion storagetype="float" units="g/s" expr="x" format="0.00" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1103" name="MM SD Atmospheric Compensation Direct" desc="">
+          <ecu id="13521813FF">
+            <address length="4">0xFFA864</address>
           </ecu>
           <conversions>
             <conversion storagetype="float" units="Multiplier" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1104" name="MM SD Blending Ratio Direct" desc="" target="1">
-          <ecu id="135291419F">
-            <address length="4">0xFFB9C4</address>
+        <ecuparam id="E1104" name="MM SD Blending Ratio Direct" desc="">
+          <ecu id="13521813FF">
+            <address length="4">0xFFA86C</address>
           </ecu>
           <conversions>
             <conversion storagetype="float" units="ratio" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1105" name="MM SD Airflow Blending Direct" desc="" target="1">
-          <ecu id="135291419F">
-            <address length="4">0xFFB9C8</address>
+        <ecuparam id="E1105" name="MM SD Airflow Blending Direct" desc="">
+          <ecu id="13521813FF">
+            <address length="4">0xFFA870</address>
           </ecu>
           <conversions>
             <conversion storagetype="float" units="g/s" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1106" name="MM SD Airflow Maf Sensor Direct" desc="" target="1">
-          <ecu id="135291419F">
-            <address length="4">0xFFB9B8</address>
+        <ecuparam id="E1106" name="MM SD Airflow Maf Sensor Direct" desc="">
+          <ecu id="13521813FF">
+            <address length="4">0xFFA860</address>
           </ecu>
           <conversions>
             <conversion storagetype="float" units="g/s" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1302" name="MM LC Engaged Signal" desc="" target="1">
-          <ecu id="135291419F">
-            <address length="1">0xFFB9D3</address>
+        <ecuparam id="E1200" name="MM Vehicle Identifier" desc="">
+          <conversions>
+            <conversion storagetype="uint32" units="rawdata" expr="x" format="0.00" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1201" name="MM Auth Pass/Fail" desc="">
+          <conversions>
+            <conversion storagetype="uint8" units="rawdata" expr="x" format="0.00" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1302" name="MM LC Engaged Signal" desc="">
+          <ecu id="13521813FF">
+            <address length="1">0xFFA87B</address>
           </ecu>
           <conversions>
             <conversion storagetype="uint8" units="rawdata" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1303" name="MM FFS Engaged Signal" desc="" target="1">
-          <ecu id="135291419F">
-            <address length="1">0xFFB9D4</address>
+        <ecuparam id="E1303" name="MM FFS Engaged Signal" desc="">
+          <ecu id="13521813FF">
+            <address length="1">0xFFA87C</address>
           </ecu>
           <conversions>
             <conversion storagetype="uint8" units="rawdata" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1304" name="MM FFS Gear Monitor" desc="" target="1">
-          <ecu id="135291419F">
-            <address length="4">0xFFB9D8</address>
+        <ecuparam id="E1304" name="MM FFS Gear Monitor" desc="">
+          <ecu id="13521813FF">
+            <address length="4">0xFFA880</address>
           </ecu>
           <conversions>
             <conversion storagetype="float" units="gear" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1305" name="MM RevLimit Active Cut RPM" desc="" target="1">
-          <ecu id="135291419F">
-            <address length="4">0xFFB9DC</address>
+        <ecuparam id="E1305" name="MM RevLimit Active Cut RPM" desc="">
+          <ecu id="13521813FF">
+            <address length="4">0xFFA884</address>
           </ecu>
           <conversions>
             <conversion storagetype="float" units="RPM" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1306" name="MM RevLimit Active Resume RPM" desc="" target="1">
-          <ecu id="135291419F">
-            <address length="4">0xFFB9E0</address>
+        <ecuparam id="E1306" name="MM RevLimit Active Resume RPM" desc="">
+          <ecu id="13521813FF">
+            <address length="4">0xFFA888</address>
           </ecu>
           <conversions>
             <conversion storagetype="float" units="RPM" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1307" name="MM RedLine Cut RPM" desc="" target="1">
-          <ecu id="135291419F">
-            <address length="4">0xFFB9E4</address>
+        <ecuparam id="E1307" name="MM RedLine Cut RPM" desc="">
+          <ecu id="13521813FF">
+            <address length="4">0xFFA88C</address>
           </ecu>
           <conversions>
             <conversion storagetype="float" units="RPM" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1308" name="MM RedLine Hysteresis" desc="" target="1">
-          <ecu id="135291419F">
-            <address length="4">0xFFB9E8</address>
+        <ecuparam id="E1308" name="MM RedLine Hysteresis" desc="">
+          <ecu id="13521813FF">
+            <address length="4">0xFFA890</address>
           </ecu>
           <conversions>
             <conversion storagetype="float" units="RPM" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1309" name="MM Launch Control RPM" desc="" target="1">
-          <ecu id="135291419F">
-            <address length="4">0xFFB9F0</address>
+        <ecuparam id="E1309" name="MM Launch Control RPM" desc="">
+          <ecu id="13521813FF">
+            <address length="4">0xFFA898</address>
           </ecu>
           <conversions>
             <conversion storagetype="float" units="RPM" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1310" name="MM Launch Control Hysteresis" desc="" target="1">
-          <ecu id="135291419F">
-            <address length="4">0xFFB9F4</address>
+        <ecuparam id="E1310" name="MM Launch Control Hysteresis" desc="">
+          <ecu id="13521813FF">
+            <address length="4">0xFFA89C</address>
           </ecu>
           <conversions>
             <conversion storagetype="float" units="RPM" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1313" name="MM FFS Speed Threshold" desc="" target="1">
-          <ecu id="135291419F">
-            <address length="4">0xFFBA0C</address>
+        <ecuparam id="E1311" name="MM FFS Resume Delta" desc="">
+          <conversions>
+            <conversion storagetype="float" units="RPM" expr="x" format="0.00" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1312" name="MM FFS Resume Target RPM" desc="">
+          <conversions>
+            <conversion storagetype="float" units="RPM" expr="x" format="0.00" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1313" name="MM FFS Speed Threshold" desc="">
+          <ecu id="13521813FF">
+            <address length="4">0xFFA8B4</address>
           </ecu>
           <conversions>
             <conversion storagetype="float" units="rawdata" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1400" name="MM Clutch Flags" desc="" target="1">
-          <ecu id="135291419F">
-            <address length="1" bit="0">0xFF65F4</address>
+        <ecuparam id="E1400" name="MM Clutch Flags" desc="">
+          <ecu id="13521813FF">
+            <address length="1">0xFF67BF</address>
           </ecu>
           <conversions>
             <conversion storagetype="uint8" units="rawdata" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1401" name="MM Brake Flags" desc="" target="1">
-          <ecu id="135291419F">
-            <address length="1" bit="0">0xFF5FCC</address>
+        <ecuparam id="E1401" name="MM Brake Flags" desc="">
+          <ecu id="13521813FF">
+            <address length="1">0xFF61B8</address>
           </ecu>
           <conversions>
             <conversion storagetype="uint8" units="rawdata" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1402" name="MM Cruise Resume Flags" desc="" target="1">
-          <ecu id="135291419F">
-            <address length="1" bit="0">0xFF5FCB</address>
+        <ecuparam id="E1402" name="MM Cruise Resume Flags" desc="">
+          <ecu id="13521813FF">
+            <address length="1">0xFF61B7</address>
           </ecu>
           <conversions>
             <conversion storagetype="uint8" units="rawdata" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1403" name="MM Cruise Coast Flags" desc="" target="1">
-          <ecu id="135291419F">
-            <address length="1" bit="0">0xFF5FCA</address>
+        <ecuparam id="E1403" name="MM Cruise Coast Flags" desc="">
+          <ecu id="13521813FF">
+            <address length="1">0xFF61B6</address>
           </ecu>
           <conversions>
             <conversion storagetype="uint8" units="rawdata" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1102" name="MM SD Airflow SD VE" desc="" target="1">
-          <ecu id="135291419F">
-            <address length="4">0xFFB9B4</address>
+        <ecuparam id="E1102" name="MM SD Airflow SD VE" desc="">
+          <ecu id="13521813FF">
+            <address length="4">0xFFA85C</address>
           </ecu>
           <conversions>
             <conversion storagetype="float" units="g/s" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1312" name="MM FFS Engagement RPM" desc="" target="1">
-          <ecu id="135291419F">
-            <address length="4">0xFFB9F8</address>
+        <ecuparam id="E1312" name="MM FFS Engagement RPM" desc="">
+          <ecu id="13521813FF">
+            <address length="4">0xFFA8A0</address>
           </ecu>
           <conversions>
             <conversion storagetype="float" units="RPM" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1800" name="MM CEL Signal" desc="" target="1">
-          <ecu id="135291419F">
-            <address length="1">0xFFBA10</address>
-          </ecu>
+        <ecuparam id="E1800" name="MM CEL Signal" desc="">
           <conversions>
             <conversion storagetype="uint8" units="rawdata" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1801" name="MM CEL Speed Counter" desc="" target="1">
-          <ecu id="135291419F">
-            <address length="1">0xFFBA15</address>
-          </ecu>
+        <ecuparam id="E1801" name="MM CEL Speed Counter" desc="">
           <conversions>
             <conversion storagetype="uint8" units="rawdata" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E1802" name="MM CEL Flash Counter" desc="" target="1">
-          <ecu id="135291419F">
-            <address length="1">0xFFBA16</address>
-          </ecu>
+        <ecuparam id="E1802" name="MM CEL Flash Counter" desc="">
           <conversions>
             <conversion storagetype="uint8" units="rawdata" expr="x" format="0.00" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1500" name="MM Primary Open Loop Fueling Output" desc="">
+          <conversions>
+            <conversion storagetype="float" units="lambda enrichment" expr="x" format="0.00" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1501" name="MM LC Fueling Enrichment" desc="">
+          <conversions>
+            <conversion storagetype="float" units="lambda enrichment (additive)" expr="x" format="0.00" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1502" name="MM LC Fueling Lock Enrichment" desc="">
+          <conversions>
+            <conversion storagetype="float" units="lambda enrichment" expr="x" format="0.00" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1502" name="MM LC Fueling Mode" desc="">
+          <conversions>
+            <conversion storagetype="uint8" units="fueling mode" expr="x" format="0.00" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1503" name="MM Map Switch Ratio" desc="">
+          <conversions>
+            <conversion storagetype="float" units="ratio" expr="x+1" format="0.00" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1503" name="MM Map Switch Ratio" desc="">
+          <conversions>
+            <conversion storagetype="float" units="ratio" expr="x+1" format="0.00" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1503" name="MM MLC Fueling Enrichment Multiplier" desc="">
+          <conversions>
+            <conversion storagetype="float" units="multiplier" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
       </ecuparams>
