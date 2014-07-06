@@ -218,7 +218,13 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
     <table type="X Axis" storageaddress="11C8DC" />
     <table type="Y Axis" storageaddress="11C908" />
 </table>
-    <table name="Engine Load Limit (Maximum)" storageaddress="4AC6C" />
+    <table name="Engine Load Limit (Maximum)" storageaddress="4AC9C" />
+    <table name="Engine Load Limit B Maximum (RPM)" storageaddress="1044C4" >
+            <table type="Y Axis" storageaddress="1044A0" />
+    </table>
+    <table name="Engine Load Limit C (Maximum) (RPM)" storageaddress="1044FC" >
+            <table type="Y Axis" storageaddress="1044D8" />
+    </table>
     <table name="Engine Load Compensation (MP)" storageaddress="104ED4" sizex="14">
       <table type="X Axis" storageaddress="104E60" />
       <table type="Y Axis" storageaddress="104E98" />
@@ -3382,19 +3388,19 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
       </table>
       <description>This is the maximum allowable engine load. Engine load will be capped at this limit regardless of actual engine load. "Engine Load Limit B Maximum (RPM)" must also be changed as it also impacts the max engine load.</description>
     </table>
-    <table type="2D" name="Engine Load Limit B Maximum (RPM)" category="Mass Airflow / Engine Load" storagetype="uint16" endian="big" sizey="2" userlevel="4">
+    <table type="2D" name="Engine Load Limit B Maximum (RPM)" category="Mass Airflow / Engine Load" storagetype="uint16" endian="big" sizey="9" userlevel="4">
       <scaling units="Engine Load (g/rev)" expression="x*.00006103516" to_byte="x/.00006103516" format="0.00" fineincrement=".01" coarseincrement=".1" />
       <table type="Y Axis" name="Engine Speed" storagetype="float" endian="little" logparam="P8">
         <scaling units="RPM" expression="x" to_byte="x" format="#" fineincrement="50" coarseincrement="100" />
       </table>
       <description>This is the maximum allowable engine load. Engine load will be capped at this limit regardless of actual engine load. "Engine Load Limit A (Maximum)" must also be changed as it also impacts the max engine load.</description>
     </table>
-    <table type="2D" name="Engine Load Limit B (Maximum)" category="Mass Airflow / Engine Load" storagetype="float" endian="little" sizey="1" userlevel="3">
-      <scaling units="Engine Load (g/rev)" expression="x" to_byte="x" format="0.00" fineincrement=".01" coarseincrement=".1" />
-      <table type="Static Y Axis" name="Capped Limit" sizey="1">
-        <data>Maximum</data>
+    <table type="2D" name="Engine Load Limit C (Maximum) (RPM)" category="Mass Airflow / Engine Load" storagetype="uint16" endian="big" sizey="9" userlevel="4">
+      <scaling units="Engine Load (g/rev)" expression="x*.00006103516" to_byte="x/.00006103516" format="0.00" fineincrement=".01" coarseincrement=".1" />
+      <table type="Y Axis" name="Engine Speed" storagetype="float" endian="little" logparam="P8">
+        <scaling units="RPM" expression="x" to_byte="x" format="#" fineincrement="50" coarseincrement="100" />
       </table>
-      <description>This is the maximum allowable engine load under specific conditions. Engine load will be capped at this limit regardless of actual engine load. "Engine Load Limit A (Maximum)" must also be changed as it can also impact the max engine load.</description>
+      <description>This is the maximum allowable engine load. Engine load will be capped at this limit regardless of actual engine load. "Engine Load Limit A (Maximum)" must also be changed as it also impacts the max engine load.</description>
     </table>
     <table type="3D" name="Engine Load Compensation (MP)" category="Mass Airflow / Engine Load" storagetype="uint8" endian="big" sizex="11" sizey="15" userlevel="3">
       <scaling units="Engine Load Compensation (%)" expression="(x*.390625)-50" to_byte="(x+50)/.390625" format="0.0" fineincrement=".2" coarseincrement="1" />
@@ -7624,19 +7630,19 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
       </table>
       <description>no description</description>
     </table>
-    <table type="2D" name="Port Injection MRP Compensation" category="Alpha - BRZ" storagetype="float" endian="big" sizey="16" userlevel="4">
+    <table type="2D" name="Port Injection MRP Compensation" category="Fueling - Injectors" storagetype="float" endian="big" sizey="16" userlevel="4">
       <scaling units="Ratio" expression="x" to_byte="x" format="0.000" fineincrement=".01" coarseincrement=".1" />
-      <table type="Y Axis" name="Manifold Pressure" storagetype="float" endian="little" logparam="E52">
-        <scaling units="psi relative sea level" expression="(x-760)*.01933677" to_byte="(x/.01933677)+760" format="#0.00" fineincrement=".01" coarseincrement=".5" />
+      <table type="Y Axis" name="Manifold Relative Pressure" storagetype="float" endian="little" logparam="E52">
+        <scaling units="psi relative sea level" expression="x*.01933677" to_byte="x/.01933677" format="#0.00" fineincrement=".01" coarseincrement=".5" />
       </table>
-      <description>no description</description>
+      <description>Port injection compensation ratio against manifold relative pressure</description>
     </table>
     <table type="2D" name="Direct Injection Quantity Maximum" category="Alpha - BRZ" storagetype="float" endian="big" sizey="12" userlevel="4">
-      <scaling units="Unknown" expression="x" to_byte="x" format="#" fineincrement=".01" coarseincrement=".1" />
+      <scaling units="Injection Volume (ml)" expression="x/100" to_byte="x*100" format="0.000" fineincrement=".01" coarseincrement=".1" />
       <table type="Y Axis" name="Engine Speed" storagetype="float" endian="big">
         <scaling units="RPM" expression="x" to_byte="x" format="#" fineincrement="10" coarseincrement="100" />
       </table>
-      <description>no description</description>
+      <description>Maximum direct injection volume (ml). If the maximum direct injection volume is hit you need to either increase this value or increase the ratio for the Total Injection Ratio Port maps. If you do not the ecu will simply stop injecting more fuel as it has reached the maxiumum allowance.</description>
     </table>
     <table type="2D" name="Direct Injection Quantity Minimum" category="Alpha - BRZ" storagetype="float" endian="big" sizey="6" userlevel="4">
       <scaling units="Unknown" expression="x" to_byte="x" format="#" fineincrement=".01" coarseincrement=".1" />
