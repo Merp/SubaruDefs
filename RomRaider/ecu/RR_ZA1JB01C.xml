@@ -7602,19 +7602,19 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
       </table>
       <description>no description</description>
     </table>
-    <table type="2D" name="Port Injection MRP Compensation" category="Alpha - BRZ" storagetype="float" endian="big" sizey="16" userlevel="4">
+    <table type="2D" name="Port Injection MRP Compensation" category="Fueling - Injectors" storagetype="float" endian="big" sizey="16" userlevel="4">
       <scaling units="Ratio" expression="x" to_byte="x" format="0.000" fineincrement=".01" coarseincrement=".1" />
-      <table type="Y Axis" name="Manifold Pressure" storagetype="float" endian="little" logparam="E52">
-        <scaling units="psi relative sea level" expression="(x-760)*.01933677" to_byte="(x/.01933677)+760" format="#0.00" fineincrement=".01" coarseincrement=".5" />
+      <table type="Y Axis" name="Manifold Relative Pressure" storagetype="float" endian="little" logparam="E52">
+        <scaling units="psi relative sea level" expression="x*.01933677" to_byte="x/.01933677" format="#0.00" fineincrement=".01" coarseincrement=".5" />
       </table>
-      <description>no description</description>
+      <description>Port injection compensation ratio against manifold relative pressure</description>
     </table>
     <table type="2D" name="Direct Injection Quantity Maximum" category="Alpha - BRZ" storagetype="float" endian="big" sizey="12" userlevel="4">
-      <scaling units="Unknown" expression="x" to_byte="x" format="#" fineincrement=".01" coarseincrement=".1" />
+      <scaling units="Injection Volume (ml)" expression="x/100" to_byte="x*100" format="0.000" fineincrement=".01" coarseincrement=".1" />
       <table type="Y Axis" name="Engine Speed" storagetype="float" endian="big">
         <scaling units="RPM" expression="x" to_byte="x" format="#" fineincrement="10" coarseincrement="100" />
       </table>
-      <description>no description</description>
+      <description>Maximum direct injection volume (ml). If the maximum direct injection volume is hit you need to either increase this value or increase the ratio for the Total Injection Ratio Port maps. If you do not the ecu will simply stop injecting more fuel as it has reached the maxiumum allowance.</description>
     </table>
     <table type="2D" name="Direct Injection Quantity Minimum" category="Alpha - BRZ" storagetype="float" endian="big" sizey="6" userlevel="4">
       <scaling units="Unknown" expression="x" to_byte="x" format="#" fineincrement=".01" coarseincrement=".1" />
