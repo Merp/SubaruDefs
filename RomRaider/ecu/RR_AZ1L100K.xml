@@ -335,7 +335,7 @@
       <table type="X Axis" storageaddress="D0790" />
       <table type="Y Axis" storageaddress="D07DC" />
     </table>
-    <table name="Knock Correction Advance Max Additive B (Knock Conditions)" storageaddress="D0A10" sizex="19">
+    <table name="Knock Correction Advance Max Non-Cruise" storageaddress="D0A10" sizex="19">
       <table type="X Axis" storageaddress="D097C" />
       <table type="Y Axis" storageaddress="D09C8" />
     </table>
@@ -343,7 +343,7 @@
       <table type="X Axis" storageaddress="D0B68" />
       <table type="Y Axis" storageaddress="D0BB4" />
     </table>
-    <table name="Knock Correction Advance Max Non-Cruise" storageaddress="D0DE8" sizex="19">
+    <table name="Knock Correction Advance Max Additive B (Knock Conditions)" storageaddress="D0DE8" sizex="19">
       <table type="X Axis" storageaddress="D0D54" />
       <table type="Y Axis" storageaddress="D0DA0" />
     </table>
@@ -535,6 +535,11 @@
       <table type="X Axis" storageaddress="D4684" />
       <table type="Y Axis" storageaddress="D46C4" />
     </table>
+    <table name="Low Pulse Width Fuel Injector Compensation" storageaddress="C89E0">
+      <table type="Y Axis" storageaddress="C89C0" />
+    </table>
+    <table name="Low pulse width fuel injector compensation maximum RPM" storageaddress="C7DE8" />
+    <table name="Low pulse width fuel injector compensation maximum IPW" storageaddress="C7DEC" />
     <table name="Checksum Fix" storageaddress="FFB80" />
     <table name="Force Pass Readiness Monitors " storageaddress="81BCC" />
     <table name="(P0000) PASS CODE (NO DTC DETECTED)" storageaddress="76BA7" />
@@ -6695,6 +6700,153 @@
         <data>High</data>
       </table>
       <description>These counters determine the RPM count before injectors cut off during overrun.</description>
+    </table>
+    <table type="2D" name="Low Pulse Width Fuel Injector Compensation" category="ALPHA Low PW Injector Comp" storagetype="uint8" endian="big" sizey="8" userlevel="4" logparam="unkn">
+      <scaling units="Injector Pulse Width Compensation (%)" expression="(x*.78125)-100" to_byte="(x+100)/.78125" format="0.00" fineincrement=".01" coarseincrement=".1" />
+      <table type="Y Axis" name="Injector Pulse Width" storagetype="float" endian="big" logparam="unkn">
+        <scaling units="ms" expression="x" to_byte="x" format="#" fineincrement="1" coarseincrement="5" />
+      </table>
+      <description>This compensation is applied to the injector pulsewidth when the RPM and IPW thresholds are met. It is used to compensate for nonlinear injector response at low pulsewidth. This portion of the response is known as the 'knee'</description>
+    </table>
+    <table type="2D" name="Low pulse width fuel injector compensation maximum RPM" category="ALPHA Low PW Injector Comp" storagetype="float" endian="big" sizey="1" userlevel="4">
+      <scaling units="RPM" expression="x" to_byte="x" format="#" fineincrement=".1" coarseincrement=".5" />
+      <table type="Static Y Axis" name="" sizey="1">
+        <data>Engine Speed</data>
+      </table>
+      <description>This is the maximum RPM that the Low Pulse Width Fuel Injector Compensation is applied</description>
+    </table>
+    <table type="2D" name="Low pulse width fuel injector compensation maximum IPW" category="ALPHA Low PW Injector Comp" storagetype="float" endian="big" sizey="1" userlevel="4">
+      <scaling units="BasePulseWidth(ms)" expression="x" to_byte="x" format="#" fineincrement=".1" coarseincrement=".5" />
+      <table type="Static Y Axis" name="" sizey="1">
+        <data>Maximum IPW Limit</data>
+      </table>
+      <description>This is the maximum RPM that the Low Pulse Width Fuel Injector Compensation is applied</description>
+    </table>
+    <table type="2D" name="Hotstart Enrichment Decay Delay" category="ALPHA Hotstart" storagetype="uint16" endian="big" sizey="1" userlevel="4">
+      <scaling units="Counter Cycles" expression="x" to_byte="x" format="#" fineincrement=".1" coarseincrement=".5" />
+      <table type="Static Y Axis" name="" sizey="1">
+        <data>Hotstart Counter Cycles</data>
+      </table>
+      <description>Delay before the Initial Hotstart Enrichment is decayed by the decay step value.</description>
+    </table>
+    <table type="2D" name="Hotstart Enrichment Decay Step" category="ALPHA Hotstart" storagetype="float" endian="big" sizey="1" userlevel="4">
+      <scaling units="Lambda Enrichment (Additive)" expression="x" to_byte="x" format="0.000" fineincrement=".1" coarseincrement=".5" />
+      <table type="Static Y Axis" name="" sizey="1">
+        <data>Step Value</data>
+      </table>
+      <description>Step value that is decayed from the initial enrichment every time the counter increments.</description>
+    </table>
+    <table type="2D" name="Initial Hotstart Enrichment (High)" category="ALPHA Hotstart" storagetype="float" endian="big" sizey="1" userlevel="4">
+      <scaling units="Lambda Enrichment (Additive)" expression="x" to_byte="x" format="0.000" fineincrement=".1" coarseincrement=".5" />
+      <table type="Static Y Axis" name="" sizey="1">
+        <data>Hotstart Enrichment</data>
+      </table>
+      <description>Initial High Enrichment. This is applied when BOTH high enrichment thresholds are met.</description>
+    </table>
+    <table type="2D" name="Hotstart High Enrichment Activation Threshold (Coolant Temperature)" category="ALPHA Hotstart" storagetype="float" endian="big" sizey="1" userlevel="4">
+      <scaling units="DegreesF" expression="(x*1.8)+32" to_byte="(x-32)/1.8" format="0.0" fineincrement="1" coarseincrement="10" />
+      <table type="Static Y Axis" name="" sizey="1">
+        <data>Coolant Temp</data>
+      </table>
+      <description>Minimum Coolant Temperature threshold for high enrichment.</description>
+    </table>
+    <table type="2D" name="Hotstart High Enrichment Activation Threshold (Intake Air Temperature)" category="ALPHA Hotstart" storagetype="float" endian="big" sizey="1" userlevel="4">
+      <scaling units="DegreesF" expression="(x*1.8)+32" to_byte="(x-32)/1.8" format="0.0" fineincrement="1" coarseincrement="10" />
+      <table type="Static Y Axis" name="" sizey="1">
+        <data>Intake Air Temp</data>
+      </table>
+      <description>Minimum Intake Air Temperature threshold for high enrichment.</description>
+    </table>
+    <table type="2D" name="Initial Hotstart Enrichment (Low)" category="ALPHA Hotstart" storagetype="float" endian="big" sizey="1" userlevel="4">
+      <scaling units="Lambda Enrichment (Additive)" expression="x" to_byte="x" format="0.000" fineincrement=".1" coarseincrement=".5" />
+      <table type="Static Y Axis" name="" sizey="1">
+        <data>Hotstart Enrichment</data>
+      </table>
+      <description>Initial Low Enrichment. This is applied when ANY high enrichment threshold is not met AND both low enrichment thresholds are met.</description>
+    </table>
+    <table type="2D" name="Hotstart Low Enrichment Activation Threshold (Coolant Temperature)" category="ALPHA Hotstart" storagetype="float" endian="big" sizey="1" userlevel="4">
+      <scaling units="DegreesF" expression="(x*1.8)+32" to_byte="(x-32)/1.8" format="0.0" fineincrement="1" coarseincrement="10" />
+      <table type="Static Y Axis" name="" sizey="1">
+        <data>Coolant Temp</data>
+      </table>
+      <description>Minimum Coolant Temperature threshold for low enrichment.</description>
+    </table>
+    <table type="2D" name="Hotstart Low Enrichment Activation Threshold (Intake Air Temperature)" category="ALPHA Hotstart" storagetype="float" endian="big" sizey="1" userlevel="4">
+      <scaling units="DegreesF" expression="(x*1.8)+32" to_byte="(x-32)/1.8" format="0.0" fineincrement="1" coarseincrement="10" />
+      <table type="Static Y Axis" name="" sizey="1">
+        <data>Intake Air Temp</data>
+      </table>
+      <description>Minimum Intake Air Temperature threshold for low enrichment.</description>
+    </table>
+    <table type="2D" name="Maximum Non-Idle Hotstart Enrichment (Post Delay)" category="ALPHA Hotstart" storagetype="float" endian="big" sizey="1" userlevel="4">
+      <scaling units="Lambda Enrichment (Additive)" expression="x" to_byte="x" format="0.000" fineincrement=".1" coarseincrement=".5" />
+      <table type="Static Y Axis" name="" sizey="1">
+        <data>Hotstart Enrichment</data>
+      </table>
+      <description>Maximum Non-Idle enrichment after the Hotstart Maximum Non-Idle Enrichment delay.</description>
+    </table>
+    <table type="2D" name="Hotstart Maximum Non-Idle Enrichment Delay" category="ALPHA Hotstart" storagetype="uint16" endian="big" sizey="1" userlevel="4">
+      <scaling units="Counter Cycles" expression="x" to_byte="x" format="#" fineincrement=".1" coarseincrement=".5" />
+      <table type="Static Y Axis" name="" sizey="1">
+        <data>Hotstart Counter Cycles</data>
+      </table>
+      <description>Delay before Maximum Non-Idle Hotstart Enrichment limit is applied.</description>
+    </table>
+    <table type="2D" name="Hotstart Minimum Enrichment Limit Runtime" category="ALPHA Hotstart" storagetype="uint16" endian="big" sizey="1" userlevel="4">
+      <scaling units="Counter Cycles" expression="x" to_byte="x" format="#" fineincrement=".1" coarseincrement=".5" />
+      <table type="Static Y Axis" name="" sizey="1">
+        <data>Hotstart Counter Cycles</data>
+      </table>
+      <description>Determines how long the minimum enrichment limit is enabled.</description>
+    </table>
+    <table type="2D" name="Hotstart Minimum Enrichment (During Delay and Runtime)" category="ALPHA Hotstart" storagetype="float" endian="big" sizey="1" userlevel="4">
+      <scaling units="Lambda Enrichment (Additive)" expression="x" to_byte="x" format="0.000" fineincrement=".1" coarseincrement=".5" />
+      <table type="Static Y Axis" name="" sizey="1">
+        <data>Hotstart Enrichment</data>
+      </table>
+      <description>Minimum enrichment limit that is only active during decay delay and hotstart minimum enrichment runtime.</description>
+    </table>
+    <table type="3D" name="MAF Correction After Start (In Gear)" category="Mass Airflow / Engine Load" storagetype="uint16" endian="big" sizex="11" sizey="8" userlevel="4">
+      <scaling units="g/s" expression="x*0.004577637" to_byte="x/0.004577637" format="0.0" fineincrement="0.1" coarseincrement="1" />
+      <table type="X Axis" name="Coolant Temperature" storagetype="float">
+        <scaling units="DegreesF" expression="(x*1.8)+32" to_byte="(x-32)/1.8" format="0.0" fineincrement="1" coarseincrement="10" />
+      </table>
+      <table type="Y Axis" name="Idle Mode" storagetype="float">
+        <scaling units="Mode Counter" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="5" />
+      </table>
+    </table>
+    <table type="3D" name="MAF Correction After Start (Neutral)" category="Mass Airflow / Engine Load" storagetype="uint16" endian="big" sizex="11" sizey="8" userlevel="4">
+      <scaling units="g/s" expression="x*0.004577637" to_byte="x/0.004577637" format="0.0" fineincrement="0.1" coarseincrement="1" />
+      <table type="X Axis" name="Coolant Temperature" storagetype="float">
+        <scaling units="DegreesF" expression="(x*1.8)+32" to_byte="(x-32)/1.8" format="0.0" fineincrement="1" coarseincrement="10" />
+      </table>
+      <table type="Y Axis" name="Idle Mode" storagetype="float">
+        <scaling units="Mode Counter" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="5" />
+      </table>
+    </table>
+    <table type="2D" name="AF 3 CL Target Compensation Limits" category="ALPHA AF 3 (Rear O2 Sensor)" storagetype="float" endian="little" sizey="2" userlevel="2">
+      <scaling units="Lambda" expression="x" to_byte="x" format="0.00" fineincrement=".01" coarseincrement="1" />
+      <table type="Static Y Axis" name="Limits" sizey="2">
+        <data>High</data>
+        <data>Low</data>
+      </table>
+      <description>Change in target boost in 1st gear at vehicle speeds below the 'Target Boost Compensation (1st Gear) Speed Disable' value.</description>
+    </table>
+    <table type="2D" name="AF 3 Correction Limits" category="ALPHA AF 3 (Rear O2 Sensor)" storagetype="float" endian="little" sizey="2" userlevel="2">
+      <scaling units="%" expression="x*100" to_byte="x/100" format="0.00" fineincrement=".01" coarseincrement="1" />
+      <table type="Static Y Axis" name="Limits" sizey="2">
+        <data>High</data>
+        <data>Low</data>
+      </table>
+      <description>These limits determine the maximum AF #3 Correction (Rear O2 Sensor Feedback) applied during closed loop fueling. By setting them to zero you can disable the effect of the rear O2 sensor on closed loop fueling.</description>
+    </table>
+    <table type="2D" name="AF 3 Learning Limits" category="ALPHA AF 3 (Rear O2 Sensor)" storagetype="float" endian="little" sizey="2" userlevel="2">
+      <scaling units="%" expression="x*100" to_byte="x/100" format="0.00" fineincrement=".01" coarseincrement="1" />
+      <table type="Static Y Axis" name="Limits" sizey="2">
+        <data>High</data>
+        <data>Low</data>
+      </table>
+      <description>These limits determine the maximum AF #3 Correction (Rear O2 Sensor Feedback) applied during closed loop fueling. By setting them to zero you can disable the effect of the rear O2 sensor on closed loop fueling.</description>
     </table>
   </rom>
 </roms>
