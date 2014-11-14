@@ -152,7 +152,6 @@
 		<data name="Enabled" value="01"/>
 	</scaling>
 	<scaling name="MerpModTGVInput" units="raw" toexpr="x*.00003051758" frexpr="x/.00003051758" format="%.2f" min="0" max="1" inc="0.1" storagetype="uint16" endian="big"/>
-	<scaling name="MerpModTGVInput100" units="raw" toexpr="x*0.001525902" frexpr="x/0.001525902" format="%.2f" min="0" max="1" inc="0.1" storagetype="uint16" endian="big"/>
 	<scaling name="MerpModMapSwitchThreshold" units="Volts" toexpr="x" frexpr="x" format="%2.3f" min="0" max="1" inc="0.1" storagetype="float" endian="big"/>
 	<scaling name="MerpModInjectorScaling" units="raw" toexpr="2707090/(x*0.824)" frexpr="(2707090/x)/0.824" format="%.2f" min="0" max="2000" inc="0.1" storagetype="uint16" endian="big"/>
 	<scaling name="MerpModInputMode" storagetype="bloblist">
@@ -686,14 +685,12 @@
 		<table name="Voltage" type="X Axis" elements="11" scaling="volts"/>
 	</table>
 
-	<table name="TGV Left Input Scaling_" category="MerpMod Map Switching" type="2D" level="4" scaling="MerpModTGVInput100">
-		<description>This is the scaling that is applied to the left tgv voltage. Scaled value is used for map blending, switching, or aux inputs</description>
-		<table name="Voltage" type="X Axis" elements="11" scaling="volts"/>
+	<table name="TGV Left Input Multiplier" category="MerpMod Map Switching" type="1D" level="4" scaling="Multiplier">
+		<description>This is the multiplier for TGV Left inputs. The Left TGV input scaling table output value is multiplied by this value.</description>
 	</table>
 
-	<table name="TGV Right Input Scaling_" category="MerpMod Map Switching" type="2D" level="4" scaling="MerpModTGVInput100">
-		<description>This is the scaling that is applied to the right tgv voltage. Scaled value is used for map blending, switching, or aux inputs</description>
-		<table name="Voltage" type="X Axis" elements="11" scaling="volts"/>
+	<table name="TGV Right Input Multiplier" category="MerpMod Map Switching" type="1D" level="4" scaling="Multiplier">
+		<description>This is the multiplier for TGV Right inputs. The Left TGV input scaling table output value is multiplied by this value.</description>
 	</table>
 
 	<table name="TGV Left Input Smoothing Factor" category="MerpMod Map Switching" type="1D" level="4" scaling="MerpModSmoothingFactor">
