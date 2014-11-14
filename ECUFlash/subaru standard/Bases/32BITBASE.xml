@@ -163,6 +163,7 @@
 	</scaling>
 	<scaling name="MerpModMapRatio" units="raw" toexpr="x" frexpr="x" format="%1.2f" min="0" max="2" inc="0.1" storagetype="float" endian="big"/>
 	<scaling name="MerpModMapSwitch" units="raw" toexpr="x" frexpr="x" format="%1.0f" min="0" max="4" inc="1.0" storagetype="uint8" endian="big"/>
+	<scaling name="MerpModSmoothingFactor" units="% Smoothing" toexpr="x*100" frexpr="x/100" format="%3.0f" min="0" max="100" inc="1" storagetype="float" endian="big"/>
 	<scaling name="MinimumPrimaryEnrichmentOffsetAdditive1" units="Minimum Primary Enrichment Offset Additive 1" toexpr="x*.00390625" frexpr="x/.00390625" format="%.2f" min="0" max="0.65" inc="0.01" storagetype="uint8" endian="big"/>
 	<scaling name="MinimumPrimaryEnrichmentOffsetAdditiveCruise" units="Minimum Primary Enrichment Offset Additive Cruise" toexpr="x*.00390625" frexpr="x/.00390625" format="%.2f" min="0" max="0.63" inc="0.01" storagetype="uint8" endian="big"/>
 	<scaling name="MinimumPrimaryEnrichmentOffsetAdditiveNon-Cruise" units="Minimum Primary Enrichment Offset Additive Non-Cruise" toexpr="x*.00390625" frexpr="x/.00390625" format="%.2f" min="0" max="0.65" inc="0.01" storagetype="uint8" endian="big"/>
@@ -693,6 +694,14 @@
 	<table name="TGV Right Input Scaling_" category="MerpMod Map Switching" type="2D" level="4" scaling="MerpModTGVInput100">
 		<description>This is the scaling that is applied to the right tgv voltage. Scaled value is used for map blending, switching, or aux inputs</description>
 		<table name="Voltage" type="X Axis" elements="11" scaling="volts"/>
+	</table>
+
+	<table name="TGV Left Input Smoothing Factor" category="MerpMod Map Switching" type="1D" level="4" scaling="MerpModSmoothingFactor">
+		<description>This is the smoothing factor for TGV Left input scaling. Lower values give more smoothing, higher values give higher smoothing.</description>
+	</table>
+
+	<table name="TGV Right Input Smoothing Factor" category="MerpMod Map Switching" type="1D" level="4" scaling="MerpModSmoothingFactor">
+		<description>This is the smoothing factor for TGV Right input scaling. Lower values give more smoothing, higher values give higher smoothing.</description>
 	</table>
 
 	<table name="Map Switch Input Threshold High" category="MerpMod Map Switching" type="1D" level="4" scaling="MerpModMapSwitchThreshold">
