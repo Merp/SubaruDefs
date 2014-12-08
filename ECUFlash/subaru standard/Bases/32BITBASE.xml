@@ -151,7 +151,7 @@
 		<data name="Disabled" value="00"/>
 		<data name="Enabled" value="01"/>
 	</scaling>
-	<scaling name="MerpModTGVInput" units="raw" toexpr="x*.00003051758" frexpr="x/.00003051758" format="%.2f" min="0" max="1" inc="0.1" storagetype="uint16" endian="big"/>
+	<scaling name="MerpModTGVInput" units="raw" toexpr="x*0.00001525902" frexpr="x/0.00001525902" format="%.2f" min="0" max="1" inc="0.1" storagetype="uint16" endian="big"/>
 	<scaling name="MerpModMapSwitchThreshold" units="Volts" toexpr="x" frexpr="x" format="%2.3f" min="0" max="1" inc="0.1" storagetype="float" endian="big"/>
 	<scaling name="MerpModInjectorScaling" units="raw" toexpr="2707090/(x*0.824)" frexpr="(2707090/x)/0.824" format="%.2f" min="0" max="2000" inc="0.1" storagetype="uint16" endian="big"/>
 	<scaling name="MerpModInputMode" storagetype="bloblist">
@@ -169,6 +169,9 @@
 	<scaling name="MisfireDTCThreshold" units="Misfire Count%" toexpr="x" frexpr="x" format="%.2f" min="0" max="105" inc="0.1" storagetype="uint8" endian="big"/>
 	<scaling name="Multiplier" units="Multiplier" toexpr="x" frexpr="x" format="%.3f" inc="0.01" storagetype="float" endian="big"/>
 	<scaling name="Multiplier1" units="Multiplier" toexpr="x*.0078125" frexpr="x/.0078125" format="%.4f" min="0" max="1" inc="1" storagetype="uint8" endian="big"/>
+	<scaling name="MerpModMultiplier1" units="Multiplier" toexpr="x*0.00001525902" frexpr="x/0.00001525902" format="%.4f" min="0" max="1" inc="0.001" storagetype="uint16" endian="big"/>
+	<scaling name="MerpModMultiplier10" units="Multiplier" toexpr="x*0.0001525902" frexpr="x/0.0001525902" format="%.3f" min="0" max="10" inc="0.01" storagetype="uint16" endian="big"/>
+	<scaling name="Offset" units="Offset" toexpr="x" frexpr="x" format="%.3f" inc="0.01" storagetype="float" endian="big"/>
 	<scaling name="OverRun Fueling" units="units" toexpr="x*0.1953125" frexpr="x/0.1953125" format="%.0f" min="0" max="5000" inc="1" storagetype="uint16" endian="big"/>
 	<scaling name="PGWGComp" units="Compensation (% of Per Gear Value)" toexpr="x*0.0061037" frexpr="x/.0061037" format="%.2f" min="0" max="200" inc="0.2" storagetype="uint16" endian="big"/>
 	<scaling name="PXXXX enable" storagetype="bloblist">
@@ -247,7 +250,7 @@
 	<scaling name="degreesofcorrection1" units="degrees of correction" toexpr="-x" frexpr="-x" format="%.2f" min="-12" max="-1" inc="0.1" storagetype="float" endian="big"/>
 	<scaling name="float" units="%" toexpr="x" frexpr="x" format="%.2f" min="0" max="105" inc="0.1" storagetype="float" endian="big"/>
 	<scaling name="float1" toexpr="x" frexpr="x" format="%5.0f" min="0" max="30000" inc="0.1" storagetype="float" endian="big"/>
-	<scaling name="engine displacement" units="cc" toexpr="x" frexpr="x" format="%.2f" min="0" max="1" inc="0.01" storagetype="float" endian="big"/>
+	<scaling name="engine displacement" units="L" toexpr="x" frexpr="x" format="%.2f" min="0" max="1" inc="0.01" storagetype="float" endian="big"/>
 	<scaling name="fbkcthreshold" units="degrees" toexpr="x" frexpr="x" format="%.1f" min="-128" max="-127" inc="0.5" storagetype="float" endian="big"/>
 	<scaling name="g/rev" units="g/rev" toexpr="x" frexpr="x" format="%.2f" min="0" max="5" inc="0.01" storagetype="float" endian="big"/>
 	<scaling name="g/s" units="g/s" toexpr="x" frexpr="x" format="%.2f" min="0" max="400" inc="0.1" storagetype="float" endian="big"/>
@@ -327,9 +330,9 @@
 	</table>
 
 	<table name="Engine Displacement" category="MerpMod Speed Density" type="2D" level="2" scaling="engine displacement">
-		<description>Engine size in cc</description>
+		<description>Engine size in Liters</description>
 		<table type="Static Y Axis" elements="1">
-			<data>Engine Displacement (cc)</data>
+			<data>Engine Displacement (L)</data>
 		</table>
 	</table>
 
@@ -615,7 +618,27 @@
 
 	<table name="Map Blending Injector Scaling" category="MerpMod Fueling" type="2D" level="4" scaling="MerpModInjectorScaling">
 		<description>This is the injector scaling used when map blending is enabled.</description>
-		<table name="Injector Scaling" type="X Axis" elements="11" scaling="MerpModMapRatio"/>
+		<table name="Blending Ratio" type="X Axis" elements="11" scaling="MerpModMapRatio"/>
+	</table>
+
+	<table name="Map Blending Injector Scaling Multiplier" category="MerpMod Fueling" type="2D" level="4" scaling="MerpModMultiplier10">
+		<description>This is the injector scaling multiplier used when map blending is enabled.</description>
+		<table name="Blending Ratio" type="X Axis" elements="11" scaling="MerpModMapRatio"/>
+	</table>
+
+	<table name="Map Blending Throttle Tip-In Enrichment Multiplier" category="MerpMod Fueling" type="2D" level="4" scaling="MerpModMultiplier10">
+		<description>This is the throttle tip in enrichment multiplier used when map blending is enabled.These values are the maximum multiplier corresponding to the maximum blending ratio.</description>
+		<table name="Throttle Angle Change" type="X Axis" elements="18" scaling="%"/>
+	</table>
+
+	<table name="Map Blending Cranking Fuel Multiplier" category="MerpMod Fueling" type="2D" level="4" scaling="MerpModMultiplier10">
+		<description>This is the cranking fuel multiplier used when map blending is enabled. These values are the maximum multiplier corresponding to the maximum blending ratio.</description>
+		<table name="Coolant Temp" type="X Axis" elements="16" scaling="DegreesF"/>
+	</table>
+
+	<table name="Map Blending Startup Enrichment Multiplier" category="MerpMod Fueling" type="2D" level="4" scaling="MerpModMultiplier10">
+		<description>This is the startup enrichment multiplier used when map blending is enabled. These values are the maximum multiplier corresponding to the maximum blending ratio.</description>
+		<table name="Coolant Temp" type="X Axis" elements="16" scaling="DegreesF"/>
 	</table>
 
 	<table name="Primary Open Loop Fuel Hack Enable" category="MerpMod Fueling" type="2D" level="4" scaling="MerpModEnable">
@@ -691,6 +714,14 @@
 
 	<table name="TGV Right Input Multiplier" category="MerpMod Map Switching" type="1D" level="4" scaling="Multiplier">
 		<description>This is the multiplier for TGV Right inputs. The Left TGV input scaling table output value is multiplied by this value.</description>
+	</table>
+
+	<table name="TGV Left Input Offset" category="MerpMod Map Switching" type="1D" level="4" scaling="Offset">
+		<description>This is the offset for TGV Left inputs. The Left TGV input scaling table output value is offset by this value.</description>
+	</table>
+
+	<table name="TGV Right Input Offset" category="MerpMod Map Switching" type="1D" level="4" scaling="Offset">
+		<description>This is the offset for TGV Right inputs. The Left TGV input scaling table output value is offset by this value.</description>
 	</table>
 
 	<table name="TGV Left Input Smoothing Factor" category="MerpMod Map Switching" type="1D" level="4" scaling="MerpModSmoothingFactor">
