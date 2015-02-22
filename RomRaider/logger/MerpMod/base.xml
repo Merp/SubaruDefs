@@ -1,0 +1,2029 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE logger SYSTEM "logger.dtd"[]>
+<!--ROMRAIDER STANDARD UNITS LOGGER DEFINITION FILE (VERSION 95) 20121018_180935 [en]
+Added ECU ID: 7412587207 to extended parameters
+
+TERMS, CONDITIONS, AND DISCLAIMERS
+- - - - - - - - - - - - - - - - - - - - - - - - -
+WARNING: These definition files are created as the result of the extremely complex and time consuming process
+of reverse-engineering the factory ECU. Because of this complexity, it is necessary to make certain assumptions
+and, therefore, it is impossible to always deal in absolutes in regards to representations made by these
+definitions. In addition, due to this complexity and the numerous variations among different ECUs, it is also
+impossible to guarantee that the definitions will not contain errors or other bugs. What this all means is that
+there is the potential for bugs, errors and misrepresentations which can result in damage to your motor, your
+ECU as well the possibility of causing your vehicle to behave unexpectedly on the road, increasing the risk of
+death or injury. Modifications to your vehicle's ECU may also be in violation of local, state and federal laws.
+By using these definition files, either directly or indirectly, you agree to assume 100% of all risk and
+RomRaider's creators and contributors shall not be held responsible for any damages or injuries you receive.
+This product is for advanced users only. There are no safeguards in place when tuning with RomRaider. As such,
+the potential for serious damage and injury still exists, even if the user does not experience any bugs or errors.
+As always, use at your own risk.
+
+These definitions are created for FREE without any sort of guarantee. The developers cannot be held liable for
+any damage or injury incurred as a result of these definitions. USE AT YOUR OWN RISK! -->
+<logger version="95">
+  <protocols>
+    <protocol id="SSM" baud="4800" databits="8" stopbits="1" parity="0" connect_timeout="2000" send_timeout="55">
+      <parameters>
+        <parameter id="P1" name="Engine Load (Relative)" desc="P1" ecubyteindex="8" ecubit="7" target="1">
+          <address>0x000007</address>
+          <conversions>
+            <conversion units="%" expr="x*100/255" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P2" name="Coolant Temperature" desc="P2" ecubyteindex="8" ecubit="6" target="1">
+          <address>0x000008</address>
+          <conversions>
+            <conversion units="F" expr="32+9*(x-40)/5" format="0" gauge_min="0" gauge_max="240" gauge_step="30" />
+            <conversion units="C" expr="x-40" format="0" gauge_min="-20" gauge_max="120" gauge_step="20" />
+          </conversions>
+        </parameter>
+        <parameter id="P3" name="A/F Correction #1" desc="P3" ecubyteindex="8" ecubit="5" target="1">
+          <address>0x000009</address>
+          <conversions>
+            <conversion units="%" expr="(x-128)*100/128" format="0.00" gauge_min="-20" gauge_max="20" gauge_step="5" />
+          </conversions>
+        </parameter>
+        <parameter id="P4" name="A/F Learning #1" desc="P4" ecubyteindex="8" ecubit="4" target="1">
+          <address>0x00000A</address>
+          <conversions>
+            <conversion units="%" expr="(x-128)*100/128" format="0.00" gauge_min="-20" gauge_max="20" gauge_step="5" />
+          </conversions>
+        </parameter>
+        <parameter id="P5" name="A/F Correction #2" desc="P5" ecubyteindex="8" ecubit="3" target="1">
+          <address>0x00000B</address>
+          <conversions>
+            <conversion units="%" expr="(x-128)*100/128" format="0.00" gauge_min="-20" gauge_max="20" gauge_step="5" />
+          </conversions>
+        </parameter>
+        <parameter id="P6" name="A/F Learning #2" desc="P6" ecubyteindex="8" ecubit="2" target="1">
+          <address>0x00000C</address>
+          <conversions>
+            <conversion units="%" expr="(x-128)*100/128" format="0.00" gauge_min="-20" gauge_max="20" gauge_step="5" />
+          </conversions>
+        </parameter>
+        <parameter id="P7" name="Manifold Absolute Pressure" desc="P7-Pressure value calculated from the manifold absolute pressure sensor (absolute value)" ecubyteindex="8" ecubit="1" target="1">
+          <address>0x00000D</address>
+          <conversions>
+            <conversion units="psi" expr="x*37/255" format="0.00" gauge_min="-20" gauge_max="40" gauge_step="5" />
+            <conversion units="bar" expr="x/100" format="0.000" gauge_min="-1.2" gauge_max="2.8" gauge_step="0.4" />
+            <conversion units="kPa" expr="x" format="0" gauge_min="-120" gauge_max="280" gauge_step="40" />
+            <conversion units="hPa" expr="x*10" format="0" gauge_min="-1200" gauge_max="2800" gauge_step="400" />
+            <conversion units="inHg" expr="x*0.2953" format="0.00" gauge_min="-40" gauge_max="60" gauge_step="10" />
+            <conversion units="mmHg" expr="x*7.5" format="0" gauge_min="-1000" gauge_max="2000" gauge_step="300" />
+          </conversions>
+        </parameter>
+        <parameter id="P8" name="Engine Speed" desc="P8" ecubyteindex="8" ecubit="0" target="3">
+          <address length="2">0x00000E</address>
+          <conversions>
+            <conversion units="rpm" expr="x/4" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P9" name="Vehicle Speed" desc="P9" ecubyteindex="9" ecubit="7" target="1">
+          <address>0x000010</address>
+          <conversions>
+            <conversion units="mph" expr="x*0.621371192" format="0" />
+            <conversion units="km/h" expr="x" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P10" name="Ignition Total Timing" desc="P10" ecubyteindex="9" ecubit="6" target="1">
+          <address>0x000011</address>
+          <conversions>
+            <conversion units="degrees" expr="(x-128)/2" format="0.00" gauge_min="20" gauge_max="60" gauge_step="10" />
+          </conversions>
+        </parameter>
+        <parameter id="P11" name="Intake Air Temperature" desc="P11" ecubyteindex="9" ecubit="5" target="1">
+          <address>0x000012</address>
+          <conversions>
+            <conversion units="F" expr="32+9*(x-40)/5" format="0" gauge_min="0" gauge_max="140" gauge_step="20" />
+            <conversion units="C" expr="x-40" format="0" gauge_min="-20" gauge_max="60" gauge_step="10" />
+          </conversions>
+        </parameter>
+        <parameter id="P12" name="Mass Airflow" desc="P12" ecubyteindex="9" ecubit="4" target="1">
+          <address length="2">0x000013</address>
+          <conversions>
+            <conversion units="g/s" expr="x/100" format="0.00" gauge_min="0" gauge_max="400" gauge_step="20" />
+          </conversions>
+        </parameter>
+        <parameter id="P13" name="Throttle Opening Angle" desc="P13-Engine throttle opening angle." ecubyteindex="9" ecubit="3" target="1">
+          <address>0x000015</address>
+          <conversions>
+            <conversion units="%" expr="x*100/255" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P14" name="Front O2 Sensor #1" desc="P14" ecubyteindex="9" ecubit="2" target="1">
+          <address length="2">0x000016</address>
+          <conversions>
+            <conversion units="V" expr="x/200" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P15" name="Rear O2 Sensor" desc="P15" ecubyteindex="9" ecubit="1" target="1">
+          <address length="2">0x000018</address>
+          <conversions>
+            <conversion units="V" expr="x/200" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P16" name="Front O2 Sensor #2" desc="P16" ecubyteindex="9" ecubit="0" target="1">
+          <address length="2">0x00001A</address>
+          <conversions>
+            <conversion units="V" expr="x/200" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P17" name="Battery Voltage" desc="P17" ecubyteindex="10" ecubit="7" target="3">
+          <address>0x00001C</address>
+          <conversions>
+            <conversion units="V" expr="x*8/100" format="0.00" gauge_min="0" gauge_max="20" gauge_step="2" />
+          </conversions>
+        </parameter>
+        <parameter id="P18" name="Mass Airflow Sensor Voltage" desc="P18" ecubyteindex="10" ecubit="6" target="3">
+          <address>0x00001D</address>
+          <conversions>
+            <conversion units="V" expr="x/50" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P19" name="Throttle Sensor Voltage" desc="P19" ecubyteindex="10" ecubit="5" target="3">
+          <address>0x00001E</address>
+          <conversions>
+            <conversion units="V" expr="x/50" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P20" name="Differential Pressure Sensor Voltage" desc="P20" ecubyteindex="10" ecubit="4" target="1">
+          <address>0x00001F</address>
+          <conversions>
+            <conversion units="V" expr="x/50" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P21" name="Fuel Injector #1 Pulse Width" desc="P21-This parameter includes injector latency." ecubyteindex="10" ecubit="3" target="1">
+          <address>0x000020</address>
+          <conversions>
+            <conversion units="ms" expr="x*256/1000" format="0.00" />
+            <conversion units="µs" expr="x*256" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P22" name="Fuel Injector #2 Pulse Width" desc="P22-This parameter includes injector latency." ecubyteindex="10" ecubit="2" target="1">
+          <address>0x000021</address>
+          <conversions>
+            <conversion units="ms" expr="x*256/1000" format="0.00" />
+            <conversion units="µs" expr="x*256" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P23" name="Knock Correction Advance" desc="P23-Retard amount when knocking has occurred. Partial learned value of the learned ignition timing." ecubyteindex="10" ecubit="1" target="1">
+          <address>0x000022</address>
+          <conversions>
+            <conversion units="degrees" expr="(x-128)/2" format="0.00" gauge_min="-15" gauge_max="20" gauge_step="5" />
+          </conversions>
+        </parameter>
+        <parameter id="P24" name="Atmospheric Pressure" desc="P24" ecubyteindex="10" ecubit="0" target="1">
+          <address>0x000023</address>
+          <conversions>
+            <conversion units="psi" expr="x*37/255" format="0.00" gauge_min="0" gauge_max="20" gauge_step="2" />
+            <conversion units="kPa" expr="x" format="0" gauge_min="0" gauge_max="255" gauge_step="20" />
+            <conversion units="hPa" expr="x*10" format="0" gauge_min="0" gauge_max="1500" gauge_step="100" />
+            <conversion units="bar" expr="x/100" format="0.000" gauge_min="0" gauge_max="1.5" gauge_step="0.1" />
+            <conversion units="inHg" expr="x*0.2953" format="0.00" gauge_min="-40" gauge_max="60" gauge_step="10" />
+            <conversion units="mmHg" expr="x*7.5" format="0" gauge_min="-1000" gauge_max="2000" gauge_step="300" />
+          </conversions>
+        </parameter>
+        <parameter id="P25" name="Manifold Relative Pressure" desc="P25" ecubyteindex="11" ecubit="7" target="1">
+          <address>0x000024</address>
+          <conversions>
+            <conversion units="psi" expr="(x-128)*37/255" format="0.00" gauge_min="-30" gauge_max="30" gauge_step="5" />
+            <conversion units="kPa" expr="x-128" format="0" gauge_min="-130" gauge_max="130" gauge_step="20" />
+            <conversion units="hPa" expr="(x-128)*10" format="0" gauge_min="-2000" gauge_max="2000" gauge_step="400" />
+            <conversion units="bar" expr="(x-128)/100" format="0.000" gauge_min="-2" gauge_max="2" gauge_step="0.4" />
+          </conversions>
+        </parameter>
+        <parameter id="P26" name="Pressure Differential Sensor" desc="P26" ecubyteindex="11" ecubit="6" target="1">
+          <address>0x000025</address>
+          <conversions>
+            <conversion units="psi" expr="(x-128)*37/255" format="0.00" />
+            <conversion units="kPa" expr="x-128" format="0" gauge_min="-130" gauge_max="130" gauge_step="20" />
+            <conversion units="hPa" expr="(x-128)*10" format="0" gauge_min="-2000" gauge_max="2000" gauge_step="400" />
+            <conversion units="bar" expr="(x-128)/100" format="0.000" />
+          </conversions>
+        </parameter>
+        <parameter id="P27" name="Fuel Tank Pressure" desc="P27" ecubyteindex="11" ecubit="5" target="1">
+          <address>0x000026</address>
+          <conversions>
+            <conversion units="psi" expr="(x-128)*35/10000" format="0.000" />
+            <conversion units="kPa" expr="(x-128)/40" format="0.00" gauge_min="-5" gauge_max="5" gauge_step="1" />
+            <conversion units="hPa" expr="(x-128)/4" format="0" />
+            <conversion units="bar" expr="(x-128)/4000" format="0.000" />
+          </conversions>
+        </parameter>
+        <parameter id="P28" name="CO Adjustment" desc="P28" ecubyteindex="11" ecubit="4" target="1">
+          <address>0x000027</address>
+          <conversions>
+            <conversion units="V" expr="x/50" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P29" name="Learned Ignition Timing" desc="P29-Advance or retard amount when knocking has occurred." ecubyteindex="11" ecubit="3" target="1">
+          <address>0x000028</address>
+          <conversions>
+            <conversion units="degrees" expr="(x-128)/2" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P30" name="Accelerator Pedal Angle" desc="P30-Accelerator pedal angle." ecubyteindex="11" ecubit="2" target="3">
+          <address>0x000029</address>
+          <conversions>
+            <conversion units="%" expr="x*100/255" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P31" name="Fuel Temperature" desc="P31" ecubyteindex="11" ecubit="1" target="1">
+          <address>0x00002A</address>
+          <conversions>
+            <conversion units="F" expr="32+9*(x-40)/5" format="0" gauge_min="0" gauge_max="140" gauge_step="20" />
+            <conversion units="C" expr="x-40" format="0" gauge_min="-20" gauge_max="60" gauge_step="10" />
+          </conversions>
+        </parameter>
+        <parameter id="P32" name="Front O2 Heater Current #1" desc="P32" ecubyteindex="11" ecubit="0" target="1">
+          <address>0x00002B</address>
+          <conversions>
+            <conversion units="A" expr="x*1004/25600" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P33" name="Rear O2 Heater Current" desc="P33" ecubyteindex="12" ecubit="7" target="1">
+          <address>0x00002C</address>
+          <conversions>
+            <conversion units="A" expr="x*1004/25600" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P34" name="Front O2 Heater Current #2" desc="P34" ecubyteindex="12" ecubit="6" target="1">
+          <address>0x00002D</address>
+          <conversions>
+            <conversion units="A" expr="x*1004/25600" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P35" name="Fuel Level" desc="P35" ecubyteindex="12" ecubit="5" target="1">
+          <address>0x00002E</address>
+          <conversions>
+            <conversion units="V" expr="x/50" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P36" name="Primary Wastegate Duty Cycle" desc="P36-Trubo Control Valve Duty Cycle" ecubyteindex="12" ecubit="3" target="1">
+          <address>0x000030</address>
+          <conversions>
+            <conversion units="%" expr="x*100/255" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P37" name="Secondary Wastegate Duty Cycle" desc="P37" ecubyteindex="12" ecubit="2" target="1">
+          <address>0x000031</address>
+          <conversions>
+            <conversion units="%" expr="x*100/255" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P38" name="CPC Valve Duty Ratio" desc="P38" ecubyteindex="12" ecubit="1" target="1">
+          <address>0x000032</address>
+          <conversions>
+            <conversion units="%" expr="x*100/255" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P39" name="Tumble Valve Position Sensor Right" desc="P39" ecubyteindex="12" ecubit="0" target="1">
+          <address>0x000033</address>
+          <conversions>
+            <conversion units="V" expr="x/50" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P40" name="Tumble Valve Position Sensor Left" desc="P40" ecubyteindex="13" ecubit="7" target="1">
+          <address>0x000034</address>
+          <conversions>
+            <conversion units="V" expr="x/50" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P41" name="Idle Speed Control Valve Duty Ratio" desc="P41" ecubyteindex="13" ecubit="6" target="1">
+          <address>0x000035</address>
+          <conversions>
+            <conversion units="%" expr="x/2" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P42" name="A/F Lean Correction" desc="P42" ecubyteindex="13" ecubit="5" target="1">
+          <address>0x000036</address>
+          <conversions>
+            <conversion units="%" expr="x*100/255" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P43" name="A/F Heater Duty" desc="P43" ecubyteindex="13" ecubit="4" target="1">
+          <address>0x000037</address>
+          <conversions>
+            <conversion units="%" expr="x*100/255" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P44" name="Idle Speed Control Valve Step" desc="P44" ecubyteindex="13" ecubit="3" target="1">
+          <address>0x000038</address>
+          <conversions>
+            <conversion units="steps" expr="x" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P45" name="Number of Exh. Gas Recirc. Steps" desc="P45" ecubyteindex="13" ecubit="2" target="1">
+          <address>0x000039</address>
+          <conversions>
+            <conversion units="steps" expr="x" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P46" name="Alternator Duty" desc="P46" ecubyteindex="13" ecubit="1" target="1">
+          <address>0x00003A</address>
+          <conversions>
+            <conversion units="%" expr="x" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P47" name="Fuel Pump Duty" desc="P47" ecubyteindex="13" ecubit="0" target="1">
+          <address>0x00003B</address>
+          <conversions>
+            <conversion units="%" expr="x*100/255" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P48" name="Intake VVT Advance Angle Right" desc="P48" ecubyteindex="14" ecubit="7" target="1">
+          <address>0x00003C</address>
+          <conversions>
+            <conversion units="degrees" expr="x-50" format="0" gauge_min="0" gauge_max="50" gauge_step="5" />
+          </conversions>
+        </parameter>
+        <parameter id="P49" name="Intake VVT Advance Angle Left" desc="P49" ecubyteindex="14" ecubit="6" target="1">
+          <address>0x00003D</address>
+          <conversions>
+            <conversion units="degrees" expr="x-50" format="0" gauge_min="0" gauge_max="50" gauge_step="5" />
+          </conversions>
+        </parameter>
+        <parameter id="P50" name="Intake OCV Duty Right" desc="P50" ecubyteindex="14" ecubit="5" target="1">
+          <address>0x00003E</address>
+          <conversions>
+            <conversion units="%" expr="x*100/255" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P51" name="Intake OCV Duty Left" desc="P51" ecubyteindex="14" ecubit="4" target="1">
+          <address>0x00003F</address>
+          <conversions>
+            <conversion units="%" expr="x*100/255" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P52" name="Intake OCV Current Right" desc="P52" ecubyteindex="14" ecubit="3" target="1">
+          <address>0x000040</address>
+          <conversions>
+            <conversion units="mA" expr="x*32" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P53" name="Intake OCV Current Left" desc="P53" ecubyteindex="14" ecubit="2" target="1">
+          <address>0x000041</address>
+          <conversions>
+            <conversion units="mA" expr="x*32" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P54" name="A/F Sensor #1 Current" desc="P54" ecubyteindex="14" ecubit="1" target="1">
+          <address>0x000042</address>
+          <conversions>
+            <conversion units="mA" expr="(x-128)/8" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P55" name="A/F Sensor #2 Current" desc="P55" ecubyteindex="14" ecubit="0" target="1">
+          <address>0x000043</address>
+          <conversions>
+            <conversion units="mA" expr="(x-128)/8" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P56" name="A/F Sensor #1 Resistance" desc="P56" ecubyteindex="15" ecubit="7" target="1">
+          <address>0x000044</address>
+          <conversions>
+            <conversion units="ohm" expr="x" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P57" name="A/F Sensor #2 Resistance" desc="P57" ecubyteindex="15" ecubit="6" target="1">
+          <address>0x000045</address>
+          <conversions>
+            <conversion units="ohm" expr="x" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P58" name="A/F Sensor #1" desc="P58" ecubyteindex="15" ecubit="5" target="1">
+          <address>0x000046</address>
+          <conversions>
+            <conversion units="AFR" expr="x/128*14.7" format="0.00" />
+            <conversion units="Lambda" expr="x/128" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P59" name="A/F Sensor #2" desc="P59" ecubyteindex="15" ecubit="4" target="1">
+          <address>0x000047</address>
+          <conversions>
+            <conversion units="AFR" expr="x/128*14.7" format="0.00" />
+            <conversion units="Lambda" expr="x/128" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P60" name="Gear Position" desc="P60" ecubyteindex="16" ecubit="5" target="3">
+          <address>0x00004A</address>
+          <conversions>
+            <conversion units="gear" expr="x+1" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P61" name="A/F Sensor #1 Heater Current" desc="P61" ecubyteindex="17" ecubit="4" target="1">
+          <address>0x000053</address>
+          <conversions>
+            <conversion units="A" expr="x/10" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P62" name="A/F Sensor #2 Heater Current" desc="P62" ecubyteindex="17" ecubit="3" target="1">
+          <address>0x000054</address>
+          <conversions>
+            <conversion units="A" expr="x/10" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P63" name="Roughness Monitor Cylinder #1" desc="P63" ecubyteindex="55" ecubit="7" target="1">
+          <address>0x0000CE</address>
+          <conversions>
+            <conversion units="misfire count" expr="x" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P64" name="Roughness Monitor Cylinder #2" desc="P64" ecubyteindex="55" ecubit="6" target="1">
+          <address>0x0000CF</address>
+          <conversions>
+            <conversion units="misfire count" expr="x" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P65" name="A/F Correction #3 (16-bit ECU)" desc="P65" ecubyteindex="15" ecubit="3" target="1">
+          <address>0x0000D0</address>
+          <conversions>
+            <conversion units="%" expr="(x-128)*100/128" format="0.00" gauge_min="-20" gauge_max="20" gauge_step="5" />
+          </conversions>
+        </parameter>
+        <parameter id="P66" name="A/F Learning #3" desc="P66" ecubyteindex="15" ecubit="2" target="1">
+          <address>0x0000D1</address>
+          <conversions>
+            <conversion units="%" expr="(x-128)*100/128" format="0.00" gauge_min="-20" gauge_max="20" gauge_step="5" />
+          </conversions>
+        </parameter>
+        <parameter id="P67" name="Rear O2 Heater Voltage" desc="P67" ecubyteindex="15" ecubit="1" target="1">
+          <address>0x0000D2</address>
+          <conversions>
+            <conversion units="V" expr="x/50" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P68" name="A/F Adjustment Voltage" desc="P68" ecubyteindex="15" ecubit="0" target="1">
+          <address>0x0000D3</address>
+          <conversions>
+            <conversion units="V" expr="x/50" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P69" name="Roughness Monitor Cylinder #3" desc="P69" ecubyteindex="55" ecubit="5" target="1">
+          <address>0x0000D8</address>
+          <conversions>
+            <conversion units="misfire count" expr="x" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P70" name="Roughness Monitor Cylinder #4" desc="P70" ecubyteindex="55" ecubit="4" target="1">
+          <address>0x0000D9</address>
+          <conversions>
+            <conversion units="misfire count" expr="x" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P71" name="Throttle Motor Duty" desc="P71" ecubyteindex="38" ecubit="5" target="1">
+          <address>0x0000FA</address>
+          <conversions>
+            <conversion units="%" expr="(x-128)*100/128" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P72" name="Throttle Motor Voltage" desc="P72" ecubyteindex="38" ecubit="4" target="1">
+          <address>0x0000FB</address>
+          <conversions>
+            <conversion units="V" expr="x*8/100" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P73" name="Sub Throttle Sensor" desc="P73" ecubyteindex="40" ecubit="7" target="1">
+          <address>0x000100</address>
+          <conversions>
+            <conversion units="V" expr="x/50" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P74" name="Main Throttle Sensor" desc="P74" ecubyteindex="40" ecubit="6" target="1">
+          <address>0x000101</address>
+          <conversions>
+            <conversion units="V" expr="x/50" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P75" name="Sub Accelerator Sensor" desc="P75" ecubyteindex="40" ecubit="5" target="3">
+          <address>0x000102</address>
+          <conversions>
+            <conversion units="V" expr="x/50" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P76" name="Main Accelerator Sensor" desc="P76" ecubyteindex="40" ecubit="4" target="1">
+          <address>0x000103</address>
+          <conversions>
+            <conversion units="V" expr="x/50" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P77" name="Brake Booster Pressure" desc="P77" ecubyteindex="40" ecubit="3" target="1">
+          <address>0x000104</address>
+          <conversions>
+            <conversion units="psi" expr="x*37/255" format="0.00" />
+            <conversion units="bar" expr="x/100" format="0.000" />
+            <conversion units="hPa" expr="x*10" format="0" gauge_min="0" gauge_max="1500" gauge_step="100" />
+            <conversion units="kPa" expr="x" format="0" gauge_min="-120" gauge_max="280" gauge_step="40" />
+          </conversions>
+        </parameter>
+        <parameter id="P78" name="Fuel Pressure (High)" desc="P78" ecubyteindex="40" ecubit="2" target="1">
+          <address>0x000105</address>
+          <conversions>
+            <conversion units="psi" expr="x/25*145.0377" format="0.00" />
+            <conversion units="kPa" expr="x/25*1000" format="0.00" />
+            <conversion units="MPa" expr="x/25" format="0.00" />
+            <conversion units="bar" expr="x/25*10" format="0.000" />
+          </conversions>
+        </parameter>
+        <parameter id="P79" name="Exhaust Gas Temperature" desc="P79-Exhaust gas temperature reading." ecubyteindex="40" ecubit="1" target="1">
+          <address>0x000106</address>
+          <conversions>
+            <conversion units="F" expr="32+9*(x+40)" format="0" gauge_min="0" gauge_max="2000" gauge_step="200" />
+            <conversion units="C" expr="(x+40)*5" format="0" gauge_min="0" gauge_max="1000" gauge_step="100" />
+          </conversions>
+        </parameter>
+        <parameter id="P80" name="Cold Start Injector (Air Pump)" desc="P80" ecubyteindex="41" ecubit="7" target="1">
+          <address>0x000108</address>
+          <conversions>
+            <conversion units="ms" expr="x*256/1000" format="0.00" />
+            <conversion units="µs" expr="x*256" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P81" name="SCV Step" desc="P81" ecubyteindex="41" ecubit="6" target="1">
+          <address>0x000109</address>
+          <conversions>
+            <conversion units="steps" expr="x" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P82" name="Memorised Cruise Speed" desc="P82" ecubyteindex="41" ecubit="5" target="1">
+          <address>0x00010A</address>
+          <conversions>
+            <conversion units="mph" expr="x*0.621371192" format="0" />
+            <conversion units="km/h" expr="x" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P83" name="Exhaust VVT Advance Angle Right" desc="P83" ecubyteindex="43" ecubit="7" target="1">
+          <address>0x000118</address>
+          <conversions>
+            <conversion units="degrees" expr="x-50" format="0" gauge_min="0" gauge_max="50" gauge_step="5" />
+          </conversions>
+        </parameter>
+        <parameter id="P84" name="Exhaust VVT Advance Angle Left" desc="P84" ecubyteindex="43" ecubit="6" target="1">
+          <address>0x000119</address>
+          <conversions>
+            <conversion units="degrees" expr="x-50" format="0" gauge_min="0" gauge_max="50" gauge_step="5" />
+          </conversions>
+        </parameter>
+        <parameter id="P85" name="Exhaust OCV Duty Right" desc="P85" ecubyteindex="43" ecubit="5" target="1">
+          <address>0x00011A</address>
+          <conversions>
+            <conversion units="%" expr="x*100/255" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P86" name="Exhaust OCV Duty Left" desc="P86" ecubyteindex="43" ecubit="4" target="1">
+          <address>0x00011B</address>
+          <conversions>
+            <conversion units="%" expr="x*100/255" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P87" name="Exhaust OCV Current Right" desc="P87" ecubyteindex="43" ecubit="3" target="1">
+          <address>0x00011C</address>
+          <conversions>
+            <conversion units="mA" expr="x*32" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P88" name="Exhaust OCV Current Left" desc="P88" ecubyteindex="43" ecubit="2" target="1">
+          <address>0x00011D</address>
+          <conversions>
+            <conversion units="mA" expr="x*32" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P89" name="A/F Correction #3 (32-bit ECU)" desc="P89" ecubyteindex="15" ecubit="3" target="1">
+          <address>0x0000D0</address>
+          <conversions>
+            <conversion units="%" expr="(x*.078125)-5" format="0.00" gauge_min="-20" gauge_max="20" gauge_step="5" />
+          </conversions>
+        </parameter>
+        <parameter id="P90" name="IAM" desc="P90" ecubyteindex="55" ecubit="0" target="1">
+          <address>0x0000F9</address>
+          <conversions>
+            <conversion units="multiplier" expr="x/16" format="0.0000" gauge_min="0" gauge_max="1" gauge_step="0.0625" />
+          </conversions>
+        </parameter>
+        <parameter id="P91" name="Fine Learning Knock Correction" desc="P91" ecubyteindex="55" ecubit="0" target="1">
+          <address>0x000199</address>
+          <conversions>
+            <conversion units="degrees" expr="(x*0.25)-32" format="0.00" gauge_min="-12" gauge_max="8" gauge_step="1" />
+          </conversions>
+        </parameter>
+        <parameter id="P92" name="Radiator Fan Control" desc="P92" ecubyteindex="12" ecubit="4" target="1">
+          <address>0x00002F</address>
+          <conversions>
+            <conversion units="%" expr="x" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P93" name="Front Wheel Speed" desc="P93" ecubyteindex="16" ecubit="7" target="2">
+          <address>0x000048</address>
+          <conversions>
+            <conversion units="mph" expr="x*0.621371192" format="0" />
+            <conversion units="km/h" expr="x" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P94" name="ATF Temperature" desc="P94-0=-60C/-76F,1=-60C/-76F,2=-51C/-60F,3=-45C/-49F,4=-40C/-40F,5=-37C/-35F,6=-34C/-29F,etc" ecubyteindex="16" ecubit="6" target="2">
+          <address>0x000049</address>
+          <conversions>
+            <conversion units="index" expr="x" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P95" name="Line Pressure Duty Ratio" desc="P95" ecubyteindex="16" ecubit="4" target="2">
+          <address>0x00004B</address>
+          <conversions>
+            <conversion units="%" expr="x/2" format="0.0" />
+          </conversions>
+        </parameter>
+        <parameter id="P96" name="Lock Up Duty Ratio" desc="P96" ecubyteindex="16" ecubit="3" target="2">
+          <address>0x00004C</address>
+          <conversions>
+            <conversion units="%" expr="x/2" format="0.0" />
+          </conversions>
+        </parameter>
+        <parameter id="P97" name="Transfer Duty Ratio" desc="P97" ecubyteindex="16" ecubit="2" target="2">
+          <address>0x00004D</address>
+          <conversions>
+            <conversion units="%" expr="x/2" format="0.0" />
+          </conversions>
+        </parameter>
+        <parameter id="P98" name="Throttle Sensor Voltage" desc="P98" ecubyteindex="16" ecubit="1" target="2">
+          <address>0x00004E</address>
+          <conversions>
+            <conversion units="V" expr="x/45" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P99" name="Turbine Revolution Speed" desc="P99" ecubyteindex="16" ecubit="0" target="2">
+          <address>0x00004F</address>
+          <conversions>
+            <conversion units="rpm" expr="x*32" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P100" name="Brake Clutch Duty Ratio" desc="P100" ecubyteindex="17" ecubit="7" target="2">
+          <address>0x000050</address>
+          <conversions>
+            <conversion units="%" expr="x/2" format="0.0" />
+          </conversions>
+        </parameter>
+        <parameter id="P101" name="Rear Wheel Speed" desc="P101" ecubyteindex="17" ecubit="6" target="2">
+          <address>0x000051</address>
+          <conversions>
+            <conversion units="mph" expr="x*0.621371192" format="0" />
+            <conversion units="km/h" expr="x" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P102" name="Manifold Pressure Sensor Voltage" desc="P102" ecubyteindex="17" ecubit="5" target="2">
+          <address>0x000052</address>
+          <conversions>
+            <conversion units="V" expr="x/50" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P103" name="Lateral G Sensor Voltage" desc="P103" ecubyteindex="17" ecubit="2" target="2">
+          <address>0x000055</address>
+          <conversions>
+            <conversion units="V" expr="x/50" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P104" name="ATF Temperature" desc="P104" ecubyteindex="17" ecubit="1" target="2">
+          <address>0x000056</address>
+          <conversions>
+            <conversion units="F" expr="32+9*(x-50)/5" format="0" gauge_min="-60" gauge_max="400" gauge_step="50" />
+            <conversion units="C" expr="x-50" format="0" gauge_min="-50" gauge_max="205" gauge_step="30" />
+          </conversions>
+        </parameter>
+        <parameter id="P105" name="Low Clutch Duty" desc="P105" ecubyteindex="17" ecubit="0" target="2">
+          <address>0x000057</address>
+          <conversions>
+            <conversion units="%" expr="x/2" format="0.0" />
+          </conversions>
+        </parameter>
+        <parameter id="P106" name="High Clutch Duty" desc="P106" ecubyteindex="18" ecubit="7" target="2">
+          <address>0x000058</address>
+          <conversions>
+            <conversion units="%" expr="x/2" format="0.0" />
+          </conversions>
+        </parameter>
+        <parameter id="P107" name="Load and Reverse Brake (L and RB) Duty" desc="P107" ecubyteindex="18" ecubit="6" target="2">
+          <address>0x000059</address>
+          <conversions>
+            <conversion units="%" expr="x/2" format="0.0" />
+          </conversions>
+        </parameter>
+        <parameter id="P108" name="ATF Temperature 2" desc="P108" ecubyteindex="18" ecubit="5" target="2">
+          <address>0x00005A</address>
+          <conversions>
+            <conversion units="F" expr="32+9*(x-50)/5" format="0" gauge_min="-60" gauge_max="400" gauge_step="50" />
+            <conversion units="C" expr="x-50" format="0" gauge_min="-50" gauge_max="205" gauge_step="30" />
+          </conversions>
+        </parameter>
+        <parameter id="P109" name="Voltage Center Differential Switch" desc="P109" ecubyteindex="18" ecubit="4" target="2">
+          <address>0x00005B</address>
+          <conversions>
+            <conversion units="V" expr="x/51" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P110" name="AT Turbine Speed 1" desc="P110" ecubyteindex="18" ecubit="3" target="2">
+          <address>0x00005C</address>
+          <conversions>
+            <conversion units="rpm" expr="x*32" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P111" name="AT Turbine Speed 2" desc="P111" ecubyteindex="18" ecubit="2" target="2">
+          <address>0x00005D</address>
+          <conversions>
+            <conversion units="rpm" expr="x*32" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P112" name="Center Differential Real Current" desc="P112" ecubyteindex="18" ecubit="1" target="2">
+          <address>0x00005E</address>
+          <conversions>
+            <conversion units="A" expr="x/32" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P113" name="Center Differential Indicate Current" desc="P113" ecubyteindex="18" ecubit="0" target="2">
+          <address>0x00005F</address>
+          <conversions>
+            <conversion units="A" expr="x/32" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P114" name="SI-Drive Mode" desc="P114-0=---,1=S,2=S#,3=I,8=S#,16=I" ecubyteindex="38" ecubit="7" target="3">
+          <address>0x00016A</address>
+          <conversions>
+            <conversion units="index" expr="x" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P115" name="Throttle Sensor Closed Voltage" desc="P115" ecubyteindex="38" ecubit="6" target="1">
+          <address>0x00016B</address>
+          <conversions>
+            <conversion units="V" expr="x/50" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P116" name="Exhaust Gas Temperature 2" desc="P116" ecubyteindex="40" ecubit="0" target="1">
+          <address>0x000107</address>
+          <conversions>
+            <conversion units="F" expr="32+9*(x*5+200)/5" format="0" gauge_min="400" gauge_max="2800" gauge_step="200" />
+            <conversion units="C" expr="x*5+200" format="0" gauge_min="200" gauge_max="1500" gauge_step="100" />
+          </conversions>
+        </parameter>
+        <parameter id="P117" name="Air/Fuel Correction #4" desc="P117" ecubyteindex="41" ecubit="4" target="1">
+          <address>0x00010B</address>
+          <conversions>
+            <conversion units="%" expr="(x-64)/128*10" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P118" name="Air/Fuel Learning #4" desc="P118" ecubyteindex="41" ecubit="3" target="1">
+          <address>0x00010C</address>
+          <conversions>
+            <conversion units="%" expr="(x-128)/128*100" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P119" name="Fuel Level Sensor Resistance" desc="P119" ecubyteindex="41" ecubit="2" target="1">
+          <address>0x00010D</address>
+          <conversions>
+            <conversion units="ohm" expr="x*4/2" format="0.0" />
+          </conversions>
+        </parameter>
+        <parameter id="P120" name="Estimated odometer" desc="P120-Estimated odometer - increments every 2km" ecubyteindex="41" ecubit="1" target="1">
+          <address length="2">0x00010E</address>
+          <conversions>
+            <conversion units="miles" expr="x*1.242742384" format="0" />
+            <conversion units="km" expr="x*2" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P121" name="Fuel Tank Air Pressure" desc="P121" ecubyteindex="41" ecubit="0" target="1">
+          <address length="2">0x000172</address>
+          <conversions>
+            <conversion units="psi" expr="x*14.50377" format="0.00" />
+            <conversion units="MPa" expr="x/100" format="0.00" />
+            <conversion units="bar" expr="x/10" format="0.0" />
+          </conversions>
+        </parameter>
+        <parameter id="P122" name="Oil Temperature" desc="P122" ecubyteindex="42" ecubit="4" target="1">
+          <address>0x000113</address>
+          <conversions>
+            <conversion units="F" expr="32+9*(x-40)/5" format="0" gauge_min="0" gauge_max="240" gauge_step="30" />
+            <conversion units="C" expr="x-40" format="0" gauge_min="-20" gauge_max="120" gauge_step="20" />
+          </conversions>
+        </parameter>
+        <parameter id="P123" name="Oil Switching Solenoid Valve (OSV) Duty (Right)" desc="P123" ecubyteindex="42" ecubit="3" target="1">
+          <address>0x000114</address>
+          <conversions>
+            <conversion units="%" expr="x/255*100" format="0.0" />
+          </conversions>
+        </parameter>
+        <parameter id="P124" name="Oil Switching Solenoid Valve (OSV) Duty (Left)" desc="P124" ecubyteindex="42" ecubit="2" target="1">
+          <address>0x000115</address>
+          <conversions>
+            <conversion units="%" expr="x/255*100" format="0.0" />
+          </conversions>
+        </parameter>
+        <parameter id="P125" name="Oil Switching Solenoid Valve (OSV) Current (Right)" desc="P125" ecubyteindex="42" ecubit="1" target="1">
+          <address>0x000116</address>
+          <conversions>
+            <conversion units="mA" expr="x*32" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P126" name="Oil Switching Solenoid Valve (OSV) Current (Left)" desc="P126" ecubyteindex="42" ecubit="0" target="1">
+          <address>0x000117</address>
+          <conversions>
+            <conversion units="mA" expr="x*32" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P127" name="VVL Lift Mode" desc="P127" ecubyteindex="43" ecubit="1" target="1">
+          <address>0x00011E</address>
+          <conversions>
+            <conversion units="raw ecu value" expr="x" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P128" name="H and LR/C Solenoid Valve Current" desc="P128" ecubyteindex="50" ecubit="7" target="2">
+          <address>0x000140</address>
+          <conversions>
+            <conversion units="A" expr="x/255" format="0.0000" />
+          </conversions>
+        </parameter>
+        <parameter id="P129" name="D/C Solenoid Valve Current" desc="P129" ecubyteindex="50" ecubit="6" target="2">
+          <address>0x000141</address>
+          <conversions>
+            <conversion units="A" expr="x/255" format="0.0000" />
+          </conversions>
+        </parameter>
+        <parameter id="P130" name="F/B Solenoid Valve Current" desc="P130" ecubyteindex="50" ecubit="5" target="2">
+          <address>0x000142</address>
+          <conversions>
+            <conversion units="A" expr="x/255" format="0.0000" />
+          </conversions>
+        </parameter>
+        <parameter id="P131" name="I/C Solenoid Valve Current" desc="P131" ecubyteindex="50" ecubit="4" target="2">
+          <address>0x000143</address>
+          <conversions>
+            <conversion units="A" expr="x/255" format="0.0000" />
+          </conversions>
+        </parameter>
+        <parameter id="P132" name="P/L Solenoid Valve Current" desc="P132" ecubyteindex="50" ecubit="3" target="2">
+          <address>0x000144</address>
+          <conversions>
+            <conversion units="A" expr="x/255" format="0.0000" />
+          </conversions>
+        </parameter>
+        <parameter id="P133" name="L/U Solenoid Valve Current" desc="P133" ecubyteindex="50" ecubit="2" target="2">
+          <address>0x000145</address>
+          <conversions>
+            <conversion units="A" expr="x/255" format="0.0000" />
+          </conversions>
+        </parameter>
+        <parameter id="P134" name="AWD Solenoid Valve Current" desc="P134" ecubyteindex="50" ecubit="1" target="2">
+          <address>0x000146</address>
+          <conversions>
+            <conversion units="A" expr="x/255" format="0.0000" />
+          </conversions>
+        </parameter>
+        <parameter id="P135" name="Yaw Rate Sensor Voltage" desc="P135" ecubyteindex="50" ecubit="0" target="2">
+          <address>0x000147</address>
+          <conversions>
+            <conversion units="V" expr="x/51" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P136" name="H and LR/C Solenoid Valve Pressure" desc="P136" ecubyteindex="51" ecubit="7" target="2">
+          <address>0x000148</address>
+          <conversions>
+            <conversion units="psi" expr="x*1.450377" format="0.00" gauge_min="0" gauge_max="400" gauge_step="50" />
+            <conversion units="kPa" expr="x*10" format="0" gauge_min="0" gauge_max="2600" gauge_step="200" />
+            <conversion units="hPa" expr="x*100" format="0" gauge_min="0" gauge_max="26000" gauge_step="2000" />
+            <conversion units="bar" expr="x*0.1" format="0.0" gauge_min="0" gauge_max="30" gauge_step="5" />
+          </conversions>
+        </parameter>
+        <parameter id="P137" name="D/C Solenoid Valve Pressure" desc="P137" ecubyteindex="51" ecubit="6" target="2">
+          <address>0x000149</address>
+          <conversions>
+            <conversion units="psi" expr="x*1.450377" format="0.00" gauge_min="0" gauge_max="400" gauge_step="50" />
+            <conversion units="kPa" expr="x*10" format="0" gauge_min="0" gauge_max="2600" gauge_step="200" />
+            <conversion units="hPa" expr="x*100" format="0" gauge_min="0" gauge_max="26000" gauge_step="2000" />
+            <conversion units="bar" expr="x*0.1" format="0.0" gauge_min="0" gauge_max="30" gauge_step="5" />
+          </conversions>
+        </parameter>
+        <parameter id="P138" name="F/B Solenoid Valve Pressure" desc="P138" ecubyteindex="51" ecubit="5" target="2">
+          <address>0x00014A</address>
+          <conversions>
+            <conversion units="psi" expr="x*1.450377" format="0.00" gauge_min="0" gauge_max="400" gauge_step="50" />
+            <conversion units="kPa" expr="x*10" format="0" gauge_min="0" gauge_max="2600" gauge_step="200" />
+            <conversion units="hPa" expr="x*100" format="0" gauge_min="0" gauge_max="26000" gauge_step="2000" />
+            <conversion units="bar" expr="x*0.1" format="0.0" gauge_min="0" gauge_max="30" gauge_step="5" />
+          </conversions>
+        </parameter>
+        <parameter id="P139" name="I/C Solenoid Valve Pressure" desc="P139" ecubyteindex="51" ecubit="4" target="2">
+          <address>0x00014B</address>
+          <conversions>
+            <conversion units="psi" expr="x*1.450377" format="0.00" gauge_min="0" gauge_max="400" gauge_step="50" />
+            <conversion units="kPa" expr="x*10" format="0" gauge_min="0" gauge_max="2600" gauge_step="200" />
+            <conversion units="hPa" expr="x*100" format="0" gauge_min="0" gauge_max="26000" gauge_step="2000" />
+            <conversion units="bar" expr="x*0.1" format="0.0" gauge_min="0" gauge_max="30" gauge_step="5" />
+          </conversions>
+        </parameter>
+        <parameter id="P140" name="P/L Solenoid Valve Pressure" desc="P140" ecubyteindex="51" ecubit="3" target="2">
+          <address>0x00014C</address>
+          <conversions>
+            <conversion units="psi" expr="x*1.450377" format="0.00" gauge_min="0" gauge_max="400" gauge_step="50" />
+            <conversion units="kPa" expr="x*10" format="0" gauge_min="0" gauge_max="2600" gauge_step="200" />
+            <conversion units="hPa" expr="x*100" format="0" gauge_min="0" gauge_max="26000" gauge_step="2000" />
+            <conversion units="bar" expr="x*0.1" format="0.0" gauge_min="0" gauge_max="30" gauge_step="5" />
+          </conversions>
+        </parameter>
+        <parameter id="P141" name="L/U Solenoid Valve Pressure" desc="P141" ecubyteindex="51" ecubit="2" target="2">
+          <address>0x00014D</address>
+          <conversions>
+            <conversion units="psi" expr="x*1.450377" format="0.00" gauge_min="0" gauge_max="400" gauge_step="50" />
+            <conversion units="kPa" expr="x*10" format="0" gauge_min="0" gauge_max="2600" gauge_step="200" />
+            <conversion units="hPa" expr="x*100" format="0" gauge_min="0" gauge_max="26000" gauge_step="2000" />
+            <conversion units="bar" expr="x*0.1" format="0.0" gauge_min="0" gauge_max="30" gauge_step="5" />
+          </conversions>
+        </parameter>
+        <parameter id="P142" name="AWD Solenoid Valve Pressure" desc="P142" ecubyteindex="51" ecubit="1" target="2">
+          <address>0x00014E</address>
+          <conversions>
+            <conversion units="psi" expr="x*1.450377" format="0.00" gauge_min="0" gauge_max="400" gauge_step="50" />
+            <conversion units="kPa" expr="x*10" format="0" gauge_min="0" gauge_max="2600" gauge_step="200" />
+            <conversion units="hPa" expr="x*100" format="0" gauge_min="0" gauge_max="26000" gauge_step="2000" />
+            <conversion units="bar" expr="x*0.1" format="0.0" gauge_min="0" gauge_max="30" gauge_step="5" />
+          </conversions>
+        </parameter>
+        <parameter id="P143" name="Yaw Rate and  G Sensor Reference Voltage" desc="P143" ecubyteindex="51" ecubit="0" target="2">
+          <address>0x00014F</address>
+          <conversions>
+            <conversion units="V" expr="x/51" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P144" name="Wheel Speed Front Right" desc="P144" ecubyteindex="52" ecubit="7" target="2">
+          <address>0x00013C</address>
+          <conversions>
+            <conversion units="mph" expr="x*0.621371192" format="0" />
+            <conversion units="km/h" expr="x" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P145" name="Wheel Speed Front Left" desc="P145" ecubyteindex="52" ecubit="6" target="2">
+          <address>0x00013D</address>
+          <conversions>
+            <conversion units="mph" expr="x*0.621371192" format="0" />
+            <conversion units="km/h" expr="x" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P146" name="Wheel Speed Rear Right" desc="P146" ecubyteindex="52" ecubit="5" target="2">
+          <address>0x00013E</address>
+          <conversions>
+            <conversion units="mph" expr="x*0.621371192" format="0" />
+            <conversion units="km/h" expr="x" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P147" name="Wheel Speed Rear Left" desc="P147" ecubyteindex="52" ecubit="4" target="2">
+          <address>0x00013F</address>
+          <conversions>
+            <conversion units="mph" expr="x*0.621371192" format="0" />
+            <conversion units="km/h" expr="x" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P148" name="Steering Angle Sensor" desc="P148-signed 16 bit value returned" ecubyteindex="52" ecubit="3" target="2">
+          <address length="2">0x00015A</address>
+          <conversions>
+            <conversion units="degrees" expr="x" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P149" name="Fwd/B Solenoid Valve Current" desc="P149" ecubyteindex="52" ecubit="1" target="2">
+          <address>0x000185</address>
+          <conversions>
+            <conversion units="A" expr="x/255" format="0.0000" />
+          </conversions>
+        </parameter>
+        <parameter id="P150" name="Fwd/B Solenoid Valve Target Pressure" desc="P150" ecubyteindex="52" ecubit="0" target="2">
+          <address>0x000186</address>
+          <conversions>
+            <conversion units="psi" expr="x*1.450377" format="0.00" gauge_min="0" gauge_max="400" gauge_step="50" />
+            <conversion units="kPa" expr="x*10" format="0" gauge_min="0" gauge_max="2600" gauge_step="200" />
+            <conversion units="hPa" expr="x*100" format="0" gauge_min="0" gauge_max="26000" gauge_step="2000" />
+            <conversion units="bar" expr="x*0.1" format="0.0" gauge_min="0" gauge_max="30" gauge_step="5" />
+          </conversions>
+        </parameter>
+        <parameter id="P151" name="Roughness Monitor Cylinder #5" desc="P151" ecubyteindex="55" ecubit="3" target="1">
+          <address>0x0000EF</address>
+          <conversions>
+            <conversion units="misfire count" expr="x" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P152" name="Roughness Monitor Cylinder #6" desc="P152" ecubyteindex="55" ecubit="2" target="1">
+          <address>0x0000F8</address>
+          <conversions>
+            <conversion units="misfire count" expr="x" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P153" name="Learned Ignition Timing Correction" desc="P153-Value of only the whole learning value in the ignition timing learning value." ecubyteindex="55" ecubit="1" target="1">
+          <address>0x0000F9</address>
+          <conversions>
+            <conversion units="degrees" expr="x/16" format="0.0" />
+          </conversions>
+        </parameter>
+        <parameter id="P154" name="Fuel Tank Pressure" desc="P154" ecubyteindex="59" ecubit="7" target="1">
+          <address>0x00019A</address>
+          <conversions>
+            <conversion units="psi" expr="(x-128)*0.007251885" format="0.000" />
+            <conversion units="kPa" expr="(x-128)/20" format="0.00" />
+            <conversion units="hPa" expr="(x-128)/2" format="0.00" />
+            <conversion units="bar" expr="(x-128)/2000" format="0.0000" />
+          </conversions>
+        </parameter>
+        <parameter id="P155" name="Main Injection Period" desc="P155" ecubyteindex="60" ecubit="7" target="1">
+          <address>0x0001E1</address>
+          <conversions>
+            <conversion units="°CA" expr="x/5-15" format="0.0" />
+          </conversions>
+        </parameter>
+        <parameter id="P156" name="Final Injection Amount" desc="P156" ecubyteindex="60" ecubit="6" target="1">
+          <address length="2">0x0001E2</address>
+          <conversions>
+            <conversion units="mm³/st" expr="x/256" format="0.0000" />
+          </conversions>
+        </parameter>
+        <parameter id="P157" name="Number of Times Injected" desc="P157" ecubyteindex="60" ecubit="5" target="1">
+          <address>0x0001E4</address>
+          <conversions>
+            <conversion units="count" expr="x" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P158" name="Target Intake Manifold Pressure" desc="P158" ecubyteindex="60" ecubit="4" target="1">
+          <address>0x0001E5</address>
+          <conversions>
+            <conversion units="psi" expr="x*0.1450377" format="0.000" />
+            <conversion units="kPa" expr="x" format="0" />
+            <conversion units="hPa" expr="x*10" format="0" />
+            <conversion units="bar" expr="x*0.01" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P159" name="Target Intake Air Amount" desc="P159" ecubyteindex="60" ecubit="3" target="1">
+          <address>0x0001E6</address>
+          <conversions>
+            <conversion units="mg/cyl" expr="x*10" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P160" name="Air Mass" desc="P160" ecubyteindex="60" ecubit="2" target="1">
+          <address>0x0001E7</address>
+          <conversions>
+            <conversion units="mg/cyl" expr="x*10" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P161" name="Exhaust Gas Recirculation (EGR) Target Valve Opening Angle" desc="P161" ecubyteindex="60" ecubit="1" target="1">
+          <address>0x0001E8</address>
+          <conversions>
+            <conversion units="degrees" expr="x-50" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P162" name="Exhaust Gas Recirculation (EGR) Valve Opening Angle" desc="P162" ecubyteindex="60" ecubit="0" target="1">
+          <address>0x0001E9</address>
+          <conversions>
+            <conversion units="degrees" expr="x-50" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P163" name="Exhaust Gas Recirculation (EGR) Duty" desc="P163" ecubyteindex="61" ecubit="7" target="1">
+          <address>0x0001EA</address>
+          <conversions>
+            <conversion units="%" expr="x" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P164" name="Common Rail Target Pressure" desc="P164" ecubyteindex="61" ecubit="6" target="1">
+          <address>0x0001EB</address>
+          <conversions>
+            <conversion units="psi" expr="x*145.0377" format="0" />
+            <conversion units="MPa" expr="x" format="0" />
+            <conversion units="bar" expr="x*10" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P165" name="Common Rail Pressure" desc="P165" ecubyteindex="61" ecubit="5" target="1">
+          <address>0x0001EC</address>
+          <conversions>
+            <conversion units="psi" expr="x*145.0377" format="0" />
+            <conversion units="MPa" expr="x" format="0" />
+            <conversion units="bar" expr="x*10" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P166" name="Intake Air Temperature (combined)" desc="P166" ecubyteindex="61" ecubit="4" target="1">
+          <address>0x0001ED</address>
+          <conversions>
+            <conversion units="F" expr="32+9*(x-40)/5" format="0" gauge_min="-40" gauge_max="400" gauge_step="50" />
+            <conversion units="C" expr="x-40" format="0" gauge_min="-40" gauge_max="200" gauge_step="40" />
+          </conversions>
+        </parameter>
+        <parameter id="P167" name="Target Engine Speed" desc="P167" ecubyteindex="61" ecubit="3" target="1">
+          <address length="2">0x0001EE</address>
+          <conversions>
+            <conversion units="rpm" expr="x/4" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P168" name="Boost Pressure Feedback" desc="P168" ecubyteindex="61" ecubit="2" target="1">
+          <address>0x0001F0</address>
+          <conversions>
+            <conversion units="%" expr="x-128" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P169" name="Electric Power Steering Current" desc="P169" ecubyteindex="61" ecubit="1" target="1">
+          <address>0x0001F5</address>
+          <conversions>
+            <conversion units="A" expr="x" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P170" name="Fuel Pump Suction Control Valve Current (Target)" desc="P170-Target current value of suction control valve calculated by the ECM. Applies only to Diesel models." ecubyteindex="61" ecubit="0" target="1">
+          <address length="2">0x0001F6</address>
+          <conversions>
+            <conversion units="mA" expr="x" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P171" name="Yaw Rate" desc="P171-signed 8 bit value returned" ecubyteindex="62" ecubit="7" target="2">
+          <address>0x0001F1</address>
+          <conversions>
+            <conversion units="degrees/s" expr="x*0.19118" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P172" name="Lateral G" desc="P172-signed 8 bit value returned" ecubyteindex="62" ecubit="6" target="2">
+          <address>0x0001F2</address>
+          <conversions>
+            <conversion units="m/s²" expr="x*1.0862" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P173" name="Drivers Control Center Differential (DCCD) Torque Allocation" desc="P173" ecubyteindex="62" ecubit="5" target="2">
+          <address>0x0001F3</address>
+          <conversions>
+            <conversion units="raw ecu value" expr="x" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P174" name="Drivers Control Center Differential (DCCD) Mode" desc="P174" ecubyteindex="62" ecubit="4" target="2">
+          <address>0x0001F4</address>
+          <conversions>
+            <conversion units="raw ecu value" expr="x" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P175" name="Fuel Pump Suction Control Valve Current (Actual)" desc="P175-Actual current value of suction control valve. Input to the ECM. Applies only to Diesel models." ecubyteindex="63" ecubit="7" target="1">
+          <address length="2">0x0001F8</address>
+          <conversions>
+            <conversion units="mA" expr="x" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P176" name="Mileage after Injector Learning" desc="P176" ecubyteindex="63" ecubit="6" target="1">
+          <address length="2">0x0001FA</address>
+          <conversions>
+            <conversion units="miles" expr="x*3.10685596" format="0" />
+            <conversion units="km" expr="x*5" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P177" name="Mileage after Injector Replacement" desc="P177" ecubyteindex="63" ecubit="5" target="1">
+          <address length="2">0x000204</address>
+          <conversions>
+            <conversion units="miles" expr="x*3.10685596" format="0" />
+            <conversion units="km" expr="x*5" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P178" name="Interior Heater" desc="P178" ecubyteindex="63" ecubit="4" target="1">
+          <address>0x000270</address>
+          <conversions>
+            <conversion units="steps" expr="x" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P179" name="Quantity Correction Cylinder #1" desc="P179" ecubyteindex="63" ecubit="3" target="1">
+          <address>0x00025D</address>
+          <conversions>
+            <conversion units="µs" expr="(x-100)/100" format="0.0" />
+            <conversion units="ms" expr="(x-100)/100000" format="0.000" />
+          </conversions>
+        </parameter>
+        <parameter id="P180" name="Quantity Correction Cylinder #2" desc="P180" ecubyteindex="63" ecubit="2" target="1">
+          <address>0x00025E</address>
+          <conversions>
+            <conversion units="µs" expr="(x-100)/100" format="0.0" />
+            <conversion units="ms" expr="(x-100)/100000" format="0.000" />
+          </conversions>
+        </parameter>
+        <parameter id="P181" name="Quantity Correction Cylinder #3" desc="P181" ecubyteindex="63" ecubit="1" target="1">
+          <address>0x00025F</address>
+          <conversions>
+            <conversion units="µs" expr="(x-100)/100" format="0.0" />
+            <conversion units="ms" expr="(x-100)/100000" format="0.000" />
+          </conversions>
+        </parameter>
+        <parameter id="P182" name="Quantity Correction Cylinder #4" desc="P182" ecubyteindex="63" ecubit="0" target="1">
+          <address>0x000260</address>
+          <conversions>
+            <conversion units="µs" expr="(x-100)/100" format="0.0" />
+            <conversion units="ms" expr="(x-100)/100000" format="0.000" />
+          </conversions>
+        </parameter>
+        <parameter id="P183" name="Battery Current" desc="P183" ecubyteindex="64" ecubit="7" target="1">
+          <address>0x000271</address>
+          <conversions>
+            <conversion units="A" expr="x-128" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P184" name="Battery Temperature" desc="P184" ecubyteindex="64" ecubit="6" target="1">
+          <address>0x000273</address>
+          <conversions>
+            <conversion units="F" expr="32+9*(x-40)/5" format="0" gauge_min="-40" gauge_max="400" gauge_step="50" />
+            <conversion units="C" expr="x-40" format="0" gauge_min="-40" gauge_max="200" gauge_step="40" />
+          </conversions>
+        </parameter>
+        <parameter id="P185" name="Alternator Control Mode" desc="P185-0=High,1=ExHigh,2=Low,3=Mid" ecubyteindex="64" ecubit="5" target="1">
+          <address>0x000272</address>
+          <conversions>
+            <conversion units="index" expr="x" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P186" name="Cumulative Ash Ratio" desc="P186" ecubyteindex="70" ecubit="7" target="1">
+          <address>0x000275</address>
+          <conversions>
+            <conversion units="%" expr="x" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P187" name="Pressure Difference between Diesel Particulate Filter (DPF) Inlet and Outlet" desc="P187" ecubyteindex="70" ecubit="6" target="1">
+          <address>0x000276</address>
+          <conversions>
+            <conversion units="psi" expr="x*14.50377" format="0" gauge_min="0" gauge_max="400" gauge_step="50" />
+            <conversion units="kPa" expr="x" format="0" gauge_min="0" gauge_max="2600" gauge_step="200" />
+            <conversion units="hPa" expr="x*10" format="0" gauge_min="0" gauge_max="26000" gauge_step="2000" />
+            <conversion units="bar" expr="x*0.01" format="0.00" gauge_min="0" gauge_max="30" gauge_step="5" />
+          </conversions>
+        </parameter>
+        <parameter id="P188" name="Exhaust Gas Temperature at Catalyst Inlet" desc="P188" ecubyteindex="70" ecubit="5" target="1">
+          <address>0x000277</address>
+          <conversions>
+            <conversion units="F" expr="32+9*(x*5-40)/5" format="0" gauge_min="-40" gauge_max="2400" gauge_step="400" />
+            <conversion units="C" expr="x*5-40" format="0" gauge_min="-40" gauge_max="1300" gauge_step="200" />
+          </conversions>
+        </parameter>
+        <parameter id="P189" name="Exhaust Gas Temperature at Diesel Particulate Filter (DPF) Inlet" desc="P189" ecubyteindex="70" ecubit="4" target="1">
+          <address>0x000278</address>
+          <conversions>
+            <conversion units="F" expr="32+9*(x*5-40)/5" format="0" gauge_min="-40" gauge_max="2400" gauge_step="400" />
+            <conversion units="C" expr="x*5-40" format="0" gauge_min="-40" gauge_max="1300" gauge_step="200" />
+          </conversions>
+        </parameter>
+        <parameter id="P190" name="Estimated Catalyst Temperature" desc="P190" ecubyteindex="70" ecubit="3" target="1">
+          <address>0x000279</address>
+          <conversions>
+            <conversion units="F" expr="32+9*(x*5-40)/5" format="0" gauge_min="-40" gauge_max="2400" gauge_step="400" />
+            <conversion units="C" expr="x*5-40" format="0" gauge_min="-40" gauge_max="1300" gauge_step="200" />
+          </conversions>
+        </parameter>
+        <parameter id="P191" name="Estimated Temperature of the Diesel Particulate Filter (DPF)" desc="P191" ecubyteindex="70" ecubit="2" target="1">
+          <address>0x00027A</address>
+          <conversions>
+            <conversion units="F" expr="32+9*(x*5-40)/5" format="0" gauge_min="-40" gauge_max="2400" gauge_step="400" />
+            <conversion units="C" expr="x*5-40" format="0" gauge_min="-40" gauge_max="1300" gauge_step="200" />
+          </conversions>
+        </parameter>
+        <parameter id="P192" name="Soot Accumulation Ratio" desc="P192" ecubyteindex="70" ecubit="1" target="1">
+          <address>0x00027B</address>
+          <conversions>
+            <conversion units="%" expr="x" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P193" name="Oil Dilution Ratio" desc="P193" ecubyteindex="70" ecubit="0" target="1">
+          <address>0x00027C</address>
+          <conversions>
+            <conversion units="%" expr="x" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P194" name="Front-Rear Wheel Rotation Ratio" desc="P194" ecubyteindex="71" ecubit="7" target="2">
+          <address>0x000293</address>
+          <conversions>
+            <conversion units="%" expr="x/128" format="0.000" />
+          </conversions>
+        </parameter>
+        <parameter id="P195" name="ABS/VDC Front Wheel Mean Wheel Speed" desc="P195" ecubyteindex="71" ecubit="6" target="2">
+          <address>0x000294</address>
+          <conversions>
+            <conversion units="mph" expr="x*143/255" format="0" gauge_min="0" gauge_max="143" gauge_step="10" />
+            <conversion units="km/h" expr="x*230/255" format="0" gauge_min="0" gauge_max="230" gauge_step="20" />
+          </conversions>
+        </parameter>
+        <parameter id="P196" name="ABS/VDC Rear Wheel Mean Wheel Speed" desc="P196" ecubyteindex="71" ecubit="5" target="2">
+          <address>0x000295</address>
+          <conversions>
+            <conversion units="mph" expr="x*143/255" format="0" gauge_min="0" gauge_max="143" gauge_step="10" />
+            <conversion units="km/h" expr="x*230/255" format="0" gauge_min="0" gauge_max="230" gauge_step="20" />
+          </conversions>
+        </parameter>
+        <parameter id="P197" name="Automatic Transmission Fluid (ATF) Deterioration Degree" desc="P197" ecubyteindex="71" ecubit="4" target="2">
+          <address length="2">0x000296</address>
+          <conversions>
+            <conversion units="%" expr="x*40/13107" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P198" name="Accumulated Count of Overspeed Instances (Very High RPM)" desc="P198" ecubyteindex="72" ecubit="7" target="1">
+          <address>0x000298</address>
+          <conversions>
+            <conversion units="Time" expr="x" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P199" name="Accumulated Count of Overspeed Instances (High RPM)" desc="P199" ecubyteindex="72" ecubit="6" target="1">
+          <address>0x000299</address>
+          <conversions>
+            <conversion units="Time" expr="x" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P200" name="Engine Load (Calculated)" desc="P200-Engine load as calculated from MAF and RPM." target="1">
+          <depends>
+            <ref parameter="P8" />
+            <ref parameter="P12" />
+          </depends>
+          <conversions>
+            <conversion units="g/rev" expr="(P12*60)/P8" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P201" name="Injector Duty Cycle" desc="P201-IDC as calculated from RPM and injector PW." target="1">
+          <depends>
+            <ref parameter="P8" />
+            <ref parameter="P21" />
+          </depends>
+          <conversions>
+            <conversion units="%" expr="(P8*P21)/1200" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P202" name="Manifold Relative Pressure (Corrected)" desc="P202-Difference between Manifold Absolute Pressure and Atmospheric Pressure." target="1">
+          <depends>
+            <ref parameter="P7" />
+            <ref parameter="P24" />
+          </depends>
+          <conversions>
+            <conversion units="psi" expr="[P7:psi]-[P24:psi]" format="0.00" gauge_min="-30" gauge_max="30" gauge_step="5" />
+            <conversion units="bar" expr="[P7:bar]-[P24:bar]" format="0.000" gauge_min="-2" gauge_max="2" gauge_step="0.4" />
+            <conversion units="inHg" expr="[P7:inHg]-[P24:inHg]" format="0.00" gauge_min="-40" gauge_max="60" gauge_step="10" />
+            <conversion units="mmHg" expr="[P7:mmHg]-[P24:mmHg]" format="0" gauge_min="-1000" gauge_max="2000" gauge_step="300" />
+          </conversions>
+        </parameter>
+        <parameter id="P203" name="Fuel Consumption (Est.)" desc="P203-Estimated fuel consumption based on MAF, AFR and vehicle speed." target="1">
+          <depends>
+            <ref parameter="P9" />
+            <ref parameter="P12" />
+            <ref parameter="P58" />
+          </depends>
+          <conversions>
+            <conversion units="mpg (US)" expr="([P9:mph]/3600)/((P12/[P58:AFR])/2880)" format="0.00" gauge_min="0" gauge_max="60" gauge_step="5" />
+            <conversion units="l/100km" expr="(3600/[P9:km/h])*((P12/[P58:AFR])/761)*100" format="0.00" gauge_min="0" gauge_max="60" gauge_step="5" />
+            <conversion units="km/l" expr="([P9:km/h]/3600)/((P12/[P58:AFR])/761)" format="0.00" gauge_min="0" gauge_max="20" gauge_step="2" />
+            <conversion units="mpg (UK)" expr="([P9:mph]/3600)/((P12/[P58:AFR])/3459)" format="0.00" gauge_min="0" gauge_max="60" gauge_step="5" />
+          </conversions>
+        </parameter>
+        <parameter id="P204" name="Actual Common Rail Pressure (Time Synchronized)" desc="P204" ecubyteindex="72" ecubit="5" target="1">
+          <address>0x00021F</address>
+          <conversions>
+            <conversion units="psi" expr="x*145.0377" format="0" />
+            <conversion units="MPa" expr="x" format="0" />
+            <conversion units="bar" expr="x*10" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P205" name="Estimated Distance to Oil Change" desc="P205" ecubyteindex="72" ecubit="4" target="1">
+          <address>0x00029A</address>
+          <conversions>
+            <conversion units="miles" expr="x*62" format="0" />
+            <conversion units="km" expr="x*100" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P206" name="Running Distance since last Diesel Particulate Filter (DPF) Regeneration" desc="P206" ecubyteindex="72" ecubit="3" target="1">
+          <address length="2">0x00029B</address>
+          <conversions>
+            <conversion units="miles" expr="x*0.621371192" format="0" />
+            <conversion units="km" expr="x" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P207" name="Diesel Particulate Filter (DPF) Regeneration Count" desc="P207" ecubyteindex="72" ecubit="2" target="1">
+          <address length="2">0x00029D</address>
+          <conversions>
+            <conversion units="Times" expr="x" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P208" name="Micro-Quantity-Injection Final Learning Value 1-1" desc="P208-Injector learning value for idling for PL-CYL, where PL = common rail pressure level, CYL = cylinder number." ecubyteindex="72" ecubit="1" target="1">
+          <address>0x00023D</address>
+          <conversions>
+            <conversion units="µs" expr="(x-128)/200" format="0.0" />
+            <conversion units="ms" expr="(x-128)/200000" format="0.000" />
+          </conversions>
+        </parameter>
+        <parameter id="P209" name="Micro-Quantity-Injection Final Learning Value 1-2" desc="P209-Injector learning value for idling for PL-CYL, where PL = common rail pressure level, CYL = cylinder number." ecubyteindex="72" ecubit="0" target="1">
+          <address>0x00023E</address>
+          <conversions>
+            <conversion units="µs" expr="(x-128)/200" format="0.0" />
+            <conversion units="ms" expr="(x-128)/200000" format="0.000" />
+          </conversions>
+        </parameter>
+        <parameter id="P210" name="Micro-Quantity-Injection Final Learning Value 1-3" desc="P210-Injector learning value for idling for PL-CYL, where PL = common rail pressure level, CYL = cylinder number." ecubyteindex="73" ecubit="7" target="1">
+          <address>0x00023F</address>
+          <conversions>
+            <conversion units="µs" expr="(x-128)/200" format="0.0" />
+            <conversion units="ms" expr="(x-128)/200000" format="0.000" />
+          </conversions>
+        </parameter>
+        <parameter id="P211" name="Micro-Quantity-Injection Final Learning Value 1-4" desc="P211-Injector learning value for idling for PL-CYL, where PL = common rail pressure level, CYL = cylinder number." ecubyteindex="73" ecubit="6" target="1">
+          <address>0x000240</address>
+          <conversions>
+            <conversion units="µs" expr="(x-128)/200" format="0.0" />
+            <conversion units="ms" expr="(x-128)/200000" format="0.000" />
+          </conversions>
+        </parameter>
+        <parameter id="P212" name="Micro-Quantity-Injection Final Learning Value 2-1" desc="P212-Injector learning value for idling for PL-CYL, where PL = common rail pressure level, CYL = cylinder number." ecubyteindex="73" ecubit="5" target="1">
+          <address>0x000241</address>
+          <conversions>
+            <conversion units="µs" expr="(x-128)/200" format="0.0" />
+            <conversion units="ms" expr="(x-128)/200000" format="0.000" />
+          </conversions>
+        </parameter>
+        <parameter id="P213" name="Micro-Quantity-Injection Final Learning Value 2-2" desc="P213-Injector learning value for idling for PL-CYL, where PL = common rail pressure level, CYL = cylinder number." ecubyteindex="73" ecubit="4" target="1">
+          <address>0x000242</address>
+          <conversions>
+            <conversion units="µs" expr="(x-128)/200" format="0.0" />
+            <conversion units="ms" expr="(x-128)/200000" format="0.000" />
+          </conversions>
+        </parameter>
+        <parameter id="P214" name="Micro-Quantity-Injection Final Learning Value 2-3" desc="P214-Injector learning value for idling for PL-CYL, where PL = common rail pressure level, CYL = cylinder number." ecubyteindex="73" ecubit="3" target="1">
+          <address>0x000243</address>
+          <conversions>
+            <conversion units="µs" expr="(x-128)/200" format="0.0" />
+            <conversion units="ms" expr="(x-128)/200000" format="0.000" />
+          </conversions>
+        </parameter>
+        <parameter id="P215" name="Micro-Quantity-Injection Final Learning Value 2-4" desc="P215-Injector learning value for idling for PL-CYL, where PL = common rail pressure level, CYL = cylinder number." ecubyteindex="73" ecubit="2" target="1">
+          <address>0x000244</address>
+          <conversions>
+            <conversion units="µs" expr="(x-128)/200" format="0.0" />
+            <conversion units="ms" expr="(x-128)/200000" format="0.000" />
+          </conversions>
+        </parameter>
+        <parameter id="P216" name="Micro-Quantity-Injection Final Learning Value 3-1" desc="P216-Injector learning value for idling for PL-CYL, where PL = common rail pressure level, CYL = cylinder number." ecubyteindex="73" ecubit="1" target="1">
+          <address>0x000245</address>
+          <conversions>
+            <conversion units="µs" expr="(x-128)/200" format="0.0" />
+            <conversion units="ms" expr="(x-128)/200000" format="0.000" />
+          </conversions>
+        </parameter>
+        <parameter id="P217" name="Micro-Quantity-Injection Final Learning Value 3-2" desc="P217-Injector learning value for idling for PL-CYL, where PL = common rail pressure level, CYL = cylinder number." ecubyteindex="73" ecubit="0" target="1">
+          <address>0x000246</address>
+          <conversions>
+            <conversion units="µs" expr="(x-128)/200" format="0.0" />
+            <conversion units="ms" expr="(x-128)/200000" format="0.000" />
+          </conversions>
+        </parameter>
+        <parameter id="P218" name="Micro-Quantity-Injection Final Learning Value 3-3" desc="P218-Injector learning value for idling for PL-CYL, where PL = common rail pressure level, CYL = cylinder number." ecubyteindex="74" ecubit="7" target="1">
+          <address>0x000247</address>
+          <conversions>
+            <conversion units="µs" expr="(x-128)/200" format="0.0" />
+            <conversion units="ms" expr="(x-128)/200000" format="0.000" />
+          </conversions>
+        </parameter>
+        <parameter id="P219" name="Micro-Quantity-Injection Final Learning Value 3-4" desc="P219-Injector learning value for idling for PL-CYL, where PL = common rail pressure level, CYL = cylinder number." ecubyteindex="74" ecubit="6" target="1">
+          <address>0x000248</address>
+          <conversions>
+            <conversion units="µs" expr="(x-128)/200" format="0.0" />
+            <conversion units="ms" expr="(x-128)/200000" format="0.000" />
+          </conversions>
+        </parameter>
+        <parameter id="P220" name="Micro-Quantity-Injection Final Learning Value 4-1" desc="P220-Injector learning value for idling for PL-CYL, where PL = common rail pressure level, CYL = cylinder number." ecubyteindex="74" ecubit="5" target="1">
+          <address>0x000249</address>
+          <conversions>
+            <conversion units="µs" expr="(x-128)/200" format="0.0" />
+            <conversion units="ms" expr="(x-128)/200000" format="0.000" />
+          </conversions>
+        </parameter>
+        <parameter id="P221" name="Micro-Quantity-Injection Final Learning Value 4-2" desc="P221-Injector learning value for idling for PL-CYL, where PL = common rail pressure level, CYL = cylinder number." ecubyteindex="74" ecubit="4" target="1">
+          <address>0x00024A</address>
+          <conversions>
+            <conversion units="µs" expr="(x-128)/200" format="0.0" />
+            <conversion units="ms" expr="(x-128)/200000" format="0.000" />
+          </conversions>
+        </parameter>
+        <parameter id="P222" name="Micro-Quantity-Injection Final Learning Value 4-3" desc="P222-Injector learning value for idling for PL-CYL, where PL = common rail pressure level, CYL = cylinder number." ecubyteindex="74" ecubit="3" target="1">
+          <address>0x00024B</address>
+          <conversions>
+            <conversion units="µs" expr="(x-128)/200" format="0.0" />
+            <conversion units="ms" expr="(x-128)/200000" format="0.000" />
+          </conversions>
+        </parameter>
+        <parameter id="P223" name="Micro-Quantity-Injection Final Learning Value 4-4" desc="P223-Injector learning value for idling for PL-CYL, where PL = common rail pressure level, CYL = cylinder number." ecubyteindex="74" ecubit="2" target="1">
+          <address>0x00024C</address>
+          <conversions>
+            <conversion units="µs" expr="(x-128)/200" format="0.0" />
+            <conversion units="ms" expr="(x-128)/200000" format="0.000" />
+          </conversions>
+        </parameter>
+        <parameter id="P224" name="Micro-Quantity-Injection Final Learning Value 5-1" desc="P224-Injector learning value for idling for PL-CYL, where PL = common rail pressure level, CYL = cylinder number." ecubyteindex="74" ecubit="1" target="1">
+          <address>0x00024D</address>
+          <conversions>
+            <conversion units="µs" expr="(x-128)/200" format="0.0" />
+            <conversion units="ms" expr="(x-128)/200000" format="0.000" />
+          </conversions>
+        </parameter>
+        <parameter id="P225" name="Micro-Quantity-Injection Final Learning Value 5-2" desc="P225-Injector learning value for idling for PL-CYL, where PL = common rail pressure level, CYL = cylinder number." ecubyteindex="74" ecubit="0" target="1">
+          <address>0x00024E</address>
+          <conversions>
+            <conversion units="µs" expr="(x-128)/200" format="0.0" />
+            <conversion units="ms" expr="(x-128)/200000" format="0.000" />
+          </conversions>
+        </parameter>
+        <parameter id="P226" name="Micro-Quantity-Injection Final Learning Value 5-3" desc="P226-Injector learning value for idling for PL-CYL, where PL = common rail pressure level, CYL = cylinder number." ecubyteindex="76" ecubit="7" target="1">
+          <address>0x00024F</address>
+          <conversions>
+            <conversion units="µs" expr="(x-128)/200" format="0.0" />
+            <conversion units="ms" expr="(x-128)/200000" format="0.000" />
+          </conversions>
+        </parameter>
+        <parameter id="P227" name="Micro-Quantity-Injection Final Learning Value 5-4" desc="P227-Injector learning value for idling for PL-CYL, where PL = common rail pressure level, CYL = cylinder number." ecubyteindex="76" ecubit="6" target="1">
+          <address>0x000250</address>
+          <conversions>
+            <conversion units="µs" expr="(x-128)/200" format="0.0" />
+            <conversion units="ms" expr="(x-128)/200000" format="0.000" />
+          </conversions>
+        </parameter>
+        <parameter id="P228" name="Individual Pump Difference Learning Value" desc="P228" ecubyteindex="76" ecubit="5" target="1">
+          <address length="2">0x000238</address>
+          <conversions>
+            <conversion units="mA" expr="x-1000" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P229" name="Final Main Injection Period" desc="P229" ecubyteindex="76" ecubit="4" target="1">
+          <address length="2">0x000257</address>
+          <conversions>
+            <conversion units="µs" expr="x" format="0" />
+            <conversion units="ms" expr="x/1000" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P230" name="Final Injection Amount (Fuel Temperature Corrected)" desc="P230" target="1">
+          <depends>
+            <ref parameter="P156" />
+            <ref parameter="P31" />
+          </depends>
+          <conversions>
+            <conversion units="mg/cyl" expr="P156*(835-(0.7*([P31:C]-15)))/1000" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P231" name="Angle of Main Injection" desc="P231" target="1">
+          <depends>
+            <ref parameter="P229" />
+            <ref parameter="P8" />
+          </depends>
+          <conversions>
+            <conversion units="°CA" expr="[P229:µs]/(2777.77/(P8/60))" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P232" name="Lambda (Smoke Behaviour)" desc="P232" target="1">
+          <depends>
+            <ref parameter="P160" />
+            <ref parameter="P230" />
+          </depends>
+          <conversions>
+            <conversion units="Lambda" expr="(P160/P230)/14.7" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P233" name="Pre-Injection Final Period" desc="P233-Diesel parameter" ecubyteindex="8" ecubit="0" target="1">
+          <address length="2">0x000255</address>
+          <conversions>
+            <conversion units="µs" expr="x" format="0" />
+            <conversion units="ms" expr="x/1000" format="0" />
+          </conversions>
+        </parameter>
+        <parameter id="P234" name="Pre-Injection Amount" desc="P234-Volume" ecubyteindex="60" ecubit="6" target="1">
+          <address length="2">0x00022F</address>
+          <conversions>
+            <conversion units="mm³/st" expr="x/256-30" format="0.0000" />
+          </conversions>
+        </parameter>
+        <parameter id="P235" name="Pre-Injection Interval" desc="P235-Start of injection of pre-injection" ecubyteindex="60" ecubit="6" target="1">
+          <address>0x000231</address>
+          <conversions>
+            <conversion units="°CA" expr="x/50" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P236" name="Cumulative oil diesel entry" desc="P236-Cumulative amount of diesel fuel in the engine oil" ecubyteindex="60" ecubit="6" target="1">
+          <address>0x0002A2</address>
+          <conversions>
+            <conversion units="g" expr="x*5" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P237" name="Air mass/charge pressure coefficient (TD)" desc="P237-Coefficient for determining the turbocharger efficiency" target="1">
+          <depends>
+            <ref parameter="P160" />
+            <ref parameter="P7" />
+          </depends>
+          <conversions>
+            <conversion units="coefficient" expr="P160/[P7:hPa]" format="0.00" />
+          </conversions>
+        </parameter>
+        <parameter id="P238" name="Final Initial Torque" desc="P238-Final initial torque including all limiters" ecubyteindex="60" ecubit="6" target="1">
+          <address length="2">0x000232</address>
+          <conversions>
+            <conversion units="Nm" expr="x-50" format="0" />
+          </conversions>
+        </parameter>
+      </parameters>
+      <switches>
+        <switch id="S1" name="AT Vehicle ID" desc="(E) S1" byte="0x000061" bit="6" ecubyteindex="19" target="1" />
+        <switch id="S2" name="Test Mode Signal" desc="(E) S2" byte="0x000061" bit="5" ecubyteindex="19" target="1" />
+        <switch id="S3" name="Read Memory Signal" desc="(E) S3" byte="0x000061" bit="4" ecubyteindex="19" target="1" />
+        <switch id="S4" name="Neutral Position Switch" desc="(B) S4" byte="0x000062" bit="7" ecubyteindex="20" target="3" />
+        <switch id="S5" name="Idle Switch" desc="(E) S5" byte="0x000062" bit="6" ecubyteindex="20" target="1" />
+        <switch id="S6" name="Intercooler Auto Washer Switch" desc="(E) S6" byte="0x000062" bit="4" ecubyteindex="20" target="1" />
+        <switch id="S7" name="Ignition Switch" desc="(B) S7" byte="0x000062" bit="3" ecubyteindex="20" target="3" />
+        <switch id="S8" name="Power Steering Switch" desc="(E) S8" byte="0x000062" bit="2" ecubyteindex="20" target="1" />
+        <switch id="S9" name="Air Conditioning Switch" desc="(E) S9" byte="0x000062" bit="1" ecubyteindex="20" target="1" />
+        <switch id="S10" name="Handle Switch" desc="(E) S10" byte="0x000063" bit="7" ecubyteindex="21" target="1" />
+        <switch id="S11" name="Starter Switch" desc="(E) S11" byte="0x000063" bit="6" ecubyteindex="21" target="1" />
+        <switch id="S12" name="Front O2 Sensor #1 Rich Signal" desc="(E) S12" byte="0x000063" bit="5" ecubyteindex="21" target="1" />
+        <switch id="S13" name="Rear O2 Sensor Rich Signal" desc="(E) S13" byte="0x000063" bit="4" ecubyteindex="21" target="1" />
+        <switch id="S14" name="Front O2 Sensor #2 Rich Signal" desc="(E) S14" byte="0x000063" bit="3" ecubyteindex="21" target="1" />
+        <switch id="S15" name="Knocking Signal #1" desc="(E) S15" byte="0x000063" bit="2" ecubyteindex="21" target="1" />
+        <switch id="S16" name="Knocking Signal #2" desc="(E) S16" byte="0x000063" bit="1" ecubyteindex="21" target="1" />
+        <switch id="S17" name="Electrical Load Signal" desc="(E) S17" byte="0x000063" bit="0" ecubyteindex="21" target="1" />
+        <switch id="S18" name="Crankshaft Position Signal" desc="(E) S18" byte="0x000064" bit="7" ecubyteindex="22" target="1" />
+        <switch id="S19" name="Camshaft Position Signal" desc="(E) S19" byte="0x000064" bit="6" ecubyteindex="22" target="1" />
+        <switch id="S20" name="Rear Defogger Switch" desc="(E) S20" byte="0x000064" bit="5" ecubyteindex="22" target="1" />
+        <switch id="S21" name="Blower Fan Switch" desc="(E) S21" byte="0x000064" bit="4" ecubyteindex="22" target="1" />
+        <switch id="S22" name="Light Switch" desc="(E) S22" byte="0x000064" bit="3" ecubyteindex="22" target="1" />
+        <switch id="S23" name="Wiper Switch" desc="(E) S23" byte="0x000064" bit="2" ecubyteindex="22" target="1" />
+        <switch id="S24" name="Air Conditioning Lock Signal" desc="(E) S24" byte="0x000064" bit="1" ecubyteindex="22" target="1" />
+        <switch id="S25" name="Air Conditioning Mid Pressure Switch" desc="(E) S25" byte="0x000064" bit="0" ecubyteindex="22" target="1" />
+        <switch id="S26" name="Air Conditioning Compressor Signal" desc="(E) S26" byte="0x000065" bit="7" ecubyteindex="23" target="1" />
+        <switch id="S27" name="Radiator Fan Relay #3" desc="(E) S27" byte="0x000065" bit="6" ecubyteindex="23" target="1" />
+        <switch id="S28" name="Radiator Fan Relay #1" desc="(E) S28" byte="0x000065" bit="5" ecubyteindex="23" target="1" />
+        <switch id="S29" name="Radiator Fan Relay #2" desc="(E) S29" byte="0x000065" bit="4" ecubyteindex="23" target="1" />
+        <switch id="S30" name="Fuel Pump Relay" desc="(E) S30" byte="0x000065" bit="3" ecubyteindex="23" target="1" />
+        <switch id="S31" name="Intercooler Auto Washer Relay" desc="(E) S31" byte="0x000065" bit="2" ecubyteindex="23" target="1" />
+        <switch id="S32" name="Canister Purge Control (CPC) Solenoid Valve" desc="(E) S32" byte="0x000065" bit="1" ecubyteindex="23" target="1" />
+        <switch id="S33" name="Blow-By Leak Connector" desc="(E) S33" byte="0x000065" bit="0" ecubyteindex="23" target="1" />
+        <switch id="S34" name="Positive Crankcase Ventilation (PCV) Solenoid Valve" desc="(E) S34" byte="0x000066" bit="7" ecubyteindex="24" target="1" />
+        <switch id="S35" name="Tumble Generator Valve (TGV) Output" desc="(E) S35" byte="0x000066" bit="6" ecubyteindex="24" target="1" />
+        <switch id="S36" name="Tumble Generator Valve (TGV) Drive" desc="(E) S36" byte="0x000066" bit="5" ecubyteindex="24" target="1" />
+        <switch id="S37" name="Variable Intake Air Solenoid" desc="(E) S37" byte="0x000066" bit="4" ecubyteindex="24" target="1" />
+        <switch id="S38" name="Pressure Sources Change" desc="(E) S38" byte="0x000066" bit="3" ecubyteindex="24" target="1" />
+        <switch id="S39" name="Ventilation Solenoid Valve" desc="(E) S39" byte="0x000066" bit="2" ecubyteindex="24" target="1" />
+        <switch id="S40" name="Power Steering Solenoid Valve" desc="(E) S40" byte="0x000066" bit="1" ecubyteindex="24" target="1" />
+        <switch id="S41" name="Assist Air Solenoid Valve" desc="(E) S41" byte="0x000066" bit="0" ecubyteindex="24" target="1" />
+        <switch id="S42" name="Tank Sensor Control Valve" desc="(E) S42" byte="0x000067" bit="7" ecubyteindex="25" target="1" />
+        <switch id="S43" name="Relief Valve Solenoid #1" desc="(E) S43" byte="0x000067" bit="6" ecubyteindex="25" target="1" />
+        <switch id="S44" name="Relief Valve Solenoid #2" desc="(E) S44" byte="0x000067" bit="5" ecubyteindex="25" target="1" />
+        <switch id="S45" name="Traction Control System (TCS) Relief Valve Solenoid" desc="(E) S45" byte="0x000067" bit="4" ecubyteindex="25" target="1" />
+        <switch id="S46" name="Exhaust Gas Positive Pressure" desc="(E) S46" byte="0x000067" bit="3" ecubyteindex="25" target="1" />
+        <switch id="S47" name="Exhaust Gas Negative Pressure" desc="(E) S47" byte="0x000067" bit="2" ecubyteindex="25" target="1" />
+        <switch id="S48" name="Intake Air Solenoid" desc="(E) S48" byte="0x000067" bit="1" ecubyteindex="25" target="1" />
+        <switch id="S49" name="Muffler Control" desc="(E) S49" byte="0x000067" bit="0" ecubyteindex="25" target="1" />
+        <switch id="S50" name="Retard Signal From AT" desc="(E) S50" byte="0x000068" bit="3" ecubyteindex="26" target="1" />
+        <switch id="S51" name="Fuel Cut Signal From AT" desc="(E) S51" byte="0x000068" bit="2" ecubyteindex="26" target="1" />
+        <switch id="S52" name="Ban of Torque Down" desc="(E) S52" byte="0x000068" bit="1" ecubyteindex="26" target="1" />
+        <switch id="S53" name="Request Torque Down VDC" desc="(E) S53" byte="0x000068" bit="0" ecubyteindex="26" target="1" />
+        <switch id="S54" name="Torque Control Signal #1" desc="(E) S54" byte="0x000069" bit="7" ecubyteindex="27" target="1" />
+        <switch id="S55" name="Torque Control Signal #2" desc="(E) S55" byte="0x000069" bit="6" ecubyteindex="27" target="1" />
+        <switch id="S56" name="Torque Permission Signal" desc="(E) S56" byte="0x000069" bit="5" ecubyteindex="27" target="1" />
+        <switch id="S57" name="Engine AT Masking Flag (EAM) Signal" desc="(E) S57" byte="0x000069" bit="4" ecubyteindex="27" target="1" />
+        <switch id="S58" name="AT Cooperation Lock Up Signal" desc="(E) S58" byte="0x000069" bit="3" ecubyteindex="27" target="1" />
+        <switch id="S59" name="AT Cooperation Lean Burn Signal" desc="(E) S59" byte="0x000069" bit="2" ecubyteindex="27" target="1" />
+        <switch id="S60" name="AT Cooperation Rich Spike Signal" desc="(E) S60" byte="0x000069" bit="1" ecubyteindex="27" target="1" />
+        <switch id="S61" name="AT Engine Torque Request (AET) Signal" desc="(E) S61" byte="0x000069" bit="0" ecubyteindex="27" target="1" />
+        <switch id="S62" name="Electronic Throttle Control (ETC) Motor Relay" desc="(E) S62" byte="0x000120" bit="6" ecubyteindex="44" target="1" />
+        <switch id="S63" name="Clutch Switch" desc="(E) S63" byte="0x000121" bit="7" ecubyteindex="45" target="1" />
+        <switch id="S64" name="Stop Light Switch" desc="(E) S64" byte="0x000121" bit="6" ecubyteindex="45" target="1" />
+        <switch id="S65" name="Cruise Control Set/Coast Switch" desc="(E) S65" byte="0x000121" bit="5" ecubyteindex="45" target="1" />
+        <switch id="S66" name="Cruise Control Resume/Accelerate Switch" desc="(E) S66" byte="0x000121" bit="4" ecubyteindex="45" target="1" />
+        <switch id="S67" name="Brake Switch" desc="(E) S67" byte="0x000121" bit="3" ecubyteindex="45" target="1" />
+        <switch id="S68" name="Cruise Control Main Toggle Switch" desc="(E) S68" byte="0x000121" bit="1" ecubyteindex="45" target="1" />
+        <switch id="S69" name="D-Check Require Flag" desc="(E) S69" byte="0x000061" bit="2" ecubyteindex="19" target="1" />
+        <switch id="S70" name="Delivery Mode (Test Mode) Connector" desc="(E) S70" byte="0x000061" bit="1" ecubyteindex="19" target="1" />
+        <switch id="S71" name="Clear Memory Terminal" desc="(E) S71" byte="0x000061" bit="0" ecubyteindex="19" target="1" />
+        <switch id="S72" name="Exhaust By-Pass Valve" desc="(E) S72-Not Used." byte="0x000068" bit="7" ecubyteindex="26" target="1" />
+        <switch id="S73" name="Engine Oil Pressure Switch #1" desc="(E) S73" byte="0x000068" bit="6" ecubyteindex="26" target="1" />
+        <switch id="S74" name="Engine Oil Pressure Switch #2" desc="(E) S74" byte="0x000068" bit="5" ecubyteindex="26" target="1" />
+        <switch id="S75" name="Canister Purge Control (CPC) Solenoid Valve #2" desc="(E) S75" byte="0x000068" bit="4" ecubyteindex="26" target="1" />
+        <switch id="S76" name="Tiptronic Mode Switch" desc="(T) S76" byte="0x00006A" bit="7" ecubyteindex="28" target="2" />
+        <switch id="S77" name="Cruise Control Signal" desc="(T) S77-TCU input." byte="0x00006A" bit="6" ecubyteindex="28" target="2" />
+        <switch id="S78" name="ABS Signal" desc="(T) S78" byte="0x00006A" bit="5" ecubyteindex="28" target="2" />
+        <switch id="S79" name="Downshift Switch" desc="(T) S79" byte="0x00006A" bit="4" ecubyteindex="28" target="2" />
+        <switch id="S80" name="Stop Light Switch" desc="(T) S80" byte="0x00006A" bit="3" ecubyteindex="28" target="2" />
+        <switch id="S81" name="Upshift Switch" desc="(T) S81" byte="0x00006A" bit="2" ecubyteindex="28" target="2" />
+        <switch id="S82" name="Kick Down Switch" desc="(B) S82" byte="0x00006A" bit="1" ecubyteindex="28" target="3" />
+        <switch id="S83" name="Front Wheel Drive (FWD) Switch" desc="(T) S83-Becomes ON(1) when fuse is inserted into FWD fuse holder. TCU input." byte="0x00006A" bit="0" ecubyteindex="28" target="2" />
+        <switch id="S84" name="Power Mode Switch" desc="(T) S84" byte="0x00006B" bit="7" ecubyteindex="29" target="2" />
+        <switch id="S85" name="Hold Mode Switch" desc="(T) S85" byte="0x00006B" bit="6" ecubyteindex="29" target="2" />
+        <switch id="S86" name="1st Range Signal" desc="(T) S86" byte="0x00006B" bit="5" ecubyteindex="29" target="2" />
+        <switch id="S87" name="2nd Range Signal" desc="(T) S87" byte="0x00006B" bit="4" ecubyteindex="29" target="2" />
+        <switch id="S88" name="3rd Range Signal" desc="(T) S88" byte="0x00006B" bit="3" ecubyteindex="29" target="2" />
+        <switch id="S89" name="D Range Signal" desc="(T) S89" byte="0x00006B" bit="2" ecubyteindex="29" target="2" />
+        <switch id="S90" name="R Range Signal" desc="(T) S90" byte="0x00006B" bit="1" ecubyteindex="29" target="2" />
+        <switch id="S91" name="N/P Range Signal" desc="(T) S91" byte="0x00006B" bit="0" ecubyteindex="29" target="2" />
+        <switch id="S92" name="4th Range Signal" desc="(T) S92" byte="0x00006C" bit="7" ecubyteindex="30" target="2" />
+        <switch id="S93" name="Tiptronic Solenoid" desc="(T) S93" byte="0x00006C" bit="6" ecubyteindex="30" target="2" />
+        <switch id="S94" name="Torque Control Signal #1" desc="(T) S94" byte="0x00006C" bit="5" ecubyteindex="30" target="2" />
+        <switch id="S95" name="Torque Control Signal #2" desc="(T) S95" byte="0x00006C" bit="4" ecubyteindex="30" target="2" />
+        <switch id="S96" name="2-4 Brake Timing Solenoid" desc="(T) S96" byte="0x00006C" bit="3" ecubyteindex="30" target="2" />
+        <switch id="S97" name="Low Clutch Timing Solenoid" desc="(T) S97" byte="0x00006C" bit="2" ecubyteindex="30" target="2" />
+        <switch id="S98" name="Shift Solenoid #2" desc="(T) S98" byte="0x00006C" bit="1" ecubyteindex="30" target="2" />
+        <switch id="S99" name="Shift Solenoid #1" desc="(T) S99" byte="0x00006C" bit="0" ecubyteindex="30" target="2" />
+        <switch id="S100" name="Shift Output 4" desc="(T) S100" byte="0x00006D" bit="7" ecubyteindex="31" target="2" />
+        <switch id="S101" name="Shift Output 3" desc="(T) S101" byte="0x00006D" bit="6" ecubyteindex="31" target="2" />
+        <switch id="S102" name="Shift Output 2" desc="(T) S102" byte="0x00006D" bit="5" ecubyteindex="31" target="2" />
+        <switch id="S103" name="Shift Output 1" desc="(T) S103" byte="0x00006D" bit="4" ecubyteindex="31" target="2" />
+        <switch id="S104" name="Diagnosis Lamp" desc="(T) S104" byte="0x00006D" bit="3" ecubyteindex="31" target="2" />
+        <switch id="S105" name="Rear Differential Oil Temperature Switch" desc="(T) S105" byte="0x00006D" bit="2" ecubyteindex="31" target="2" />
+        <switch id="S106" name="ATF Temperature Lamp" desc="(T) S106" byte="0x00006D" bit="1" ecubyteindex="31" target="2" />
+        <switch id="S107" name="Shift Lock Solenoid" desc="(T) S107" byte="0x00006D" bit="0" ecubyteindex="31" target="2" />
+        <switch id="S108" name="Economy Switch" desc="(B) S108" byte="0x00006E" bit="7" ecubyteindex="32" target="3" />
+        <switch id="S109" name="Power Mode Lamp" desc="(T) S109" byte="0x00006E" bit="6" ecubyteindex="32" target="2" />
+        <switch id="S110" name="P Range" desc="(T) S110" byte="0x00006E" bit="5" ecubyteindex="32" target="2" />
+        <switch id="S111" name="Torque Control Cut Signal" desc="(T) S111" byte="0x00006E" bit="4" ecubyteindex="32" target="2" />
+        <switch id="S112" name="P/N Signal" desc="(T) S112" byte="0x00006E" bit="3" ecubyteindex="32" target="2" />
+        <switch id="S113" name="Traction Control System (TCS) Switch" desc="(T) S113" byte="0x00006E" bit="2" ecubyteindex="32" target="2" />
+        <switch id="S114" name="Hold Lamp" desc="(T) S114" byte="0x00006E" bit="1" ecubyteindex="32" target="2" />
+        <switch id="S115" name="N Range" desc="(T) S115" byte="0x00006E" bit="0" ecubyteindex="32" target="2" />
+        <switch id="S116" name="Judgement of All Wheel Drive (AWD)" desc="(T) S116" byte="0x0000D4" bit="7" ecubyteindex="35" target="2" />
+        <switch id="S117" name="Inhibitor Switch #1" desc="(T) S117" byte="0x0000D4" bit="6" ecubyteindex="35" target="2" />
+        <switch id="S118" name="Inhibitor Switch #2" desc="(T) S118" byte="0x0000D4" bit="5" ecubyteindex="35" target="2" />
+        <switch id="S119" name="Inhibitor Switch #3" desc="(T) S119" byte="0x0000D4" bit="4" ecubyteindex="35" target="2" />
+        <switch id="S120" name="Inhibitor Switch #4" desc="(T) S120" byte="0x0000D4" bit="3" ecubyteindex="35" target="2" />
+        <switch id="S121" name="Inhibitor Switch #3 Monitor" desc="(T) S121" byte="0x0000D4" bit="2" ecubyteindex="35" target="2" />
+        <switch id="S122" name="Back Lamp Relay" desc="(T) S122" byte="0x0000D4" bit="1" ecubyteindex="35" target="2" />
+        <switch id="S123" name="AT Power Relay" desc="(T) S123" byte="0x0000D4" bit="0" ecubyteindex="35" target="2" />
+        <switch id="S124" name="H and LR/C Fluid Pressure" desc="(T) S124" byte="0x0000D5" bit="5" ecubyteindex="39" target="2" />
+        <switch id="S125" name="D/C Fluid Pressure" desc="(T) S125" byte="0x0000D5" bit="4" ecubyteindex="39" target="2" />
+        <switch id="S126" name="F/B Fluid Pressure" desc="(T) S126" byte="0x0000D5" bit="3" ecubyteindex="39" target="2" />
+        <switch id="S127" name="I/C Fluid Pressure" desc="(T) S127" byte="0x0000D5" bit="2" ecubyteindex="39" target="2" />
+        <switch id="S128" name="LC/B Fluid Pressure" desc="(T) S128" byte="0x0000D5" bit="1" ecubyteindex="39" target="2" />
+        <switch id="S129" name="Signal of Identified Electronic Control Module (ECM)" desc="(T) S129-DCCD shows ON(1) if AUTO mode is Yes. DCCD output." byte="0x0000D5" bit="0" ecubyteindex="39" target="2" />
+        <switch id="S130" name="Idle Switch" desc="(E) S130" byte="0x000120" bit="7" ecubyteindex="44" target="1" />
+        <switch id="S131" name="Injector Driver Relay" desc="(E) S131" byte="0x000120" bit="5" ecubyteindex="44" target="1" />
+        <switch id="S132" name="Cruise Control Inhibitor Switch" desc="(E) S132-Becomes ON(1) in Park or Neutral. ECU input." byte="0x000121" bit="2" ecubyteindex="45" target="1" />
+        <switch id="S133" name="Cruise Control System Status" desc="(B) S133" byte="0x000121" bit="0" ecubyteindex="45" target="3" />
+        <switch id="S134" name="LC/B Solenoid Valve" desc="(T) S134" byte="0x000122" bit="7" ecubyteindex="46" target="2" />
+        <switch id="S135" name="LU and FWD/B Solenoid Valve" desc="(T) S135" byte="0x000122" bit="6" ecubyteindex="46" target="2" />
+        <switch id="S136" name="Center Differential Lamp 1" desc="(T) S136" byte="0x000122" bit="5" ecubyteindex="46" target="2" />
+        <switch id="S137" name="Center Differential Lamp 2" desc="(T) S137" byte="0x000122" bit="4" ecubyteindex="46" target="2" />
+        <switch id="S138" name="Center Differential Lamp 3" desc="(T) S138" byte="0x000122" bit="3" ecubyteindex="46" target="2" />
+        <switch id="S139" name="Center Differential Lamp 4" desc="(T) S139" byte="0x000122" bit="2" ecubyteindex="46" target="2" />
+        <switch id="S140" name="Center Differential Lamp 5" desc="(T) S140" byte="0x000122" bit="1" ecubyteindex="46" target="2" />
+        <switch id="S141" name="Center Differential Lamp 6" desc="(T) S141" byte="0x000122" bit="0" ecubyteindex="46" target="2" />
+        <switch id="S142" name="Parking Position Switch" desc="(T) S142" byte="0x0000D6" bit="7" ecubyteindex="53" target="2" />
+        <switch id="S143" name="Center Differential Relay" desc="(T) S143" byte="0x0000D6" bit="6" ecubyteindex="53" target="2" />
+        <switch id="S144" name="AUTO/MANUAL Mode Switch" desc="(T) S144" byte="0x0000D6" bit="5" ecubyteindex="53" target="2" />
+        <switch id="S145" name="AUTO Mode Lamp" desc="(T) S145" byte="0x0000D6" bit="4" ecubyteindex="53" target="2" />
+        <switch id="S146" name="Fwd/B Hydraulic Pressure Switch" desc="(T) S146" byte="0x0000D6" bit="3" ecubyteindex="53" target="2" />
+        <switch id="S147" name="Automatic Transmission Learning Process" desc="(T) S147" byte="0x0000D6" bit="2" ecubyteindex="53" target="2" />
+        <switch id="S148" name="Body Integrated Unit Data" desc="(E) S148" byte="0x0000D7" bit="7" ecubyteindex="54" target="1" />
+        <switch id="S149" name="Body Integrated Unit Count" desc="(E) S149" byte="0x0000D7" bit="6" ecubyteindex="54" target="1" />
+        <switch id="S150" name="Secondary Air Combi Valve Relay #2" desc="(E) S150" byte="0x0000D7" bit="4" ecubyteindex="54" target="1" />
+        <switch id="S151" name="Secondary Air Pump Relay" desc="(E) S151" byte="0x0000D7" bit="3" ecubyteindex="54" target="1" />
+        <switch id="S152" name="Secondary Air Combi Valve Relay #1" desc="(E) S152" byte="0x0000D7" bit="2" ecubyteindex="54" target="1" />
+        <switch id="S153" name="Distance Change Switch" desc="(E) S153" byte="0x0000D7" bit="1" ecubyteindex="54" target="1" />
+        <switch id="S154" name="Cruise Control Cancel Switch" desc="(E) S154" byte="0x0000D7" bit="0" ecubyteindex="54" target="1" />
+        <switch id="S155" name="Malfunction Indicator Light (MIL) ON Flag" desc="(E) S155" byte="0x000196" bit="7" ecubyteindex="56" target="1" />
+        <switch id="S156" name="Fuel Pressure Switching Solenoid Valve" desc="(E) S156" byte="0x000196" bit="6" ecubyteindex="56" target="1" />
+        <switch id="S157" name="Oil Level Switch" desc="(E) S157" byte="0x000196" bit="5" ecubyteindex="56" target="1" />
+        <switch id="S158" name="Boost Pressure Control Mode" desc="(E) S158" byte="0x000197" bit="7" ecubyteindex="57" target="1" />
+        <switch id="S159" name="Exhaust Gas Recirculation (EGR) Control Mode" desc="(E) S159" byte="0x000197" bit="6" ecubyteindex="57" target="1" />
+        <switch id="S160" name="Glow Relay" desc="(E) S160" byte="0x000197" bit="5" ecubyteindex="57" target="1" />
+        <switch id="S161" name="Swirl Control Valve" desc="(E) S161" byte="0x000197" bit="4" ecubyteindex="57" target="1" />
+        <switch id="S162" name="Sub Fuel Pump Relay" desc="(E) S162" byte="0x000197" bit="3" ecubyteindex="57" target="1" />
+        <switch id="S163" name="Request for 'Compressor ON'" desc="(E) S163" byte="0x000197" bit="2" ecubyteindex="57" target="1" />
+        <switch id="S164" name="Fuel Pump Learning" desc="(E) S164" byte="0x000197" bit="1" ecubyteindex="57" target="1" />
+        <switch id="S165" name="Injector Learning" desc="(E) S165" byte="0x000197" bit="0" ecubyteindex="57" target="1" />
+        <switch id="S166" name="Self-Shut Relay Output" desc="(T) S166" byte="0x0001CD" bit="7" ecubyteindex="67" target="2" />
+        <switch id="S167" name="Lock-Up ON/OFF Solenoid Valve" desc="(T) S167" byte="0x0001CD" bit="6" ecubyteindex="67" target="2" />
+        <switch id="S168" name="Exhaust Gas Recirculation (EGR) Learning" desc="(E) S168" byte="0x0001CE" bit="7" ecubyteindex="69" target="1" />
+        <switch id="S169" name="Fuel Cut" desc="(E) S169" byte="0x0001CE" bit="6" ecubyteindex="69" target="1" />
+        <switch id="S170" name="Fuel Pump Mode" desc="(E) S170" byte="0x0001CE" bit="5" ecubyteindex="69" target="1" />
+        <switch id="S171" name="Clutch Switch for Smart-System" desc="(E) S171" byte="0x0001CE" bit="4" ecubyteindex="69" target="1" />
+        <switch id="S172" name="Diesel Particulate Filter (DPF) Regeneration" desc="(E) S172" byte="0x0001CE" bit="3" ecubyteindex="69" target="1" />
+      </switches>
+      <ecuparams>
+        <ecuparam id="E1100" name="MerpMod SD Mode Switch" desc="E1100-[ 1 = MAF Sensor ] | [ 2 = Speed Density ] | [ 3 = MAF/SD Blending ]" target="1">
+          <conversions>
+            <conversion units="rawdata" expr="x" format="0" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1101" name="MerpMod SD Volumetric Efficiency" desc="E1101" target="1">
+          <conversions>
+            <conversion units="VE" storagetype="float" expr="x" format="0.00" gauge_min="0" gauge_max="120" gauge_step="12" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1102" name="MerpMod SD Airflow Final Output" desc="E1102" target="1">
+          <conversions>
+            <conversion units="g/s" storagetype="float" expr="x" format="0.00" gauge_min="0" gauge_max="500" gauge_step="50" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1103" name="MerpMod SD Atmospheric Compensation" desc="E1103" target="1">
+          <conversions>
+            <conversion units="multiplier" storagetype="float" expr="x" format="0.00" gauge_min="0" gauge_max="1" gauge_step="0.1" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1104" name="MerpMod SD Blending Ratio" desc="E1104" target="1">
+          <conversions>
+            <conversion units="ratio" storagetype="float" expr="x" format="0.00" gauge_min="0" gauge_max="1" gauge_step="0.1" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1105" name="MerpMod SD Airflow Blending" desc="E1105" target="1">
+          <conversions>
+            <conversion units="g/s" storagetype="float" expr="x" format="0.00" gauge_min="0" gauge_max="500" gauge_step="50" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1106" name="MerpMod SD Airflow Maf Sensor" desc="E1106" target="1">
+          <conversions>
+            <conversion units="g/s" storagetype="float" expr="x" format="0.00" gauge_min="0" gauge_max="500" gauge_step="50" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1200" name="MerpMod Vehicle Identifier" desc="E1200" target="1">
+          <conversions>
+            <conversion units="rawdata" storagetype="int32" expr="x" format="0" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1201" name="MerpMod Auth Pass/Fail" desc="E1201" target="1">
+          <conversions>
+            <conversion units="rawdata" expr="x" format="0" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1301" name="MerpMod LC Speed Threshold" desc="E1301" target="1">
+          <conversions>
+            <conversion units="mph" storagetype="float" expr="x*0.621371192" format="0.0" gauge_min="0" gauge_max="250" gauge_step="25" />
+            <conversion units="km/h" storagetype="float" expr="x" format="0.0" gauge_min="0" gauge_max="300" gauge_step="30" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1302" name="MerpMod LC Engaged Signal" desc="E1302" target="1">
+          <conversions>
+            <conversion units="On/Off" expr="x" format="0" gauge_min="0" gauge_max="1" gauge_step="1" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1303" name="MerpMod FFS Engaged Signal" desc="E1303" target="1">
+          <conversions>
+            <conversion units="On/Off" expr="x" format="0" gauge_min="0" gauge_max="1" gauge_step="1" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1304" name="MerpMod FFS Gear Monitor" desc="E1304" target="1">
+          <conversions>
+            <conversion units="gear" storagetype="float" expr="x" format="0" gauge_min="0" gauge_max="6" gauge_step="1" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1305" name="MerpMod RevLimit Active Cut RPM" desc="E1305" target="1">
+          <conversions>
+            <conversion units="RPM" storagetype="float" expr="x" format="0.00" gauge_min="0" gauge_max="10000"  gauge_step="1000" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1306" name="MerpMod RevLimit Active Resume RPM" desc="E1306" target="1">
+          <conversions>
+            <conversion units="RPM" storagetype="float" expr="x" format="0.00" gauge_min="0" gauge_max="10000" gauge_step="1000" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1307" name="MerpMod RedLine Cut RPM" desc="E1307" target="1">
+          <conversions>
+            <conversion units="RPM" storagetype="float" expr="x" format="0.00" gauge_min="0" gauge_max="10000" gauge_step="1000" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1308" name="MerpMod RedLine Hysteresis" desc="E1308" target="1">
+          <conversions>
+            <conversion units="RPM" storagetype="float" expr="x" format="0.00" gauge_min="0" gauge_max="10000" gauge_step="1000" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1309" name="MerpMod Launch Control RPM" desc="E1309" target="1">
+          <conversions>
+            <conversion units="RPM" storagetype="float" expr="x" format="0.00" gauge_min="0" gauge_max="10000" gauge_step="1000" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1310" name="MerpMod Launch Control Hysteresis" desc="E1310" target="1">
+          <conversions>
+            <conversion units="RPM" storagetype="float" expr="x" format="0.00" gauge_min="0" gauge_max="10000" gauge_step="1000" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1312" name="MerpMod FFS Engagement RPM" desc="E1312" target="1">
+          <conversions>
+            <conversion units="RPM" storagetype="float" expr="x" format="0.00" gauge_min="0" gauge_max="10000" gauge_step="1000" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1313" name="MerpMod FFS Speed Threshold" desc="E1313" target="1">
+          <conversions>
+            <conversion units="mph" storagetype="float" expr="x*0.621371192" format="0.0" gauge_min="0" gauge_max="250" gauge_step="25" />
+            <conversion units="km/h" storagetype="float" expr="x" format="0.0" gauge_min="0" gauge_max="300" gauge_step="30" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1314" name="MerpMod FFS Delta (Auto)" desc="E1314" target="1">
+          <conversions>
+            <conversion units="RPM" storagetype="float" expr="x" format="0.00" gauge_min="0" gauge_max="10000" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1315" name="MerpMod FFS Delta (Static)" desc="E1315" target="1">
+          <conversions>
+            <conversion units="RPM" storagetype="float" expr="x" format="0.00" gauge_min="0" gauge_max="10000" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1400" name="MerpMod Clutch Switch" desc="E1400" target="1">
+          <conversions>
+            <conversion units="On/Off" expr="x" format="0" gauge_min="0" gauge_max="1" gauge_step="1" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1401" name="MerpMod Brake Switch" desc="E1401" target="1">
+          <conversions>
+            <conversion units="On/Off" expr="x" format="0" gauge_min="0" gauge_max="1" gauge_step="1" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1402" name="MerpMod Cruise Resume Switch" desc="E1402" target="1">
+          <conversions>
+            <conversion units="On/Off" expr="x" format="0" gauge_min="0" gauge_max="1" gauge_step="1" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1403" name="MerpMod Cruise Coast Switch" desc="E1403" target="1">
+          <conversions>
+            <conversion units="On/Off" expr="x" format="0" gauge_min="0" gauge_max="1" gauge_step="1" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1404" name="MerpMod Rev Limit Fuel Cut Switch" desc="E1404" target="1">
+          <conversions>
+            <conversion units="On/Off" expr="x" format="0" gauge_min="0" gauge_max="1" gauge_step="1" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1500" name="MerpMod Primary Open Loop Fueling Output" desc="" target="1">
+          <conversions>
+            <conversion storagetype="float" units="lambda enrichment" expr="x" format="0.00" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1501" name="MerpMod LC Fueling Enrichment" desc="" target="1">
+          <conversions>
+            <conversion storagetype="float" units="lambda enrichment (additive)" expr="x" format="0.00" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1502" name="MerpMod LC Fueling Lock Enrichment" desc="" target="1">
+          <conversions>
+            <conversion storagetype="float" units="lambda enrichment" expr="x" format="0.00" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1503" name="MerpMod Map Blending Ratio Direct" desc="" target="1">
+          <conversions>
+            <conversion storagetype="float" units="ratio" expr="x+1" format="0.00" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1504" name="MerpMod LC Fueling Enrichment Multiplier" desc="" target="1">
+          <conversions>
+            <conversion storagetype="float" units="multiplier" expr="x" format="0.00" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1505" name="MerpMod Map Switch Direct" desc="" target="1">
+          <conversions>
+            <conversion storagetype="uint8" units="mode" expr="x" format="0.00" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1506" name="MerpMod TGV Left Scaled" desc="" target="1">
+          <conversions>
+            <conversion storagetype="float" units="raw" expr="x" format="0.00" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1507" name="MerpMod TGV Right Scaled" desc="" target="1">
+          <conversions>
+            <conversion storagetype="float" units="raw" expr="x" format="0.00" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1508" name="MerpMod LC Timing Mode" desc="" target="1">
+          <conversions>
+            <conversion storagetype="float" units="mode" expr="x" format="0.00" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1509" name="MerpMod LC Timing Retard" desc="" target="1">
+          <conversions>
+            <conversion storagetype="float" units="degrees (retard)" expr="x" format="0.00" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1510" name="MerpMod LC Timing Retard Multiplier" desc="" target="1">
+          <conversions>
+            <conversion storagetype="uint8" units="multiplier" expr="x" format="0.00" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1511" name="MerpMod TGV Volts Left" desc="" target="1">
+          <conversions>
+            <conversion storagetype="float" units="multiplier" expr="x" format="0.00" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1512" name="MerpMod TGV Volts Right" desc="" target="1">
+          <conversions>
+            <conversion storagetype="float" units="multiplier" expr="x" format="0.00" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1513" name="MerpMod LC Fueling Mode" desc="" target="1">
+          <conversions>
+            <conversion storagetype="uint8" units="fueling mode" expr="x" format="0.00" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1600" name="MerpMod Master Init Flag" desc="" target="1">
+          <conversions>
+            <conversion storagetype="uint8" units="flag" expr="x" format="0.00" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1800" name="MerpMod CEL Signal OEM" desc="E1800" target="1">
+          <conversions>
+            <conversion units="rawdata" expr="x" format="0" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1801" name="MerpMod CEL Speed Counter" desc="E1801" target="1">
+          <conversions>
+            <conversion units="rawdata" expr="x" format="0" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1802" name="MerpMod CEL Flash Counter" desc="E1802" target="1">
+          <conversions>
+            <conversion units="rawdata" expr="x" format="0" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1803" name="MerpMod CEL Signal" desc="E1803" target="1">
+          <conversions>
+            <conversion units="rawdata" expr="x" format="0" />
+          </conversions>
+        </ecuparam>
+      </ecuparams> 
+    </protocol>
+  </protocols>
+</logger>
