@@ -16,7 +16,116 @@
 	</romid>
 
 	<include>32BITBASE</include>
+	<scaling name="OilTemp(DegreesF)" units="Oil Temp (Degrees F)" toexpr="(x*1.8)+32" frexpr="(x-32)/1.8" format="%.1f" min="10.4" max="392" inc="1" storagetype="float" endian="big"/>
+	<scaling name="VVL_Test_1" units="OSV Current" toexpr="x*0.000030517578" frexpr="x/0.000030517578" format="%.4f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
 
+	<table name="Table_VVL_Related_Engine_Load_Delta_OSV_Current_Additive_Right" category="ALPHA - VVL" address="CC964" type="2D" level="1" scaling="VVL_Test_1">
+		<table name="Engine Load" address="CC930" type="X Axis" elements="13" scaling="EngineLoad(g/rev)1"/>
+	</table>
+
+	<table name="Table_VVL_Related_Engine_Load_Delta_OSV_Current_Additive_Left" category="ALPHA - VVL" address="CC9B4" type="2D" level="1" scaling="VVL_Test_1">
+		<table name="Engine Load" address="CC980" type="X Axis" elements="13" scaling="EngineLoad(g/rev)1"/>
+	</table>
+
+	<table name="VVL_Related_OSV_Current_Additive_Right" category="ALPHA - VVL" address="CC9FC" type="2D" level="1" scaling="VVL_Test_1">
+		<table name="OSV Duty" address="CC9D0" type="X Axis" elements="11" scaling="rawecuvalue"/>
+	</table>
+
+	<table name="VVL_Related_OSV_Current_Additive_Left" category="ALPHA - VVL" address="CCA40" type="2D" level="1" scaling="VVL_Test_1">
+		<table name="OSV Duty" address="CCA14" type="X Axis" elements="11" scaling="rawecuvalue"/>
+	</table>
+
+	<table name="VVL_Minimum_Accel_Pedal_Switch_High_Mode_RPM_axis_A" category="ALPHA - VVL" address="CCA74" type="2D" level="1" scaling="AcceleratorPedalAngle(%)1">
+		<table name="Engine Speed" address="CCA58" type="X Axis" elements="7" scaling="RPM"/>
+	</table>
+
+	<table name="VVL_Minimum_Accel_Pedal_Switch_High_Mode_RPM_axis_B" category="ALPHA - VVL" address="CCAAC" type="2D" level="1" scaling="AcceleratorPedalAngle(%)1">
+		<table name="Engine Speed" address="CCA90" type="X Axis" elements="7" scaling="RPM"/>
+	</table>
+
+	<table name="VVL_Minimum_Accel_Pedal_Switch_High_Mode_RPM_axis_C" category="ALPHA - VVL" address="CCB74" type="2D" level="1" scaling="AcceleratorPedalAngle(%)1">
+		<table name="Engine Speed" category="ALPHA - VVL" address="CCB58" type="X Axis" elements="7" scaling="RPM"/>
+	</table>
+
+	<table name="VVL_Minimum_Accel_Pedal_Switch_High_Mode_RPM_axis_D" category="ALPHA - VVL" address="CCBAC" type="2D" level="1" scaling="AcceleratorPedalAngle(%)1">
+		<table name="Engine Speed" category="ALPHA - VVL" address="CCB90" type="X Axis" elements="7" scaling="RPM"/>
+	</table>
+
+	<table name="VVL_Minimum_TPS_Switch_High_Mode_RPM_axis_A" category="ALPHA - VVL" address="CCAEC" type="2D" level="1" scaling="ThrottlePlateOpeningAngle(%)">
+		<table name="Engine Speed" category="ALPHA - VVL" address="CCAC8" type="X Axis" elements="9" scaling="RPM"/>
+	</table>
+
+	<table name="VVL_Minimum_TPS_Switch_High_Mode_RPM_axis_B" category="ALPHA - VVL" address="CCB34" type="2D" level="1" scaling="ThrottlePlateOpeningAngle(%)">
+		<table name="Engine Speed" category="ALPHA - VVL" address="CCB10" type="X Axis" elements="9" scaling="RPM"/>
+	</table>
+
+	<table name="VVL_Minimum_TPS_Switch_High_Mode_RPM_axis_C" category="ALPHA - VVL" address="CCBE8" type="2D" level="1" scaling="ThrottlePlateOpeningAngle(%)">
+		<table name="Engine Speed" category="ALPHA - VVL" address="CCBC8" type="X Axis" elements="8" scaling="RPM"/>
+	</table>
+
+	<table name="VVL_Minimum_TPS_Switch_High_Mode_RPM_axis_D" category="ALPHA - VVL" address="CCC28" type="2D" level="1" scaling="ThrottlePlateOpeningAngle(%)">
+		<table name="Engine Speed" category="ALPHA - VVL" address="CCC08" type="X Axis" elements="8" scaling="RPM"/>
+	</table>
+
+	<table name="VVL RPM Thresholds" category="ALPHA - VVL" address="CC90C" type="2D" level="1" scaling="RPM">
+		<table name="RPM thresholds" type="Static X Axis" elements="2">
+			<data>VVL low mode below</data>
+			<data>VVL high mode above</data>
+		</table>
+	</table>
+
+	<table name="VVL_Oil_Temp_Threshold_1_A" category="ALPHA - VVL" address="CC8D4" type="1D" level="1" scaling="OilTemp(DegreesF)"/>
+
+	<table name="VVL_Oil_Temp_Threshold_1_B" category="ALPHA - VVL" address="CC8D0" type="1D" level="1" scaling="OilTemp(DegreesF)"/>
+
+	<table name="VVL_Oil_Temp_Threshold_2_A" category="ALPHA - VVL" address="CC8DC" type="1D" level="1" scaling="OilTemp(DegreesF)"/>
+
+	<table name="VVL_Oil_Temp_Threshold_2_B" category="ALPHA - VVL" address="CC8D8" type="1D" level="1" scaling="OilTemp(DegreesF)"/>
+
+	<table name="VVL_Oil_Temp_Threshold_3_A" category="ALPHA - VVL" address="CC8E4" type="1D" level="1" scaling="OilTemp(DegreesF)"/>
+
+	<table name="VVL_Oil_Temp_Threshold_3_B" category="ALPHA - VVL" address="CC8E0" type="1D" level="1" scaling="OilTemp(DegreesF)"/>
+
+	<table name="VVL_Oil_Temp_Threshold_4_A" category="ALPHA - VVL" address="CC8EC" type="1D" level="1" scaling="OilTemp(DegreesF)"/>
+
+	<table name="VVL_Oil_Temp_Threshold_4_B" category="ALPHA - VVL" address="CC8E8" type="1D" level="1" scaling="OilTemp(DegreesF)"/>
+
+	<table name="Vehicle_Speed_related_Threshold_Above" category="ALPHA - VVL" address="CC900" type="1D" level="1" scaling="VehicleSpeed(MPH)"/>
+
+	<table name="Vehicle_Speed_related_Threshold_Below" category="ALPHA - VVL" address="CC8FC" type="1D" level="1" scaling="VehicleSpeed(MPH)"/>
+
+	<table name="Engine_Speed_Related_Threshold_Above" category="ALPHA - VVL" address="CC908" type="1D" level="1" scaling="RPM"/>
+
+	<table name="Engine_Speed_Related_Threshold_Below" category="ALPHA - VVL" address="CC904" type="1D" level="1" scaling="RPM"/>
+
+	<table name="VVL_Related_Accelerator_Pedal_Additive_A" category="ALPHA - VVL" address="CC8B0" type="1D" level="1" scaling="AcceleratorPedalAngle(%)1"/>
+
+	<table name="VVL_Related_Accelerator_Pedal_Additive_B" category="ALPHA - VVL" address="CC8B4" type="1D" level="1" scaling="AcceleratorPedalAngle(%)1"/>
+
+	<table name="VVL_Related_Accelerator_Pedal_Additive_C" category="ALPHA - VVL" address="CC8C0" type="1D" level="1" scaling="AcceleratorPedalAngle(%)1"/>
+
+	<table name="VVL_Related_Accelerator_Pedal_Additive_D" category="ALPHA - VVL" address="CC8C4" type="1D" level="1" scaling="AcceleratorPedalAngle(%)1"/>
+
+	<table name="VVL_Related_TPS_Additive_A" category="ALPHA - VVL" address="CC8B8" type="1D" level="1" scaling="ThrottlePlateOpeningAngle(%)"/>
+
+	<table name="VVL_Related_TPS_Additive_B" category="ALPHA - VVL" address="CC8BC" type="1D" level="1" scaling="ThrottlePlateOpeningAngle(%)"/>
+
+	<table name="VVL_Related_TPS_Additive_C" category="ALPHA - VVL" address="CC8C8" type="1D" level="1" scaling="ThrottlePlateOpeningAngle(%)"/>
+
+	<table name="VVL_Related_TPS_Additive_D" category="ALPHA - VVL" address="CC8CC" type="1D" level="1" scaling="ThrottlePlateOpeningAngle(%)"/>
+
+	<table name="VVL Minimum RPM (High Mode)" category="ALPHA - VVL" address="CC90C" type="1D" level="1" scaling="RPM"/>
+
+	<table name="VVL OSV Duty (High Mode Immediate)" category="ALPHA - VVL" address="CC860" type="1D" level="1" scaling="rawecuvalue"/>
+
+	<table name="VVL OSV Duty (High Mode)" category="ALPHA - VVL" address="CC858" type="1D" level="1" scaling="rawecuvalue"/>
+
+	<table name="VVL OSV Duty (Low Mode)" category="ALPHA - VVL" address="CC854" type="1D" level="1" scaling="rawecuvalue"/>
+	
+	<table name="VVL_OSV_Current_Max" category="ALPHA - VVL" address="CC8A0" type="1D" level="1" scaling="rawecuvalue"/>
+	
+	<table name="VVL_OSV_Current_Min" category="ALPHA - VVL" address="CC8A4" type="1D" level="1" scaling="rawecuvalue"/>
+	
 	<table name="Manifold Pressure Sensor Scaling" address="c0274">
 	</table>
 
