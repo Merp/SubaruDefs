@@ -17,6 +17,76 @@
 
 	<include>32BITBASE</include>
 
+	<scaling name="OilTemp(DegreesF)" units="Oil Temp (Degrees F)" toexpr="(x*1.8)+32" frexpr="(x-32)/1.8" format="%.1f" min="10.4" max="392" inc="1" storagetype="float" endian="big"/>
+	<scaling name="VVL_Test_1" units="OSV Current" toexpr="x*0.000030517578" frexpr="x/0.000030517578" format="%.4f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
+
+	<table name="Table_VVL_Related_Engine_Load_Delta_OSV_Current_Additive_Right" category="ALPHA - VVL" address="D2334" type="2D" level="1" scaling="VVL_Test_1">
+		<table name="Engine Load" address="D2300" type="X Axis" elements="13" scaling="EngineLoad(g/rev)1"/>
+	</table>
+
+	<table name="Table_VVL_Related_Engine_Load_Delta_OSV_Current_Additive_Left" category="ALPHA - VVL" address="D2384" type="2D" level="1" scaling="VVL_Test_1">
+		<table name="Engine Load" address="D2350" type="X Axis" elements="12" scaling="EngineLoad(g/rev)1"/>
+	</table>
+
+	<table name="VVL_Related_OSV_Current_Additive_Right" category="ALPHA - VVL" address="D23D0" type="2D" level="1" scaling="VVL_Test_1">
+		<table name="OSV Duty" address="D23A0" type="X Axis" elements="12" scaling="rawecuvalue"/>
+	</table>
+
+	<table name="VVL_Related_OSV_Current_Additive_Left" category="ALPHA - VVL" address="D2418" type="2D" level="1" scaling="VVL_Test_1">
+		<table name="OSV Duty" address="D23E8" type="X Axis" elements="11" scaling="rawecuvalue"/>
+	</table>
+
+	<table name="VVL_Minimum_Accel_Pedal_Switch_High_Mode_RPM_axis_A" category="ALPHA - VVL" address="D244C" type="2D" level="1" scaling="AcceleratorPedalAngle(%)1">
+		<table name="Engine Speed" address="D2430" type="X Axis" elements="7" scaling="RPM"/>
+	</table>
+
+	<table name="VVL_Minimum_TPS_Switch_High_Mode_RPM_axis_A" category="ALPHA - VVL" address="D24BC" type="2D" level="1" scaling="ThrottlePlateOpeningAngle(%)">
+		<table name="Engine Speed" category="ALPHA - VVL" address="D24A0" type="X Axis" elements="7" scaling="RPM"/>
+	</table>
+
+	<table name="VVL_Minimum_TPS_Switch_High_Mode_RPM_axis_B" category="ALPHA - VVL" address="D2484" type="2D" level="1" scaling="ThrottlePlateOpeningAngle(%)">
+		<table name="Engine Speed" category="ALPHA - VVL" address="D2468" type="X Axis" elements="7" scaling="RPM"/>
+	</table>
+
+	<table name="VVL RPM Thresholds" category="ALPHA - VVL" address="D221C" type="2D" level="1" scaling="RPM">
+		<table name="RPM thresholds" type="Static X Axis" elements="2">
+			<data>VVL low mode below</data>
+			<data>VVL high mode above</data>
+		</table>
+	</table>
+
+	<table name="VVL_Oil_Temp_Threshold_1_A" category="ALPHA - VVL" address="D2208" type="1D" level="1" scaling="OilTemp(DegreesF)"/>
+
+	<table name="VVL_Oil_Temp_Threshold_1_B" category="ALPHA - VVL" address="D2204" type="1D" level="1" scaling="OilTemp(DegreesF)"/>
+
+	<table name="VVL_Oil_Temp_Threshold_2_A" category="ALPHA - VVL" address="D2210" type="1D" level="1" scaling="OilTemp(DegreesF)"/>
+
+	<table name="VVL_Oil_Temp_Threshold_2_B" category="ALPHA - VVL" address="D2214" type="1D" level="1" scaling="OilTemp(DegreesF)"/>
+
+	<table name="Vehicle_Speed_related_Threshold_Above" category="ALPHA - VVL" address="D2234" type="1D" level="1" scaling="VehicleSpeed(MPH)"/>
+
+	<table name="Vehicle_Speed_related_Threshold_Below" category="ALPHA - VVL" address="D2230" type="1D" level="1" scaling="VehicleSpeed(MPH)"/>
+
+	<table name="Engine_Speed_Related_Threshold_Above" category="ALPHA - VVL" address="D222C" type="1D" level="1" scaling="RPM"/>
+
+	<table name="Engine_Speed_Related_Threshold_Below" category="ALPHA - VVL" address="D2228" type="1D" level="1" scaling="RPM"/>
+
+	<table name="VVL_Related_Accelerator_Pedal_Additive_A" category="ALPHA - VVL" address="D2218" type="1D" level="1" scaling="AcceleratorPedalAngle(%)1"/>
+
+	<table name="VVL_Related_TPS_Additive_A" category="ALPHA - VVL" address="D2214" type="1D" level="1" scaling="ThrottlePlateOpeningAngle(%)"/>
+
+	<table name="VVL Minimum RPM (High Mode)" category="ALPHA - VVL" address="D2270" type="1D" level="1" scaling="RPM"/>
+
+	<table name="VVL OSV Duty (High Mode Immediate)" category="ALPHA - VVL" address="D22A0" type="1D" level="1" scaling="rawecuvalue"/>
+
+	<table name="VVL OSV Duty (High Mode)" category="ALPHA - VVL" address="D22AC" type="1D" level="1" scaling="rawecuvalue"/>
+
+	<table name="VVL OSV Duty (Low Mode)" category="ALPHA - VVL" address="D22A8" type="1D" level="1" scaling="rawecuvalue"/>
+
+	<table name="VVL OSV Current Max" category="ALPHA - VVL" address="D227C" type="1D" level="1" scaling="rawecuvalue"/>
+
+	<table name="VVL OSV Current Min" category="ALPHA - VVL" address="D2280" type="1D" level="1" scaling="rawecuvalue"/>
+
 	<table name="Overrun Fueling Cut Counter RPM Threshold A" address="c72cc"/>
 
 	<table name="Overrun Fueling Cut Counter RPM Threshold B" address="c72d4"/>
