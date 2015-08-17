@@ -41,6 +41,7 @@
 	<scaling name="BaseIgnitionTiming(degreesBTDC)2" units="Base Ignition Timing (degrees BTDC)" toexpr="(x*.3515625)-30" frexpr="(x+30)/.3515625" format="%.2f" min="-20" max="69.65" inc="0.2" storagetype="uint8" endian="big"/>
 	<scaling name="BasePulseWidth(ms)" units="Base Pulse Width (ms)" toexpr="x*.001" frexpr="x/.001" format="%.3f" inc="0.01" storagetype="float" endian="big"/>
 	<scaling name="BasePulseWidth(ms)1" units="Base Pulse Width (ms)" toexpr="x*.004" frexpr="x/.004" format="%.2f" min="0" max="262.14" inc="0.5" storagetype="uint16" endian="big"/>
+	<scaling name="Blending(%)" units="Blending(%)" toexpr="x*.003921568627*100" frexpr="(x/100)/0.003921568627" format="%.2f" min="0" max="100" inc="0.025" storagetype="uint8" endian="big"/>
 	<scaling name="BoostError(psi)" units="Boost Error (psi)" toexpr="x*.01933677" frexpr="x/.01933677" format="%.2f" min="-1" max="1" inc="0.01" storagetype="float" endian="big"/>
 	<scaling name="BoostTarget(psirelativesealevel)" units="Boost Target (psi relative sea level)" toexpr="(x-760)*.01933677" frexpr="(x/.01933677)+760" format="%.2f" min="-13.63" max="19.34" inc="0.01" storagetype="uint16" endian="big"/>
 	<scaling name="CFP Delta" units="Flow" toexpr="x" frexpr="x" format="%.2f" min="0" max="105" inc="0.1" storagetype="float" endian="big"/>
@@ -56,6 +57,8 @@
 	<scaling name="DI Injection" units="DI Injection Units" toexpr="x" frexpr="x" format="%.2f" min="0" max="255" inc="0.06" storagetype="float" endian="big"/>
 	<scaling name="DecayStepValue" units="Decay Step Value" toexpr="x*.0000009536743" frexpr="x/.0000009536743" format="%.5f" inc="1e-05" storagetype="uint16" endian="big"/>
 	<scaling name="DegreesF" units="Degrees F" toexpr="(x*1.8)+32" frexpr="(x-32)/1.8" format="%.0f" min="-40" max="1670" inc="1" storagetype="float" endian="big"/>
+	<scaling name="DeltaMapSD" units="psi/cycle" toexpr="x" frexpr="x" format="%.1f" min="0" max="600" inc="20" storagetype="float" endian="big"/>
+	<scaling name="ECUID2" units="units" toexpr="x" frexpr="x" format="%02x" min="0" max="100" inc="1" storagetype="uint8" endian="big"/>
 	<scaling name="ESTIMATEDFlowRate-GasOnly(cc/min)" units="ESTIMATED Flow Rate - Gas Only (cc/min)" toexpr="1804727/x" frexpr="1804727/x" format="%.2f" min="267.68" max="1000" inc="1" storagetype="float" endian="big"/>
 	<scaling name="ESTIMATEDFlowRate-GasOnly(cc/min)1" units="ESTIMATED Flow Rate - Gas Only (cc/min)" toexpr="2707090/x" frexpr="2707090/x" format="%.2f" min="231.65" max="1000" inc="1" storagetype="float" endian="big"/>
 	<scaling name="EngineLoad(g/rev)" units="Engine Load (g/rev)" toexpr="x*.00006103516" frexpr="x/.00006103516" format="%.2f" min="0.55" max="5" inc="0.01" storagetype="uint16" endian="big"/>
@@ -63,13 +66,21 @@
 	<scaling name="EngineLoadCompensation(%)" units="Engine Load Compensation (%)" toexpr="(x*.390625)-50" frexpr="(x+50)/.390625" format="%.1f" min="-28.9" max="21.1" inc="0.2" storagetype="uint8" endian="big"/>
 	<scaling name="EngineSpeed(RPM)" units="Engine Speed (RPM)" toexpr="x*.1953125" frexpr="x/.1953125" format="%.0f" min="0" max="12000" inc="50" storagetype="uint16" endian="big"/>
 	<scaling name="EngineSpeed(RPM)1" units="Engine Speed (RPM)" toexpr="x" frexpr="x" format="%.0f" min="0" max="2000" inc="50" storagetype="float" endian="big"/>
+	<scaling name="EngineSpeed(RPM)FFS" units="Engine Speed (RPM)" toexpr="x" frexpr="x" format="%5.1f" min="-8000" max="1000" inc="50" storagetype="float" endian="big"/>
+	<scaling name="EngineSpeed(RPM)SD" units="Engine Speed (RPM)" toexpr="x" frexpr="x" format="%5.1f" min="0" max="2000" inc="50" storagetype="float" endian="big"/>
 	<scaling name="EstimatedAir/FuelRatio" units="Estimated Air/Fuel Ratio" toexpr="14.7/(1+x*.0078125)" frexpr="(14.7/x-1)/.0078125" format="%.2f" min="8.4" max="14.7" inc="0.06" storagetype="uint8" endian="big"/>
 	<scaling name="EstimatedAir/FuelRatio1" units="Estimated Air/Fuel Ratio" toexpr="14.7/(1+x)" frexpr="(14.7/x-1)" format="%.2f" min="14" max="14.58" inc="0.06" storagetype="float" endian="big"/>
 	<scaling name="EstimatedAir/FuelRatio2" units="Estimated Air/Fuel Ratio" toexpr="x*0.0078125" frexpr="x/0.0078125" format="%.4f" min="0" max="255" inc="0.06" storagetype="uint8" endian="big"/>
+	<scaling name="EstimatedAir/FuelRatioAdditive" units="Estimated Air/Fuel Ratio (Additive)" toexpr="(14.7/(1+x*.0078125))-14.7" frexpr="(14.7/(x+14.7)-1)/.0078125" format="%.2f" min="-5" max="0" inc="0.06" storagetype="uint8" endian="big"/>
 	<scaling name="EstimatedAir/FuelRatioPoints(Additive)" units="Estimated Air/Fuel Ratio Points (Additive)" toexpr="(-x*.000224304213)+7.350001" frexpr="(x-7.350001)/-.000224304213" format="%.3f" min="-3" max="1" inc="0.01" storagetype="uint16" endian="big"/>
 	<scaling name="EstimatedAir/FuelRatioPoints(Additive)1" units="Estimated Air/Fuel Ratio Points (Additive)" toexpr="(x*.000224304213)-7.35" frexpr="(x+7.35)/.000224304213" format="%.3f" min="-3" max="1" inc="0.01" storagetype="uint16" endian="big"/>
 	<scaling name="EstimatedPrimaryOpenLoopAir/FuelRatioLeanLimit" units="Estimated Primary Open Loop Air/Fuel Ratio Lean Limit" toexpr="14.7/(1+x*.00390625)" frexpr="(14.7/x-1)/.00390625" format="%.2f" min="7.47" max="14.7" inc="0.06" storagetype="uint8" endian="big"/>
 	<scaling name="Evap_Multiplier" units="Ratio" toexpr="x/100" frexpr="x*100" format="%.2f" min="0" max="1" inc="0.1" storagetype="float" endian="big"/>
+	<scaling name="FFSMode" storagetype="bloblist">
+		<data name="Disabled" value="00"/>
+		<data name="Static" value="01"/>
+		<data name="Automatic" value="02"/>
+	</scaling>
 	<scaling name="ForcePassReadinessMonitors" storagetype="bloblist">
 		<data name="disabled" value="64B0"/>
 		<data name="enabled" value="E400"/>
@@ -87,7 +98,13 @@
 	<scaling name="GDI Pressure Multiplier" units="Multiplier" toexpr="x*1.5625e-2" frexpr="x/1.5625e-2" format="%.3f" min="0" max="255" inc="0.06" storagetype="uint8" endian="big"/>
 	<scaling name="GDI Pressure Multiplier B" units="MPa?" toexpr="x*9.765625e-4" frexpr="x/9.765625e-4" format="%.3f" min="0" max="255" inc="0.06" storagetype="uint8" endian="big"/>
 	<scaling name="GDI Pressure Target" units="MPa?" toexpr="x*9.765625e-2" frexpr="x/9.765625e-2" format="%.1f" min="0" max="255" inc="0.06" storagetype="uint8" endian="big"/>
+	<scaling name="FuelingMode" storagetype="bloblist">
+		<data name="MAF SENSOR" value="01"/>
+		<data name="SPEED DENSITY" value="02"/>
+		<data name="MAF/SD BLENDING" value="03"/>
+	</scaling>
 	<scaling name="Gear" units="gear" toexpr="x" frexpr="x" format="%.0f" min="0" max="6" inc="1" storagetype="float" endian="big"/>
+	<scaling name="GearRatio" units="ratio" toexpr="x" frexpr="x" format="%.4f" min="0" max="4" inc="0.1" storagetype="float" endian="big"/>
 	<scaling name="Hotstart Counter uint16" units="Hotstart Counter Cycles" toexpr="x" frexpr="x" format="%5.0f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
 	<scaling name="Hotstart Enrichment" units="Lambda Enrichment (Additive)" toexpr="x" frexpr="x" format="%.4f" min="0" max="255" inc="1" storagetype="float" endian="big"/>
 	<scaling name="IDC" units="Injector Duty Cycle" toexpr="x*0.7371358727094787" frexpr="x/0.7371358727094787" format="%.2f" min="0" max="255" inc="1" storagetype="float" endian="big"/>
@@ -117,9 +134,23 @@
 		<data name="enabled" value="00"/>
 	</scaling>
 	<scaling name="Lambda Additive" units="Air/Fuel Ratio Additive(Lambda)" toexpr="(x*0.00078125)-1" frexpr="(x+1)/0.00078125" format="%.4f" min="0" max="255" inc="0.06" storagetype="uint8" endian="big"/>
+	<scaling name="LCFuelMode" storagetype="bloblist">
+		<data name="Disabled" value="01"/>
+		<data name="Compensated" value="02"/>
+		<data name="Locked" value="03"/>
+	</scaling>
+	<scaling name="LCTimingLock" units="Degrees BTDC" toexpr="x" frexpr="x" format="%.1f" min="-10" max="20" inc="0.5" storagetype="float" endian="big"/>
+	<scaling name="LCTimingMode" storagetype="bloblist">
+		<data name="Disabled" value="01"/>
+		<data name="Compensated" value="02"/>
+		<data name="Locked" value="03"/>
+	</scaling>
+	<scaling name="LCTimingMult" units="Multiplier" toexpr="x" frexpr="x" format="%.1f" min="0" max="1" inc="0.5" storagetype="float" endian="big"/>
 	<scaling name="Latency(ms)" units="Latency (ms)" toexpr="x*.00025" frexpr="x/.00025" format="%.2f" min="0.3" max="6" inc="0.01" storagetype="uint16" endian="big"/>
+	<scaling name="LoadFilter" units="Smoothing Factor (%)" toexpr="(x*(-100))+100" frexpr="(x-100)/(-100)" format="%.1f" min="0" max="100" inc="5" storagetype="float" endian="big"/>
 	<scaling name="ManifoldPressure(psirelativesealevel)" units="Manifold Pressure (psi relative sea level)" toexpr="(x-760)*.01933677" frexpr="(x/.01933677)+760" format="%.2f" min="4.64" max="23.98" inc="0.01" storagetype="float" endian="big"/>
 	<scaling name="MassAirflow Voltage" units="Volts" toexpr="x" frexpr="x" format="%.2f" min="0" max="105" inc="0.1" storagetype="float" endian="big"/>
+	<scaling name="MapRatio" units="ratio" toexpr="x+1" frexpr="x-1" format="%.4f" min="0" max="4" inc="0.1" storagetype="float" endian="big"/>
 	<scaling name="MassAirflow(g/s)" units="Mass Airflow (g/s)" toexpr="x*.004577637" frexpr="x/.004577637" format="%.2f" min="300" max="500" inc="0.1" storagetype="uint16" endian="big"/>
 	<scaling name="MassAirflow(g/s)1" units="Mass Airflow (g/s)" toexpr="x" frexpr="x" format="%.2f" min="0.58" max="500" inc="0.1" storagetype="float" endian="big"/>
 	<scaling name="MassAirflowCompensation(%)" units="Mass Airflow Compensation (%)" toexpr="(x*.390625)-50" frexpr="(x+50)/.390625" format="%.1f" min="-10" max="10" inc="0.2" storagetype="uint8" endian="big"/>
@@ -129,13 +160,34 @@
 	</scaling>
 	<scaling name="MaximumKnockCorrectionTimingAdvance(degrees)" units="Maximum Knock Correction Timing Advance (degrees)" toexpr="x*.3515625" frexpr="x/.3515625" format="%.2f" min="0" max="26.72" inc="0.2" storagetype="uint8" endian="big"/>
 	<scaling name="MaximumKnockCorrectionTimingAdvanceAdditive(degrees)" units="Maximum Knock Correction Timing Advance Additive (degrees)" toexpr="x*.3515625" frexpr="x/.3515625" format="%.2f" min="0" max="9.14" inc="0.2" storagetype="uint8" endian="big"/>
+	<scaling name="MerpModEnable" storagetype="bloblist">
+		<data name="Disabled" value="00"/>
+		<data name="Enabled" value="01"/>
+	</scaling>
+
+	<scaling name="MerpModTGVInput" units="raw" toexpr="x*.00003051758" frexpr="x/.00003051758" format="%.2f" min="0" max="1" inc="0.1" storagetype="uint16" endian="big"/>
+	<scaling name="MerpModMapSwitchThreshold" units="Volts" toexpr="x" frexpr="x" format="%2.3f" min="0" max="1" inc="0.1" storagetype="float" endian="big"/>
+	<scaling name="MerpModInjectorScaling" units="raw" toexpr="2707090/(x*0.824)" frexpr="(2707090/x)/0.824" format="%.2f" min="0" max="2000" inc="0.1" storagetype="uint16" endian="big"/>
+	<scaling name="MerpModInputMode" storagetype="bloblist">
+		<data name="Disabled" value="00"/>
+		<data name="TGVLeft" value="01"/>
+		<data name="TGVRight" value="02"/>
+		<data name="Si-Drive" value="03"/>
+	</scaling>
+	<scaling name="MerpModMapRatio" units="raw" toexpr="x" frexpr="x" format="%1.2f" min="0" max="2" inc="0.1" storagetype="float" endian="big"/>
+	<scaling name="MerpModMapSwitch" units="raw" toexpr="x" frexpr="x" format="%1.0f" min="0" max="4" inc="1.0" storagetype="uint8" endian="big"/>
+	<scaling name="MerpModSmoothingFactor" units="% Smoothing" toexpr="x*100" frexpr="x/100" format="%3.0f" min="0" max="100" inc="1" storagetype="float" endian="big"/>
 	<scaling name="MinimumPrimaryEnrichmentOffsetAdditive1" units="Minimum Primary Enrichment Offset Additive 1" toexpr="x*.00390625" frexpr="x/.00390625" format="%.2f" min="0" max="0.65" inc="0.01" storagetype="uint8" endian="big"/>
 	<scaling name="MinimumPrimaryEnrichmentOffsetAdditiveCruise" units="Minimum Primary Enrichment Offset Additive Cruise" toexpr="x*.00390625" frexpr="x/.00390625" format="%.2f" min="0" max="0.63" inc="0.01" storagetype="uint8" endian="big"/>
 	<scaling name="MinimumPrimaryEnrichmentOffsetAdditiveNon-Cruise" units="Minimum Primary Enrichment Offset Additive Non-Cruise" toexpr="x*.00390625" frexpr="x/.00390625" format="%.2f" min="0" max="0.65" inc="0.01" storagetype="uint8" endian="big"/>
 	<scaling name="MisfireDTCThreshold" units="Misfire Count%" toexpr="x" frexpr="x" format="%.2f" min="0" max="105" inc="0.1" storagetype="uint8" endian="big"/>
 	<scaling name="Multiplier" units="Multiplier" toexpr="x" frexpr="x" format="%.3f" inc="0.01" storagetype="float" endian="big"/>
 	<scaling name="Multiplier1" units="Multiplier" toexpr="x*.0078125" frexpr="x/.0078125" format="%.4f" min="0" max="1" inc="1" storagetype="uint8" endian="big"/>
+	<scaling name="MerpModMultiplier1" units="Multiplier" toexpr="x*0.00001525902" frexpr="x/0.00001525902" format="%.4f" min="0" max="1" inc="0.001" storagetype="uint16" endian="big"/>
+	<scaling name="MerpModMultiplier10" units="Multiplier" toexpr="x*0.0001525902" frexpr="x/0.0001525902" format="%.3f" min="0" max="10" inc="0.01" storagetype="uint16" endian="big"/>
+	<scaling name="Offset" units="Offset" toexpr="x" frexpr="x" format="%.3f" inc="0.01" storagetype="float" endian="big"/>
 	<scaling name="OverRun Fueling" units="units" toexpr="x*0.1953125" frexpr="x/0.1953125" format="%.0f" min="0" max="5000" inc="1" storagetype="uint16" endian="big"/>
+	<scaling name="PGWGComp" units="Compensation (% of Per Gear Value)" toexpr="x*0.61037" frexpr="x/.61037" format="%.2f" min="0" max="200" inc="0.2" storagetype="uint16" endian="big"/>
 	<scaling name="PXXXX enable" storagetype="bloblist">
 		<data name="disabled" value="00"/>
 		<data name="enabled" value="01"/>
@@ -152,6 +204,7 @@
 	<scaling name="PotentialChangeinCurrentFeedbackCorrectionperKnock'Event'(degreesofcorrection)" units="Potential Change in Current Feedback Correction per Knock 'Event' (degrees of correction)" toexpr="-x" frexpr="-x" format="%.2f" min="-1.4" max="-0.5" inc="0.1" storagetype="float" endian="big"/>
 	<scaling name="PotentialChangeinFineCorrectionStoredValuePerKnock'Event'(degreesofcorrection)" units="Potential Change in Fine Correction Stored Value Per Knock 'Event' (degrees of correction)" toexpr="-x" frexpr="-x" format="%.2f" min="-1.5" max="-0.35" inc="0.1" storagetype="float" endian="big"/>
 	<scaling name="RPM" units="RPM" toexpr="x" frexpr="x" format="%.0f" min="0" max="10000" inc="50" storagetype="float" endian="big"/>
+	<scaling name="RPMSD" units="RPMSD" toexpr="x" frexpr="x" format="%.0f" min="0" max="10000" inc="50" storagetype="float" endian="big"/>
 	<scaling name="RequestedTorque(rawecuvalue)" units="Requested Torque (raw ecu value)" toexpr="x*.0078125" frexpr="x/.0078125" format="%.1f" min="0" max="500" inc="1" storagetype="uint16" endian="big"/>
 	<scaling name="RequestedTorque(rawecuvalue)1" units="Requested Torque (raw ecu value)" toexpr="x" frexpr="x" format="%.1f" min="169" max="338.4" inc="1" storagetype="float" endian="big"/>
 	<scaling name="Requested Torque (TGV Switch)" units="units" toexpr="x*0.0062499996" frexpr="x/0.0062499996" format="%.0f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
@@ -198,7 +251,10 @@
 	<scaling name="TransientIgnitionRetard" units="Ignition Timing Correction (degrees)" toexpr="x*.3515625-30" frexpr="(x+30)/.3515625" format="%.2f" min="0" max="26.72" inc="0.2" storagetype="uint8" endian="big"/>
 	<scaling name="TransientIgnitionRetard1" units="Ignition Timing Correction (degrees)" toexpr="x*.3515625-50" frexpr="(x+50)/.3515625" format="%.2f" min="0" max="26.72" inc="0.2" storagetype="uint8" endian="big"/>
 	<scaling name="VVT Error" units="Delta Degrees" toexpr="x" frexpr="x" format="%.2f" min="0" max="105" inc="0.1" storagetype="float" endian="big"/>
+	<scaling name="VE(%)" units="VE(%)" toexpr="x*.0000457763672" frexpr="x/.0000457763672" format="%.2f" min="0.3" max="1.1" inc="0.025" storagetype="uint16" endian="big"/>
+	<scaling name="VEcomp" units="VE Compensation" toexpr="x*0.000061037" frexpr="x/.000061037" format="%.2f" min="0" max="2" inc="0.2" storagetype="uint16" endian="big"/>
 	<scaling name="VehicleSpeed(MPH)" units="Vehicle Speed (MPH)" toexpr="x*.621" frexpr="x/.621" format="%.0f" min="0" max="540" inc="1" storagetype="float" endian="big"/>
+	<scaling name="VehicleSpeed(MPH)SD" units="Vehicle Speed (MPH)" toexpr="x*.621" frexpr="x/.621" format="%2.1f" min="0" max="20" inc="1" storagetype="float" endian="big"/>
 	<scaling name="Volts" units="Volts" toexpr="x*.000076293945" frexpr="x/.000076293945" format="%.2f" min="0.57" max="5" inc="0.01" storagetype="uint16" endian="big"/>
 	<scaling name="WastegateDutyCorrection(%absolute)" units="Wastegate Duty Correction (% absolute)" toexpr="(x*.00390625)-50" frexpr="(x+50)/.00390625" format="%.2f" min="-100" max="100" inc="0.1" storagetype="uint16" endian="big"/>
 	<scaling name="WastegateDutyCycle(%)" units="Wastegate Duty Cycle (%)" toexpr="x" frexpr="x" format="%.1f" min="0" max="100" inc="0.5" storagetype="float" endian="big"/>
@@ -211,6 +267,8 @@
 		<data name="disabled" value="0000000040A000003F800000"/>
 		<data name="enabled" value="42C800000000000000000000"/>
 	</scaling>
+	<scaling name="af1res" units="ohms" toexpr="x" frexpr="x" format="%.1f" min="-128" max="-127" inc="0.5" storagetype="float" endian="big"/>
+	<scaling name="celflashcounter" units="counts" toexpr="x" frexpr="x" format="%2.0f" min="0" max="1" inc="1" storagetype="uint8" endian="big"/>
 	<scaling name="changeinmultiplier" units="change in multiplier" toexpr="x" frexpr="x" format="%.4f" min="0" max="0.5" inc="0.0625" storagetype="float" endian="big"/>
 	<scaling name="clusterfueleffcomp" units="Estimated Fuel Efficiency Correction" toexpr="x" frexpr="x" format="%.3f" min="0" max="2" inc="0.1" storagetype="float" endian="big"/>
 	<scaling name="counterthreshold" units="counter threshold" toexpr="x" frexpr="x" format="%.0f" min="0" max="1250" inc="1" storagetype="uint8" endian="big"/>
@@ -221,6 +279,8 @@
 	<scaling name="degreesofcorrection1" units="degrees of correction" toexpr="-x" frexpr="-x" format="%.2f" min="-12" max="-1" inc="0.1" storagetype="float" endian="big"/>
 	<scaling name="float" units="%" toexpr="x" frexpr="x" format="%.2f" min="0" max="105" inc="0.1" storagetype="float" endian="big"/>
 	<scaling name="float1" toexpr="x" frexpr="x" format="%5.0f" min="0" max="30000" inc="0.1" storagetype="float" endian="big"/>
+	<scaling name="engine displacement" units="cc" toexpr="x" frexpr="x" format="%.2f" min="0" max="1" inc="0.01" storagetype="float" endian="big"/>
+	<scaling name="fbkcthreshold" units="degrees" toexpr="x" frexpr="x" format="%.1f" min="-128" max="-127" inc="0.5" storagetype="float" endian="big"/>
 	<scaling name="g/rev" units="g/rev" toexpr="x" frexpr="x" format="%.2f" min="0" max="5" inc="0.01" storagetype="float" endian="big"/>
 	<scaling name="g/s" units="g/s" toexpr="x" frexpr="x" format="%.2f" min="0" max="400" inc="0.1" storagetype="float" endian="big"/>
 	<scaling name="mA" units="mA" toexpr="x" frexpr="x" format="%.2f" min="-1.3" max="0.74" inc="0.01" storagetype="float" endian="big"/>
@@ -232,16 +292,865 @@
 	<scaling name="psiabsolute" units="psi absolute" toexpr="x*.01933677" frexpr="x/.01933677" format="%.3f" min="-8.01" max="9.94" inc="0.01" storagetype="float" endian="big"/>
 	<scaling name="psiabsolute1" units="psi absolute" toexpr="x*.01933677" frexpr="x/.01933677" format="%.2f" min="1.07" max="14.7" inc="0.01" storagetype="float" endian="big"/>
 	<scaling name="psiabsolute2" units="psi absolute" toexpr="x*.01933677" frexpr="x/.01933677" format="%.2f" min="15.89" max="50" inc="0.01" storagetype="uint16" endian="big"/>
+	<scaling name="psiabsoluteSD" units="psi absolute" toexpr="(x)*.01933677" frexpr="(x/.01933677)" format="%.2f" min="0" max="40" inc="0.01" storagetype="float" endian="big"/>
 	<scaling name="psiabsolute3" units="psi absolute" toexpr="x*.01933677" frexpr="x/.01933677" format="%.2f" min="15.89" max="50" inc="0.01" storagetype="uint8" endian="big"/>
 	<scaling name="psirelative" units="psi relative" toexpr="x*.01933677" frexpr="x/.01933677" format="%.2f" min="-19.34" max="19.34" inc="0.01" storagetype="float" endian="big"/>
 	<scaling name="psirelative1" units="psi relative" toexpr="x*-.01933677" frexpr="x/-.01933677" format="%.2f" min="-13.5" max="0" inc="0.01" storagetype="float" endian="big"/>
 	<scaling name="psirelativesealevel" units="psi relative sea level" toexpr="(x-760)*.01933677" frexpr="(x/.01933677)+760" format="%.2f" min="-11.8" max="4.83" inc="0.01" storagetype="float" endian="big"/>
+	<scaling name="psirelativesealevelSD" units="psi relative sea level" toexpr="(x-760)*.01933677" frexpr="(x/.01933677)+760" format="%.2f" min="-11.8" max="25" inc="0.01" storagetype="float" endian="big"/>
 	<scaling name="ratio" units="ratio" toexpr="x" frexpr="x" format="%.3f" min="0" max="1" inc="0.01" storagetype="float" endian="big"/>
 	<scaling name="rawecuvalue" units="raw ecu value" toexpr="x" frexpr="x" format="%.1f" min="0" max="420" inc="1" storagetype="float" endian="big"/>
 	<scaling name="rawecuvalueverbose" units="raw ecu value" toexpr="x" frexpr="x" format="%.9f" min="0" max="420" inc="1" storagetype="float" endian="big"/>
+	<scaling name="sdc" units="x" toexpr="x" frexpr="x" format="%.6f" min="0" max="1e-16" inc="1e-05" storagetype="float" endian="big"/>
 	<scaling name="tip-inenrichmentappliedcounter" units="tip-in enrichment applied counter" toexpr="x" frexpr="x" format="%.0f" min="0" max="30" inc="1" storagetype="uint8" endian="big"/>
 	<scaling name="tip-inlastappliedcounterperiod" units="tip-in last applied counter period" toexpr="x" frexpr="x" format="%.0f" min="0" max="70" inc="1" storagetype="uint8" endian="big"/>
 	<scaling name="volts" units="volts" toexpr="x" frexpr="x" format="%.2f" min="0.2" max="16.5" inc="0.01" storagetype="float" endian="big"/>
+
+	<table name="ECU Identifier" category="MerpMod ROM Settings" type="2D" level="4" scaling="ECUID2">
+		<table type="Static X Axis" elements="5">
+			<data>Byte 1</data>
+			<data>Byte 2</data>
+			<data>Byte 3</data>
+			<data>Byte 4</data>
+			<data>Byte 5</data>
+		</table>
+	</table>
+
+	<table name="Engine Load Smoothing Factor A" category="MerpMod Speed Density" type="2D" level="2" scaling="LoadFilter">
+		<description>Engine Load Smoothing Factor A: Determines the amount of smoothing of the engine load parameter immediately after MAF/SD Calculation. Tuning the smoothing factor may help with idle issues running pure speed density. DO NOT SET TO 100% OR HIGHER!</description>
+		<table type="Static Y Axis" elements="1">
+			<data>Load Smoothing Factor A</data>
+		</table>
+	</table>
+
+	<table name="Engine Load Smoothing Factor B" category="MerpMod Speed Density" type="2D" level="2" scaling="LoadFilter">
+		<description>Engine Load Smoothing Factor B: Determines the amount of smoothing of the engine load parameter immediately after MAF/SD Calculation. Tuning the smoothing factor may help with idle issues running pure speed density. DO NOT SET TO 100% OR HIGHER!</description>
+		<table type="Static Y Axis" elements="1">
+			<data>Load Smoothing Factor B</data>
+		</table>
+	</table>
+
+	<table name="Engine Load Smoothing Factor Alternate" category="MerpMod Speed Density" type="2D" level="2" scaling="LoadFilter">
+		<description>Engine Load Smoothing Factor Alternate: Determines the amount of smoothing of the engine load parameter immediately after MAF/SD Calculation. Tuning the smoothing factor may help with idle issues running pure speed density. DO NOT SET TO 100% OR HIGHER!</description>
+		<table type="Static Y Axis" elements="1">
+			<data>Load Smoothing Factor Alternate</data>
+		</table>
+	</table>
+
+	<table name="Engine Load Smoothing Factor Alternate B" category="MerpMod Speed Density" type="2D" level="2" scaling="LoadFilter">
+		<description>Engine Load Smoothing Factor Alternate B: Determines the amount of smoothing of the engine load parameter immediately after MAF/SD Calculation. Tuning the smoothing factor may help with idle issues running pure speed density. DO NOT SET TO 100% OR HIGHER!</description>
+		<table type="Static Y Axis" elements="1">
+			<data>Load Smoothing Factor Alternate</data>
+		</table>
+	</table>
+
+	<table name="Engine Load Smoothing Factor Final" category="MerpMod Speed Density" type="2D" level="2" scaling="LoadFilter">
+		<description>Engine Load Smoothing Factor Final: Determines the amount of smoothing of the engine load parameter immediately after MAF/SD Calculation. Tuning the smoothing factor may help with idle issues running pure speed density. DO NOT SET TO 100% OR HIGHER!</description>
+		<table type="Static Y Axis" elements="1">
+			<data>Load Smoothing Factor Final</data>
+		</table>
+	</table>
+
+	<table name="Speed Density Constant" category="MerpMod Speed Density" type="2D" level="2" scaling="sdc">
+		<description>SD Constant</description>
+		<table type="Static Y Axis" elements="1">
+			<data>SD Constant</data>
+		</table>
+	</table>
+
+	<table name="Engine Displacement" category="MerpMod Speed Density" type="2D" level="2" scaling="engine displacement">
+		<description>Engine size in cc</description>
+		<table type="Static Y Axis" elements="1">
+			<data>Engine Displacement (cc)</data>
+		</table>
+	</table>
+
+	<table name="Speed Density Mode" category="MerpMod Speed Density" type="1D" scaling="FuelingMode"/>
+
+	<table name="Volumetric Efficiency Table 1" category="MerpMod Speed Density" type="3D" level="2" scaling="VE(%)">
+		<description>This is the Volumetric efficiency of the engine.</description>
+		<table name="Manifold Pressure" type="X Axis" elements="24" scaling="psirelativesealevelSD"/>
+		<table name="Engine Speed" type="Y Axis" elements="24" scaling="RPMSD"/>
+	</table>
+
+	<table name="Volumetric Efficiency Table 2" category="MerpMod Speed Density" type="3D" level="2" scaling="VE(%)">
+		<description>This is the Volumetric efficiency of the engine.</description>
+		<table name="Manifold Pressure" type="X Axis" elements="24" scaling="psirelativesealevelSD"/>
+		<table name="Engine Speed" type="Y Axis" elements="24" scaling="RPMSD"/>
+	</table>
+
+	<table name="Atmospheric Pressure Compensation" category="MerpMod Speed Density" type="3D" level="2" scaling="VEcomp">
+		<description>This compensation is applied to the Volumetric efficiency of the engine.</description>
+		<table name="Manifold Pressure" type="X Axis" elements="7" scaling="psiabsoluteSD"/>
+		<table name="Atmospheric Pressure" type="Y Axis" elements="7" scaling="psiabsoluteSD"/>
+	</table>
+
+	<table name="Delta MAP Compensation" category="MerpMod Speed Density" type="3D" level="2" scaling="VEcomp">
+		<description>This compensation is applied to the Volumetric efficiency of the engine.</description>
+		<table name="Delta Manifold Pressure" type="X Axis" elements="7" scaling="DeltaMapSD"/>
+		<table name="Engine Speed" type="Y Axis" elements="7" scaling="RPMSD"/>
+	</table>
+
+	<table name="SD Blending Table" category="MerpMod Speed Density" type="3D" level="2" scaling="Blending(%)">
+		<description>This is the amount of SD blended into the MAF output. Only active when in blending mode.</description>
+		<table name="Manifold Pressure" type="X Axis" elements="10" scaling="psirelativesealevelSD"/>
+		<table name="Engine Speed" type="Y Axis" elements="10" scaling="RPMSD"/>
+	</table>
+
+	<table name="FBKC Threshold" category="MerpMod CEL Flash" type="2D" level="2" scaling="fbkcthreshold">
+		<description>FBKC Threshold to cause CEL flash</description>
+		<table type="Static Y Axis" elements="1">
+			<data>FBKC Threshold</data>
+		</table>
+	</table>
+
+	<table name="FBKC Severe Knock Threshold" category="MerpMod CEL Flash" type="2D" level="2" scaling="fbkcthreshold">
+		<description>FBKC Threshold for to cause 'severe knock' CEL flash</description>
+		<table type="Static Y Axis" elements="1">
+			<data>FBKC Threshold</data>
+		</table>
+	</table>
+
+	<table name="FBKC Load Threshold" category="MerpMod CEL Flash" type="2D" level="2" scaling="g/rev">
+		<description>FBKC Load Threshold to cause CEL flash</description>
+		<table type="Static Y Axis" elements="1">
+			<data>FBKC Load Threshold</data>
+		</table>
+	</table>
+
+	<table name="FBKC Flash Speed" category="MerpMod CEL Flash" type="2D" level="2" scaling="celflashcounter">
+		<description>Determines FBKC Cel flash speed, lower is faster</description>
+		<table type="Static Y Axis" elements="1">
+			<data>FBKC Flash Speed</data>
+		</table>
+	</table>
+
+	<table name="FBKC Flash Count" category="MerpMod CEL Flash" type="2D" level="2" scaling="celflashcounter">
+		<description>Number of flashes per FBKC event</description>
+		<table type="Static Y Axis" elements="1">
+			<data>FBKC Flash Count</data>
+		</table>
+	</table>
+
+	<table name="FBKC Severe Knock Flash Speed" category="MerpMod CEL Flash" type="2D" level="2" scaling="celflashcounter">
+		<description>Determines FBKC 'severe knock' Cel flash speed, lower is faster</description>
+		<table type="Static Y Axis" elements="1">
+			<data>FBKC Flash Speed</data>
+		</table>
+	</table>
+
+	<table name="FBKC Severe Knock Flash Count" category="MerpMod CEL Flash" type="2D" level="2" scaling="celflashcounter">
+		<description>Number of flashes per 'severe knock' FBKC event</description>
+		<table type="Static Y Axis" elements="1">
+			<data>FBKC Flash Count</data>
+		</table>
+	</table>
+
+	<table name="IAM Flash Threshold" category="MerpMod CEL Flash" type="2D" level="2" scaling="IgnitionAdvanceMultiplier(IAM)">
+		<description>IAM Threshold to cause CEL flash</description>
+		<table type="Static Y Axis" elements="1">
+			<data>IAM Flash Threshold</data>
+		</table>
+	</table>
+
+	<table name="IAM Flash Speed" category="MerpMod CEL Flash" type="2D" level="2" scaling="celflashcounter">
+		<description>Determines IAM Cel flash speed, lower is faster</description>
+		<table type="Static Y Axis" elements="1">
+			<data>IAM Flash Speed</data>
+		</table>
+	</table>
+
+	<table name="IAM Flash Count" category="MerpMod CEL Flash" type="2D" level="2" scaling="celflashcounter">
+		<description>Number of flashes per IAM event</description>
+		<table type="Static Y Axis" elements="1">
+			<data>IAM Flash Count</data>
+		</table>
+	</table>
+
+	<table name="EGT AF1 Resistance Threshold" category="MerpMod CEL Flash" type="2D" level="2" scaling="af1res">
+		<description>EGT Front O2 Resistance Threshold to cause CEL flash</description>
+		<table type="Static Y Axis" elements="1">
+			<data>EGT AF1 Resistance Threshold</data>
+		</table>
+	</table>
+
+	<table name="EGT Load Threshold" category="MerpMod CEL Flash" type="2D" level="2" scaling="g/rev">
+		<description>EGT Load Threshold to cause CEL flash</description>
+		<table type="Static Y Axis" elements="1">
+			<data>EGT Load Threshold</data>
+		</table>
+	</table>
+
+	<table name="EGT Flash Speed" category="MerpMod CEL Flash" type="2D" level="2" scaling="celflashcounter">
+		<description>Determines EGT Cel flash speed, lower is faster</description>
+		<table type="Static Y Axis" elements="1">
+			<data>EGT Flash Speed</data>
+		</table>
+	</table>
+
+	<table name="EGT Flash Count" category="MerpMod CEL Flash" type="2D" level="2" scaling="celflashcounter">
+		<description>Number of flashes per EGT event</description>
+		<table type="Static Y Axis" elements="1">
+			<data>EGT Flash Count</data>
+		</table>
+	</table>
+
+	<table name="ECT Flash Temperature Threshold" category="MerpMod CEL Flash" type="2D" level="2" scaling="CoolantTemp(DegreesF)">
+		<description>ECT Temperature Threshold to cause CEL flash</description>
+		<table type="Static Y Axis" elements="1">
+			<data>ECT Temperature Threshold</data>
+		</table>
+	</table>
+
+	<table name="ECT Flash Speed" category="MerpMod CEL Flash" type="2D" level="2" scaling="celflashcounter">
+		<description>Determines ECT Cel flash speed, lower is faster</description>
+		<table type="Static Y Axis" elements="1">
+			<data>ECT Flash Speed</data>
+		</table>
+	</table>
+
+	<table name="ECT Flash Count" category="MerpMod CEL Flash" type="2D" level="2" scaling="celflashcounter">
+		<description>Number of flashes per ECT event</description>
+		<table type="Static Y Axis" elements="1">
+			<data>ECT Flash Count</data>
+		</table>
+	</table>
+
+	<table name="IAM Recall Flash Speed" category="MerpMod CEL Flash" type="2D" level="2" scaling="celflashcounter">
+		<description>IAM Recall Flash Speed</description>
+		<table type="Static Y Axis" elements="1">
+			<data>Determines IAM Recall flash speed, lower is faster</data>
+		</table>
+	</table>
+
+	<table name="Flat Foot Shift Mode" category="MerpMod Rev Limit" type="1D" scaling="FFSMode">
+		<description>Sets FFS mode. Automatic mode calculates rpm drop based on gear ratios. Static mode uses a static rpm drop from redline rev limit.</description>
+	</table>
+
+	<table name="LC Maximum Speed Threshold" category="MerpMod Rev Limit" type="2D" level="4" scaling="VehicleSpeed(MPH)SD">
+		<description>Maximum vehicle speed allowed before LC is disabled.</description>
+		<table name="LC Max Speed" type="Static Y Axis" elements="1">
+			<data>Threshold</data>
+		</table>
+	</table>
+
+	<table name="LC Minimum Throttle Threshold" category="MerpMod Rev Limit" type="2D" level="2" scaling="ThrottlePlateOpeningAngle(%)">
+		<description>Minimum Throttle % required to activate Launch Control</description>
+		<table type="Static Y Axis" elements="1">
+			<data>Min. Throttle</data>
+		</table>
+	</table>
+
+	<table name="FFS Minimum Throttle Threshold" category="MerpMod Rev Limit" type="2D" level="2" scaling="ThrottlePlateOpeningAngle(%)">
+		<description>Minimum Throttle % required to activate Flat Foot Shift</description>
+		<table type="Static Y Axis" elements="1">
+			<data>Min. Throttle</data>
+		</table>
+	</table>
+
+	<table name="Rev Limit (Redline)" category="MerpMod Rev Limit" type="2D" level="4" scaling="EngineSpeed(RPM)FFS">
+		<description>These are the engine speeds at which the rev limiter is engaged and disengaged.</description>
+		<table name="Rev Limit Rev Limit" type="Static Y Axis" elements="2">
+			<data>Cut Fuel Above</data>
+			<data>Hysteresis (RPM)</data>
+		</table>
+	</table>
+
+	<table name="Rev Limit (Launch Control)" category="MerpMod Rev Limit" type="2D" level="4" scaling="EngineSpeed(RPM)FFS">
+		<description>These are the engine speeds at which the rev limiter is engaged and disengaged when the clutch is pressed and vehicle speed is below the FFS threshold.</description>
+		<table name="Launch Control Rev Limit" type="Static Y Axis" elements="2">
+			<data>Cut Fuel Above</data>
+			<data>Hysteresis (RPM)</data>
+		</table>
+	</table>
+
+	<table name="Flat Foot Shift Minimum Speed Threshold" category="MerpMod Rev Limit" type="2D" level="4" scaling="VehicleSpeed(MPH)SD">
+		<description>Minimum vehicle speed required for FFS to be active.</description>
+		<table name="Flat Foot Shift Speed Threshold" type="Static Y Axis" elements="1">
+			<data>Threshold</data>
+		</table>
+	</table>
+
+	<table name="Flat Foot Shift Minimum RPM Threshold" category="MerpMod Rev Limit" type="2D" level="4" scaling="EngineSpeed(RPM)FFS">
+		<description>Above this RPM, the Automatic FFS rev limit is in effect (if enabled).</description>
+		<table name="Flat Foot Shift RPM Threshold" type="Static Y Axis" elements="1">
+			<data>Threshold</data>
+		</table>
+	</table>
+
+	<table name="Flat Foot Shift Delta (Automatic Limit)" category="MerpMod Rev Limit" type="2D" level="4" scaling="EngineSpeed(RPM)FFS">
+		<description>This is the delta from the calculated FFS rev limit that will be used during ffs. If the algorithm calculates a limit of 4500 RPM and you set a delta of 50 RPM, the rev limit used while FFS is engaged becomes 4550 RPM</description>
+		<table name="Flat Foot Shift RPM Delta" type="Static Y Axis" elements="1">
+			<data>Delta</data>
+		</table>
+	</table>
+
+	<table name="Flat Foot Shift Delta (Static Limit)" category="MerpMod Rev Limit" type="2D" level="4" scaling="EngineSpeed(RPM)FFS">
+		<description>This is the delta from the redline rev limit that will be used during ffs. If Redline limit is set to 7000 RPM, and delta is 4000, effective FFS limit will be 3000 RPM.</description>
+		<table name="Flat Foot Shift RPM Delta" type="Static Y Axis" elements="1">
+			<data>Delta</data>
+		</table>
+	</table>
+
+	<table name="Launch Control Adjustment Step" category="MerpMod Rev Limit" type="2D" level="4" scaling="EngineSpeed(RPM)FFS">
+		<description>This is the step value used to adjust launch control limits. Step is applied once per routine cycle when cruise resume/coast switch is set while launching.</description>
+		<table name="LC Adjust Step" type="Static Y Axis" elements="1">
+			<data>Step Value</data>
+		</table>
+	</table>
+
+	<table name="FFS Gear Ratios" category="MerpMod Rev Limit" type="2D" level="2" scaling="GearRatio">
+		<description>Transmission gear ratios</description>
+		<table type="Static Y Axis" elements="6">
+			<data>1st Gear</data>
+			<data>2nd Gear</data>
+			<data>3rd Gear</data>
+			<data>4th Gear</data>
+			<data>5th Gear</data>
+			<data>6th Gear</data>
+		</table>
+	</table>
+
+	<table name="Gear Ratios" category="MerpMod Rev Limit" type="2D" level="2" scaling="GearRatio">
+		<description>Transmission gear ratios</description>
+		<table type="Static Y Axis" elements="6">
+			<data>1st Gear</data>
+			<data>2nd Gear</data>
+			<data>3rd Gear</data>
+			<data>4th Gear</data>
+			<data>5th Gear</data>
+			<data>6th Gear</data>
+		</table>
+	</table>
+
+	<table name="Launch Control Fueling Mode" category="MerpMod Fueling" type="1D" scaling="LCFuelMode"/>
+
+	<table name="Launch Control Enrichment (Lock Mode)" category="MerpMod Fueling" type="2D" level="4" scaling="EstimatedAir/FuelRatio">
+		<description>When using Launch Control Enrichment Lock Mode, this table sets the primary open loop enrichment target.</description>
+		<table name="LC Enrichment Lock" type="Static Y Axis" elements="1">
+			<data>Commanded AFR</data>
+		</table>
+	</table>
+
+	<table name="Launch Control Fuel Enrichment" category="MerpMod Fueling" type="3D" level="4" scaling="EstimatedAir/FuelRatioAdditive">
+		<description>When using Launch Control Enrichment Compensation Mode, this table is added to the current Primary Open Loop fueling enrichment.</description>
+		<table name="Vehicle Speed" type="X Axis" elements="5" scaling="VehicleSpeed(MPH)"/>
+		<table name="Engine Speed" type="Y Axis" elements="12" scaling="RPM"/>
+	</table>
+
+	<table name="Default Launch Control Fueling Compensation Multiplier" category="MerpMod Fueling" type="2D" level="4" scaling="LCTimingMult">
+		<description>When using Launch Control Enrichment Compensation mode, the Launch Control Fuel Enrichment table is multiplied by this value</description>
+		<table name ="LC Fueling Multiplier" type="Static Y Axis" elements="1">
+			<data>LC Fueling Multiplier</data>
+		</table>
+	</table>
+
+	<table name="Map Blending Injector Scaling" category="MerpMod Fueling" type="2D" level="4" scaling="MerpModInjectorScaling">
+		<description>This is the injector scaling used when map blending is enabled.</description>
+		<table name="Blending Ratio" type="X Axis" elements="11" scaling="MerpModMapRatio"/>
+	</table>
+
+	<table name="Map Blending Injector Scaling Multiplier" category="MerpMod Fueling" type="2D" level="4" scaling="MerpModMultiplier10">
+		<description>This is the injector scaling multiplier used when map blending is enabled.</description>
+		<table name="Blending Ratio" type="X Axis" elements="11" scaling="MerpModMapRatio"/>
+	</table>
+
+	<table name="Map Blending Throttle Tip-In Enrichment Multiplier" category="MerpMod Fueling" type="2D" level="4" scaling="MerpModMultiplier10">
+		<description>This is the throttle tip in enrichment multiplier used when map blending is enabled.These values are the maximum multiplier corresponding to the maximum blending ratio.</description>
+		<table name="Throttle Angle Change" type="X Axis" elements="18" scaling="%"/>
+	</table>
+
+	<table name="Map Blending Cranking Fuel Multiplier" category="MerpMod Fueling" type="2D" level="4" scaling="MerpModMultiplier10">
+		<description>This is the cranking fuel multiplier used when map blending is enabled. These values are the maximum multiplier corresponding to the maximum blending ratio.</description>
+		<table name="Coolant Temp" type="X Axis" elements="16" scaling="DegreesF"/>
+	</table>
+
+	<table name="Map Blending Startup Enrichment Multiplier" category="MerpMod Fueling" type="2D" level="4" scaling="MerpModMultiplier10">
+		<description>This is the startup enrichment multiplier used when map blending is enabled. These values are the maximum multiplier corresponding to the maximum blending ratio.</description>
+		<table name="Coolant Temp" type="X Axis" elements="16" scaling="DegreesF"/>
+	</table>
+
+	<table name="Map Blending Injector Scaling" category="MerpMod Fueling" type="2D" level="4" scaling="MerpModInjectorScaling">
+		<description>This is the injector scaling used when map blending is enabled.</description>
+		<table name="Injector Scaling" type="X Axis" elements="11" scaling="MerpModMapRatio"/>
+	</table>
+
+	<table name="Primary Open Loop Fuel Hack Enable" category="MerpMod Fueling" type="2D" level="4" scaling="MerpModEnable">
+		<description>This will enable or disable all MerpMod Primary Open Loop Fueling Hacks.</description>
+		<table name="POLF Hack Enable" type="Static Y Axis" elements="1">
+			<data>POLF Hack Enable</data>
+		</table>
+	</table>
+
+	<table name="Primary Open Loop Fueling Table 1 Intelligent" category="MerpMod Fueling" type="3D" level="4" scaling="EstimatedAir/FuelRatio">
+		<description>This fuel map is used in open loop when the ignition advance multiplier (IAM) is greater than or equal to the threshold specified by the 'Primary Open Loop Fuel Map Switch (IAM)' table. Because there is no feedback in open loop, the actual AFR may differ from the values presented in this table. In addition, the ECU applies a long-term correction (A/F Learning) to open loop fueling from patterns it recognizes in closed loop fueling. Other compensations and minimum enrichment factors exist as well. Because the underlying values of this table are enrichment offsets relative to stoichiometric, AFRs leaner than 14.7, as presented, are not valid.</description>
+		<table name="Engine Load" type="X Axis" elements="20" scaling="g/rev"/>
+		<table name="Engine Speed" type="Y Axis" elements="20" scaling="RPM"/>
+	</table>
+
+	<table name="Primary Open Loop Fueling Table 2 Intelligent" category="MerpMod Fueling" type="3D" level="4" scaling="EstimatedAir/FuelRatio">
+		<description>This fuel map is used in open loop when the ignition advance multiplier (IAM) is greater than or equal to the threshold specified by the 'Primary Open Loop Fuel Map Switch (IAM)' table. Because there is no feedback in open loop, the actual AFR may differ from the values presented in this table. In addition, the ECU applies a long-term correction (A/F Learning) to open loop fueling from patterns it recognizes in closed loop fueling. Other compensations and minimum enrichment factors exist as well. Because the underlying values of this table are enrichment offsets relative to stoichiometric, AFRs leaner than 14.7, as presented, are not valid.</description>
+		<table name="Engine Load" type="X Axis" elements="20" scaling="g/rev"/>
+		<table name="Engine Speed" type="Y Axis" elements="20" scaling="RPM"/>
+	</table>
+
+	<table name="Primary Open Loop Fueling Table 1 Sport" category="MerpMod Fueling" type="3D" level="4" scaling="EstimatedAir/FuelRatio">
+		<description>This fuel map is used in open loop when the ignition advance multiplier (IAM) is greater than or equal to the threshold specified by the 'Primary Open Loop Fuel Map Switch (IAM)' table. Because there is no feedback in open loop, the actual AFR may differ from the values presented in this table. In addition, the ECU applies a long-term correction (A/F Learning) to open loop fueling from patterns it recognizes in closed loop fueling. Other compensations and minimum enrichment factors exist as well. Because the underlying values of this table are enrichment offsets relative to stoichiometric, AFRs leaner than 14.7, as presented, are not valid.</description>
+		<table name="Engine Load" type="X Axis" elements="20" scaling="g/rev"/>
+		<table name="Engine Speed" type="Y Axis" elements="20" scaling="RPM"/>
+	</table>
+
+	<table name="Primary Open Loop Fueling Table 2 Sport" category="MerpMod Fueling" type="3D" level="4" scaling="EstimatedAir/FuelRatio">
+		<description>This fuel map is used in open loop when the ignition advance multiplier (IAM) is greater than or equal to the threshold specified by the 'Primary Open Loop Fuel Map Switch (IAM)' table. Because there is no feedback in open loop, the actual AFR may differ from the values presented in this table. In addition, the ECU applies a long-term correction (A/F Learning) to open loop fueling from patterns it recognizes in closed loop fueling. Other compensations and minimum enrichment factors exist as well. Because the underlying values of this table are enrichment offsets relative to stoichiometric, AFRs leaner than 14.7, as presented, are not valid.</description>
+		<table name="Engine Load" type="X Axis" elements="20" scaling="g/rev"/>
+		<table name="Engine Speed" type="Y Axis" elements="20" scaling="RPM"/>
+	</table>
+
+	<table name="Primary Open Loop Fueling Table 1 Sport Sharp" category="MerpMod Fueling" type="3D" level="4" scaling="EstimatedAir/FuelRatio">
+		<description>This fuel map is used in open loop when the ignition advance multiplier (IAM) is greater than or equal to the threshold specified by the 'Primary Open Loop Fuel Map Switch (IAM)' table. Because there is no feedback in open loop, the actual AFR may differ from the values presented in this table. In addition, the ECU applies a long-term correction (A/F Learning) to open loop fueling from patterns it recognizes in closed loop fueling. Other compensations and minimum enrichment factors exist as well. Because the underlying values of this table are enrichment offsets relative to stoichiometric, AFRs leaner than 14.7, as presented, are not valid.</description>
+		<table name="Engine Load" type="X Axis" elements="20" scaling="g/rev"/>
+		<table name="Engine Speed" type="Y Axis" elements="20" scaling="RPM"/>
+	</table>
+
+	<table name="Primary Open Loop Fueling Table 2 Sport Sharp" category="MerpMod Fueling" type="3D" level="4" scaling="EstimatedAir/FuelRatio">
+		<description>This fuel map is used in open loop when the ignition advance multiplier (IAM) is greater than or equal to the threshold specified by the 'Primary Open Loop Fuel Map Switch (IAM)' table. Because there is no feedback in open loop, the actual AFR may differ from the values presented in this table. In addition, the ECU applies a long-term correction (A/F Learning) to open loop fueling from patterns it recognizes in closed loop fueling. Other compensations and minimum enrichment factors exist as well. Because the underlying values of this table are enrichment offsets relative to stoichiometric, AFRs leaner than 14.7, as presented, are not valid.</description>
+		<table name="Engine Load" type="X Axis" elements="20" scaling="g/rev"/>
+		<table name="Engine Speed" type="Y Axis" elements="20" scaling="RPM"/>
+	</table>
+
+	<table name="Default Map Blending Ratio" category="MerpMod Map Switching" type="2D" level="4" scaling="MerpModMapRatio">
+		<description>This is the default map blending ratio. When set to 1, map 1 is used. When set to 2, map 2 is used. Set between 1 and 2 will blend between the two map sets.</description>
+		<table name="Default Map Blending Ratio" type="Static Y Axis" elements="1">
+			<data>Map Blending Ratio</data>
+		</table>
+	</table>
+
+	<table name="Default Map Switch" category="MerpMod Map Switching" type="2D" level="4" scaling="MerpModMapSwitch">
+		<description>This is the default map switch used when neither si-drive or tgv inputs are used for switching. When set to 1 = intelligent map, 2 = sport map, 3 = sport sharp map</description>
+		<table name="Default Switch" type="Static Y Axis" elements="1">
+			<data>Map Switch</data>
+		</table>
+	</table>
+
+	<table name="TGV Left Input Scaling" category="MerpMod Map Switching" type="2D" level="4" scaling="MerpModTGVInput">
+		<description>This is the scaling that is applied to the left tgv voltage. Scaled value is used for map blending, switching, or aux inputs</description>
+		<table name="Voltage" type="X Axis" elements="11" scaling="volts"/>
+	</table>
+
+	<table name="TGV Right Input Scaling" category="MerpMod Map Switching" type="2D" level="4" scaling="MerpModTGVInput">
+		<description>This is the scaling that is applied to the right tgv voltage. Scaled value is used for map blending, switching, or aux inputs</description>
+		<table name="Voltage" type="X Axis" elements="11" scaling="volts"/>
+	</table>
+	
+	<table name="TGV Left Input Multiplier" category="MerpMod Map Switching" type="1D" level="4" scaling="Multiplier">
+		<description>This is the multiplier for TGV Left inputs. The Left TGV input scaling table output value is multiplied by this value.</description>
+	</table>
+
+	<table name="TGV Right Input Multiplier" category="MerpMod Map Switching" type="1D" level="4" scaling="Multiplier">
+		<description>This is the multiplier for TGV Right inputs. The Left TGV input scaling table output value is multiplied by this value.</description>
+	</table>
+
+	<table name="TGV Left Input Offset" category="MerpMod Map Switching" type="1D" level="4" scaling="Offset">
+		<description>This is the offset for TGV Left inputs. The Left TGV input scaling table output value is offset by this value.</description>
+	</table>
+
+	<table name="TGV Right Input Offset" category="MerpMod Map Switching" type="1D" level="4" scaling="Offset">
+		<description>This is the offset for TGV Right inputs. The Left TGV input scaling table output value is offset by this value.</description>
+	</table>
+
+	<table name="TGV Left Input Smoothing Factor" category="MerpMod Map Switching" type="1D" level="4" scaling="MerpModSmoothingFactor">
+		<description>This is the smoothing factor for TGV Left input scaling. Lower values give more smoothing, higher values give higher smoothing.</description>
+	</table>
+
+	<table name="TGV Right Input Smoothing Factor" category="MerpMod Map Switching" type="1D" level="4" scaling="MerpModSmoothingFactor">
+		<description>This is the smoothing factor for TGV Right input scaling. Lower values give more smoothing, higher values give higher smoothing.</description>
+	</table>
+
+	<table name="Map Switch Input Threshold High" category="MerpMod Map Switching" type="1D" level="4" scaling="MerpModMapSwitchThreshold">
+		<description>When using TGV inputs to control map switching, this determines the threshold to switch between sport and sport sharp maps.</description>
+	</table>
+
+	<table name="Map Switch Input Threshold Low" category="MerpMod Map Switching" type="1D" level="4" scaling="MerpModMapSwitchThreshold">
+		<description>When using TGV inputs to control map switching, this determines the threshold to switch between intelligent and sport maps.</description>
+	</table>
+
+	<table name="Map Switch Input Mode" category="MerpMod Map Switching" type="1D" level="4" scaling="MerpModInputMode">
+		<description>Determines the input used to control map switching.</description>
+	</table>
+
+	<table name="Map Blending Input Mode" category="MerpMod Map Switching" type="1D" level="4" scaling="MerpModInputMode">
+		<description>Determines the input used to control map blending.</description>
+	</table>
+
+	<table name="Boost Hack Enable" category="MerpMod Boost Hacks" type="2D" level="4" scaling="MerpModEnable">
+		<description>This will enable or disable all MerpMod Boost Hacks.</description>
+		<table name="Boost Hack Enable" type="Static Y Axis" elements="1">
+			<data>Boost Hack Enable</data>
+		</table>
+	</table>
+
+	<table name="Per Gear Wastegate Table 1" category="MerpMod Boost Hacks" type="3D" level="4" scaling="WastegateDutyCycle(%)1">
+		<description>This table is a gear based multiplier to both initial and max wastegate duty cycles for map 2.</description>
+		<table name="Gear" type="X Axis" elements="6" scaling="Gear"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Per Gear Wastegate Table 2" category="MerpMod Boost Hacks" type="3D" level="4" scaling="WastegateDutyCycle(%)1">
+		<description>This table is a gear based multiplier to both initial and max wastegate duty cycles for map 2.</description>
+		<table name="Gear" type="X Axis" elements="6" scaling="Gear"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Per Gear Wastegate Table 1 Intelligent" category="MerpMod Boost Hacks" type="3D" level="4" scaling="WastegateDutyCycle(%)1">
+		<description>This table is a gear based multiplier to both initial and max wastegate duty cycles for map 2.</description>
+		<table name="Gear" type="X Axis" elements="6" scaling="Gear"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Per Gear Wastegate Table 2 Intelligent" category="MerpMod Boost Hacks" type="3D" level="4" scaling="WastegateDutyCycle(%)1">
+		<description>This table is a gear based multiplier to both initial and max wastegate duty cycles for map 2.</description>
+		<table name="Gear" type="X Axis" elements="6" scaling="Gear"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Per Gear Wastegate Table 1 Sport" category="MerpMod Boost Hacks" type="3D" level="4" scaling="WastegateDutyCycle(%)1">
+		<description>This table is a gear based multiplier to both initial and max wastegate duty cycles for map 2.</description>
+		<table name="Gear" type="X Axis" elements="6" scaling="Gear"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Per Gear Wastegate Table 2 Sport" category="MerpMod Boost Hacks" type="3D" level="4" scaling="WastegateDutyCycle(%)1">
+		<description>This table is a gear based multiplier to both initial and max wastegate duty cycles for map 2.</description>
+		<table name="Gear" type="X Axis" elements="6" scaling="Gear"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Per Gear Wastegate Table 1 Sport Sharp" category="MerpMod Boost Hacks" type="3D" level="4" scaling="WastegateDutyCycle(%)1">
+		<description>This table is a gear based multiplier to both initial and max wastegate duty cycles for map 2.</description>
+		<table name="Gear" type="X Axis" elements="6" scaling="Gear"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Per Gear Wastegate Table 2 Sport Sharp" category="MerpMod Boost Hacks" type="3D" level="4" scaling="WastegateDutyCycle(%)1">
+		<description>This table is a gear based multiplier to both initial and max wastegate duty cycles for map 2.</description>
+		<table name="Gear" type="X Axis" elements="6" scaling="Gear"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+	
+	<table name="Per Gear Wastegate Table Valet Mode" category="MerpMod Boost Hacks" type="3D" level="4" scaling="WastegateDutyCycle(%)1">
+		<description>This table is a gear based multiplier to both initial and max wastegate duty cycles for map 2.</description>
+		<table name="Gear" type="X Axis" elements="6" scaling="Gear"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Per Gear Target Boost Table 1" category="MerpMod Boost Hacks" type="3D" level="4" scaling="BoostTarget(psirelativesealevel)">
+		<description>This table is a gear based target boost table for map 1. Final target boost is determined by multiplying by the appropriate target boost multipler table.</description>
+		<table name="Gear" type="X Axis" elements="6" scaling="Gear"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Per Gear Target Boost Table 2" category="MerpMod Boost Hacks" type="3D" level="4" scaling="BoostTarget(psirelativesealevel)">
+		<description>This table is a gear based target boost table for map 2. Final target boost is determined by multiplying by the appropriate target boost multipler table.</description>
+		<table name="Gear" type="X Axis" elements="6" scaling="Gear"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Per Gear Target Boost Table 1 Intelligent" category="MerpMod Boost Hacks" type="3D" level="4" scaling="BoostTarget(psirelativesealevel)">
+		<description>This table is a gear based target boost table for map 1. Final target boost is determined by multiplying by the appropriate target boost multipler table.</description>
+		<table name="Gear" type="X Axis" elements="6" scaling="Gear"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Per Gear Target Boost Table 2 Intelligent" category="MerpMod Boost Hacks" type="3D" level="4" scaling="BoostTarget(psirelativesealevel)">
+		<description>This table is a gear based target boost table for map 2. Final target boost is determined by multiplying by the appropriate target boost multipler table.</description>
+		<table name="Gear" type="X Axis" elements="6" scaling="Gear"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Per Gear Target Boost Table 1 Sport" category="MerpMod Boost Hacks" type="3D" level="4" scaling="BoostTarget(psirelativesealevel)">
+		<description>This table is a gear based target boost table for map 1. Final target boost is determined by multiplying by the appropriate target boost multipler table.</description>
+		<table name="Gear" type="X Axis" elements="6" scaling="Gear"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Per Gear Target Boost Table 2 Sport" category="MerpMod Boost Hacks" type="3D" level="4" scaling="BoostTarget(psirelativesealevel)">
+		<description>This table is a gear based target boost table for map 2. Final target boost is determined by multiplying by the appropriate target boost multipler table.</description>
+		<table name="Gear" type="X Axis" elements="6" scaling="Gear"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Per Gear Target Boost Table 1 Sport Sharp" category="MerpMod Boost Hacks" type="3D" level="4" scaling="BoostTarget(psirelativesealevel)">
+		<description>This table is a gear based target boost table for map 1. Final target boost is determined by multiplying by the appropriate target boost multipler table.</description>
+		<table name="Gear" type="X Axis" elements="6" scaling="Gear"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Per Gear Target Boost Table 2 Sport Sharp" category="MerpMod Boost Hacks" type="3D" level="4" scaling="BoostTarget(psirelativesealevel)">
+		<description>This table is a gear based target boost table for map 2. Final target boost is determined by multiplying by the appropriate target boost multipler table.</description>
+		<table name="Gear" type="X Axis" elements="6" scaling="Gear"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+	
+	<table name="Per Gear Target Boost Table Valet Mode" category="MerpMod Boost Hacks" type="3D" level="4" scaling="BoostTarget(psirelativesealevel)">
+		<description>This table is a gear based target boost table for valet mode. Final target boost is determined by multiplying by the appropriate target boost multipler table.</description>
+		<table name="Gear" type="X Axis" elements="6" scaling="Gear"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Max Wastegate Duty Compensation Table 1" category="MerpMod Boost Hacks" type="3D" level="4" scaling="PGWGComp">
+		<description>This table is multiplied with the per gear wastegate table to set the max wastegate duty for map 1.</description>
+		<table name="Requested Torque" type="X Axis" elements="16" scaling="RequestedTorque(rawecuvalue)1"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Max Wastegate Duty Compensation Table 2" category="MerpMod Boost Hacks" type="3D" level="4" scaling="PGWGComp">
+		<description>This table is multiplied with the per gear wastegate table to set the max wastegate duty for map 2.</description>
+		<table name="Requested Torque" type="X Axis" elements="16" scaling="RequestedTorque(rawecuvalue)1"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Max Wastegate Duty Compensation Table 1 Intelligent" category="MerpMod Boost Hacks" type="3D" level="4" scaling="PGWGComp">
+		<description>This table is multiplied with the per gear wastegate table to set the max wastegate duty for map 1.</description>
+		<table name="Requested Torque" type="X Axis" elements="16" scaling="RequestedTorque(rawecuvalue)1"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Max Wastegate Duty Compensation Table 2 Intelligent" category="MerpMod Boost Hacks" type="3D" level="4" scaling="PGWGComp">
+		<description>This table is multiplied with the per gear wastegate table to set the max wastegate duty for map 2.</description>
+		<table name="Requested Torque" type="X Axis" elements="16" scaling="RequestedTorque(rawecuvalue)1"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Max Wastegate Duty Compensation Table 1 Sport" category="MerpMod Boost Hacks" type="3D" level="4" scaling="PGWGComp">
+		<description>This table is multiplied with the per gear wastegate table to set the max wastegate duty for map 1.</description>
+		<table name="Requested Torque" type="X Axis" elements="16" scaling="RequestedTorque(rawecuvalue)1"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Max Wastegate Duty Compensation Table 2 Sport" category="MerpMod Boost Hacks" type="3D" level="4" scaling="PGWGComp">
+		<description>This table is multiplied with the per gear wastegate table to set the max wastegate duty for map 2.</description>
+		<table name="Requested Torque" type="X Axis" elements="16" scaling="RequestedTorque(rawecuvalue)1"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Max Wastegate Duty Compensation Table 1 Sport Sharp" category="MerpMod Boost Hacks" type="3D" level="4" scaling="PGWGComp">
+		<description>This table is multiplied with the per gear wastegate table to set the max wastegate duty for map 1.</description>
+		<table name="Requested Torque" type="X Axis" elements="16" scaling="RequestedTorque(rawecuvalue)1"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Max Wastegate Duty Compensation Table 2 Sport Sharp" category="MerpMod Boost Hacks" type="3D" level="4" scaling="PGWGComp">
+		<description>This table is multiplied with the per gear wastegate table to set the max wastegate duty for map 2.</description>
+		<table name="Requested Torque" type="X Axis" elements="16" scaling="RequestedTorque(rawecuvalue)1"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Initial Wastegate Duty Compensation Table 1" category="MerpMod Boost Hacks" type="3D" level="4" scaling="PGWGComp">
+		<description>This table is multiplied with the per gear wastegate table to set the initial wastegate duty for map 1.</description>
+		<table name="Requested Torque" type="X Axis" elements="16" scaling="RequestedTorque(rawecuvalue)1"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Initial Wastegate Duty Compensation Table 2" category="MerpMod Boost Hacks" type="3D" level="4" scaling="PGWGComp">
+		<description>This table is multiplied with the per gear wastegate table to set the initial wastegate duty for map 2.</description>
+		<table name="Requested Torque" type="X Axis" elements="16" scaling="RequestedTorque(rawecuvalue)1"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Initial Wastegate Duty Compensation Table 1 Intelligent" category="MerpMod Boost Hacks" type="3D" level="4" scaling="PGWGComp">
+		<description>This table is multiplied with the per gear wastegate table to set the initial wastegate duty for map 1.</description>
+		<table name="Requested Torque" type="X Axis" elements="16" scaling="RequestedTorque(rawecuvalue)1"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Initial Wastegate Duty Compensation Table 2 Intelligent" category="MerpMod Boost Hacks" type="3D" level="4" scaling="PGWGComp">
+		<description>This table is multiplied with the per gear wastegate table to set the initial wastegate duty for map 2.</description>
+		<table name="Requested Torque" type="X Axis" elements="16" scaling="RequestedTorque(rawecuvalue)1"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Initial Wastegate Duty Compensation Table 1 Sport" category="MerpMod Boost Hacks" type="3D" level="4" scaling="PGWGComp">
+		<description>This table is multiplied with the per gear wastegate table to set the initial wastegate duty for map 1.</description>
+		<table name="Requested Torque" type="X Axis" elements="16" scaling="RequestedTorque(rawecuvalue)1"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Initial Wastegate Duty Compensation Table 2 Sport" category="MerpMod Boost Hacks" type="3D" level="4" scaling="PGWGComp">
+		<description>This table is multiplied with the per gear wastegate table to set the initial wastegate duty for map 2.</description>
+		<table name="Requested Torque" type="X Axis" elements="16" scaling="RequestedTorque(rawecuvalue)1"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Initial Wastegate Duty Compensation Table 1 Sport Sharp" category="MerpMod Boost Hacks" type="3D" level="4" scaling="PGWGComp">
+		<description>This table is multiplied with the per gear wastegate table to set the initial wastegate duty for map 1.</description>
+		<table name="Requested Torque" type="X Axis" elements="16" scaling="RequestedTorque(rawecuvalue)1"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Initial Wastegate Duty Compensation Table 2 Sport Sharp" category="MerpMod Boost Hacks" type="3D" level="4" scaling="PGWGComp">
+		<description>This table is multiplied with the per gear wastegate table to set the initial wastegate duty for map 2.</description>
+		<table name="Requested Torque" type="X Axis" elements="16" scaling="RequestedTorque(rawecuvalue)1"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Target Boost Compensation Table 1" category="MerpMod Boost Hacks" type="3D" level="4" scaling="PGWGComp">
+		<description>This map is multiplied by the per gear boost table to produce the desired boost targets for map 1.</description>
+		<table name="Requested Torque" type="X Axis" elements="8" scaling="RequestedTorque(rawecuvalue)1"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Target Boost Compensation Table 2" category="MerpMod Boost Hacks" type="3D" level="4" scaling="PGWGComp">
+		<description>This map is multiplied by the per gear boost table to produce the desired boost targets for map 1.</description>
+		<table name="Requested Torque" type="X Axis" elements="16" scaling="RequestedTorque(rawecuvalue)1"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Target Boost Compensation Table 1 Intelligent" category="MerpMod Boost Hacks" type="3D" level="4" scaling="PGWGComp">
+		<description>This map is multiplied by the per gear boost table to produce the desired boost targets for map 1.</description>
+		<table name="Requested Torque" type="X Axis" elements="8" scaling="RequestedTorque(rawecuvalue)1"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Target Boost Compensation Table 2 Intelligent" category="MerpMod Boost Hacks" type="3D" level="4" scaling="PGWGComp">
+		<description>This map is multiplied by the per gear boost table to produce the desired boost targets for map 1.</description>
+		<table name="Requested Torque" type="X Axis" elements="16" scaling="RequestedTorque(rawecuvalue)1"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Target Boost Compensation Table 1 Sport" category="MerpMod Boost Hacks" type="3D" level="4" scaling="PGWGComp">
+		<description>This map is multiplied by the per gear boost table to produce the desired boost targets for map 1.</description>
+		<table name="Requested Torque" type="X Axis" elements="8" scaling="RequestedTorque(rawecuvalue)1"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Target Boost Compensation Table 2 Sport" category="MerpMod Boost Hacks" type="3D" level="4" scaling="PGWGComp">
+		<description>This map is multiplied by the per gear boost table to produce the desired boost targets for map 1.</description>
+		<table name="Requested Torque" type="X Axis" elements="16" scaling="RequestedTorque(rawecuvalue)1"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Target Boost Compensation Table 1 Sport Sharp" category="MerpMod Boost Hacks" type="3D" level="4" scaling="PGWGComp">
+		<description>This map is multiplied by the per gear boost table to produce the desired boost targets for map 1.</description>
+		<table name="Requested Torque" type="X Axis" elements="8" scaling="RequestedTorque(rawecuvalue)1"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Target Boost Compensation Table 2 Sport Sharp" category="MerpMod Boost Hacks" type="3D" level="4" scaling="PGWGComp">
+		<description>This map is multiplied by the per gear boost table to produce the desired boost targets for map 1.</description>
+		<table name="Requested Torque" type="X Axis" elements="16" scaling="RequestedTorque(rawecuvalue)1"/>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Launch Control Timing Retard Table" category="MerpMod Timing" type="3D" level="4" scaling="BaseIgnitionTiming(degreesBTDC)1">
+		<description>When using Launch Control Timing Retard Mode, this value is subtracted from the base timing value.</description>
+		<table name="Vehicle Speed" type="X Axis" elements="5" scaling="VehicleSpeed(MPH)"/>
+		<table name="Engine Speed" type="Y Axis" elements="12" scaling="RPM"/>
+	</table>
+
+	<table name="Timing Hack Enable" category="MerpMod Timing" type="2D" level="4" scaling="MerpModEnable">
+		<description>This will enable or disable all MerpMod Timing Hacks.</description>
+		<table name="Timing Hack Enable" type="Static Y Axis" elements="1">
+			<data>Timing Hack Enable</data>
+		</table>
+	</table>
+
+	<table name="Base Timing Table 1" category="MerpMod Timing" type="3D" level="4" scaling="BaseIgnitionTiming(degreesBTDC)1">
+		<description>This is the base level of timing. Total timing = base timing + knock correction advance + other timing compensations. Knock correction advance = (knock correction advance max map value * current advance multiplier) + feedback knock correction + fine knock correction.</description>
+		<table name="Engine Load" type="X Axis" elements="20" scaling="g/rev"/>
+		<table name="Engine Speed" type="Y Axis" elements="20" scaling="RPM"/>
+	</table>
+
+	<table name="Base Timing Table 2" category="MerpMod Timing" type="3D" level="4" scaling="BaseIgnitionTiming(degreesBTDC)1">
+		<description>This is the base level of timing. Total timing = base timing + knock correction advance + other timing compensations. Knock correction advance = (knock correction advance max map value * current advance multiplier) + feedback knock correction + fine knock correction.</description>
+		<table name="Engine Load" type="X Axis" elements="20" scaling="g/rev"/>
+		<table name="Engine Speed" type="Y Axis" elements="20" scaling="RPM"/>
+	</table>
+
+	<table name="Base Timing Table 1 Intelligent" category="MerpMod Timing" type="3D" level="4" scaling="BaseIgnitionTiming(degreesBTDC)1">
+		<description>This is the base level of timing. Total timing = base timing + knock correction advance + other timing compensations. Knock correction advance = (knock correction advance max map value * current advance multiplier) + feedback knock correction + fine knock correction.</description>
+		<table name="Engine Load" type="X Axis" elements="20" scaling="g/rev"/>
+		<table name="Engine Speed" type="Y Axis" elements="20" scaling="RPM"/>
+	</table>
+
+	<table name="Base Timing Table 2 Intelligent" category="MerpMod Timing" type="3D" level="4" scaling="BaseIgnitionTiming(degreesBTDC)1">
+		<description>This is the base level of timing. Total timing = base timing + knock correction advance + other timing compensations. Knock correction advance = (knock correction advance max map value * current advance multiplier) + feedback knock correction + fine knock correction.</description>
+		<table name="Engine Load" type="X Axis" elements="20" scaling="g/rev"/>
+		<table name="Engine Speed" type="Y Axis" elements="20" scaling="RPM"/>
+	</table>
+
+	<table name="Base Timing Table 1 Sport" category="MerpMod Timing" type="3D" level="4" scaling="BaseIgnitionTiming(degreesBTDC)1">
+		<description>This is the base level of timing. Total timing = base timing + knock correction advance + other timing compensations. Knock correction advance = (knock correction advance max map value * current advance multiplier) + feedback knock correction + fine knock correction.</description>
+		<table name="Engine Load" type="X Axis" elements="20" scaling="g/rev"/>
+		<table name="Engine Speed" type="Y Axis" elements="20" scaling="RPM"/>
+	</table>
+
+	<table name="Base Timing Table 2 Sport" category="MerpMod Timing" type="3D" level="4" scaling="BaseIgnitionTiming(degreesBTDC)1">
+		<description>This is the base level of timing. Total timing = base timing + knock correction advance + other timing compensations. Knock correction advance = (knock correction advance max map value * current advance multiplier) + feedback knock correction + fine knock correction.</description>
+		<table name="Engine Load" type="X Axis" elements="20" scaling="g/rev"/>
+		<table name="Engine Speed" type="Y Axis" elements="20" scaling="RPM"/>
+	</table>
+
+	<table name="Base Timing Table 1 Sport Sharp" category="MerpMod Timing" type="3D" level="4" scaling="BaseIgnitionTiming(degreesBTDC)1">
+		<description>This is the base level of timing. Total timing = base timing + knock correction advance + other timing compensations. Knock correction advance = (knock correction advance max map value * current advance multiplier) + feedback knock correction + fine knock correction.</description>
+		<table name="Engine Load" type="X Axis" elements="20" scaling="g/rev"/>
+		<table name="Engine Speed" type="Y Axis" elements="20" scaling="RPM"/>
+	</table>
+
+	<table name="Base Timing Table 2 Sport Sharp" category="MerpMod Timing" type="3D" level="4" scaling="BaseIgnitionTiming(degreesBTDC)1">
+		<description>This is the base level of timing. Total timing = base timing + knock correction advance + other timing compensations. Knock correction advance = (knock correction advance max map value * current advance multiplier) + feedback knock correction + fine knock correction.</description>
+		<table name="Engine Load" type="X Axis" elements="20" scaling="g/rev"/>
+		<table name="Engine Speed" type="Y Axis" elements="20" scaling="RPM"/>
+	</table>
+
+	<table name="Knock Correction Retard Table 1 Intelligent" category="MerpMod Timing" type="3D" level="4" scaling="BaseIgnitionTiming(degreesBTDC)1">
+		<description>This is the knock correction retard table, IAM * this table is subtracted from base timing.</description>
+		<table name="Engine Load" type="X Axis" elements="20" scaling="g/rev"/>
+		<table name="Engine Speed" type="Y Axis" elements="20" scaling="RPM"/>
+	</table>
+
+	<table name="Knock Correction Retard Table 2 Intelligent" category="MerpMod Timing" type="3D" level="4" scaling="BaseIgnitionTiming(degreesBTDC)1">
+		<description>This is the knock correction retard table, IAM * this table is subtracted from base timing.</description>
+		<table name="Engine Load" type="X Axis" elements="20" scaling="g/rev"/>
+		<table name="Engine Speed" type="Y Axis" elements="20" scaling="RPM"/>
+	</table>
+
+	<table name="Knock Correction Retard Table 1 Sport" category="MerpMod Timing" type="3D" level="4" scaling="BaseIgnitionTiming(degreesBTDC)1">
+		<description>This is the knock correction retard table, IAM * this table is subtracted from base timing.</description>
+		<table name="Engine Load" type="X Axis" elements="20" scaling="g/rev"/>
+		<table name="Engine Speed" type="Y Axis" elements="20" scaling="RPM"/>
+	</table>
+
+	<table name="Knock Correction Retard Table 2 Sport" category="MerpMod Timing" type="3D" level="4" scaling="BaseIgnitionTiming(degreesBTDC)1">
+		<description>This is the knock correction retard table, IAM * this table is subtracted from base timing.</description>
+		<table name="Engine Load" type="X Axis" elements="20" scaling="g/rev"/>
+		<table name="Engine Speed" type="Y Axis" elements="20" scaling="RPM"/>
+	</table>
+
+	<table name="Knock Correction Retard Table 1 Sport Sharp" category="MerpMod Timing" type="3D" level="4" scaling="BaseIgnitionTiming(degreesBTDC)1">
+		<description>This is the knock correction retard table, IAM * this table is subtracted from base timing.</description>
+		<table name="Engine Load" type="X Axis" elements="20" scaling="g/rev"/>
+		<table name="Engine Speed" type="Y Axis" elements="20" scaling="RPM"/>
+	</table>
+
+	<table name="Knock Correction Retard Table 2 Sport Sharp" category="MerpMod Timing" type="3D" level="4" scaling="BaseIgnitionTiming(degreesBTDC)1">
+		<description>This is the knock correction retard table, IAM * this table is subtracted from base timing.</description>
+		<table name="Engine Load" type="X Axis" elements="20" scaling="g/rev"/>
+		<table name="Engine Speed" type="Y Axis" elements="20" scaling="RPM"/>
+	</table>
+
+	<table name="Launch Control Timing Mode" category="MerpMod Timing" type="1D" scaling="LCTimingMode"/>
+
+	<table name="Launch Control Timing Lock" category="MerpMod Timing" type="2D" level="4" scaling="LCTimingLock">
+		<table name="LC Timing Lock" type="Static Y Axis" elements="1">
+			<data>Commanded Timing Advance</data>
+		</table>
+	</table>
+
+	<table name="Default Launch Control Timing Retard Multiplier" category="MerpMod Timing" type="2D" level="4" scaling="LCTimingMult">
+		<table name="LC Timing Lock" type="Static Y Axis" elements="1">
+			<data>Commanded Timing Advance</data>
+		</table>
+	</table>
 
 	<table name="Target Boost" category="Boost Control - Target" type="3D" level="4" scaling="BoostTarget(psirelativesealevel)">
 		<description>This map contains the desired boost targets. Boost compensation tables can impact the final boost target.</description>
