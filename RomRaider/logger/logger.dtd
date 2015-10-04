@@ -21,6 +21,7 @@
 <!ATTLIST conversion expr CDATA #REQUIRED >
 <!ATTLIST conversion format ( 0 | 0.0 | 0.00 | 0.000 | 0.0000 | 0.00000 | 0.000000) #REQUIRED >
 <!ATTLIST conversion storagetype ( int8 | int16 | uint8 | uint16 | int32 | uint32 | float ) #IMPLIED >
+<!ATTLIST conversion endian CDATA #IMPLIED >
 <!ATTLIST conversion units CDATA #REQUIRED >
 <!ATTLIST conversion gauge_min CDATA #IMPLIED >
 <!ATTLIST conversion gauge_max CDATA #IMPLIED >
@@ -62,13 +63,30 @@
 
 <!ELEMENT ecuparam ( ecu+, conversions? ) >
 <!ATTLIST ecuparam target CDATA #REQUIRED >
+<!ATTLIST ecuparam groupsize CDATA #IMPLIED >
+<!ATTLIST ecuparam subgroup CDATA #IMPLIED >
+<!ATTLIST ecuparam group CDATA #IMPLIED >
 <!ATTLIST ecuparam desc CDATA #REQUIRED >
 <!ATTLIST ecuparam name CDATA #REQUIRED >
 <!ATTLIST ecuparam id ID #REQUIRED >
 
 <!ELEMENT ecuparams ( ecuparam+ ) >
 
-<!ELEMENT protocol ( parameters?, switches?, dtcodes?, ecuparams? ) >
+<!ELEMENT module EMPTY >
+<!ATTLIST module fastpoll CDATA #IMPLIED >
+<!ATTLIST module tester CDATA #IMPLIED >
+<!ATTLIST module desc CDATA #REQUIRED >
+<!ATTLIST module address CDATA #REQUIRED >
+<!ATTLIST module id ID #REQUIRED >
+
+<!ELEMENT transport ( module+ ) >
+<!ATTLIST transport desc CDATA #REQUIRED >
+<!ATTLIST transport name CDATA #REQUIRED >
+<!ATTLIST transport id ID #REQUIRED >
+
+<!ELEMENT transports ( transport+ ) >
+
+<!ELEMENT protocol ( transports, parameters?, switches?, dtcodes?, ecuparams? ) >
 <!ATTLIST protocol id ID #REQUIRED >
 <!ATTLIST protocol baud CDATA #REQUIRED >
 <!ATTLIST protocol databits CDATA #REQUIRED >

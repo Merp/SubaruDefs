@@ -1,12 +1,12 @@
 <rom>
 	<romid>
-		<xmlid>DE5F201B</xmlid>
+		<xmlid>DE5F201A</xmlid>
 		<internalidaddress>2004</internalidaddress>
-		<internalidstring>DE5F201B</internalidstring>
-		<ecuid>5B2B367007</ecuid>
+		<internalidstring>DE5F201A</internalidstring>
+		<ecuid>5BEB367007</ecuid>
 		<make>Subaru</make>
-		<market>USDM</market>
-		<model>Legacy</model>
+		<market>KDM</market>
+		<model>Outback</model>
 		<submodel>3.6R</submodel>
 		<transmission>AT</transmission>
 		<year>10</year>
@@ -16,8 +16,6 @@
 	</romid>
 
 	<include>32BITBASE</include>
-
-	<table name="Rev Limit Fuel Cut" address="caa14"/>
 
 	<table name="Manifold Pressure Sensor Scaling" address="c00e0">
 	</table>
@@ -126,36 +124,6 @@
 	</table>
 
 	<table name="Injector Flow Scaling_" address="ca5c8">
-	</table>
-
-	<table name="Per Injector Pulse Width Compensation A" address="cd34c">
-		<table name="Last Calculated Base Pulse Width" address="cd2d4" elements="16"/>
-		<table name="Engine Speed" address="cd314" elements="14"/>
-	</table>
-
-	<table name="Per Injector Pulse Width Compensation B" address="cd4a4">
-		<table name="Last Calculated Base Pulse Width" address="cd42c" elements="16"/>
-		<table name="Engine Speed" address="cd46c" elements="14"/>
-	</table>
-
-	<table name="Per Injector Pulse Width Compensation C" address="cd5fc">
-		<table name="Last Calculated Base Pulse Width" address="cd584" elements="16"/>
-		<table name="Engine Speed" address="cd5c4" elements="14"/>
-	</table>
-
-	<table name="Per Injector Pulse Width Compensation D" address="cd754">
-		<table name="Last Calculated Base Pulse Width" address="cd6dc" elements="16"/>
-		<table name="Engine Speed" address="cd71c" elements="14"/>
-	</table>
-
-	<table name="Per Injector Pulse Width Compensation E" address="cd8ac">
-		<table name="Last Calculated Base Pulse Width" address="cd834" elements="16"/>
-		<table name="Engine Speed" address="cd874" elements="14"/>
-	</table>
-
-	<table name="Per Injector Pulse Width Compensation F" address="cda04">
-		<table name="Last Calculated Base Pulse Width" address="cd98c" elements="16"/>
-		<table name="Engine Speed" address="cd9cc" elements="14"/>
 	</table>
 
 	<table name="Cranking Fuel Injector Pulse Width A (ECT)" address="cc466">
@@ -399,6 +367,13 @@
 	</table>
 
 	<table name="Intake Cam Advance Angle (AVCS)__" address="d8d20">
+		<table name="Engine Load" address="d8cd8" elements="15"/>
+		<table name="Engine Speed" address="d8cd8"/>
+	</table>
+
+	<table name="Intake Cam Advance Angle (AVCS)___">
+		<table name="Engine Load" elements="15"/>
+		<table name="Engine Speed"/>
 	</table>
 
 	<table name="Exhaust Cam Retard Angle Cruise (AVCS)_" address="d9648">
@@ -434,6 +409,9 @@
 	<table name="Target Throttle Plate Position Maximum (Requested Torque)" address="def78">
 		<table name="Requested Torque" address="deebc" elements="26"/>
 		<table name="Engine Speed" address="def24" elements="21"/>
+	</table>
+
+	<table name="Rev Limit (Fuel Cut)" address="caa14">
 	</table>
 
 	<table name="Speed Limiting Enable (Fuel Cut)" address="caa3c">
@@ -808,21 +786,6 @@
 
 	<table name="(U0422) CAN INVALID DATA RECEIVED FROM BIU" address="8d78b"/>
 
-	<table name="Calculated Engine Torque A" address="c0a0c">
-		<table name="Engine Load" address="c098c" elements="14"/>
-		<table name="Engine Speed" address="c09c4" elements="18"/>
-	</table>
-
-	<table name="Calculated Engine Torque B" address="c0c84">
-		<table name="Engine Load" address="c0c04" elements="14"/>
-		<table name="Engine Speed" address="c0c3c" elements="18"/>
-	</table>
-
-	<table name="Cluster Display Fuel Consumption Correction" address="c044c">
-	</table>
-
-	<table name="MAF Adder (CPC Multiplier)" address="c333c"/>
-
 	<table name="Low Pulse Width Fuel Injector Compensation" address="cb210">
 		<table name="Injector Pulse Width" address="cb1f0"/>
 	</table>
@@ -831,11 +794,6 @@
 	</table>
 
 	<table name="Low pulse width fuel injector compensation maximum IPW" address="ca930">
-	</table>
-
-	<table name="Ignition Dwell" address="d6e74">
-		<table name="Engine Speed" address="d6e20"/>
-		<table name="Battery Volts" address="d6e60"/>
 	</table>
 
 	<table name="Requested Torque Limit A (Per Gear/Engine Speed)" address="dcb28">
@@ -849,30 +807,6 @@
 	</table>
 
 	<table name="Fuel Pump Duty" address="4a084">
-	</table>
-
-	<table name="Fuel Pump Duty High Injector Duty Cycle" address="d255c">
-		<table name="Battery Voltage" address="d254c"/>
-		<table name="Manifold Relative Pressure" address="d2554"/>
-	</table>
-
-	<table name="Fuel Pump Duty Medium Injector Duty Cycle" address="d257c">
-		<table name="Battery Voltage" address="d256c"/>
-		<table name="Manifold Relative Pressure" address="d2574"/>
-	</table>
-
-	<table name="AF 3 CL Target Compensation Limits" address="33e5c">
-	</table>
-
-	<table name="AF 3 Correction Limits" address="359a0">
-	</table>
-
-	<table name="AF 3 Learning Limits" address="362b8">
-	</table>
-
-	<table name="Front AF Sensor Smoothing Table" address="d6f24">
-		<table name="Smoothed MAF" address="d6f14" elements="2"/>
-		<table name="Engine Load" address="d6f1c" elements="2"/>
 	</table>
 
 	<table name="Overrun Fueling RPM Resume Threshold" address="cc2c6">
@@ -914,7 +848,5 @@
 	<table name="Hotstart Minimum Enrichment (During Delay and Runtime)" address="ca7b4"/>
 
 	<table name="Hotstart Minimum Enrichment Limit Runtime" address="ca4ce"/>
-
-	<table name="Evap Related Fuel Adder Compensation" address="27dd0"/>
 
 </rom>
