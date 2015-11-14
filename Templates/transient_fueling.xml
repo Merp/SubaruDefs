@@ -1,0 +1,76 @@
+    <!-- Transient Fueling (Tau) Tables
+	RomRaider discussion thread:
+	http://www.romraider.com/forum/viewtopic.php?f=25&t=7442
+	
+	Currently Implemented in the following definitions:
+	AZ1G101N - td-d & Merp
+	A8DK100P - td-d & Merp
+	A2WF200N - td-d & Merp
+	A8DH200X - Merp
+	A2ZJE11J - NSFW & Merp
+	A2ZJB10J - NSFW & Merp **NOTE** Does not port directly to A2ZJB11J rom!
+	A2WC522N - NSFW & Merp
+	AZ1G900C - Alpine9000 & Merp
+	AZ1G400W - Easty & Merp
+	A2UJ000J - Merp
+	
+	Changelog: 
+	
+	-->
+
+	<!-- Transient Fueling Tables -->
+	<table name="Tau Input A Falling Load Activation" address="">
+      <table name="Y" address=""/>
+   </table>
+
+	<table name="Tau Input A Rising Load Activation" address="">
+		<table name="X" address=""/>
+		<table name="Y" address=""/>
+	</table>
+  
+	<!-- Option to use Manifold pressure or Engine load on this table
+	Typically all prior to 2008 use engine load-->
+	<table name="Tau Input B Activation (Engine Load)" address="">
+		<table name="Y" address=""/>
+	</table>
+	
+	<table name="Tau Input B Activation" address="">
+		<table name="Y" address=""/>
+	</table>
+
+	<table name="Tau Input B Activation A" address="">
+		<table name="Y" address=""/>
+	</table>
+
+	<table name="Tau Input B Activation B" address="">
+		<table name="Y" address=""/>
+	</table>
+	
+	<!-- 08+ Roms may have 3 branches (A, B, and C) for Input A -->
+      
+   <table name="Tau Input A Falling Load Activation A" address="">
+      <table name="Y" address=""/>
+   </table>
+
+   <table name="Tau Input A Falling Load Activation B" address="C8D36" >
+      <table name="Y" address="C7C54"/>
+   </table>
+   
+      <table name="Tau Input A Falling Load Activation C" address="C8D56" >
+      <table name="Y" address="C7C54"/>
+   </table>
+   
+   <table name="Tau Input A Rising Load Activation A" address="CC388">
+      <table name="X" address="C7C54"/>
+      <table name="Y" address="CC37C"/>
+   </table>
+
+   <table name="Tau Input A Rising Load Activation B" address="CC3F4">
+      <table name="X" address="C7C54"/>
+      <table name="Y" address="CC3E8"/>
+   </table>
+
+   <table name="Tau Input A Rising Load Activation C" address="CC460">
+      <table name="X" address="C7C54"/>
+      <table name="Y" address="CC454"/>
+   </table>
