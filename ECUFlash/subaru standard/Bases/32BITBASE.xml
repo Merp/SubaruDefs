@@ -15,11 +15,11 @@
 	<scaling name="A/FLearning#1and#2Limits(%)" units="A/F Learning #1 and #2 Limits (%)" toexpr="x*100" frexpr="x/100" format="%.2f" min="-20" max="20" inc="0.1" storagetype="float" endian="big"/>
 	<scaling name="A/FLearning#1and#2Max(%)" units="A/F Learning #1 and #2 Max (%)" toexpr="(x*.001525879)-50" frexpr="(x+50)/.001525879" format="%.2f" min="0" max="20" inc="0.1" storagetype="uint16" endian="big"/>
 	<scaling name="A/FLearning#1and#2Min(%)" units="A/F Learning #1 and #2 Min (%)" toexpr="(x*.001525879)-50" frexpr="(x+50)/.001525879" format="%.2f" min="-30" max="-3" inc="0.1" storagetype="uint16" endian="big"/>
-	<scaling name="AF_Smoothing_Factor" units="" toexpr="x" frexpr="x" format="%.4f" min="0" max="105" inc="0.1" storagetype="float" endian="big"/>
-	<scaling name="AF_Scaling_Factor" units="" toexpr="x/32" frexpr="x*32" format="%.0f" min="0" max="105" inc="0.1" storagetype="float" endian="big"/>
 	<scaling name="AF3 Lambda" units="Lambda Additive" toexpr="x" frexpr="x" format="%.4f" min="0" max="255" inc="1" storagetype="float" endian="big"/>
 	<scaling name="AF3_Adder" units="units" toexpr="x" frexpr="x" format="%.6f" min="0" max="255" inc="1e-05" storagetype="float" endian="big"/>
 	<scaling name="AFR Sensor Atmospheric Pressure Compensation" units="Multiplier" toexpr="x*.3515625-30" frexpr="(x+30)/.3515625" format="%.2f" min="0" max="26.72" inc="0.2" storagetype="uint8" endian="big"/>
+	<scaling name="AF_Scaling_Factor" toexpr="x/32" frexpr="x*32" format="%.0f" min="0" max="105" inc="0.1" storagetype="float" endian="big"/>
+	<scaling name="AF_Smoothing_Factor" toexpr="x" frexpr="x" format="%.4f" min="0" max="105" inc="0.1" storagetype="float" endian="big"/>
 	<scaling name="AcceleratorPedalAngle(%)" units="Accelerator Pedal Angle (%)" toexpr="x*.4882812" frexpr="x/.4882812" format="%.1f" min="40" max="100" inc="0.3" storagetype="uint8" endian="big"/>
 	<scaling name="AcceleratorPedalAngle(%)1" units="Accelerator Pedal Angle (%)" toexpr="x" frexpr="x" format="%.1f" min="0" max="109.9" inc="0.1" storagetype="float" endian="big"/>
 	<scaling name="AdditionalInjectorPulseWidth(ms)" units="Additional Injector Pulse Width (ms)" toexpr="x*.004" frexpr="x/.004" format="%.3f" min="0" max="12.44" inc="0.01" storagetype="float" endian="big"/>
@@ -92,17 +92,17 @@
 	<scaling name="FrontOxygenSensorCompensation" units="Front Oxygen Sensor Compensation" toexpr="x*.00003051758" frexpr="x/.00003051758" format="%.2f" min="1" max="1.4" inc="0.01" storagetype="uint16" endian="big"/>
 	<scaling name="Fuel Pressure" units="MPa" toexpr="x" frexpr="x" format="%.2f" min="0" max="255" inc="0.06" storagetype="float" endian="big"/>
 	<scaling name="FuelTemp(DegreesF)" units="Fuel Temp (Degrees F)" toexpr="(x*1.8)+32" frexpr="(x-32)/1.8" format="%.1f" min="-40" max="248" inc="0.1" storagetype="float" endian="big"/>
+	<scaling name="FuelingMode" storagetype="bloblist">
+		<data name="MAF SENSOR" value="01"/>
+		<data name="SPEED DENSITY" value="02"/>
+		<data name="MAF/SD BLENDING" value="03"/>
+	</scaling>
 	<scaling name="GDI Base Pulse Width" units="Ms?" toexpr="x/8.4460002" frexpr="x*8.4460002" format="%5.1f" min="0" max="255" inc="0.06" storagetype="float" endian="big"/>
 	<scaling name="GDI Firing Angle" units="Degrees" toexpr="x*2" frexpr="x/2" format="%.0f" min="0" max="255" inc="0.06" storagetype="uint8" endian="big"/>
 	<scaling name="GDI Flow Rate" units="Flow" toexpr="x" frexpr="x" format="%.2f" min="0" max="105" inc="0.1" storagetype="float" endian="big"/>
 	<scaling name="GDI Pressure Multiplier" units="Multiplier" toexpr="x*1.5625e-2" frexpr="x/1.5625e-2" format="%.3f" min="0" max="255" inc="0.06" storagetype="uint8" endian="big"/>
 	<scaling name="GDI Pressure Multiplier B" units="MPa?" toexpr="x*9.765625e-4" frexpr="x/9.765625e-4" format="%.3f" min="0" max="255" inc="0.06" storagetype="uint8" endian="big"/>
 	<scaling name="GDI Pressure Target" units="MPa?" toexpr="x*9.765625e-2" frexpr="x/9.765625e-2" format="%.1f" min="0" max="255" inc="0.06" storagetype="uint8" endian="big"/>
-	<scaling name="FuelingMode" storagetype="bloblist">
-		<data name="MAF SENSOR" value="01"/>
-		<data name="SPEED DENSITY" value="02"/>
-		<data name="MAF/SD BLENDING" value="03"/>
-	</scaling>
 	<scaling name="Gear" units="gear" toexpr="x" frexpr="x" format="%.0f" min="0" max="6" inc="1" storagetype="float" endian="big"/>
 	<scaling name="GearRatio" units="ratio" toexpr="x" frexpr="x" format="%.4f" min="0" max="4" inc="0.1" storagetype="float" endian="big"/>
 	<scaling name="Hotstart Counter uint16" units="Hotstart Counter Cycles" toexpr="x" frexpr="x" format="%5.0f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
@@ -119,12 +119,12 @@
 	<scaling name="InitialAfterstartOffset1" units="Initial Afterstart Offset" toexpr="x*.00390625" frexpr="x/.00390625" format="%.4f" min="0.05" max="6" inc="0.001" storagetype="uint16" endian="big"/>
 	<scaling name="InjectorFuelOffsetAdditive" units="Injector Fuel Offset Additive" toexpr="(x*.00003051758)-1" frexpr="(x+1)/.00003051758" format="%.3f" inc="0.01" storagetype="uint16" endian="big"/>
 	<scaling name="InjectorFuelOffsetAdditive1" units="Injector Fuel Offset Additive" toexpr="(x*.0078125)-1" frexpr="(x+1)/.0078125" format="%.3f" min="-0.06" max="0.16" inc="0.01" storagetype="uint8" endian="big"/>
-	<scaling name="InjectorFuelOffsetAdditive2" units="Injector Fuel Offset Additive" toexpr="x*.00003051758" frexpr="x/.00003051758" format="%.5f" inc="0.0001" storagetype="uint16" endian="big"/>
+	<scaling name="InjectorFuelOffsetAdditive2" units="Injector Fuel Offset Additive" toexpr="x*.00003051758" frexpr="x/.00003051758" format="%.5f" min="0" max="1.99997" inc="0.0001" storagetype="uint16" endian="big"/>
 	<scaling name="InjectorPulseWidth(ms)" units="Injector Pulse Width (ms)" toexpr="x*.008" frexpr="x/.008" format="%.2f" min="0.01" max="250" inc="0.01" storagetype="uint16" endian="big"/>
 	<scaling name="InjectorPulseWidthCompensation" units="Injector Pulse Width Compensation" toexpr="(x*.78125)-100" frexpr="(x+100)/.78125" format="%.2f" min="-10.16" max="14.84" inc="0.01" storagetype="uint8" endian="big"/>
 	<scaling name="Injector_Flow_BRZ" units="ESTIMATED Flow Rate" toexpr="x" frexpr="x" format="%.2f" min="0" max="255" inc="0.06" storagetype="float" endian="big"/>
-	<scaling name="Intake Duty Correction" units="Correction (Degrees)" toexpr="(x*.003051758)-100" frexpr="(x+100)/.003051758" format="%.2f" min="-100" max="0" inc="0.1" storagetype="uint16" endian="big"/>
 	<scaling name="Intake Air Temp (TGV Switch)" units="Intake Air Temp (F)" toexpr="x*0.00390625-256" frexpr="(x+256)/0.00390625" format="%.0f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
+	<scaling name="Intake Duty Correction" units="Correction (Degrees)" toexpr="(x*.003051758)-100" frexpr="(x+100)/.003051758" format="%.2f" min="-100" max="0" inc="0.1" storagetype="uint16" endian="big"/>
 	<scaling name="Knock" units="units" toexpr="x" frexpr="x" format="%.2f" min="0" max="255" inc="1" storagetype="float" endian="big"/>
 	<scaling name="Knock2" units="units" toexpr="x" frexpr="x" format="%.0f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
 	<scaling name="Knock3" units="units" toexpr="x" frexpr="x" format="%.0f" min="0" max="255" inc="1" storagetype="uint8" endian="big"/>
@@ -133,7 +133,6 @@
 		<data name="disabled" value="FF"/>
 		<data name="enabled" value="00"/>
 	</scaling>
-	<scaling name="Lambda Additive" units="Air/Fuel Ratio Additive(Lambda)" toexpr="(x*0.00078125)-1" frexpr="(x+1)/0.00078125" format="%.4f" min="0" max="255" inc="0.06" storagetype="uint8" endian="big"/>
 	<scaling name="LCFuelMode" storagetype="bloblist">
 		<data name="Disabled" value="01"/>
 		<data name="Compensated" value="02"/>
@@ -146,11 +145,12 @@
 		<data name="Locked" value="03"/>
 	</scaling>
 	<scaling name="LCTimingMult" units="Multiplier" toexpr="x" frexpr="x" format="%.1f" min="0" max="1" inc="0.5" storagetype="float" endian="big"/>
+	<scaling name="Lambda Additive" units="Air/Fuel Ratio Additive(Lambda)" toexpr="(x*0.00078125)-1" frexpr="(x+1)/0.00078125" format="%.4f" min="0" max="255" inc="0.06" storagetype="uint8" endian="big"/>
 	<scaling name="Latency(ms)" units="Latency (ms)" toexpr="x*.00025" frexpr="x/.00025" format="%.2f" min="0.3" max="6" inc="0.01" storagetype="uint16" endian="big"/>
 	<scaling name="LoadFilter" units="Smoothing Factor (%)" toexpr="(x*(-100))+100" frexpr="(x-100)/(-100)" format="%.1f" min="0" max="100" inc="5" storagetype="float" endian="big"/>
 	<scaling name="ManifoldPressure(psirelativesealevel)" units="Manifold Pressure (psi relative sea level)" toexpr="(x-760)*.01933677" frexpr="(x/.01933677)+760" format="%.2f" min="4.64" max="23.98" inc="0.01" storagetype="float" endian="big"/>
-	<scaling name="MassAirflow Voltage" units="Volts" toexpr="x" frexpr="x" format="%.2f" min="0" max="105" inc="0.1" storagetype="float" endian="big"/>
 	<scaling name="MapRatio" units="ratio" toexpr="x+1" frexpr="x-1" format="%.4f" min="0" max="4" inc="0.1" storagetype="float" endian="big"/>
+	<scaling name="MassAirflow Voltage" units="Volts" toexpr="x" frexpr="x" format="%.2f" min="0" max="105" inc="0.1" storagetype="float" endian="big"/>
 	<scaling name="MassAirflow(g/s)" units="Mass Airflow (g/s)" toexpr="x*.004577637" frexpr="x/.004577637" format="%.2f" min="300" max="500" inc="0.1" storagetype="uint16" endian="big"/>
 	<scaling name="MassAirflow(g/s)1" units="Mass Airflow (g/s)" toexpr="x" frexpr="x" format="%.2f" min="0.58" max="500" inc="0.1" storagetype="float" endian="big"/>
 	<scaling name="MassAirflowCompensation(%)" units="Mass Airflow Compensation (%)" toexpr="(x*.390625)-50" frexpr="(x+50)/.390625" format="%.1f" min="-10" max="10" inc="0.2" storagetype="uint8" endian="big"/>
@@ -164,9 +164,6 @@
 		<data name="Disabled" value="00"/>
 		<data name="Enabled" value="01"/>
 	</scaling>
-
-	<scaling name="MerpModTGVInput" units="raw" toexpr="x*.00003051758" frexpr="x/.00003051758" format="%.2f" min="0" max="1" inc="0.1" storagetype="uint16" endian="big"/>
-	<scaling name="MerpModMapSwitchThreshold" units="Volts" toexpr="x" frexpr="x" format="%2.3f" min="0" max="1" inc="0.1" storagetype="float" endian="big"/>
 	<scaling name="MerpModInjectorScaling" units="raw" toexpr="2707090/(x*0.824)" frexpr="(2707090/x)/0.824" format="%.2f" min="0" max="2000" inc="0.1" storagetype="uint16" endian="big"/>
 	<scaling name="MerpModInputMode" storagetype="bloblist">
 		<data name="Disabled" value="00"/>
@@ -175,16 +172,18 @@
 		<data name="Si-Drive" value="03"/>
 	</scaling>
 	<scaling name="MerpModMapRatio" units="raw" toexpr="x" frexpr="x" format="%1.2f" min="0" max="2" inc="0.1" storagetype="float" endian="big"/>
-	<scaling name="MerpModMapSwitch" units="raw" toexpr="x" frexpr="x" format="%1.0f" min="0" max="4" inc="1.0" storagetype="uint8" endian="big"/>
+	<scaling name="MerpModMapSwitch" units="raw" toexpr="x" frexpr="x" format="%1.0f" min="0" max="4" inc="1" storagetype="uint8" endian="big"/>
+	<scaling name="MerpModMapSwitchThreshold" units="Volts" toexpr="x" frexpr="x" format="%2.3f" min="0" max="1" inc="0.1" storagetype="float" endian="big"/>
+	<scaling name="MerpModMultiplier1" units="Multiplier" toexpr="x*0.00001525902" frexpr="x/0.00001525902" format="%.4f" min="0" max="1" inc="0.001" storagetype="uint16" endian="big"/>
+	<scaling name="MerpModMultiplier10" units="Multiplier" toexpr="x*0.0001525902" frexpr="x/0.0001525902" format="%.3f" min="0" max="10" inc="0.01" storagetype="uint16" endian="big"/>
 	<scaling name="MerpModSmoothingFactor" units="% Smoothing" toexpr="x*100" frexpr="x/100" format="%3.0f" min="0" max="100" inc="1" storagetype="float" endian="big"/>
+	<scaling name="MerpModTGVInput" units="raw" toexpr="x*.00003051758" frexpr="x/.00003051758" format="%.2f" min="0" max="1" inc="0.1" storagetype="uint16" endian="big"/>
 	<scaling name="MinimumPrimaryEnrichmentOffsetAdditive1" units="Minimum Primary Enrichment Offset Additive 1" toexpr="x*.00390625" frexpr="x/.00390625" format="%.2f" min="0" max="0.65" inc="0.01" storagetype="uint8" endian="big"/>
 	<scaling name="MinimumPrimaryEnrichmentOffsetAdditiveCruise" units="Minimum Primary Enrichment Offset Additive Cruise" toexpr="x*.00390625" frexpr="x/.00390625" format="%.2f" min="0" max="0.63" inc="0.01" storagetype="uint8" endian="big"/>
 	<scaling name="MinimumPrimaryEnrichmentOffsetAdditiveNon-Cruise" units="Minimum Primary Enrichment Offset Additive Non-Cruise" toexpr="x*.00390625" frexpr="x/.00390625" format="%.2f" min="0" max="0.65" inc="0.01" storagetype="uint8" endian="big"/>
 	<scaling name="MisfireDTCThreshold" units="Misfire Count%" toexpr="x" frexpr="x" format="%.2f" min="0" max="105" inc="0.1" storagetype="uint8" endian="big"/>
 	<scaling name="Multiplier" units="Multiplier" toexpr="x" frexpr="x" format="%.3f" inc="0.01" storagetype="float" endian="big"/>
 	<scaling name="Multiplier1" units="Multiplier" toexpr="x*.0078125" frexpr="x/.0078125" format="%.4f" min="0" max="1" inc="1" storagetype="uint8" endian="big"/>
-	<scaling name="MerpModMultiplier1" units="Multiplier" toexpr="x*0.00001525902" frexpr="x/0.00001525902" format="%.4f" min="0" max="1" inc="0.001" storagetype="uint16" endian="big"/>
-	<scaling name="MerpModMultiplier10" units="Multiplier" toexpr="x*0.0001525902" frexpr="x/0.0001525902" format="%.3f" min="0" max="10" inc="0.01" storagetype="uint16" endian="big"/>
 	<scaling name="Offset" units="Offset" toexpr="x" frexpr="x" format="%.3f" inc="0.01" storagetype="float" endian="big"/>
 	<scaling name="OverRun Fueling" units="units" toexpr="x*0.1953125" frexpr="x/0.1953125" format="%.0f" min="0" max="5000" inc="1" storagetype="uint16" endian="big"/>
 	<scaling name="PGWGComp" units="Compensation (% of Per Gear Value)" toexpr="x*0.61037" frexpr="x/.61037" format="%.2f" min="0" max="200" inc="0.2" storagetype="uint16" endian="big"/>
@@ -205,9 +204,9 @@
 	<scaling name="PotentialChangeinFineCorrectionStoredValuePerKnock'Event'(degreesofcorrection)" units="Potential Change in Fine Correction Stored Value Per Knock 'Event' (degrees of correction)" toexpr="-x" frexpr="-x" format="%.2f" min="-1.5" max="-0.35" inc="0.1" storagetype="float" endian="big"/>
 	<scaling name="RPM" units="RPM" toexpr="x" frexpr="x" format="%.0f" min="0" max="10000" inc="50" storagetype="float" endian="big"/>
 	<scaling name="RPMSD" units="RPMSD" toexpr="x" frexpr="x" format="%.0f" min="0" max="10000" inc="50" storagetype="float" endian="big"/>
+	<scaling name="Requested Torque (TGV Switch)" units="units" toexpr="x*0.0062499996" frexpr="x/0.0062499996" format="%.0f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
 	<scaling name="RequestedTorque(rawecuvalue)" units="Requested Torque (raw ecu value)" toexpr="x*.0078125" frexpr="x/.0078125" format="%.1f" min="0" max="500" inc="1" storagetype="uint16" endian="big"/>
 	<scaling name="RequestedTorque(rawecuvalue)1" units="Requested Torque (raw ecu value)" toexpr="x" frexpr="x" format="%.1f" min="169" max="338.4" inc="1" storagetype="float" endian="big"/>
-	<scaling name="Requested Torque (TGV Switch)" units="units" toexpr="x*0.0062499996" frexpr="x/0.0062499996" format="%.0f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
 	<scaling name="Retard(degrees)" units="Retard (degrees)" toexpr="x*.0054931640625" frexpr="x/.0054931640625" format="%.2f" min="0" max="40" inc="0.5" storagetype="uint16" endian="big"/>
 	<scaling name="Retard(degrees)1" units="Retard (degrees)" toexpr="x*.001525879" frexpr="x/.001525879" format="%.2f" min="0" max="40" inc="0.5" storagetype="uint16" endian="big"/>
 	<scaling name="Retard(degrees)2" units="Retard (degrees)" toexpr="x" frexpr="x" format="%.2f" min="-40" max="40" inc="1" storagetype="uint8" endian="big"/>
@@ -216,7 +215,7 @@
 	<scaling name="Rev/Mile" units="Rev/Mile" toexpr="96560.6/x" frexpr="96560.6/x" format="%.2f" min="321.87" max="9347.59" inc="50" storagetype="float" endian="big"/>
 	<scaling name="RoughCorrection(IAM)PositiveLearningDelay(counterthreshold)" units="Rough Correction (IAM) Positive Learning Delay (counter threshold)" toexpr="x" frexpr="x" format="%.0f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
 	<scaling name="RoughCorrection(IAM)PositiveLearningDelay(counterthreshold)1" units="Rough Correction (IAM) Positive Learning Delay (counter threshold)" toexpr="x" frexpr="x" format="%.0f" min="5" max="255" inc="1" storagetype="uint8" endian="big"/>
-   <scaling name="SI_mode_to_S_Counter" units="Counter" toexpr="x" frexpr="x" format="%.0f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
+	<scaling name="SI_mode_to_S_Counter" units="Counter" toexpr="x" frexpr="x" format="%.0f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
 	<scaling name="SmoothingFactor" units="Smoothing Factor (%)" toexpr="(x*(-100))+100" frexpr="(x-100)/(-100)" format="%.1f" min="0" max="100" inc="5" storagetype="float" endian="big"/>
 	<scaling name="SolenoidControl" units="Unknown" toexpr="x*.00001525879" frexpr="x/.00001525879" format="%.2f" min="0" max="1" inc="0.5" storagetype="uint16" endian="big"/>
 	<scaling name="SolenoidDuty" units="%" toexpr="x*.003051758" frexpr="x/.003051758" format="%.2f" min="0" max="100" inc="0.1" storagetype="uint16" endian="big"/>
@@ -224,6 +223,12 @@
 	<scaling name="TDIntegralNegativeMapTargetCompensation(%relative)" units="TD Integral Negative Map Target Compensation (% relative)" toexpr="(x*.78125)-100" frexpr="(x+100)/.78125" format="%.1f" min="-100" max="100" inc="0.4" storagetype="uint8" endian="big"/>
 	<scaling name="TDIntegralPositiveMapTargetCompensation(%relative)" units="TD Integral Positive Map Target Compensation (% relative)" toexpr="(x*.78125)-100" frexpr="(x+100)/.78125" format="%.1f" min="-100" max="100" inc="0.4" storagetype="uint8" endian="big"/>
 	<scaling name="TDProportionalMapTargetCompensation(%relative)" units="TD Proportional Map Target Compensation (% relative)" toexpr="(x*.78125)-100" frexpr="(x+100)/.78125" format="%.1f" min="-100" max="100" inc="0.4" storagetype="uint8" endian="big"/>
+	<scaling name="TGV_Switch_Ramping_Adder" units="units" toexpr="x" frexpr="x" format="%.4f" min="0" max="255" inc="1" storagetype="float" endian="big"/>
+	<scaling name="TGV_Switching_Cruise_Switch_Delay" units="units" toexpr="x" frexpr="x" format="%.0f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
+	<scaling name="TGV_Switching_Cruise_Switch_Min_Delay" units="units" toexpr="x" frexpr="x" format="%.0f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
+	<scaling name="TPS" units="Counter" toexpr="x" frexpr="x" format="%.0f" min="0" max="9999" inc="1" storagetype="uint16" endian="big"/>
+	<scaling name="TPS Throttle" units="Throttle Position %" toexpr="x*0.0022706530952381" frexpr="x/0.0022706530952381" format="%.2f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
+	<scaling name="TPS_Adder" units="Adder" toexpr="x" frexpr="x" format="%.2f" min="0" max="105" inc="0.1" storagetype="float" endian="big"/>
 	<scaling name="TargetBoost(psia)Compensation(%)" units="Target Boost (psia) Compensation (%)" toexpr="(x*.78125)-100" frexpr="(x+100)/.78125" format="%.1f" min="-100" max="100" inc="0.4" storagetype="uint8" endian="big"/>
 	<scaling name="TargetBoost(psia)Compensation(%)1" units="Target Boost (psia) Compensation (%)" toexpr="(x*100)-100" frexpr="(x+100)/100" format="%.2f" min="-100" max="100" inc="0.1" storagetype="float" endian="big"/>
 	<scaling name="TargetBoost(psirelative)" units="Target Boost (psi relative)" toexpr="x*.01933677" frexpr="x/.01933677" format="%.2f" min="-10" max="10" inc="0.01" storagetype="float" endian="big"/>
@@ -240,19 +245,13 @@
 	<scaling name="ThrottleTip-inEnrichmentCompensation(%)" units="Throttle Tip-in Enrichment Compensation (%)" toexpr="(x*.78125)-100" frexpr="(x+100)/.78125" format="%.2f" min="-100" max="99.22" inc="0.4" storagetype="uint8" endian="big"/>
 	<scaling name="ThrottleTip-inEnrichmentCompensation(%)1" units="Throttle Tip-in Enrichment Compensation (%)" toexpr="(x*.04882812)-99.99998976" frexpr="(x+99.99998976)/.04882812" format="%.2f" min="0" max="321" inc="0.1" storagetype="uint16" endian="big"/>
 	<scaling name="ThrottleTip-inEnrichmentCompensation(%)2" units="Throttle Tip-in Enrichment Compensation (%)" toexpr="(x*.01220703125)-100" frexpr="(x+100)/.01220703125" format="%.2f" min="0" max="1100" inc="0.1" storagetype="uint16" endian="big"/>
-	<scaling name="TGV_Switch_Ramping_Adder" units="units" toexpr="x" frexpr="x" format="%.4f" min="0" max="255" inc="1" storagetype="float" endian="big"/>
-	<scaling name="TGV_Switching_Cruise_Switch_Delay" units="units" toexpr="x" frexpr="x" format="%.0f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
-	<scaling name="TGV_Switching_Cruise_Switch_Min_Delay" units="units" toexpr="x" frexpr="x" format="%.0f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
 	<scaling name="TimingCompensationIntakeTempMapTargetCompensation(%)" units="Timing Compensation Intake Temp Map Target Compensation (%)" toexpr="(x*.78125)-100" frexpr="(x+100)/.78125" format="%.1f" min="-100" max="0" inc="0.4" storagetype="uint8" endian="big"/>
 	<scaling name="TimingCompensationIntakeTempMapTargetCompensation(%)1" units="Timing Compensation Intake Temp Map Target Compensation (%)" toexpr="(x*.06866455)-100" frexpr="(x+100)/.06866455" format="%.1f" min="-100" max="100" inc="0.4" storagetype="uint8" endian="big"/>
-	<scaling name="TPS" units="Counter" toexpr="x" frexpr="x" format="%.0f" min="0" max="9999" inc="1" storagetype="uint16" endian="big"/>
-	<scaling name="TPS_Adder" units="Adder" toexpr="x" frexpr="x" format="%.2f" min="0" max="105" inc="0.1" storagetype="float" endian="big"/>
-  <scaling name="TPS Throttle" units="Throttle Position %" toexpr="x*0.0022706530952381" frexpr="x/0.0022706530952381" format="%.2f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
 	<scaling name="TransientIgnitionRetard" units="Ignition Timing Correction (degrees)" toexpr="x*.3515625-30" frexpr="(x+30)/.3515625" format="%.2f" min="0" max="26.72" inc="0.2" storagetype="uint8" endian="big"/>
 	<scaling name="TransientIgnitionRetard1" units="Ignition Timing Correction (degrees)" toexpr="x*.3515625-50" frexpr="(x+50)/.3515625" format="%.2f" min="0" max="26.72" inc="0.2" storagetype="uint8" endian="big"/>
-	<scaling name="VVT Error" units="Delta Degrees" toexpr="x" frexpr="x" format="%.2f" min="0" max="105" inc="0.1" storagetype="float" endian="big"/>
 	<scaling name="VE(%)" units="VE(%)" toexpr="x*.0000457763672" frexpr="x/.0000457763672" format="%.2f" min="0.3" max="1.1" inc="0.025" storagetype="uint16" endian="big"/>
 	<scaling name="VEcomp" units="VE Compensation" toexpr="x*0.000061037" frexpr="x/.000061037" format="%.2f" min="0" max="2" inc="0.2" storagetype="uint16" endian="big"/>
+	<scaling name="VVT Error" units="Delta Degrees" toexpr="x" frexpr="x" format="%.2f" min="0" max="105" inc="0.1" storagetype="float" endian="big"/>
 	<scaling name="VehicleSpeed(MPH)" units="Vehicle Speed (MPH)" toexpr="x*.621" frexpr="x/.621" format="%.0f" min="0" max="540" inc="1" storagetype="float" endian="big"/>
 	<scaling name="VehicleSpeed(MPH)SD" units="Vehicle Speed (MPH)" toexpr="x*.621" frexpr="x/.621" format="%2.1f" min="0" max="20" inc="1" storagetype="float" endian="big"/>
 	<scaling name="Volts" units="Volts" toexpr="x*.000076293945" frexpr="x/.000076293945" format="%.2f" min="0.57" max="5" inc="0.01" storagetype="uint16" endian="big"/>
@@ -277,10 +276,10 @@
 	<scaling name="cumulativethrottleanglechange1" units="cumulative throttle angle change" toexpr="x*.001907349" frexpr="x/.001907349" format="%.2f" min="0" max="50" inc="0.1" storagetype="uint16" endian="big"/>
 	<scaling name="degreesofcorrection" units="degrees of correction" toexpr="x" frexpr="x" format="%.2f" min="-11.75" max="8" inc="0.1" storagetype="float" endian="big"/>
 	<scaling name="degreesofcorrection1" units="degrees of correction" toexpr="-x" frexpr="-x" format="%.2f" min="-12" max="-1" inc="0.1" storagetype="float" endian="big"/>
-	<scaling name="float" units="%" toexpr="x" frexpr="x" format="%.2f" min="0" max="105" inc="0.1" storagetype="float" endian="big"/>
-	<scaling name="float1" toexpr="x" frexpr="x" format="%5.0f" min="0" max="30000" inc="0.1" storagetype="float" endian="big"/>
 	<scaling name="engine displacement" units="cc" toexpr="x" frexpr="x" format="%.2f" min="0" max="1" inc="0.01" storagetype="float" endian="big"/>
 	<scaling name="fbkcthreshold" units="degrees" toexpr="x" frexpr="x" format="%.1f" min="-128" max="-127" inc="0.5" storagetype="float" endian="big"/>
+	<scaling name="float" units="%" toexpr="x" frexpr="x" format="%.2f" min="0" max="105" inc="0.1" storagetype="float" endian="big"/>
+	<scaling name="float1" toexpr="x" frexpr="x" format="%5.0f" min="0" max="30000" inc="0.1" storagetype="float" endian="big"/>
 	<scaling name="g/rev" units="g/rev" toexpr="x" frexpr="x" format="%.2f" min="0" max="5" inc="0.01" storagetype="float" endian="big"/>
 	<scaling name="g/s" units="g/s" toexpr="x" frexpr="x" format="%.2f" min="0" max="400" inc="0.1" storagetype="float" endian="big"/>
 	<scaling name="mA" units="mA" toexpr="x" frexpr="x" format="%.2f" min="-1.3" max="0.74" inc="0.01" storagetype="float" endian="big"/>
@@ -292,8 +291,8 @@
 	<scaling name="psiabsolute" units="psi absolute" toexpr="x*.01933677" frexpr="x/.01933677" format="%.3f" min="-8.01" max="9.94" inc="0.01" storagetype="float" endian="big"/>
 	<scaling name="psiabsolute1" units="psi absolute" toexpr="x*.01933677" frexpr="x/.01933677" format="%.2f" min="1.07" max="14.7" inc="0.01" storagetype="float" endian="big"/>
 	<scaling name="psiabsolute2" units="psi absolute" toexpr="x*.01933677" frexpr="x/.01933677" format="%.2f" min="15.89" max="50" inc="0.01" storagetype="uint16" endian="big"/>
-	<scaling name="psiabsoluteSD" units="psi absolute" toexpr="(x)*.01933677" frexpr="(x/.01933677)" format="%.2f" min="0" max="40" inc="0.01" storagetype="float" endian="big"/>
 	<scaling name="psiabsolute3" units="psi absolute" toexpr="x*.01933677" frexpr="x/.01933677" format="%.2f" min="15.89" max="50" inc="0.01" storagetype="uint8" endian="big"/>
+	<scaling name="psiabsoluteSD" units="psi absolute" toexpr="(x)*.01933677" frexpr="(x/.01933677)" format="%.2f" min="0" max="40" inc="0.01" storagetype="float" endian="big"/>
 	<scaling name="psirelative" units="psi relative" toexpr="x*.01933677" frexpr="x/.01933677" format="%.2f" min="-19.34" max="19.34" inc="0.01" storagetype="float" endian="big"/>
 	<scaling name="psirelative1" units="psi relative" toexpr="x*-.01933677" frexpr="x/-.01933677" format="%.2f" min="-13.5" max="0" inc="0.01" storagetype="float" endian="big"/>
 	<scaling name="psirelativesealevel" units="psi relative sea level" toexpr="(x-760)*.01933677" frexpr="(x/.01933677)+760" format="%.2f" min="-11.8" max="4.83" inc="0.01" storagetype="float" endian="big"/>
@@ -640,7 +639,7 @@
 
 	<table name="Default Launch Control Fueling Compensation Multiplier" category="MerpMod Fueling" type="2D" level="4" scaling="LCTimingMult">
 		<description>When using Launch Control Enrichment Compensation mode, the Launch Control Fuel Enrichment table is multiplied by this value</description>
-		<table name ="LC Fueling Multiplier" type="Static Y Axis" elements="1">
+		<table name="LC Fueling Multiplier" type="Static Y Axis" elements="1">
 			<data>LC Fueling Multiplier</data>
 		</table>
 	</table>
@@ -741,7 +740,7 @@
 		<description>This is the scaling that is applied to the right tgv voltage. Scaled value is used for map blending, switching, or aux inputs</description>
 		<table name="Voltage" type="X Axis" elements="11" scaling="volts"/>
 	</table>
-	
+
 	<table name="TGV Left Input Multiplier" category="MerpMod Map Switching" type="1D" level="4" scaling="Multiplier">
 		<description>This is the multiplier for TGV Left inputs. The Left TGV input scaling table output value is multiplied by this value.</description>
 	</table>
@@ -836,7 +835,7 @@
 		<table name="Gear" type="X Axis" elements="6" scaling="Gear"/>
 		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
 	</table>
-	
+
 	<table name="Per Gear Wastegate Table Valet Mode" category="MerpMod Boost Hacks" type="3D" level="4" scaling="WastegateDutyCycle(%)1">
 		<description>This table is a gear based multiplier to both initial and max wastegate duty cycles for map 2.</description>
 		<table name="Gear" type="X Axis" elements="6" scaling="Gear"/>
@@ -890,7 +889,7 @@
 		<table name="Gear" type="X Axis" elements="6" scaling="Gear"/>
 		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
 	</table>
-	
+
 	<table name="Per Gear Target Boost Table Valet Mode" category="MerpMod Boost Hacks" type="3D" level="4" scaling="BoostTarget(psirelativesealevel)">
 		<description>This table is a gear based target boost table for valet mode. Final target boost is determined by multiplying by the appropriate target boost multipler table.</description>
 		<table name="Gear" type="X Axis" elements="6" scaling="Gear"/>
@@ -1866,12 +1865,10 @@
 		<description>This is the compensation of the primary open loop fueling based on the combined correction of the 'Timing Compensation (MRP)' and 'Timing Compensation (IAT)' tables. The compensation is a raw enrichment offset value which is added to the raw enrichment offset determined by the 'Primary Open Loop Fueling' table. To determine the estimated change in the effective AFR, first convert the primary open loop AFR (x) in question to its raw enrichment value: ((14.7/x)-1). Then add the compensation offset from this table to the result. Finally, convert this total enrichment (x) to the effective AFR: (14.7/x+1). For example, if the primary open loop fueling map calls for an effective AFR of 10.5:1, this would be an enrichment offset of 0.40. If the compensation value was 0.10, the total raw enrichment offset would be 0.50. Converting this to an effective AFR would result in a value of 9.8:1.</description>
 		<table name="'Timing Compensation (MRP)' + 'Timing Compensation (IAT)'" type="Y Axis" elements="6" scaling="degreesofcorrection"/>
 	</table>
-	
+
 	<table name="Primary Open Loop Fueling Ramping Adder (Increasing Enrichment)" category="Fueling - Primary Open Loop" type="2D" level="2" scaling="InjectorFuelOffsetAdditive2">
-		<description></description>
 		<table name="Engine Speed" type="X Axis" elements="9" scaling="RPM"/>
 	</table>
-	
 
 	<table name="Front Oxygen Sensor Scaling" category="Fueling - Closed Loop" type="2D" level="2" scaling="Air/FuelRatio">
 		<description>This is the scaling for the front oxygen sensor.</description>
@@ -3020,7 +3017,7 @@
 		<description>This is the maximum allowable engine load. Engine load will be capped at this limit regardless of actual engine load. "Engine Load Limit A (Maximum)" must also be changed as it also impacts the max engine load.</description>
 		<table name="Engine Speed" type="Y Axis" elements="2" scaling="RPM"/>
 	</table>
-	
+
 	<table name="Engine Load Limit C Maximum (RPM)" category="Mass Airflow / Engine Load" type="2D" level="2" scaling="EngineLoad(g/rev)">
 		<description>This is the maximum allowable engine load. Engine load will be capped at this limit regardless of actual engine load. "Engine Load Limit A (Maximum)" must also be changed as it also impacts the max engine load.</description>
 		<table name="Engine Speed" type="Y Axis" elements="2" scaling="RPM"/>
@@ -4079,7 +4076,7 @@
 		<table name="Engine Load" type="X Axis" elements="13" scaling="g/rev"/>
 		<table name="Engine Speed" type="Y Axis" elements="18" scaling="RPM"/>
 	</table>
-	
+
 	<table name="Intake Cam Advance Angle (AVCS)___" category="Variable Valve Timing (AVCS)" type="3D" level="2" scaling="Advance(degrees)5">
 		<description>This map selects the degree of intake cam advance for the variable valve timing system during non-cruise conditions. Cruise and non-cruise conditions are determined by a number of factors including engine speed, requested torque, MAF, vehicle speed, IAT, idle mode, ECT, and SI-Drive mode (if applicable). The ECU will ramp between the cruise and non-cruise map values when conditions dictate the switch.</description>
 		<table name="Engine Load" type="X Axis" elements="13" scaling="g/rev"/>
@@ -4511,18 +4508,20 @@
 			<data>High Above</data>
 		</table>
 	</table>
-	
-  <table name="Speed Limits Throttle reduction A" category="Miscellaneous - Limits" type="2D" level="4" scaling="RPM">
+
+	<table name="Speed Limits Throttle reduction A" category="Miscellaneous - Limits" type="2D" level="4" scaling="RPM">
 		<description>When the vehicle speed limits are exceeded and RPM is greater than or equal to this value, throttle reduction will be enabled, otherwise throttle reduction will be disabled.</description>
-		<table name="Engine Speed" type="Static Y Axis" elements="1">
+		<table name="Engine Speed" type="Static Y Axis" elements="2">
 			<data>Inactive Below</data>
+			<data>Active Above</data>
 		</table>
 	</table>
 
-  <table name="Speed Limits Throttle reduction B" category="Miscellaneous - Limits" type="2D" level="4" scaling="RPM">
+	<table name="Speed Limits Throttle reduction B" category="Miscellaneous - Limits" type="2D" level="4" scaling="RPM">
 		<description>When the vehicle speed limits are exceeded and RPM is greater than or equal to this value, throttle reduction will be enabled, otherwise throttle reduction will be disabled.</description>
-		<table name="Engine Speed" type="Static Y Axis" elements="1">
+		<table name="Engine Speed" type="Static Y Axis" elements="2">
 			<data>Inactive Below</data>
+			<data>Active Above</data>
 		</table>
 	</table>
 
@@ -6660,9 +6659,9 @@
 		<description>EVAPORATIVE EMISSION CONTROL SYSTEM PRESSURE SENSOR HIGH INPUT. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
 
-<table name="(P0455) EVAP EMISSION CONTROL SYSTEM LEAK DETECTED (GROSS LEAK)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX_enable">
-<description>EVAP EMISSION CONTROL SYSTEM LEAK DETECTED (GROSS LEAK). Change to disabled to deactivate. Off-road use only.</description>
-</table>
+	<table name="(P0455) EVAP EMISSION CONTROL SYSTEM LEAK DETECTED (GROSS LEAK)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX_enable">
+		<description>EVAP EMISSION CONTROL SYSTEM LEAK DETECTED (GROSS LEAK). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
 
 	<table name="(P0456) EVAP LEAK DETECTED (VERY SMALL)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>EVAPORATIVE EMISSION CONTROL SYSTEM LEAK DETECTED (VERY SMALL LEAK). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
@@ -7124,13 +7123,13 @@
 		<description>EVAPORATIVE EMISSION CONT. SYS. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
 
-<table name="(P1458) CANISTER PURGE CONTROL SOLENOID VALVE 2 LOW" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX_enable">
-	<description>CANISTER PURGE CONTROL SOLENOID VALVE 2 LOW. Change to disabled to deactivate. Off-road use only.</description>
-</table>
--
-<table name="(P1459) CANISTER PURGE CONTROL SOLENOID VALVE 2 HIGH" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX_enable">
-	<description>CANISTER PURGE CONTROL SOLENOID VALVE 2 HIGH. Change to disabled to deactivate. Off-road use only.</description>
-</table>
+	<table name="(P1458) CANISTER PURGE CONTROL SOLENOID VALVE 2 LOW" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX_enable">
+		<description>CANISTER PURGE CONTROL SOLENOID VALVE 2 LOW. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1459) CANISTER PURGE CONTROL SOLENOID VALVE 2 HIGH" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX_enable">
+		<description>CANISTER PURGE CONTROL SOLENOID VALVE 2 HIGH. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
 
 	<table name="(P1491) PCV (BLOWBY) FUNCTION PROBLEM" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>POSITIVE CRANKCASE VENTILATION (BLOWBY) FUNCTION PROBLEM. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
@@ -7372,9 +7371,9 @@
 		<description>BANK 1 AFR IMBALANCE. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
 
-<table name="(P219B) BANK 2 AFR IMBALANCE" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX_enable">
-	<description>BANK 2 AFR IMBALANCE. Change to disabled to deactivate. Off-road use only.</description>
-</table>
+	<table name="(P219B) BANK 2 AFR IMBALANCE" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX_enable">
+		<description>BANK 2 AFR IMBALANCE. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
 
 	<table name="(P2227) BARO. PRESSURE CIRCUIT RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>BAROMETRIC PRESSURE CIRCUIT RANGE/ PERFORMANCE. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
@@ -7488,9 +7487,9 @@
 		<description>CAN LOST COMMUNICATION WITH BIU. Change to disabled to deactivate. Off-road use only.</description>
 	</table>
 
-  <table name="(U0155) LOST COMMUNICATION WITH INSTRUMENT PANEL CLUSTER (IPC) CONTROL MODULE" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
-  <description>LOST COMMUNICATION WITH INSTRUMENT PANEL CLUSTER (IPC) CONTROL MODULE. Change to disabled to deactivate. Off-road use only.</description>
-  </table>
+	<table name="(U0155) LOST COMMUNICATION WITH INSTRUMENT PANEL CLUSTER (IPC) CONTROL MODULE" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>LOST COMMUNICATION WITH INSTRUMENT PANEL CLUSTER (IPC) CONTROL MODULE. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
 
 	<table name="(U0402) CAN INVALID DATA RECEIVED FROM TCM" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>CAN INVALID DATA RECEIVED FROM TCM. Change to disabled to deactivate. Off-road use only.</description>
@@ -7504,10 +7503,10 @@
 		<description>CAN INVALID DATA RECEIVED FROM BIU. Change to disabled to deactivate. Off-road use only.</description>
 	</table>
 
-  <table name="(U0423) INVALID DATA RECEIVED FROM INSTRUMENT PANEL CLUSTER CONTROL MODULE" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
-    <description>INVALID DATA RECEIVED FROM INSTRUMENT PANEL CLUSTER CONTROL MODULE. Change to disabled to deactivate. Off-road use only.</description>
-  </table>
-  
+	<table name="(U0423) INVALID DATA RECEIVED FROM INSTRUMENT PANEL CLUSTER CONTROL MODULE" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>INVALID DATA RECEIVED FROM INSTRUMENT PANEL CLUSTER CONTROL MODULE. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
 	<table name="Calculated Engine Torque A" category="Alpha - Drive-by-Wire Throttle (DBW)" type="3D" level="4" scaling="RequestedTorque(rawecuvalue)">
 		<description>This table determines the expected Crank Engine Torque output relative to engine load and engine speed.</description>
 		<table name="Engine Load" type="X Axis" elements="16" scaling="g/rev"/>
@@ -7734,12 +7733,10 @@
 		<description>no description</description>
 		<table name="Engine Speed" type="Y Axis" elements="7" scaling="EngineSpeed(RPM)1"/>
 	</table>
-	
-	<table name="Ignition Timing (Maximum)" category="Ignition Timing - Advance" type="1D" scaling="BaseIgnitionTiming(degreesBTDC)">
-	</table>
 
-	<table name="Ignition Timing (Minimum)" category="Ignition Timing - Advance" type="1D" scaling="BaseIgnitionTiming(degreesBTDC)">
-	</table>
+	<table name="Ignition Timing (Maximum)" category="Ignition Timing - Advance" type="1D" scaling="BaseIgnitionTiming(degreesBTDC)"/>
+
+	<table name="Ignition Timing (Minimum)" category="Ignition Timing - Advance" type="1D" scaling="BaseIgnitionTiming(degreesBTDC)"/>
 
 	<table name="Ignition Timing Compensation MAP Delta (Clutch Depressed)" category="Ignition Timing - Compensation" type="2D" scaling="IgnitionTimingAdvanceCorrection(degrees)">
 		<description>no description</description>
@@ -7759,13 +7756,13 @@
 	<table name="Catalyst Warm Up Idle" category="ALPHA Idle Control" type="3D" scaling="IgnitionTimingAdvanceCorrection(degrees)">
 		<description>no description</description>
 		<table name="Coolant Temperature" type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
-		<table name="Unknown" type="Y Axis" elements="3" scaling="float"/>
+		<table name="Engine Load" type="Y Axis" elements="3" scaling="g/rev"/>
 	</table>
 
 	<table name="Catalyst Warm Up Non-Idle" category="ALPHA Idle Control" type="3D" scaling="IgnitionTimingAdvanceCorrection(degrees)">
 		<description>no description</description>
 		<table name="Coolant Temperature" type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
-		<table name="Unknown" type="Y Axis" elements="3" scaling="float"/>
+		<table name="Engine Load" type="Y Axis" elements="3" scaling="g/rev"/>
 	</table>
 
 	<table name="Transient Ignition Retard" category="ALPHA - BRZ" type="3D" scaling="TransientIgnitionRetard1">
@@ -7841,7 +7838,7 @@
 		<description>no description</description>
 		<table name="Resistance (ohms)" type="Y Axis" elements="4" scaling="AF_Scaling_Factor"/>
 	</table>
-	
+
 	<table name="AFR Sensor Heater Duty Cycle C" category="ALPHA - AF Sensor" type="2D" level="1" scaling="FrontOxygenSensorCompensation">
 		<description>no description</description>
 		<table name="Resistance (ohms)" type="Y Axis" elements="4" scaling="AF_Scaling_Factor"/>
@@ -8073,30 +8070,6 @@
 		<table name="Engine Speed Delta" type="X Axis" elements="9" scaling="RPM"/>
 		<table name="Idle Speed Target" type="Y Axis" elements="9" scaling="RPM"/>
 	</table>
-	
-	<table name="Ignition Timing Compensation (Idle Target) In-Gear A" category="ALPHA Idle Control" type="3D" level="1" scaling="IgnitionTimingCorrection(degrees)">
-		<description>This table is a compensation to idle ignition timing when idle speed error is within a specific range, and engine load is not changing</description>
-		<table name="Idle Speed Error" type="X Axis" elements="9" scaling="RPM"/>
-		<table name="Engine Speed Delta" type="Y Axis" elements="2" scaling="RPM"/>
-	</table>
-	
-	<table name="Ignition Timing Compensation (Idle Target) In-Gear B" category="ALPHA Idle Control" type="3D" level="1" scaling="IgnitionTimingCorrection(degrees)">
-		<description>This table is a compensation to idle ignition timing when idle speed error is within a specific range, and engine load is not changing</description>
-		<table name="Idle Speed Error" type="X Axis" elements="9" scaling="RPM"/>
-		<table name="Engine Speed Delta" type="Y Axis" elements="2" scaling="RPM"/>
-	</table>
-	
-	<table name="Ignition Timing Compensation (Idle Target) Neutral A" category="ALPHA Idle Control" type="3D" level="1" scaling="IgnitionTimingCorrection(degrees)">
-		<description>This table is a compensation to idle ignition timing when idle speed error is within a specific range, and engine load is not changing</description>
-		<table name="Idle Speed Error" type="X Axis" elements="9" scaling="RPM"/>
-		<table name="Engine Speed Delta" type="Y Axis" elements="2" scaling="RPM"/>
-	</table>
-
-	<table name="Ignition Timing Compensation (Idle Target) Neutral B" category="ALPHA Idle Control" type="3D" level="1" scaling="IgnitionTimingCorrection(degrees)">
-		<description>This table is a compensation to idle ignition timing when idle speed error is within a specific range, and engine load is not changing</description>
-		<table name="Idle Speed Error" type="X Axis" elements="9" scaling="RPM"/>
-		<table name="Engine Speed Delta" type="Y Axis" elements="2" scaling="RPM"/>
-	</table>
 
 	<table name="Cluster Display Fuel Consumption Correction" category="ALPHA Fueling - Injectors" type="2D" level="2" scaling="clusterfueleffcomp">
 		<description>This is the correction applied to the fuel efficiency calculation to account for injector size change. Adjust this value by the same percentage as used for injector scaling. NewCorrection = CurrentCorrection * (NewInjectorScale / OldInjectorScale)</description>
@@ -8108,53 +8081,54 @@
 	<table name="Cruise Control Speed Limit Minimum A" category="ALPHA Cruise Control" type="1D" level="1" scaling="VehicleSpeed(MPH)"/>
 
 	<table name="Cruise Control Speed Limit Minimum B" category="ALPHA Cruise Control" type="1D" level="1" scaling="VehicleSpeed(MPH)"/>
-	
+
 	<table name="Cruise Control Speed Limit Minimum C" category="ALPHA Cruise Control" type="1D" level="1" scaling="VehicleSpeed(MPH)"/>
 
 	<table name="Cruise Control Speed Limit Minimum D" category="ALPHA Cruise Control" type="1D" level="1" scaling="VehicleSpeed(MPH)"/>
-	
+
 	<table name="Cruise Control Speed Limit Minimum E" category="ALPHA Cruise Control" type="1D" level="1" scaling="VehicleSpeed(MPH)"/>
 
 	<table name="Cruise Control Speed Limit Maximum A" category="ALPHA Cruise Control" type="1D" level="1" scaling="VehicleSpeed(MPH)"/>
 
 	<table name="Cruise Control Speed Limit Maximum B" category="ALPHA Cruise Control" type="1D" level="1" scaling="VehicleSpeed(MPH)"/>
-	
+
 	<table name="Cruise Control Speed Limit Maximum C" category="ALPHA Cruise Control" type="1D" level="1" scaling="VehicleSpeed(MPH)"/>
 
 	<table name="Cruise Control Speed Limit Maximum D" category="ALPHA Cruise Control" type="1D" level="1" scaling="VehicleSpeed(MPH)"/>
-	
+
 	<table name="Cruise Control Speed Limit Maximum E" category="ALPHA Cruise Control" type="1D" level="1" scaling="VehicleSpeed(MPH)"/>
 
-   <table name="Intelligent to Sport Switch counter" category="Miscellaneous - Thresholds" type="1D" level="1" scaling="SI_mode_to_S_Counter"/>
-   <table name="Intelligent to Sport Switch Accelerator Pedal Angle" category="Miscellaneous - Thresholds" type="1D" level="1" scaling="%"/>
+	<table name="Intelligent to Sport Switch counter" category="Miscellaneous - Thresholds" type="1D" level="1" scaling="SI_mode_to_S_Counter"/>
+
+	<table name="Intelligent to Sport Switch Accelerator Pedal Angle" category="Miscellaneous - Thresholds" type="1D" level="1" scaling="%"/>
 
 	<table name="AF Learning 1 Range Smoothing Activation" category="Fueling - AF Correction / Learning" type="1D" level="1" scaling="A/FLearning#1Limits(%)"/>
+
 	<table name="AF Learning 1 Range Smoothing Factor" category="Fueling - AF Correction / Learning" type="1D" level="1" scaling="AF_Smoothing_Factor"/>
 
-
-	<table name="MAP Determination Averaging Window MAP Delta Thresholds RPM High" category="Manifold Pressure Sensor"  type="2D" level="1" scaling="psi">
-		<table name="Pressure Delta (Psi)"  type="Static X Axis" elements="2" scaling="psi">
-			 		<data>Low</data>
-	 				<data>High</data>
-	 					</table>
+	<table name="MAP Determination Averaging Window MAP Delta Thresholds RPM High" category="Manifold Pressure Sensor" type="2D" level="1" scaling="psi">
+		<table name="Pressure Delta (Psi)" type="Static X Axis" elements="2" scaling="psi">
+			<data>Low</data>
+			<data>High</data>
+		</table>
 	</table>
 
-	<table name="MAP Determination Averaging Window MAP Delta Thresholds RPM Low" category="Manifold Pressure Sensor"  type="2D" level="1" scaling="psi">
-		<table name="Pressure Delta (Psi)"  type="Static X Axis" elements="2" scaling="psi">
-			 		<data>Low</data>
-	 				<data>High</data>
-	 					</table>
+	<table name="MAP Determination Averaging Window MAP Delta Thresholds RPM Low" category="Manifold Pressure Sensor" type="2D" level="1" scaling="psi">
+		<table name="Pressure Delta (Psi)" type="Static X Axis" elements="2" scaling="psi">
+			<data>Low</data>
+			<data>High</data>
+		</table>
 	</table>
 
-	<table name="MAP Determination Averaging Window RPM Thresholds Low High" category="Manifold Pressure Sensor"  type="2D" level="1" scaling="RPM">
-		<table name="Engine Speed"  type="Static X Axis" elements="2" scaling="RPM">
-			 		<data>Low</data>
-	 				<data>High</data>
-	 					</table>
+	<table name="MAP Determination Averaging Window RPM Thresholds Low High" category="Manifold Pressure Sensor" type="2D" level="1" scaling="RPM">
+		<table name="Engine Speed" type="Static X Axis" elements="2" scaling="RPM">
+			<data>Low</data>
+			<data>High</data>
+		</table>
 	</table>
 
-<table name="TPS Related Fuel Adder Activation Minimum TPS Target Delta" category="ALPHA - TPS Related"  type="2D" level="1" scaling="TPS Throttle">
-		<table name="Engine Speed"  type="X Axis" elements="16" scaling="RPM"/>
+	<table name="TPS Related Fuel Adder Activation Minimum TPS Target Delta" category="ALPHA - TPS Related" type="2D" level="1" scaling="TPS Throttle">
+		<table name="Engine Speed" type="X Axis" elements="16" scaling="RPM"/>
 	</table>
 
 	<table name="TPS Related Fuel Adder Activation Minimum Load" category="ALPHA - TPS Related" type="3D" scaling="EngineLoad(g/rev)">
@@ -8163,43 +8137,43 @@
 		<table name="Engine Speed" type="Y Axis" elements="7" scaling="EngineSpeed(RPM)1"/>
 	</table>
 
-	<table name="TPS Related Fuel Activation Minimum TPS Target Delta Hysteresis" category="ALPHA - TPS Related"  type="1D" level="1" scaling="ThrottlePlateOpeningAngle(%)"/>
+	<table name="TPS Related Fuel Activation Minimum TPS Target Delta Hysteresis" category="ALPHA - TPS Related" type="1D" level="1" scaling="ThrottlePlateOpeningAngle(%)"/>
 
-	<table name="TPS Related Fuel Adder Low A" category="ALPHA - TPS Related"  type="1D" level="1" scaling="TPS_Adder"/>
+	<table name="TPS Related Fuel Adder Low A" category="ALPHA - TPS Related" type="1D" level="1" scaling="TPS_Adder"/>
 
-	<table name="TPS Related Fuel Adder High A" category="ALPHA - TPS Related"  type="1D" level="1" scaling="TPS_Adder"/>
+	<table name="TPS Related Fuel Adder High A" category="ALPHA - TPS Related" type="1D" level="1" scaling="TPS_Adder"/>
 
-	<table name="TPS Related Fuel Adder Low B" category="ALPHA - TPS Related"  type="1D" level="1" scaling="TPS_Adder"/>
+	<table name="TPS Related Fuel Adder Low B" category="ALPHA - TPS Related" type="1D" level="1" scaling="TPS_Adder"/>
 
-	<table name="TPS Related Fuel Adder High B" category="ALPHA - TPS Related"  type="1D" level="1" scaling="TPS_Adder"/>
+	<table name="TPS Related Fuel Adder High B" category="ALPHA - TPS Related" type="1D" level="1" scaling="TPS_Adder"/>
 
-	<table name="TPS Related Fuel Adder Low High Switch Coolant" category="ALPHA - TPS Related"  type="2D" level="1" scaling="CoolantTemp(DegreesF)">
-		<table name="Engine Coolant Temperature"  type="Static X Axis" elements="2" scaling="CoolantTemp(DegreesF)">
-			 		<data>Low</data>
-	 				<data>High</data>
-	 					</table>
+	<table name="TPS Related Fuel Adder Low High Switch Coolant" category="ALPHA - TPS Related" type="2D" level="1" scaling="CoolantTemp(DegreesF)">
+		<table name="Engine Coolant Temperature" type="Static X Axis" elements="2" scaling="CoolantTemp(DegreesF)">
+			<data>Low</data>
+			<data>High</data>
+		</table>
 	</table>
 
-	<table name="TPS Related Fuel Adder Activation Minimum Coolant Temp" category="ALPHA - TPS Related"  type="2D" level="1" scaling="CoolantTemp(DegreesF)">
-		<table name="Engine Coolant Temperature"  type="Static X Axis" elements="2" scaling="CoolantTemp(DegreesF)">
-			 		<data>Low</data>
-	 				<data>High</data>
-	 					</table>
+	<table name="TPS Related Fuel Adder Activation Minimum Coolant Temp" category="ALPHA - TPS Related" type="2D" level="1" scaling="CoolantTemp(DegreesF)">
+		<table name="Engine Coolant Temperature" type="Static X Axis" elements="2" scaling="CoolantTemp(DegreesF)">
+			<data>Low</data>
+			<data>High</data>
+		</table>
 	</table>
 
-	<table name="TPS Related Fuel Adder No Delay Disable Load Threshold Not Met" category="ALPHA - TPS Related"  type="1D" level="1" scaling="CoolantTemp(DegreesF)"/>
+	<table name="TPS Related Fuel Adder No Delay Disable Load Threshold Not Met" category="ALPHA - TPS Related" type="1D" level="1" scaling="CoolantTemp(DegreesF)"/>
 
-	<table name="TPS Related Fuel Adder Activation Minimum Run Time" category="ALPHA - TPS Related"  type="1D" level="1" scaling="TPS"/>
+	<table name="TPS Related Fuel Adder Activation Minimum Run Time" category="ALPHA - TPS Related" type="1D" level="1" scaling="TPS"/>
 
-	<table name="Minimum IPW"  category="Miscellaneous - Limits" type="1D" level="1" scaling="ms"/>
+	<table name="Minimum IPW" category="Miscellaneous - Limits" type="1D" level="1" scaling="ms"/>
 
-	<table name="Ignition Timing Minimum"  category="Miscellaneous - Limits" type="1D" level="1" scaling="BaseIgnitionTiming(degreesBTDC)"/>
+	<table name="Ignition Timing Minimum" category="Miscellaneous - Limits" type="1D" level="1" scaling="BaseIgnitionTiming(degreesBTDC)"/>
 
 	<table name="MAF Adder (CPC Multiplier)" category="Mass Airflow / Engine Load" type="1D" level="1" scaling="%"/>
 
 	<table name="AF 3 Correction Adder (Increase)" category="ALPHA AF 3 (Rear O2 Sensor)" type="1D" level="1" scaling="AF3_Adder"/>
 
-	<table name="AF 3 Correction Adder (Decrease)" category="ALPHA AF 3 (Rear O2 Sensor)" type="1D" level="1"  scaling="AF3_Adder"/>
+	<table name="AF 3 Correction Adder (Decrease)" category="ALPHA AF 3 (Rear O2 Sensor)" type="1D" level="1" scaling="AF3_Adder"/>
 
 	<table name="TGV Switching Requested_Torque (High / Open Above) SSharp" category="ALPHA TGV Switching" type="2D" level="1" scaling="Requested Torque (TGV Switch)">
 		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
@@ -8231,164 +8205,165 @@
 
 	<table name="TGV Switching Airflow Thresholds (Close Below) / Open Above" category="ALPHA TGV Switching" type="2D" level="1" scaling="MassAirflow(g/s)1">
 		<table name="Mass Airflow" type="Static X Axis" elements="2">
-	 			<data>Close below</data>
-	 						<data>Open above</data>
+			<data>Close below</data>
+			<data>Open above</data>
+		</table>
 	</table>
-	</table>			
+
 	<table name="TGV Switching Coolant Temperature Threshold (Open Below)" category="ALPHA TGV Switching" type="1D" level="1" scaling="CoolantTemp(DegreesF)"/>
 
 	<table name="TGV Switching Map Ramping Adder (Close to Open)" category="ALPHA TGV Switching" type="1D" level="1" scaling="TGV_Switch_Ramping_Adder"/>
 
 	<table name="TGV Switching Map Ramping Adder (Open to Close)" category="ALPHA TGV Switching" type="1D" level="1" scaling="negative_rawecuvalue"/>
-	
-   <table name="TGV Switching Cruise Switch Minimum Delay" category="ALPHA TGV Switching" type="1D" level="1" scaling="TGV_Switching_Cruise_Switch_Delay"/>
 
-   <table name="TGV Switching Cruise Minimum Delay (Secondary Conditions)" category="ALPHA TGV Switching" type="1D" level="1" scaling="TGV_Switching_Cruise_Switch_Delay"/>
-   
+	<table name="TGV Switching Cruise Switch Minimum Delay" category="ALPHA TGV Switching" type="1D" level="1" scaling="TGV_Switching_Cruise_Switch_Delay"/>
+
+	<table name="TGV Switching Cruise Minimum Delay (Secondary Conditions)" category="ALPHA TGV Switching" type="1D" level="1" scaling="TGV_Switching_Cruise_Switch_Delay"/>
+
 	<table name="Knock Sensor Calibration" category="ALPHA - Knock Sensitivity" address="d054c" type="2D" level="1" scaling="rawecuvalue">
 		<table name="Volts" address="d0448" type="X Axis" elements="65" scaling="rawecuvalue"/>
 	</table>
 
-	<table name="Knock Threshold Filter Final Limit Minimum" category="ALPHA - Knock Sensitivity"  type="2D" level="1" scaling="Knock">
-		<table name="Volts"  type="X Axis" elements="10" scaling="RPM"/>
+	<table name="Knock Threshold Filter Final Limit Minimum" category="ALPHA - Knock Sensitivity" type="2D" level="1" scaling="Knock">
+		<table name="Volts" type="X Axis" elements="10" scaling="RPM"/>
 	</table>
 
-	<table name="Knock Threshold Filter Final Limit Maximum Cylinder 1" category="ALPHA - Knock Sensitivity"  type="2D" level="1" scaling="Knock">
-		<table name="Volts"  type="X Axis" elements="10" scaling="RPM"/>
+	<table name="Knock Threshold Filter Final Limit Maximum Cylinder 1" category="ALPHA - Knock Sensitivity" type="2D" level="1" scaling="Knock">
+		<table name="Volts" type="X Axis" elements="10" scaling="RPM"/>
 	</table>
 
-	<table name="Knock Threshold Filter Final Limit Maximum Cylinder 2" category="ALPHA - Knock Sensitivity"  type="2D" level="1" scaling="Knock">
-		<table name="Volts"  type="X Axis" elements="10" scaling="RPM"/>
+	<table name="Knock Threshold Filter Final Limit Maximum Cylinder 2" category="ALPHA - Knock Sensitivity" type="2D" level="1" scaling="Knock">
+		<table name="Volts" type="X Axis" elements="10" scaling="RPM"/>
 	</table>
 
-	<table name="Knock Threshold Filter Final Limit Maximum Cylinder 3" category="ALPHA - Knock Sensitivity"  type="2D" level="1" scaling="Knock">
-		<table name="Volts"  type="X Axis" elements="10" scaling="RPM"/>
+	<table name="Knock Threshold Filter Final Limit Maximum Cylinder 3" category="ALPHA - Knock Sensitivity" type="2D" level="1" scaling="Knock">
+		<table name="Volts" type="X Axis" elements="10" scaling="RPM"/>
 	</table>
 
-	<table name="Knock Threshold Filter Final Limit Maximum Cylinder 4" category="ALPHA - Knock Sensitivity"  type="2D" level="1" scaling="Knock">
-		<table name="Volts"  type="X Axis" elements="10" scaling="RPM"/>
+	<table name="Knock Threshold Filter Final Limit Maximum Cylinder 4" category="ALPHA - Knock Sensitivity" type="2D" level="1" scaling="Knock">
+		<table name="Volts" type="X Axis" elements="10" scaling="RPM"/>
 	</table>
 
-	<table name="Knock Threshold Weight Factor RPM Load Cylinder 1" category="ALPHA - Knock Sensitivity"  type="3D" level="1" scaling="Knock">
-		<table name="X"  type="X Axis" elements="18" scaling="RPM"/>
-		<table name="Y"  type="Y Axis" elements="2" scaling="Knock"/>
+	<table name="Knock Threshold Weight Factor RPM Load Cylinder 1" category="ALPHA - Knock Sensitivity" type="3D" level="1" scaling="Knock">
+		<table name="X" type="X Axis" elements="18" scaling="RPM"/>
+		<table name="Y" type="Y Axis" elements="2" scaling="Knock"/>
 	</table>
 
-	<table name="Knock Threshold Weight Factor RPM Load Cylinder 2" category="ALPHA - Knock Sensitivity"  type="3D" level="1" scaling="Knock">
-		<table name="X"  type="X Axis" elements="18" scaling="RPM"/>
-		<table name="Y"  type="Y Axis" elements="2" scaling="Knock"/>
+	<table name="Knock Threshold Weight Factor RPM Load Cylinder 2" category="ALPHA - Knock Sensitivity" type="3D" level="1" scaling="Knock">
+		<table name="X" type="X Axis" elements="18" scaling="RPM"/>
+		<table name="Y" type="Y Axis" elements="2" scaling="Knock"/>
 	</table>
 
-	<table name="Knock Threshold Weight Factor RPM Load Cylinder 3" category="ALPHA - Knock Sensitivity"  type="3D" level="1" scaling="Knock">
-		<table name="X"  type="X Axis" elements="18" scaling="RPM"/>
-		<table name="Y"  type="Y Axis" elements="2" scaling="Knock"/>
+	<table name="Knock Threshold Weight Factor RPM Load Cylinder 3" category="ALPHA - Knock Sensitivity" type="3D" level="1" scaling="Knock">
+		<table name="X" type="X Axis" elements="18" scaling="RPM"/>
+		<table name="Y" type="Y Axis" elements="2" scaling="Knock"/>
 	</table>
 
-	<table name="Knock Threshold Weight Factor RPM Load Cylinder 4" category="ALPHA - Knock Sensitivity"  type="3D" level="1" scaling="Knock">
-		<table name="X"  type="X Axis" elements="18" scaling="RPM"/>
-		<table name="Y"  type="Y Axis" elements="2" scaling="Knock"/>
+	<table name="Knock Threshold Weight Factor RPM Load Cylinder 4" category="ALPHA - Knock Sensitivity" type="3D" level="1" scaling="Knock">
+		<table name="X" type="X Axis" elements="18" scaling="RPM"/>
+		<table name="Y" type="Y Axis" elements="2" scaling="Knock"/>
 	</table>
 
-	<table name="Knock Threshold Filter Background Noise interval Weighting Factor Low RPM Delta" category="ALPHA - Knock Sensitivity"  type="2D" level="1" scaling="Knock4">
-		<table name="Engine Speed"  type="X Axis" elements="7" scaling="RPM"/>
-	</table>
-	
-		<table name="Knock Threshold Filter Background Noise interval Weighting Factor High RPM Delta" category="ALPHA - Knock Sensitivity"  type="2D" level="1" scaling="Knock4">
-		<table name="Engine Speed"  type="X Axis" elements="7" scaling="RPM"/>
+	<table name="Knock Threshold Filter Background Noise interval Weighting Factor Low RPM Delta" category="ALPHA - Knock Sensitivity" type="2D" level="1" scaling="Knock4">
+		<table name="Engine Speed" type="X Axis" elements="7" scaling="RPM"/>
 	</table>
 
-	<table name="Background Noise Delta Smoothing Weighting Factor RPM Delta Threshold Immediate" category="ALPHA - Knock Sensitivity"  type="1D" level="1" scaling="Knock"/>
-
-	<table name="Background Noise Delta Smoothing Weighting Factor RPM Delta Threshold Short" category="ALPHA - Knock Sensitivity"  type="1D" level="1" scaling="Knock"/>
-
-	<table name="Background Noise Base Smoothing Factor High Rpm Delta" category="ALPHA - Knock Sensitivity"  type="1D" level="1" scaling="Knock"/>
-
-	<table name="Background Noise Base Smoothing Factor Low Rpm Delta" category="ALPHA - Knock Sensitivity"  type="1D" level="1" scaling="Knock"/>
-
-	<table name="Background Noise Delta Weighting Factor High RPM Delta" category="ALPHA - Knock Sensitivity"  type="1D" level="1" scaling="Knock"/>
-
-	<table name="Background Noise Delta Weighting Factor Low RPM Delta" category="ALPHA - Knock Sensitivity"  type="1D" level="1" scaling="Knock"/>
-
-	<table name="Knock Threshhold Filter Background Noise Interval Weighting Factor RPM Delta Short" category="ALPHA - Knock Sensitivity"  type="1D" level="1" scaling="Knock"/>
-
-	<table name="Knock Threshhold Filter Background Noise Interval Weighting Factor High RPM Delta Limit Maximum" category="ALPHA - Knock Sensitivity"  type="1D" level="1" scaling="Knock"/>
-
-	<table name="Knock Threshhold Filter Background Noise Interval Weighting Factor High RPM Delta RPM Delta Ratio" category="ALPHA - Knock Sensitivity"  type="1D" level="1" scaling="Knock"/>
-
-	<table name="Knock threshhold Filter Final Limit Maximum Modify Pre Final Limit" category="ALPHA - Knock Sensitivity"  type="1D" level="1" scaling="Knock"/>
-
-	<table name="Knock Threshhold Level Final Limit Minimum" category="ALPHA - Knock Sensitivity"  type="1D" level="1" scaling="Knock"/>
-
-	<table name="Knock Threshhold Level Final Limit Maximum" category="ALPHA - Knock Sensitivity"  type="1D" level="1" scaling="Knock"/>
-
-	<table name="Filter Noise Level Weighting Factor" category="ALPHA - Knock Sensitivity"  type="1D" level="1" scaling="Knock"/>
-
-	<table name="Filter Reference Maximum Range Hysteresis Correction Knock Sensor Output Modify" category="ALPHA - Knock Sensitivity"  type="1D" level="1" scaling="Knock3"/>
-
-	<table name="Knock Detection Minimum Engine Run Time" category="ALPHA - Knock Sensitivity"  type="1D" level="1" scaling="Knock2"/>
-
-	<table name="Table Post Start Enrich High Speed Decay Initial Start 1A" category="ALPHA - Post Start Enrichment"  type="2D" level="1" scaling= "Post_Start_Enrich_Decay">
-		<table name="Coolant Temperature"  type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
+	<table name="Knock Threshold Filter Background Noise interval Weighting Factor High RPM Delta" category="ALPHA - Knock Sensitivity" type="2D" level="1" scaling="Knock4">
+		<table name="Engine Speed" type="X Axis" elements="7" scaling="RPM"/>
 	</table>
 
-	<table name="Table Post Start Enrich High Speed Decay Initial Start 1B" category="ALPHA - Post Start Enrichment"  type="2D" level="1" scaling= "Post_Start_Enrich_Decay">
-		<table name="Coolant Temperature"  type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
+	<table name="Background Noise Delta Smoothing Weighting Factor RPM Delta Threshold Immediate" category="ALPHA - Knock Sensitivity" type="1D" level="1" scaling="Knock"/>
+
+	<table name="Background Noise Delta Smoothing Weighting Factor RPM Delta Threshold Short" category="ALPHA - Knock Sensitivity" type="1D" level="1" scaling="Knock"/>
+
+	<table name="Background Noise Base Smoothing Factor High Rpm Delta" category="ALPHA - Knock Sensitivity" type="1D" level="1" scaling="Knock"/>
+
+	<table name="Background Noise Base Smoothing Factor Low Rpm Delta" category="ALPHA - Knock Sensitivity" type="1D" level="1" scaling="Knock"/>
+
+	<table name="Background Noise Delta Weighting Factor High RPM Delta" category="ALPHA - Knock Sensitivity" type="1D" level="1" scaling="Knock"/>
+
+	<table name="Background Noise Delta Weighting Factor Low RPM Delta" category="ALPHA - Knock Sensitivity" type="1D" level="1" scaling="Knock"/>
+
+	<table name="Knock Threshhold Filter Background Noise Interval Weighting Factor RPM Delta Short" category="ALPHA - Knock Sensitivity" type="1D" level="1" scaling="Knock"/>
+
+	<table name="Knock Threshhold Filter Background Noise Interval Weighting Factor High RPM Delta Limit Maximum" category="ALPHA - Knock Sensitivity" type="1D" level="1" scaling="Knock"/>
+
+	<table name="Knock Threshhold Filter Background Noise Interval Weighting Factor High RPM Delta RPM Delta Ratio" category="ALPHA - Knock Sensitivity" type="1D" level="1" scaling="Knock"/>
+
+	<table name="Knock threshhold Filter Final Limit Maximum Modify Pre Final Limit" category="ALPHA - Knock Sensitivity" type="1D" level="1" scaling="Knock"/>
+
+	<table name="Knock Threshhold Level Final Limit Minimum" category="ALPHA - Knock Sensitivity" type="1D" level="1" scaling="Knock"/>
+
+	<table name="Knock Threshhold Level Final Limit Maximum" category="ALPHA - Knock Sensitivity" type="1D" level="1" scaling="Knock"/>
+
+	<table name="Filter Noise Level Weighting Factor" category="ALPHA - Knock Sensitivity" type="1D" level="1" scaling="Knock"/>
+
+	<table name="Filter Reference Maximum Range Hysteresis Correction Knock Sensor Output Modify" category="ALPHA - Knock Sensitivity" type="1D" level="1" scaling="Knock3"/>
+
+	<table name="Knock Detection Minimum Engine Run Time" category="ALPHA - Knock Sensitivity" type="1D" level="1" scaling="Knock2"/>
+
+	<table name="Table Post Start Enrich High Speed Decay Initial Start 1A" category="ALPHA - Post Start Enrichment" type="2D" level="1" scaling="Post_Start_Enrich_Decay">
+		<table name="Coolant Temperature" type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
 	</table>
 
-	<table name="Table Post Start Enrich High Speed Decay Initial Start 2A" category="ALPHA - Post Start Enrichment"  type="2D" level="1" scaling= "Post_Start_Enrich_Decay">
-		<table name="Coolant Temperature"  type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
+	<table name="Table Post Start Enrich High Speed Decay Initial Start 1B" category="ALPHA - Post Start Enrichment" type="2D" level="1" scaling="Post_Start_Enrich_Decay">
+		<table name="Coolant Temperature" type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
 	</table>
 
-	<table name="Table Post Start Enrich High Speed Decay Initial Start 2B" category="ALPHA - Post Start Enrichment"  type="2D" level="1" scaling= "Post_Start_Enrich_Decay">
-		<table name="Coolant Temperature"  type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
+	<table name="Table Post Start Enrich High Speed Decay Initial Start 2A" category="ALPHA - Post Start Enrichment" type="2D" level="1" scaling="Post_Start_Enrich_Decay">
+		<table name="Coolant Temperature" type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
 	</table>
 
-	<table name="Table Post Start Enrich Low Speed Decay Initial 1A" category="ALPHA - Post Start Enrichment"  type="2D" level="1" scaling= "Post_Start_Enrich_Decay1">
-		<table name="Coolant Temperature"  type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
+	<table name="Table Post Start Enrich High Speed Decay Initial Start 2B" category="ALPHA - Post Start Enrichment" type="2D" level="1" scaling="Post_Start_Enrich_Decay">
+		<table name="Coolant Temperature" type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
 	</table>
 
-	<table name="Table Post Start Enrich Low Speed Decay Initial 1B" category="ALPHA - Post Start Enrichment"  type="2D" level="1" scaling= "Post_Start_Enrich_Decay1">
-		<table name="Coolant Temperature"  type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
+	<table name="Table Post Start Enrich Low Speed Decay Initial 1A" category="ALPHA - Post Start Enrichment" type="2D" level="1" scaling="Post_Start_Enrich_Decay1">
+		<table name="Coolant Temperature" type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
 	</table>
 
-	<table name="Table Post Start Enrich Low Speed Decay Initial 2A" category="ALPHA - Post Start Enrichment"  type="2D" level="1" scaling= "Post_Start_Enrich_Decay1">
-		<table name="Coolant Temperature"  type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
+	<table name="Table Post Start Enrich Low Speed Decay Initial 1B" category="ALPHA - Post Start Enrichment" type="2D" level="1" scaling="Post_Start_Enrich_Decay1">
+		<table name="Coolant Temperature" type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
 	</table>
 
-	<table name="Table Post Start Enrich Low Speed Decay Initial 2B" category="ALPHA - Post Start Enrichment"  type="2D" level="1" scaling= "Post_Start_Enrich_Decay1">
-		<table name="Coolant Temperature"  type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
+	<table name="Table Post Start Enrich Low Speed Decay Initial 2A" category="ALPHA - Post Start Enrichment" type="2D" level="1" scaling="Post_Start_Enrich_Decay1">
+		<table name="Coolant Temperature" type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
 	</table>
 
-	<table name="Table Post Start Enrich High Speed Decay Step Value 1" category="ALPHA - Post Start Enrichment"  type="2D" level="1" scaling= "Post_Start_Enrich_Decay2">
-		<table name="Coolant Temperature"  type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
+	<table name="Table Post Start Enrich Low Speed Decay Initial 2B" category="ALPHA - Post Start Enrichment" type="2D" level="1" scaling="Post_Start_Enrich_Decay1">
+		<table name="Coolant Temperature" type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
 	</table>
 
-	<table name="Table Post Start Enrich High Speed Decay Step Value 2" category="ALPHA - Post Start Enrichment"  type="2D" level="1" scaling= "Post_Start_Enrich_Decay2">
-		<table name="Coolant Temperature"  type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
+	<table name="Table Post Start Enrich High Speed Decay Step Value 1" category="ALPHA - Post Start Enrichment" type="2D" level="1" scaling="Post_Start_Enrich_Decay2">
+		<table name="Coolant Temperature" type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
 	</table>
 
-	<table name="Table Post Start Enrich Low Speed Decay Delay 1" category="ALPHA - Post Start Enrichment"  type="2D" level="1" scaling= "Post_Start_Enrich_Decay3">
-		<table name="Coolant Temperature"  type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
+	<table name="Table Post Start Enrich High Speed Decay Step Value 2" category="ALPHA - Post Start Enrichment" type="2D" level="1" scaling="Post_Start_Enrich_Decay2">
+		<table name="Coolant Temperature" type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
 	</table>
 
-	<table name="Table Post Start Enrich Low Speed Decay Delay 2" category="ALPHA - Post Start Enrichment"  type="2D" level="1" scaling= "Post_Start_Enrich_Decay3">
-		<table name="Coolant Temperature"  type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
+	<table name="Table Post Start Enrich Low Speed Decay Delay 1" category="ALPHA - Post Start Enrichment" type="2D" level="1" scaling="Post_Start_Enrich_Decay3">
+		<table name="Coolant Temperature" type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
 	</table>
 
-	<table name="Table Post Start Enrich Low Speed Decay Delay Multiplier" category="ALPHA - Post Start Enrichment"  type="2D" level="1" scaling= "Post_Start_Enrich_Decay4">
-		<table name="Coolant Temperature"  type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
+	<table name="Table Post Start Enrich Low Speed Decay Delay 2" category="ALPHA - Post Start Enrichment" type="2D" level="1" scaling="Post_Start_Enrich_Decay3">
+		<table name="Coolant Temperature" type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
 	</table>
 
-   <table name="Target Throttle Angle Idle Airflow Target" category="ALPHA Idle Control" type="2D" level="1" scaling="%1">
-      <table name="Target Throttle Plate Position %" type="X Axis" elements="24" scaling="%"/>
-   </table>
+	<table name="Table Post Start Enrich Low Speed Decay Delay Multiplier" category="ALPHA - Post Start Enrichment" type="2D" level="1" scaling="Post_Start_Enrich_Decay4">
+		<table name="Coolant Temperature" type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
+	</table>
 
-   <table name="Target Throttle Angle Idle Airflow Target Base Minimum" category="ALPHA Idle Control" type="3D" level="1" scaling="TPS Throttle">
-      <table name="Engine Speed" type="X Axis" elements="16" scaling="RPM"/>
-      <table name="Requested Torque" type="Y Axis" elements="16" scaling="RequestedTorque(rawecuvalue)1"/>
-   </table>
+	<table name="Target Throttle Angle Idle Airflow Target" category="ALPHA Idle Control" type="2D" level="1" scaling="%1">
+		<table name="Target Throttle Plate Position %" type="X Axis" elements="24" scaling="%"/>
+	</table>
 
-   <table name="Target Throttle Angle Idle Airflow Target Base Minimum Applied Maximum" category="ALPHA Idle Control" type="1D" level="1" scaling="%1"/>
+	<table name="Target Throttle Angle Idle Airflow Target Base Minimum" category="ALPHA Idle Control" type="3D" level="1" scaling="TPS Throttle">
+		<table name="Engine Speed" type="X Axis" elements="16" scaling="RPM"/>
+		<table name="Requested Torque" type="Y Axis" elements="16" scaling="RequestedTorque(rawecuvalue)1"/>
+	</table>
+
+	<table name="Target Throttle Angle Idle Airflow Target Base Minimum Applied Maximum" category="ALPHA Idle Control" type="1D" level="1" scaling="%1"/>
 
 	<table name="Idle Rolling in Gear Limit A" category="ALPHA Idle Control" type="1D" level="1" scaling="RPM"/>
 
@@ -8434,7 +8409,7 @@
 		<table name="Engine Speed" type="X Axis" elements="16" scaling="RPM"/>
 		<table name="Gear" type="Y Axis" elements="6" scaling="Gear"/>
 	</table>
-	
+
 	<table name="Requested Torque Limit (IAM)" category="Drive-by-Wire Throttle (DBW)" type="3D" level="4" scaling="RequestedTorque(rawecuvalue)">
 		<description>This table determines the Max requested torque based on IAM.</description>
 		<table name="IAM" type="X Axis" elements="2" scaling="IgnitionAdvanceMultiplier(IAM)"/>
@@ -8480,14 +8455,14 @@
 			<data>Low</data>
 		</table>
 	</table>
-	
-		<table name="AF 3 CL Target Compensation Limits High" category="ALPHA AF 3 (Rear O2 Sensor)" type="2D" level="1" scaling="AF3 Lambda">
+
+	<table name="AF 3 CL Target Compensation Limits High" category="ALPHA AF 3 (Rear O2 Sensor)" type="2D" level="1" scaling="AF3 Lambda">
 		<table name="X" type="Static X Axis" elements="1">
 			<data>High</data>
 		</table>
 	</table>
-	
-		<table name="AF 3 CL Target Compensation Limits Low" category="ALPHA AF 3 (Rear O2 Sensor)" type="2D" level="1" scaling="AF3 Lambda">
+
+	<table name="AF 3 CL Target Compensation Limits Low" category="ALPHA AF 3 (Rear O2 Sensor)" type="2D" level="1" scaling="AF3 Lambda">
 		<table name="X" type="Static X Axis" elements="1">
 			<data>Low</data>
 		</table>
@@ -8500,7 +8475,7 @@
 			<data>Low</data>
 		</table>
 	</table>
-	
+
 	<table name="AF 3 Learning Limits" category="ALPHA AF 3 (Rear O2 Sensor)" type="2D" level="1" scaling="A/FLearning#1Limits(%)">
 		<description>These limits determine the maximum AF #3 Learning (Rear O2 Sensor Feedback) applied during closed loop fueling. By setting them to zero you can disable the effect of the rear O2 sensor on closed loop fueling.</description>
 		<table name="X" type="Static X Axis" elements="2">
@@ -8617,22 +8592,22 @@
 			<data>E</data>
 		</table>
 	</table>
-	
+
 	<table name="Overrun Fueling Cut Counter RPM Threshold A" category="ALPHA OverRun Fueling" type="2D" level="1" scaling="RPM">
 		<description>These counters determine the RPM count before injectors cut off during overrun.</description>
 		<table name="RPM" type="Static Y Axis" elements="1">
 			<data>Low</data>
 		</table>
 	</table>
-	
+
 	<table name="Overrun Fueling Cut Counter RPM Threshold B" category="ALPHA OverRun Fueling" type="2D" level="1" scaling="RPM">
 		<description>These counters determine the RPM count before injectors cut off during overrun.</description>
 		<table name="RPM" type="Static Y Axis" elements="1">
 			<data>Med</data>
 		</table>
 	</table>
-	
-		<table name="Overrun Fueling Cut Counter RPM Threshold C" category="ALPHA OverRun Fueling" type="2D" level="1" scaling="RPM">
+
+	<table name="Overrun Fueling Cut Counter RPM Threshold C" category="ALPHA OverRun Fueling" type="2D" level="1" scaling="RPM">
 		<description>These counters determine the RPM count before injectors cut off during overrun.</description>
 		<table name="RPM" type="Static Y Axis" elements="1">
 			<data>High</data>
@@ -8751,71 +8726,51 @@
 	<table name="Hotstart Minimum Enrichment Limit Runtime" category="ALPHA Hotstart" type="1D" level="1" scaling="Hotstart Counter uint16">
 		<description>Determines how long the minimum enrichment limit is enabled.</description>
 	</table>
-	
+
 	<table name="Rough Correction Fine Learning Threshold Negative" category="Ignition Timing - Knock Control" type="1D" level="1" scaling="degreesofcorrection">
 		<description>This is the negative threshold of fine knock learning for potential coarse knock learning (DAM) mode activation (all other conditions and thresholds must also be met). When fine knock learning is less than or equal to this value and all other thresholds and conditions are met, coarse knock learning mode will be active, allowing for potential changes to the DAM.</description>
 	</table>
-                       
+
 	<table name="Rough Correction Fine Learning Threshold Negative Dynamic Advance Ratio" category="Ignition Timing - Knock Control" type="1D" level="1" scaling="degreesofcorrection">
 		<description>This multiplier determines a comparison value based on the current dynamic advance map value that must be met by fine knock learning before potential coarse knock learning (DAM) mode activation (all other conditions and thresholds must also be met). The comparison value is determined as follows: dynamic advance map value * multiplier. When the current fine knock learning is less than or equal to the comparison value and all other thresholds and conditions are met, coarse knock learning mode will be active, allowing for potential changes to the DAM.</description>
 	</table>
- 
- 	<table name="Rough Correction Fine Learning Threshold Positive" category="Ignition Timing - Knock Control" type="1D" level="1" scaling="degreesofcorrection">
+
+	<table name="Rough Correction Fine Learning Threshold Positive" category="Ignition Timing - Knock Control" type="1D" level="1" scaling="degreesofcorrection">
 		<description>This is the positive threshold of fine knock learning for potential coarse knock learning (DAM) mode activation (all other conditions and thresholds must also be met). When fine knock learning is greater than this value and all other thresholds and conditions are met, coarse knock learning mode will be active, allowing for potential changes to the DAM.</description>
-	</table>                                     
+	</table>
 
 	<table name="Rough Learning Mode Fine Learning Threshold Alternative Positive" category="Ignition Timing - Knock Control" type="2D" level="1" scaling="degreesofcorrection">
-		<description></description>
 		<table name="IAM" type="X Axis" elements="4" scaling="IgnitionAdvanceMultiplier(IAM)"/>
-	</table>    
-          
-	<table name="Rough Correction Fine Learning Threshold Positive Alternative Maximum IAM" category="Ignition Timing - Knock Control" type="1D" level="1" scaling="IgnitionAdvanceMultiplier(IAM)">
-		<description></description>
-	</table>	
+	</table>
 
-	<table name="Rough Correction Fine Learning Threshold Positive Alternative Minimum IAM" category="Ignition Timing - Knock Control" type="1D" level="1" scaling="IgnitionAdvanceMultiplier(IAM)">
-		<description></description>
-	</table>	
-	
-	<table name="Rough Learning Mode Fine Learning Threshold Alternative Positive Delay" category="Ignition Timing - Knock Control" type="1D" level="1" scaling="'NoKnock'DelayPeriodforNegativeFeedbackCorrectionAdvance(counterthreshold)1">
-		<description></description>
-	</table>	
-	
-	<table name="Rough Correction Fine Learning Threshold Positive Dynamic Advance Ratio" category="Ignition Timing - Knock Control" type="1D" level="1" scaling="IgnitionAdvanceMultiplier(IAM)">
-		<description></description>
-	</table>	
+	<table name="Rough Correction Fine Learning Threshold Positive Alternative Maximum IAM" category="Ignition Timing - Knock Control" type="1D" level="1" scaling="IgnitionAdvanceMultiplier(IAM)"/>
 
-	<table name="Rough Correction Negative Inhibit Failsafe Off Minimum IAM" category="Ignition Timing - Knock Control" type="1D" level="1" scaling="IgnitionAdvanceMultiplier(IAM)">
-		<description></description>
-	</table>	
- 
-  <table name="Fine Knock Learning Mode Maximum IAM Step Value" category="Ignition Timing - Knock Control" type="1D" level="1" scaling="IgnitionAdvanceMultiplier(IAM)">
+	<table name="Rough Correction Fine Learning Threshold Positive Alternative Minimum IAM" category="Ignition Timing - Knock Control" type="1D" level="1" scaling="IgnitionAdvanceMultiplier(IAM)"/>
+
+	<table name="Rough Learning Mode Fine Learning Threshold Alternative Positive Delay" category="Ignition Timing - Knock Control" type="1D" level="1" scaling="'NoKnock'DelayPeriodforNegativeFeedbackCorrectionAdvance(counterthreshold)1"/>
+
+	<table name="Rough Correction Fine Learning Threshold Positive Dynamic Advance Ratio" category="Ignition Timing - Knock Control" type="1D" level="1" scaling="IgnitionAdvanceMultiplier(IAM)"/>
+
+	<table name="Rough Correction Negative Inhibit Failsafe Off Minimum IAM" category="Ignition Timing - Knock Control" type="1D" level="1" scaling="IgnitionAdvanceMultiplier(IAM)"/>
+
+	<table name="Fine Knock Learning Mode Maximum IAM Step Value" category="Ignition Timing - Knock Control" type="1D" level="1" scaling="IgnitionAdvanceMultiplier(IAM)">
 		<description>This is the maximum dynamic advance multiplier (IAM) step value to allow for fine knock learning mode activation when exiting rough knock learning (IAM) mode. The IAM step value (which determines the increment or decrement for changes to the IAM) starts at the initial value determined by the "Dynamic Advance Multiplier (IAM) Reset (Initial Step Value)" table. When the IAM changes in the opposite direction, the step value is decreased by half. When the step value is less than or equal to this table's value (or the IAM reaches extremes for a period of time), fine knock learning mode will be active (determining that the IAM has settled).</description>
-	</table>	
+	</table>
 
 	<table name="Fine Knock Learning Mode IAM Limits Counter Threshold" category="Ignition Timing - Knock Control" type="1D" level="1" scaling="'NoKnock'DelayPeriodforNegativeFeedbackCorrectionAdvance(counterthreshold)1">
 		<description>This is the IAM limits counter threshold to allow for fine knock learning mode activation. The counter is incremented when the current dynamic advance multiplier (IAM) is continuously at its minimum (0) or maximum (1.0) limit. When the counter reaches this threshold, fine knock learning mode will be active regardless of the current IAM step value.</description>
-	</table>	
-		
-	<table name="Feedback Correction Disable Minimum AC Delay" category="Ignition Timing - Knock Control" type="1D" level="1" scaling="'NoKnock'DelayPeriodforNegativeFeedbackCorrectionAdvance(counterthreshold)">
-		<description></description>
-	</table>	
+	</table>
 
-	<table name="Feedback Correction Disable Minimum Coolant Temperature" category="Ignition Timing - Knock Control" type="1D" level="1" scaling="CoolantTemp(DegreesF)">
-		<description></description>
-	</table>	
-	
-		<table name="Feedback Correction Disable Smoothed Load Delta Minimum" category="Ignition Timing - Knock Control" type="1D" level="1" scaling="EngineLoad(g/rev)1">
-		<description></description>
-	</table>	
-	
-		<table name="Feedback Correction Disable Smoothed Load Delta Maximum" category="Ignition Timing - Knock Control" type="1D" level="1" scaling="EngineLoad(g/rev)1">
-		<description></description>
-	</table>	
+	<table name="Feedback Correction Disable Minimum AC Delay" category="Ignition Timing - Knock Control" type="1D" level="1" scaling="'NoKnock'DelayPeriodforNegativeFeedbackCorrectionAdvance(counterthreshold)"/>
+
+	<table name="Feedback Correction Disable Minimum Coolant Temperature" category="Ignition Timing - Knock Control" type="1D" level="1" scaling="CoolantTemp(DegreesF)"/>
+
+	<table name="Feedback Correction Disable Smoothed Load Delta Minimum" category="Ignition Timing - Knock Control" type="1D" level="1" scaling="EngineLoad(g/rev)1"/>
+
+	<table name="Feedback Correction Disable Smoothed Load Delta Maximum" category="Ignition Timing - Knock Control" type="1D" level="1" scaling="EngineLoad(g/rev)1"/>
 
 	<table name="Evap Related Fuel Adder Compensation" category="ALPHA - Fueling" type="1D" level="1" scaling="Evap_Multiplier">
 		<description>This is the compensation to the evap-related fuel adder. This table's multiplier is applied to the evap fuel adder which is then applied to commanded fueling final. A value of 1.00 in this table retains the factory evap fuel correction. A value of 0 in this table eliminates the correction entirely.</description>
-	</table>	
+	</table>
 
-	
 </rom>
