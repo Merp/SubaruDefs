@@ -198,7 +198,8 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
     </table>
     <table name="Tip-in Throttle Cumulative Reset" storageaddress="10DBC3" />
     <table name="A/F Learning #1 Limits" storageaddress="10E0C8" />
-    <table name="A/F Learning #1 Airflow Ranges" storageaddress="11113C" />
+    <table name="A/F Learning #1 Airflow Ranges A" storageaddress="111138" />
+    <table name="A/F Learning #1 Airflow Ranges B" storageaddress="111160" />
 	<table name="A/F Learning #1 Min Threshold" storageaddress="111138" />
 	<table name="A/F Learning #1 Max Threshold" storageaddress="111148" />
     <table name="MAF Limit (Maximum)" storageaddress="103FAC" />
@@ -218,6 +219,12 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
     <table type="Y Axis" storageaddress="11C908" />
 </table>
     <table name="Engine Load Limit (Maximum)" storageaddress="4AC6C" />
+    <table name="Engine Load Limit B Maximum (RPM)" storageaddress="1044C4" >
+            <table type="Y Axis" storageaddress="1044A0" />
+    </table>
+    <table name="Engine Load Limit C (Maximum) (RPM)" storageaddress="1044FC" >
+            <table type="Y Axis" storageaddress="1044D8" />
+    </table>
     <table name="Engine Load Compensation (MP)" storageaddress="104ED4" sizex="14">
       <table type="X Axis" storageaddress="104E60" />
       <table type="Y Axis" storageaddress="104E98" />
@@ -361,7 +368,7 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
       <table type="Y Axis" storageaddress="120174" />
     </table>
     <table name="Checksum Fix" storageaddress="13F500" />
-    <table name="Checksum Fix 2" storageaddress="13F5E8" />
+
     <table name="AFR Sensor Heater Protection" storageaddress="100468">
       <table type="Y Axis" storageaddress="100454" />
     </table>
@@ -703,6 +710,11 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
 <table name="Maximum Non-Idle Hotstart Enrichment (Post Delay)" storageaddress="10E374" />
 <table name="Hotstart Maximum Non-Idle Enrichment Delay" storageaddress="10DC60" />
 <table name="Hotstart Minimum Enrichment Limit Runtime" storageaddress="10DC5E" />
+
+<table name="AF 3 CL Target Compensation Limits" storageaddress="62608" />
+<table name="AF 3 Correction Limits" storageaddress="63010" />
+<table name="AF 3 Learning Limits" storageaddress="6381C" />
+
 <table name="Hotstart Minimum Enrichment (During Delay and Runtime)" storageaddress="10E36C" />
 <table name="(P000A) CAMSHAFT POSITION A  TIMING SLOW RESPONSE BANK 1" storageaddress="11E138" />
 <table name="(P000B) CAMSHAFT POSITION B  TIMING SLOW RESPONSE BANK 1" storageaddress="11E144" />
@@ -794,7 +806,7 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
 <table name="(P0391) CAMSHAFT POSITION SENSOR B CIRCUIT RANGE  PERFORMANCE BANK 2" storageaddress="11E210" />
 <table name="(P0420) CAT EFFICIENCY BELOW THRESHOLD" storageaddress="11DC4C" />
 <table name="(P0441) EVAP INCORRECT PURGE FLOW" storageaddress="11E090" />
-<table name="(P0451) EVAP PRESSURE SENSOR RANGE/PERF" storageaddress="11E084" />
+<table name="(P0451) EVAP PRESSURE SENSOR RANGE PERF" storageaddress="11E084" />
 <table name="(P0452) EVAP PRESSURE SENSOR LOW INPUT" storageaddress="11E024" />
 <table name="(P0453) EVAP PRESSURE SENSOR HIGH INPUT" storageaddress="11E018" />
 <table name="(P0455) EVAP EMISSION CONTROL SYSTEM LEAK DETECTED (GROSS LEAK)" storageaddress="11E078" />
@@ -3266,6 +3278,28 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
       </table>
       <description>These are the airflow ranges in which the different long-term fuel trims are calculated in closed loop and applied to the same airflow ranges for both closed loop and open loop.</description>
     </table>
+    <table type="2D" name="A/F Learning #1 Airflow Ranges A" category="Fueling - AF Correction / Learning" storagetype="float" endian="little" sizey="5" userlevel="4">
+      <scaling units="Mass Airflow (g/s)" expression="x" to_byte="x" format="0.00" fineincrement=".1" coarseincrement="1" />
+      <table type="Static Y Axis" name="A/F Learning Store/Apply Ranges" sizey="5">
+        <data> A </data>
+        <data> B </data>
+        <data> C </data>
+        <data> D </data>
+        <data> E </data>
+      </table>
+      <description>These are the airflow ranges in which the different long-term fuel trims are calculated in closed loop and applied to the same airflow ranges for both closed loop and open loop.</description>
+    </table>
+    <table type="2D" name="A/F Learning #1 Airflow Ranges B" category="Fueling - AF Correction / Learning" storagetype="float" endian="little" sizey="5" userlevel="4">
+      <scaling units="Mass Airflow (g/s)" expression="x" to_byte="x" format="0.00" fineincrement=".1" coarseincrement="1" />
+      <table type="Static Y Axis" name="A/F Learning Store/Apply Ranges" sizey="5">
+        <data> A </data>
+        <data> B </data>
+        <data> C </data>
+        <data> D </data>
+        <data> E </data>
+      </table>
+      <description>These are the airflow ranges in which the different long-term fuel trims are calculated in closed loop and applied to the same airflow ranges for both closed loop and open loop.</description>
+    </table>
     <table type="2D" name="A/F Learning Airflow Ranges" category="Fueling - AF Correction / Learning" storagetype="float" endian="little" sizey="3" userlevel="4">
       <scaling units="Mass Airflow (g/s)" expression="x" to_byte="x" format="0.00" fineincrement=".1" coarseincrement="1" />
       <table type="Static Y Axis" name="A/F Learning #1 and #2 Store/Apply Ranges" sizey="3">
@@ -3354,19 +3388,19 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
       </table>
       <description>This is the maximum allowable engine load. Engine load will be capped at this limit regardless of actual engine load. "Engine Load Limit B Maximum (RPM)" must also be changed as it also impacts the max engine load.</description>
     </table>
-    <table type="2D" name="Engine Load Limit B Maximum (RPM)" category="Mass Airflow / Engine Load" storagetype="uint16" endian="big" sizey="2" userlevel="4">
+    <table type="2D" name="Engine Load Limit B Maximum (RPM)" category="Mass Airflow / Engine Load" storagetype="uint16" endian="big" sizey="9" userlevel="4">
       <scaling units="Engine Load (g/rev)" expression="x*.00006103516" to_byte="x/.00006103516" format="0.00" fineincrement=".01" coarseincrement=".1" />
       <table type="Y Axis" name="Engine Speed" storagetype="float" endian="little" logparam="P8">
         <scaling units="RPM" expression="x" to_byte="x" format="#" fineincrement="50" coarseincrement="100" />
       </table>
       <description>This is the maximum allowable engine load. Engine load will be capped at this limit regardless of actual engine load. "Engine Load Limit A (Maximum)" must also be changed as it also impacts the max engine load.</description>
     </table>
-    <table type="2D" name="Engine Load Limit B (Maximum)" category="Mass Airflow / Engine Load" storagetype="float" endian="little" sizey="1" userlevel="3">
-      <scaling units="Engine Load (g/rev)" expression="x" to_byte="x" format="0.00" fineincrement=".01" coarseincrement=".1" />
-      <table type="Static Y Axis" name="Capped Limit" sizey="1">
-        <data>Maximum</data>
+    <table type="2D" name="Engine Load Limit C (Maximum) (RPM)" category="Mass Airflow / Engine Load" storagetype="uint16" endian="big" sizey="9" userlevel="4">
+      <scaling units="Engine Load (g/rev)" expression="x*.00006103516" to_byte="x/.00006103516" format="0.00" fineincrement=".01" coarseincrement=".1" />
+      <table type="Y Axis" name="Engine Speed" storagetype="float" endian="little" logparam="P8">
+        <scaling units="RPM" expression="x" to_byte="x" format="#" fineincrement="50" coarseincrement="100" />
       </table>
-      <description>This is the maximum allowable engine load under specific conditions. Engine load will be capped at this limit regardless of actual engine load. "Engine Load Limit A (Maximum)" must also be changed as it can also impact the max engine load.</description>
+      <description>This is the maximum allowable engine load. Engine load will be capped at this limit regardless of actual engine load. "Engine Load Limit A (Maximum)" must also be changed as it also impacts the max engine load.</description>
     </table>
     <table type="3D" name="Engine Load Compensation (MP)" category="Mass Airflow / Engine Load" storagetype="uint8" endian="big" sizex="11" sizey="15" userlevel="3">
       <scaling units="Engine Load Compensation (%)" expression="(x*.390625)-50" to_byte="(x+50)/.390625" format="0.0" fineincrement=".2" coarseincrement="1" />
@@ -5544,7 +5578,7 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
       <state name="off" data="00" />
     </table>
     
-    <table type="Switch" name="(P0014) EXHAUST AVCS SYSTEM 1 RANGE/PERF" category="Diagnostic Trouble Codes" sizey="1">
+    <table type="Switch" name="(P0014) EXHAUST AVCS SYSTEM 1 RANGE PERF" category="Diagnostic Trouble Codes" sizey="1">
       <description>EXHAUST AVCS SYSTEM 1 RANGE/PERFORMANCE. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
       <state name="on" data="01" />
       <state name="off" data="00" />
@@ -5586,22 +5620,22 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
       <state name="on" data="01" />
       <state name="off" data="00" />
     </table>
-    <table type="Switch" name="(P0024) EXHAUST AVCS SYSTEM 2 RANGE/PERF" category="Diagnostic Trouble Codes" sizey="1">
+    <table type="Switch" name="(P0024) EXHAUST AVCS SYSTEM 2 RANGE PERF" category="Diagnostic Trouble Codes" sizey="1">
       <description>EXHAUST AVCS SYSTEM 2 RANGE/PERFORMANCE. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
       <state name="on" data="01" />
       <state name="off" data="00" />
     </table>
-    <table type="Switch" name="(P0026) OSV SOLENOID VALVE CIRCUIT RANGE/PERF B1" category="Diagnostic Trouble Codes" sizey="1">
+    <table type="Switch" name="(P0026) OSV SOLENOID VALVE CIRCUIT RANGE PERF B1" category="Diagnostic Trouble Codes" sizey="1">
       <description>INTAKE VALVE CONTROL SOLENOID CIRCUIT RANGE/PERFORMANCE (BANK 1). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
       <state name="on" data="01" />
       <state name="off" data="00" />
     </table>
-    <table type="Switch" name="(P0028) OSV SOLENOID VALVE CIRCUIT RANGE/PERF B2" category="Diagnostic Trouble Codes" sizey="1">
+    <table type="Switch" name="(P0028) OSV SOLENOID VALVE CIRCUIT RANGE PERF B2" category="Diagnostic Trouble Codes" sizey="1">
       <description>INTAKE VALVE CONTROL SOLENOID CIRCUIT RANGE/PERFORMANCE (BANK 2). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
       <state name="on" data="01" />
       <state name="off" data="00" />
     </table>
-    <table type="Switch" name="(P0030) FRONT O2 SENSOR RANGE/PERF" category="Diagnostic Trouble Codes" sizey="1">
+    <table type="Switch" name="(P0030) FRONT O2 SENSOR RANGE PERF" category="Diagnostic Trouble Codes" sizey="1">
       <description>FRONT OXYGEN SENSOR CONTROL CIRCUIT (BANK 1 SENSOR 1). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
       <state name="on" data="01" />
       <state name="off" data="00" />
@@ -5636,7 +5670,7 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
       <state name="on" data="01" />
       <state name="off" data="00" />
     </table>
-    <table type="Switch" name="(P0050) HO2S CIRCUIT RANGE/PERF B2 S1" category="Diagnostic Trouble Codes" sizey="1">
+    <table type="Switch" name="(P0050) HO2S CIRCUIT RANGE PERF B2 S1" category="Diagnostic Trouble Codes" sizey="1">
       <description>HO2S HEATER CONTROL CIRCUIT RANGE/PERFORMANCE (BANK 2, SENSOR 1). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
       <state name="on" data="01" />
       <state name="off" data="00" />
@@ -5661,7 +5695,7 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
       <state name="on" data="01" />
       <state name="off" data="00" />
     </table>
-    <table type="Switch" name="(P0068) MAP SENSOR RANGE/PERF" category="Diagnostic Trouble Codes" sizey="1">
+    <table type="Switch" name="(P0068) MAP SENSOR RANGE PERF" category="Diagnostic Trouble Codes" sizey="1">
       <description>MANIFOLD ABSOLUTE PRESSURE/BAROMETRIC PRESSURE CIRCUIT RANGE/PERFORMANCE. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
       <state name="on" data="01" />
       <state name="off" data="00" />
@@ -5698,7 +5732,7 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
       <state name="off" data="00" />
     </table>    
     
-    <table type="Switch" name="(P0101) MAF SENSOR RANGE/PERF" category="Diagnostic Trouble Codes" sizey="1">
+    <table type="Switch" name="(P0101) MAF SENSOR RANGE PERF" category="Diagnostic Trouble Codes" sizey="1">
       <description>MASS AIR FLOW CIRCUIT RANGE/PERFORMANCE. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
       <state name="on" data="01" />
       <state name="off" data="00" />
@@ -5723,7 +5757,7 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
       <state name="on" data="01" />
       <state name="off" data="00" />
     </table>
-    <table type="Switch" name="(P0111) IAT SENSOR RANGE/PERF" category="Diagnostic Trouble Codes" sizey="1">
+    <table type="Switch" name="(P0111) IAT SENSOR RANGE PERF" category="Diagnostic Trouble Codes" sizey="1">
       <description>INTAKE AIR TEMPERATURE CIRCUIT RANGE/PERFORMANCE. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
       <state name="on" data="01" />
       <state name="off" data="00" />
@@ -5748,7 +5782,7 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
       <state name="on" data="01" />
       <state name="off" data="00" />
     </table>
-    <table type="Switch" name="(P0121) TPS RANGE/PERF" category="Diagnostic Trouble Codes" sizey="1">
+    <table type="Switch" name="(P0121) TPS RANGE PERF" category="Diagnostic Trouble Codes" sizey="1">
       <description>THROTTLE POSITION SENSOR CIRCUIT RANGE/PERFORMANCE PROBLEM (HIGH INPUT). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
       <state name="on" data="01" />
       <state name="off" data="00" />
@@ -5778,7 +5812,7 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
       <state name="on" data="01" />
       <state name="off" data="00" />
     </table>
-    <table type="Switch" name="(P0129) ATMOS. PRESSURE SENSOR RANGE/PERF" category="Diagnostic Trouble Codes" sizey="1">
+    <table type="Switch" name="(P0129) ATMOS. PRESSURE SENSOR RANGE PERF" category="Diagnostic Trouble Codes" sizey="1">
       <description>ATMOSPHERIC PRESSURE SENSOR CIRCUIT RANGE/PERFORMANCE. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
       <state name="on" data="01" />
       <state name="off" data="00" />
@@ -5949,7 +5983,7 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
       <state name="on" data="01" />
       <state name="off" data="00" />
     </table>
-    <table type="Switch" name="(P0181) FUEL TEMP SENSOR A RANGE/PERF" category="Diagnostic Trouble Codes" sizey="1">
+    <table type="Switch" name="(P0181) FUEL TEMP SENSOR A RANGE PERF" category="Diagnostic Trouble Codes" sizey="1">
       <description>FUEL TEMPERATURE SENSOR 'A' CIRCUIT RANGE/PERFORMANCE. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
       <state name="on" data="01" />
       <state name="off" data="00" />
@@ -5981,7 +6015,7 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
       <state name="off" data="00" />
     </table>    
     
-    <table type="Switch" name="(P0196) OIL TEMP SENSOR RANGE/PERF" category="Diagnostic Trouble Codes" sizey="1">
+    <table type="Switch" name="(P0196) OIL TEMP SENSOR RANGE PERF" category="Diagnostic Trouble Codes" sizey="1">
       <description>OIL TEMPERATURE SENSOR CIRCUIT RANGE/PERFORMANCE PROBLEM. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
       <state name="on" data="01" />
       <state name="off" data="00" />
@@ -6033,7 +6067,7 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
       <state name="on" data="01" />
       <state name="off" data="00" />
     </table>
-    <table type="Switch" name="(P0244) WASTEGATE SOLENOID A RANGE/PERF" category="Diagnostic Trouble Codes" sizey="1">
+    <table type="Switch" name="(P0244) WASTEGATE SOLENOID A RANGE PERF" category="Diagnostic Trouble Codes" sizey="1">
       <description>WASTEGATE SOLENOID 'A' RANGE/PERFORMANCE. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
       <state name="on" data="01" />
       <state name="off" data="00" />
@@ -6128,7 +6162,7 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
       <state name="on" data="01" />
       <state name="off" data="00" />
     </table>
-    <table type="Switch" name="(P0336) CRANKSHAFT POS. SENSOR A RANGE/PERF" category="Diagnostic Trouble Codes" sizey="1">
+    <table type="Switch" name="(P0336) CRANKSHAFT POS. SENSOR A RANGE PERF" category="Diagnostic Trouble Codes" sizey="1">
       <description>CRANKSHAFT POSITION SENSOR 'A' CIRCUIT RANGE/PERFORMANCE. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
       <state name="on" data="01" />
       <state name="off" data="00" />
@@ -6138,7 +6172,7 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
       <state name="on" data="01" />
       <state name="off" data="00" />
     </table>
-    <table type="Switch" name="(P0341) CAMSHAFT POS. SENSOR A RANGE/PERF" category="Diagnostic Trouble Codes" sizey="1">
+    <table type="Switch" name="(P0341) CAMSHAFT POS. SENSOR A RANGE PERF" category="Diagnostic Trouble Codes" sizey="1">
       <description>CAMSHAFT POSITION SENSOR 'A' CIRCUIT RANGE/PERFORMANCE (BANK 1 OR SINGLE SENSOR). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
       <state name="on" data="01" />
       <state name="off" data="00" />
@@ -6276,7 +6310,7 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
       <state name="on" data="01" />
       <state name="off" data="00" />
     </table>
-    <table type="Switch" name="(P0451) EVAP PRESSURE SENSOR RANGE/PERF" category="Diagnostic Trouble Codes" sizey="1">
+    <table type="Switch" name="(P0451) EVAP PRESSURE SENSOR RANGE PERF" category="Diagnostic Trouble Codes" sizey="1">
       <description>EVAPORATIVE EMISSION CONTROL SYSTEM PRESSURE SENSOR RANGE/PERFORMANCE. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
       <state name="on" data="01" />
       <state name="off" data="00" />
@@ -6311,7 +6345,7 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
       <state name="on" data="01" />
       <state name="off" data="00" />
     </table>
-    <table type="Switch" name="(P0461) FUEL LEVEL SENSOR RANGE/PERF" category="Diagnostic Trouble Codes" sizey="1">
+    <table type="Switch" name="(P0461) FUEL LEVEL SENSOR RANGE PERF" category="Diagnostic Trouble Codes" sizey="1">
       <description>FUEL LEVEL SENSOR CIRCUIT RANGE/PERFORMANCE. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
       <state name="on" data="01" />
       <state name="off" data="00" />
@@ -6516,7 +6550,7 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
       <state name="off" data="00" />
     </table>
     
-    <table type="Switch" name="(P0638) THROTTLE ACTUATOR RANGE/PERF" category="Diagnostic Trouble Codes" sizey="1">
+    <table type="Switch" name="(P0638) THROTTLE ACTUATOR RANGE PERF" category="Diagnostic Trouble Codes" sizey="1">
       <description>THROTTLE ACTUATOR CONTROL RANGE/PERFORMANCE (BANK 1). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
       <state name="on" data="01" />
       <state name="off" data="00" />
@@ -6551,7 +6585,7 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
       <state name="on" data="01" />
       <state name="off" data="00" />
     </table>
-    <table type="Switch" name="(P0716) TORQUE CONVERTER TURBINE SPEED RANGE/PERF" category="Diagnostic Trouble Codes" sizey="1">
+    <table type="Switch" name="(P0716) TORQUE CONVERTER TURBINE SPEED RANGE PERF" category="Diagnostic Trouble Codes" sizey="1">
       <description>TORQUE CONVERTER TURBINE SPEED SIGNAL CIRCUIT RANGE/PERFORMANCE. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
       <state name="on" data="01" />
       <state name="off" data="00" />
@@ -6561,7 +6595,7 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
       <state name="on" data="01" />
       <state name="off" data="00" />
     </table>
-    <table type="Switch" name="(P0726) ENGINE SPEED INPUT RANGE/PERF" category="Diagnostic Trouble Codes" sizey="1">
+    <table type="Switch" name="(P0726) ENGINE SPEED INPUT RANGE PERF" category="Diagnostic Trouble Codes" sizey="1">
       <description>ENGINE SPEED INPUT CIRCUIT RANGE/PERFORMANCE. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
       <state name="on" data="01" />
       <state name="off" data="00" />
@@ -6643,7 +6677,7 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
       <state name="on" data="01" />
       <state name="off" data="00" />
     </table>
-    <table type="Switch" name="(P0864) TCM COMMUNICATION RANGE/PERF" category="Diagnostic Trouble Codes" sizey="1">
+    <table type="Switch" name="(P0864) TCM COMMUNICATION RANGE PERF" category="Diagnostic Trouble Codes" sizey="1">
       <description>TCM COMMUNICATION CIRCUIT RANGE/PERFORMANCE. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
       <state name="on" data="01" />
       <state name="off" data="00" />
@@ -6745,22 +6779,22 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
       <state name="on" data="01" />
       <state name="off" data="00" />
     </table>
-    <table type="Switch" name="(P1152) FRONT O2 SENSOR RANGE/PERF LOW B1 S1" category="Diagnostic Trouble Codes" sizey="1">
+    <table type="Switch" name="(P1152) FRONT O2 SENSOR RANGE PERF LOW B1 S1" category="Diagnostic Trouble Codes" sizey="1">
       <description>FRONT O2 SENSOR CIRCUIT RANGE/PERFORMANCE (LOW) (BANK1 SENSOR1). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
       <state name="on" data="01" />
       <state name="off" data="00" />
     </table>
-    <table type="Switch" name="(P1153) FRONT O2 SENSOR RANGE/PERF HIGH B1 S1" category="Diagnostic Trouble Codes" sizey="1">
+    <table type="Switch" name="(P1153) FRONT O2 SENSOR RANGE PERF HIGH B1 S1" category="Diagnostic Trouble Codes" sizey="1">
       <description>FRONT O2 SENSOR CIRCUIT RANGE/PERFORMANCE (HIGH) (BANK1 SENSOR1). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
       <state name="on" data="01" />
       <state name="off" data="00" />
     </table>
-    <table type="Switch" name="(P1154) O2 SENSOR RANGE/PERF LOW B2 S1" category="Diagnostic Trouble Codes" sizey="1">
+    <table type="Switch" name="(P1154) O2 SENSOR RANGE PERF LOW B2 S1" category="Diagnostic Trouble Codes" sizey="1">
       <description>O2 SENSOR CIRCUIT RANGE/PERFORMANCE (LOW) BANK 2 SENSOR 1. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
       <state name="on" data="01" />
       <state name="off" data="00" />
     </table>
-    <table type="Switch" name="(P1155) O2 SENSOR RANGE/PERF HIGH B2 S1" category="Diagnostic Trouble Codes" sizey="1">
+    <table type="Switch" name="(P1155) O2 SENSOR RANGE PERF HIGH B2 S1" category="Diagnostic Trouble Codes" sizey="1">
       <description>O2 SENSOR CIRCUIT RANGE/PERFORMANCE (HIGH) BANK 2 SENSOR 1. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
       <state name="on" data="01" />
       <state name="off" data="00" />
@@ -6867,7 +6901,7 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
       <state name="on" data="01" />
       <state name="off" data="00" />
     </table>
-    <table type="Switch" name="(P1448) FUEL TANK SENSOR CONTROL RANGE/PERF" category="Diagnostic Trouble Codes" sizey="1">
+    <table type="Switch" name="(P1448) FUEL TANK SENSOR CONTROL RANGE PERF" category="Diagnostic Trouble Codes" sizey="1">
       <description>FUEL TANK SENSOR CONTROL VALVE RANGE/PERFORMANCE. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
       <state name="on" data="01" />
       <state name="off" data="00" />
@@ -7119,7 +7153,7 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
       <state name="on" data="01" />
       <state name="off" data="00" />
     </table>
-    <table type="Switch" name="(P2101) THROTTLE ACTUATOR CIRCUIT RANGE/PERF" category="Diagnostic Trouble Codes" sizey="1">
+    <table type="Switch" name="(P2101) THROTTLE ACTUATOR CIRCUIT RANGE PERF" category="Diagnostic Trouble Codes" sizey="1">
       <description>THROTTLE ACTUATOR CONTROL MOTOR CIRCUIT RANGE/PERFORMANCE. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
       <state name="on" data="01" />
       <state name="off" data="00" />
@@ -7193,7 +7227,7 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
       <state name="off" data="00" />
     </table>    
     
-    <table type="Switch" name="(P2227) BARO. PRESSURE CIRCUIT RANGE/PERF" category="Diagnostic Trouble Codes" sizey="1">
+    <table type="Switch" name="(P2227) BARO. PRESSURE CIRCUIT RANGE PERF" category="Diagnostic Trouble Codes" sizey="1">
       <description>BAROMETRIC PRESSURE CIRCUIT RANGE/ PERFORMANCE. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
       <state name="on" data="01" />
       <state name="off" data="00" />
@@ -7235,7 +7269,7 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
       <state name="on" data="01" />
       <state name="off" data="00" />
     </table>
-    <table type="Switch" name="(P2431) SECONDARY AIR PUMP CIRCUIT RANGE/PERF" category="Diagnostic Trouble Codes" sizey="1">
+    <table type="Switch" name="(P2431) SECONDARY AIR PUMP CIRCUIT RANGE PERF" category="Diagnostic Trouble Codes" sizey="1">
       <description>SECONDARY AIR INJECTION SYSTEM AIR FLOW/PRESSURE SENSOR CIRCUIT RANGE/PERFORMANCE BANK 1. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
       <state name="on" data="01" />
       <state name="off" data="00" />
@@ -7313,6 +7347,41 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
     </table>
 <table type="Switch" name="(P9578)" category="Diagnostic Trouble Codes" sizey="1">
       <description>(P9578). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+      <state name="on" data="01" />
+      <state name="off" data="00" />
+    </table>
+    <table type="Switch" name="(U0073) CAN COMMUNICATION BUS A OFF" category="Diagnostic Trouble Codes" sizey="1">
+      <description>CAN COMMUNICATION BUS A OFF. Change to disabled to deactivate. Off-road use only.</description>
+      <state name="on" data="01" />
+      <state name="off" data="00" />
+    </table>
+    <table type="Switch" name="(U0101) CAN LOST COMMUNICATION WITH TCM" category="Diagnostic Trouble Codes" sizey="1">
+      <description>CAN LOST COMMUNICATION WITH TCM. Change to disabled to deactivate. Off-road use only.</description>
+      <state name="on" data="01" />
+      <state name="off" data="00" />
+    </table>
+    <table type="Switch" name="(U0122) CAN LOST COMMUNICATION WITH VDC" category="Diagnostic Trouble Codes" sizey="1">
+      <description>CAN LOST COMMUNICATION WITH VDC. Change to disabled to deactivate. Off-road use only.</description>
+      <state name="on" data="01" />
+      <state name="off" data="00" />
+    </table>
+    <table type="Switch" name="(U0155) LOST COMMUNICATION WITH INSTRUMENT PANEL CLUSTER (IPC) CONTROL MODULE" category="Diagnostic Trouble Codes" sizey="1">
+      <description>LOST COMMUNICATION WITH INSTRUMENT PANEL CLUSTER (IPC) CONTROL MODULE. Change to disabled to deactivate. Off-road use only.</description>
+      <state name="on" data="01" />
+      <state name="off" data="00" />
+    </table>
+    <table type="Switch" name="(U0402) CAN INVALID DATA RECEIVED FROM TCM" category="Diagnostic Trouble Codes" sizey="1">
+      <description>CAN INVALID DATA RECEIVED FROM TCM. Change to disabled to deactivate. Off-road use only.</description>
+      <state name="on" data="01" />
+      <state name="off" data="00" />
+    </table>
+    <table type="Switch" name="(U0416) CAN INVALID DATA RECEIVED FROM VDC" category="Diagnostic Trouble Codes" sizey="1">
+      <description>CAN INVALID DATA RECEIVED FROM VDC. Change to disabled to deactivate. Off-road use only.</description>
+      <state name="on" data="01" />
+      <state name="off" data="00" />
+    </table>
+    <table type="Switch" name="(U0423) INVALID DATA RECEIVED FROM INSTRUMENT PANEL CLUSTER CONTROL MODULE" category="Diagnostic Trouble Codes" sizey="1">
+      <description>INVALID DATA RECEIVED FROM INSTRUMENT PANEL CLUSTER CONTROL MODULE. Change to disabled to deactivate. Off-road use only.</description>
       <state name="on" data="01" />
       <state name="off" data="00" />
     </table>
@@ -7464,16 +7533,16 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
       <description>no description</description>
     </table>
     <table type="2D" name="AFR Sensor Heater Duty Cycle A" category="Alpha - BRZ" storagetype="uint16" endian="big" sizey="4" userlevel="4">
-      <scaling units="Unknown" expression="x*3.05175781e-3" to_byte="x/3.05175781e-3" format="#" fineincrement=".01" coarseincrement=".1" />
-      <table type="Y Axis" name="Axis 0x100520" storagetype="float" endian="big">
-        <scaling units="Unknown" expression="x" to_byte="x" format="#" fineincrement="1" coarseincrement="5" />
+      <scaling units="Duty Cycle (%)" expression="x*3.05175781e-3" to_byte="x/3.05175781e-3" format="#" fineincrement=".01" coarseincrement=".1" />
+      <table type="Y Axis" name="Resistance" storagetype="float" endian="big">
+        <scaling units="Ohms" expression="x" to_byte="x" format="#" fineincrement="1" coarseincrement="5" />
       </table>
       <description>no description</description>
     </table>
     <table type="2D" name="AFR Sensor Heater Duty Cycle B" category="Alpha - BRZ" storagetype="uint16" endian="big" sizey="4" userlevel="4">
-      <scaling units="Unknown" expression="x*3.05175781e-3" to_byte="x/3.05175781e-3" format="#" fineincrement=".01" coarseincrement=".1" />
-      <table type="Y Axis" name="Axis 0x100538" storagetype="float" endian="big">
-        <scaling units="Unknown" expression="x" to_byte="x" format="#" fineincrement="1" coarseincrement="5" />
+      <scaling units="Duty Cycle (%)" expression="x*3.05175781e-3" to_byte="x/3.05175781e-3" format="#" fineincrement=".01" coarseincrement=".1" />
+      <table type="Y Axis" name="Resistance" storagetype="float" endian="big">
+        <scaling units="Ohms" expression="x" to_byte="x" format="#" fineincrement="1" coarseincrement="5" />
       </table>
       <description>no description</description>
     </table>
@@ -7596,19 +7665,19 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
       </table>
       <description>no description</description>
     </table>
-    <table type="2D" name="Port Injection MRP Compensation" category="Alpha - BRZ" storagetype="float" endian="big" sizey="16" userlevel="4">
+    <table type="2D" name="Port Injection MRP Compensation" category="Fueling - Injectors" storagetype="float" endian="big" sizey="16" userlevel="4">
       <scaling units="Ratio" expression="x" to_byte="x" format="0.000" fineincrement=".01" coarseincrement=".1" />
-      <table type="Y Axis" name="Manifold Pressure" storagetype="float" endian="little" logparam="E52">
-        <scaling units="psi relative sea level" expression="(x-760)*.01933677" to_byte="(x/.01933677)+760" format="#0.00" fineincrement=".01" coarseincrement=".5" />
+      <table type="Y Axis" name="Manifold Relative Pressure" storagetype="float" endian="little" logparam="E52">
+        <scaling units="psi relative sea level" expression="x*.01933677" to_byte="x/.01933677" format="#0.00" fineincrement=".01" coarseincrement=".5" />
       </table>
-      <description>no description</description>
+      <description>Port injection compensation ratio against manifold relative pressure</description>
     </table>
     <table type="2D" name="Direct Injection Quantity Maximum" category="Alpha - BRZ" storagetype="float" endian="big" sizey="12" userlevel="4">
-      <scaling units="Unknown" expression="x" to_byte="x" format="#" fineincrement=".01" coarseincrement=".1" />
+      <scaling units="Injection Volume (ml)" expression="x/100" to_byte="x*100" format="0.000" fineincrement=".01" coarseincrement=".1" />
       <table type="Y Axis" name="Engine Speed" storagetype="float" endian="big">
         <scaling units="RPM" expression="x" to_byte="x" format="#" fineincrement="10" coarseincrement="100" />
       </table>
-      <description>no description</description>
+      <description>Maximum direct injection volume (ml). If the maximum direct injection volume is hit you need to either increase this value or increase the ratio for the Total Injection Ratio Port maps. If you do not the ecu will simply stop injecting more fuel as it has reached the maxiumum allowance.</description>
     </table>
     <table type="2D" name="Direct Injection Quantity Minimum" category="Alpha - BRZ" storagetype="float" endian="big" sizey="6" userlevel="4">
       <scaling units="Unknown" expression="x" to_byte="x" format="#" fineincrement=".01" coarseincrement=".1" />
@@ -8377,8 +8446,7 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
       </table>
       <description>Determines how long the minimum enrichment limit is enabled.</description>
     </table> 
- 
-       <table type="2D" name="Hotstart Minimum Enrichment (During Delay and Runtime)" category="ALPHA Hotstart" storagetype="float" endian="big" sizey="1" userlevel="4">
+        <table type="2D" name="Hotstart Minimum Enrichment (During Delay and Runtime)" category="ALPHA Hotstart" storagetype="float" endian="big" sizey="1" userlevel="4">
       <scaling units="Lambda Enrichment (Additive)" expression="x" to_byte="x" format="0.000" fineincrement=".1" coarseincrement=".5" />
       <table type="Static Y Axis" name="" sizey="1">
         <data>Hotstart Enrichment</data>
@@ -8402,6 +8470,34 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
       <table type="Y Axis" name="Idle Mode" storagetype="float" >
         <scaling units="Mode Counter" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="5" />
       </table>
+    </table>
+ 
+      <table type="2D" name="AF 3 CL Target Compensation Limits" category="ALPHA AF 3 (Rear O2 Sensor)" storagetype="float" endian="little" sizey="2" userlevel="2">
+      <scaling units="Lambda" expression="x" to_byte="x" format="0.00" fineincrement=".01" coarseincrement="1" />
+      <table type="Static Y Axis" name="Limits" sizey="2">
+        <data>High</data>
+        <data>Low</data>        
+      </table>
+      <description>Change in target boost in 1st gear at vehicle speeds below the 'Target Boost Compensation (1st Gear) Speed Disable' value.</description>
+    </table>
+
+
+      <table type="2D" name="AF 3 Correction Limits" category="ALPHA AF 3 (Rear O2 Sensor)" storagetype="float" endian="little" sizey="2" userlevel="2">
+      <scaling units="%" expression="x*100" to_byte="x/100" format="0.00" fineincrement=".01" coarseincrement="1" />
+      <table type="Static Y Axis" name="Limits" sizey="2">
+        <data>High</data>
+        <data>Low</data>        
+      </table>
+      <description>These limits determine the maximum AF #3 Correction (Rear O2 Sensor Feedback) applied during closed loop fueling. By setting them to zero you can disable the effect of the rear O2 sensor on closed loop fueling.</description>
+    </table>
+
+      <table type="2D" name="AF 3 Learning Limits" category="ALPHA AF 3 (Rear O2 Sensor)" storagetype="float" endian="little" sizey="2" userlevel="2">
+      <scaling units="%" expression="x*100" to_byte="x/100" format="0.00" fineincrement=".01" coarseincrement="1" />
+      <table type="Static Y Axis" name="Limits" sizey="2">
+        <data>High</data>
+        <data>Low</data>        
+      </table>
+      <description>These limits determine the maximum AF #3 Correction (Rear O2 Sensor Feedback) applied during closed loop fueling. By setting them to zero you can disable the effect of the rear O2 sensor on closed loop fueling.</description>
     </table>
   </rom>
 </roms>

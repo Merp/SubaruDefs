@@ -1,9 +1,9 @@
 <rom>
 	<romid>
-		<xmlid>EP5F300T</xmlid>
+		<xmlid>EP5F300t</xmlid>
 		<internalidaddress>2004</internalidaddress>
 		<internalidstring>EP5F300t</internalidstring>
-		<ecuid>73243e4007</ecuid>
+		<ecuid>73343e4007</ecuid>
 		<make>Subaru</make>
 		<market>USDM</market>
 		<model>XV</model>
@@ -342,6 +342,14 @@
 	<table name="Engine Load Limit (Maximum)" address="21e2c">
 	</table>
 
+	<table name="Engine Load Limit B Maximum (RPM)" address="c45e0">
+		<table name="Engine Speed" address="c4584" elements="23"/>
+	</table>
+
+	<table name="Engine Load Limit C Maximum (RPM)" address="c466c">
+		<table name="Engine Speed" address="c4610" elements="23"/>
+	</table>
+
 	<table name="Engine Load Compensation A (MP)" address="c5268">
 		<table name="Manifold Pressure" address="c5220" elements="5"/>
 		<table name="Engine Speed" address="c5234" elements="13"/>
@@ -352,12 +360,12 @@
 		<table name="Engine Speed" address="c501c" elements="22"/>
 	</table>
 
-	<table name="Base Timing A" address="d4878">
+	<table name="Base Timing A" address="d4878" scaling="BaseIgnitionTiming(degreesBTDC)1">
 		<table name="Engine Load" address="d47f4" elements="14"/>
 		<table name="Engine Speed" address="d482c" elements="19"/>
 	</table>
 
-	<table name="Base Timing B" address="d4a08">
+	<table name="Base Timing B" address="d4a08" scaling="BaseIgnitionTiming(degreesBTDC)1">
 		<table name="Engine Load" address="d4984" elements="14"/>
 		<table name="Engine Speed" address="d49bc" elements="19"/>
 	</table>
@@ -459,6 +467,13 @@
 	<table name="Timing Comp Minimum Coolant Temp (Per Cylinder)" address="d2dc4">
 	</table>
 
+	<table name="Timing Compensation Overrun RPM Delta" address="d2bf4">
+	</table>
+
+	<table name="Timing Overrun" address="d3587">
+		<table name="Coolant Temp" address="d2ec0"/>
+	</table>
+
 	<table name="Feedback Correction Range (RPM)" address="d2dcc">
 	</table>
 
@@ -486,7 +501,7 @@
 	<table name="Fine Correction Range (Load)" address="d2eb0">
 	</table>
 
-	<table name="Fine Correction Rows (RPM)_" address="ccbd0">
+	<table name="Fine Correction Rows (RPM)_" address="d2e48">
 	</table>
 
 	<table name="Fine Correction Columns (Load)_" address="d2e68">
@@ -657,6 +672,8 @@
 
 	<table name="Force Pass Readiness Monitors" address="89a80" level="4"/>
 
+	<table name="(P013A) O2 SENSOR SLOW RESPONSE RICH TO LEAN B1 S2" address="7a1f0"/>
+
 	<table name="(P0000) PASS CODE (NO DTC DETECTED)" address="7a153"/>
 
 	<table name="(P0011) CAMSHAFT POS. - TIMING OVER-ADVANCED 1" address="7a135"/>
@@ -706,8 +723,6 @@
 	<table name="(P0133) FRONT O2 SENSOR SLOW RESPONSE" address="7a13f"/>
 
 	<table name="(P0134) FRONT O2 SENSOR NO ACTIVITY" address="7a174"/>
-
-	<table name="(P013A) O2 SENSOR SLOW RESPONSE RICH TO LEAN B1 S2" address="7a1f0"/>
 
 	<table name="(P0140) REAR O2 SENSOR NO ACTIVITY" address="7a1b6"/>
 
@@ -822,5 +837,26 @@
 	<table name="(U0402) CAN INVALID DATA RECEIVED FROM TCM" address="7a1ca"/>
 
 	<table name="(U0416) CAN INVALID DATA RECEIVED FROM VDC" address="7a1cc"/>
+
+	<table name="Requested Torque Limit A (Per Gear/Engine Speed)" address="fa950">
+		<table name="Engine Speed" address="fa940" elements="2"/>
+		<table name="Gear" address="fa948" elements="2"/>
+	</table>
+
+	<table name="Requested Torque Limit B (Per Gear/Engine Speed)" address="fa968">
+		<table name="Engine Speed" address="fa958" elements="2"/>
+		<table name="Gear" address="fa960" elements="2"/>
+	</table>
+
+	<table name="Requested Torque Limit (IAM)" address="fa938">
+		<table name="IAM" address="fa928"/>
+		<table name="Engine Speed" address="fa930"/>
+	</table>
+
+	<table name="AF 3 CL Target Compensation Limits" address="325f4">
+	</table>
+
+	<table name="AF 3 Correction Limits" address="33d64">
+	</table>
 
 </rom>

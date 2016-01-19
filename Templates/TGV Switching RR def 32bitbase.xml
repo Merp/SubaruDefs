@@ -1,0 +1,134 @@
+<-- Into Rom Section -->
+
+    <table name="TGV Switching Requested_Torque (High / Open Above) SSharp" storageaddress="" >
+   <table type="Y Axis" storageaddress="" />
+  </table>
+    <table name="TGV Switching Requested_Torque (Low / Close Below) SSharp" storageaddress="" >
+   <table type="Y Axis" storageaddress="" />
+  </table>  
+    <table name="TGV Switching Requested_Torque (High / Open Above) S" storageaddress="" >
+   <table type="Y Axis" storageaddress="" />
+  </table>
+    <table name="TGV Switching Requested_Torque (Low / Close Below) S" storageaddress="" >
+   <table type="Y Axis" storageaddress="" />
+  </table>    
+    <table name="TGV Switching Requested_Torque (High / Open Above) I" storageaddress="" >
+   <table type="Y Axis" storageaddress="" />
+  </table>
+    <table name="TGV Switching Requested_Torque (Low / Close Below) I" storageaddress="" >
+   <table type="Y Axis" storageaddress="" />
+  </table> 
+    <table name="TGV Switching Intake Temperature Threshold (Open Below)" storageaddress="" >
+   <table type="Y Axis" storageaddress="" />
+  </table>   
+  <table name="TGV Switching Coolant Temperature Threshold (Open Below)" storageaddress="" />  
+  <table name="TGV Switching Airflow Thresholds (Close Below) / Open Above" storageaddress="" />  
+  <table name="TGV Switching Map Ramping Adder (Close to Open)" storageaddress="" />    
+  <table name="TGV Switching Map Ramping Adder (Open to Close)" storageaddress="" />    
+  <table name="TGV Switching Delay (Open to Close)" storageaddress="" />    
+  <table name="TGV Switching Delay (Open to Close)(Secondary Conditions)" storageaddress="" /> 
+
+
+<-- Into 32BITBASE section -->
+
+  <table type="2D" name="TGV Switching Requested_Torque (High / Open Above) SSharp" category="Alpha - TGV Switching" storagetype="uint16" endian="big" sizey="16" >
+   <scaling units="" expression="x*0.00625" to_byte="x/0.00625" format="0.0" fineincrement="0.01" coarseincrement="0.1" />
+      <table type="Y Axis" name="Engine Speed" storagetype="float" endian="little" logparam="P8">
+        <scaling units="RPM" expression="x" to_byte="x" format="#" fineincrement="50" coarseincrement="100" />
+      </table>
+   <description>In Sport # SI-DRIVE mode, when requested torque is greater than or equal to this value (and also the Low value), the TGVs will potentially open. If this threshold is not met, the TGVs can still open if one of the other table threshold requirements is met.
+   </description>
+  </table>
+  <table type="2D" name="TGV Switching Requested_Torque (Low / Close Below) SSharp" category="Alpha - TGV Switching" storagetype="uint16" endian="big" sizey="16" >
+   <scaling units="" expression="x*0.00625" to_byte="x/0.00625" format="0.0" fineincrement="0.01" coarseincrement="0.1" />
+      <table type="Y Axis" name="Engine Speed" storagetype="float" endian="little" logparam="P8">
+        <scaling units="RPM" expression="x" to_byte="x" format="#" fineincrement="50" coarseincrement="100" />
+      </table>
+   <description>In Sport # SI-DRIVE mode, when requested torque is less than this value, the TGVs will potentially close (if no other TGV open conditions are met over a continuous delay period).
+   </description>
+  </table>
+  <table type="2D" name="TGV Switching Requested_Torque (High / Open Above) S" category="Alpha - TGV Switching" storagetype="uint16" endian="big" sizey="16" >
+   <scaling units="" expression="x*0.00625" to_byte="x/0.00625" format="0.0" fineincrement="0.01" coarseincrement="0.1" />
+      <table type="Y Axis" name="Engine Speed" storagetype="float" endian="little" logparam="P8">
+        <scaling units="RPM" expression="x" to_byte="x" format="#" fineincrement="50" coarseincrement="100" />
+      </table>
+   <description>In Sport SI-DRIVE mode, when requested torque is greater than or equal to this value (and also the Low value), the TGVs will potentially open. If this threshold is not met, the TGVs can still open if one of the other table threshold requirements is met.
+   </description>
+  </table>
+  <table type="2D" name="TGV Switching Requested_Torque (Low / Close Below) S" category="Alpha - TGV Switching" storagetype="uint16" endian="big" sizey="16" >
+   <scaling units="" expression="x*0.00625" to_byte="x/0.00625" format="0.0" fineincrement="0.01" coarseincrement="0.1" />
+      <table type="Y Axis" name="Engine Speed" storagetype="float" endian="little" logparam="P8">
+        <scaling units="RPM" expression="x" to_byte="x" format="#" fineincrement="50" coarseincrement="100" />
+      </table>
+   <description>In Sport SI-DRIVE mode, when requested torque is less than this value, the TGVs will potentially close (if no other TGV open conditions are met over a continuous delay period).
+   </description>
+  </table>
+  <table type="2D" name="TGV Switching Requested_Torque (High / Open Above) I" category="Alpha - TGV Switching" storagetype="uint16" endian="big" sizey="16" >
+   <scaling units="" expression="x*0.00625" to_byte="x/0.00625" format="0.0" fineincrement="0.01" coarseincrement="0.1" />
+      <table type="Y Axis" name="Engine Speed" storagetype="float" endian="little" logparam="P8">
+        <scaling units="RPM" expression="x" to_byte="x" format="#" fineincrement="50" coarseincrement="100" />
+      </table>
+   <description>In Intelligent SI-DRIVE mode, when requested torque is greater than or equal to this value (and also the Low value), the TGVs will potentially open. If this threshold is not met, the TGVs can still open if one of the other table threshold requirements is met.
+   </description>
+  </table>
+  <table type="2D" name="TGV Switching Requested_Torque (Low / Close Below) I" category="Alpha - TGV Switching" storagetype="uint16" endian="big" sizey="16" >
+   <scaling units="" expression="x*0.00625" to_byte="x/0.00625" format="0.0" fineincrement="0.01" coarseincrement="0.1" />
+      <table type="Y Axis" name="Engine Speed" storagetype="float" endian="little" logparam="P8">
+        <scaling units="RPM" expression="x" to_byte="x" format="#" fineincrement="50" coarseincrement="100" />
+      </table>
+   <description>In Intelligent SI-DRIVE mode, when requested torque is less than this value, the TGVs will potentially close (if no other TGV open conditions are met over a continuous delay period).
+   </description>
+  </table>
+  <table type="2D" name="TGV Switching Intake Temperature Threshold (Open Below)" category="Alpha - TGV Switching" storagetype="uint16" endian="big" sizey="11" >
+   <scaling units="Degrees F" expression="((x*0.00390625-256)*1.8)+32" to_byte="(((x-32)/1.8)+256)/0.00390625" format="#" fineincrement="1" coarseincrement="10" />
+   <table type="Y Axis" name="Vehicle Speed" storagetype="float" >    
+      <scaling units="Vehicle Speed (MPH)" expression="x*.621" to_byte="x/.621" format="#" fineincrement="1" coarseincrement="5" />
+   </table>
+   <description>When intake temp is less than this value, the TGVs will potentially open. If this threshold is not met, the TGVs can still open if one of the other table threshold requirements is met.
+   </description>
+ </table>
+    <table type="2D" name="TGV Switching Coolant Temperature Threshold (Open Below)" category="Alpha - TGV Switching" storagetype="float" endian="big" sizey="1" userlevel="4">
+        <scaling units="Degrees F" expression="(x*1.8)+32" to_byte="(x-32)/1.8" format="#" fineincrement="1" coarseincrement="5" />
+      <table type="Static Y Axis" name="Coolant Temperature" sizey="1">
+        <data>Transition Threshold</data>
+      </table>
+      <description>When coolant temp is less than this value, the TGVs will potentially open. If this threshold is not met, the TGVs can still open if one of the other table threshold requirements is met.</description>
+    </table>
+    <table type="2D" name="TGV Switching Airflow Thresholds (Close Below) / Open Above" category="Alpha - TGV Switching" storagetype="float" endian="big" sizey="2" userlevel="4">
+      <scaling units="Mass Airflow (g/s)" expression="x" to_byte="x" format="0.00" fineincrement=".1" coarseincrement="1" />
+      <table type="Static Y Axis" name="Mass Airflow" sizey="2">
+        <data>Close Below</data>
+        <data>Open Above</data>
+      </table>
+      <description>When airflow is greater than or equal to the second value, the TGVs will potentially open. If this threshold is not met, the TGVs can still open if one of the other table threshold requirements is met. When airflow is less than the first value, the TGVs will potentially close (if no other TGV open conditions are met over a continuous delay period).</description>
+    </table>
+    <table type="2D" name="TGV Switching Map Ramping Adder (Close to Open)" category="Alpha - TGV Switching" storagetype="float" endian="big" sizey="1" userlevel="4">
+        <scaling units="Map Ramping Multiplier (Adder)" expression="x" to_byte="x" format="0.000" fineincrement=".01" coarseincrement=".1" />
+      <table type="Static Y Axis" name="Map Ramping Multiplier (Adder)" sizey="1">
+        <data>Adder</data>
+      </table>
+      <description>This value is an adder that is applied to a multiplier when closed TGVs are called for. The multiplier is limited to a min of 0 and max of 1, and determines whether a given TGVs closed or TGVs open map (or a blending of each) is used. This multiplier is applied as follows: final result = (TGVs open map * multiplier) + (TGVs closed map * (1.0 - multiplier). Increasing this adder, will result in quicker ramping to the TGVs closed maps, when the closed TGVs are called for.</description>
+    </table>
+    <table type="2D" name="TGV Switching Map Ramping Adder (Open to Close)" category="Alpha - TGV Switching" storagetype="float" endian="big" sizey="1" userlevel="4">
+        <scaling units="Map Ramping Multiplier (Adder)" expression="x" to_byte="x" format="0.000" fineincrement=".01" coarseincrement=".1" />
+      <table type="Static Y Axis" name="Map Ramping Multiplier (Adder)" sizey="1">
+        <data>Adder</data>
+      </table>
+      <description>This value is an adder that is applied to a multiplier when closed TGVs are called for. The multiplier is limited to a min of 0 and max of 1, and determines whether a given TGVs closed or TGVs open map (or a blending of each) is used. This multiplier is applied as follows: final result = (TGVs open map * multiplier) + (TGVs closed map * (1.0 - multiplier). Decreasing this adder, will result in quicker ramping to the TGVs closed maps, when the closed TGVs are called for.</description>
+    </table>
+    <table type="2D" name="TGV Switching Delay (Open to Close)" category="Alpha - TGV Switching" storagetype="uint16" endian="big" sizey="1" userlevel="4">
+        <scaling units="Counter" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="10" />
+      <table type="Static Y Axis" name="Counter Threshold" sizey="1">
+        <data>Counter Threshold</data>
+      </table>
+      <description>This is a counter threshold representing a delay over which if all of the TGV open thresholds are continuously NOT met (with values below the Low value where applicable), this will potentially trigger a change from an open to closed state.</description>
+    </table>
+    <table type="2D" name="TGV Switching Delay (Open to Close)(Secondary Conditions)" category="Alpha - TGV Switching" storagetype="uint16" endian="big" sizey="1" userlevel="4">
+        <scaling units="Counter" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="10" />
+      <table type="Static Y Axis" name="Counter Threshold" sizey="1">
+        <data>Counter Threshold</data>
+      </table>
+      <description>This is a secondary delay over which additional conditions must be satisfied continuously over the delay period after the primary delay is satisfied (and continues to be satisfied). If both delay periods are met, the switch from an open to closed state will potentially occur.</description>
+    </table> 
+  </rom>
+</roms>

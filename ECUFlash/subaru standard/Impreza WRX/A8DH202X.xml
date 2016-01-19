@@ -1,18 +1,72 @@
 <rom>
-  <romid>
-    <xmlid>A8DH202X</xmlid>
-    <internalidaddress>2000</internalidaddress>
-    <internalidstring>A8DH202X</internalidstring>
-    <ecuid>4312584206</ecuid>
-    <year>06</year>
-    <market>USDM</market>
-    <make>Subaru</make>
-    <model>Impreza</model>
-    <submodel>WRX</submodel>
-    <transmission>MT</transmission>
-    <memmodel>SH7058</memmodel>
-    <flashmethod>sti05</flashmethod>
-    <checksummodule>subarudbw</checksummodule>
-  </romid>
-  <include>A8DH200X</include>
+	<romid>
+		<xmlid>A8DH202X</xmlid>
+		<internalidaddress>2000</internalidaddress>
+		<internalidstring>A8DH202X</internalidstring>
+		<ecuid>4312584206</ecuid>
+		<make>Subaru</make>
+		<market>USDM</market>
+		<model>Impreza</model>
+		<submodel>WRX</submodel>
+		<transmission>MT</transmission>
+		<year>06</year>
+		<flashmethod>sti05</flashmethod>
+		<memmodel>SH7058</memmodel>
+		<checksummodule>subarudbw</checksummodule>
+	</romid>
+
+	<include>A8DH200X</include>
+
+	<table name="Knock Sensor Calibration" address="cf000">
+		<table name="Volts" address="cef18" elements="58"/>
+	</table>
+
+	<table name="Knock Threshold Filter Final Limit Minimum" address="cf110">
+		<table name="Volts" address="cf0e8"/>
+	</table>
+
+	<table name="Knock Threshold Filter Final Limit Maximum Cylinder 1" address="cf160">
+		<table name="Volts" address="cf138"/>
+	</table>
+
+	<table name="Knock Threshold Filter Final Limit Maximum Cylinder 2" address="cf1b0">
+		<table name="Volts" address="cf188"/>
+	</table>
+
+	<table name="Knock Threshold Filter Final Limit Maximum Cylinder 3" address="cf200">
+		<table name="Volts" address="cf1d8"/>
+	</table>
+
+	<table name="Knock Threshold Filter Final Limit Maximum Cylinder 4" address="cf250">
+		<table name="Volts" address="cf228"/>
+	</table>
+
+	<table name="Knock Threshold Filter Background Noise interval Weighting Factor Low RPM Delta" address="ceaf4">
+		<table name="Engine Speed" address="cead8"/>
+	</table>
+
+	<table name="Background Noise Delta Smoothing Weighting Factor RPM Delta Threshold Immediate" address="ce980"/>
+
+	<table name="Background Noise Delta Smoothing Weighting Factor RPM Delta Threshold Short" address="ce984"/>
+
+	<table name="Background Noise Base Smoothing Factor High Rpm Delta" address="ce988"/>
+
+	<table name="Background Noise Base Smoothing Factor Low Rpm Delta" address="ce990"/>
+
+	<table name="Background Noise Delta Weighting Factor High RPM Delta" address="ce994"/>
+
+	<table name="Background Noise Delta Weighting Factor Low RPM Delta" address="ce98c"/>
+
+	<table name="Knock Threshhold Filter Background Noise Interval Weighting Factor RPM Delta Short" address="ce998"/>
+
+	<table name="Knock Threshhold Filter Background Noise Interval Weighting Factor High RPM Delta Limit Maximum" address="ce99c"/>
+
+	<table name="Knock Threshhold Filter Background Noise Interval Weighting Factor High RPM Delta RPM Delta Ratio" address="ce9a0"/>
+
+	<table name="Knock threshhold Filter Final Limit Maximum Modify Pre Final Limit" address="ce9a4"/>
+
+	<table name="Knock Threshhold Level Final Limit Minimum" address="ce9a8"/>
+
+	<table name="Knock Threshhold Level Final Limit Maximum" address="ce9ac"/>
+
 </rom>
