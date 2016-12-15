@@ -304,6 +304,7 @@
 	<scaling name="tip-inenrichmentappliedcounter" units="tip-in enrichment applied counter" toexpr="x" frexpr="x" format="%.0f" min="0" max="30" inc="1" storagetype="uint8" endian="big"/>
 	<scaling name="tip-inlastappliedcounterperiod" units="tip-in last applied counter period" toexpr="x" frexpr="x" format="%.0f" min="0" max="70" inc="1" storagetype="uint8" endian="big"/>
 	<scaling name="volts" units="volts" toexpr="x" frexpr="x" format="%.2f" min="0.2" max="16.5" inc="0.01" storagetype="float" endian="big"/>
+	<scaling name="wastegate_solenoid" units="Hz" toexpr="250000/x" frexpr="250000/x" format="%.2f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
 
 	<table name="ECU Identifier" category="MerpMod ROM Settings" type="2D" level="4" scaling="ECUID2">
 		<table type="Static X Axis" elements="5">
@@ -8772,5 +8773,7 @@
 	<table name="Evap Related Fuel Adder Compensation" category="ALPHA - Fueling" type="1D" level="1" scaling="Evap_Multiplier">
 		<description>This is the compensation to the evap-related fuel adder. This table's multiplier is applied to the evap fuel adder which is then applied to commanded fueling final. A value of 1.00 in this table retains the factory evap fuel correction. A value of 0 in this table eliminates the correction entirely.</description>
 	</table>
+
+	<table name="Wastegate Solenoid Pulse Frequency" category="Alpha - Wastegate" type="1D" level="1" scaling="wastegate_solenoid"/>
 
 </rom>
