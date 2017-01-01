@@ -11,6 +11,7 @@
 	<scaling name="'NoKnock'DelayPeriodforNegativeFeedbackCorrectionAdvance(counterthreshold)1" units="'No Knock' Delay Period for Negative Feedback Correction Advance (counter threshold)" toexpr="x" frexpr="x" format="%.0f" min="0" max="9999" inc="1" storagetype="uint8" endian="big"/>
 	<scaling name="'PrimaryOpenLoopFueling'EnrichmentOffsetCompensation(%)" units="'Primary Open Loop Fueling' Enrichment Offset Compensation (%)" toexpr="(x*.003051758)-100" frexpr="(x+100)/.003051758" format="%.2f" min="-100" max="0" inc="0.1" storagetype="uint16" endian="big"/>
 	<scaling name="'PrimaryOpenLoopFueling'RawEnrichmentOffsetAdditive" units="'Primary Open Loop Fueling' Raw Enrichment Offset Additive" toexpr="x*.0078125" frexpr="x/.0078125" format="%.2f" min="0" max="0.25" inc="0.01" storagetype="uint8" endian="big"/>
+	<scaling name="0=FAN1OFFFAN2OFF|1=FAN1OFFFAN2ON|2=FAN1ONFAN2OFF|3=FAN1ONFAN2ON" units="0 = FAN1 OFF FAN2 OFF | 1 = FAN1 OFF FAN2 ON | 2 = FAN1 ON FAN2 OFF | 3 = FAN1 ON FAN2 ON" toexpr="x" frexpr="x" format="%.0f" min="0" max="255" inc="1" storagetype="uint8" endian="big"/>
 	<scaling name="A/FLearning#1Limits(%)" units="A/F Learning #1 Limits (%)" toexpr="x*100" frexpr="x/100" format="%.2f" min="-30" max="30" inc="0.1" storagetype="float" endian="big"/>
 	<scaling name="A/FLearning#1and#2Limits(%)" units="A/F Learning #1 and #2 Limits (%)" toexpr="x*100" frexpr="x/100" format="%.2f" min="-20" max="20" inc="0.1" storagetype="float" endian="big"/>
 	<scaling name="A/FLearning#1and#2Max(%)" units="A/F Learning #1 and #2 Max (%)" toexpr="(x*.001525879)-50" frexpr="(x+50)/.001525879" format="%.2f" min="0" max="20" inc="0.1" storagetype="uint16" endian="big"/>
@@ -4556,6 +4557,36 @@
 		<table name="APS Voltage to Atmospheric Pressure" type="Static Y Axis" elements="2">
 			<data>Offset (psi)</data>
 			<data>Multiplier (psi/v)</data>
+		</table>
+	</table>
+
+	<table name="Radiator Fan Switching Determination (Modes)" category="Miscellaneous - Thresholds" type="2D" level="1" scaling="0=FAN1OFFFAN2OFF|1=FAN1OFFFAN2ON|2=FAN1ONFAN2OFF|3=FAN1ONFAN2ON">
+<description>Based on the modes as determined by the 'Radiator Fan Modes' coolant temp and vehicle speed tables and whether the A/C is on or off, this table determines which radiator fans will be active for each combination of modes.</description>
+		<table name="Vehicle Speed Mode/Coolant Temp Mode/Air Conditioning" type="Static Y Axis" elements="24">
+			<data>0/0/OFF</data>
+			<data>0/1/OFF</data>
+			<data>0/2/OFF</data>
+			<data>0/0/ON</data>
+			<data>0/1/ON</data>
+			<data>0/2/ON</data>
+			<data>1/0/OFF</data>
+			<data>1/1/OFF</data>
+			<data>1/2/OFF</data>
+			<data>1/0/ON</data>
+			<data>1/1/ON</data>
+			<data>1/2/ON</data>
+			<data>2/0/OFF</data>
+			<data>2/1/OFF</data>
+			<data>2/2/OFF</data>
+			<data>2/0/ON</data>
+			<data>2/1/ON</data>
+			<data>2/2/ON</data>
+			<data>3/0/OFF</data>
+			<data>3/1/OFF</data>
+			<data>3/2/OFF</data>
+			<data>3/0/ON</data>
+			<data>3/1/ON</data>
+			<data>3/2/ON</data>
 		</table>
 	</table>
 
