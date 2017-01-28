@@ -648,8 +648,11 @@
 	<table name="(P0133) FRONT O2 SENSOR SLOW RESPONSE" address="2dfe9"/>
 
 	<table name="(P0134) FRONT O2 SENSOR NO ACTIVITY"/>
-
-	<table name="(P0136) REAR O2 SENSOR CIRCUIT MALFUNCTION" address="2dff5"/>
+  <scaling name="(P0136)REARO2SENSORLOWVOLTAGE " storagetype="bloblist">
+    <data name="enabled" value="040136" />
+    <data name="disabled" value="050000" />
+  </scaling>
+	<table name="(P0136) REAR O2 SENSOR CIRCUIT MALFUNCTION" address="2dff5" scaling="(P0136)REARO2SENSORLOWVOLTAGE " />
 
 	<table name="(P0137) REAR O2 SENSOR LOW VOLTAGE" address="2c979"/>
 
