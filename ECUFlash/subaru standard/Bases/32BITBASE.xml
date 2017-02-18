@@ -152,6 +152,7 @@
 	<scaling name="Lambda Additive" units="Air/Fuel Ratio Additive(Lambda)" toexpr="(x*0.00078125)-1" frexpr="(x+1)/0.00078125" format="%.4f" min="0" max="255" inc="0.06" storagetype="uint8" endian="big"/>
 	<scaling name="Latency(ms)" units="Latency (ms)" toexpr="x*.00025" frexpr="x/.00025" format="%.2f" min="0.3" max="6" inc="0.01" storagetype="uint16" endian="big"/>
 	<scaling name="LoadFilter" units="Smoothing Factor (%)" toexpr="(x*(-100))+100" frexpr="(x-100)/(-100)" format="%.1f" min="0" max="100" inc="5" storagetype="float" endian="big"/>
+	<scaling name="InjectorLowIPW" units="%" toexpr="x*0.00390625+.5" frexpr="(x-.5)/0.00390625" format="%.1f" min="0" max="255" inc="1" storagetype="uint8" endian="big"/>
 	<scaling name="ManifoldPressure(psirelativesealevel)" units="Manifold Pressure (psi relative sea level)" toexpr="(x-760)*.01933677" frexpr="(x/.01933677)+760" format="%.2f" min="4.64" max="23.98" inc="0.01" storagetype="float" endian="big"/>
 	<scaling name="MapRatio" units="ratio" toexpr="x+1" frexpr="x-1" format="%.4f" min="0" max="4" inc="0.1" storagetype="float" endian="big"/>
 	<scaling name="MassAirflow Voltage" units="Volts" toexpr="x" frexpr="x" format="%.2f" min="0" max="105" inc="0.1" storagetype="float" endian="big"/>
@@ -8411,6 +8412,11 @@
 	<table name="Idle Rolling in Gear Limit D" category="ALPHA Idle Control" type="1D" level="1" scaling="RPM"/>
 
 	<table name="Low Pulse Width Fuel Injector Compensation" category="ALPHA Low PW Injector Comp" type="2D" level="1" scaling="InjectorPulseWidthCompensation">
+		<description>This compensation is applied to the injector pulsewidth when the RPM and IPW thresholds are met. It is used to compensate for nonlinear injector response at low pulsewidth. This portion of the response is known as the 'knee'</description>
+		<table name="Injector Pulse Width" type="Y Axis" elements="8" scaling="BasePulseWidth(ms)"/>
+	</table>
+	
+	<table name="Low Pulse Width Fuel Injector Compensation " category="ALPHA Low PW Injector Comp" type="2D" level="1" scaling="InjectorLowIPW">
 		<description>This compensation is applied to the injector pulsewidth when the RPM and IPW thresholds are met. It is used to compensate for nonlinear injector response at low pulsewidth. This portion of the response is known as the 'knee'</description>
 		<table name="Injector Pulse Width" type="Y Axis" elements="8" scaling="BasePulseWidth(ms)"/>
 	</table>
