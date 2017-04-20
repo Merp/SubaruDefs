@@ -11,6 +11,7 @@
 	<scaling name="'NoKnock'DelayPeriodforNegativeFeedbackCorrectionAdvance(counterthreshold)1" units="'No Knock' Delay Period for Negative Feedback Correction Advance (counter threshold)" toexpr="x" frexpr="x" format="%.0f" min="0" max="9999" inc="1" storagetype="uint8" endian="big"/>
 	<scaling name="'PrimaryOpenLoopFueling'EnrichmentOffsetCompensation(%)" units="'Primary Open Loop Fueling' Enrichment Offset Compensation (%)" toexpr="(x*.003051758)-100" frexpr="(x+100)/.003051758" format="%.2f" min="-100" max="0" inc="0.1" storagetype="uint16" endian="big"/>
 	<scaling name="'PrimaryOpenLoopFueling'RawEnrichmentOffsetAdditive" units="'Primary Open Loop Fueling' Raw Enrichment Offset Additive" toexpr="x*.0078125" frexpr="x/.0078125" format="%.2f" min="0" max="0.25" inc="0.01" storagetype="uint8" endian="big"/>
+	<scaling name="0=FAN1OFFFAN2OFF|1=FAN1OFFFAN2ON|2=FAN1ONFAN2OFF|3=FAN1ONFAN2ON" units="0 = FAN1 OFF FAN2 OFF | 1 = FAN1 OFF FAN2 ON | 2 = FAN1 ON FAN2 OFF | 3 = FAN1 ON FAN2 ON" toexpr="x" frexpr="x" format="%.0f" min="0" max="255" inc="1" storagetype="uint8" endian="big"/>
 	<scaling name="A/FLearning#1Limits(%)" units="A/F Learning #1 Limits (%)" toexpr="x*100" frexpr="x/100" format="%.2f" min="-30" max="30" inc="0.1" storagetype="float" endian="big"/>
 	<scaling name="A/FLearning#1and#2Limits(%)" units="A/F Learning #1 and #2 Limits (%)" toexpr="x*100" frexpr="x/100" format="%.2f" min="-20" max="20" inc="0.1" storagetype="float" endian="big"/>
 	<scaling name="A/FLearning#1and#2Max(%)" units="A/F Learning #1 and #2 Max (%)" toexpr="(x*.001525879)-50" frexpr="(x+50)/.001525879" format="%.2f" min="0" max="20" inc="0.1" storagetype="uint16" endian="big"/>
@@ -123,6 +124,9 @@
 	<scaling name="InjectorPulseWidth(ms)" units="Injector Pulse Width (ms)" toexpr="x*.008" frexpr="x/.008" format="%.2f" min="0.01" max="250" inc="0.01" storagetype="uint16" endian="big"/>
 	<scaling name="InjectorPulseWidthCompensation" units="Injector Pulse Width Compensation" toexpr="(x*.78125)-100" frexpr="(x+100)/.78125" format="%.2f" min="-10.16" max="14.84" inc="0.01" storagetype="uint8" endian="big"/>
 	<scaling name="Injector_Flow_BRZ" units="ESTIMATED Flow Rate" toexpr="x" frexpr="x" format="%.2f" min="0" max="255" inc="0.06" storagetype="float" endian="big"/>
+	<scaling name="Injector_Timing1" units="Fuel Injection End Crank Angle (Degrees)" toexpr="(x*1.40625)-1.8e2" frexpr="(x+1.8e2)/1.40625" format="%.2f" min="0" max="255" inc="1" storagetype="uint8" endian="big"/>
+	<scaling name="Injector_Timing2" units="Fuel Injection End Crank Angle (Degrees)" toexpr="x*1.40625 +180" frexpr="(x-180)/1.40625" format="%.2f" min="-720" max="720" inc="0.1" storagetype="uint8" endian="big"/>
+	<scaling name="Injector_Timing3" units="Fuel Injection End Crank Angle (Degrees)" toexpr="x*1.40625" frexpr="x/1.40625" format="%.2f" min="0" max="255" inc="1" storagetype="uint8" endian="big"/>
 	<scaling name="Intake Air Temp (TGV Switch)" units="Intake Air Temp (F)" toexpr="x*0.00390625-256" frexpr="(x+256)/0.00390625" format="%.0f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
 	<scaling name="Intake Duty Correction" units="Correction (Degrees)" toexpr="(x*.003051758)-100" frexpr="(x+100)/.003051758" format="%.2f" min="-100" max="0" inc="0.1" storagetype="uint16" endian="big"/>
 	<scaling name="Knock" units="units" toexpr="x" frexpr="x" format="%.2f" min="0" max="255" inc="1" storagetype="float" endian="big"/>
@@ -148,6 +152,7 @@
 	<scaling name="Lambda Additive" units="Air/Fuel Ratio Additive(Lambda)" toexpr="(x*0.00078125)-1" frexpr="(x+1)/0.00078125" format="%.4f" min="0" max="255" inc="0.06" storagetype="uint8" endian="big"/>
 	<scaling name="Latency(ms)" units="Latency (ms)" toexpr="x*.00025" frexpr="x/.00025" format="%.2f" min="0.3" max="6" inc="0.01" storagetype="uint16" endian="big"/>
 	<scaling name="LoadFilter" units="Smoothing Factor (%)" toexpr="(x*(-100))+100" frexpr="(x-100)/(-100)" format="%.1f" min="0" max="100" inc="5" storagetype="float" endian="big"/>
+	<scaling name="InjectorLowIPW" units="%" toexpr="x*0.00390625+.5" frexpr="(x-.5)/0.00390625" format="%.1f" min="0" max="255" inc="1" storagetype="uint8" endian="big"/>
 	<scaling name="ManifoldPressure(psirelativesealevel)" units="Manifold Pressure (psi relative sea level)" toexpr="(x-760)*.01933677" frexpr="(x/.01933677)+760" format="%.2f" min="4.64" max="23.98" inc="0.01" storagetype="float" endian="big"/>
 	<scaling name="MapRatio" units="ratio" toexpr="x+1" frexpr="x-1" format="%.4f" min="0" max="4" inc="0.1" storagetype="float" endian="big"/>
 	<scaling name="MassAirflow Voltage" units="Volts" toexpr="x" frexpr="x" format="%.2f" min="0" max="105" inc="0.1" storagetype="float" endian="big"/>
@@ -304,6 +309,7 @@
 	<scaling name="tip-inenrichmentappliedcounter" units="tip-in enrichment applied counter" toexpr="x" frexpr="x" format="%.0f" min="0" max="30" inc="1" storagetype="uint8" endian="big"/>
 	<scaling name="tip-inlastappliedcounterperiod" units="tip-in last applied counter period" toexpr="x" frexpr="x" format="%.0f" min="0" max="70" inc="1" storagetype="uint8" endian="big"/>
 	<scaling name="volts" units="volts" toexpr="x" frexpr="x" format="%.2f" min="0.2" max="16.5" inc="0.01" storagetype="float" endian="big"/>
+	<scaling name="wastegate_solenoid" units="Hz" toexpr="250000/x" frexpr="250000/x" format="%.2f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
 
 	<table name="ECU Identifier" category="MerpMod ROM Settings" type="2D" level="4" scaling="ECUID2">
 		<table type="Static X Axis" elements="5">
@@ -4558,6 +4564,36 @@
 		</table>
 	</table>
 
+	<table name="Radiator Fan Switching Determination (Modes)" category="Miscellaneous - Thresholds" type="2D" level="1" scaling="0=FAN1OFFFAN2OFF|1=FAN1OFFFAN2ON|2=FAN1ONFAN2OFF|3=FAN1ONFAN2ON">
+<description>Based on the modes as determined by the 'Radiator Fan Modes' coolant temp and vehicle speed tables and whether the A/C is on or off, this table determines which radiator fans will be active for each combination of modes.</description>
+		<table name="Vehicle Speed Mode/Coolant Temp Mode/Air Conditioning" type="Static Y Axis" elements="24">
+			<data>0/0/OFF</data>
+			<data>0/1/OFF</data>
+			<data>0/2/OFF</data>
+			<data>0/0/ON</data>
+			<data>0/1/ON</data>
+			<data>0/2/ON</data>
+			<data>1/0/OFF</data>
+			<data>1/1/OFF</data>
+			<data>1/2/OFF</data>
+			<data>1/0/ON</data>
+			<data>1/1/ON</data>
+			<data>1/2/ON</data>
+			<data>2/0/OFF</data>
+			<data>2/1/OFF</data>
+			<data>2/2/OFF</data>
+			<data>2/0/ON</data>
+			<data>2/1/ON</data>
+			<data>2/2/ON</data>
+			<data>3/0/OFF</data>
+			<data>3/1/OFF</data>
+			<data>3/2/OFF</data>
+			<data>3/0/ON</data>
+			<data>3/1/ON</data>
+			<data>3/2/ON</data>
+		</table>
+	</table>
+
 	<table name="Radiator Fan Modes (ECT)" category="Miscellaneous - Thresholds" type="2D" level="2" scaling="CoolantTemp(DegreesF)">
 		<description>These are thresholds based on coolant temp which, along with the mode specified by the vehicle speed threshold table, are involved in determining radiator fan control. Radiator fan modes for coolant temp range from 0 to 2. Current mode thresholds are dependent on whether the coolant temperature is increasing or decreasing. Generally, as the coolant temp mode is higher and the vehicle speed mode is lower, the more likely the radiator fan(s) will come on. Whether the A/C is on or not also impacts the fan control. Other undefined thresholds may also change the behavior of the system.</description>
 		<table name="Mode Determination (coolant temp change)" type="Static Y Axis" elements="4">
@@ -8362,6 +8398,8 @@
 		<table name="Engine Speed" type="X Axis" elements="16" scaling="RPM"/>
 		<table name="Requested Torque" type="Y Axis" elements="16" scaling="RequestedTorque(rawecuvalue)1"/>
 	</table>
+	
+	<table name="Target Throttle Angle Idle Airflow Target Minimum" category="ALPHA Idle Control" type="1D" level="1" scaling="%1"/>
 
 	<table name="Target Throttle Angle Idle Airflow Target Base Minimum Applied Maximum" category="ALPHA Idle Control" type="1D" level="1" scaling="%1"/>
 
@@ -8374,6 +8412,11 @@
 	<table name="Idle Rolling in Gear Limit D" category="ALPHA Idle Control" type="1D" level="1" scaling="RPM"/>
 
 	<table name="Low Pulse Width Fuel Injector Compensation" category="ALPHA Low PW Injector Comp" type="2D" level="1" scaling="InjectorPulseWidthCompensation">
+		<description>This compensation is applied to the injector pulsewidth when the RPM and IPW thresholds are met. It is used to compensate for nonlinear injector response at low pulsewidth. This portion of the response is known as the 'knee'</description>
+		<table name="Injector Pulse Width" type="Y Axis" elements="8" scaling="BasePulseWidth(ms)"/>
+	</table>
+	
+	<table name="Low Pulse Width Fuel Injector Compensation " category="ALPHA Low PW Injector Comp" type="2D" level="1" scaling="InjectorLowIPW">
 		<description>This compensation is applied to the injector pulsewidth when the RPM and IPW thresholds are met. It is used to compensate for nonlinear injector response at low pulsewidth. This portion of the response is known as the 'knee'</description>
 		<table name="Injector Pulse Width" type="Y Axis" elements="8" scaling="BasePulseWidth(ms)"/>
 	</table>
@@ -8771,6 +8814,31 @@
 
 	<table name="Evap Related Fuel Adder Compensation" category="ALPHA - Fueling" type="1D" level="1" scaling="Evap_Multiplier">
 		<description>This is the compensation to the evap-related fuel adder. This table's multiplier is applied to the evap fuel adder which is then applied to commanded fueling final. A value of 1.00 in this table retains the factory evap fuel correction. A value of 0 in this table eliminates the correction entirely.</description>
+	</table>
+
+	<table name="Wastegate Solenoid Pulse Frequency" category="Alpha - Wastegate" type="1D" level="1" scaling="wastegate_solenoid"/>
+	
+		<table name="Injector Timing Compensation (Atmospheric Pressure)" category="ALPHA Injector Timing" type="3D" level="1" scaling="Injector_Timing1">
+		<table name="Manifold Pressure" type="X Axis" elements="16" scaling="ManifoldPressure(psirelativesealevel)"/>
+		<table name="Engine Speed" type="Y Axis" elements="2" scaling="RPM"/>
+	</table>
+
+	<table name="Injector Timing Compensation (ECT)" category="ALPHA Injector Timing" type="2D" level="1" scaling="Injector_Timing3">
+		<table name="Coolant Temp" type="X Axis" elements="16" scaling="DegreesF"/>
+	</table>
+
+	<table name="Injector Timing Crank End Angle (TGV Closed)" category="ALPHA Injector Timing" type="3D" level="1" scaling="Injector_Timing2">
+		<table name="Engine Load" type="X Axis" elements="16" scaling="EngineLoad(g/rev)1"/>
+		<table name="Engine Speed" type="Y Axis" elements="9" scaling="RPM"/>
+	</table>
+
+	<table name="Injector Timing Crank End Angle (TGV Open)" category="ALPHA Injector Timing" type="3D" level="1" scaling="Injector_Timing2">
+		<table name="Engine Load" type="X Axis" elements="16" scaling="EngineLoad(g/rev)1"/>
+		<table name="Engine Speed" type="Y Axis" elements="9" scaling="RPM"/>
+	</table>
+	
+	<table name="Injector Timing Minimum Crank End Angle" category="ALPHA Injector Timing" type="2D" level="1" scaling="Injector_Timing2">
+		<table name="Engine Load" type="X Axis" elements="16" scaling="EngineLoad(g/rev)1"/>
 	</table>
 
 </rom>
