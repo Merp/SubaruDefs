@@ -18,6 +18,7 @@
 	<scaling name="A/FLearning#1and#2Min(%)" units="A/F Learning #1 and #2 Min (%)" toexpr="(x*.001525879)-50" frexpr="(x+50)/.001525879" format="%.2f" min="-30" max="-3" inc="0.1" storagetype="uint16" endian="big"/>
 	<scaling name="AF3 Lambda" units="Lambda Additive" toexpr="x" frexpr="x" format="%.4f" min="0" max="255" inc="1" storagetype="float" endian="big"/>
 	<scaling name="AF3_Adder" units="units" toexpr="x" frexpr="x" format="%.6f" min="0" max="255" inc="1e-05" storagetype="float" endian="big"/>
+	<scaling name="AF3_Adder2" units="units" toexpr="x*0.000015258789" frexpr="x/0.000015258789" format="%.6f" min="0" max="255" inc="1e-05" storagetype="uint16" endian="big"/>
 	<scaling name="AFR Sensor Atmospheric Pressure Compensation" units="Multiplier" toexpr="x*.3515625-30" frexpr="(x+30)/.3515625" format="%.2f" min="0" max="26.72" inc="0.2" storagetype="uint8" endian="big"/>
 	<scaling name="AF_Scaling_Factor" toexpr="x/32" frexpr="x*32" format="%.0f" min="0" max="105" inc="0.1" storagetype="float" endian="big"/>
 	<scaling name="AF_Smoothing_Factor" toexpr="x" frexpr="x" format="%.4f" min="0" max="105" inc="0.1" storagetype="float" endian="big"/>
@@ -8210,7 +8211,15 @@
 	<table name="AF 3 Correction Adder (Increase)" category="ALPHA AF 3 (Rear O2 Sensor)" type="1D" level="1" scaling="AF3_Adder"/>
 
 	<table name="AF 3 Correction Adder (Decrease)" category="ALPHA AF 3 (Rear O2 Sensor)" type="1D" level="1" scaling="AF3_Adder"/>
+	
+	<table name="AF 3 Correction Adder (Increase) B" category="ALPHA AF 3 (Rear O2 Sensor)" type="2D" level="1" scaling="AF3_Adder2">
+		<table name="TPS Opening %" type="Y Axis" elements="9" scaling="TargetThrottlePlateOpeningAngle(%)1"/>
+	</table>
 
+	<table name="AF 3 Correction Adder (Decrease) B" category="ALPHA AF 3 (Rear O2 Sensor)" type="2D" level="1" scaling="AF3_Adder2">
+		<table name="TPS Opening %" type="Y Axis" elements="9" scaling="TargetThrottlePlateOpeningAngle(%)1"/>
+	</table>
+	
 	<table name="TGV Switching Requested_Torque (High / Open Above) SSharp" category="ALPHA TGV Switching" type="2D" level="1" scaling="Requested Torque (TGV Switch)">
 		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
 	</table>
