@@ -1314,6 +1314,11 @@
 		<table name="Atmospheric Pressure" type="X Axis" elements="6" scaling="psi1"/>
 		<table name="Engine Speed" type="Y Axis" elements="6" scaling="RPM"/>
 	</table>
+	
+		<table name="Boost Limit (Fuel Cut)__" category="Boost Control - Limits" type="2D" level="4" scaling="psiabsolute2">
+		<description>Fuel cut will be activated when actual boost exceeds the corresponding threshold in this table.</description>
+		<table name="Engine Speed" type="X Axis" elements="15" scaling="RPM"/>
+	</table>
 
 	<table name="Boost Control Disable (IAM)" category="Boost Control - Limits" type="2D" level="3" scaling="IgnitionAdvanceMultiplier(IAM)">
 		<description>Boost control is disabled (wastegate duty is set to zero) when the ignition advance multiplier (IAM) drops below the first value. Boost control is enabled when the IAM is equal to or greater than the second value (this is only applicable if boost has already been disabled previously). Additionally, boost control will not be disabled unless the current applied fine knock correction is less than the threshold determined by the 'Boost Control Disable (Fine Correction)' table.</description>
