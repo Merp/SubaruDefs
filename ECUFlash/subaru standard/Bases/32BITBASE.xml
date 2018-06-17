@@ -122,6 +122,7 @@
 	<scaling name="InjectorFuelOffsetAdditive" units="Injector Fuel Offset Additive" toexpr="(x*.00003051758)-1" frexpr="(x+1)/.00003051758" format="%.3f" inc="0.01" storagetype="uint16" endian="big"/>
 	<scaling name="InjectorFuelOffsetAdditive1" units="Injector Fuel Offset Additive" toexpr="(x*.0078125)-1" frexpr="(x+1)/.0078125" format="%.3f" min="-0.06" max="0.16" inc="0.01" storagetype="uint8" endian="big"/>
 	<scaling name="InjectorFuelOffsetAdditive2" units="Injector Fuel Offset Additive" toexpr="x*.00003051758" frexpr="x/.00003051758" format="%.5f" min="0" max="1.99997" inc="0.0001" storagetype="uint16" endian="big"/>
+	<scaling name="InjectorLowIPW" units="%" toexpr="x*0.00390625+.5" frexpr="(x-.5)/0.00390625" format="%.1f" min="0" max="255" inc="1" storagetype="uint8" endian="big"/>
 	<scaling name="InjectorPulseWidth(ms)" units="Injector Pulse Width (ms)" toexpr="x*.008" frexpr="x/.008" format="%.2f" min="0.01" max="250" inc="0.01" storagetype="uint16" endian="big"/>
 	<scaling name="InjectorPulseWidthCompensation" units="Injector Pulse Width Compensation" toexpr="(x*.78125)-100" frexpr="(x+100)/.78125" format="%.2f" min="-10.16" max="14.84" inc="0.01" storagetype="uint8" endian="big"/>
 	<scaling name="Injector_Flow_BRZ" units="ESTIMATED Flow Rate" toexpr="x" frexpr="x" format="%.2f" min="0" max="255" inc="0.06" storagetype="float" endian="big"/>
@@ -153,7 +154,6 @@
 	<scaling name="Lambda Additive" units="Air/Fuel Ratio Additive(Lambda)" toexpr="(x*0.00078125)-1" frexpr="(x+1)/0.00078125" format="%.4f" min="0" max="255" inc="0.06" storagetype="uint8" endian="big"/>
 	<scaling name="Latency(ms)" units="Latency (ms)" toexpr="x*.00025" frexpr="x/.00025" format="%.2f" min="0.3" max="6" inc="0.01" storagetype="uint16" endian="big"/>
 	<scaling name="LoadFilter" units="Smoothing Factor (%)" toexpr="(x*(-100))+100" frexpr="(x-100)/(-100)" format="%.1f" min="0" max="100" inc="5" storagetype="float" endian="big"/>
-	<scaling name="InjectorLowIPW" units="%" toexpr="x*0.00390625+.5" frexpr="(x-.5)/0.00390625" format="%.1f" min="0" max="255" inc="1" storagetype="uint8" endian="big"/>
 	<scaling name="ManifoldPressure(psirelativesealevel)" units="Manifold Pressure (psi relative sea level)" toexpr="(x-760)*.01933677" frexpr="(x/.01933677)+760" format="%.2f" min="4.64" max="23.98" inc="0.01" storagetype="float" endian="big"/>
 	<scaling name="MapRatio" units="ratio" toexpr="x+1" frexpr="x-1" format="%.4f" min="0" max="4" inc="0.1" storagetype="float" endian="big"/>
 	<scaling name="MassAirflow Voltage" units="Volts" toexpr="x" frexpr="x" format="%.2f" min="0" max="105" inc="0.1" storagetype="float" endian="big"/>
@@ -1313,6 +1313,11 @@
 		<description>Fuel cut will be activated when actual boost exceeds the corresponding threshold in this table.</description>
 		<table name="Atmospheric Pressure" type="X Axis" elements="6" scaling="psi1"/>
 		<table name="Engine Speed" type="Y Axis" elements="6" scaling="RPM"/>
+	</table>
+	
+		<table name="Boost Limit (Fuel Cut)__" category="Boost Control - Limits" type="2D" level="4" scaling="psiabsolute2">
+		<description>Fuel cut will be activated when actual boost exceeds the corresponding threshold in this table.</description>
+		<table name="Engine Speed" type="X Axis" elements="15" scaling="RPM"/>
 	</table>
 
 	<table name="Boost Control Disable (IAM)" category="Boost Control - Limits" type="2D" level="3" scaling="IgnitionAdvanceMultiplier(IAM)">
@@ -3235,15 +3240,10 @@
 		<table name="Engine Speed" type="Y Axis" elements="9" scaling="RPM"/>
 	</table>
 
-	<table name="Base Timing Idle (In-Gear)(Above Speed Threshold)" category="Ignition Timing - Advance" type="2D" level="2" scaling="BaseIgnitionTiming(degreesBTDC)1">
-		<description>This is the base timing in idle mode when vehicle speed is greater than the 'Base Timing Idle Vehicle Speed Threshold' and transmission is not in neutral.</description>
-		<table name="Engine Speed" type="Y Axis" elements="9" scaling="RPM"/>
-	</table>
-
 	<table name="Base Timing Idle (In-Gear)(Above Speed Threshold)_" category="Ignition Timing - Advance" type="3D" level="2" scaling="BaseIgnitionTiming(degreesBTDC)1">
 		<description>This is the base timing in idle mode when vehicle speed is greater than the 'Base Timing Idle Vehicle Speed Threshold' and transmission is not in neutral.</description>
 		<table name="Engine Speed" type="X Axis" elements="10" scaling="RPM"/>
-		<table name="Coolant Temperature" type="Y Axis" elements="4" scaling="DegreesF"/>
+		<table name="Coolant Temperature" type="Y Axis" elements="4" scaling="CoolantTemp(DegreesF)"/>
 	</table>
 
 	<table name="Base Timing Idle A (In-Gear)(Above Speed Threshold)" category="Ignition Timing - Advance" type="2D" level="2" scaling="BaseIgnitionTiming(degreesBTDC)1">
@@ -4566,7 +4566,7 @@
 	</table>
 
 	<table name="Radiator Fan Switching Determination (Modes)" category="Miscellaneous - Thresholds" type="2D" level="1" scaling="0=FAN1OFFFAN2OFF|1=FAN1OFFFAN2ON|2=FAN1ONFAN2OFF|3=FAN1ONFAN2ON">
-<description>Based on the modes as determined by the 'Radiator Fan Modes' coolant temp and vehicle speed tables and whether the A/C is on or off, this table determines which radiator fans will be active for each combination of modes.</description>
+		<description>Based on the modes as determined by the 'Radiator Fan Modes' coolant temp and vehicle speed tables and whether the A/C is on or off, this table determines which radiator fans will be active for each combination of modes.</description>
 		<table name="Vehicle Speed Mode/Coolant Temp Mode/Air Conditioning" type="Static Y Axis" elements="24">
 			<data>0/0/OFF</data>
 			<data>0/1/OFF</data>
@@ -5984,6 +5984,14 @@
 		<description>BAROMETRIC PRESSURE CIRCUIT HIGH INPUT. Change to disabled to deactivate. Off-road use only.</description>
 	</table>
 
+	<table name="(P2270) REAR O2 SENSOR SIGNAL BIASED/STUCK LEAN" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>REAR O2 SENSOR SIGNAL BIASED/STUCK LEAN. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2271) REAR O2 SENSOR SIGNAL BIASED/STUCK RICH" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>REAR O2 SENSOR SIGNAL BIASED/STUCK RICH. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
 	<table name="(P2401) EVAP LEAK DETECTION PUMP CONTROL CIRCUIT LOW" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>EVAP LEAK DETECTION PUMP CONTROL CIRCUIT LOW. Change to disabled to deactivate. Off-road use only.</description>
 	</table>
@@ -6848,12 +6856,12 @@
 		<description>CONTROL MODULE PERFORMANCE. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
 
-	<table name="(P060A)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
-		<description>(P060A). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	<table name="(P060A) INTERNAL CONTROL MODULE MONITORING PROCESSOR PERFORMANCE" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>(P060A) INTERNAL CONTROL MODULE MONITORING PROCESSOR PERFORMANCE. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
 
-	<table name="(P060B)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
-		<description>(P060B). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	<table name="(P060B) INTERNAL CONTROL MODULE A/D PROCESSING PERFORMANCE" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>(P060B) INTERNAL CONTROL MODULE A/D PROCESSING PERFORMANCE. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
 
 	<table name="(P0616) STARTER RELAY CIRCUIT LOW" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
@@ -7422,6 +7430,14 @@
 
 	<table name="(P2229) BARO. PRESSURE CIRCUIT HIGH INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>BAROMETRIC PRESSURE CIRCUIT HIGH INPUT. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+
+	<table name="(P2270) REAR O2 SENSOR SIGNAL BIASED/STUCK LEAN" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>REAR O2 SENSOR SIGNAL BIASED/STUCK LEAN. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2271) REAR O2 SENSOR SIGNAL BIASED/STUCK RICH" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>REAR O2 SENSOR SIGNAL BIASED/STUCK RICH. Change to disabled to deactivate. Off-road use only.</description>
 	</table>
 
 	<table name="(P2401) EVAP LEAK DETECTION PUMP CONTROL CIRCUIT LOW" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
@@ -8211,7 +8227,7 @@
 	<table name="AF 3 Correction Adder (Increase)" category="ALPHA AF 3 (Rear O2 Sensor)" type="1D" level="1" scaling="AF3_Adder"/>
 
 	<table name="AF 3 Correction Adder (Decrease)" category="ALPHA AF 3 (Rear O2 Sensor)" type="1D" level="1" scaling="AF3_Adder"/>
-	
+
 	<table name="AF 3 Correction Adder (Increase) B" category="ALPHA AF 3 (Rear O2 Sensor)" type="2D" level="1" scaling="AF3_Adder2">
 		<table name="TPS Opening %" type="Y Axis" elements="9" scaling="TargetThrottlePlateOpeningAngle(%)1"/>
 	</table>
@@ -8219,7 +8235,7 @@
 	<table name="AF 3 Correction Adder (Decrease) B" category="ALPHA AF 3 (Rear O2 Sensor)" type="2D" level="1" scaling="AF3_Adder2">
 		<table name="TPS Opening %" type="Y Axis" elements="9" scaling="TargetThrottlePlateOpeningAngle(%)1"/>
 	</table>
-	
+
 	<table name="TGV Switching Requested_Torque (High / Open Above) SSharp" category="ALPHA TGV Switching" type="2D" level="1" scaling="Requested Torque (TGV Switch)">
 		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
 	</table>
@@ -8307,6 +8323,10 @@
 	<table name="Knock Threshold Weight Factor RPM Load Cylinder 4" category="ALPHA - Knock Sensitivity" type="3D" level="1" scaling="Knock">
 		<table name="X" type="X Axis" elements="18" scaling="RPM"/>
 		<table name="Y" type="Y Axis" elements="2" scaling="Knock"/>
+	</table>
+
+	<table name="Knock Threshold Weighing Factor" category="ALPHA - Knock Sensitivity" type="2D" level="1" scaling="Knock">
+		<table name="X" type="X Axis" elements="18" scaling="RPM"/>
 	</table>
 
 	<table name="Knock Threshold Filter Background Noise interval Weighting Factor Low RPM Delta" category="ALPHA - Knock Sensitivity" type="2D" level="1" scaling="Knock4">
@@ -8407,7 +8427,7 @@
 		<table name="Engine Speed" type="X Axis" elements="16" scaling="RPM"/>
 		<table name="Requested Torque" type="Y Axis" elements="16" scaling="RequestedTorque(rawecuvalue)1"/>
 	</table>
-	
+
 	<table name="Target Throttle Angle Idle Airflow Target Minimum" category="ALPHA Idle Control" type="1D" level="1" scaling="%1"/>
 
 	<table name="Target Throttle Angle Idle Airflow Target Base Minimum Applied Maximum" category="ALPHA Idle Control" type="1D" level="1" scaling="%1"/>
@@ -8424,8 +8444,8 @@
 		<description>This compensation is applied to the injector pulsewidth when the RPM and IPW thresholds are met. It is used to compensate for nonlinear injector response at low pulsewidth. This portion of the response is known as the 'knee'</description>
 		<table name="Injector Pulse Width" type="Y Axis" elements="8" scaling="BasePulseWidth(ms)"/>
 	</table>
-	
-	<table name="Low Pulse Width Fuel Injector Compensation " category="ALPHA Low PW Injector Comp" type="2D" level="1" scaling="InjectorLowIPW">
+
+	<table name="Low Pulse Width Fuel Injector Compensation" category="ALPHA Low PW Injector Comp" type="2D" level="1" scaling="InjectorLowIPW">
 		<description>This compensation is applied to the injector pulsewidth when the RPM and IPW thresholds are met. It is used to compensate for nonlinear injector response at low pulsewidth. This portion of the response is known as the 'knee'</description>
 		<table name="Injector Pulse Width" type="Y Axis" elements="8" scaling="BasePulseWidth(ms)"/>
 	</table>
@@ -8826,8 +8846,8 @@
 	</table>
 
 	<table name="Wastegate Solenoid Pulse Frequency" category="Alpha - Wastegate" type="1D" level="1" scaling="wastegate_solenoid"/>
-	
-		<table name="Injector Timing Compensation (Atmospheric Pressure)" category="ALPHA Injector Timing" type="3D" level="1" scaling="Injector_Timing1">
+
+	<table name="Injector Timing Compensation (Atmospheric Pressure)" category="ALPHA Injector Timing" type="3D" level="1" scaling="Injector_Timing1">
 		<table name="Manifold Pressure" type="X Axis" elements="16" scaling="ManifoldPressure(psirelativesealevel)"/>
 		<table name="Engine Speed" type="Y Axis" elements="2" scaling="RPM"/>
 	</table>
@@ -8845,7 +8865,7 @@
 		<table name="Engine Load" type="X Axis" elements="16" scaling="EngineLoad(g/rev)1"/>
 		<table name="Engine Speed" type="Y Axis" elements="9" scaling="RPM"/>
 	</table>
-	
+
 	<table name="Injector Timing Minimum Crank End Angle" category="ALPHA Injector Timing" type="2D" level="1" scaling="Injector_Timing2">
 		<table name="Engine Load" type="X Axis" elements="16" scaling="EngineLoad(g/rev)1"/>
 	</table>
