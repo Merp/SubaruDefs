@@ -177,6 +177,7 @@
 		<data name="TGVRight" value="02"/>
 		<data name="Si-Drive" value="03"/>
 	</scaling>
+	<scaling name="MerpModReqTorque" units="raw" toexpr="x" frexpr="x" format="%1.0f" min="0" max="400" inc="5" storagetype="float" endian="big"/>
 	<scaling name="MerpModMapRatio" units="raw" toexpr="x" frexpr="x" format="%1.2f" min="0" max="2" inc="0.1" storagetype="float" endian="big"/>
 	<scaling name="MerpModMapSwitch" units="raw" toexpr="x" frexpr="x" format="%1.0f" min="0" max="4" inc="1" storagetype="uint8" endian="big"/>
 	<scaling name="MerpModMapSwitchThreshold" units="Volts" toexpr="x" frexpr="x" format="%2.3f" min="0" max="1" inc="0.1" storagetype="float" endian="big"/>
@@ -569,6 +570,13 @@
 			<data>Hysteresis (RPM)</data>
 		</table>
 	</table>
+	
+	<table name="Rev Limit (Valet Mode)" category="MerpMod Rev Limit" type="2D" level="4" scaling="EngineSpeed(RPM)FFS">
+		<description>These are the engine speeds at which the rev limiter is engaged and disengaged when Valet Mode is active.</description>
+		<table name="Rev Limit Rev Limit" type="Static Y Axis" elements="1">
+			<data>Cut Fuel Above</data>
+		</table>
+	</table>
 
 	<table name="Flat Foot Shift Minimum Speed Threshold" category="MerpMod Rev Limit" type="2D" level="4" scaling="VehicleSpeed(MPH)SD">
 		<description>Minimum vehicle speed required for FFS to be active.</description>
@@ -787,6 +795,13 @@
 		<description>This will enable or disable all MerpMod Boost Hacks.</description>
 		<table name="Boost Hack Enable" type="Static Y Axis" elements="1">
 			<data>Boost Hack Enable</data>
+		</table>
+	</table>
+	
+	<table name="Requested Torque Limit (Valet Mode)" category="MerpMod Requested Torque Hacks" type="2D" level="4" scaling="MerpModReqTorque">
+		<description>This is the maximum requested torque when valet mode is active.</description>
+		<table name="Requested Torque Limit" type="Static Y Axis" elements="1">
+			<data>Requested Torque Limit</data>
 		</table>
 	</table>
 
