@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE logger SYSTEM "logger.dtd"[]>
-<!--ROMRAIDER STANDARD UNITS LOGGER DEFINITION FILE (VERSION 247) 20140209_225431 [en]
+<!--ROMRAIDER METRIC UNITS LOGGER DEFINITION FILE (VERSION 247) 20140209_225431 [en]
 Added ECU ID: 902B374007 to extended parameters
 
 TERMS, CONDITIONS, AND DISCLAIMERS
@@ -34,8 +34,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
         <parameter id="P2" name="Coolant Temperature" desc="P2" ecubyteindex="8" ecubit="6" target="1">
           <address>0x000008</address>
           <conversions>
-            <conversion units="F" expr="32+9*(x-40)/5" format="0" gauge_min="0" gauge_max="240" gauge_step="30" />
             <conversion units="C" expr="x-40" format="0" gauge_min="-20" gauge_max="120" gauge_step="20" />
+            <conversion units="F" expr="32+9*(x-40)/5" format="0" gauge_min="0" gauge_max="240" gauge_step="30" />
           </conversions>
         </parameter>
         <parameter id="P3" name="A/F Correction #1" desc="P3" ecubyteindex="8" ecubit="5" target="1">
@@ -65,10 +65,10 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
         <parameter id="P7" name="Manifold Absolute Pressure" desc="P7-Pressure value calculated from the manifold absolute pressure sensor (absolute value)" ecubyteindex="8" ecubit="1" target="1">
           <address>0x00000D</address>
           <conversions>
-            <conversion units="psi" expr="x*37/255" format="0.00" gauge_min="-20" gauge_max="40" gauge_step="5" />
-            <conversion units="bar" expr="x/100" format="0.000" gauge_min="-1.2" gauge_max="2.8" gauge_step="0.4" />
             <conversion units="kPa" expr="x" format="0" gauge_min="-120" gauge_max="280" gauge_step="40" />
             <conversion units="hPa" expr="x*10" format="0" gauge_min="-1200" gauge_max="2800" gauge_step="400" />
+            <conversion units="bar" expr="x/100" format="0.000" gauge_min="-1.2" gauge_max="2.8" gauge_step="0.4" />
+            <conversion units="psi" expr="x*37/255" format="0.00" gauge_min="-20" gauge_max="40" gauge_step="5" />
             <conversion units="inHg" expr="x*0.2953" format="0.00" gauge_min="-40" gauge_max="60" gauge_step="10" />
             <conversion units="mmHg" expr="x*7.5" format="0" gauge_min="-1000" gauge_max="2000" gauge_step="300" />
           </conversions>
@@ -82,8 +82,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
         <parameter id="P9" name="Vehicle Speed" desc="P9" ecubyteindex="9" ecubit="7" target="1">
           <address>0x000010</address>
           <conversions>
-            <conversion units="mph" expr="x*0.621371192" format="0" gauge_min="0" gauge_max="250" gauge_step="25" />
             <conversion units="km/h" expr="x" format="0" gauge_min="0" gauge_max="300" gauge_step="30" />
+            <conversion units="mph" expr="x*0.621371192" format="0" gauge_min="0" gauge_max="250" gauge_step="25" />
           </conversions>
         </parameter>
         <parameter id="P10" name="Ignition Total Timing" desc="P10" ecubyteindex="9" ecubit="6" target="1">
@@ -95,8 +95,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
         <parameter id="P11" name="Intake Air Temperature" desc="P11" ecubyteindex="9" ecubit="5" target="1">
           <address>0x000012</address>
           <conversions>
-            <conversion units="F" expr="32+9*(x-40)/5" format="0" gauge_min="0" gauge_max="140" gauge_step="20" />
             <conversion units="C" expr="x-40" format="0" gauge_min="-20" gauge_max="60" gauge_step="10" />
+            <conversion units="F" expr="32+9*(x-40)/5" format="0" gauge_min="0" gauge_max="140" gauge_step="20" />
           </conversions>
         </parameter>
         <parameter id="P12" name="Mass Airflow" desc="P12" ecubyteindex="9" ecubit="4" target="1">
@@ -176,10 +176,10 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
         <parameter id="P24" name="Atmospheric Pressure" desc="P24" ecubyteindex="10" ecubit="0" target="1">
           <address>0x000023</address>
           <conversions>
-            <conversion units="psi" expr="x*37/255" format="0.00" gauge_min="0" gauge_max="20" gauge_step="2" />
             <conversion units="kPa" expr="x" format="0" gauge_min="0" gauge_max="255" gauge_step="20" />
             <conversion units="hPa" expr="x*10" format="0" gauge_min="0" gauge_max="1500" gauge_step="100" />
             <conversion units="bar" expr="x/100" format="0.000" gauge_min="0" gauge_max="1.5" gauge_step="0.1" />
+            <conversion units="psi" expr="x*37/255" format="0.00" gauge_min="0" gauge_max="20" gauge_step="2" />
             <conversion units="inHg" expr="x*0.2953" format="0.00" gauge_min="-40" gauge_max="60" gauge_step="10" />
             <conversion units="mmHg" expr="x*7.5" format="0" gauge_min="-1000" gauge_max="2000" gauge_step="300" />
           </conversions>
@@ -187,28 +187,28 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
         <parameter id="P25" name="Manifold Relative Pressure" desc="P25-Manifold Absolute Pressure [P7] minus current Atmospheric Pressure [P24]." ecubyteindex="11" ecubit="7" target="1">
           <address>0x000024</address>
           <conversions>
-            <conversion units="psi" expr="(x-128)*37/255" format="0.00" gauge_min="-30" gauge_max="30" gauge_step="5" />
             <conversion units="kPa" expr="x-128" format="0" gauge_min="-130" gauge_max="130" gauge_step="20" />
             <conversion units="hPa" expr="(x-128)*10" format="0" gauge_min="-2000" gauge_max="2000" gauge_step="400" />
             <conversion units="bar" expr="(x-128)/100" format="0.000" gauge_min="-2" gauge_max="2" gauge_step="0.4" />
+            <conversion units="psi" expr="(x-128)*37/255" format="0.00" gauge_min="-30" gauge_max="30" gauge_step="5" />
           </conversions>
         </parameter>
         <parameter id="P26" name="Pressure Differential Sensor" desc="P26" ecubyteindex="11" ecubit="6" target="1">
           <address>0x000025</address>
           <conversions>
-            <conversion units="psi" expr="(x-128)*37/255" format="0.00" />
             <conversion units="kPa" expr="x-128" format="0" gauge_min="-130" gauge_max="130" gauge_step="20" />
             <conversion units="hPa" expr="(x-128)*10" format="0" gauge_min="-2000" gauge_max="2000" gauge_step="400" />
             <conversion units="bar" expr="(x-128)/100" format="0.000" />
+            <conversion units="psi" expr="(x-128)*37/255" format="0.00" />
           </conversions>
         </parameter>
         <parameter id="P27" name="Fuel Tank Pressure" desc="P27" ecubyteindex="11" ecubit="5" target="1">
           <address>0x000026</address>
           <conversions>
-            <conversion units="psi" expr="(x-128)*35/10000" format="0.000" />
             <conversion units="kPa" expr="(x-128)/40" format="0.00" gauge_min="-5" gauge_max="5" gauge_step="1" />
             <conversion units="hPa" expr="(x-128)/4" format="0" />
             <conversion units="bar" expr="(x-128)/4000" format="0.000" />
+            <conversion units="psi" expr="(x-128)*35/10000" format="0.000" />
           </conversions>
         </parameter>
         <parameter id="P28" name="CO Adjustment" desc="P28" ecubyteindex="11" ecubit="4" target="1">
@@ -232,8 +232,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
         <parameter id="P31" name="Fuel Temperature" desc="P31" ecubyteindex="11" ecubit="1" target="1">
           <address>0x00002A</address>
           <conversions>
-            <conversion units="F" expr="32+9*(x-40)/5" format="0" gauge_min="0" gauge_max="140" gauge_step="20" />
             <conversion units="C" expr="x-40" format="0" gauge_min="-20" gauge_max="60" gauge_step="10" />
+            <conversion units="F" expr="32+9*(x-40)/5" format="0" gauge_min="0" gauge_max="140" gauge_step="20" />
           </conversions>
         </parameter>
         <parameter id="P32" name="Front O2 Heater Current #1" desc="P32" ecubyteindex="11" ecubit="0" target="1">
@@ -395,15 +395,15 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
         <parameter id="P58" name="A/F Sensor #1" desc="P58" ecubyteindex="15" ecubit="5" target="1">
           <address>0x000046</address>
           <conversions>
-            <conversion units="AFR" expr="x/128*14.7" format="0.00" />
             <conversion units="Lambda" expr="x/128" format="0.00" />
+            <conversion units="AFR" expr="x/128*14.7" format="0.00" />
           </conversions>
         </parameter>
         <parameter id="P59" name="A/F Sensor #2" desc="P59" ecubyteindex="15" ecubit="4" target="1">
           <address>0x000047</address>
           <conversions>
-            <conversion units="AFR" expr="x/128*14.7" format="0.00" />
             <conversion units="Lambda" expr="x/128" format="0.00" />
+            <conversion units="AFR" expr="x/128*14.7" format="0.00" />
           </conversions>
         </parameter>
         <parameter id="P60" name="Gear Position" desc="P60" ecubyteindex="16" ecubit="5" target="3">
@@ -511,26 +511,26 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
         <parameter id="P77" name="Brake Booster Pressure" desc="P77" ecubyteindex="40" ecubit="3" target="1">
           <address>0x000104</address>
           <conversions>
-            <conversion units="psi" expr="x*37/255" format="0.00" />
-            <conversion units="bar" expr="x/100" format="0.000" />
             <conversion units="kPa" expr="x" format="0" gauge_min="-120" gauge_max="280" gauge_step="40" />
             <conversion units="hPa" expr="x*10" format="0" gauge_min="0" gauge_max="1500" gauge_step="100" />
+            <conversion units="bar" expr="x/100" format="0.000" />
+            <conversion units="psi" expr="x*37/255" format="0.00" />
           </conversions>
         </parameter>
         <parameter id="P78" name="Fuel Pressure (High)" desc="P78" ecubyteindex="40" ecubit="2" target="1">
           <address>0x000105</address>
           <conversions>
-            <conversion units="psi" expr="x/25*145.0377" format="0.00" />
             <conversion units="kPa" expr="x/25*1000" format="0.00" />
             <conversion units="MPa" expr="x/25" format="0.00" />
             <conversion units="bar" expr="x/25*10" format="0.000" />
+            <conversion units="psi" expr="x/25*145.0377" format="0.00" />
           </conversions>
         </parameter>
         <parameter id="P79" name="Exhaust Gas Temperature" desc="P79-Exhaust gas temperature reading." ecubyteindex="40" ecubit="1" target="1">
           <address>0x000106</address>
           <conversions>
-            <conversion units="F" expr="32+9*(x+40)" format="0" gauge_min="0" gauge_max="2000" gauge_step="200" />
             <conversion units="C" expr="(x+40)*5" format="0" gauge_min="0" gauge_max="1000" gauge_step="100" />
+            <conversion units="F" expr="32+9*(x+40)" format="0" gauge_min="0" gauge_max="2000" gauge_step="200" />
           </conversions>
         </parameter>
         <parameter id="P80" name="Cold Start Injector (Air Pump)" desc="P80" ecubyteindex="41" ecubit="7" target="1">
@@ -549,8 +549,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
         <parameter id="P82" name="Memorised Cruise Speed" desc="P82" ecubyteindex="41" ecubit="5" target="1">
           <address>0x00010A</address>
           <conversions>
-            <conversion units="mph" expr="x*0.621371192" format="0" gauge_min="0" gauge_max="250" gauge_step="25" />
             <conversion units="km/h" expr="x" format="0" gauge_min="0" gauge_max="300" gauge_step="30" />
+            <conversion units="mph" expr="x*0.621371192" format="0" gauge_min="0" gauge_max="250" gauge_step="25" />
           </conversions>
         </parameter>
         <parameter id="P83" name="Exhaust VVT Advance Angle Right" desc="P83" ecubyteindex="43" ecubit="7" target="1">
@@ -616,8 +616,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
         <parameter id="P93" name="Front Wheel Speed" desc="P93" ecubyteindex="16" ecubit="7" target="2">
           <address>0x000048</address>
           <conversions>
-            <conversion units="mph" expr="x*0.621371192" format="0" gauge_min="0" gauge_max="250" gauge_step="25" />
             <conversion units="km/h" expr="x" format="0" gauge_min="0" gauge_max="300" gauge_step="30" />
+            <conversion units="mph" expr="x*0.621371192" format="0" gauge_min="0" gauge_max="250" gauge_step="25" />
           </conversions>
         </parameter>
         <parameter id="P94" name="ATF Temperature" desc="P94-0=-60C/-76F,1=-60C/-76F,2=-51C/-60F,3=-45C/-49F,4=-40C/-40F,5=-37C/-35F,6=-34C/-29F,etc" ecubyteindex="16" ecubit="6" target="2">
@@ -665,8 +665,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
         <parameter id="P101" name="Rear Wheel Speed" desc="P101" ecubyteindex="17" ecubit="6" target="2">
           <address>0x000051</address>
           <conversions>
-            <conversion units="mph" expr="x*0.621371192" format="0" gauge_min="0" gauge_max="250" gauge_step="25" />
             <conversion units="km/h" expr="x" format="0" gauge_min="0" gauge_max="300" gauge_step="30" />
+            <conversion units="mph" expr="x*0.621371192" format="0" gauge_min="0" gauge_max="250" gauge_step="25" />
           </conversions>
         </parameter>
         <parameter id="P102" name="Manifold Pressure Sensor Voltage" desc="P102" ecubyteindex="17" ecubit="5" target="2">
@@ -684,8 +684,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
         <parameter id="P104" name="ATF Temperature" desc="P104" ecubyteindex="17" ecubit="1" target="2">
           <address>0x000056</address>
           <conversions>
-            <conversion units="F" expr="32+9*(x-50)/5" format="0" gauge_min="-60" gauge_max="400" gauge_step="50" />
             <conversion units="C" expr="x-50" format="0" gauge_min="-50" gauge_max="205" gauge_step="30" />
+            <conversion units="F" expr="32+9*(x-50)/5" format="0" gauge_min="-60" gauge_max="400" gauge_step="50" />
           </conversions>
         </parameter>
         <parameter id="P105" name="Low Clutch Duty" desc="P105" ecubyteindex="17" ecubit="0" target="2">
@@ -709,8 +709,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
         <parameter id="P108" name="ATF Temperature 2" desc="P108" ecubyteindex="18" ecubit="5" target="2">
           <address>0x00005A</address>
           <conversions>
-            <conversion units="F" expr="32+9*(x-50)/5" format="0" gauge_min="-60" gauge_max="400" gauge_step="50" />
             <conversion units="C" expr="x-50" format="0" gauge_min="-50" gauge_max="205" gauge_step="30" />
+            <conversion units="F" expr="32+9*(x-50)/5" format="0" gauge_min="-60" gauge_max="400" gauge_step="50" />
           </conversions>
         </parameter>
         <parameter id="P109" name="Voltage Center Differential Switch" desc="P109" ecubyteindex="18" ecubit="4" target="2">
@@ -758,8 +758,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
         <parameter id="P116" name="Exhaust Gas Temperature 2" desc="P116" ecubyteindex="40" ecubit="0" target="1">
           <address>0x000107</address>
           <conversions>
-            <conversion units="F" expr="32+9*(x*5+200)/5" format="0" gauge_min="400" gauge_max="2800" gauge_step="200" />
             <conversion units="C" expr="x*5+200" format="0" gauge_min="200" gauge_max="1500" gauge_step="100" />
+            <conversion units="F" expr="32+9*(x*5+200)/5" format="0" gauge_min="400" gauge_max="2800" gauge_step="200" />
           </conversions>
         </parameter>
         <parameter id="P117" name="Air/Fuel Correction #4" desc="P117" ecubyteindex="41" ecubit="4" target="1">
@@ -783,23 +783,23 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
         <parameter id="P120" name="Estimated odometer" desc="P120-Estimated odometer - increments every 2km" ecubyteindex="41" ecubit="1" target="1">
           <address length="2">0x00010E</address>
           <conversions>
-            <conversion units="miles" expr="x*1.242742384" format="0" />
             <conversion units="km" expr="x*2" format="0" />
+            <conversion units="miles" expr="x*1.242742384" format="0" />
           </conversions>
         </parameter>
         <parameter id="P121" name="Fuel Tank Air Pressure" desc="P121" ecubyteindex="41" ecubit="0" target="1">
           <address length="2">0x000172</address>
           <conversions>
-            <conversion units="psi" expr="x*14.50377" format="0.00" />
             <conversion units="MPa" expr="x/100" format="0.00" />
+            <conversion units="psi" expr="x*14.50377" format="0.00" />
             <conversion units="bar" expr="x/10" format="0.0" />
           </conversions>
         </parameter>
         <parameter id="P122" name="Oil Temperature" desc="P122" ecubyteindex="42" ecubit="4" target="1">
           <address>0x000113</address>
           <conversions>
-            <conversion units="F" expr="32+9*(x-40)/5" format="0" gauge_min="0" gauge_max="240" gauge_step="30" />
             <conversion units="C" expr="x-40" format="0" gauge_min="-20" gauge_max="120" gauge_step="20" />
+            <conversion units="F" expr="32+9*(x-40)/5" format="0" gauge_min="0" gauge_max="240" gauge_step="30" />
           </conversions>
         </parameter>
         <parameter id="P123" name="Oil Switching Solenoid Valve (OSV) Duty (Right)" desc="P123" ecubyteindex="42" ecubit="3" target="1">
@@ -883,64 +883,64 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
         <parameter id="P136" name="H and LR/C Solenoid Valve Pressure" desc="P136" ecubyteindex="51" ecubit="7" target="2">
           <address>0x000148</address>
           <conversions>
-            <conversion units="psi" expr="x*1.450377" format="0.00" gauge_min="0" gauge_max="400" gauge_step="50" />
             <conversion units="kPa" expr="x*10" format="0" gauge_min="0" gauge_max="2600" gauge_step="200" />
             <conversion units="hPa" expr="x*100" format="0" gauge_min="0" gauge_max="26000" gauge_step="2000" />
             <conversion units="bar" expr="x*0.1" format="0.0" gauge_min="0" gauge_max="30" gauge_step="5" />
+            <conversion units="psi" expr="x*1.450377" format="0.00" gauge_min="0" gauge_max="400" gauge_step="50" />
           </conversions>
         </parameter>
         <parameter id="P137" name="D/C Solenoid Valve Pressure" desc="P137" ecubyteindex="51" ecubit="6" target="2">
           <address>0x000149</address>
           <conversions>
-            <conversion units="psi" expr="x*1.450377" format="0.00" gauge_min="0" gauge_max="400" gauge_step="50" />
             <conversion units="kPa" expr="x*10" format="0" gauge_min="0" gauge_max="2600" gauge_step="200" />
             <conversion units="hPa" expr="x*100" format="0" gauge_min="0" gauge_max="26000" gauge_step="2000" />
             <conversion units="bar" expr="x*0.1" format="0.0" gauge_min="0" gauge_max="30" gauge_step="5" />
+            <conversion units="psi" expr="x*1.450377" format="0.00" gauge_min="0" gauge_max="400" gauge_step="50" />
           </conversions>
         </parameter>
         <parameter id="P138" name="F/B Solenoid Valve Pressure" desc="P138" ecubyteindex="51" ecubit="5" target="2">
           <address>0x00014A</address>
           <conversions>
-            <conversion units="psi" expr="x*1.450377" format="0.00" gauge_min="0" gauge_max="400" gauge_step="50" />
             <conversion units="kPa" expr="x*10" format="0" gauge_min="0" gauge_max="2600" gauge_step="200" />
             <conversion units="hPa" expr="x*100" format="0" gauge_min="0" gauge_max="26000" gauge_step="2000" />
             <conversion units="bar" expr="x*0.1" format="0.0" gauge_min="0" gauge_max="30" gauge_step="5" />
+            <conversion units="psi" expr="x*1.450377" format="0.00" gauge_min="0" gauge_max="400" gauge_step="50" />
           </conversions>
         </parameter>
         <parameter id="P139" name="I/C Solenoid Valve Pressure" desc="P139" ecubyteindex="51" ecubit="4" target="2">
           <address>0x00014B</address>
           <conversions>
-            <conversion units="psi" expr="x*1.450377" format="0.00" gauge_min="0" gauge_max="400" gauge_step="50" />
             <conversion units="kPa" expr="x*10" format="0" gauge_min="0" gauge_max="2600" gauge_step="200" />
             <conversion units="hPa" expr="x*100" format="0" gauge_min="0" gauge_max="26000" gauge_step="2000" />
             <conversion units="bar" expr="x*0.1" format="0.0" gauge_min="0" gauge_max="30" gauge_step="5" />
+            <conversion units="psi" expr="x*1.450377" format="0.00" gauge_min="0" gauge_max="400" gauge_step="50" />
           </conversions>
         </parameter>
         <parameter id="P140" name="P/L Solenoid Valve Pressure" desc="P140" ecubyteindex="51" ecubit="3" target="2">
           <address>0x00014C</address>
           <conversions>
-            <conversion units="psi" expr="x*1.450377" format="0.00" gauge_min="0" gauge_max="400" gauge_step="50" />
             <conversion units="kPa" expr="x*10" format="0" gauge_min="0" gauge_max="2600" gauge_step="200" />
             <conversion units="hPa" expr="x*100" format="0" gauge_min="0" gauge_max="26000" gauge_step="2000" />
             <conversion units="bar" expr="x*0.1" format="0.0" gauge_min="0" gauge_max="30" gauge_step="5" />
+            <conversion units="psi" expr="x*1.450377" format="0.00" gauge_min="0" gauge_max="400" gauge_step="50" />
           </conversions>
         </parameter>
         <parameter id="P141" name="L/U Solenoid Valve Pressure" desc="P141" ecubyteindex="51" ecubit="2" target="2">
           <address>0x00014D</address>
           <conversions>
-            <conversion units="psi" expr="x*1.450377" format="0.00" gauge_min="0" gauge_max="400" gauge_step="50" />
             <conversion units="kPa" expr="x*10" format="0" gauge_min="0" gauge_max="2600" gauge_step="200" />
             <conversion units="hPa" expr="x*100" format="0" gauge_min="0" gauge_max="26000" gauge_step="2000" />
             <conversion units="bar" expr="x*0.1" format="0.0" gauge_min="0" gauge_max="30" gauge_step="5" />
+            <conversion units="psi" expr="x*1.450377" format="0.00" gauge_min="0" gauge_max="400" gauge_step="50" />
           </conversions>
         </parameter>
         <parameter id="P142" name="AWD Solenoid Valve Pressure" desc="P142" ecubyteindex="51" ecubit="1" target="2">
           <address>0x00014E</address>
           <conversions>
-            <conversion units="psi" expr="x*1.450377" format="0.00" gauge_min="0" gauge_max="400" gauge_step="50" />
             <conversion units="kPa" expr="x*10" format="0" gauge_min="0" gauge_max="2600" gauge_step="200" />
             <conversion units="hPa" expr="x*100" format="0" gauge_min="0" gauge_max="26000" gauge_step="2000" />
             <conversion units="bar" expr="x*0.1" format="0.0" gauge_min="0" gauge_max="30" gauge_step="5" />
+            <conversion units="psi" expr="x*1.450377" format="0.00" gauge_min="0" gauge_max="400" gauge_step="50" />
           </conversions>
         </parameter>
         <parameter id="P143" name="Yaw Rate and  G Sensor Reference Voltage" desc="P143" ecubyteindex="51" ecubit="0" target="2">
@@ -952,29 +952,29 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
         <parameter id="P144" name="Wheel Speed Front Right" desc="P144" ecubyteindex="52" ecubit="7" target="2">
           <address>0x00013C</address>
           <conversions>
-            <conversion units="mph" expr="x*0.621371192" format="0" gauge_min="0" gauge_max="250" gauge_step="25" />
             <conversion units="km/h" expr="x" format="0" gauge_min="0" gauge_max="300" gauge_step="30" />
+            <conversion units="mph" expr="x*0.621371192" format="0" gauge_min="0" gauge_max="250" gauge_step="25" />
           </conversions>
         </parameter>
         <parameter id="P145" name="Wheel Speed Front Left" desc="P145" ecubyteindex="52" ecubit="6" target="2">
           <address>0x00013D</address>
           <conversions>
-            <conversion units="mph" expr="x*0.621371192" format="0" gauge_min="0" gauge_max="250" gauge_step="25" />
             <conversion units="km/h" expr="x" format="0" gauge_min="0" gauge_max="300" gauge_step="30" />
+            <conversion units="mph" expr="x*0.621371192" format="0" gauge_min="0" gauge_max="250" gauge_step="25" />
           </conversions>
         </parameter>
         <parameter id="P146" name="Wheel Speed Rear Right" desc="P146" ecubyteindex="52" ecubit="5" target="2">
           <address>0x00013E</address>
           <conversions>
-            <conversion units="mph" expr="x*0.621371192" format="0" gauge_min="0" gauge_max="250" gauge_step="25" />
             <conversion units="km/h" expr="x" format="0" gauge_min="0" gauge_max="300" gauge_step="30" />
+            <conversion units="mph" expr="x*0.621371192" format="0" gauge_min="0" gauge_max="250" gauge_step="25" />
           </conversions>
         </parameter>
         <parameter id="P147" name="Wheel Speed Rear Left" desc="P147" ecubyteindex="52" ecubit="4" target="2">
           <address>0x00013F</address>
           <conversions>
-            <conversion units="mph" expr="x*0.621371192" format="0" gauge_min="0" gauge_max="250" gauge_step="25" />
             <conversion units="km/h" expr="x" format="0" gauge_min="0" gauge_max="300" gauge_step="30" />
+            <conversion units="mph" expr="x*0.621371192" format="0" gauge_min="0" gauge_max="250" gauge_step="25" />
           </conversions>
         </parameter>
         <parameter id="P148" name="Steering Angle Sensor" desc="P148-signed 16 bit value returned" ecubyteindex="52" ecubit="3" target="2">
@@ -993,10 +993,10 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
         <parameter id="P150" name="Fwd/B Solenoid Valve Target Pressure" desc="P150" ecubyteindex="52" ecubit="0" target="2">
           <address>0x000186</address>
           <conversions>
-            <conversion units="psi" expr="x*1.450377" format="0.00" gauge_min="0" gauge_max="400" gauge_step="50" />
             <conversion units="kPa" expr="x*10" format="0" gauge_min="0" gauge_max="2600" gauge_step="200" />
             <conversion units="hPa" expr="x*100" format="0" gauge_min="0" gauge_max="26000" gauge_step="2000" />
             <conversion units="bar" expr="x*0.1" format="0.0" gauge_min="0" gauge_max="30" gauge_step="5" />
+            <conversion units="psi" expr="x*1.450377" format="0.00" gauge_min="0" gauge_max="400" gauge_step="50" />
           </conversions>
         </parameter>
         <parameter id="P151" name="Roughness Monitor Cylinder #5" desc="P151" ecubyteindex="55" ecubit="3" target="1">
@@ -1020,10 +1020,10 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
         <parameter id="P154" name="Fuel Tank Pressure" desc="P154" ecubyteindex="59" ecubit="7" target="1">
           <address>0x00019A</address>
           <conversions>
-            <conversion units="psi" expr="(x-128)*0.007251885" format="0.000" />
             <conversion units="kPa" expr="(x-128)/20" format="0.00" />
             <conversion units="hPa" expr="(x-128)/2" format="0.00" />
             <conversion units="bar" expr="(x-128)/2000" format="0.0000" />
+            <conversion units="psi" expr="(x-128)*0.007251885" format="0.000" />
           </conversions>
         </parameter>
         <parameter id="P155" name="Main Injection Period" desc="P155" ecubyteindex="60" ecubit="7" target="1">
@@ -1047,10 +1047,10 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
         <parameter id="P158" name="Target Intake Manifold Pressure" desc="P158" ecubyteindex="60" ecubit="4" target="1">
           <address>0x0001E5</address>
           <conversions>
-            <conversion units="psi" expr="x*0.1450377" format="0.000" />
             <conversion units="kPa" expr="x" format="0" />
             <conversion units="hPa" expr="x*10" format="0" />
             <conversion units="bar" expr="x*0.01" format="0.00" />
+            <conversion units="psi" expr="x*0.1450377" format="0.000" />
           </conversions>
         </parameter>
         <parameter id="P159" name="Target Intake Air Amount" desc="P159" ecubyteindex="60" ecubit="3" target="1">
@@ -1086,24 +1086,24 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
         <parameter id="P164" name="Common Rail Target Pressure" desc="P164" ecubyteindex="61" ecubit="6" target="1">
           <address>0x0001EB</address>
           <conversions>
-            <conversion units="psi" expr="x*145.0377" format="0" />
             <conversion units="MPa" expr="x" format="0" />
             <conversion units="bar" expr="x*10" format="0" />
+            <conversion units="psi" expr="x*145.0377" format="0" />
           </conversions>
         </parameter>
         <parameter id="P165" name="Common Rail Pressure" desc="P165" ecubyteindex="61" ecubit="5" target="1">
           <address>0x0001EC</address>
           <conversions>
-            <conversion units="psi" expr="x*145.0377" format="0" />
             <conversion units="MPa" expr="x" format="0" />
             <conversion units="bar" expr="x*10" format="0" />
+            <conversion units="psi" expr="x*145.0377" format="0" />
           </conversions>
         </parameter>
         <parameter id="P166" name="Intake Air Temperature (combined)" desc="P166" ecubyteindex="61" ecubit="4" target="1">
           <address>0x0001ED</address>
           <conversions>
-            <conversion units="F" expr="32+9*(x-40)/5" format="0" gauge_min="-40" gauge_max="400" gauge_step="50" />
             <conversion units="C" expr="x-40" format="0" gauge_min="-40" gauge_max="200" gauge_step="40" />
+            <conversion units="F" expr="32+9*(x-40)/5" format="0" gauge_min="-40" gauge_max="400" gauge_step="50" />
           </conversions>
         </parameter>
         <parameter id="P167" name="Target Engine Speed" desc="P167" ecubyteindex="61" ecubit="3" target="1">
@@ -1163,15 +1163,15 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
         <parameter id="P176" name="Mileage after Injector Learning" desc="P176" ecubyteindex="63" ecubit="6" target="1">
           <address length="2">0x0001FA</address>
           <conversions>
-            <conversion units="miles" expr="x*3.10685596" format="0" />
             <conversion units="km" expr="x*5" format="0" />
+            <conversion units="miles" expr="x*3.10685596" format="0" />
           </conversions>
         </parameter>
         <parameter id="P177" name="Mileage after Injector Replacement" desc="P177" ecubyteindex="63" ecubit="5" target="1">
           <address length="2">0x000204</address>
           <conversions>
-            <conversion units="miles" expr="x*3.10685596" format="0" />
             <conversion units="km" expr="x*5" format="0" />
+            <conversion units="miles" expr="x*3.10685596" format="0" />
           </conversions>
         </parameter>
         <parameter id="P178" name="Interior Heater" desc="P178" ecubyteindex="63" ecubit="4" target="1">
@@ -1221,8 +1221,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
         <parameter id="P184" name="Battery Temperature" desc="P184" ecubyteindex="64" ecubit="6" target="1">
           <address>0x000273</address>
           <conversions>
-            <conversion units="F" expr="32+9*(x-40)/5" format="0" gauge_min="-40" gauge_max="400" gauge_step="50" />
             <conversion units="C" expr="x-40" format="0" gauge_min="-40" gauge_max="200" gauge_step="40" />
+            <conversion units="F" expr="32+9*(x-40)/5" format="0" gauge_min="-40" gauge_max="400" gauge_step="50" />
           </conversions>
         </parameter>
         <parameter id="P185" name="Alternator Control Mode" desc="P185-0=High,1=ExHigh,2=Low,3=Mid" ecubyteindex="64" ecubit="5" target="1">
@@ -1240,38 +1240,38 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
         <parameter id="P187" name="Pressure Difference between Diesel Particulate Filter (DPF) Inlet and Outlet" desc="P187" ecubyteindex="70" ecubit="6" target="1">
           <address>0x000276</address>
           <conversions>
-            <conversion units="psi" expr="x*14.50377" format="0" gauge_min="0" gauge_max="400" gauge_step="50" />
             <conversion units="kPa" expr="x" format="0" gauge_min="0" gauge_max="2600" gauge_step="200" />
             <conversion units="hPa" expr="x*10" format="0" gauge_min="0" gauge_max="26000" gauge_step="2000" />
             <conversion units="bar" expr="x*0.01" format="0.00" gauge_min="0" gauge_max="30" gauge_step="5" />
+            <conversion units="psi" expr="x*14.50377" format="0" gauge_min="0" gauge_max="400" gauge_step="50" />
           </conversions>
         </parameter>
         <parameter id="P188" name="Exhaust Gas Temperature at Catalyst Inlet" desc="P188" ecubyteindex="70" ecubit="5" target="1">
           <address>0x000277</address>
           <conversions>
-            <conversion units="F" expr="32+9*(x*5-40)/5" format="0" gauge_min="-40" gauge_max="2400" gauge_step="400" />
             <conversion units="C" expr="x*5-40" format="0" gauge_min="-40" gauge_max="1300" gauge_step="200" />
+            <conversion units="F" expr="32+9*(x*5-40)/5" format="0" gauge_min="-40" gauge_max="2400" gauge_step="400" />
           </conversions>
         </parameter>
         <parameter id="P189" name="Exhaust Gas Temperature at Diesel Particulate Filter (DPF) Inlet" desc="P189" ecubyteindex="70" ecubit="4" target="1">
           <address>0x000278</address>
           <conversions>
-            <conversion units="F" expr="32+9*(x*5-40)/5" format="0" gauge_min="-40" gauge_max="2400" gauge_step="400" />
             <conversion units="C" expr="x*5-40" format="0" gauge_min="-40" gauge_max="1300" gauge_step="200" />
+            <conversion units="F" expr="32+9*(x*5-40)/5" format="0" gauge_min="-40" gauge_max="2400" gauge_step="400" />
           </conversions>
         </parameter>
         <parameter id="P190" name="Estimated Catalyst Temperature" desc="P190" ecubyteindex="70" ecubit="3" target="1">
           <address>0x000279</address>
           <conversions>
-            <conversion units="F" expr="32+9*(x*5-40)/5" format="0" gauge_min="-40" gauge_max="2400" gauge_step="400" />
             <conversion units="C" expr="x*5-40" format="0" gauge_min="-40" gauge_max="1300" gauge_step="200" />
+            <conversion units="F" expr="32+9*(x*5-40)/5" format="0" gauge_min="-40" gauge_max="2400" gauge_step="400" />
           </conversions>
         </parameter>
         <parameter id="P191" name="Estimated Temperature of the Diesel Particulate Filter (DPF)" desc="P191" ecubyteindex="70" ecubit="2" target="1">
           <address>0x00027A</address>
           <conversions>
-            <conversion units="F" expr="32+9*(x*5-40)/5" format="0" gauge_min="-40" gauge_max="2400" gauge_step="400" />
             <conversion units="C" expr="x*5-40" format="0" gauge_min="-40" gauge_max="1300" gauge_step="200" />
+            <conversion units="F" expr="32+9*(x*5-40)/5" format="0" gauge_min="-40" gauge_max="2400" gauge_step="400" />
           </conversions>
         </parameter>
         <parameter id="P192" name="Soot Accumulation Ratio" desc="P192" ecubyteindex="70" ecubit="1" target="1">
@@ -1295,15 +1295,15 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
         <parameter id="P195" name="ABS/VDC Front Wheel Mean Wheel Speed" desc="P195" ecubyteindex="71" ecubit="6" target="2">
           <address>0x000294</address>
           <conversions>
-            <conversion units="mph" expr="x*143/255" format="0" gauge_min="0" gauge_max="143" gauge_step="10" />
             <conversion units="km/h" expr="x*230/255" format="0" gauge_min="0" gauge_max="300" gauge_step="30" />
+            <conversion units="mph" expr="x*143/255" format="0" gauge_min="0" gauge_max="143" gauge_step="10" />
           </conversions>
         </parameter>
         <parameter id="P196" name="ABS/VDC Rear Wheel Mean Wheel Speed" desc="P196" ecubyteindex="71" ecubit="5" target="2">
           <address>0x000295</address>
           <conversions>
-            <conversion units="mph" expr="x*143/255" format="0" gauge_min="0" gauge_max="143" gauge_step="10" />
             <conversion units="km/h" expr="x*230/255" format="0" gauge_min="0" gauge_max="300" gauge_step="30" />
+            <conversion units="mph" expr="x*143/255" format="0" gauge_min="0" gauge_max="143" gauge_step="10" />
           </conversions>
         </parameter>
         <parameter id="P197" name="Automatic Transmission Fluid (ATF) Deterioration Degree" desc="P197" ecubyteindex="71" ecubit="4" target="2">
@@ -1348,8 +1348,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
             <ref parameter="P24" />
           </depends>
           <conversions>
-            <conversion units="psi" expr="[P7:psi]-[P24:psi]" format="0.00" gauge_min="-30" gauge_max="30" gauge_step="5" />
             <conversion units="bar" expr="[P7:bar]-[P24:bar]" format="0.000" gauge_min="-2" gauge_max="2" gauge_step="0.4" />
+            <conversion units="psi" expr="[P7:psi]-[P24:psi]" format="0.00" gauge_min="-30" gauge_max="30" gauge_step="5" />
             <conversion units="inHg" expr="[P7:inHg]-[P24:inHg]" format="0.00" gauge_min="-40" gauge_max="60" gauge_step="10" />
             <conversion units="mmHg" expr="[P7:mmHg]-[P24:mmHg]" format="0" gauge_min="-1000" gauge_max="2000" gauge_step="300" />
           </conversions>
@@ -1361,32 +1361,32 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
             <ref parameter="P58" />
           </depends>
           <conversions>
-            <conversion units="mpg (US)" expr="([P9:mph]/3600)/((P12/[P58:AFR])/2880)" format="0.00" gauge_min="0" gauge_max="60" gauge_step="5" />
             <conversion units="l/100km" expr="(3600/[P9:km/h])*((P12/[P58:AFR])/761)*100" format="0.00" gauge_min="0" gauge_max="60" gauge_step="5" />
             <conversion units="km/l" expr="([P9:km/h]/3600)/((P12/[P58:AFR])/761)" format="0.00" gauge_min="0" gauge_max="20" gauge_step="2" />
+            <conversion units="mpg (US)" expr="([P9:mph]/3600)/((P12/[P58:AFR])/2880)" format="0.00" gauge_min="0" gauge_max="60" gauge_step="5" />
             <conversion units="mpg (UK)" expr="([P9:mph]/3600)/((P12/[P58:AFR])/3459)" format="0.00" gauge_min="0" gauge_max="60" gauge_step="5" />
           </conversions>
         </parameter>
         <parameter id="P204" name="Actual Common Rail Pressure (Time Synchronized)" desc="P204" ecubyteindex="72" ecubit="5" target="1">
           <address>0x00021F</address>
           <conversions>
-            <conversion units="psi" expr="x*145.0377" format="0" />
             <conversion units="MPa" expr="x" format="0" />
             <conversion units="bar" expr="x*10" format="0" />
+            <conversion units="psi" expr="x*145.0377" format="0" />
           </conversions>
         </parameter>
         <parameter id="P205" name="Estimated Distance to Oil Change" desc="P205" ecubyteindex="72" ecubit="4" target="1">
           <address>0x00029A</address>
           <conversions>
-            <conversion units="miles" expr="x*62" format="0" />
             <conversion units="km" expr="x*100" format="0" />
+            <conversion units="miles" expr="x*62" format="0" />
           </conversions>
         </parameter>
         <parameter id="P206" name="Running Distance since last Diesel Particulate Filter (DPF) Regeneration" desc="P206" ecubyteindex="72" ecubit="3" target="1">
           <address length="2">0x00029B</address>
           <conversions>
-            <conversion units="miles" expr="x*0.621371192" format="0" />
             <conversion units="km" expr="x" format="0" />
+            <conversion units="miles" expr="x*0.621371192" format="0" />
           </conversions>
         </parameter>
         <parameter id="P207" name="Diesel Particulate Filter (DPF) Regeneration Count" desc="P207" ecubyteindex="72" ecubit="2" target="1">
@@ -1676,10 +1676,10 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
         <parameter id="P244" name="Secondary Air Piping Pressure" desc="P244" ecubyteindex="41" ecubit="7" target="1">
           <address>0x000108</address>
           <conversions>
-            <conversion units="psi" expr="x*37/255" format="0.00" gauge_min="-20" gauge_max="40" gauge_step="5" />
-            <conversion units="bar" expr="x/100" format="0.000" gauge_min="-1.2" gauge_max="2.8" gauge_step="0.4" />
             <conversion units="kPa" expr="x" format="0" gauge_min="-120" gauge_max="280" gauge_step="40" />
             <conversion units="hPa" expr="x*10" format="0" gauge_min="-1200" gauge_max="2800" gauge_step="400" />
+            <conversion units="bar" expr="x/100" format="0.000" gauge_min="-1.2" gauge_max="2.8" gauge_step="0.4" />
+            <conversion units="psi" expr="x*37/255" format="0.00" gauge_min="-20" gauge_max="40" gauge_step="5" />
           </conversions>
         </parameter>
         <parameter id="P245" name="Secondary Air Flow" desc="P245" ecubyteindex="41" ecubit="6" target="1">
@@ -2619,9 +2619,9 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
             <address length="2">0x020E88</address>
           </ecu>
           <conversions>
-            <conversion units="psi" expr="(x-32768)*.01933677" format="0.00" />
-            <conversion units="bar" expr="(x-32768)*.001333224" format="0.000" />
             <conversion units="mmHg" expr="(x-32768)" format="0" />
+            <conversion units="bar" expr="(x-32768)*.001333224" format="0.000" />
+            <conversion units="psi" expr="(x-32768)*.01933677" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E6" name="Target Boost*" desc="E6-Current boost target as determined by the Target Boost table(s). This includes any compensation, if applicable." target="1">
@@ -3024,10 +3024,10 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
             <address length="2">0x0219E2</address>
           </ecu>
           <conversions>
+            <conversion units="kPa absolute" expr="x*0.1333224" format="0.00" />
             <conversion units="psi absolute" expr="x*0.01933677" format="0.00" />
             <conversion units="bar absolute" expr="x*0.001333224" format="0.000" />
             <conversion units="mmHg absolute" expr="x" format="0" />
-            <conversion units="kPa absolute" expr="x*0.1333224" format="0.00" />
             <conversion units="inHg absolute" expr="x*0.03937" format="0.00" gauge_min="-40" gauge_max="60" gauge_step="10" />
           </conversions>
         </ecuparam>
@@ -3072,10 +3072,10 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
             <address length="2">0x0219E2</address>
           </ecu>
           <conversions>
+            <conversion units="kPa relative sea level" expr="(x-760)*0.1333224" format="0.000" />
             <conversion units="psi relative sea level" expr="(x-760)*0.01933677" format="0.00" />
             <conversion units="bar relative sea level" expr="(x-760)*0.001333224" format="0.000" />
             <conversion units="mmHg relative sea level" expr="(x-760)" format="0" />
-            <conversion units="kPa relative sea level" expr="(x-760)*0.1333224" format="0.000" />
           </conversions>
         </ecuparam>
         <ecuparam id="E22" name="Ignition Base Timing*" desc="E22-Current base ignition timing as determined by the Base Timing tables." target="1">
@@ -3352,8 +3352,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
             <address length="2">0x020A72</address>
           </ecu>
           <conversions>
-            <conversion units="AFR" expr="x*0.00179443359375" format="0.00" />
             <conversion units="lambda" expr="x*.0001220703125" format="0.00" />
+            <conversion units="AFR" expr="x*0.00179443359375" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E30" name="A/F Correction #1 (Direct)*" desc="E30-A higher precision alternative to the standard SSM A/F Correction #1 parameter." target="1">
@@ -3386,9 +3386,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E31" name="IAM (4-byte)*" desc="E31-KCA = (KA (max) map value * IAM) + FBKC + FLKC. Total Timing = KCA + base timing + timing compensations" target="1">
-          <ecu id="14491853FF">
-            <address length="4">0xFF2528</address>
-          </ecu>
           <ecu id="6202154007">
             <address length="4">0xFF2518</address>
           </ecu>
@@ -3533,7 +3530,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="13715134FF,5C04505207,7142504007,7142584007,7452584007">
             <address length="4">0xFF2D28</address>
           </ecu>
-          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107">
+          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107,145151611F">
             <address length="4">0xFF2D34</address>
           </ecu>
           <ecu id="74A2584007">
@@ -3775,9 +3772,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E32" name="Engine Load (4-Byte)*" desc="E32-This is the current engine load (g/rev) as determined by the ECU." target="1">
-          <ecu id="14491853FF">
-            <address length="4">0xFF543C</address>
-          </ecu>
           <ecu id="134291236F,135222216F,3D12594006,3D12594106">
             <address length="4">0xFF4F48</address>
           </ecu>
@@ -3922,7 +3916,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="6C12506007,6E12786007,6E12787007">
             <address length="4">0xFF65D0</address>
           </ecu>
-          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107">
+          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107,145151611F">
             <address length="4">0xFF65D4</address>
           </ecu>
           <ecu id="51A2584007">
@@ -4173,9 +4167,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E33" name="CL/OL Fueling*" desc="E33-Fuel system status. [8 = CL (normal)][10 = OL (normal)][7 = OL insufficient ECT][14 = OL due to system failure]" target="1">
-          <ecu id="14491853FF">
-            <address>0xFF7D2D</address>
-          </ecu>
           <ecu id="134291236F,135222216F,3D12594006,3D12594106">
             <address>0xFF6B71</address>
           </ecu>
@@ -4440,7 +4431,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="7134347007">
             <address>0xFF9C9D</address>
           </ecu>
-          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107">
+          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107,145151611F">
             <address>0xFF9CF1</address>
           </ecu>
           <ecu id="7472744007">
@@ -4775,7 +4766,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="134291654F,6C12506007,6E12786007,6E12787007,7212786007,7212786107,7472594007,7472744007,74A2594007">
             <address length="4">0xFF5EA4</address>
           </ecu>
-          <ecu id="135111334F,135111339F,13521813FF,13523142FF,13562113FF,13628026FF,5142584007,5152584007,51A2584007,5A04784107,5A04784207,5A42784107,5A42784207,5A4278A107,5C04505207,5C42504007,5C42584007,6642584007,6642784007,6652784007,66A2784007">
+          <ecu id="135111334F,135111339F,13521813FF,13523142FF,13562113FF,13628026FF,5142584007,5152584007,51A2584007,5A04784107,5A04784207,5A42784107,5A42784207,5A4278A107,5C04505207,5C42504007,5C42584007,6642584007,6642784007,6652784007,66A2784007,145151611F">
             <address length="4">0xFF5EF4</address>
           </ecu>
           <ecu id="1356224FFF,13715134FF,137161227F,6902744007,6904784007,69047A3007,7132514007,7142504007,7142584007,71F2514007,7402744007,7404784007,7404794007,7432744007,7442594007,7452584007,74A2584007,8A04794007">
@@ -4900,7 +4891,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="134291654F,6C12506007,6E12786007,6E12787007,7212786007,7212786107,7472594007,7472744007,74A2594007">
             <address length="4">0xFF5E94</address>
           </ecu>
-          <ecu id="135111334F,135111339F,13521813FF,13523142FF,13562113FF,13628026FF,5142584007,5152584007,51A2584007,5A04784107,5A04784207,5A42784107,5A42784207,5A4278A107,5C04505207,5C42504007,5C42584007,6642584007,6642784007,6652784007,66A2784007">
+          <ecu id="135111334F,135111339F,13521813FF,13523142FF,13562113FF,13628026FF,5142584007,5152584007,51A2584007,5A04784107,5A04784207,5A42784107,5A42784207,5A4278A107,5C04505207,5C42504007,5C42584007,6642584007,6642784007,6652784007,66A2784007,145151611F">
             <address length="4">0xFF5EE4</address>
           </ecu>
           <ecu id="1356224FFF,13715134FF,137161227F,6902744007,6904784007,69047A3007,7132514007,7142504007,7142584007,71F2514007,7402744007,7404784007,7404794007,7432744007,7442594007,7452584007,74A2584007,8A04794007">
@@ -4982,10 +4973,10 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
             <address length="4">0xFFAF40</address>
           </ecu>
           <conversions>
+            <conversion units="kPa" storagetype="float" expr="x*0.1333224" format="0.00" />
             <conversion units="psi" storagetype="float" expr="x*0.01933677" format="0.00" />
             <conversion units="bar" storagetype="float" expr="x*0.001333224" format="0.000" />
             <conversion units="mmHg" storagetype="float" expr="x" format="0" />
-            <conversion units="kPa" storagetype="float" expr="x*0.1333224" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E36" name="Target Boost (4-byte)*" desc="E36-Current boost target as determined by the Target Boost table(s). This includes any compensation, if applicable." target="1">
@@ -5028,7 +5019,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="134291654F,6C12506007,6E12786007,6E12787007,7212786007,7212786107,7472594007,7472744007,74A2594007">
             <address length="4">0xFF5E9C</address>
           </ecu>
-          <ecu id="135111334F,135111339F,13521813FF,13523142FF,13562113FF,13628026FF,5142584007,5152584007,51A2584007,5A04784107,5A04784207,5A42784107,5A42784207,5A4278A107,5C04505207,5C42504007,5C42584007,6642584007,6642784007,6652784007,66A2784007">
+          <ecu id="135111334F,135111339F,13521813FF,13523142FF,13562113FF,13628026FF,5142584007,5152584007,51A2584007,5A04784107,5A04784207,5A42784107,5A42784207,5A4278A107,5C04505207,5C42504007,5C42584007,6642584007,6642784007,6652784007,66A2784007,145151611F">
             <address length="4">0xFF5EEC</address>
           </ecu>
           <ecu id="1356224FFF,13715134FF,137161227F,6902744007,6904784007,69047A3007,7132514007,7142504007,7142584007,71F2514007,7402744007,7404784007,7404794007,7432744007,7442594007,7452584007,74A2584007,8A04794007">
@@ -5113,12 +5104,12 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
             <address length="4">0xFFAF44</address>
           </ecu>
           <conversions>
+            <conversion units="kPa absolute" expr="x*0.1333224" format="0.00" />
             <conversion units="psi relative sea level" storagetype="float" expr="(x-760)*0.01933677" format="0.00" />
             <conversion units="psi absolute" storagetype="float" expr="x*0.01933677" format="0.00" />
             <conversion units="bar relative sea level" storagetype="float" expr="(x-760)*0.001333224" format="0.000" />
             <conversion units="bar absolute" storagetype="float" expr="x*0.001333224" format="0.000" />
             <conversion units="mmHg absolute" storagetype="float" expr="x" format="0" />
-            <conversion units="kPa absolute" expr="x*0.1333224" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E37" name="Turbo Dynamics Proportional (4-byte)*" desc="E37-Current WG duty correction (absolute) that is being applied by the Turbo Dynamics Proportional table." target="1">
@@ -5164,7 +5155,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="134291654F,6C12506007,6E12786007,6E12787007,7212786007,7212786107,7472594007,7472744007,74A2594007">
             <address length="4">0xFF5EA0</address>
           </ecu>
-          <ecu id="135111334F,135111339F,13521813FF,13523142FF,13562113FF,13628026FF,5142584007,5152584007,51A2584007,5A04784107,5A04784207,5A42784107,5A42784207,5A4278A107,5C04505207,5C42504007,5C42584007,6642584007,6642784007,6652784007,66A2784007">
+          <ecu id="135111334F,135111339F,13521813FF,13523142FF,13562113FF,13628026FF,5142584007,5152584007,51A2584007,5A04784107,5A04784207,5A42784107,5A42784207,5A4278A107,5C04505207,5C42504007,5C42584007,6642584007,6642784007,6652784007,66A2784007,145151611F">
             <address length="4">0xFF5EF0</address>
           </ecu>
           <ecu id="1356224FFF,13715134FF,137161227F,6902744007,6904784007,69047A3007,7132514007,7142504007,7142584007,71F2514007,7402744007,7404784007,7404794007,7432744007,7442594007,7452584007,74A2584007,8A04794007">
@@ -5250,9 +5241,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E38" name="Throttle Plate Opening Angle (4-byte)*" desc="E38-Actual throttle plate opening percentage. More accurate than the standard Throttle Opening Angle % SSM parameter." target="1">
-          <ecu id="14491853FF">
-            <address length="4">0xFF52C8</address>
-          </ecu>
           <ecu id="134291236F,135222216F,3D12594006,3D12594106">
             <address length="4">0xFF4E50</address>
           </ecu>
@@ -5373,7 +5361,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="6C12506007,6E12786007">
             <address length="4">0xFF64B8</address>
           </ecu>
-          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107">
+          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107,145151611F">
             <address length="4">0xFF64C4</address>
           </ecu>
           <ecu id="8A04794007">
@@ -5603,9 +5591,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E39" name="Feedback Knock Correction (4-byte)*" desc="E39-This is the temporary negative correction to timing advance in response to what the ECU perceives as knock." target="1">
-          <ecu id="14491853FF">
-            <address length="4">0xFF6D94</address>
-          </ecu>
           <ecu id="134291236F,135222216F,3D12594006,3D12594106">
             <address length="4">0xFF58BC</address>
           </ecu>
@@ -5747,7 +5732,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="7132514007,71F2514007">
             <address length="4">0xFF7C34</address>
           </ecu>
-          <ecu id="13521813FF,13523142FF,13627236FF,4B52504107,4B52584207,5A42784107,5A42784207,5A4278A107">
+          <ecu id="13521813FF,13523142FF,13627236FF,4B52504107,4B52584207,5A42784107,5A42784207,5A4278A107,145151611F">
             <address length="4">0xFF7C40</address>
           </ecu>
           <ecu id="4B5250A007,4B5258A007">
@@ -6079,9 +6064,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E40" name="Knock Correction Advance (IAM only)*" desc="E40-Knock Correction Advance (IAM only)" target="1">
-          <ecu id="14491853FF">
-            <address length="4">0xFF6DB4</address>
-          </ecu>
           <ecu id="134291236F,135222216F,3D12594006,3D12594106">
             <address length="4">0xFF5910</address>
           </ecu>
@@ -6235,7 +6217,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="4B5250A007,4B5258A007">
             <address length="4">0xFF7CAC</address>
           </ecu>
-          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107">
+          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107,145151611F">
             <address length="4">0xFF7CB0</address>
           </ecu>
           <ecu id="66A2784007">
@@ -6576,9 +6558,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E41" name="Fine Learning Knock Correction (4-byte)*" desc="E41-Current learned correction that is being applied which is stored and applied across specific load and rpm ranges." target="1">
-          <ecu id="14491853FF">
-            <address length="4">0xFF6D78</address>
-          </ecu>
           <ecu id="134291236F,135222216F,3D12594006,3D12594106">
             <address length="4">0xFF5928</address>
           </ecu>
@@ -6735,7 +6714,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="7132514007,71F2514007">
             <address length="4">0xFF7CD0</address>
           </ecu>
-          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107">
+          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107,145151611F">
             <address length="4">0xFF7CDC</address>
           </ecu>
           <ecu id="66A2784007">
@@ -7261,9 +7240,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E43" name="Knock Correction Advance (4-byte)*" desc="E43-Current learned correction that is being applied and which is stored and applied across specific load and rpm ranges." target="1">
-          <ecu id="14491853FF">
-            <address length="4">0xFF6DC4</address>
-          </ecu>
           <ecu id="3C4A384106">
             <address length="4">0xFF6DC4</address>
           </ecu>
@@ -7339,7 +7315,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="7132514007">
             <address length="4">0xFF7C30</address>
           </ecu>
-          <ecu id="13521813FF,13523142FF,13627236FF,4B52504107,4B52584207,5A42784107,5A42784207,5A4278A107">
+          <ecu id="13521813FF,13523142FF,13627236FF,4B52504107,4B52584207,5A42784107,5A42784207,5A4278A107,145151611F">
             <address length="4">0xFF7C3C</address>
           </ecu>
           <ecu id="4B5250A007,4B5258A007">
@@ -7587,9 +7563,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E44" name="A/F Learning #1 A (Stored)*" desc="E44-A/F learned correction to CL and OL fueling across specific air flow ranges based on short-term A/F Correction witin range." target="1">
-          <ecu id="14491853FF">
-            <address length="4">0xFF21C0</address>
-          </ecu>
           <ecu id="2F220A4006">
             <address length="4">0xFF2098</address>
           </ecu>
@@ -7731,7 +7704,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="5C04505207,7142504007,7142584007,7452584007">
             <address length="4">0xFF2C9C</address>
           </ecu>
-          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107">
+          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107,145151611F">
             <address length="4">0xFF2CA8</address>
           </ecu>
           <ecu id="6902744007">
@@ -7973,9 +7946,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E45" name="A/F Learning #1 B (Stored)*" desc="E45-A/F learned correction to CL and OL fueling across specific air flow ranges based on short-term A/F Correction witin range." target="1">
-          <ecu id="14491853FF">
-            <address length="4">0xFF21C8</address>
-          </ecu>
           <ecu id="2F220A4006">
             <address length="4">0xFF20A0</address>
           </ecu>
@@ -8120,7 +8090,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="5C04505207,7142504007,7142584007,7452584007">
             <address length="4">0xFF2CA4</address>
           </ecu>
-          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107">
+          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107,145151611F">
             <address length="4">0xFF2CB0</address>
           </ecu>
           <ecu id="6902744007">
@@ -8365,9 +8335,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E46" name="A/F Learning #1 C (Stored)*" desc="E46-A/F learned correction to CL and OL fueling across specific air flow ranges based on short-term A/F Correction witin range." target="1">
-          <ecu id="14491853FF">
-            <address length="4">0xFF21D0</address>
-          </ecu>
           <ecu id="2F220A4006">
             <address length="4">0xFF20A8</address>
           </ecu>
@@ -8512,7 +8479,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="5C04505207,7142504007,7142584007,7452584007">
             <address length="4">0xFF2CAC</address>
           </ecu>
-          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107">
+          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107,145151611F">
             <address length="4">0xFF2CB8</address>
           </ecu>
           <ecu id="6902744007">
@@ -8754,9 +8721,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E47" name="A/F Learning #1 D (Stored)*" desc="E47-A/F learned correction to CL and OL fueling across specific air flow ranges based on short-term A/F Correction witin range." target="1">
-          <ecu id="14491853FF">
-            <address length="4">0xFF21D8</address>
-          </ecu>
           <ecu id="2F220A4006">
             <address length="4">0xFF20B0</address>
           </ecu>
@@ -8901,7 +8865,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="5C04505207,7142504007,7142584007,7452584007">
             <address length="4">0xFF2CB4</address>
           </ecu>
-          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107">
+          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107,145151611F">
             <address length="4">0xFF2CC0</address>
           </ecu>
           <ecu id="6902744007">
@@ -9143,9 +9107,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E48" name="A/F Learning #1 (4-byte)*" desc="E48-Current A/F Learning being applied. Higher resolution then the standard SSM A/F Learning #1 parameter." target="1">
-          <ecu id="14491853FF">
-            <address length="4">0xFF5CBC</address>
-          </ecu>
           <ecu id="134291236F,135222216F,3D12594006,3D12594106">
             <address length="4">0xFF5484</address>
           </ecu>
@@ -9266,7 +9227,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="51A2584007,7132514007,71F2514007">
             <address length="4">0xFF7384</address>
           </ecu>
-          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107">
+          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107,145151611F">
             <address length="4">0xFF7390</address>
           </ecu>
           <ecu id="13562113FF,5142584007,5152584007,6642584007">
@@ -9757,7 +9718,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="7132514007,71F2514007">
             <address>0xFF8348</address>
           </ecu>
-          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107">
+          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107,145151611F">
             <address>0xFF834C</address>
           </ecu>
           <ecu id="52521A4007">
@@ -10071,9 +10032,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E50" name="Fuel Injector #1 Latency (4-byte)*" desc="E50-Current injector latency as determined by the Injector Latency table." target="1">
-          <ecu id="14491853FF">
-            <address length="4">0xFF60E4</address>
-          </ecu>
           <ecu id="2F12044106,2F12044506,2F12054206,2F120A4606,3B12044006,3B12044206,3E12044006,3E12044106,3E12044206,3E12084006,3E12084106,3E12084206,3E12084306">
             <address length="4">0xFF51C4</address>
           </ecu>
@@ -10161,7 +10119,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="5B72564107">
             <address length="4">0xFF6F40</address>
           </ecu>
-          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107">
+          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107,145151611F">
             <address length="4">0xFF6F44</address>
           </ecu>
           <ecu id="13562113FF,5142584007,5152584007,6642584007">
@@ -10550,9 +10508,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E51" name="Manifold Absolute Pressure (4-byte)*" desc="E51-MAP is limited to about 37 psi absolute (about 22 psig at sea level). This parameter has no effective limit." target="1">
-          <ecu id="14491853FF">
-            <address length="4">0xFF52A4</address>
-          </ecu>
           <ecu id="134291236F,135222216F,3D12594006,3D12594106">
             <address length="4">0xFF4DC0</address>
           </ecu>
@@ -10676,7 +10631,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="6C12506007,6E12786007,6E12787007">
             <address length="4">0xFF63E8</address>
           </ecu>
-          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107">
+          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107,145151611F">
             <address length="4">0xFF63FC</address>
           </ecu>
           <ecu id="13562113FF,5142584007,5152584007,51A2584007,6642584007">
@@ -10902,17 +10857,14 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
             <address length="4">0xFFC3E0</address>
           </ecu>
           <conversions>
+            <conversion units="kPa absolute" storagetype="float" expr="x*0.1333224" format="0.00" />
             <conversion units="psi absolute" storagetype="float" expr="x*0.01933677" format="0.00" />
             <conversion units="bar absolute" storagetype="float" expr="x*0.001333224" format="0.000" />
             <conversion units="mmHg absolute" storagetype="float" expr="x" format="0" />
-            <conversion units="kPa absolute" storagetype="float" expr="x*0.1333224" format="0.00" />
             <conversion units="inHg absolute" storagetype="float" expr="x*0.03937" format="0.00" gauge_min="-40" gauge_max="60" gauge_step="10" />
           </conversions>
         </ecuparam>
         <ecuparam id="E52" name="Manifold Relative Sea Level Pressure (4-byte)*" desc="E52-Same as Manifold Absolute Pressure (Direct) except represented as relative pressure with the assumption of sea level." target="1">
-          <ecu id="14491853FF">
-            <address length="4">0xFF52A4</address>
-          </ecu>
           <ecu id="134291236F,135222216F,3D12594006,3D12594106">
             <address length="4">0xFF4DC0</address>
           </ecu>
@@ -11036,7 +10988,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="6C12506007,6E12786007,6E12787007">
             <address length="4">0xFF63E8</address>
           </ecu>
-          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107">
+          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107,145151611F">
             <address length="4">0xFF63FC</address>
           </ecu>
           <ecu id="13562113FF,5142584007,5152584007,51A2584007,6642584007">
@@ -11266,14 +11218,11 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </ecu>
           <conversions>
             <conversion units="psi relative sea level" storagetype="float" expr="(x-760)*0.01933677" format="0.00" />
-            <conversion units="bar relative sea level" storagetype="float" expr="(x-760)*0.001333224" format="0.000" />
             <conversion units="mmHg relative sea level" storagetype="float" expr="(x-760)" format="0" />
+            <conversion units="bar relative sea level" storagetype="float" expr="(x-760)*0.001333224" format="0.000" />
           </conversions>
         </ecuparam>
         <ecuparam id="E53" name="Ignition Base Timing*" desc="E53-Current base ignition timing as determined by the Base Timing tables." target="1">
-          <ecu id="14491853FF">
-            <address length="4">0xFF6178</address>
-          </ecu>
           <ecu id="2F12044106,2F12044506,2F12054206,2F120A4606,3B12044006,3B12044206,3E12044006,3E12044106,3E12044206,3E12084006,3E12084106,3E12084206,3E12084306">
             <address length="4">0xFF4FD4</address>
           </ecu>
@@ -11403,7 +11352,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="13562113FF,5142584007,5152584007,6642584007">
             <address length="4">0xFF7980</address>
           </ecu>
-          <ecu id="13521813FF,13523142FF,4252147006,4252187006,5A42784107,5A42784207,5A4278A107">
+          <ecu id="13521813FF,13523142FF,4252147006,4252187006,5A42784107,5A42784207,5A4278A107,145151611F">
             <address length="4">0xFF7988</address>
           </ecu>
           <ecu id="66A2784007">
@@ -11756,9 +11705,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E54" name="Tip-in Throttle*" desc="E54-This is the current throttle angle change % used as an input by the Throttle Tip-in Enrichment table." target="1">
-          <ecu id="14491853FF">
-            <address length="4">0xFF52D0</address>
-          </ecu>
           <ecu id="134291236F,135222216F,3D12594006,3D12594106">
             <address length="4">0xFF4E54</address>
           </ecu>
@@ -11873,7 +11819,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="6C12506007,6E12786007,6E12787007">
             <address length="4">0xFF64C0</address>
           </ecu>
-          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107">
+          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107,145151611F">
             <address length="4">0xFF64D4</address>
           </ecu>
           <ecu id="13562113FF,5142584007,5152584007,51A2584007,6642584007">
@@ -12103,9 +12049,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E55" name="Tip-in Enrichment (Last Calculated)*" desc="E55-Current (or last) calculated tip-in enrichment value. The value is  not cleared, effectively shows the last calculated value." target="1">
-          <ecu id="14491853FF">
-            <address length="4">0xFF5EFC</address>
-          </ecu>
           <ecu id="134291236F,135222216F,3D12594006,3D12594106">
             <address length="4">0xFF5600</address>
           </ecu>
@@ -12229,7 +12172,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="13562113FF,5142584007,5152584007,6642584007">
             <address length="4">0xFF76D4</address>
           </ecu>
-          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107">
+          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107,145151611F">
             <address length="4">0xFF76DC</address>
           </ecu>
           <ecu id="66A2784007">
@@ -12732,7 +12675,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="7132514007,71F2514007">
             <address length="4">0xFF7F98</address>
           </ecu>
-          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107">
+          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107,145151611F">
             <address length="4">0xFF7FA4</address>
           </ecu>
           <ecu id="66A2784007">
@@ -13220,7 +13163,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="7132514007,71F2514007">
             <address length="4">0xFF7F90</address>
           </ecu>
-          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107">
+          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107,145151611F">
             <address length="4">0xFF7F9C</address>
           </ecu>
           <ecu id="66A2784007">
@@ -13549,9 +13492,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E58" name="Fine Learning Table Offset*" desc="E58-Current index position for the Fine Learning Knock Correction table being applied (and potentially adjusted), stored in ram." target="1">
-          <ecu id="14491853FF">
-            <address>0xFF6D8E</address>
-          </ecu>
           <ecu id="134291236F,135222216F,3D12594006,3D12594106">
             <address>0xFF592E</address>
           </ecu>
@@ -13711,7 +13651,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="7132514007,71F2514007">
             <address>0xFF7CDC</address>
           </ecu>
-          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107">
+          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107,145151611F">
             <address>0xFF7CE8</address>
           </ecu>
           <ecu id="66A2784007">
@@ -14196,7 +14136,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="821B367007">
             <address>0xFF69EE</address>
           </ecu>
-          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107">
+          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107,145151611F">
             <address>0xFF69FD</address>
           </ecu>
           <ecu id="13562113FF,5142584007,5152584007,51A2584007,6642584007">
@@ -14432,9 +14372,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E60" name="Fuel Injector #1 Pulse Width (4-byte)*" desc="E60-Fuel Injector #1 PW with higher resolution. Note: This parameter does not include latency unlike the standard parameter." target="1">
-          <ecu id="14491853FF">
-            <address length="4">0xFF60C4</address>
-          </ecu>
           <ecu id="2F12044106,2F12044506,2F12054206,2F120A4606,3B12044006,3B12044206,3E12044006,3E12044106,3E12044206,3E12084006,3E12084106,3E12084206,3E12084306">
             <address length="4">0xFF51B0</address>
           </ecu>
@@ -14567,7 +14504,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="5142584007,5152584007,6642584007">
             <address length="4">0xFF7834</address>
           </ecu>
-          <ecu id="5A42784107,5A42784207,5A4278A107,66A2784007">
+          <ecu id="5A42784107,5A42784207,5A4278A107,66A2784007,145151611F">
             <address length="4">0xFF783C</address>
           </ecu>
           <ecu id="135111334F,5C42584007">
@@ -14932,10 +14869,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E61" name="A/F Learning Airflow Range (Current)*" desc="E61-Current stored A/F Learning index position. A value of 1-4 corresponds to airflow ranges A-D respectively." target="1">
-          <ecu id="14491853FF">
-            <address>0xFF5CD7</address>
-          </ecu>
-          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107">
+          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107,145151611F">
             <address>0xFF2CA8</address>
           </ecu>
           <ecu id="134291236F,135222216F,3D12594006,3D12594106">
@@ -15387,9 +15321,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E62" name="A/F Learning #2 A (Stored)*" desc="E62-A/F learned correction to CL and OL fueling across specific air flow ranges based on short-term A/F Correction witin range." target="1">
-          <ecu id="14491853FF">
-            <address length="4">0xFF21E0</address>
-          </ecu>
           <ecu id="2F220A4006">
             <address length="4">0xFF20B8</address>
           </ecu>
@@ -15440,9 +15371,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E63" name="A/F Learning #2 B (Stored)*" desc="E63-A/F learned correction to CL and OL fueling across specific air flow ranges based on short-term A/F Correction witin range." target="1">
-          <ecu id="14491853FF">
-            <address length="4">0xFF21E8</address>
-          </ecu>
           <ecu id="2F220A4006">
             <address length="4">0xFF20C0</address>
           </ecu>
@@ -15496,9 +15424,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E64" name="A/F Learning #2 C (Stored)*" desc="E64-A/F learned correction to CL and OL fueling across specific air flow ranges based on short-term A/F Correction witin range." target="1">
-          <ecu id="14491853FF">
-            <address length="4">0xFF21F0</address>
-          </ecu>
           <ecu id="2F220A4006">
             <address length="4">0xFF20C8</address>
           </ecu>
@@ -15552,9 +15477,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E65" name="A/F Learning #2 D (Stored)*" desc="E65-A/F learned correction to CL and OL fueling across specific air flow ranges based on short-term A/F Correction witin range." target="1">
-          <ecu id="14491853FF">
-            <address length="4">0xFF21F8</address>
-          </ecu>
           <ecu id="2F220A4006">
             <address length="4">0xFF20D0</address>
           </ecu>
@@ -15611,9 +15533,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E66" name="A/F Learning #2 (4-byte)*" desc="E66-Current A/F Learning being applied. Higher resolution then the standard SSM A/F Learning #2 parameter." target="1">
-          <ecu id="14491853FF">
-            <address length="4">0xFF5CC0</address>
-          </ecu>
           <ecu id="4C1A344007">
             <address length="4">0xFF31E4</address>
           </ecu>
@@ -15745,7 +15664,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="134291654F,7212786007">
             <address length="4">0xFF5EB8</address>
           </ecu>
-          <ecu id="135111334F,135111339F,13521813FF,13523142FF,13562113FF,13628026FF,5142584007,5152584007,51A2584007,5A04784107,5A04784207,5A42784107,5A42784207,5A4278A107,5C04505207,5C42504007,5C42584007,6642584007,6652784007,66A2784007">
+          <ecu id="135111334F,135111339F,13521813FF,13523142FF,13562113FF,13628026FF,5142584007,5152584007,51A2584007,5A04784107,5A04784207,5A42784107,5A42784207,5A4278A107,5C04505207,5C42504007,5C42584007,6642584007,6652784007,66A2784007,145151611F">
             <address length="4">0xFF5F08</address>
           </ecu>
           <ecu id="137161227F,6902744007,6904784007">
@@ -15912,10 +15831,10 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
             <address length="2">0x0219E8</address>
           </ecu>
           <conversions>
+            <conversion units="kPa relative" expr="(x-32768)*0.1333224" format="0.00" />
             <conversion units="psi relative" expr="(x-32768)*0.01933677" format="0.00" />
             <conversion units="bar relative" expr="(x-32768)*0.001333224" format="0.000" />
             <conversion units="mmHg relative" expr="x-32768" format="0" />
-            <conversion units="kPa relative" expr="(x-32768)*0.1333224" format="0.00" />
             <conversion units="inHg relative" expr="(x-32768)*0.03937007" format="0.00" gauge_min="-40" gauge_max="60" gauge_step="10" />
           </conversions>
         </ecuparam>
@@ -15974,8 +15893,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
             <address length="2">0x020AD9</address>
           </ecu>
           <conversions>
-            <conversion units="estimated AFR" expr="14.7/(1+(x*.000030517578125))" format="0.00" />
             <conversion units="lambda" expr="1/(1+(x*.000030517578125))" format="0.00" />
+            <conversion units="estimated AFR" expr="14.7/(1+(x*.000030517578125))" format="0.00" />
             <conversion units="fuel-air equivalence ratio" expr="(1+(x*.000030517578125))" format="0.00" />
           </conversions>
         </ecuparam>
@@ -16005,8 +15924,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
             <address length="2">0x020B6A</address>
           </ecu>
           <conversions>
-            <conversion units="estimated AFR" expr="14.7/(x*.00048828125)" format="0.00" />
             <conversion units="lambda" expr="1/(x*.00048828125)" format="0.00" />
+            <conversion units="estimated AFR" expr="14.7/(x*.00048828125)" format="0.00" />
             <conversion units="fuel-air equivalence ratio" expr="x*.00048828125" format="0.00" />
           </conversions>
         </ecuparam>
@@ -16036,8 +15955,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
             <address length="2">0x020A76</address>
           </ecu>
           <conversions>
-            <conversion units="estimated AFR" expr="x*.00179443359375" format="0.00" />
             <conversion units="lambda" expr="x*.0001220703125" format="0.00" />
+            <conversion units="estimated AFR" expr="x*.00179443359375" format="0.00" />
             <conversion units="fuel-air equivalence ratio" expr="1/(x*.0001220703125)" format="0.00" />
           </conversions>
         </ecuparam>
@@ -16087,7 +16006,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="134291654F,6C12506007,6E12786007,6E12787007,7212786007,7212786107,7472594007,7472744007,74A2594007">
             <address length="4">0xFF5EB8</address>
           </ecu>
-          <ecu id="135111334F,135111339F,13521813FF,13523142FF,13562113FF,13628026FF,5142584007,5152584007,51A2584007,5A04784107,5A04784207,5A42784107,5A42784207,5A4278A107,5C04505207,5C42504007,5C42584007,6642584007,6642784007,6652784007,66A2784007">
+          <ecu id="135111334F,135111339F,13521813FF,13523142FF,13562113FF,13628026FF,5142584007,5152584007,51A2584007,5A04784107,5A04784207,5A42784107,5A42784207,5A4278A107,5C04505207,5C42504007,5C42584007,6642584007,6642784007,6652784007,66A2784007,145151611F">
             <address length="4">0xFF5F08</address>
           </ecu>
           <ecu id="1356224FFF,137161227F,6902744007,6904784007,69047A3007,7132514007,7142504007,7142584007,71F2514007,7402744007,7404784007,7404794007,7432744007,7442594007,7452584007,8A04794007">
@@ -16422,9 +16341,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E81" name="A/F Correction #1 (4-byte)*" desc="E81-A higher precision alternative to the standard SSM A/F Correction #1 parameter." target="1">
-          <ecu id="14491853FF">
-            <address length="4">0xFF58D8</address>
-          </ecu>
           <ecu id="134291236F,135222216F,3D12594006,3D12594106">
             <address length="4">0xFF533C</address>
           </ecu>
@@ -16551,7 +16467,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="51A2584007">
             <address length="4">0xFF7204</address>
           </ecu>
-          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107">
+          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107,145151611F">
             <address length="4">0xFF7210</address>
           </ecu>
           <ecu id="13562113FF,5142584007,5152584007,6642584007">
@@ -16871,9 +16787,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E82" name="A/F Correction #1 (2-byte)**" desc="E82-A higher precision alternative to the standard SSM A/F Correction #1 parameter." target="1">
-          <ecu id="14491853FF">
-            <address length="2">0xFF7072</address>
-          </ecu>
           <ecu id="1358171FFF,3B12504006,3B12504106,3B12504306,3B12584006,3B12584106,3B12584206,3B12584306,3F12404006,3F12484006">
             <address length="2">0xFF5280</address>
           </ecu>
@@ -16970,7 +16883,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="6C12506007,6E12786007,6E12787007">
             <address length="2">0xFF6A06</address>
           </ecu>
-          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107">
+          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107,145151611F">
             <address length="2">0xFF6A2A</address>
           </ecu>
           <ecu id="13562113FF,5142584007,5152584007,51A2584007,6642584007">
@@ -17374,7 +17287,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="6C12506007,6E12786007,6E12787007">
             <address length="2">0xFF6A0A</address>
           </ecu>
-          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107">
+          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107,145151611F">
             <address length="2">0xFF6A2E</address>
           </ecu>
           <ecu id="13562113FF,5142584007,5152584007,51A2584007,6642584007">
@@ -17619,9 +17532,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E84" name="Primary Open Loop Map Enrichment (4-byte)*" desc="E84-Primary enrichment value based on the Primary Open Loop Fueling table(s) Note: this value is NOT the final fueling target." target="1">
-          <ecu id="14491853FF">
-            <address length="4">0xFF5DFC</address>
-          </ecu>
           <ecu id="134291236F,135222216F,3D12594006,3D12594106">
             <address length="4">0xFF54E4</address>
           </ecu>
@@ -17736,7 +17646,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="51A2584007,7132514007,71F2514007">
             <address length="4">0xFF744C</address>
           </ecu>
-          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107">
+          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107,145151611F">
             <address length="4">0xFF7458</address>
           </ecu>
           <ecu id="13562113FF,5142584007,5152584007,6642584007">
@@ -18073,9 +17983,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E85" name="Primary Open Loop Map Enrichment (2-byte)**" desc="E85-Primary enrichment value based on the Primary Open Loop Fueling table(s) Note: this value is NOT the final fueling target." target="1">
-          <ecu id="14491853FF">
-            <address length="2">0xFF70A0</address>
-          </ecu>
           <ecu id="1358171FFF,3B12504006,3B12504106,3B12504306,3B12584006,3B12584106,3B12584206,3B12584306,3F12404006,3F12484006">
             <address length="2">0xFF5286</address>
           </ecu>
@@ -18172,7 +18079,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="6C12506007,6E12786007,6E12787007">
             <address length="2">0xFF6A10</address>
           </ecu>
-          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107">
+          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107,145151611F">
             <address length="2">0xFF6A32</address>
           </ecu>
           <ecu id="13562113FF,5142584007,5152584007,51A2584007,6642584007">
@@ -18470,8 +18377,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
             <address length="2">0xFFD074</address>
           </ecu>
           <conversions>
-            <conversion units="estimated AFR" expr="14.7/(1+(x*.00003051758))" format="0.00" />
             <conversion units="lambda" expr="1/(1+(x*.00003051758))" format="0.00" />
+            <conversion units="estimated AFR" expr="14.7/(1+(x*.00003051758))" format="0.00" />
             <conversion units="fuel-air equivalence ratio" expr="1+(x*.00003051758)" format="0.00" />
           </conversions>
         </ecuparam>
@@ -18548,7 +18455,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="6C12506007,6E12786007,6E12787007">
             <address>0xFF6A22</address>
           </ecu>
-          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107">
+          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107,145151611F">
             <address>0xFF6A43</address>
           </ecu>
           <ecu id="13562113FF,5142584007,5152584007,51A2584007,6642584007">
@@ -18768,9 +18675,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E88" name="Manifold Absolute Pressure (2-byte)**" desc="E88-MAP is limited to about 37 psi absolute (about 22 psig at sea level). This parameter has no effective limit." target="1">
-          <ecu id="14491853FF">
-            <address length="2">0xFF7088</address>
-          </ecu>
           <ecu id="1358171FFF,3B12504006,3B12504106,3B12504306,3B12584006,3B12584106,3B12584206,3B12584306,3F12404006">
             <address length="2">0xFF529A</address>
           </ecu>
@@ -18864,7 +18768,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="6C12506007,6E12786007,6E12787007">
             <address length="2">0xFF69EC</address>
           </ecu>
-          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107">
+          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107,145151611F">
             <address length="2">0xFF6A10</address>
           </ecu>
           <ecu id="13562113FF,5142584007,5152584007,51A2584007,6642584007">
@@ -19093,17 +18997,14 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
             <address length="2">0xFFD05C</address>
           </ecu>
           <conversions>
+            <conversion units="kPa absolute" expr="x*0.1333224" format="0.00" />
             <conversion units="psi absolute" expr="x*0.01933677" format="0.00" />
             <conversion units="bar absolute" expr="x*0.001333224" format="0.000" />
             <conversion units="mmHg absolute" expr="x" format="0" />
-            <conversion units="kPa absolute" expr="x*0.1333224" format="0.00" />
             <conversion units="inHg absolute" expr="x*0.03937" format="0.00" gauge_min="-40" gauge_max="60" gauge_step="10" />
           </conversions>
         </ecuparam>
         <ecuparam id="E89" name="Manifold Relative Sea Level Pressure (2-byte)**" desc="E89-Same as Manifold Absolute Pressure (Direct) except represented as relative pressure with the assumption of sea level." target="1">
-          <ecu id="14491853FF">
-            <address length="2">0xFF7088</address>
-          </ecu>
           <ecu id="1358171FFF,3B12504006,3B12504106,3B12504306,3B12584006,3B12584106,3B12584206,3B12584306,3F12404006,3F12484006">
             <address length="2">0xFF529A</address>
           </ecu>
@@ -19200,7 +19101,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="6C12506007,6E12786007,6E12787007">
             <address length="2">0xFF69EC</address>
           </ecu>
-          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107">
+          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107,145151611F">
             <address length="2">0xFF6A10</address>
           </ecu>
           <ecu id="13562113FF,5142584007,5152584007,51A2584007,6642584007">
@@ -19435,10 +19336,10 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
             <address length="2">0xFFD05C</address>
           </ecu>
           <conversions>
+            <conversion units="kPa relative sea level" expr="(x-760)*0.1333224" format="0.000" />
             <conversion units="psi relative sea level" expr="(x-760)*0.01933677" format="0.00" />
             <conversion units="bar relative sea level" expr="(x-760)*0.001333224" format="0.000" />
             <conversion units="mmHg relative sea level" expr="(x-760)" format="0" />
-            <conversion units="kPa relative sea level" expr="(x-760)*0.1333224" format="0.000" />
           </conversions>
         </ecuparam>
         <ecuparam id="E90" name="Target Boost (2-byte)**" desc="E90-Current boost target as determined by the Target Boost table(s). This includes any compensation, if applicable." target="1">
@@ -19538,7 +19439,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="6C12506007,6E12786007,6E12787007">
             <address length="2">0xFF6A1C</address>
           </ecu>
-          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107">
+          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107,145151611F">
             <address length="2">0xFF6A3E</address>
           </ecu>
           <ecu id="13562113FF,5142584007,5152584007,51A2584007,6642584007">
@@ -19641,18 +19542,15 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
             <address length="2">0xFFB614</address>
           </ecu>
           <conversions>
+            <conversion units="kPa absolute" expr="x*0.1333224" format="0.00" />
             <conversion units="psi relative sea level" expr="(x-760)*0.01933677" format="0.00" />
             <conversion units="psi absolute" expr="x*0.01933677" format="0.00" />
             <conversion units="bar relative sea level" expr="(x-760)*0.001333224" format="0.000" />
             <conversion units="bar absolute" expr="x*0.001333224" format="0.000" />
             <conversion units="mmHg absolute" expr="x" format="0" />
-            <conversion units="kPa absolute" expr="x*0.1333224" format="0.00" />
           </conversions>
         </ecuparam>
         <ecuparam id="E91" name="A/F Sensor #1 (4-byte)*" desc="E91-A higher precision alternative to the standard SSM A/F Sensor #1 (AFR/lambda) parameter." target="1">
-          <ecu id="14491853FF">
-            <address length="4">0xFF54EC</address>
-          </ecu>
           <ecu id="134291236F,135222216F,3D12594006,3D12594106">
             <address length="4">0xFF5018</address>
           </ecu>
@@ -19803,7 +19701,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="73343C4207,73343E4007">
             <address length="4">0xFF672C</address>
           </ecu>
-          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107">
+          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107,145151611F">
             <address length="4">0xFF6730</address>
           </ecu>
           <ecu id="13562113FF,5142584007,5152584007,51A2584007,6642584007">
@@ -20041,9 +19939,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E92" name="A/F Sensor #1 (2-byte)**" desc="E92-A higher precision alternative to the standard SSM A/F Sensor #1 (AFR/lambda) parameter." target="1">
-          <ecu id="14491853FF">
-            <address length="2">0xFF7082</address>
-          </ecu>
           <ecu id="1358171FFF,3B12504006,3B12504106,3B12504306,3B12584006,3B12584106,3B12584206,3B12584306,3F12404006,3F12484006">
             <address length="2">0xFF52A2</address>
           </ecu>
@@ -20140,7 +20035,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="6C12506007,6E12786007,6E12787007">
             <address length="2">0xFF69F4</address>
           </ecu>
-          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107">
+          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107,145151611F">
             <address length="2">0xFF6A18</address>
           </ecu>
           <ecu id="13562113FF,5142584007,5152584007,51A2584007,6642584007">
@@ -20543,7 +20438,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="6C12506007,6E12786007,6E12787007">
             <address length="2">0xFF69EE</address>
           </ecu>
-          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107">
+          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107,145151611F">
             <address length="2">0xFF6A12</address>
           </ecu>
           <ecu id="13562113FF,5142584007,5152584007,51A2584007,6642584007">
@@ -20761,7 +20656,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="6C12506007,6E12786007,6E12787007">
             <address>0xFF6A2C</address>
           </ecu>
-          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107">
+          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107,145151611F">
             <address>0xFF6A4D</address>
           </ecu>
           <ecu id="13562113FF,5142584007,5152584007,51A2584007,6642584007">
@@ -21048,7 +20943,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="6C12506007,6E12786007,6E12787007">
             <address>0xFF6A2F</address>
           </ecu>
-          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107">
+          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107,145151611F">
             <address>0xFF6A50</address>
           </ecu>
           <ecu id="13562113FF,5142584007,5152584007,51A2584007,6642584007">
@@ -21335,7 +21230,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="6C12506007,6E12786007,6E12787007">
             <address>0xFF6A2E</address>
           </ecu>
-          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107">
+          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107,145151611F">
             <address>0xFF6A4F</address>
           </ecu>
           <ecu id="13562113FF,5142584007,5152584007,51A2584007,6642584007">
@@ -21670,10 +21565,10 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
             <address length="2">0xFFBDE8</address>
           </ecu>
           <conversions>
+            <conversion units="kPa absolute" expr="(x*.002542923463176)-.1999836" format="0.000" />
             <conversion units="psi absolute" expr="(x*0.0003688196892273)-2.9005155" format="0.00" />
             <conversion units="bar absolute" expr="(x*.00002542923463176)-.1999836" format="0.000" />
             <conversion units="mmHg absolute" expr="(x*0.01907349)-150" format="0" />
-            <conversion units="kPa absolute" expr="(x*.002542923463176)-.1999836" format="0.000" />
           </conversions>
         </ecuparam>
         <ecuparam id="E99" name="Fuel Injector #1 Pulse Width (2-byte)**" desc="E99-Fuel Injector #1 PW with higher resolution. Note: This parameter does not include latency unlike the standard parameter." target="1">
@@ -21898,9 +21793,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E100" name="Engine Load (2-byte)**" desc="E100-This is the current engine load (g/rev) as determined by the ECU." target="1">
-          <ecu id="14491853FF">
-            <address length="2">0xFF703C</address>
-          </ecu>
           <ecu id="4B4A346107,4B4A347007,4B5A347007,4B5A384007">
             <address length="2">0xFF6E68</address>
           </ecu>
@@ -21957,9 +21849,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E101" name="Fine Learning Knock Correction (1-byte)**" desc="E101-Current learned correction that is being applied which is stored and applied across specific load and rpm ranges." target="1">
-          <ecu id="14491853FF">
-            <address>0xFF7054</address>
-          </ecu>
           <ecu id="4B4A346107,4B4A347007,4B5A347007,4B5A384007">
             <address>0xFF6E80</address>
           </ecu>
@@ -22016,9 +21905,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E102" name="Feedback Knock Correction (1-byte)**" desc="E102-This is the temporary negative correction to timing advance in response to what the ECU perceives as knock." target="1">
-          <ecu id="14491853FF">
-            <address>0xFF7055</address>
-          </ecu>
           <ecu id="4B4A346107,4B4A347007,4B5A347007,4B5A384007">
             <address>0xFF6E81</address>
           </ecu>
@@ -22075,9 +21961,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E103" name="Fuel Injector #1 Pulse Width (2-byte)**" desc="E103-Fuel Injector #1 PW with higher resolution. Note: This parameter does not include latency unlike the standard parameter." target="1">
-          <ecu id="14491853FF">
-            <address length="2">0xFF7058</address>
-          </ecu>
           <ecu id="4B4A346107,4B4A347007,4B5A347007,4B5A384007">
             <address length="2">0xFF6E84</address>
           </ecu>
@@ -22134,9 +22017,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E104" name="Fuel Injector #2 Pulse Width (2-byte)**" desc="E104-Fuel Injector #2 PW with higher resolution. Note: This parameter does not include latency unlike the standard parameter." target="1">
-          <ecu id="14491853FF">
-            <address length="2">0xFF705A</address>
-          </ecu>
           <ecu id="4B4A346107,4B4A347007,4B5A347007,4B5A384007">
             <address length="2">0xFF6E86</address>
           </ecu>
@@ -22196,9 +22076,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E105" name="A/F Correction #2 (4-byte)*" desc="E105-A higher resolution alternative to the standard SSM A/F Correction #2 parameter." target="1">
-          <ecu id="14491853FF">
-            <address length="4">0xFF58DC</address>
-          </ecu>
           <ecu id="2F220A4006">
             <address length="4">0xFF56D8</address>
           </ecu>
@@ -22264,9 +22141,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E106" name="A/F Correction #2 (2-byte)**" desc="E106-A higher resolution alternative to the standard SSM A/F Correction #2 parameter." target="1">
-          <ecu id="14491853FF">
-            <address length="2">0xFF7074</address>
-          </ecu>
           <ecu id="574B343107">
             <address length="2">0xFF6B06</address>
           </ecu>
@@ -22344,9 +22218,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E107" name="A/F Learning #1 (2-byte)**" desc="E107-Current A/F Learning being applied. Higher resolution then the standard SSM A/F Learning #1 parameter." target="1">
-          <ecu id="14491853FF">
-            <address length="2">0xFF7076</address>
-          </ecu>
           <ecu id="574B343107">
             <address length="2">0xFF6B0C</address>
           </ecu>
@@ -22406,9 +22277,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E108" name="A/F Learning #2 (2-byte)**" desc="E108-Current A/F Learning being applied. Higher resolution then the standard SSM A/F Learning #2 parameter." target="1">
-          <ecu id="14491853FF">
-            <address length="2">0xFF7078</address>
-          </ecu>
           <ecu id="574B343107">
             <address length="2">0xFF6B0E</address>
           </ecu>
@@ -22486,9 +22354,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E109" name="A/F Sensor #2 (4-byte)*" desc="E109-A higher resolution alternative to the standard SSM A/F Sensor #2 parameter." target="1">
-          <ecu id="14491853FF">
-            <address length="4">0xFF54F0</address>
-          </ecu>
           <ecu id="3C4A384106">
             <address length="4">0xFF54F0</address>
           </ecu>
@@ -22550,9 +22415,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E110" name="A/F Sensor #2 (2-byte)**" desc="E110-A higher resolution alternative to the standard SSM A/F Sensor #2 parameter." target="1">
-          <ecu id="14491853FF">
-            <address length="2">0xFF7084</address>
-          </ecu>
           <ecu id="574B343107">
             <address length="2">0xFF6AF2</address>
           </ecu>
@@ -22757,7 +22619,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="6C12506007,6E12786007,6E12787007">
             <address>0xFF6A38</address>
           </ecu>
-          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107">
+          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107,145151611F">
             <address>0xFF6A59</address>
           </ecu>
           <ecu id="13562113FF,5142584007,5152584007,51A2584007,6642584007">
@@ -22933,7 +22795,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="6C12506007,6E12786007,6E12787007">
             <address length="4">0xFF63EC</address>
           </ecu>
-          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107">
+          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107,145151611F">
             <address length="4">0xFF6400</address>
           </ecu>
           <ecu id="13562113FF,5142584007,5152584007,51A2584007,6642584007">
@@ -23159,10 +23021,10 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
             <address length="4">0xFFB2A4</address>
           </ecu>
           <conversions>
+            <conversion units="kPa relative" storagetype="float" expr="x*0.1333224" format="0.000" />
             <conversion units="psi relative" storagetype="float" expr="x*0.01933677" format="0.00" />
             <conversion units="bar relative" storagetype="float" expr="x*0.001333224" format="0.000" />
             <conversion units="mmHg relative" storagetype="float" expr="x" format="0" />
-            <conversion units="kPa relative" storagetype="float" expr="x*0.1333224" format="0.000" />
             <conversion units="inHg relative" storagetype="float" expr="x*0.03937" format="0.00" gauge_min="-40" gauge_max="60" gauge_step="10" />
           </conversions>
         </ecuparam>
@@ -23585,7 +23447,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="4B5250A007,4B5258A007">
             <address length="4">0xFF7CA4</address>
           </ecu>
-          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107">
+          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107,145151611F">
             <address length="4">0xFF7CA8</address>
           </ecu>
           <ecu id="66A2784007">
@@ -23823,7 +23685,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="134291654F,6C12506007,6E12786007,6E12787007,7212786007,7212786107,7472594007,7472744007,74A2594007">
             <address length="4">0xFF5E98</address>
           </ecu>
-          <ecu id="135111334F,135111339F,13521813FF,13523142FF,13562113FF,13628026FF,5142584007,5152584007,51A2584007,5A04784107,5A04784207,5A42784107,5A42784207,5A4278A107,5C04505207,5C42504007,5C42584007,6642584007,6642784007,6652784007,66A2784007">
+          <ecu id="135111334F,135111339F,13521813FF,13523142FF,13562113FF,13628026FF,5142584007,5152584007,51A2584007,5A04784107,5A04784207,5A42784107,5A42784207,5A4278A107,5C04505207,5C42504007,5C42584007,6642584007,6642784007,6652784007,66A2784007,145151611F">
             <address length="4">0xFF5EE8</address>
           </ecu>
           <ecu id="1356224FFF,137161227F,6902744007,6904784007,69047A3007,7132514007,7142504007,7142584007,71F2514007,7402744007,7404784007,7404794007,7432744007,7442594007,7452584007,8A04794007">
@@ -23854,16 +23716,13 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
             <address length="4">0xFF64A0</address>
           </ecu>
           <conversions>
+            <conversion units="kPa relative" storagetype="float" expr="x*0.1333224" format="0.000" />
             <conversion units="psi relative" storagetype="float" expr="x*0.01933677" format="0.00" />
             <conversion units="bar relative" storagetype="float" expr="x*0.001333224" format="0.000" />
             <conversion units="mmHg relative" storagetype="float" expr="x" format="0" />
-            <conversion units="kPa relative" storagetype="float" expr="x*0.1333224" format="0.000" />
           </conversions>
         </ecuparam>
         <ecuparam id="E121" name="Closed Loop Fueling Target (4-byte)*" desc="E121-This is the closed loop fueling lambda target which is used in determining short-term corrections (A/F Correction #1)." target="1">
-          <ecu id="14491853FF">
-            <address length="4">0xFF58F8</address>
-          </ecu>
           <ecu id="134291236F,135222216F,3D12594006,3D12594106">
             <address length="4">0xFF5384</address>
           </ecu>
@@ -24002,7 +23861,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="4B5A347007,4B5A384007">
             <address length="4">0xFF72F0</address>
           </ecu>
-          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107">
+          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107,145151611F">
             <address length="4">0xFF72F8</address>
           </ecu>
           <ecu id="13562113FF,5142584007,5152584007,6642584007">
@@ -24318,9 +24177,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E122" name="Closed Loop Fueling Target (2-byte)*" desc="E122-This is the closed loop fueling lambda target which is used in determining short-term corrections (A/F Correction #1)." target="1">
-          <ecu id="14491853FF">
-            <address length="2">0xFF7042</address>
-          </ecu>
           <ecu id="1358171FFF,3B12504006,3B12504106,3B12504306,3B12584006,3B12584106,3B12584206,3B12584306,3F12404006,3F12484006">
             <address length="2">0xFF52A8</address>
           </ecu>
@@ -24417,7 +24273,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="6C12506007,6E12786007,6E12787007">
             <address length="2">0xFF6A08</address>
           </ecu>
-          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107">
+          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107,145151611F">
             <address length="2">0xFF6A2C</address>
           </ecu>
           <ecu id="13562113FF,5142584007,5152584007,51A2584007,6642584007">
@@ -24727,9 +24583,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E123" name="Final Fueling Base (4-byte)*" desc="E123-This is the final fueling multiplier after corrections are applied but before per injector compensation." target="1">
-          <ecu id="14491853FF">
-            <address length="4">0xFF57E0</address>
-          </ecu>
           <ecu id="2F12044106,2F12044506,2F12054206,2F120A4606,3B12044006,3B12044206,3E12044006,3E12044106,3E12044206,3E12084006,3E12084106,3E12084206,3E12084306">
             <address length="4">0xFF51C8</address>
           </ecu>
@@ -24841,7 +24694,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="5B72564107">
             <address length="4">0xFF6F00</address>
           </ecu>
-          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107">
+          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107,145151611F">
             <address length="4">0xFF6F04</address>
           </ecu>
           <ecu id="13562113FF,5142584007,5152584007,6642584007">
@@ -25190,9 +25043,6 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           </conversions>
         </ecuparam>
         <ecuparam id="E124" name="Final Fueling Base (2-byte)*" desc="E124-This is the final fueling multiplier after corrections are applied but before per injector compensation." target="1">
-          <ecu id="14491853FF">
-            <address length="2">0xFF703E</address>
-          </ecu>
           <ecu id="1358171FFF,3B12504006,3B12504106,3B12504306,3B12584006,3B12584106,3B12584206,3B12584306,3F12404006,3F12484006">
             <address length="2">0xFF528A</address>
           </ecu>
@@ -25289,7 +25139,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="6C12506007,6E12786007,6E12787007">
             <address length="2">0xFF6A02</address>
           </ecu>
-          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107">
+          <ecu id="13521813FF,13523142FF,5A42784107,5A42784207,5A4278A107,145151611F">
             <address length="2">0xFF6A26</address>
           </ecu>
           <ecu id="13562113FF,5142584007,5152584007,51A2584007,6642584007">
@@ -25842,8 +25692,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
             <address length="4">0xFF762C</address>
           </ecu>
           <conversions>
-            <conversion units="miles" storagetype="float" expr="x*0.621371192237" format="0.0" />
             <conversion units="km" storagetype="float" expr="x" format="0" />
+            <conversion units="miles" storagetype="float" expr="x*0.621371192237" format="0.0" />
           </conversions>
         </ecuparam>
         <ecuparam id="E139" name="Odometer Delta (4-byte)*" desc="E139-Reaching 1.0 km triggers update of Odometer variable." target="1">
@@ -25854,8 +25704,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
             <address length="4">0xFF7630</address>
           </ecu>
           <conversions>
-            <conversion units="miles" storagetype="float" expr="x*0.621371192237" format="0.0" />
             <conversion units="km" storagetype="float" expr="x" format="0" />
+            <conversion units="miles" storagetype="float" expr="x*0.621371192237" format="0.0" />
           </conversions>
         </ecuparam>
         <ecuparam id="E140" name="Injector Learning Interval*" desc="E140-Compared with Distance since Injector Learning, enabling automatic learning when interval has been reached." target="1">
@@ -25866,8 +25716,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
             <address length="4">0xFF9334</address>
           </ecu>
           <conversions>
-            <conversion units="miles" storagetype="float" expr="x*0.621371192237" format="0.0" />
             <conversion units="km" storagetype="float" expr="x" format="0" />
+            <conversion units="miles" storagetype="float" expr="x*0.621371192237" format="0.0" />
           </conversions>
         </ecuparam>
         <ecuparam id="E141" name="Interior Heater 1*" desc="E141" target="1">
@@ -25915,8 +25765,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
             <address length="2">0xFF9BA2</address>
           </ecu>
           <conversions>
-            <conversion units="mph" expr="x*0.03495212955" format="0.0" gauge_min="0" gauge_max="250" gauge_step="25" />
             <conversion units="km/h" expr="x*0.05625" format="0.0" gauge_min="0" gauge_max="300" gauge_step="30" />
+            <conversion units="mph" expr="x*0.03495212955" format="0.0" gauge_min="0" gauge_max="250" gauge_step="25" />
           </conversions>
         </ecuparam>
         <ecuparam id="E147" name="Wheel Speed Front Right*" desc="E147" target="1">
@@ -25924,8 +25774,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
             <address length="2">0xFF9BA4</address>
           </ecu>
           <conversions>
-            <conversion units="mph" expr="x*0.03495212955" format="0.0" gauge_min="0" gauge_max="250" gauge_step="25" />
             <conversion units="km/h" expr="x*0.05625" format="0.0" gauge_min="0" gauge_max="300" gauge_step="30" />
+            <conversion units="mph" expr="x*0.03495212955" format="0.0" gauge_min="0" gauge_max="250" gauge_step="25" />
           </conversions>
         </ecuparam>
         <ecuparam id="E148" name="Wheel Speed Rear Left*" desc="E148" target="1">
@@ -25933,8 +25783,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
             <address length="2">0xFF9BA6</address>
           </ecu>
           <conversions>
-            <conversion units="mph" expr="x*0.03495212955" format="0.0" gauge_min="0" gauge_max="250" gauge_step="25" />
             <conversion units="km/h" expr="x*0.05625" format="0.0" gauge_min="0" gauge_max="300" gauge_step="30" />
+            <conversion units="mph" expr="x*0.03495212955" format="0.0" gauge_min="0" gauge_max="250" gauge_step="25" />
           </conversions>
         </ecuparam>
         <ecuparam id="E149" name="Wheel Speed Rear Right*" desc="E149" target="1">
@@ -25942,8 +25792,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
             <address length="2">0xFF9BA8</address>
           </ecu>
           <conversions>
-            <conversion units="mph" expr="x*0.03495212955" format="0.0" gauge_min="0" gauge_max="250" gauge_step="25" />
             <conversion units="km/h" expr="x*0.05625" format="0.0" gauge_min="0" gauge_max="300" gauge_step="30" />
+            <conversion units="mph" expr="x*0.03495212955" format="0.0" gauge_min="0" gauge_max="250" gauge_step="25" />
           </conversions>
         </ecuparam>
         <ecuparam id="E150" name="Injection Quantity Limit (Gear)*" desc="E150" target="1">
@@ -25962,9 +25812,9 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
             <address length="4">0xFFA27C</address>
           </ecu>
           <conversions>
-            <conversion units="gallon (US)" storagetype="float" expr="x*0.264172052358" format="0.000" gauge_min="0" gauge_max="25" gauge_step="5" />
             <conversion units="litres" storagetype="float" expr="x" format="0.00" gauge_min="0" gauge_max="100" gauge_step="10" />
             <conversion units="gallon (UK)" storagetype="float" expr="x*0.219969234654" format="0.000" gauge_min="0" gauge_max="25" gauge_step="5" />
+            <conversion units="gallon (US)" storagetype="float" expr="x*0.264172052358" format="0.000" gauge_min="0" gauge_max="25" gauge_step="5" />
           </conversions>
         </ecuparam>
         <ecuparam id="E152" name="Map Ratio 1 (Primary)*" desc="E152-The ratio used to determine the portion of specific multiple Cruise and Non-Cruise maps which are combined to determine the target value." target="1">
@@ -26255,7 +26105,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="7132514007,71F2514007">
             <address>0xFF7BF1</address>
           </ecu>
-          <ecu id="5A42784207">
+          <ecu id="5A42784207,145151611F">
             <address>0xFF7BFD</address>
           </ecu>
           <ecu id="135111339F,5C42504007,6652784007">
@@ -26359,7 +26209,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="7132514007,71F2514007">
             <address>0xFF7BF2</address>
           </ecu>
-          <ecu id="5A42784207">
+          <ecu id="5A42784207,145151611F">
             <address>0xFF7BFE</address>
           </ecu>
           <ecu id="5C42504007,6652784007">
@@ -26466,7 +26316,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="7132514007,71F2514007">
             <address>0xFF7BF3</address>
           </ecu>
-          <ecu id="5A42784207">
+          <ecu id="5A42784207,145151611F">
             <address>0xFF7BFF</address>
           </ecu>
           <ecu id="135111339F">
@@ -26573,7 +26423,7 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="7132514007,71F2514007">
             <address>0xFF7BF4</address>
           </ecu>
-          <ecu id="5A42784207">
+          <ecu id="5A42784207,145151611F">
             <address>0xFF7C00</address>
           </ecu>
           <ecu id="135111339F,5C42504007,6652784007">
@@ -26817,8 +26667,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="1356212FFF">
             <address>0xFFCA15</address>
           </ecu>
-          <ecu id="14491853FF">
-            <address length="1">0xFF8135</address>
+          <ecu id="145151611F">
+            <address>0xFFA861</address>
           </ecu>
           <conversions>
             <conversion units="rawdata" expr="x" format="0" />
@@ -26945,8 +26795,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="1356212FFF">
             <address length="4">0xFFCA18</address>
           </ecu>
-          <ecu id="14491853FF">
-            <address length="4">0xFF8138</address>
+          <ecu id="145151611F">
+            <address length="4">0xFFA864</address>
           </ecu>
           <conversions>
             <conversion units="VE" storagetype="float" expr="x" format="0.00" gauge_min="0" gauge_max="120" gauge_step="12" />
@@ -27073,8 +26923,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="1356212FFF">
             <address length="4">0xFFCA1C</address>
           </ecu>
-          <ecu id="14491853FF">
-            <address length="4">0xFF813C</address>
+          <ecu id="145151611F">
+            <address length="4">0xFFA868</address>
           </ecu>
           <conversions>
             <conversion units="g/s" storagetype="float" expr="x" format="0.00" gauge_min="0" gauge_max="500" gauge_step="50" />
@@ -27201,8 +27051,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="1356212FFF">
             <address length="4">0xFFCA24</address>
           </ecu>
-          <ecu id="14491853FF">
-            <address length="4">0xFF8144</address>
+          <ecu id="145151611F">
+            <address length="4">0xFFA870</address>
           </ecu>
           <conversions>
             <conversion units="multiplier" storagetype="float" expr="x" format="0.00" gauge_min="0" gauge_max="1" gauge_step="0.1" />
@@ -27329,8 +27179,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="1356212FFF">
             <address length="4">0xFFCA2C</address>
           </ecu>
-          <ecu id="14491853FF">
-            <address length="4">0xFF814C</address>
+          <ecu id="145151611F">
+            <address length="4">0xFFA878</address>
           </ecu>
           <conversions>
             <conversion units="ratio" storagetype="float" expr="x" format="0.00" gauge_min="0" gauge_max="1" gauge_step="0.1" />
@@ -27457,8 +27307,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="1356212FFF">
             <address length="4">0xFFCA30</address>
           </ecu>
-          <ecu id="14491853FF">
-            <address length="4">0xFF8150</address>
+          <ecu id="145151611F">
+            <address length="4">0xFFA87C</address>
           </ecu>
           <conversions>
             <conversion units="g/s" storagetype="float" expr="x" format="0.00" gauge_min="0" gauge_max="500" gauge_step="50" />
@@ -27585,8 +27435,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="1356212FFF">
             <address length="4">0xFFCA20</address>
           </ecu>
-          <ecu id="14491853FF">
-            <address length="4">0xFF8140</address>
+          <ecu id="145151611F">
+            <address length="4">0xFFA86C</address>
           </ecu>
           <conversions>
             <conversion units="g/s" storagetype="float" expr="x" format="0.00" gauge_min="0" gauge_max="500" gauge_step="50" />
@@ -27636,12 +27486,12 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="136272244F">
             <address length="4">0xFFC3B0</address>
           </ecu>
-          <ecu id="14491853FF">
-            <address length="4">0xFF8170</address>
+          <ecu id="145151611F">
+            <address length="4">0xFFA89C</address>
           </ecu>
           <conversions>
-            <conversion units="mph" storagetype="float" expr="x*0.621371192" format="0.0" gauge_min="0" gauge_max="250" gauge_step="25" />
             <conversion units="km/h" storagetype="float" expr="x" format="0.0" gauge_min="0" gauge_max="300" gauge_step="30" />
+            <conversion units="mph" storagetype="float" expr="x*0.621371192" format="0.0" gauge_min="0" gauge_max="250" gauge_step="25" />
           </conversions>
         </ecuparam>
         <ecuparam id="E1302" name="MerpMod LC Engaged Signal" desc="E1302" target="1">
@@ -27762,8 +27612,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="1356212FFF">
             <address>0xFFCA3B</address>
           </ecu>
-          <ecu id="14491853FF">
-            <address length="1">0xFF8157</address>
+          <ecu id="145151611F">
+            <address>0xFFA883</address>
           </ecu>
           <conversions>
             <conversion units="On/Off" expr="x" format="0" gauge_min="0" gauge_max="1" gauge_step="1" />
@@ -27887,8 +27737,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="1356212FFF">
             <address>0xFFCA3C</address>
           </ecu>
-          <ecu id="14491853FF">
-            <address length="1">0xFF8158</address>
+          <ecu id="145151611F">
+            <address>0xFFA884</address>
           </ecu>
           <conversions>
             <conversion units="On/Off" expr="x" format="0" gauge_min="0" gauge_max="1" gauge_step="1" />
@@ -28012,8 +27862,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="1356212FFF">
             <address length="4">0xFFCA40</address>
           </ecu>
-          <ecu id="14491853FF">
-            <address length="1">0xFF815C</address>
+          <ecu id="145151611F">
+            <address>0xFFA888</address>
           </ecu>
           <conversions>
             <conversion units="gear" storagetype="float" expr="x" format="0" gauge_min="0" gauge_max="6" gauge_step="1" />
@@ -28137,8 +27987,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="1356212FFF">
             <address length="4">0xFFCA44</address>
           </ecu>
-          <ecu id="14491853FF">
-            <address length="4">0xFF8160</address>
+          <ecu id="145151611F">
+            <address length="4">0xFFA88C</address>
           </ecu>
           <conversions>
             <conversion units="RPM" storagetype="float" expr="x" format="0.00" gauge_min="0" gauge_max="10000" gauge_step="1000" />
@@ -28262,8 +28112,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="1356212FFF">
             <address length="4">0xFFCA48</address>
           </ecu>
-          <ecu id="14491853FF">
-            <address length="4">0xFF8164</address>
+          <ecu id="145151611F">
+            <address length="4">0xFFA890</address>
           </ecu>
           <conversions>
             <conversion units="RPM" storagetype="float" expr="x" format="0.00" gauge_min="0" gauge_max="10000" gauge_step="1000" />
@@ -28387,8 +28237,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="1356212FFF">
             <address length="4">0xFFCA4C</address>
           </ecu>
-          <ecu id="14491853FF">
-            <address length="4">0xFF8168</address>
+          <ecu id="145151611F">
+            <address length="4">0xFFA894</address>
           </ecu>
           <conversions>
             <conversion units="RPM" storagetype="float" expr="x" format="0.00" gauge_min="0" gauge_max="10000" gauge_step="1000" />
@@ -28512,8 +28362,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="1356212FFF">
             <address length="4">0xFFCA50</address>
           </ecu>
-          <ecu id="14491853FF">
-            <address length="4">0xFF816C</address>
+          <ecu id="145151611F">
+            <address length="4">0xFFA898</address>
           </ecu>
           <conversions>
             <conversion units="RPM" storagetype="float" expr="x" format="0.00" gauge_min="0" gauge_max="10000" gauge_step="1000" />
@@ -28637,8 +28487,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="1356212FFF">
             <address length="4">0xFFCA58</address>
           </ecu>
-          <ecu id="14491853FF">
-            <address length="4">0xFF8174</address>
+          <ecu id="145151611F">
+            <address length="4">0xFFA8A0</address>
           </ecu>
           <conversions>
             <conversion units="RPM" storagetype="float" expr="x" format="0.00" gauge_min="0" gauge_max="10000" gauge_step="1000" />
@@ -28762,8 +28612,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="1356212FFF">
             <address length="4">0xFFCA5C</address>
           </ecu>
-          <ecu id="14491853FF">
-            <address length="4">0xFF8178</address>
+          <ecu id="145151611F">
+            <address length="4">0xFFA8A4</address>
           </ecu>
           <conversions>
             <conversion units="RPM" storagetype="float" expr="x" format="0.00" gauge_min="0" gauge_max="10000" gauge_step="1000" />
@@ -28887,8 +28737,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="1356212FFF">
             <address length="4">0xFFCA60</address>
           </ecu>
-          <ecu id="14491853FF">
-            <address length="4">0xFF817C</address>
+          <ecu id="145151611F">
+            <address length="4">0xFFA8A8</address>
           </ecu>
           <conversions>
             <conversion units="RPM" storagetype="float" expr="x" format="0.00" gauge_min="0" gauge_max="10000" gauge_step="1000" />
@@ -29012,28 +28862,12 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="1356212FFF">
             <address length="4">0xFFCA74</address>
           </ecu>
-          <ecu id="14491853FF">
-            <address length="4">0xFF8190</address>
+          <ecu id="145151611F">
+            <address length="4">0xFFA8BC</address>
           </ecu>
           <conversions>
-            <conversion units="mph" storagetype="float" expr="x*0.621371192" format="0.0" gauge_min="0" gauge_max="250" gauge_step="25" />
             <conversion units="km/h" storagetype="float" expr="x" format="0.0" gauge_min="0" gauge_max="300" gauge_step="30" />
-          </conversions>
-        </ecuparam>
-        <ecuparam id="E1314" name="MerpMod FFS Delta (Auto)" desc="E1314" target="1">
-          <ecu id="14491853FF">
-            <address length="4">0xFF8184</address>
-          </ecu>
-          <conversions>
-            <conversion units="RPM" storagetype="float" expr="x" format="0.00" gauge_min="0" gauge_max="10000" />
-          </conversions>
-        </ecuparam>
-        <ecuparam id="E1315" name="MerpMod FFS Delta (Static)" desc="E1315" target="1">
-          <ecu id="14491853FF">
-            <address length="4">0xFF8188</address>
-          </ecu>
-          <conversions>
-            <conversion units="RPM" storagetype="float" expr="x" format="0.00" gauge_min="0" gauge_max="10000" />
+            <conversion units="mph" storagetype="float" expr="x*0.621371192" format="0.0" gauge_min="0" gauge_max="250" gauge_step="25" />
           </conversions>
         </ecuparam>
         <ecuparam id="E1400" name="MerpMod Clutch Switch" desc="E1400" target="1">
@@ -29127,8 +28961,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="1356212FFF">
             <address bit="7">0xFFB1E9</address>
           </ecu>
-          <ecu id="14491853FF">
-            <address bit="6">0xFF551F</address>
+          <ecu id="145151611F">
+            <address bit="0">0xFF67BF</address>
           </ecu>
           <conversions>
             <conversion units="On/Off" expr="x" format="0" gauge_min="0" gauge_max="1" gauge_step="1" />
@@ -29216,8 +29050,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="136272244F">
             <address bit="3">0xFFA460</address>
           </ecu>
-          <ecu id="14491853FF">
-            <address bit="3">0xFF6B28</address>
+          <ecu id="145151611F">
+            <address bit="0">0xFF61B8</address>
           </ecu>
           <conversions>
             <conversion units="On/Off" expr="x" format="0" gauge_min="0" gauge_max="1" gauge_step="1" />
@@ -29305,8 +29139,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="136272244F">
             <address bit="2">0xFFA460</address>
           </ecu>
-          <ecu id="14491853FF">
-            <address bit="2">0xFF6B28</address>
+          <ecu id="145151611F">
+            <address bit="0">0xFF61B7</address>
           </ecu>
           <conversions>
             <conversion units="On/Off" expr="x" format="0" gauge_min="0" gauge_max="1" gauge_step="1" />
@@ -29394,16 +29228,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="136272244F">
             <address bit="1">0xFFA460</address>
           </ecu>
-          <ecu id="14491853FF">
-            <address bit="1">0xFF6B28</address>
-          </ecu>
-          <conversions>
-            <conversion units="On/Off" expr="x" format="0" gauge_min="0" gauge_max="1" gauge_step="1" />
-          </conversions>
-        </ecuparam>
-        <ecuparam id="E1404" name="MerpMod Rev Limit Fuel Cut Switch" desc="E1404" target="1">
-          <ecu id="14491853FF">
-            <address bit="7">0xFF5F78</address>
+          <ecu id="145151611F">
+            <address bit="0">0xFF61B6</address>
           </ecu>
           <conversions>
             <conversion units="On/Off" expr="x" format="0" gauge_min="0" gauge_max="1" gauge_step="1" />
@@ -29428,8 +29254,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="135291419F">
             <address>0xFFBA10</address>
           </ecu>
-          <ecu id="14491853FF">
-            <address length="1">0xFF7D8E</address>
+          <ecu id="145151611F">
+            <address>0xFF9B3A</address>
           </ecu>
           <conversions>
             <conversion units="rawdata" expr="x" format="0" />
@@ -29454,8 +29280,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="135291419F">
             <address>0xFFBA15</address>
           </ecu>
-          <ecu id="14491853FF">
-            <address length="1">0xFF8199</address>
+          <ecu id="145151611F">
+            <address>0xFFA8C5</address>
           </ecu>
           <conversions>
             <conversion units="rawdata" expr="x" format="0" />
@@ -29480,8 +29306,8 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="135291419F">
             <address>0xFFBA16</address>
           </ecu>
-          <ecu id="14491853FF">
-            <address length="1">0xFF819B</address>
+          <ecu id="145151611F">
+            <address>0xFFA8C7</address>
           </ecu>
           <conversions>
             <conversion units="rawdata" expr="x" format="0" />
@@ -29494,35 +29320,283 @@ any damage or injury incurred as a result of these definitions. USE AT YOUR OWN 
           <ecu id="1362025FFF">
             <address>0xFFA168</address>
           </ecu>
-          <ecu id="14491853FF">
-            <address length="1">0xFF8194</address>
+          <ecu id="145151611F">
+            <address>0xFFA8C0</address>
           </ecu>
           <conversions>
             <conversion units="rawdata" expr="x" format="0" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E2000" name="MerpMod Atmospheric Pressure __TESTING__ (4-byte)*" desc="E2000" target="1">
-          <ecu id="14491356FF">
-            <address>0xFF4BE8</address>
+        <ecuparam id="E1900" name="MerpMod Prog Mode Entry" desc="E1900" target="1">
+          <ecu id="145151611F">
+            <address>0xFFA8CE</address>
           </ecu>
           <conversions>
-            <conversion units="psi" storagetype="float" expr="x*0.01933677" format="0.00" />
-            <conversion units="bar" storagetype="float" expr="x*0.001333224" format="0.000" />
-            <conversion units="mmHg" storagetype="float" expr="x" format="0" />
-            <conversion units="kPa" storagetype="float" expr="x*0.1333224" format="0.000" />
-            <conversion units="inHg" storagetype="float" expr="x*0.03937" format="0.00" gauge_min="-40" gauge_max="60" gauge_step="10" />
+            <conversion units="rawdata" expr="x" format="0.00" />
           </conversions>
         </ecuparam>
-        <ecuparam id="E2001" name="MerpMod Atmospheric Pressure UNKNOWN __TESTING__ (4-byte)*" desc="E2001" target="1">
-          <ecu id="14491356FF">
-            <address>0xFF2E40</address>
+        <ecuparam id="E1901" name="MerpMod Prog Mode Wait" desc="E1901" target="1">
+          <ecu id="145151611F">
+            <address>0xFFA8CF</address>
           </ecu>
           <conversions>
-            <conversion units="psi" storagetype="float" expr="x*0.01933677" format="0.00" />
-            <conversion units="bar" storagetype="float" expr="x*0.001333224" format="0.000" />
-            <conversion units="mmHg" storagetype="float" expr="x" format="0" />
-            <conversion units="kPa" storagetype="float" expr="x*0.1333224" format="0.000" />
-            <conversion units="inHg" storagetype="float" expr="x*0.03937" format="0.00" gauge_min="-40" gauge_max="60" gauge_step="10" />
+            <conversion units="rawdata" expr="x" format="0.00" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1902" name="MerpMod Prog Mode Timer" desc="E1902" target="1">
+          <ecu id="145151611F">
+            <address>0xFFA8CD</address>
+          </ecu>
+          <conversions>
+            <conversion units="rawdata" expr="x" format="0.00" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1903" name="MerpMod Prog Mode Enable" desc="E1903" target="1">
+          <ecu id="145151611F">
+            <address>0xFFA8CC</address>
+          </ecu>
+          <conversions>
+            <conversion units="rawdata" expr="x" format="0.00" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1904" name="MerpMod Prog Mode Current Mode" desc="E1904" target="1">
+          <ecu id="145151611F">
+            <address>0xFFA8D0</address>
+          </ecu>
+          <conversions>
+            <conversion units="rawdata" expr="x" format="0.00" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1905" name="MerpMod Prog Mode Selected Value Flash" desc="E1905" target="1">
+          <ecu id="145151611F">
+            <address>0xFFA8D1</address>
+          </ecu>
+          <conversions>
+            <conversion units="rawdata" expr="x" format="0.00" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1906" name="MerpMod Prog Mode Value" desc="E1906" target="1">
+          <ecu id="145151611F">
+            <address length="4">0xFFA8D4</address>
+          </ecu>
+          <conversions>
+            <conversion units="rawdata" expr="x" format="0.00" storagetype="float" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1907" name="MerpMod Rev Limit Fuel Cut Switch" desc="E1907" target="1">
+          <ecu id="145151611F">
+            <address bit="0">0xFF7768</address>
+          </ecu>
+          <conversions>
+            <conversion units="rawdata" expr="x" format="0.00" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1908" name="MerpMod FFS Mode" desc="E1908" target="1">
+          <ecu id="145151611F">
+            <address>0xFFA882</address>
+          </ecu>
+          <conversions>
+            <conversion units="rawdata" expr="x" format="0.00" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1909" name="MerpMod FFS Delta (Auto)" desc="E1909" target="1">
+          <ecu id="145151611F">
+            <address length="4">0xFFA8B0</address>
+          </ecu>
+          <conversions>
+            <conversion units="rawdata" expr="x" format="0.00" storagetype="float" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1910" name="MerpMod FFS Delta (Static)" desc="E1910" target="1">
+          <ecu id="145151611F">
+            <address length="4">0xFFA8B4</address>
+          </ecu>
+          <conversions>
+            <conversion units="rawdata" expr="x" format="0.00" storagetype="float" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1911" name="MerpMod Master Init Flag" desc="E1911" target="1">
+          <ecu id="145151611F">
+            <address>0xFFA840</address>
+          </ecu>
+          <conversions>
+            <conversion units="rawdata" expr="x" format="0.00" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1912" name="MerpMod TGV Volts Left" desc="E1912" target="1">
+          <ecu id="145151611F">
+            <address length="4">0xFFA850</address>
+          </ecu>
+          <conversions>
+            <conversion units="rawdata" expr="x" format="0.00" storagetype="float" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1913" name="MerpMod TGV Volts Right" desc="E1913" target="1">
+          <ecu id="145151611F">
+            <address length="4">0xFFA854</address>
+          </ecu>
+          <conversions>
+            <conversion units="rawdata" expr="x" format="0.00" storagetype="float" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1914" name="MerpMod Map Switch" desc="E1914" target="1">
+          <ecu id="145151611F">
+            <address>0xFFA848</address>
+          </ecu>
+          <conversions>
+            <conversion units="rawdata" expr="x" format="0.00" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1915" name="MerpMod Map Blending Ratio" desc="E1915" target="1">
+          <ecu id="145151611F">
+            <address length="4">0xFFA84C</address>
+          </ecu>
+          <conversions>
+            <conversion units="rawdata" expr="x" format="0.00" storagetype="float" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1916" name="MerpMod TGV Left Scaled" desc="E1916" target="1">
+          <ecu id="145151611F">
+            <address length="4">0xFFA858</address>
+          </ecu>
+          <conversions>
+            <conversion units="rawdata" expr="x" format="0.00" storagetype="float" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1917" name="MerpMod TGV Right Scaled" desc="E1917" target="1">
+          <ecu id="145151611F">
+            <address length="4">0xFFA85C</address>
+          </ecu>
+          <conversions>
+            <conversion units="rawdata" expr="x" format="0.00" storagetype="float" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1918" name="MerpMod Injector Scaling" desc="E1918" target="1">
+          <ecu id="145151611F">
+            <address length="4">0xFFA844</address>
+          </ecu>
+          <conversions>
+            <conversion units="rawdata" expr="x" format="0.00" storagetype="float" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1919" name="MerpMod LC Fueling Lock Enrichment" desc="E1919" target="1">
+          <ecu id="145151611F">
+            <address length="4">0xFFA90C</address>
+          </ecu>
+          <conversions>
+            <conversion units="rawdata" expr="x" format="0.00" storagetype="float" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1920" name="MerpMod LC Fueling Mode" desc="E1920" target="1">
+          <ecu id="145151611F">
+            <address length="4">0xFFA8FD</address>
+          </ecu>
+          <conversions>
+            <conversion units="rawdata" expr="x" format="0.00" storagetype="float" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1921" name="MerpMod LC Fueling Enrichment" desc="E1921" target="1">
+          <ecu id="145151611F">
+            <address length="4">0xFFA908</address>
+          </ecu>
+          <conversions>
+            <conversion units="rawdata" expr="x" format="0.00" storagetype="float" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1922" name="MerpMod LC Fueling Enrichment Multiplier" desc="E1922" target="1">
+          <ecu id="145151611F">
+            <address length="4">0xFFA910</address>
+          </ecu>
+          <conversions>
+            <conversion units="rawdata" expr="x" format="0.00" storagetype="float" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1923" name="MerpMod Primary Open Loop Fueling Output" desc="E1923" target="1">
+          <ecu id="145151611F">
+            <address length="4">0xFFA904</address>
+          </ecu>
+          <conversions>
+            <conversion units="rawdata" expr="x" format="0.00" storagetype="float" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1924" name="MerpMod PGWG Compensation" desc="E1924" target="1">
+          <ecu id="145151611F">
+            <address length="4">0xFFA91C</address>
+          </ecu>
+          <conversions>
+            <conversion units="rawdata" expr="x" format="0.00" storagetype="float" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1925" name="MerpMod PGTB Compensation" desc="E1925" target="1">
+          <ecu id="145151611F">
+            <address length="4">0xFFA920</address>
+          </ecu>
+          <conversions>
+            <conversion units="rawdata" expr="x" format="0.00" storagetype="float" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1926" name="MerpMod Max WGDC Per Gear" desc="E1926" target="1">
+          <ecu id="145151611F">
+            <address>0xFFA928</address>
+          </ecu>
+          <conversions>
+            <conversion units="rawdata" expr="x" format="0.00" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1927" name="MerpMod Initial WGDC Per Gear" desc="E1927" target="1">
+          <ecu id="145151611F">
+            <address length="4">0xFFA924</address>
+          </ecu>
+          <conversions>
+            <conversion units="rawdata" expr="x" format="0.00" storagetype="float" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1928" name="MerpMod Target Boost Output" desc="E1928" target="1">
+          <ecu id="145151611F">
+            <address length="4">0xFFA918</address>
+          </ecu>
+          <conversions>
+            <conversion units="rawdata" expr="x" format="0.00" storagetype="float" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1929" name="MerpMod LC Timing Mode" desc="E1929" target="1">
+          <ecu id="145151611F">
+            <address>0xFFA8D9</address>
+          </ecu>
+          <conversions>
+            <conversion units="rawdata" expr="x" format="0.00" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1930" name="MerpMod LC Timing Lock Value" desc="E1930" target="1">
+          <ecu id="145151611F">
+            <address length="4">0xFFA8E8</address>
+          </ecu>
+          <conversions>
+            <conversion units="rawdata" expr="x" format="0.00" storagetype="float" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1931" name="MerpMod LC Timing Retard" desc="E1931" target="1">
+          <ecu id="145151611F">
+            <address length="4">0xFFA8E4</address>
+          </ecu>
+          <conversions>
+            <conversion units="rawdata" expr="x" format="0.00" storagetype="float" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1932" name="MerpMod LC Timing Retard Multiplier" desc="E1932" target="1">
+          <ecu id="145151611F">
+            <address length="4">0xFFA8F0</address>
+          </ecu>
+          <conversions>
+            <conversion units="rawdata" expr="x" format="0.00" storagetype="float" />
+          </conversions>
+        </ecuparam>
+        <ecuparam id="E1933" name="MerpMod Base Timing Final Output" desc="E1933" target="1">
+          <ecu id="145151611F">
+            <address length="4">0xFFA8E0</address>
+          </ecu>
+          <conversions>
+            <conversion units="rawdata" expr="x" format="0.00" storagetype="float" />
           </conversions>
         </ecuparam>
       </ecuparams>
