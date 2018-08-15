@@ -354,14 +354,26 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
     <table name="Y" address="d8ccc" />
   </table>
   <table name="Base Timing Idle Minimum Vehicle Speed Enable" address="d8730" />
-  <table name="Knock Correction Advance Max Cruise" address="db8e4">
-    <table name="X" address="db850" elements="19" />
-    <table name="Y" address="db89c" />
-  </table>
-  <table name="Knock Correction Advance Max Non-Cruise" address="dbad0">
-    <table name="X" address="dba3c" elements="19" />
-    <table name="Y" address="dba88" />
-  </table>
+  
+	<table name="Knock Correction Advance Max Additive A (Knock Conditions)(IAM)" address="db6f8">
+		<table name="Engine Load" address="db664" elements="19"/>
+		<table name="Engine Speed" address="db6b0"/>
+	</table>
+
+	<table name="Knock Correction Advance Max Additive B (Knock Conditions)" address="dbcbc">
+		<table name="Engine Load" address="dbc28" elements="19"/>
+		<table name="Engine Speed" address="dbc74"/>
+	</table>
+
+	<table name="Knock Correction Advance Max Cruise" address="db8e4">
+		<table name="Engine Load" address="db850" elements="19"/>
+		<table name="Engine Speed" address="db89c"/>
+	</table>
+
+	<table name="Knock Correction Advance Max Non-Cruise" address="dbad0">
+		<table name="Engine Load" address="dba3c" elements="19"/>
+		<table name="Engine Speed" address="dba88"/>
+	</table>
   <table name="Timing Compensation A (IAT)" address="d8f48">
     <table name="Y" address="d8f08" />
   </table>
