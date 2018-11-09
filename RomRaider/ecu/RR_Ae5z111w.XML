@@ -958,8 +958,8 @@
     </table>
     <table type="2D" name="Boost Limit (Fuel Cut)  " category="Boost Control - Limits" storagetype="uint16" endian="big" sizey="15" userlevel="1" logparam="E52">
       <scaling units="psi absolute" expression="x*.01933677" to_byte="x/.01933677" format="0.00" fineincrement=".01" coarseincrement=".1" />
-      <table type="Y Axis" name="Atmospheric Pressure" storagetype="float" endian="little" logparam="P24">
-        <scaling units="psi" expression="x*.01933677" to_byte="x/.01933677" format="0.00" fineincrement=".1" coarseincrement="1" />
+      <table type="Y Axis" name="Engine Speed" storagetype="float" endian="little" logparam="P8">
+        <scaling units="RPM" expression="x" to_byte="x" format="#" fineincrement="50" coarseincrement="100" />
       </table>
       <description>Fuel cut will be activated when actual boost exceeds the corresponding threshold in this table multiplied by an atmospheric pressure multiplier.</description>
     </table>
