@@ -1,18 +1,97 @@
 <rom>
-  <romid>
-    <xmlid>A8DH201X</xmlid>
-    <internalidaddress>2000</internalidaddress>
-    <internalidstring>A8DH201X</internalidstring>
-    <ecuid>4312584106</ecuid>
-    <year>06</year>
-    <market>USDM</market>
-    <make>Subaru</make>
-    <model>Impreza</model>
-    <submodel>WRX</submodel>
-    <transmission>MT</transmission>
-    <memmodel>SH7058</memmodel>
-    <flashmethod>sti05</flashmethod>
-    <checksummodule>subarudbw</checksummodule>
-  </romid>
-  <include>A8DH200X</include>
+	<romid>
+		<xmlid>A8DH201X</xmlid>
+		<internalidaddress>2000</internalidaddress>
+		<internalidstring>A8DH201X</internalidstring>
+		<ecuid>4312584106</ecuid>
+		<make>Subaru</make>
+		<market>USDM</market>
+		<model>Impreza</model>
+		<submodel>WRX</submodel>
+		<transmission>MT</transmission>
+		<year>06</year>
+		<flashmethod>sti05</flashmethod>
+		<memmodel>SH7058</memmodel>
+		<checksummodule>subarudbw</checksummodule>
+	</romid>
+
+	<include>A8DH200X</include>
+
+	<table name="Wall Wetting Comp Group 1 Base Adder" address="c91b8">
+		<table name="Engine Load Delta" address="c9184"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 1 Load Based Correction Neg Delta" address="c9244">
+		<table name="Engine Load" address="c9218"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 1 Load Based Correction Pos Delta" address="c9200">
+		<table name="Engine Load" address="c91d4"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 1 RPM Correction Neg Delta Neg Tip in Higher RPM" address="c8af0">
+		<table name="Engine Speed" address="c8ac8"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 1 Wall Temp Correction Neg Delta" address="c9142">
+		<table name="Coolant Temperature" address="c8974"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 1 Wall Temp Correction Pos Delta" address="c9122">
+		<table name="Coolant Temperature" address="c8974"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 1 Load Delta Deadzone Abs Load Delta" address="c927c">
+		<table name="Engine Speed" address="c925c"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 1 Load Delta Limit Max Min" address="c8304" scaling="EngineLoadDelta(g/rev)1">
+	</table>
+
+	<table name="Wall Wetting Comp Group 2 Base Adder Load Delta Multiplier Pos Delta" address="c82fc">
+	</table>
+
+	<table name="Wall Wetting Comp Group 2 Base Adder Load Delta Multiplier Neg Delta" address="c8300">
+	</table>
+
+	<table name="Wall Wetting Comp Group 2 RPM Correction Neg Delta Neg Tip in Higher RPM" address="c8b24" scaling="Tau6">
+		<table name="Engine Speed" address="c8afc" elements="10"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 2 Wall Temp Correction Neg Delta" address="c9162">
+		<table name="Coolant Temperature" address="c8974"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 2 Wall Temp Correction Pos Delta" address="caae4">
+		<table name="Coolant Temperature" address="c8974"/>
+		<table name="Engine Load" address="caad8"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 2 Load Delta Deadzone Limit Max Min" address="c8314" scaling="EngineLoadDelta(g/rev)1">
+	</table>
+
+	<table name="Wall Wetting Comp Group 2 Load Delta Smoothing Factor Pos Delta" address="c830c">
+	</table>
+
+	<table name="Wall Wetting Comp Group 2 Load Delta Smoothing Factor Neg Delta" address="c8310">
+	</table>
+
+	<table name="Wall Wetting Comp Group 4 Decay Delay" address="c8b3e" scaling="Tau7">
+		<table name="Coolant Temperature" address="c89b4"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 4 Low Speed Decay Initial Start" address="c928c" scaling="Tau">
+		<table name="Coolant Temperature" address="c89b4"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 4 High Speed Decay Initial Start" address="c92ac">
+		<table name="Coolant Temperature" address="c89b4"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 4 Low Speed Decay Step Value" address="c831c">
+	</table>
+
+	<table name="Wall Wetting Comp Group 4 High Speed Decay Step Value" address="c8320">
+	</table>
+
 </rom>

@@ -66,6 +66,8 @@
 	<scaling name="EngineLoad(g/rev)" units="Engine Load (g/rev)" toexpr="x*.00006103516" frexpr="x/.00006103516" format="%.2f" min="0.55" max="5" inc="0.01" storagetype="uint16" endian="big"/>
 	<scaling name="EngineLoad(g/rev)1" units="Engine Load (g/rev)" toexpr="x" frexpr="x" format="%.2f" min="0" max="5" inc="0.01" storagetype="float" endian="big"/>
 	<scaling name="EngineLoadCompensation(%)" units="Engine Load Compensation (%)" toexpr="(x*.390625)-50" frexpr="(x+50)/.390625" format="%.1f" min="-28.9" max="21.1" inc="0.2" storagetype="uint8" endian="big"/>
+	<scaling name="EngineLoadDelta(g/rev)" units="Engine Load (g/rev)" toexpr="x*.00006103516" frexpr="x/.00006103516" format="%.4f" min="0.55" max="5" inc="0.01" storagetype="uint16" endian="big"/>
+	<scaling name="EngineLoadDelta(g/rev)1" units="Engine Load Delta (g/rev)" toexpr="x" frexpr="x" format="%.2f" min="0" max="5" inc="0.01" storagetype="float" endian="big"/>
 	<scaling name="EngineSpeed(RPM)" units="Engine Speed (RPM)" toexpr="x*.1953125" frexpr="x/.1953125" format="%.0f" min="0" max="12000" inc="50" storagetype="uint16" endian="big"/>
 	<scaling name="EngineSpeed(RPM)1" units="Engine Speed (RPM)" toexpr="x" frexpr="x" format="%.0f" min="0" max="2000" inc="50" storagetype="float" endian="big"/>
 	<scaling name="EngineSpeed(RPM)FFS" units="Engine Speed (RPM)" toexpr="x" frexpr="x" format="%5.1f" min="-8000" max="1000" inc="50" storagetype="float" endian="big"/>
@@ -242,6 +244,15 @@
 	<scaling name="TargetThrottlePlateOpeningAngle(%)" units="Target Throttle Plate Opening Angle (%)" toexpr="x*.002270655357" frexpr="x/.002270655357" format="%.1f" min="0" max="102.4" inc="0.1" storagetype="uint16" endian="big"/>
 	<scaling name="TargetThrottlePlateOpeningAngle(%)1" units="Target Throttle Plate Opening Angle (%)" toexpr="x" frexpr="x" format="%.1f" min="0" max="102.4" inc="0.1" storagetype="float" endian="big"/>
 	<scaling name="Tau" units="Enrichment Adder Multiplier" toexpr="x*0.00048828125" frexpr="x/0.00048828125" format="%.2f" min="0" max="20" inc="0.5" storagetype="uint16" endian="big"/>
+	<scaling name="Tau1" units="Enrichment Adder Multiplier" toexpr="(x*0.00048828125)-16" frexpr="(x+16)/0.00048828125" format="%.2f" min="0" max="20" inc="0.5" storagetype="uint16" endian="big"/>
+	<scaling name="Tau2" units="Counter" toexpr="x" frexpr="x" format="%.0f" min="0" max="100" inc="0.1" storagetype="float" endian="big"/>
+	<scaling name="Tau3" units="Adder" toexpr="x" frexpr="x" format="%.0f" min="0" max="100" inc="0.1" storagetype="float" endian="big"/>
+	<scaling name="Tau4" units="Multiplier" toexpr="x" frexpr="x" format="%.5f" min="0" max="100" inc="0.001" storagetype="float" endian="big"/>
+	<scaling name="Tau5" units="Smoothing Factor" toexpr="x" frexpr="x" format="%.3f" min="0" max="100" inc="0.1" storagetype="float" endian="big"/>
+	<scaling name="Tau6" units="Multiplier" toexpr="x*0.1953125" frexpr="x/0.1953125" format="%.1f" min="0" max="5000" inc="0.1" storagetype="uint8" endian="big"/>
+	<scaling name="Tau7" units="Counter" toexpr="x" frexpr="x" format="%.0f" min="0" max="5000" inc="1" storagetype="uint8" endian="big"/>
+	<scaling name="Tau8" units="Counter" toexpr="x" frexpr="x" format="%.3f" min="0" max="100" inc="0.1" storagetype="float" endian="big"/>
+	<scaling name="Tau9" units="Enrichment Adder Multiplier" toexpr="x*0.000030517578" frexpr="x/0.000030517578" format="%.3f" min="0" max="20" inc="0.5" storagetype="uint16" endian="big"/>
 	<scaling name="TauMrp" units="psi relative (sea level)" toexpr="(x*1.933677)-14.6959452" frexpr="(x+14.6959452)/1.933677" format="%.2f" min="0" max="30" inc="0.5" storagetype="float" endian="big"/>
 	<scaling name="Temperature(DegreesF)" units="Temperature (Degrees F)" toexpr="(x*1.8)+32" frexpr="(x-32)/1.8" format="%.1f" min="-40" max="2096" inc="0.1" storagetype="float" endian="big"/>
 	<scaling name="ThrottleAngleChange(%)" units="Throttle Angle Change (%)" toexpr="x" frexpr="x" format="%.1f" min="0.5" max="12" inc="0.3" storagetype="float" endian="big"/>
@@ -298,6 +309,7 @@
 	<scaling name="psiabsolute1" units="psi absolute" toexpr="x*.01933677" frexpr="x/.01933677" format="%.2f" min="1.07" max="14.7" inc="0.01" storagetype="float" endian="big"/>
 	<scaling name="psiabsolute2" units="psi absolute" toexpr="x*.01933677" frexpr="x/.01933677" format="%.2f" min="15.89" max="50" inc="0.01" storagetype="uint16" endian="big"/>
 	<scaling name="psiabsolute3" units="psi absolute" toexpr="x*.01933677" frexpr="x/.01933677" format="%.2f" min="15.89" max="50" inc="0.01" storagetype="uint8" endian="big"/>
+	<scaling name="psiabsolute4" units="psi absolute" toexpr="x*1.933677" frexpr="x/1.933677" format="%.3f" min="-8.01" max="9.94" inc="0.01" storagetype="float" endian="big"/>
 	<scaling name="psiabsoluteSD" units="psi absolute" toexpr="(x)*.01933677" frexpr="(x/.01933677)" format="%.2f" min="0" max="40" inc="0.01" storagetype="float" endian="big"/>
 	<scaling name="psirelative" units="psi relative" toexpr="x*.01933677" frexpr="x/.01933677" format="%.2f" min="-19.34" max="19.34" inc="0.01" storagetype="float" endian="big"/>
 	<scaling name="psirelative1" units="psi relative" toexpr="x*-.01933677" frexpr="x/-.01933677" format="%.2f" min="-13.5" max="0" inc="0.01" storagetype="float" endian="big"/>
@@ -1314,8 +1326,8 @@
 		<table name="Atmospheric Pressure" type="X Axis" elements="6" scaling="psi1"/>
 		<table name="Engine Speed" type="Y Axis" elements="6" scaling="RPM"/>
 	</table>
-	
-		<table name="Boost Limit (Fuel Cut)__" category="Boost Control - Limits" type="2D" level="4" scaling="psiabsolute2">
+
+	<table name="Boost Limit (Fuel Cut)__" category="Boost Control - Limits" type="2D" level="4" scaling="psiabsolute2">
 		<description>Fuel cut will be activated when actual boost exceeds the corresponding threshold in this table.</description>
 		<table name="Engine Speed" type="X Axis" elements="15" scaling="RPM"/>
 	</table>
@@ -4071,7 +4083,7 @@
 		<table name="Engine Load" type="X Axis" elements="11" scaling="g/rev"/>
 		<table name="Engine Speed" type="Y Axis" elements="10" scaling="RPM"/>
 	</table>
-	
+
 	<table name="Intake Cam Advance Angle Cruise (AVCS) __" category="Variable Valve Timing (AVCS)" type="3D" level="2" scaling="Advance(degrees)2">
 		<description>This map selects the degree of intake cam advance for the variable valve timing system during cruise conditions. Cruise and non-cruise conditions are determined by a number of factors including engine speed, requested torque, MAF, vehicle speed, IAT, idle mode, ECT, and SI-Drive mode (if applicable). The ECU will ramp between the cruise and non-cruise map values when conditions dictate the switch.</description>
 		<table name="Engine Load" type="X Axis" elements="11" scaling="g/rev"/>
@@ -8874,6 +8886,349 @@
 
 	<table name="Injector Timing Minimum Crank End Angle" category="ALPHA Injector Timing" type="2D" level="1" scaling="Injector_Timing2">
 		<table name="Engine Load" type="X Axis" elements="16" scaling="EngineLoad(g/rev)1"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 1 Base Adder" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau1">
+		<description>This is a base adder that, with its corresponding group 1 corrections applied, is added to the commanded fuel final target (EQ ratio) as part of the group 1 wall wetting compensation. Increasing a value in this table will result in a potentially richer fuel target at the given group 1 delta (MAP or load depending on ECU), as long the current output of any corresponding group 1 correction is not set to zero. Decreasing a value in this table, will have the opposite effect. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table name="Engine Load Delta" type="Y Axis" elements="13" scaling="EngineLoadDelta(g/rev)1"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 1A Base Adder" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau1">
+		<description>This is a base adder that, with its corresponding group 1 corrections applied, is added to the commanded fuel final target (EQ ratio) as part of the group 1 wall wetting compensation. Increasing a value in this table will result in a potentially richer fuel target at the given group 1 manifold absolute pressure (MAP) delta (current MAP - previous MAP), as long the current output of any corresponding group 1 correction is not set to zero. Decreasing a value in this table, will have the opposite effect. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table name="psi absolute" type="Y Axis" elements="13" scaling="psiabsolute4"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 1 Load Based Correction Neg Delta" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau">
+		<description>This table's multiplier, based on the load, is applied to the "Wall Wetting Comp (Group 1) Base Adder" table when the group 1 load delta is negative (load is decreasing). For example, if this table's multiplier is 1.2 and the current group 1 base adder is -0.2, the adder (eq ratio) for group 1 would be -0.24 (1.2 * -0.2). The other correction factors for group 1 are applied in the same way to determine the final adder (eq ratio) for group 1. If the current output for any currently active correction table in group 1 is zero, the final group 1 adder (eq ratio) will also be zero. Increasing this table's value will result in a potentially leaner fuel target at the given load when the corresponding group 1 adder (negative) is active. Decreasing this table's value will have the opposite effect. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table name="Engine Load" type="Y Axis" elements="11" scaling="EngineLoad(g/rev)1"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 1 Load Based Correction Pos Delta" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau">
+		<description>This table's multiplier, based on the load, is applied to the "Wall Wetting Comp (Group 1) Base Adder" table when the group 1 load delta is negative (load is decreasing). For example, if this table's multiplier is 1.2 and the current group 1 base adder is -0.2, the adder (eq ratio) for group 1 would be -0.24 (1.2 * -0.2). The other correction factors for group 1 are applied in the same way to determine the final adder (eq ratio) for group 1. If the current output for any currently active correction table in group 1 is zero, the final group 1 adder (eq ratio) will also be zero. Increasing this table's value will result in a potentially leaner fuel target at the given load when the corresponding group 1 adder (negative) is active. Decreasing this table's value will have the opposite effect. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table name="Engine Load" type="Y Axis" elements="11" scaling="EngineLoad(g/rev)1"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 1A MAP Based Correction Neg Delta" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau">
+		<description>This table's multiplier, based on the current manifold absolute pressure (MAP), is applied to the "Wall Wetting Comp (Group 1A) Base Adder" table when the group 1 MAP delta is negative (MAP is decreasing). For example, if this table's multiplier is 1.2 and the current group 1 base adder is -0.2, the adder (eq ratio) for group 1 would be -0.24 (1.2 * -0.2). The other correction factors for group 1 are applied in the same way to determine the final adder (eq ratio) for group 1. If the current output for any currently active correction table in group 1 is zero, the final group 1 adder (eq ratio) will also be zero. Increasing this table's value will result in a potentially leaner fuel target at the given MAP when the corresponding group 1 adder (negative) is active. Decreasing this table's value will have the opposite effect. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table name="psi absolute" type="Y Axis" elements="11" scaling="psiabsolute4"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 1A MAP Based Correction Pos Delta" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau">
+		<description>This table's multiplier, based on the current manifold absolute pressure (MAP), is applied to the "Wall Wetting Comp (Group 1A) Base Adder" table when the group 1 MAP delta is positive (MAP is increasing). For example, if this table's multiplier is 1.2 and the current group 1 base adder is 0.2, the adder (eq ratio) for group 1 would be 0.24 (1.2 * 0.2). The other correction factors for group 1 are applied in the same way to determine the final adder (eq ratio) for group 1. If the current output for any currently active correction table in group 1 is zero, the final group 1 adder (eq ratio) will also be zero. Increasing this table's value will result in a potentially richer fuel target at the given MAP when the corresponding group 1 adder (positive) is active. Decreasing this table's value will have the opposite effect. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table name="psi absolute" type="Y Axis" elements="11" scaling="psiabsolute4"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 1 RPM Correction Neg Delta Neg Tip in Higher RPM" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau6">
+		<description>This table's multiplier, based on RPM, is applied to the "Wall Wetting Comp (Group 1) Base Adder" table when the group 1 delta (MAP or load depending on ECU) is negative (i.e. is decreasing), tip-in throttle is negative, and RPM is greater than 4000. For example, if this table's multiplier is 1.2 and the current group 1 base adder is -0.2, the adder (eq ratio) for group 1 would be -0.24 (1.2 * -0.2). The other correction factors for group 1 are applied in the same way to determine the final adder (eq ratio) for group 1. If the current output for any currently active correction table in group 1 is zero, the final group 1 adder (eq ratio) will also be zero. Increasing this table's value will result in a potentially leaner fuel target at the given RPM when the corresponding group 1 adder (negative) is active. Decreasing this table's value will have the opposite effect. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table name="Engine Speed" type="Y Axis" elements="10" scaling="EngineSpeed(RPM)1"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 1A RPM Correction Neg Delta Neg Tip in Higher RPM" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau6">
+		<description>This table's multiplier, based on RPM, is applied to the "Wall Wetting Comp (Group 1A) Base Adder" table when the group 1 manifold absolute pressure (MAP) delta is negative (MAP is decreasing), tip-in throttle is negative, and RPM is greater than 4000. For example, if this table's multiplier is 1.2 and the current group 1 base adder is -0.2, the adder (eq ratio) for group 1 would be -0.24 (1.2 * -0.2). The other correction factors for group 1 are applied in the same way to determine the final adder (eq ratio) for group 1. If the current output for any currently active correction table in group 1 is zero, the final group 1 adder (eq ratio) will also be zero. Increasing this table's value will result in a potentially leaner fuel target at the given RPM when the corresponding group 1 adder (negative) is active. Decreasing this table's value will have the opposite effect. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table name="Engine Speed" type="Y Axis" elements="10" scaling="EngineSpeed(RPM)1"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 1B RPM Correction Neg Delta" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau">
+		<description>This table's multiplier, based on engine speed, is applied to the base adder result from the application of the "Wall Wetting Comp (Group 1A) MAP-Based Correction (Neg Delta)" table when the group 1 smoothed manifold absolute pressure (MAP) delta is negative (current MAP is less than the smoothed MAP). For example, if this table's multiplier is 1.2 and the current group 1 base adder result is -0.2, the adder (eq ratio) for group 1 would be -0.24 (1.2 * -0.2). The other correction factors for group 1 are applied in the same way to determine the final adder (eq ratio) for group 1. If the current output for any currently active correction table in group 1 is zero, the final group 1 adder (eq ratio) will also be zero. Increasing this table's value will result in a potentially leaner fuel target at the given engine speed when the corresponding group 1 base adder (negative) is active. Decreasing this table's value will have the opposite effect. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="EngineSpeed(RPM)1"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 1B RPM Correction Pos Delta" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau">
+		<description>This table's multiplier, based on engine speed, is applied to the base adder result from the application of the "Wall Wetting Comp (Group 1A) MAP-Based Correction (Pos Delta)" table when the group 1 smoothed manifold absolute pressure (MAP) delta is positive (current MAP is greater than or equal to the smoothed MAP). For example, if this table's multiplier is 1.2 and the current group 1 base adder result is 0.2, the adder (eq ratio) for group 1 would be 0.24 (1.2 * 0.2). The other correction factors for group 1 are applied in the same way to determine the final adder (eq ratio) for group 1. If the current output for any currently active correction table in group 1 is zero, the final group 1 adder (eq ratio) will also be zero. Increasing this table's value will result in a potentially richer fuel target at the given engine speed when the corresponding group 1 base adder (positive) is active. Decreasing this table's value will have the opposite effect. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="EngineSpeed(RPM)1"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 1 Wall Temp Correction Neg Delta" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau">
+		<description>This table's multiplier, based on coolant temperature, is applied to the "Wall Wetting Comp (Group 1) Base Adder" table when the group 1 load delta is negative (load is decreasing). For example, if this table's multiplier is 1.2 and the current group 1 base adder is -0.2, the adder (eq ratio) for group 1 would be -0.24 (1.2 * -0.2). The other correction factors for group 1 are applied in the same way to determine the final adder (eq ratio) for group 1. If the current output for any currently active correction table in group 1 is zero, the final group 1 adder (eq ratio) will also be zero. Increasing this table's value will result in a potentially leaner fuel target at the given coolant temperature when the corresponding group 1 adder (negative) is active. Decreasing this table's value will have the opposite effect. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table name="Coolant Temperature" type="Y Axis" elements="16" scaling="DegreesF"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 1 Wall Temp Correction Pos Delta" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau">
+		<description>This table's multiplier, based on coolant temperature, is applied to the "Wall Wetting Comp (Group 1) Base Adder" table when the group 1 load delta is positive (load is increasing). For example, if this table's multiplier is 1.2 and the current group 1 base adder is 0.2, the adder (eq ratio) for group 1 would be 0.24 (1.2 * 0.2). The other correction factors for group 1 are applied in the same way to determine the final adder (eq ratio) for group 1. If the current output for any currently active correction table in group 1 is zero, the final group 1 adder (eq ratio) will also be zero. Increasing this table's value will result in a potentially richer fuel target at the given coolant temperature when the corresponding group 1 adder (positive) is active. Decreasing this table's value will have the opposite effect. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table name="Coolant Temperature" type="Y Axis" elements="16" scaling="DegreesF"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 1C Wall Temp Correction Neg Delta" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau">
+		<description>This table's multiplier, based on coolant temperature, is applied to the "Wall Wetting Comp (Group 1A) Base Adder" table when the group 1 manifold absolute pressure (MAP) delta is negative (MAP is decreasing). For example, if this table's multiplier is 1.2 and the current group 1 base adder is -0.2, the adder (eq ratio) for group 1 would be -0.24 (1.2 * -0.2). The other correction factors for group 1 are applied in the same way to determine the final adder (eq ratio) for group 1. If the current output for any currently active correction table in group 1 is zero, the final group 1 adder (eq ratio) will also be zero. Increasing this table's value will result in a potentially leaner fuel target at the given coolant temperature when the corresponding group 1 adder (negative) is active. Decreasing this table's value will have the opposite effect. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table name="Coolant Temperature" type="Y Axis" elements="16" scaling="DegreesF"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 1C Wall Temp Correction Pos Delta" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau">
+		<description>This table's multiplier, based on coolant temperature, is applied to the "Wall Wetting Comp (Group 1A) Base Adder" table when the group 1 manifold absolute pressure (MAP) delta is positive (MAP is increasing). For example, if this table's multiplier is 1.2 and the current group 1 base adder is 0.2, the adder (eq ratio) for group 1 would be 0.24 (1.2 * 0.2). The other correction factors for group 1 are applied in the same way to determine the final adder (eq ratio) for group 1. If the current output for any currently active correction table in group 1 is zero, the final group 1 adder (eq ratio) will also be zero. Increasing this table's value will result in a potentially richer fuel target at the given coolant temperature when the corresponding group 1 adder (positive) is active. Decreasing this table's value will have the opposite effect. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table name="Coolant Temperature" type="Y Axis" elements="16" scaling="DegreesF"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 1 Load Delta Deadzone Abs Load Delta" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="EngineLoadDelta(g/rev)">
+		<description>This table's multiplier, based on RPM, is applied to the "Wall Wetting Comp (Group 1) Base Adder" table when the group 1 delta (MAP or load depending on ECU) is negative (i.e. is decreasing), tip-in throttle is negative, and RPM is greater than 4000. For example, if this table's multiplier is 1.2 and the current group 1 base adder is -0.2, the adder (eq ratio) for group 1 would be -0.24 (1.2 * -0.2). The other correction factors for group 1 are applied in the same way to determine the final adder (eq ratio) for group 1. If the current output for any currently active correction table in group 1 is zero, the final group 1 adder (eq ratio) will also be zero. Increasing this table's value will result in a potentially leaner fuel target at the given RPM when the corresponding group 1 adder (negative) is active. Decreasing this table's value will have the opposite effect. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table name="Engine Speed" type="Y Axis" elements="8" scaling="EngineSpeed(RPM)1"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 1 Load Delta Limit Max Min" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="EngineLoadDelta(g/rev)">
+		<description>The load delta calculation for group 1 will be limited to the max (first value) and min (second value) in this table. The load delta for group 1 is calculated as (current load - previous load) and is used as an input to the group 1 base adder table and to determine switching between the group 1 tables. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table type="Static X Axis" elements="2">
+			<data>Max</data>
+			<data>Min</data>
+		</table>
+	</table>
+
+	<table name="Wall Wetting Comp Group 1 MAP Delta Deadzone Abs MAP Delta" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="EngineLoadDelta(g/rev)">
+		<description>This determines the dead zone (absolute value) for the manifold absolute pressure (MAP) delta calculation for group 1. For example, if the value in this table is 0.2, then the MAP delta calculation for group 1 will return 0 whenever the actual MAP delta (current MAP - previous MAP) is between -0.2 and 0.2. This has the effect of eliminating the group 1 correction within that range (assuming 0 MAP delta = 0 adder in group 1 base adder table). The MAP delta calculation is used as an input to the group 1 base adder table or to determine switching between some of the multiple group 1 correction tables. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table name="Engine Speed" type="Y Axis" elements="8" scaling="EngineSpeed(RPM)1"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 1 MAP Delta Limit Max Min" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="psiabsolute4">
+		<description>The manifold absolute pressure (MAP) delta calculation for group 1 will be limited to the max (first value) and min (second value) in this table. The MAP delta for group 1 is calculated as (current MAP - previous MAP) and is used as an input to the group 1 base adder table and to determine switching between the group 1 tables. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table type="Static X Axis" elements="2">
+			<data>Max</data>
+			<data>Min</data>
+		</table>
+	</table>
+
+	<table name="Wall Wetting Comp Group 2 Base Adder Load Delta Multiplier Neg Delta" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau4">
+		<description>This is a multiplier that, when applied to the group 2 smoothed load delta (current load - group 2 smoothed load), determines the base adder (eq ratio) for group 2 when the group 2 smoothed load delta is negative (current load is less than the group 2 smoothed load). The base adder, with its corresponding group 2 corrections applied, is added to the commanded fuel final target (EQ ratio) as part of the group 2 wall wetting compensation. Increasing this table's value will result in a potentially leaner fuel target for a given group 2 smoothed load delta (as long the current output of any corresponding group 2 correction is not set to zero). Decreasing this value, will have the opposite effect. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table type="Static X Axis" elements="1">
+			<data>Load Delta Multiplier</data>
+		</table>
+	</table>
+
+	<table name="Wall Wetting Comp Group 2A Base Adder MAP Delta Multiplier Pos Delta" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau4">
+		<description>This is a multiplier that, when applied to the group 2 smoothed manifold absolute pressure (MAP) delta (current MAP - group 2 smoothed MAP), determines the base adder (eq ratio) for group 2 when the group 2 smoothed MAP delta is positive (current MAP is greater than or equal to the group 2 smoothed MAP). The base adder, with its corresponding group 2 corrections applied, is added to the commanded fuel final target (EQ ratio) as part of the group 2 wall wetting compensation. Increasing this table's value will result in a potentially richer fuel target for a given group 2 smoothed MAP delta (as long the current output of any corresponding group 2 correction is not set to zero). Decreasing this value, will have the opposite effect. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table type="Static X Axis" elements="1">
+			<data>Load Delta Multiplier</data>
+		</table>
+	</table>
+
+	<table name="Wall Wetting Comp Group 2A Base Adder MAP Delta Multiplier Neg Delta" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau4">
+		<description>This is a multiplier that, when applied to the group 2 smoothed manifold absolute pressure (MAP) delta (current MAP - group 2 smoothed MAP), determines the base adder (eq ratio) for group 2 when the group 2 smoothed MAP delta is negative (current MAP is less than the group 2 smoothed MAP). The base adder, with its corresponding group 2 corrections applied, is added to the commanded fuel final target (EQ ratio) as part of the group 2 wall wetting compensation. Increasing this table's value will result in a potentially leaner fuel target for a given group 2 smoothed MAP delta (as long the current output of any corresponding group 2 correction is not set to zero). Decreasing this value, will have the opposite effect. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table type="Static X Axis" elements="1">
+			<data>Load Delta Multiplier</data>
+		</table>
+	</table>
+
+	<table name="Wall Wetting Comp Group 2A MAP Based Correction Neg Delta" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau">
+		<description>This table's multiplier, based on the current manifold absolute pressure (MAP), is applied to the base adder result from the application of the "Wall Wetting Comp (Group 2A) Base Adder (MAP Delta Multiplier)(Neg Delta)" table when the group 2 smoothed MAP delta is negative (current MAP is less than the smoothed MAP). For example, if this table's multiplier is 1.2 and the current group 2 base adder result is -0.2, the adder (eq ratio) for group 2 would be -0.24 (1.2 * -0.2). The other correction factors for group 2 are applied in the same way to determine the final adder (eq ratio) for group 2. If the current output for any currently active correction table in group 2 is zero, the final group 2 adder (eq ratio) will also be zero. Increasing this table's value will result in a potentially leaner fuel target at the given MAP when the corresponding group 2 base adder (negative) is active. Decreasing this table's value will have the opposite effect. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table name="psi absolute" type="Y Axis" elements="11" scaling="psiabsolute4"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 2A MAP Based Correction Pos Delta" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau">
+		<description>This table's multiplier, based on the current manifold absolute pressure (MAP), is applied to the base adder result from the application of the "Wall Wetting Comp (Group 2A) Base Adder (MAP Delta Multiplier)(Pos Delta)" table when the group 2 smoothed MAP delta is positive (current MAP is greater than or equal to the smoothed MAP). For example, if this table's multiplier is 1.2 and the current group 2 base adder result is 0.2, the adder (eq ratio) for group 2 would be 0.24 (1.2 * 0.2). The other correction factors for group 2 are applied in the same way to determine the final adder (eq ratio) for group 2. If the current output for any currently active correction table in group 2 is zero, the final group 2 adder (eq ratio) will also be zero. Increasing this table's value will result in a potentially richer fuel target at the given MAP when the corresponding group 2 base adder (positive) is active. Decreasing this table's value will have the opposite effect. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table name="psi absolute" type="Y Axis" elements="11" scaling="psiabsolute4"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 2A RPM Correction Neg Delta Neg Tip in Higher RPM" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau6">
+		<description>This table's multiplier, based on engine speed, is applied to the base adder result from the application of the "Wall Wetting Comp (Group 2A) Base Adder (MAP Delta Multiplier)(Neg Delta)" table when the group 2 smoothed manifold absolute pressure (MAP) delta is negative (current MAP is less than the smoothed MAP), tip-in throttle is negative, and RPM is greater than 4000. For example, if this table's multiplier is 1.2 and the current group 2 base adder result is -0.2, the adder (eq ratio) for group 2 would be -0.24 (1.2 * -0.2). The other correction factors for group 2 are applied in the same way to determine the final adder (eq ratio) for group 2. If the current output for any currently active correction table in group 2 is zero, the final group 2 adder (eq ratio) will also be zero. Increasing this table's value will result in a potentially leaner fuel target at the given engine speed when the corresponding group 2 base adder (negative) is active. Decreasing this table's value will have the opposite effect. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table name="Engine Speed" type="Y Axis" elements="10" scaling="EngineSpeed(RPM)1"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 2B RPM Correction Neg Delta" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau">
+		<description>This table's multiplier, based on engine speed, is applied to the base adder result from the application of the "Wall Wetting Comp (Group 2A) Base Adder (MAP Delta Multiplier)(Neg Delta)" table when the group 2 smoothed manifold absolute pressure (MAP) delta is negative (current MAP is less than the smoothed MAP). For example, if this table's multiplier is 1.2 and the current group 2 base adder result is -0.2, the adder (eq ratio) for group 2 would be -0.24 (1.2 * -0.2). The other correction factors for group 2 are applied in the same way to determine the final adder (eq ratio) for group 2. If the current output for any currently active correction table in group 2 is zero, the final group 2 adder (eq ratio) will also be zero. Increasing this table's value will result in a potentially leaner fuel target at the given engine speed when the corresponding group 2 base adder (negative) is active. Decreasing this table's value will have the opposite effect. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="EngineSpeed(RPM)1"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 2B RPM Correction Pos Delta" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau">
+		<description>This table's multiplier, based on engine speed, is applied to the base adder result from the application of the "Wall Wetting Comp (Group 2A) Base Adder (MAP Delta Multiplier)(Pos Delta)" table when the group 2 smoothed manifold absolute pressure (MAP) delta is positive (current MAP is greater than or equal to the smoothed MAP). For example, if this table's multiplier is 1.2 and the current group 2 base adder result is 0.2, the adder (eq ratio) for group 2 would be 0.24 (1.2 * 0.2). The other correction factors for group 2 are applied in the same way to determine the final adder (eq ratio) for group 2. If the current output for any currently active correction table in group 2 is zero, the final group 2 adder (eq ratio) will also be zero. Increasing this table's value will result in a potentially richer fuel target at the given engine speed when the corresponding group 2 base adder (positive) is active. Decreasing this table's value will have the opposite effect. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="EngineSpeed(RPM)1"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 2C Wall Temp Correction Neg Delta" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau">
+		<description>This table's multiplier, based on coolant temperature, is applied to the base adder result from the application of the "Wall Wetting Comp (Group 2A) Base Adder (MAP Delta Multiplier)(Neg Delta)" table when the group 2 smoothed manifold absolute pressure (MAP) delta is negative (current MAP is less than the smoothed MAP). For example, if this table's multiplier is 1.2 and the current group 2 base adder result is -0.2, the adder (eq ratio) for group 2 would be -0.24 (1.2 * -0.2). The other correction factors for group 2 are applied in the same way to determine the final adder (eq ratio) for group 2. If the current output for any currently active correction table in group 2 is zero, the final group 2 adder (eq ratio) will also be zero. Increasing this table's value will result in a potentially leaner fuel target at the given coolant temperature when the corresponding group 2 base adder (negative) is active. Decreasing this table's value will have the opposite effect. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table name="Coolant Temperature" type="Y Axis" elements="16" scaling="DegreesF"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 2C Wall Temp Correction Pos Delta" category="ALPHA Transient Fueling (Tau)" type="3D" level="1" scaling="Tau">
+		<description>This table's multiplier, based on coolant temperature and manifold absolute pressure (MAP), is applied to the base adder result from the application of the "Wall Wetting Comp (Group 2A) Base Adder (MAP Delta Multiplier)(Pos Delta)" table when the group 2 smoothed MAP delta is positive (current MAP is greater than or equal to the smoothed MAP). For example, if this table's multiplier is 1.2 and the current group 2 base adder result is 0.2, the adder (eq ratio) for group 2 would be 0.24 (1.2 * 0.2). The other correction factors for group 2 are applied in the same way to determine the final adder (eq ratio) for group 2. If the current output for any currently active correction table in group 2 is zero, the final group 2 adder (eq ratio) will also be zero. Increasing this table's value will result in a potentially richer fuel target at the given coolant temperature and MAP when the corresponding group 2 base adder (positive) is active. Decreasing this table's value will have the opposite effect. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table name="Coolant Temperature" type="X Axis" elements="16" scaling="DegreesF"/>
+		<table name="psi absolute" type="Y Axis" elements="4" scaling="psiabsolute4"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 2 Base Adder Load Delta Multiplier Pos Delta" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau4">
+		<description>This is a multiplier that, when applied to the group 2 smoothed load delta (current load - group 2 smoothed load), determines the base adder (eq ratio) for group 2 when the group 2 smoothed load delta is positive (current load is greater than or equal to group 2 smoothed load). The base adder, with its corresponding group 2 corrections applied, is added to the commanded fuel final target (EQ ratio) as part of the group 2 wall wetting compensation. Increasing this table's value will result in a potentially richer fuel target for a given group 2 smoothed load delta (as long the current output of any corresponding group 2 correction is not set to zero). Decreasing this value, will have the opposite effect. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table type="Static X Axis" elements="1">
+			<data>Load Delta Multiplier</data>
+		</table>
+	</table>
+
+	<table name="Wall Wetting Comp Group 2 RPM Correction Neg Delta Neg Tip in Higher RPM" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau4">
+		<description>This table's multiplier, based on engine speed, is applied to the base adder result from the application of the "Wall Wetting Comp (Group 2) Base Adder...Delta Multiplier (Neg Delta)" table when the group 2 smoothed delta (MAP or load depending on ECU) is negative (current value is less than the smoothed value), tip-in throttle is negative, and RPM is greater than 4000. For example, if this table's multiplier is 1.2 and the current group 2 base adder result is -0.2, the adder (eq ratio) for group 2 would be -0.24 (1.2 * -0.2). The other correction factors for group 2 are applied in the same way to determine the final adder (eq ratio) for group 2. If the current output for any currently active correction table in group 2 is zero, the final group 2 adder (eq ratio) will also be zero. Increasing this table's value will result in a potentially leaner fuel target at the given engine speed when the corresponding group 2 base adder (negative) is active. Decreasing this table's value will have the opposite effect. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table name="Engine Speed" type="Y Axis" elements="11" scaling="EngineSpeed(RPM)1"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 2 Wall Temp Correction Neg Delta" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau">
+		<description>This table's multiplier, based on coolant temperature, is applied to the base adder result from the application of the "Wall Wetting Comp (Group 2) Base Adder (Load Delta Multiplier)(Neg Delta)" table when the group 2 smoothed load delta is negative (current load is less than the smoothed load). For example, if this table's multiplier is 1.2 and the current group 2 base adder result is -0.2, the adder (eq ratio) for group 2 would be -0.24 (1.2 * -0.2). The other correction factors for group 2 are applied in the same way to determine the final adder (eq ratio) for group 2. If the current output for any currently active correction table in group 2 is zero, the final group 2 adder (eq ratio) will also be zero. Increasing this table's value will result in a potentially leaner fuel target at the given coolant temperature when the corresponding group 2 base adder (negative) is active. Decreasing this table's value will have the opposite effect. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table name="Coolant Temperature" type="Y Axis" elements="16" scaling="DegreesF"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 2 Wall Temp Correction Pos Delta" category="ALPHA Transient Fueling (Tau)" type="3D" level="1" scaling="Tau">
+		<description>This table's multiplier, based on coolant temperature and load, is applied to the base adder result from the application of the "Wall Wetting Comp (Group 2) Base Adder (Load Delta Multiplier)(Pos Delta)" table when the group 2 smoothed load delta is positive (current load is greater than or equal to the smoothed load). For example, if this table's multiplier is 1.2 and the current group 2 base adder result is 0.2, the adder (eq ratio) for group 2 would be 0.24 (1.2 * 0.2). The other correction factors for group 2 are applied in the same way to determine the final adder (eq ratio) for group 2. If the current output for any currently active correction table in group 2 is zero, the final group 2 adder (eq ratio) will also be zero. Increasing this table's value will result in a potentially richer fuel target at the given coolant temperature and load when the corresponding group 2 base adder (positive) is active. Decreasing this table's value will have the opposite effect. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table name="Coolant Temperature" type="X Axis" elements="16" scaling="DegreesF"/>
+		<table name="Engine Load" type="Y Axis" elements="3" scaling="g/rev"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 2 Load Delta Deadzone Limit Max Min" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="EngineLoadDelta(g/rev)1">
+		<description>This determines the dead zone (absolute value) for the load delta calculation for group 2. For example, if the values in this table are 0.2 and -0.2, then the load delta calculation for group 2 will return 0 whenever the actual group 2 delta (current load - group 2 smoothed load) is between -0.2 and 0.2. This has the effect of eliminating the group 2 correction within that range. The load delta calculation is applied to the group 2 base adder table and also determines switching between various group 2 tables. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table type="Static X Axis" elements="2">
+			<data>Max</data>
+			<data>Min</data>
+		</table>
+	</table>
+
+	<table name="Wall Wetting Comp Group 2 MAP Delta Deadzone Limit Max Min" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="psiabsolute4">
+		<description>This determines the dead zone (absolute value) for the manifold absolute pressure (MAP) delta calculation for group 2. For example, if the values in this table are 0.2 and -0.2, then the MAP delta calculation for group 2 will return 0 whenever the actual group 2 MAP delta (current MAP - group 2 smoothed MAP) is between -0.2 and 0.2. This has the effect of eliminating the group 2 correction within that range. The MAP delta calculation is applied to the group 2 base adder table and also determines switching between various group 2 tables. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table type="Static X Axis" elements="2">
+			<data>Max</data>
+			<data>Min</data>
+		</table>
+	</table>
+
+	<table name="Wall Wetting Comp Group 2 MAP Delta Smoothing Factor Neg Delta" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau5">
+		<description>This value is used as the smoothing factor for the group 2 smoothed manifold absolute pressure (MAP) calculation when the current group 2 MAP Delta (current MAP - group 2 smoothed MAP) is negative. The group 2 smoothed MAP is calculated as: previous smoothed group 2 MAP + (group 2 smoothing factor * (current MAP - previous smoothed group 2 MAP). The group 2 MAP delta is calculated as: (current MAP - group 2 smoothed MAP) and is used in the base adder calculation as well as to determine switching of the group 2 tables. Increasing this table's value will put greater emphasis on the current MAP value in determining the group 2 smoothed MAP. This will have the effect of reducing the absolute group 2 MAP delta which will, all else equal, reduce the magnitude of the group 2 base adder resulting in a richer fuel target with an active negative group 2 base adder. Decreasing this table's value will have the opposite effect. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table type="Static X Axis" elements="1">
+			<data>Smoothing Factor</data>
+		</table>
+	</table>
+
+	<table name="Wall Wetting Comp Group 2 MAP Delta Smoothing Factor Pos Delta" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau5">
+		<description>This value is used as the smoothing factor for the group 2 smoothed load calculation when the current group 2 load delta (current load - group 2 smoothed load) is positive. The group 2 smoothed load is calculated as: previous smoothed group 2 load + (group 2 smoothing factor * (current load - previous smoothed group 2 load). The group 2 load delta is calculated as: (current load - group 2 smoothed load) and is used in the base adder calculation as well as to determine switching of the group 2 tables. Increasing this table's value will put greater emphasis on the current load value in determining the group 2 smoothed load. This will have the effect of reducing the absolute group 2 load delta which will, all else equal, reduce the magnitude of the group 2 base adder resulting in a leaner fuel target with an active positive group 2 base adder. Decreasing this table's value will have the opposite effect. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table type="Static X Axis" elements="1">
+			<data>Smoothing Factor</data>
+		</table>
+	</table>
+
+	<table name="Wall Wetting Comp Group 2 Load Delta Smoothing Factor Pos Delta" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau5">
+		<description>This value is used as the smoothing factor for the group 2 smoothed manifold absolute pressure (MAP) calculation when the current group 2 MAP Delta (current MAP - group 2 smoothed MAP) is positive. The group 2 smoothed MAP is calculated as: previous smoothed group 2 MAP + (group 2 smoothing factor * (current MAP - previous smoothed group 2 MAP). The group 2 MAP delta is calculated as: (current MAP - group 2 smoothed MAP) and is used in the base adder calculation as well as to determine switching of the group 2 tables. Increasing this table's value will put greater emphasis on the current MAP value in determining the group 2 smoothed MAP. This will have the effect of reducing the absolute group 2 MAP delta which will, all else equal, reduce the magnitude of the group 2 base adder resulting in a leaner fuel target with an active positive group 2 base adder. Decreasing this table's value will have the opposite effect. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table type="Static X Axis" elements="1">
+			<data>Smoothing Factor</data>
+		</table>
+	</table>
+
+	<table name="Wall Wetting Comp Group 2 Load Delta Smoothing Factor Neg Delta" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau5">
+		<description>This value is used as the smoothing factor for the group 2 smoothed load calculation when the current group 2 load delta (current load - group 2 smoothed load) is negative. The group 2 smoothed load is calculated as: previous smoothed group 2 load + (group 2 smoothing factor * (current load - previous smoothed group 2 load). The group 2 load delta is calculated as: (current load - group 2 smoothed load) and is used in the base adder calculation as well as to determine switching of the group 2 tables. Increasing this table's value will put greater emphasis on the current load value in determining the group 2 smoothed MAP. This will have the effect of reducing the absolute group 2 load delta which will, all else equal, reduce the magnitude of the group 2 base adder resulting in a richer fuel target with an active negative group 2 base adder. Decreasing this table's value will have the opposite effect. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table type="Static X Axis" elements="1">
+			<data>Smoothing Factor</data>
+		</table>
+	</table>
+
+	<table name="Wall Wetting Comp Group 3A Base Adder MAP Delta Multiplier Neg Delta" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau4">
+		<description>This is a multiplier that, when applied to the group 3 smoothed manifold absolute pressure (MAP) delta (current MAP - group 3 smoothed MAP), determines the base adder (eq ratio) for group 3 when the group 3 smoothed MAP delta is negative (current MAP is less than the group 3 smoothed MAP). The base adder, with its corresponding group 3 corrections applied, is added to the commanded fuel final target (EQ ratio) as part of the group 3 wall wetting compensation. Increasing this table's value will result in a potentially leaner fuel target for a given group 3 smoothed MAP delta (as long the current output of any corresponding group 3 correction is not set to zero). Decreasing this value, will have the opposite effect. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table type="Static X Axis" elements="1">
+			<data>Load Delta Multiplier</data>
+		</table>
+	</table>
+
+	<table name="Wall Wetting Comp Group 3A Base Adder MAP Delta Multiplier Pos Delta" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau4">
+		<description>This is a multiplier that, when applied to the group 3 smoothed manifold absolute pressure (MAP) delta (current MAP - group 3 smoothed MAP), determines the base adder (eq ratio) for group 3 when the group 3 smoothed MAP delta is positive (current MAP is greater than or equal to the group 3 smoothed MAP). The base adder, with its corresponding group 3 corrections applied, is added to the commanded fuel final target (EQ ratio) as part of the group 3 wall wetting compensation. Increasing this table's value will result in a potentially richer fuel target for a given group 3 smoothed MAP delta (as long the current output of any corresponding group 3 correction is not set to zero). Decreasing this value, will have the opposite effect. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table type="Static X Axis" elements="1">
+			<data>Load Delta Multiplier</data>
+		</table>
+	</table>
+
+	<table name="Wall Wetting Comp Group 3A MAP Based Correction Neg Delta" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau">
+		<description>This table's multiplier, based on the current manifold absolute pressure (MAP), is applied to the base adder result from the application of the "Wall Wetting Comp (Group 3A) Base Adder (MAP Delta Multiplier)(Neg Delta)" table when the group 3 smoothed MAP delta is negative (current MAP is less than the smoothed MAP). For example, if this table's multiplier is 1.2 and the current group 3 base adder result is -0.2, the adder (eq ratio) for group 3 would be -0.24 (1.2 * -0.2). The other correction factors for group 3 are applied in the same way to determine the final adder (eq ratio) for group 3. If the current output for any currently active correction table in group 3 is zero, the final group 3 adder (eq ratio) will also be zero. Increasing this table's value will result in a potentially leaner fuel target at the given MAP when the corresponding group 3 base adder (negative) is active. Decreasing this table's value will have the opposite effect. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table name="psi absolute" type="Y Axis" elements="11" scaling="psiabsolute4"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 3A MAP Based Correction Pos Delta" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau">
+		<description>This table's multiplier, based on the current manifold absolute pressure (MAP), is applied to the base adder result from the application of the "Wall Wetting Comp (Group 3A) Base Adder (MAP Delta Multiplier)(Pos Delta)" table when the group 3 smoothed MAP delta is positive (current MAP is greater than or equal to the smoothed MAP). For example, if this table's multiplier is 1.2 and the current group 3 base adder result is 0.2, the adder (eq ratio) for group 3 would be 0.24 (1.2 * 0.2). The other correction factors for group 3 are applied in the same way to determine the final adder (eq ratio) for group 3. If the current output for any currently active correction table in group 3 is zero, the final group 3 adder (eq ratio) will also be zero. Increasing this table's value will result in a potentially richer fuel target at the given MAP when the corresponding group 3 base adder (positive) is active. Decreasing this table's value will have the opposite effect. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table name="psi absolute" type="Y Axis" elements="11" scaling="psiabsolute4"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 3B RPM Correction Neg Delta" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau">
+		<description>This table's multiplier, based on engine speed, is applied to the base adder result from the application of the "Wall Wetting Comp (Group 3A) Base Adder (MAP Delta Multiplier)(Neg Delta)" table when the group 3 smoothed manifold absolute pressure (MAP) delta is negative (current MAP is less than the smoothed MAP). For example, if this table's multiplier is 1.2 and the current group 3 base adder result is -0.2, the adder (eq ratio) for group 3 would be -0.24 (1.2 * -0.2). The other correction factors for group 3 are applied in the same way to determine the final adder (eq ratio) for group 3. If the current output for any currently active correction table in group 3 is zero, the final group 3 adder (eq ratio) will also be zero. Increasing this table's value will result in a potentially leaner fuel target at the given engine speed when the corresponding group 3 base adder (negative) is active. Decreasing this table's value will have the opposite effect. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="EngineSpeed(RPM)1"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 3B RPM Correction Pos Delta" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau">
+		<description>This table's multiplier, based on engine speed, is applied to the base adder result from the application of the "Wall Wetting Comp (Group 3A) Base Adder (MAP Delta Multiplier)(Pos Delta)" table when the group 3 smoothed manifold absolute pressure (MAP) delta is positive (current MAP is greater than or equal to the smoothed MAP). For example, if this table's multiplier is 1.2 and the current group 3 base adder result is 0.2, the adder (eq ratio) for group 3 would be 0.24 (1.2 * 0.2). The other correction factors for group 3 are applied in the same way to determine the final adder (eq ratio) for group 3. If the current output for any currently active correction table in group 3 is zero, the final group 3 adder (eq ratio) will also be zero. Increasing this table's value will result in a potentially richer fuel target at the given engine speed when the corresponding group 3 base adder (positive) is active. Decreasing this table's value will have the opposite effect. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="EngineSpeed(RPM)1"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 3C Wall Temp Correction Neg Delta" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau">
+		<description>This table's multiplier, based on coolant temperature, is applied to the base adder result from the application of the "Wall Wetting Comp (Group 3A) Base Adder (MAP Delta Multiplier)(Neg Delta)" table when the group 3 smoothed manifold absolute pressure (MAP) delta is negative (current MAP is less than the smoothed MAP). For example, if this table's multiplier is 1.2 and the current group 3 base adder result is -0.2, the adder (eq ratio) for group 3 would be -0.24 (1.2 * -0.2). The other correction factors for group 3 are applied in the same way to determine the final adder (eq ratio) for group 3. If the current output for any currently active correction table in group 3 is zero, the final group 3 adder (eq ratio) will also be zero. Increasing this table's value will result in a potentially leaner fuel target at the given coolant temperature when the corresponding group 3 base adder (negative) is active. Decreasing this table's value will have the opposite effect. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table name="Coolant Temperature" type="Y Axis" elements="16" scaling="DegreesF"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 3C Wall Temp Correction Pos Delta" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau">
+		<description>This table's multiplier, based on coolant temperature, is applied to the base adder result from the application of the "Wall Wetting Comp (Group 3A) Base Adder (MAP Delta Multiplier)(Pos Delta)" table when the group 3 smoothed manifold absolute pressure (MAP) delta is positive (current MAP is greater than or equal to the smoothed MAP). For example, if this table's multiplier is 1.2 and the current group 3 base adder result is 0.2, the adder (eq ratio) for group 3 would be 0.24 (1.2 * 0.2). The other correction factors for group 3 are applied in the same way to determine the final adder (eq ratio) for group 3. If the current output for any currently active correction table in group 3 is zero, the final group 3 adder (eq ratio) will also be zero. Increasing this table's value will result in a potentially richer fuel target at the given coolant temperature when the corresponding group 3 base adder (positive) is active. Decreasing this table's value will have the opposite effect. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table name="Coolant Temperature" type="Y Axis" elements="16" scaling="DegreesF"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 3 MAP Delta Deadzone Limit Max Min" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="psiabsolute4">
+		<description>This determines the dead zone (absolute value) for the manifold absolute pressure (MAP) delta calculation for group 3. For example, if the values in this table are 0.2 and -0.2, then the MAP delta calculation for group 3 will return 0 whenever the actual group 3 MAP delta (current MAP - group 3 smoothed MAP) is between -0.2 and 0.2. This has the effect of eliminating the group 3 eq ratio correction within that range. The MAP delta calculation is applied to the group 3 base adder table and also determines switching between various group 3 tables. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table type="Static X Axis" elements="2">
+			<data>Max</data>
+			<data>Min</data>
+		</table>
+	</table>
+
+	<table name="Wall Wetting Comp Group 3 MAP Delta Smoothing Factor Neg Delta" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau5">
+		<description>This value is used as the smoothing factor for the group 3 smoothed manifold absolute pressure (MAP) calculation when the current group 2 MAP Delta (current MAP - group 2 smoothed MAP) is negative. The group 3 smoothed MAP is calculated as: previous smoothed Group 3 MAP + (Group 3 smoothing factor * (current MAP - previous smoothed Group 3 MAP). The group 3 MAP delta is calculated as: (current MAP - group 3 smoothed MAP) and is used in the base adder calculation as well as to determine switching of the group 3 tables. Increasing this table's value will put greater emphasis on the current MAP value in determining the group 3 smoothed MAP. This will have the effect of reducing the absolute group 3 MAP delta which will, all else equal, reduce the magnitude of the group 3 base adder resulting in a richer fuel target with an active negative group 3 base adder. Decreasing this table's value will have the opposite effect. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table type="Static X Axis" elements="1">
+			<data>Smoothing Factor</data>
+		</table>
+	</table>
+
+	<table name="Wall Wetting Comp Group 3 MAP Delta Smoothing Factor Pos Delta" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau5">
+		<description>This value is used as the smoothing factor for the group 3 smoothed manifold absolute pressure (MAP) calculation when the current group 2 MAP Delta (current MAP - group 2 smoothed MAP) is positive. The group 3 smoothed MAP is calculated as: previous smoothed Group 3 MAP + (Group 3 smoothing factor * (current MAP - previous smoothed Group 3 MAP). The group 3 MAP delta is calculated as: (current MAP - group 3 smoothed MAP) and is used in the base adder calculation as well as to determine switching of the group 3 tables. Increasing this table's value will put greater emphasis on the current MAP value in determining the group 3 smoothed MAP. This will have the effect of reducing the absolute group 3 MAP delta which will, all else equal, reduce the magnitude of the group 3 base adder resulting in a leaner fuel target with an active positive group 3 base adder. Decreasing this table's value will have the opposite effect. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table type="Static X Axis" elements="1">
+			<data>Smoothing Factor</data>
+		</table>
+	</table>
+
+	<table name="Wall Wetting Comp Group 4 Decay Delay" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau2">
+		<description>This is the minimum period in-between the post-start low speed group 4 decay step value application. Higher delay values will cause a slower decay rate.</description>
+		<table name="Coolant Temperature" type="Y Axis" elements="16" scaling="DegreesF"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 4 Decay Delay_" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau7">
+		<description>This is the minimum period in-between the post-start low speed group 4 decay step value application. Higher delay values will cause a slower decay rate.</description>
+		<table name="Coolant Temperature" type="Y Axis" elements="16" scaling="DegreesF"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 4 High Speed Decay Initial Start" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau">
+		<description>This is the initial post-start low speed group 4 decay value that is added to the final high speed group 4 decay value to determine the final group 4 multiplier that is applied to the final group 1-3 (or group 1-2 depending on ECU) wall wetting compensation when the delta, (current MAP - smoothed MAP) or (current load - smoothed load) depending on ECU, is positive. The low speed value decays to 1, while the high speed value decays to 0. Increasing this table's value will result in a potentially richer fuel target with a longer decay period, all else equal. Decreasing this table's value will have the opposite effect. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table name="Coolant Temperature" type="Y Axis" elements="16" scaling="DegreesF"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 4 High Speed Decay Initial Start A" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau">
+		<description>This is the initial post-start high speed group 4 decay value that is added to the final low speed group 4 decay value to determine the final group 4 multiplier that is applied to the final group 1-3 wall wetting compensation when the MAP Delta (current MAP - smoothed MAP) is positive. The high speed value decays to 0, while the low speed value decays to 1. Increasing this table's value will result in a potentially richer fuel target with a longer decay period, all else equal. Decreasing this table's value will have the opposite effect. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table name="Coolant Temperature" type="Y Axis" elements="16" scaling="DegreesF"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 4 High Speed Decay Initial Start B" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau">
+		<description>This is the initial post-start high speed group 4 decay value that is added to the final low speed group 4 decay value to determine the final group 4 multiplier that is applied to the final group 1-3 wall wetting compensation when the MAP Delta (current MAP - smoothed MAP) is positive. The high speed value decays to 0, while the low speed value decays to 1. Increasing this table's value will result in a potentially richer fuel target with a longer decay period, all else equal. Decreasing this table's value will have the opposite effect. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table name="Coolant Temperature" type="Y Axis" elements="16" scaling="DegreesF"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 4 High Speed Decay Step Value" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau8">
+		<description>This is the decay step value for the post-start high speed group 4 value. The high speed group 4 value starts at the initial value and, over time, is reduced by the decay step value until it is reaches 0. This value is added to the low speed value to determine the final group 4 multiplier that is applied to the final group 1-3 (or group 1-2 depending on ECU) wall wetting compensation when the current delta (MAP or load depending on ECU) is positive.</description>
+		<table type="Static X Axis" elements="1">
+			<data>Step value</data>
+		</table>
+	</table>
+
+	<table name="Wall Wetting Comp Group 4 Low Speed Decay Initial Start" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau">
+		<description>This is the initial post-start high speed group 4 decay value that is added to the final low speed group 4 decay value to determine the final group 4 multiplier that is applied to the final group 1-3 (or group 1-2 depending on ECU) wall wetting compensation when the delta, (current MAP - smoothed MAP) or (current load - smoothed load) depending on ECU, is positive. The high speed value decays to 0, while the low speed value decays to 1. Increasing this table's value will result in a potentially richer fuel target with a longer decay period, all else equal. Decreasing this table's value will have the opposite effect. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table name="Coolant Temperature" type="Y Axis" elements="16" scaling="DegreesF"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 4 Low Speed Decay Initial Start A" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau">
+		<description>This is the initial post-start low speed group 4 decay value that is added to the final high speed group 4 decay value to determine the final group 4 multiplier that is applied to the final group 1-3 wall wetting compensation when the MAP Delta (current MAP - smoothed MAP) is positive. The low speed value decays to 1, while the high speed value decays to 0. Increasing this table's value will result in a potentially richer fuel target with a longer decay period, all else equal. Decreasing this table's value will have the opposite effect. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table name="Coolant Temperature" type="Y Axis" elements="16" scaling="DegreesF"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 4 Low Speed Decay Initial Start B" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau">
+		<description>This is the initial post-start low speed group 4 decay value that is added to the final high speed group 4 decay value to determine the final group 4 multiplier that is applied to the final group 1-3 wall wetting compensation when the MAP Delta (current MAP - smoothed MAP) is positive. The low speed value decays to 1, while the high speed value decays to 0. Increasing this table's value will result in a potentially richer fuel target with a longer decay period, all else equal. Decreasing this table's value will have the opposite effect. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table name="Coolant Temperature" type="Y Axis" elements="16" scaling="DegreesF"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 4 Low Speed Decay Step Value" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau9">
+		<description>This is the decay step value for the post-start low speed group 4 value. The low speed group 4 value starts at the initial value and, over time, is reduced by the decay step value until it is reaches 1. This value is added to the high speed value to determine the final group 4 multiplier that is applied to the final group 1-3 (or group 1-2 depending on ECU) wall wetting compensation when the current delta (MAP or load depending on ECU) is positive.</description>
+		<table name="Coolant Temperature" type="Y Axis" elements="16" scaling="DegreesF"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 4 High Speed Decay Step Value_" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau9">
+		<description>This is the decay step value for the post-start low speed group 4 value. The low speed group 4 value starts at the initial value and, over time, is reduced by the decay step value until it is reaches 1. This value is added to the high speed value to determine the final group 4 multiplier that is applied to the final group 1-3 (or group 1-2 depending on ECU) wall wetting compensation when the current delta (MAP or load depending on ECU) is positive.</description>
+		<table name="Coolant Temperature" type="Y Axis" elements="16" scaling="DegreesF"/>
 	</table>
 
 </rom>

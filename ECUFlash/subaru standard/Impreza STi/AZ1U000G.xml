@@ -1,0 +1,670 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- EcuFlash DEFINITION FILE FOR AZ1U000G CREATED 2018-10-21 18:03:01 +02:00
+    This file was gernerated by RR2EcuFlash version: 1.0.0.33977
+
+TERMS, CONDITIONS, AND DISCLAIMERS
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+WARNING: These definition files are created as the result of the extremely complex and time consuming
+process of reverse-engineering the factory ECU. Because of this complexity, it is necessary to make certain
+assumptions and, therefore, it is impossible to always deal in absolutes in regards to representations made
+by these definitions. In addition, due to this complexity and the numerous variations among different ECUs,
+it is also impossible to guarantee that the definitions will not contain errors or other bugs. What this all means
+is that there is the potential for bugs, errors and misrepresentations which can result in damage to your motor,
+your ECU as well the possibility of causing your vehicle to behave unexpectedly on the road, increasing the
+risk of death or injury. Modifications to your vehicle's ECU may also be in violation of local, state and federal
+laws. By using these definition files, either directly or indirectly, you agree to assume 100% of all risk and
+RomRaider's creators and contributors shall not be held responsible for any damages or injuries you receive.
+This product is for advanced users only. There are no safeguards in place when tuning with RomRaider. As such,
+the potential for serious damage and injury still exists, even if the user does not experience any bugs or errors. 
+
+As always, use at your own risk.
+
+These definitions are created for FREE without any sort of guarantee. The developers cannot be held liable
+for any damage or injury incurred as a result of these definitions. USE AT YOUR OWN RISK!
+-->
+<rom>
+  <romid>
+    <xmlid>AZ1U000G</xmlid>
+    <internalidaddress>2004</internalidaddress>
+    <internalidstring>AZ1U000G</internalidstring>
+    <ecuid>C062904007</ecuid>
+    <year>19</year>
+    <market>ADM</market>
+    <make>Subaru</make>
+    <model>Impreza</model>
+    <submodel>STI RA</submodel>
+    <transmission>MT</transmission>
+    <memmodel>SH7058</memmodel>
+    <checksummodule>subarudbw</checksummodule>
+    <flashmethod>subarucan</flashmethod>
+  </romid>
+  <include>32BITBASE</include>
+  <table name="Target Boost_" address="c1304">
+    <table name="X" address="c1294" elements="14" />
+    <table name="Y" address="c12cc" elements="14" />
+  </table>
+  <table name="Target Boost Compensation (ECT)" address="c0e18">
+    <table name="Y" address="c0d38" />
+  </table>
+  <table name="Target Boost Compensation (1st Gear)" address="c0d30" />
+  <table name="Target Boost Compensation (1st Gear) Speed Disable" address="c0d2c" />
+  <table name="Target Boost Compensation (IAT)_" address="c0f74">
+    <table name="Y" address="c0f48" elements="11" />
+  </table>
+  <table name="Target Boost Compensation (Atm. Pressure)_" address="c1010">
+    <table name="X" address="c0fe0" />
+    <table name="Y" address="c0ff8" />
+  </table>
+  <table name="Boost Limit (Fuel Cut)__" address="d07a4">
+    <table name="Y" address="d0768" />
+  </table>
+  <table name="Boost Control Disable (IAM)" address="c0d20" />
+  <table name="Boost Control Disable (Fine Correction)" address="c0d1c" />
+  <table name="Boost Control Disable Delay (Fine Correction)" address="c0cd1" />
+  <table name="Initial Wastegate Duty_" address="c11b8">
+    <table name="X" address="c1164" elements="11" />
+    <table name="Y" address="c1190" elements="10" />
+  </table>
+  <table name="Max Wastegate Duty_" address="c1088">
+    <table name="X" address="c1034" elements="11" />
+    <table name="Y" address="c1060" elements="10" />
+  </table>
+  <table name="Max Wastegate Duty Limit Post-Compensation" address="14658" />
+  <table name="Initial/Max Wastegate Duty Compensation (IAT)" address="c0db8">
+    <table name="Y" address="c0d78" />
+  </table>
+  <table name="Initial/Max Wastegate Duty Compensation (ECT)" address="c0dd8">
+    <table name="Y" address="c0d38" />
+  </table>
+  <table name="Initial/Max Wastegate Duty Compensation (Atm. Pressure)" address="c0fc8">
+    <table name="X" address="c0fa0" />
+    <table name="Y" address="c0fb8" />
+  </table>
+  <table name="Turbo Dynamics Proportional" address="c0e4c">
+    <table name="Y" address="c0e28" />
+  </table>
+  <table name="Turbo Dynamics Integral Positive" address="c0ebc">
+    <table name="Y" address="c0e98" />
+  </table>
+  <table name="Turbo Dynamics Integral Negative" address="c0e84">
+    <table name="Y" address="c0e60" />
+  </table>
+  <table name="TD Proportional Compensation (IAT)" address="c0de8">
+    <table name="Y" address="c0d78" elements="16" />
+  </table>
+  <table name="TD Integral Positive Compensation (IAT)" address="c0e08">
+    <table name="Y" address="c0d78" elements="16" />
+  </table>
+  <table name="TD Integral Negative Compensation (IAT)" address="c0df8">
+    <table name="Y" address="c0d78" elements="16" />
+  </table>
+  <table name="TD Activation Thresholds (RPM)" address="c0d0c" />
+  <table name="TD Activation Thresholds (Target Boost)_" address="c0cf8" />
+  <table name="TD Integral Cumulative Range (WGDC Correction)" address="c0d14" />
+  <table name="TD Integral Negative Activation (Boost Error)" address="c0d00" />
+  <table name="TD Integral Positive Activation (Boost Error)" address="c0d04" />
+  <table name="TD Integral Negative Activation (Wastegate Duty)" address="c0d08" />
+  <table name="Manifold Pressure Sensor Scaling_" address="e0780" />
+  <table name="Manifold Pressure Sensor Limits (CEL)" address="e0710" />
+  <table name="Manifold Pressure Sensor CEL Delays" address="c81a7" />
+  <table name="Primary Open Loop Fueling (Failsafe)(KCA Alternate Mode)" address="d2310">
+    <table name="X" address="d227c" elements="19" />
+    <table name="Y" address="d22c8" />
+  </table>
+  <table name="Primary Open Loop Fueling (KCA Alternate Mode)" address="d2124">
+    <table name="X" address="d2090" elements="19" />
+    <table name="Y" address="d20dc" />
+  </table>
+  <table name="Primary Open Loop Fueling (KCA Additive B Low)" address="d1d4c">
+    <table name="X" address="d1cb8" elements="19" />
+    <table name="Y" address="d1d04" />
+  </table>
+  <table name="Primary Open Loop Fueling (KCA Additive B High)" address="d1f38">
+    <table name="X" address="d1ea4" elements="19" />
+    <table name="Y" address="d1ef0" />
+  </table>
+  <table name="Primary Open Loop Fueling (Failsafe)" address="d24fc">
+    <table name="X" address="d2468" elements="19" />
+    <table name="Y" address="d24b4" />
+  </table>
+  <table name="Primary Open Loop Fuel Map Switch (IAM)" address="cd3f0" />
+  <table name="Minimum Active Primary Open Loop Enrichment" address="cd3f4" />
+  <table name="Primary Open Loop Fueling Compensation (Timing Compensation)_" address="ce234">
+    <table name="Y" address="ce21c" />
+  </table>
+  <table name="Front Oxygen Sensor Scaling" address="e0be4">
+    <table name="Y" address="e0bb0" />
+  </table>
+  <table name="Front Oxygen Sensor Rich Limit" address="29508" />
+  <table name="Front Oxygen Sensor Compensation (Atm. Pressure)" address="c53ac">
+    <table name="Y" address="c539c" />
+  </table>
+  <table name="CL Fueling Target Compensation A (Load)" address="d3650">
+    <table name="X" address="d35f4" elements="12" />
+    <table name="Y" address="d3624" elements="11" />
+  </table>
+  <table name="CL Fueling Target Compensation Imm. Cruise (ECT)" address="d3528">
+    <table name="X" address="cd8d4" />
+    <table name="Y" address="d351c" />
+  </table>
+  <table name="CL Fueling Target Compensation Imm. Non-Cruise (ECT)" address="d3594">
+    <table name="X" address="cd8d4" />
+    <table name="Y" address="d3588" />
+  </table>
+  <table name="CL Fueling Target Compensation (ECT) Disable" address="cd264" />
+  <table name="CL to OL Transition with Delay BPW Hysteresis" address="cd3f8" />
+  <table name="CL Delay Minimum (ECT)" address="cd3fc" />
+  <table name="Injector Latency_" address="d30e8">
+    <table name="X" address="d30c8" />
+    <table name="Y" address="d30dc" />
+  </table>
+  <table name="Injector Flow Scaling" address="cd0e0" />
+  <table name="Per Injector Pulse Width Compensation A" address="d279c">
+    <table name="X" address="d2754" elements="16" />
+    <table name="Y" address="d2794" elements="2" />
+  </table>
+  <table name="Per Injector Pulse Width Compensation B" address="d283c">
+    <table name="X" address="d27bc" elements="16" />
+    <table name="Y" address="d27fc" />
+  </table>
+  <table name="Per Injector Pulse Width Compensation C" address="d29bc">
+    <table name="X" address="d293c" elements="16" />
+    <table name="Y" address="d297c" />
+  </table>
+  <table name="Per Injector Pulse Width Compensation D" address="d2b3c">
+    <table name="X" address="d2abc" elements="16" />
+    <table name="Y" address="d2afc" />
+  </table>
+  <table name="Cranking Fuel Injector Pulse Width A (ECT)" address="ce7ce">
+    <table name="Y" address="cd8d4" />
+  </table>
+  <table name="Cranking Fuel Injector Pulse Width B (ECT)" address="ce7ee">
+    <table name="Y" address="cd8d4" />
+  </table>
+  <table name="Cranking Fuel Injector Pulse Width C (ECT)" address="ce80e">
+    <table name="Y" address="cd8d4" />
+  </table>
+  <table name="Cranking Fuel Injector Pulse Width D (ECT)" address="ce82e">
+    <table name="Y" address="cd8d4" />
+  </table>
+  <table name="Cranking Fuel Injector Pulse Width E (ECT)" address="ce84e">
+    <table name="Y" address="cd8d4" />
+  </table>
+  <table name="Cranking Fuel Injector Pulse Width F (ECT)" address="ce86e">
+    <table name="Y" address="cd8d4" />
+  </table>
+  <table name="Cranking Fuel IPW Compensation Imm. Cruise (RPM)" address="d1514">
+    <table name="X" address="d14e4" />
+    <table name="Y" address="d14f8" />
+  </table>
+  <table name="Cranking Fuel IPW Compensation Imm. Non-Cruise (RPM)" address="d14c0">
+    <table name="X" address="d1490" />
+    <table name="Y" address="d14a4" />
+  </table>
+  <table name="Cranking Fuel IPW Compensation (MAP)" address="cdd10">
+    <table name="Y" address="cdce8" />
+  </table>
+  <table name="Cranking Fuel IPW Compensation (Accelerator)" address="cdd44">
+    <table name="Y" address="cdd1c" elements="10" />
+  </table>
+  <table name="Cranking Fuel IPW Compensation (IAT)" address="cdd64">
+    <table name="Y" address="cdd50" />
+  </table>
+  <table name="Overrun Fueling RPM Resume Threshold" address="d0748">
+    <table name="X" address="cd8d4" />
+  </table>
+  <table name="Overrun Enrich RPM Delta Activation" address="cd6e4" />
+  <table name="Overrun initial injector enrichment (pulsewidth)" address="cd6e8" />
+  <table name="Overrun Fueling Cut Counter RPM Threshold" address="cd738" />
+  <table name="Throttle Tip-in Enrichment A" address="d05c8">
+    <table name="Y" address="d0580" />
+  </table>
+  <table name="Throttle Tip-in Enrichment B" address="d0634">
+    <table name="Y" address="d05ec" />
+  </table>
+  <table name="Minimum Tip-in Enrichment Activation" address="cd6f0" />
+  <table name="Minimum Tip-in Enrichment Activation (Throttle)" address="cd6ec" />
+  <table name="Tip-in Enrichment Compensation (Boost Error)" address="ce634">
+    <table name="Y" address="ce610" />
+  </table>
+  <table name="Tip-in Enrichment Compensation (RPM)" address="ce600">
+    <table name="Y" address="ce5c0" elements="16" />
+  </table>
+  <table name="Tip-in Enrichment Compensation A (ECT)" address="ce63d">
+    <table name="Y" address="cd8d4" />
+  </table>
+  <table name="Tip-in Enrichment Compensation B (ECT)" address="d0658">
+    <table name="Y" address="cd8d4" />
+  </table>
+  <table name="Tip-in Enrichment Compensation C (ECT)" address="d0678">
+    <table name="Y" address="cd8d4" />
+  </table>
+  <table name="Tip-in Enrichment Compensation D (ECT)" address="d06b8">
+    <table name="Y" address="cd914" />
+  </table>
+  <table name="Tip-in Enrichment Compensation D (ECT) Activation" address="cd6f4" />
+  <table name="Tip-in Enrichment Disable Applied Counter Threshold A (ECT)" address="ce64d">
+    <table name="Y" address="cd8d4" />
+  </table>
+  <table name="Tip-in Enrichment Disable Applied Counter Threshold B (ECT)" address="ce65d">
+    <table name="Y" address="cd8d4" />
+  </table>
+  <table name="Tip-in Enrichment Applied Counter Reset" address="ccefa" />
+  <table name="Tip-in Enrichment Disable Throttle Cumulative Threshold A (ECT)" address="d06d8">
+    <table name="Y" address="cd8d4" />
+  </table>
+  <table name="Tip-in Enrichment Disable Throttle Cumulative Threshold B (ECT)" address="d06f8">
+    <table name="Y" address="cd8d4" />
+  </table>
+  <table name="Tip-in Throttle Cumulative Reset" address="ccefb" />
+  <table name="Min Primary Base Enrichment 1 Cruise" address="d1794">
+    <table name="X" address="cd8d4" />
+    <table name="Y" address="d1770" elements="9" />
+  </table>
+  <table name="Min Primary Base Enrichment 1 Non-Cruise" address="d16d0">
+    <table name="X" address="cd8d4" />
+    <table name="Y" address="d16a8" elements="10" />
+  </table>
+  <table name="Min Primary Base Enrichment 1 (Non-Primary OL)_" address="cddc9">
+    <table name="Y" address="cd8d4" />
+  </table>
+  <table name="A/F Learning #1 Limits" address="cd340" />
+  <table name="A/F Learning #1 Airflow Ranges" address="cd350" />
+  <table name="MAF Limit (Maximum)" address="c4d54" />
+  <table name="MAF Sensor Scaling" address="e0ad8">
+    <table name="Y" address="e0a00" />
+  </table>
+  <table name="MAF Compensation (IAT)" address="c5eac">
+    <table name="X" address="c5e78" />
+    <table name="Y" address="c5e8c" />
+  </table>
+  <table name="Engine Load Limit A (Maximum)" address="267b8" />
+  <table name="Engine Load Limit B Maximum (RPM)" address="c52ac">
+    <table name="Y" address="c52a4" />
+  </table>
+  <table name="Engine Load Compensation Cruise (MP)" address="c5f5c">
+    <table name="X" address="c5ed4" />
+    <table name="Y" address="c5f00" elements="23" />
+  </table>
+  <table name="Engine Load Compensation Non-Cruise (MP)" address="c60dc">
+    <table name="X" address="c605c" />
+    <table name="Y" address="c6088" elements="21" />
+  </table>
+  <table name="Base Timing Primary Cruise" address="daa8c">
+    <table name="X" address="da9f8" elements="19" />
+    <table name="Y" address="daa44" />
+  </table>
+  <table name="Base Timing Reference Cruise (AVCS related)" address="dae64">
+    <table name="X" address="dadd0" elements="19" />
+    <table name="Y" address="dae1c" />
+  </table>
+  <table name="Base Timing Primary Non-Cruise" address="db23c">
+    <table name="X" address="db1a8" elements="19" />
+    <table name="Y" address="db1f4" />
+  </table>
+  <table name="Base Timing Reference Non-Cruise (AVCS related)" address="db428">
+    <table name="X" address="db394" elements="19" />
+    <table name="Y" address="db3e0" />
+  </table>
+  <table name="Base Timing Idle A (In-Gear)" address="d919a">
+    <table name="Y" address="d8f80" />
+  </table>
+  <table name="Base Timing Idle B (In-Gear)" address="d91aa">
+    <table name="Y" address="d8f80" />
+  </table>
+  <table name="Base Timing Idle A (Neutral)" address="d91ba">
+    <table name="Y" address="d8f80" />
+  </table>
+  <table name="Base Timing Idle B (Neutral)" address="d91ca">
+    <table name="Y" address="d8f80" />
+  </table>
+  <table name="Base Timing Idle Minimum" address="d9191">
+    <table name="Y" address="d9000" />
+  </table>
+  <table name="Base Timing Idle Minimum Vehicle Speed Enable" address="d8a64" />
+  <table name="Knock Correction Advance Max Primary Cruise (IAM)" address="dc234">
+    <table name="X" address="dc1a0" elements="19" />
+    <table name="Y" address="dc1ec" />
+  </table>
+  <table name="Knock Correction Advance Max Primary Non-Cruise (IAM)" address="dc420">
+    <table name="X" address="dc38c" elements="19" />
+    <table name="Y" address="dc3d8" />
+  </table>
+  <table name="Knock Correction Advance Max Additive A (Knock Conditions)(IAM)" address="dc048">
+    <table name="X" address="dbfb4" elements="19" />
+    <table name="Y" address="dc000" />
+  </table>
+  <table name="Knock Correction Advance Max Additive B (Knock Conditions)" address="dc60c">
+    <table name="X" address="dc578" elements="19" />
+    <table name="Y" address="dc5c4" />
+  </table>
+  <table name="Timing Compensation A (IAT)" address="d927c">
+    <table name="Y" address="d923c" />
+  </table>
+  <table name="Timing Compensation A (IAT) Activation" address="db5c4">
+    <table name="X" address="db580" elements="9" />
+    <table name="Y" address="db5a4" />
+  </table>
+  <table name="Timing Compensation B (IAT)" address="d9900">
+    <table name="Y" address="d98c0" />
+  </table>
+  <table name="Timing Compensation B (IAT) IAM Activation" address="d8ccc" />
+  <table name="Timing Compensation B (IAT) Max Additive" address="d8cb4" />
+  <table name="Timing Compensation Imm. Cruise A (ECT)" address="d921a">
+    <table name="Y" address="d8f80" />
+  </table>
+  <table name="Timing Compensation Imm. Cruise B (ECT)" address="d922a">
+    <table name="Y" address="d8f80" />
+  </table>
+  <table name="Timing Compensation Imm. Non-Cruise A (ECT)" address="d91fa">
+    <table name="Y" address="d8f80" />
+  </table>
+  <table name="Timing Compensation Imm. Non-Cruise B (ECT)" address="d920a">
+    <table name="Y" address="d8f80" />
+  </table>
+  <table name="Timing Compensation Per Cylinder A" address="dbddc">
+    <table name="X" address="dbd94" />
+    <table name="Y" address="dbdcc" />
+  </table>
+  <table name="Timing Compensation Per Cylinder B" address="dbe5c">
+    <table name="X" address="dbe14" />
+    <table name="Y" address="dbe4c" />
+  </table>
+  <table name="Timing Compensation Per Cylinder C" address="dbedc">
+    <table name="X" address="dbe94" />
+    <table name="Y" address="dbecc" />
+  </table>
+  <table name="Timing Compensation Per Cylinder D" address="dbf5c">
+    <table name="X" address="dbf14" />
+    <table name="Y" address="dbf4c" />
+  </table>
+  <table name="Timing Comp Minimum Load (Per Cylinder)" address="d8d88" />
+  <table name="Timing Comp Maximum RPM (Per Cylinder)" address="d8d84" />
+  <table name="Timing Comp Minimum Coolant Temp (Per Cylinder)" address="d8d8c" />
+  <table name="Timing Compensation Per Gear (1st)" address="dbce8">
+    <table name="X" address="dbccc" />
+    <table name="Y" address="dbcdc" />
+  </table>
+  <table name="Timing Compensation Per Gear (2nd)" address="dbd10">
+    <table name="X" address="dbcf4" />
+    <table name="Y" address="dbd04" />
+  </table>
+  <table name="Timing Compensation Per Gear (3rd)" address="dbd38">
+    <table name="X" address="dbd1c" />
+    <table name="Y" address="dbd2c" />
+  </table>
+  <table name="Timing Compensation Per Gear (4th)" address="dbd60">
+    <table name="X" address="dbd44" />
+    <table name="Y" address="dbd54" />
+  </table>
+  <table name="Timing Compensation Per Gear (5th)" address="dbd88">
+    <table name="X" address="dbd6c" />
+    <table name="Y" address="dbd7c" />
+  </table>
+  <table name="Timing Compensation Per Gear Activation (RPM)" address="d8d10" />
+  <table name="Timing Compensation Per Gear Activation (Load)" address="d8d18" />
+  <table name="Feedback Correction Range (RPM)" address="d8d98" />
+  <table name="Feedback Correction Minimum Load" address="d8d90" />
+  <table name="Feedback Correction Retard Value" address="d8db8" />
+  <table name="Feedback Correction Retard Limit" address="d8db4" />
+  <table name="Feedback Correction Negative Advance Value" address="d8dbc" />
+  <table name="Feedback Correction Negative Advance Delay" address="d8968" />
+  <table name="Extended Feedback Correction High RPM Compensation" address="d8dc4" />
+  <table name="Fine Correction Range (RPM)" address="d8f60" />
+  <table name="Fine Correction Range (Load)" address="d8f70" />
+  <table name="Fine Correction Rows (RPM)" address="d8f00" />
+  <table name="Fine Correction Columns (Load)" address="d8f1c" />
+  <table name="Fine Correction Retard Value" address="d8f44" />
+  <table name="Fine Correction Retard Limit" address="d8f40" />
+  <table name="Fine Correction Advance Value" address="d8f3c" />
+  <table name="Fine Correction Advance Limit" address="d8f38" />
+  <table name="Fine Correction Advance Delay" address="d8978" />
+  <table name="Rough Correction Range (RPM)" address="d8ea8" />
+  <table name="Rough Correction Range (Load)" address="d8eb8" />
+  <table name="Rough Correction Minimum KC Advance Map Value" address="d8ec8" />
+  <table name="Rough Correction Learning Delay (Increasing)_" address="d9d4c">
+    <table name="Y" address="d9d24" />
+  </table>
+  <table name="Advance Multiplier (Initial)" address="d8ecc" />
+  <table name="Advance Multiplier Step Value" address="d8ed0" />
+  <table name="Intake Cam Advance Angle Cruise (AVCS)" address="e2bdc">
+    <table name="X" address="e2b48" elements="19" />
+    <table name="Y" address="e2b94" />
+  </table>
+  <table name="Intake Cam Advance Angle Non-Cruise (AVCS)" address="e2f1c">
+    <table name="X" address="e2e88" elements="19" />
+    <table name="Y" address="e2ed4" />
+  </table>
+  <table name="Intake Cam Advance Angle (ECT Related)" address="e31d8">
+    <table name="X" address="e31c8" elements="2" />
+    <table name="Y" address="e31d0" elements="2" />
+  </table>
+  <table name="Intake Cam Advance Angle (ECT Related) Multiplier" address="e21ae">
+    <table name="Y" address="e1fd8" />
+  </table>
+  <table name="Exhaust Cam Retard Angle Cruise (AVCS)" address="e3624">
+    <table name="X" address="e3590" elements="19" />
+    <table name="Y" address="e35dc" />
+  </table>
+  <table name="Exhaust Cam Retard Angle Non-Cruise (AVCS)" address="e3964">
+    <table name="X" address="e38d0" elements="19" />
+    <table name="Y" address="e391c" />
+  </table>
+  <table name="Exhaust Cam Retard Angle (ECT Related)" address="e3c44">
+    <table name="X" address="e3c10" elements="6" />
+    <table name="Y" address="e3c28" elements="7" />
+  </table>
+  <table name="Exhaust Cam Retard Angle (ECT Related) Multiplier" address="e22b0">
+    <table name="Y" address="e1fd8" />
+  </table>
+  <table name="Requested Torque (Accelerator Pedal) SI-DRIVE Sport" address="f9bb8">
+    <table name="X" address="f9b34" elements="16" />
+    <table name="Y" address="f9b74" />
+  </table>
+  <table name="Requested Torque (Accelerator Pedal) SI-DRIVE Sport Sharp" address="f9e5c">
+    <table name="X" address="f9dd8" elements="16" />
+    <table name="Y" address="f9e18" />
+  </table>
+  <table name="Requested Torque (Accelerator Pedal) SI-DRIVE Intelligent" address="fa100">
+    <table name="X" address="fa07c" elements="16" />
+    <table name="Y" address="fa0bc" />
+  </table>
+  <table name="Requested Torque Base (RPM)" address="f8b48">
+    <table name="Y" address="f8b08" />
+  </table>
+  <table name="Target Throttle Plate Position Cruise (Requested Torque Ratio)" address="f9020">
+    <table name="X" address="f8f84" />
+    <table name="Y" address="f8fe0" />
+  </table>
+  <table name="Target Throttle Plate Position Non-Cruise (Requested Torque Ratio)" address="f939c">
+    <table name="X" address="f9300" />
+    <table name="Y" address="f935c" />
+  </table>
+  <table name="Target Throttle Plate Position Maximum (Requested Torque Ratio)" address="f9718">
+    <table name="X" address="f967c" />
+    <table name="Y" address="f96d8" />
+  </table>
+  <table name="Requested Torque Limit A (Per Gear/Engine Speed)" address="f9a6c">
+    <table name="X" address="f9a24" />
+    <table name="Y" address="f9a64" elements="2" />
+  </table>
+  <table name="Requested Torque Limit B (Per Gear/Engine Speed)" address="f9af4">
+    <table name="X" address="f9aac" />
+    <table name="Y" address="f9aec" elements="2" />
+  </table>
+  <table name="Rev Limit (Fuel Cut)" address="cd74c" />
+  <table name="Rev Limit Fuel Resume (Boost)" address="cd754" />
+  <table name="Speed Limiting A (Throttle) SI-DRIVE Sport/Sport Sharp" address="f8948" />
+  <table name="Speed Limiting B (Throttle) SI-DRIVE Sport/Sport Sharp" address="f8960" />
+  <table name="Speed Limiting (Throttle) SI-DRIVE Intelligent" address="f8954" />
+  <table name="Intake Temp Sensor Scaling" address="e0988">
+    <table name="Y" address="e0910" />
+  </table>
+  <table name="Coolant Temp Sensor Scaling" address="e08a0">
+    <table name="Y" address="e0830" />
+  </table>
+  <table name="Fuel Pump Duty" address="50c2c" />
+  <table name="Radiator Fan Modes A (ECT)" address="e0f98" />
+  <table name="Radiator Fan Modes B (ECT)" address="e0fa8" />
+  <table name="Radiator Fan Modes (Veh. Speed)" address="e0fb8" />
+  <table name="Gear Determination Thresholds A" address="c4f54" />
+  <table name="Gear Determination Thresholds B" address="c4f68" />
+  <table name="Idle Speed Target A" address="ddb5a">
+    <table name="Y" address="dd384" />
+  </table>
+  <table name="Idle Speed Target B" address="ddb9a">
+    <table name="Y" address="dd384" />
+  </table>
+  <table name="Idle Speed Target C" address="ddbda">
+    <table name="Y" address="dd384" />
+  </table>
+  <table name="Idle Speed Target D" address="dddc4">
+    <table name="Y" address="dd384" />
+  </table>
+  <table name="Idle Speed Stability A" address="dedc4">
+    <table name="X" address="ded38" elements="24" />
+    <table name="Y" address="ded98" />
+  </table>
+  <table name="Idle Speed Stability B" address="df060">
+    <table name="X" address="defd4" elements="24" />
+    <table name="Y" address="df034" />
+  </table>
+  <table name="Idle Airflow Min Target Decel Adder (RPM)" address="dda98">
+    <table name="Y" address="dda58" elements="2" />
+  </table>
+  <table name="Idle Airflow Min Target Decel Adder Active Veh Speed A" address="dcec4" />
+  <table name="Idle Airflow Min Target Decel Initial Idle Min Airflow A" address="dcecc" />
+  <table name="Idle Airflow Min Target Decel Initial Idle Activation Max Mode Counter" address="dcd50" />
+  <table name="Idle Airflow Min Target Decel Ramping Adder Decreasing" address="dcef0" />
+  <table name="Idle Airflow Min Target Decel Ramping Adder Increasing" address="dcef4" />
+  <table name="Ignition Dwell" address="e0e4c">
+    <table name="X" address="e0df8" />
+    <table name="Y" address="e0e38" />
+  </table>
+  <table name="Force Pass Readiness Monitors_" address="96ea4" />
+  <table name="(P0000) PASS CODE (NO DTC DETECTED)" address="8bc78" />
+  <table name="(P0000) PASS CODE (NO DTC DETECTED)_" address="8bc79" />
+  <table name="(P0011) CAMSHAFT POS. - TIMING OVER-ADVANCED 1" address="8bc5b" />
+  <table name="(P0014) EXHAUST AVCS SYSTEM 1 RANGE/PERF" address="8bcf1" />
+  <table name="(P0016) CRANKSHAFT/CAMSHAFT CORRELATION 1A" address="8bce8" />
+  <table name="(P0017) CRANK/CAM TIMING B FAILURE 1" address="8bcfa" />
+  <table name="(P0018) CRANKSHAFT/CAMSHAFT CORRELATION 2A" address="8bce7" />
+  <table name="(P0019) CRANK/CAM TIMING B FAILURE 2" address="8bcf9" />
+  <table name="(P0021) CAMSHAFT POS. - TIMING OVER-ADVANCED 2" address="8bc5c" />
+  <table name="(P0024) EXHAUST AVCS SYSTEM 2 RANGE/PERF" address="8bcf0" />
+  <table name="(P0030) FRONT O2 SENSOR RANGE/PERF" address="8bc9c" />
+  <table name="(P0031) FRONT O2 SENSOR LOW INPUT" address="8bc87" />
+  <table name="(P0032) FRONT O2 SENSOR HIGH INPUT" address="8bc85" />
+  <table name="(P0037) REAR O2 SENSOR LOW INPUT" address="8bc86" />
+  <table name="(P0038) REAR O2 SENSOR HIGH INPUT" address="8bc84" />
+  <table name="(P0102) MAF SENSOR LOW INPUT" address="8bc39" />
+  <table name="(P0103) MAF SENSOR HIGH INPUT" address="8bc3a" />
+  <table name="(P0107) MAP SENSOR LOW INPUT" address="8bc88" />
+  <table name="(P0108) MAP SENSOR HIGH INPUT" address="8bc89" />
+  <table name="(P0112) IAT SENSOR LOW INPUT" address="8bc81" />
+  <table name="(P0113) IAT SENSOR HIGH INPUT" address="8bc82" />
+  <table name="(P0117) COOLANT TEMP SENSOR LOW INPUT" address="8bc42" />
+  <table name="(P0118) COOLANT TEMP SENSOR HIGH INPUT" address="8bc43" />
+  <table name="(P0122) TPS A LOW INPUT" address="8bc40" />
+  <table name="(P0123) TPS A HIGH INPUT" address="8bc41" />
+  <table name="(P0125) INSUFFICIENT COOLANT TEMP (FUELING)" address="8bc45" />
+  <table name="(P0131) FRONT O2 SENSOR LOW INPUT" address="8bc7b" />
+  <table name="(P0132) FRONT O2 SENSOR HIGH INPUT" address="8bc7d" />
+  <table name="(P0133) FRONT O2 SENSOR SLOW RESPONSE" address="8bc65" />
+  <table name="(P0134) FRONT O2 SENSOR NO ACTIVITY" address="8bc9a" />
+  <table name="(P013A) O2 SENSOR SLOW RESPONSE RICH TO LEAN B1 S2" address="8bd03" />
+  <table name="(P0171) SYSTEM TOO LEAN" address="8bc6f" />
+  <table name="(P0172) SYSTEM TOO RICH" address="8bc70" />
+  <table name="(P0222) TPS B LOW INPUT" address="8bca4" />
+  <table name="(P0223) TPS B HIGH INPUT" address="8bca5" />
+  <table name="(P0230) FUEL PUMP PRIMARY CIRCUIT" address="8bc96" />
+  <table name="(P0245) WASTEGATE SOLENOID A LOW" address="8bc92" />
+  <table name="(P0246) WASTEGATE SOLENOID A HIGH" address="8bc93" />
+  <table name="(P0301) MISFIRE CYLINDER 1" address="8bc71" />
+  <table name="(P0302) MISFIRE CYLINDER 2" address="8bc72" />
+  <table name="(P0303) MISFIRE CYLINDER 3" address="8bc73" />
+  <table name="(P0304) MISFIRE CYLINDER 4" address="8bc74" />
+  <table name="(P0327) KNOCK SENSOR 1 LOW INPUT" address="8bc3e" />
+  <table name="(P0328) KNOCK SENSOR 1 HIGH INPUT" address="8bc3f" />
+  <table name="(P0335) CRANKSHAFT POS. SENSOR A MALFUNCTION" address="8bc34" />
+  <table name="(P0340) CAMSHAFT POS. SENSOR A MALFUNCTION" address="8bcb7" />
+  <table name="(P0341) CAMSHAFT POS. SENSOR A RANGE/PERF" address="8bd13" />
+  <table name="(P0345) CAMSHAFT POS. SENSOR A BANK 2" address="8bcb6" />
+  <table name="(P0346) CAMSHAFT POS. SENSOR A CIRCUIT RANGE/PERF BANK 2" address="8bd12" />
+  <table name="(P0365) CAMSHAFT POS. SENSOR B BANK 1" address="8bcb5" />
+  <table name="(P0366) CAMSHAFT POS. SENSOR B CIRCUIT RANGE/PERF BANK 1" address="8bd11" />
+  <table name="(P0390) CAMSHAFT POS. SENSOR B BANK 2" address="8bcb4" />
+  <table name="(P0391) CAMSHAFT POS. SENSOR B CIRCUIT RANGE/PERF BANK 2" address="8bd10" />
+  <table name="(P0410) SECONDARY AIR PUMP SYSTEM" address="8bcde" />
+  <table name="(P0413) SECONDARY AIR PUMP A OPEN" address="8bce2" />
+  <table name="(P0414) SECONDARY AIR PUMP A SHORTED" address="8bce6" />
+  <table name="(P0420) CAT EFFICIENCY BELOW THRESHOLD" address="8bc6b" />
+  <table name="(P0458) EVAP PURGE VALVE CIRCUIT LOW" address="8bc5f" />
+  <table name="(P0459) EVAP PURGE VALVE CIRCUIT HIGH" address="8bc60" />
+  <table name="(P0462) FUEL LEVEL SENSOR LOW INPUT" address="8bc46" />
+  <table name="(P0463) FUEL LEVEL SENSOR HIGH INPUT" address="8bc47" />
+  <table name="(P0500) VEHICLE SPEED SENSOR A" address="8bc3b" />
+  <table name="(P0512) STARTER REQUEST CIRCUIT" address="8bd06" />
+  <table name="(P0560) BACKUP POWER SUPPLY" address="8bd09" />
+  <table name="(P0562) SYSTEM VOLTAGE LOW" address="8bc90" />
+  <table name="(P0563) SYSTEM VOLTAGE HIGH" address="8bc91" />
+  <table name="(P0604) CONTROL MODULE RAM ERROR" address="8bc38" />
+  <table name="(P0605) CONTROL MODULE ROM ERROR" address="8bcb8" />
+  <table name="(P0606) MICRO-COMPUTER (CPU FAILURE)" address="8bd0e" />
+  <table name="(P060A) INTERNAL CONTROL MODULE MONITORING PROCESSOR PERFORMANCE" address="8bd0d" />
+  <table name="(P060B) INTERNAL CONTROL MODULE A/D PROCESSING PERFORMANCE" address="8bd0c" />
+  <table name="(P0616) STARTER RELAY CIRCUIT (LOW)" address="8bd07" />
+  <table name="(P0617) STARTER RELAY CIRCUIT (HIGH)" address="8bd08" />
+  <table name="(P081A) STARTER CUT RELAY SYSTEM CIRCUIT (LOW)" address="8bd0b" />
+  <table name="(P0851) NEUTRAL SWITCH INPUT LOW" address="8bc4c" />
+  <table name="(P0852) NEUTRAL SWITCH INPUT HIGH" address="8bc50" />
+  <table name="(P1160) ABNORMAL RETURN SPRING" address="8bca6" />
+  <table name="(P1410) SECONDARY AIR PUMP VALVE STUCK OPEN" address="8bce9" />
+  <table name="(P2004) TGV - INTAKE MANIFOLD RUNNER 1 STUCK OPEN" address="8bccd" />
+  <table name="(P2005) TGV - INTAKE MANIFOLD RUNNER 2 STUCK OPEN" address="8bccf" />
+  <table name="(P2006) TGV - INTAKE MANIFOLD RUNNER 1 STUCK CLOSED" address="8bcce" />
+  <table name="(P2007) TGV - INTAKE MANIFOLD RUNNER 2 STUCK CLOSED" address="8bcd0" />
+  <table name="(P2008) TGV - INTAKE MANIFOLD RUNNER 1 CIRCUIT OPEN" address="8bcda" />
+  <table name="(P2009) TGV - INTAKE MANIFOLD RUNNER 1 CIRCUIT LOW" address="8bcd8" />
+  <table name="(P2011) TGV - INTAKE MANIFOLD RUNNER 2 CIRCUIT OPEN" address="8bcdb" />
+  <table name="(P2012) TGV - INTAKE MANIFOLD RUNNER 2 CIRCUIT LOW" address="8bcd9" />
+  <table name="(P2016) TGV - INTAKE MANIFOLD RUNNER 1 POS. SENSOR LOW" address="8bcd4" />
+  <table name="(P2017) TGV - INTAKE MANIFOLD RUNNER 1 POS. SENSOR HIGH" address="8bcd5" />
+  <table name="(P2021) TGV - INTAKE MANIFOLD RUNNER 2 POS. SENSOR LOW" address="8bcd6" />
+  <table name="(P2022) TGV - INTAKE MANIFOLD RUNNER 2 POS. SENSOR HIGH" address="8bcd7" />
+  <table name="(P2088) OCV SOLENOID A1 CIRCUIT OPEN" address="8bcc0" />
+  <table name="(P2089) OCV SOLENOID A1 CIRCUIT SHORT" address="8bcbf" />
+  <table name="(P2090) OCV SOLENOID B1 CIRCUIT OPEN" address="8bcbc" />
+  <table name="(P2091) OCV SOLENOID B1 CIRCUIT SHORT" address="8bcbb" />
+  <table name="(P2092) OCV SOLENOID A2 CIRCUIT OPEN" address="8bcbe" />
+  <table name="(P2093) OCV SOLENOID A2 CIRCUIT SHORT" address="8bcbd" />
+  <table name="(P2094) OCV SOLENOID B2 CIRCUIT OPEN" address="8bcba" />
+  <table name="(P2095) OCV SOLENOID B2 CIRCUIT SHORT" address="8bcb9" />
+  <table name="(P2101) THROTTLE ACTUATOR CIRCUIT RANGE/PERF" address="8bca9" />
+  <table name="(P2102) THROTTLE ACTUATOR CIRCUIT LOW" address="8bca7" />
+  <table name="(P2103) THROTTLE ACTUATOR CIRCUIT HIGH" address="8bca8" />
+  <table name="(P2109) TPS A MINIMUM STOP PERF" address="8bca3" />
+  <table name="(P2119) THROTTLE CONTROL CIRCUIT RANGE/PERF PROBLEM" address="8bd0f" />
+  <table name="(P2122) TPS D CIRCUIT LOW INPUT" address="8bcaf" />
+  <table name="(P2123) TPS D CIRCUIT HIGH INPUT" address="8bcb0" />
+  <table name="(P2127) TPS E CIRCUIT LOW INPUT" address="8bcad" />
+  <table name="(P2128) TPS E CIRCUIT HIGH INPUT" address="8bcae" />
+  <table name="(P2135) TPS A/B VOLTAGE" address="8bcb1" />
+  <table name="(P2138) TPS D/E VOLTAGE" address="8bcac" />
+  <table name="(P2158) VEHICLE SPEED SENSOR B" address="8bd16" />
+  <table name="(P2257) AIR SYSTEM CONTROL A CIRCUIT LOW" address="8bd14" />
+  <table name="(P2258) AIR SYSTEM CONTROL A CIRCUIT HIGH" address="8bd15" />
+  <table name="(P2270) O2 SENSOR SIGNAL BIASED/STUCK LEAN BANK 1 SENSOR 2" address="8bd1a" />
+  <table name="(P2271) O2 SENSOR SIGNAL BIASED/STUCK RICH BANK 1 SENSOR 2" address="8bd19" />
+  <table name="(P2432) SECONDARY AIR PUMP CIRCUIT LOW" address="8bce1" />
+  <table name="(P2433) SECONDARY AIR PUMP CIRCUIT HIGH" address="8bce0" />
+  <table name="(P2441) SECONDARY AIR PUMP VALVE 1 STUCK CLOSED" address="8bcec" />
+  <table name="(P2444) SECONDARY AIR PUMP 1 STUCK ON B1" address="8bcdc" />
+  <table name="(U0073) CAN COMMUNICATION BUS A OFF" address="8bd01" />
+  <table name="(U0101) CAN LOST COMMUNICATION WITH TCM" address="8bcfe" />
+  <table name="(U0122) CAN LOST COMMUNICATION WITH VDC" address="8bd00" />
+  <table name="(U0155) LOST COMMUNICATION WITH INSTRUMENT PANEL CLUSTER (IPC) CONTROL MODULE" address="8bd05" />
+  <table name="(U0402) CAN INVALID DATA RECEIVED FROM TCM" address="8bcfd" />
+  <table name="(U0416) CAN INVALID DATA RECEIVED FROM VDC" address="8bcff" />
+  <table name="(U0423) INVALID DATA RECEIVED FROM INSTRUMENT PANEL CLUSTER CONTROL MODULE" address="8bd04" />
+</rom>
