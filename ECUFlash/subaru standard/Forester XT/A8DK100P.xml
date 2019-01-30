@@ -15,6 +15,44 @@
     <checksummodule>subarudbw</checksummodule>
   </romid>
   <include>32BITBASE</include>
+  
+  <!-- Alpha Fuel pump duty tables -->
+  
+  <table name="Fuel Pump Duty" address="3DFBC"/>
+
+  <!-- AF 3 Correction Limits -->
+  
+	<table name="AF 3 Correction Limits" address="30E10"/>
+  
+  <!-- Transient Fueling Tables -->
+
+   <table name="Tau Input A Falling Load Activation" address="C81B2">
+      <table name="Y" address="C7A24"/>
+   </table>
+
+   <table name="Tau Input B Activation (Engine Load)" address="C82D4">
+      <table name="Y" address="C82A8"/>
+   </table>
+
+   <table name="Tau Input A Rising Load Activation" address="C9B5C">
+      <table name="X" address="C7A24"/>
+      <table name="Y" address="C9B50"/>
+   </table> 
+
+  <!-- OverRun Fueling Scalings & Tables -->
+	
+	<table name="Overrun Fueling RPM Resume Threshold" address="C8C8C">
+		<table name="X" address="C7A24"/>
+	</table>
+		
+	<table name="Overrun Enrich RPM Delta Activation" address="C7920"/>
+
+	<table name="Overrun initial injector enrichment (pulsewidth)" address="C7924"/>
+	
+	<table name="Overrun Fueling Cut Counter RPM Threshold" address="C796C"/>
+
+	<!-- Stable defs -->
+	
   <table name="Target Boost" address="c0cc4">
     <table name="X" address="c0c78" />
     <table name="Y" address="c0c98" elements="11" />

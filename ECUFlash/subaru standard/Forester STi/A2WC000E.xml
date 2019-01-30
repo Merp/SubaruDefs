@@ -1,21 +1,25 @@
 <rom>
-  <romid>
-    <xmlid>A2WC000E</xmlid>
-    <internalidaddress>2000</internalidaddress>
-    <internalidstring>A2WC000E</internalidstring>
-    <ecuid>3B02594006</ecuid>
-    <year>04</year>
-    <market>JDM</market>
-    <make>Subaru</make>
-    <model>Forester</model>
-    <submodel>STi</submodel>
-    <transmission>MT</transmission>
-    <memmodel>SH7055</memmodel>
-    <flashmethod>sti04</flashmethod>
-    <checksummodule>subarudbw</checksummodule>
+ <romid>
+   <xmlid>A2WC000E</xmlid>
+   <internalidaddress>2000</internalidaddress>
+   <internalidstring>A2WC000E</internalidstring>
+   <ecuid>3B02594006</ecuid>
+   <year>04</year>
+   <market>JDM</market>
+   <make>Subaru</make>
+   <model>Forester</model>
+   <submodel>STi</submodel>
+   <transmission>MT</transmission>
+   <memmodel>SH7055</memmodel>
+   <flashmethod>sti04</flashmethod>
+   <checksummodule>subarudbw</checksummodule>
   </romid>
   <include>32BITBASE</include>
-  <table name="Target Boost" address="56af0">
+  <table name="Target Boost A" address="56a98">
+    <table name="X" address="56a88" elements="2" />
+    <table name="Y" address="56a90" elements="2" />
+  </table>
+  <table name="Target Boost B" address="56af0">
     <table name="X" address="56aa0" />
     <table name="Y" address="56ac0" />
   </table>
@@ -36,7 +40,11 @@
   <table name="Boost Control Disable (IAM)" address="5655c" />
   <table name="Boost Control Disable (Fine Correction)" address="56558" />
   <table name="Boost Control Disable Delay (Fine Correction)" address="56505" />
-  <table name="Initial Wastegate Duty" address="568c0">
+  <table name="Initial Wastegate Duty A" address="56868">
+    <table name="X" address="56858" elements="2" />
+    <table name="Y" address="56860" elements="2" />
+  </table>
+  <table name="Initial Wastegate Duty B" address="568c0">
     <table name="X" address="56870" />
     <table name="Y" address="56890" />
   </table>
@@ -44,6 +52,10 @@
     <table name="X" address="56998" />
     <table name="Y" address="569b8" />
   </table>
+  <table name="Max Wastegate Duty Alternate (RPM)" address="56770">
+    <table name="Y" address="5675c" />
+  </table>
+  <table name="Max Wastegate Duty Alternate Fix" address="56504" />
   <table name="Max Wastegate Duty Limit Post-Compensation" address="13d50" />
   <table name="Initial/Max Wastegate Duty Compensation (IAT)" address="5660c">
     <table name="Y" address="565cc" />
@@ -111,7 +123,7 @@
     <table name="X" address="58efc" />
     <table name="Y" address="5a9cc" />
   </table>
-  <table name="CL to OL Delay" address="58878">
+  <table name="CL to OL Delay" address="58878" >
     <table name="Y" elements="6" />
   </table>
   <table name="CL to OL Transition with Delay A (Throttle)" address="591b8">
@@ -324,6 +336,14 @@
     <table name="X" address="5faf0" />
     <table name="Y" address="5fb28" />
   </table>
+  <table name="Requested Torque (Accelerator Pedal)_" address="5db18">
+    <table name="X" address="5da94" />
+    <table name="Y" address="5dad0" />
+  </table>
+  <table name="Target Throttle Plate Position (Requested Torque)_" address="5d654">
+    <table name="X" address="5d5d0" />
+    <table name="Y" address="5d614" />
+  </table>
   <table name="Rev Limit (Fuel Cut)" address="58de4" />
   <table name="Rev Limit Fuel Resume (Boost)" address="58dec" />
   <table name="Speed Limiting Enable (Fuel Cut)" address="58e34" />
@@ -336,9 +356,11 @@
     <table name="Y" address="55db0" />
   </table>
   <table name="Atmospheric Pressure Sensor Scaling" address="560f8" />
+  <table name="Fuel Pump Duty" address="2d9fc" />
   <table name="Radiator Fan Modes (ECT)" address="5ef60" />
   <table name="Radiator Fan Modes (Veh. Speed)" address="5ef70" />
-  <table name="Gear Determination Thresholds" address="57960" />
+  <table name="Gear Determination Thresholds A" address="57960" />
+  <table name="Gear Determination Thresholds B" address="57974" />
   <table name="Idle Speed Target A" address="5c9cc">
     <table name="Y" address="5c3e4" />
   </table>
@@ -430,4 +452,8 @@
   <table name="(P2138) TPS D/E VOLTAGE" address="46583" />
   <table name="(P2228) BARO. PRESSURE CIRCUIT LOW INPUT" address="465a2" />
   <table name="(P2229) BARO. PRESSURE CIRCUIT HIGH INPUT" address="465a1" />
+  <table name="Ignition Dwell" address="5ee3c">
+    <table name="X" address="5ede8" />
+    <table name="Y" address="5ee28" />
+  </table>
 </rom>
