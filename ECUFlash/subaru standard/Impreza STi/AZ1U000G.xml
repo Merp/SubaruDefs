@@ -152,8 +152,44 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
     <table name="Y" address="d3588" />
   </table>
   <table name="CL Fueling Target Compensation (ECT) Disable" address="cd264" />
+	<table name="Closed Loop Fueling Target Dynamic Lean Limit Floor" address="d5db0">
+		<table name="Engine Load" address="d5d1c"/>
+		<table name="Engine Speed" address="d5d68"/>
+	</table>
   <table name="CL to OL Transition with Delay BPW Hysteresis" address="cd3f8" />
   <table name="CL Delay Minimum (ECT)" address="cd3fc" />
+	<table name="Closed to Open Loop Delays Barometric" address="cfb1c">
+		<table name="Atmospheric Pressure" address="cfb14"/>
+	</table>
+
+	<table name="Closed Loop Delay Max Load (RPM)" address="cfb60">
+		<table name="Engine Speed" address="cfb20"/>
+	</table>
+
+	<table name="Closed Loop Delay Max. Load (RPM) Hysteresis" address="cfbc0">
+		<table name="Engine Speed" address="cfb80"/>
+	</table>
+
+	<table name="Closed Loop Delay Max Load vs RPM Component Threshold (Smoothing Factor 1)" address="cd404">
+	</table>
+
+	<table name="Closed Loop Delay Max Load vs RPM Component Threshold (Smoothing Factor 2)" address="cd410">
+	</table>
+
+	<table name="Closed Loop Delay Max Load vs RPM Component Threshold (Smoothing Factor 3)" address="cd430">
+	</table>
+
+	<table name="Closed Loop Delay Max RPM" address="cd420">
+	</table>
+
+	<table name="Closed Loop Delay Max RPM (Counter Based)" address="cd428">
+	</table>
+
+	<table name="Closed Loop Delay Max. RPM (Counter Based) Threshold" address="ccf3e"/>
+
+	<table name="Closed/Open Loop Transition Main (Closed Loop Fueling Target)(Closed Loop Switch Lean Threshold)"/>
+
+	<table name="Closed/Open Loop Transition Main (Closed Loop Fueling Target)(Open Loop Switch Rich Adder)"/>
   <table name="Injector Latency_" address="d30e8">
     <table name="X" address="d30c8" />
     <table name="Y" address="d30dc" />
@@ -290,22 +326,30 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
     <table name="X" address="c605c" />
     <table name="Y" address="c6088" elements="21" />
   </table>
-  <table name="Base Timing Primary Cruise" address="daa8c">
-    <table name="X" address="da9f8" elements="19" />
-    <table name="Y" address="daa44" />
-  </table>
-  <table name="Base Timing Reference Cruise (AVCS related)" address="dae64">
-    <table name="X" address="dadd0" elements="19" />
-    <table name="Y" address="dae1c" />
-  </table>
-  <table name="Base Timing Primary Non-Cruise" address="db23c">
-    <table name="X" address="db1a8" elements="19" />
-    <table name="Y" address="db1f4" />
-  </table>
-  <table name="Base Timing Reference Non-Cruise (AVCS related)" address="db428">
-    <table name="X" address="db394" elements="19" />
-    <table name="Y" address="db3e0" />
-  </table>
+	<table name="Base Timing" address="db050">
+		<table name="Engine Load" address="dafbc" elements="19"/>
+		<table name="Engine Speed" address="db008"/>
+	</table>
+
+	<table name="Base Timing Primary Cruise" address="daa8c">
+		<table name="Engine Load" address="da9f8" elements="19"/>
+		<table name="Engine Speed" address="daa44"/>
+	</table>
+
+	<table name="Base Timing Reference Cruise (AVCS related)" address="dae64">
+		<table name="Engine Load" address="dadd0" elements="19"/>
+		<table name="Engine Speed" address="dae1c"/>
+	</table>
+
+	<table name="Base Timing Primary Non-Cruise" address="db23c">
+		<table name="Engine Load" address="db1a8" elements="19"/>
+		<table name="Engine Speed" address="db1f4"/>
+	</table>
+
+	<table name="Base Timing Reference Non-Cruise (AVCS related)" address="db428">
+		<table name="Engine Load" address="db394" elements="19"/>
+		<table name="Engine Speed" address="db3e0"/>
+	</table>
   <table name="Base Timing Idle A (In-Gear)" address="d919a">
     <table name="Y" address="d8f80" />
   </table>
@@ -667,4 +711,7 @@ for any damage or injury incurred as a result of these definitions. USE AT YOUR 
   <table name="(U0402) CAN INVALID DATA RECEIVED FROM TCM" address="8bcfd" />
   <table name="(U0416) CAN INVALID DATA RECEIVED FROM VDC" address="8bcff" />
   <table name="(U0423) INVALID DATA RECEIVED FROM INSTRUMENT PANEL CLUSTER CONTROL MODULE" address="8bd04" />
+
+	<table name="Minimum IPW" address="cd0dc"/>
+
 </rom>
