@@ -34,6 +34,7 @@
 	<scaling name="Advance(degrees)5" units="Advance (degrees)" toexpr="x-50" frexpr="x+50" format="%.2f" min="-40" max="40" inc="1" storagetype="uint8" endian="big"/>
 	<scaling name="Advance(degrees)6" units="Advance (degrees)" toexpr="(x*.001525879)-40" frexpr="(x+40)/.001525879" format="%.2f" min="0" max="40" inc="0.5" storagetype="uint16" endian="big"/>
 	<scaling name="Air/FuelRatio" units="Air/Fuel Ratio" toexpr="x*14.7" frexpr="x/14.7" format="%.2f" min="11.02" max="20.28" inc="0.06" storagetype="float" endian="big"/>
+	<scaling name="Air/FuelRatio1" units="Air/Fuel Ratio" toexpr="((x*.00012207031)-1)*14.7" frexpr="((14.7*x)+1)/*.00012207031" format="%.2f" min="11.02" max="20.28" inc="0.06" storagetype="uint16" endian="big"/>
 	<scaling name="Airflow Overrun" units="Unknown" toexpr="x*.001525879" frexpr="x/.001525879" format="%.2f" min="0" max="40" inc="0.5" storagetype="uint16" endian="big"/>
 	<scaling name="AtmosphericPressure(psi)" units="Atmospheric Pressure (psi)" toexpr="x*.01933677" frexpr="x/.01933677" format="%.2f" min="13.38" max="13.53" inc="0.01" storagetype="float" endian="big"/>
 	<scaling name="AtmosphericPressure(psi)Multiplier" units="Atmospheric Pressure (psi) Multiplier" toexpr="x*.00078910749" frexpr="x/.00078910749" format="%.5f" min="0.05" max="0.08" inc="0.0004" storagetype="uint16" endian="big"/>
@@ -48,6 +49,7 @@
 	<scaling name="BoostTarget(psirelativesealevel)" units="Boost Target (psi relative sea level)" toexpr="(x-760)*.01933677" frexpr="(x/.01933677)+760" format="%.2f" min="-13.63" max="19.34" inc="0.01" storagetype="uint16" endian="big"/>
 	<scaling name="CFP Delta" units="Flow" toexpr="x" frexpr="x" format="%.2f" min="0" max="105" inc="0.1" storagetype="float" endian="big"/>
 	<scaling name="CLtoOLCounterIncrement(WARNING-valueshouldNEVERbezero)" units="CL to OL Counter Increment (WARNING - value should NEVER be zero)" toexpr="x" frexpr="x" format="%.0f" min="1" max="10" inc="1" storagetype="uint16" endian="big"/>
+	<scaling name="CLtoOLCounterIncrement1" units="CL to OL Counter" toexpr="x" frexpr="x" format="%.0f" min="1" max="65535" inc="1" storagetype="uint16" endian="big"/>
 	<scaling name="CPCValveDutyRatio" units="CPC Duty" toexpr="x" frexpr="x" format="%.2f" min="0" max="1" inc="0.1" storagetype="float" endian="big"/>
 	<scaling name="CalculatedTorque" units="Calculated Torque" toexpr="x*0.0078125" frexpr="x/0.0078125" format="%3.2f" min="0" max="255" inc="0.06" storagetype="uint16" endian="big"/>
 	<scaling name="CoolantTemp(DegreesF)" units="Coolant Temp (Degrees F)" toexpr="(x*1.8)+32" frexpr="(x-32)/1.8" format="%.1f" min="188.6" max="221" inc="0.1" storagetype="float" endian="big"/>
@@ -65,6 +67,7 @@
 	<scaling name="ESTIMATEDFlowRate-GasOnly(cc/min)1" units="ESTIMATED Flow Rate - Gas Only (cc/min)" toexpr="2707090/x" frexpr="2707090/x" format="%.2f" min="231.65" max="1000" inc="1" storagetype="float" endian="big"/>
 	<scaling name="EngineLoad(g/rev)" units="Engine Load (g/rev)" toexpr="x*.00006103516" frexpr="x/.00006103516" format="%.2f" min="0.55" max="5" inc="0.01" storagetype="uint16" endian="big"/>
 	<scaling name="EngineLoad(g/rev)1" units="Engine Load (g/rev)" toexpr="x" frexpr="x" format="%.2f" min="0" max="5" inc="0.01" storagetype="float" endian="big"/>
+	<scaling name="EngineLoad(g/rev)2" units="Engine Load (g/rev)" toexpr="x*.00015259022" frexpr="x/.00015259022" format="%.2f" min="0.55" max="5" inc="0.01" storagetype="uint16" endian="big"/>
 	<scaling name="EngineLoadCompensation(%)" units="Engine Load Compensation (%)" toexpr="(x*.390625)-50" frexpr="(x+50)/.390625" format="%.1f" min="-28.9" max="21.1" inc="0.2" storagetype="uint8" endian="big"/>
 	<scaling name="EngineLoadDelta(g/rev)" units="Engine Load (g/rev)" toexpr="x*.00006103516" frexpr="x/.00006103516" format="%.4f" min="0.55" max="5" inc="0.01" storagetype="uint16" endian="big"/>
 	<scaling name="EngineLoadDelta(g/rev)1" units="Engine Load Delta (g/rev)" toexpr="x" frexpr="x" format="%.2f" min="0" max="5" inc="0.01" storagetype="float" endian="big"/>
@@ -225,6 +228,7 @@
 	<scaling name="RoughCorrection(IAM)PositiveLearningDelay(counterthreshold)1" units="Rough Correction (IAM) Positive Learning Delay (counter threshold)" toexpr="x" frexpr="x" format="%.0f" min="5" max="255" inc="1" storagetype="uint8" endian="big"/>
 	<scaling name="SI_mode_to_S_Counter" units="Counter" toexpr="x" frexpr="x" format="%.0f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
 	<scaling name="SmoothingFactor" units="Smoothing Factor (%)" toexpr="(x*(-100))+100" frexpr="(x-100)/(-100)" format="%.1f" min="0" max="100" inc="5" storagetype="float" endian="big"/>
+	<scaling name="SmoothingFactor1" units="Smoothed load vs RPM (raw value)" toexpr="x" frexpr="x" format="%.0f" min="0" max="100000" inc="1" storagetype="float" endian="big"/>
 	<scaling name="SolenoidControl" units="Unknown" toexpr="x*.00001525879" frexpr="x/.00001525879" format="%.2f" min="0" max="1" inc="0.5" storagetype="uint16" endian="big"/>
 	<scaling name="SolenoidDuty" units="%" toexpr="x*.003051758" frexpr="x/.003051758" format="%.2f" min="0" max="100" inc="0.1" storagetype="uint16" endian="big"/>
 	<scaling name="TDIntegralCumulativeWastegateDutyCorrection(%absolute)" units="TD Integral Cumulative Wastegate Duty Correction (% absolute)" toexpr="x" frexpr="x" format="%.2f" min="-90" max="15" inc="1" storagetype="float" endian="big"/>
@@ -289,6 +293,7 @@
 	<scaling name="clusterfueleffcomp" units="Estimated Fuel Efficiency Correction" toexpr="x" frexpr="x" format="%.3f" min="0" max="2" inc="0.1" storagetype="float" endian="big"/>
 	<scaling name="counterthreshold" units="counter threshold" toexpr="x" frexpr="x" format="%.0f" min="0" max="1250" inc="1" storagetype="uint8" endian="big"/>
 	<scaling name="counterthreshold1" units="counter threshold" toexpr="x" frexpr="x" format="%.0f" min="1" max="10000" inc="1" storagetype="uint16" endian="big"/>
+	<scaling name="counterthreshold2" units="counter threshold" toexpr="x" frexpr="x" format="%.0f" min="1" max="65535" inc="1" storagetype="uint16" endian="big"/>
 	<scaling name="cumulativethrottleanglechange" units="cumulative throttle angle change" toexpr="x" frexpr="x" format="%.2f" min="0" max="50" inc="0.1" storagetype="float" endian="big"/>
 	<scaling name="cumulativethrottleanglechange1" units="cumulative throttle angle change" toexpr="x*.001907349" frexpr="x/.001907349" format="%.2f" min="0" max="50" inc="0.1" storagetype="uint16" endian="big"/>
 	<scaling name="degreesofcorrection" units="degrees of correction" toexpr="x" frexpr="x" format="%.2f" min="-11.75" max="8" inc="0.1" storagetype="float" endian="big"/>
@@ -2029,6 +2034,20 @@
 		</table>
 	</table>
 
+	<table name="Closed Loop Fueling Target Dynamic Lean Limit Floor" category="Fueling - Closed Loop" type="3D" level="2" scaling="Air/FuelRatio1">
+		<description>This table is the floor to a dynamic lean limit of the closed loop fueling target. That is, this dynamic lean limit cannot be richer than this table's value. Changing this table to a leaner value will allow for leaner closed loop fueling targets if called for in the calibration (not leaner than stoichiometric however) when the dynamic lean limit is active.</description>
+		<table name="Engine Load" type="X Axis" elements="19" scaling="g/rev"/>
+		<table name="Engine Speed" type="Y Axis" elements="18" scaling="RPM"/>
+	</table>
+
+	<table name="Closed Loop Fueling Target Force Open Loop Exit (Lean Limit)" category="Fueling - Closed Loop" type="1D" level="3" scaling="Air/FuelRatio">
+		<description>When the final closed loop fueling target (without rear o2-based correction applied), is leaner than this table's threshold, the ECU will not allow exiting from a forced open loop state even if conditions no longer dictate forcing open loop. Forced open loop occurs when certain conditions are met such as those dictated by the "Closed Loop Fueling Target Compensation (Load and Rear O2) Force Open Loop (Rich Limit) Primary" and "Closed Loop Fueling Target Compensation (Load and Rear O2) Force Open Loop (Rich Limit) Secondary" tables.</description>
+	</table>
+
+	<table name="Closed Loop Fueling Target Force Open Loop Exit (Rich Limit)" category="Fueling - Closed Loop" type="1D" level="3" scaling="Air/FuelRatio">
+		<description>When the final closed loop fueling target (without rear o2-based correction applied), is richer than this table's threshold, the ECU will not allow exiting from a forced open loop state even if conditions no longer dictate forcing open loop. Forced open loop occurs when certain conditions are met such as those dictated by the "Closed Loop Fueling Target Compensation (Load and Rear O2) Force Open Loop (Rich Limit) Primary" and "Closed Loop Fueling Target Compensation (Load and Rear O2) Force Open Loop (Rich Limit) Secondary" tables.</description>
+	</table>
+
 	<table name="CL to OL Delay" category="Fueling - CL/OL Transition" type="2D" level="2" scaling="counterthreshold1">
 		<description>This is the period over which the 'CL to OL with Delay' throttle or base pulse width thresholds must be continuously exceeded before the closed loop to open loop fueling transition can take place. Only one of the values is used at any given time to determine the delay. If the current delay is non-zero, the 'CL to OL Transition with Delay (Throttle)' or 'CL to OL Transition with Delay (Base Pulse Width)' tables will be used to determine the transition from closed loop to open loop if either threshold is continuously exceeded over the current delay period. If the delay is zero, then these tables will not be used and the closed loop to open loop transition will be decided by the current enrichment as determined by the 'Primary Open Loop Fueling' and 'Minimum Active Primary Open Loop Enrichment' tables.</description>
 		<table name="Delay Values" type="Static Y Axis" elements="9">
@@ -2301,6 +2320,72 @@
 			<data>(Below) - Check Other CL Tables</data>
 			<data>(Above) - Clear CL Delay</data>
 		</table>
+	</table>
+
+	<table name="Closed to Open Loop Delays Barometric" category="Fueling - CL/OL Transition" type="2D" level="2" scaling="counterthreshold2">
+		<description>This is the delay value that represent a time period over which a specific threshold must be continuously exceeded before the closed loop to open loop transition can potentially occur. The threshold is determined by the "Closed/Open Loop Transition with Delay (Min. Base Pulse Width" table. Other factors, such as the final primary open loop fueling value, impact the final decision to switch to open loop.</description>
+		<table name="Atmospheric Pressure" type="Y Axis" elements="2" scaling="psi1"/>
+	</table>
+
+	<table name="Closed Loop Delay Max Load (RPM)" category="Fueling - CL/OL Transition" type="2D" level="3" scaling="EngineLoad(g/rev)2">
+		<description>This is the maximum calculated load to allow for a delay (if one is called for by the "Closed to Open Loop Delays" table) when the decision to switch from closed loop to open loop fueling is made. If calculated load is greater than or equal to this value, the current delay will be set to zero and the "Primary Open Loop Fueling Compensation (Closed Loop Delay Max. Load Not Exceeded)..." tables will not come into play. When calculated load drops below this value (with hysteresis), this table will have no effect on the delay and the "Primary Open Loop Fueling Compensation (Closed Loop Delay Max. Load Not Exceeded)..." tables will be active.</description>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Closed Loop Delay Max. Load (RPM) Hysteresis" category="Fueling - CL/OL Transition" type="2D" level="3" scaling="EngineLoad(g/rev)2">
+		<description>If calculated load drops below the Max. Load threshold less this value, the Max. Load table will have no effect on the delay and the "Primary Open Loop Fueling Compensation (Closed Loop Delay Max. Load Not Exceeded)..." tables will be active.</description>
+		<table name="Engine Speed" type="Y Axis" elements="16" scaling="RPM"/>
+	</table>
+
+	<table name="Closed Loop Delay Max Load vs RPM Component Threshold (Smoothing Factor 1)" category="Fueling - CL/OL Transition" type="2D" level="3" scaling="SmoothingFactor1">
+		<description>This is the maximum Load vs. RPM component value to allow for a delay (if one is called for by the "Closed to Open Loop Delays" table) when the decision to switch from closed loop to open loop fueling is made. The Load vs. RPM component value is determined by applying smoothing (with potentially variable smoothing factor unique to this table's threshold) to the value determined by the "Closed Loop Delay Max. Load vs. RPM Component Determine..." tables (not exposed for some ECUs - value is generally higher with higher load/rpm). If this smoothed Load vs. RPM component value exceeds the table's threshold, the current delay will be set to zero, otherwise the table will have no effect on the delay.</description>
+		<table name="Smoothing Factor" type="Static Y Axis" elements="2">
+			<data>A</data>
+			<data>B</data>
+		</table>
+	</table>
+
+	<table name="Closed Loop Delay Max Load vs RPM Component Threshold (Smoothing Factor 2)" category="Fueling - CL/OL Transition" type="2D" level="3" scaling="SmoothingFactor1">
+		<description>This is the maximum Load vs. RPM component value to allow for a delay (if one is called for by the "Closed to Open Loop Delays" table) when the decision to switch from closed loop to open loop fueling is made. The Load vs. RPM component value is determined by applying smoothing (with potentially variable smoothing factor unique to this table's threshold) to the value determined by the "Closed Loop Delay Max. Load vs. RPM Component Determine..." tables (not exposed for some ECUs - value is generally higher with higher load/rpm). If this smoothed Load vs. RPM component value exceeds the table's threshold, the current delay will be set to zero, otherwise the table will have no effect on the delay.</description>
+		<table name="Smoothing Factor" type="Static Y Axis" elements="2">
+			<data>A</data>
+			<data>B</data>
+		</table>
+	</table>
+
+	<table name="Closed Loop Delay Max Load vs RPM Component Threshold (Smoothing Factor 3)" category="Fueling - CL/OL Transition" type="2D" level="3" scaling="SmoothingFactor1">
+		<description>This is the maximum Load vs. RPM component value to allow for a delay (if one is called for by the "Closed to Open Loop Delays" table) when the decision to switch from closed loop to open loop fueling is made. The Load vs. RPM component value is determined by applying smoothing (with potentially variable smoothing factor unique to this table's threshold) to the value determined by the "Closed Loop Delay Max. Load vs. RPM Component Determine..." tables (not exposed for some ECUs - value is generally higher with higher load/rpm). If this smoothed Load vs. RPM component value exceeds the table's threshold, the current delay will be set to zero, otherwise the table will have no effect on the delay.</description>
+		<table name="Smoothing Factor" type="Static Y Axis" elements="2">
+			<data>A</data>
+			<data>B</data>
+		</table>
+	</table>
+
+	<table name="Closed Loop Delay Max RPM" category="Fueling - CL/OL Transition" type="2D" level="3" scaling="RPM">
+		<description>This is the maximum RPM to allow for a delay (if one is called for by the "Closed to Open Loop Delays" table) when the decision to switch from closed loop to open loop fueling is made. For tables with two values: If RPM is greater than or equal to the second value, the current delay will be set to zero and when RPM drops below the first value, this table will have no effect on the delay. For tables with one value: If RPM is greater than or equal to this value, the current delay will be set to zero and when RPM drops below this value (with hysteresis), this table will have no effect on the delay.</description>
+		<table name="Engine Speed" type="Static Y Axis" elements="2">
+			<data>A</data>
+			<data>B</data>
+		</table>
+	</table>
+
+	<table name="Closed Loop Delay Max RPM (Counter Based)" category="Fueling - CL/OL Transition" type="2D" level="3" scaling="RPM">
+		<description>When RPM is continuously held above this table's value for the period defined by the "Closed Loop Delay Max. RPM (Counter Based) Threshold" table, the current closed to open Loop delay value will be set to zero. If RPM drops below this table's value or has not been held continuously above it for the specified period, this table will have no effect on the delay.</description>
+		<table name="Engine Speed" type="Static Y Axis" elements="1">
+			<data>RPM</data>
+		</table>
+	</table>
+
+	<table name="Closed Loop Delay Max. RPM (Counter Based) Threshold" category="Fueling - CL/OL Transition" type="1D" level="3" scaling="CLtoOLCounterIncrement1">
+		<description>When the counter threshold of this table has been satisfied by RPM being continuously held above the "Closed Loop Delay Max. RPM (Counter Based)" table value over this period, the current closed to open Loop delay value will be set to zero.</description>
+	</table>
+
+	<table name="Closed/Open Loop Transition Main (Closed Loop Fueling Target)(Closed Loop Switch Lean Threshold)" category="Fueling - CL/OL Transition" type="1D" level="3" scaling="Air/FuelRatio">
+		<description>This is the threshold that is involved in determining the switching from closed to open loop fueling operation and back again. When the closed loop fuel target is leaner than this threshold, the ECU will switch to closed loop operation. When the closed loop fuel target is richer than (this threshold + "...Open Loop Switch Rich Adder"), the ECU will switch to open loop operation. The other CL/OL tables will dictate when primary open loop fueling is active (i.e. not a stoichiometric target) but not the switching from closed loop to open loop (or vice versa). When primary open loop fueling is active, it will be directly transferred to the closed loop target during closed loop operation or used as the primary target in open loop as normal.</description>
+	</table>
+
+	<table name="Closed/Open Loop Transition Main (Closed Loop Fueling Target)(Open Loop Switch Rich Adder)" category="Fueling - CL/OL Transition" type="1D" level="3" scaling="Air/FuelRatio">
+		<description>When the closed loop fuel target is richer than the "Closed/Open Loop Transition Main (Closed Loop Fueling Target)(Closed Loop Switch Lean Threshold)" table + this adder, the ECU will switch to open loop operation. The other CL/OL tables will dictate when primary open loop fueling is active (i.e. not a stoichiometric target) but not the switching from closed loop to open loop (or vice versa). When primary open loop fueling is active, it will be directly transferred to the closed loop target during closed loop operation or used as the primary target in open loop as normal.</description>
 	</table>
 
 	<table name="Injector Latency_" category="Fueling - Injectors" type="3D" level="2" scaling="Latency(ms)">
@@ -4842,6 +4927,26 @@
 		<description>PASS CODE (NO DTC DETECTED). Change to disabled to deactivate. Off-road use only.</description>
 	</table>
 
+	<table name="(P000A) CAMSHAFT POSITION A  TIMING SLOW RESPONSE BANK 1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CAMSHAFT POSITION A  TIMING SLOW RESPONSE BANK 1. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+
+	<table name="(P000B) CAMSHAFT POSITION B  TIMING SLOW RESPONSE BANK 1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CAMSHAFT POSITION A  TIMING SLOW RESPONSE BANK 1. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+
+	<table name="(P000C) CAMSHAFT POSITION A  TIMING SLOW RESPONSE BANK 2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CAMSHAFT POSITION A  TIMING SLOW RESPONSE BANK 2. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+
+	<table name="(P000D) CAMSHAFT POSITION B  TIMING SLOW RESPONSE BANK 2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CAMSHAFT POSITION B  TIMING SLOW RESPONSE BANK 2. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+
+	<table name="(P0010) CAMSHAFT POSITION A ACTUATOR CIRCUIT BANK 1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CAMSHAFT POSITION A ACTUATOR CIRCUIT BANK 1. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+
 	<table name="(P0011) CAMSHAFT POS. - TIMING OVER-ADVANCED 1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>EXHAUST AVCS SYSTEM 1 RANGE/PERFORMANCE. Change to disabled to deactivate. Off-road use only.</description>
 	</table>
@@ -6110,19 +6215,19 @@
 		<description>PASS CODE (NO DTC DETECTED). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
 
-	<table name="(P000A) CAMSHAFT POSITION A  TIMING SLOW RESPONSE BANK 1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+	<table name="(P000A) A CAMSHAFT POSITION SLOW RESPONSE (BANK 1)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>CAMSHAFT POSITION A  TIMING SLOW RESPONSE BANK 1. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
 
-	<table name="(P000B) CAMSHAFT POSITION B  TIMING SLOW RESPONSE BANK 1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+	<table name="(P000B) B CAMSHAFT POSITION SLOW RESPONSE (BANK 1)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>CAMSHAFT POSITION A  TIMING SLOW RESPONSE BANK 1. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
 
-	<table name="(P000C) CAMSHAFT POSITION A  TIMING SLOW RESPONSE BANK 2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+	<table name="(P000C) A CAMSHAFT POSITION SLOW RESPONSE (BANK 2)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>CAMSHAFT POSITION A  TIMING SLOW RESPONSE BANK 2. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
 
-	<table name="(P000D) CAMSHAFT POSITION B  TIMING SLOW RESPONSE BANK 2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+	<table name="(P000D) B CAMSHAFT POSITION SLOW RESPONSE (BANK 2)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>CAMSHAFT POSITION B  TIMING SLOW RESPONSE BANK 2. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
 
@@ -6290,9 +6395,9 @@
 		<description>INTAKE AIR TEMPERATURE CIRCUIT HIGH INPUT. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
 
-	<table name="(P0116) ENGINE COOLANT TEMPERATURE CIRCUIT RANGE  PERFORMANCE PROBLEM" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+	<table name="(P0116) COOLANT TEMP SENSOR 1 CIRCUIT RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>ENGINE COOLANT TEMPERATURE CIRCUIT RANGE  PERFORMANCE PROBLEM. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
-	</table>
+	</table>	
 
 	<table name="(P0117) COOLANT TEMP SENSOR LOW INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>ENGINE COOLANT TEMPERATURE CIRCUIT LOW INPUT. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
@@ -6553,6 +6658,10 @@
 	<table name="(P0300) RANDOM MULTIPLE CYLINDER MISFIRE DETECTED" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>RANDOM MULTIPLE CYLINDER MISFIRE DETECTED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
+	
+	<table name="(P0300) RANDOM/MULTIPLE CYLINDER MISFIRE DETECTED" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>RANDOM MULTIPLE CYLINDER MISFIRE DETECTED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
 
 	<table name="(P0301) MISFIRE CYLINDER 1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>CYLINDER 1 MISFIRE DETECTED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
@@ -6614,7 +6723,11 @@
 		<description>CAMSHAFT POSITION SENSOR 'A' CIRCUIT (BANK 2). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
 
-	<table name="(P0346) CAMSHAFT POSITION SENSOR A CIRCUIT RANGE  PERFORMANCE BANK 2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+	<table name="(P0346) CAMSHAFT POS. SENSOR A CIRCUIT RANGE/PERF BANK 2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CAMSHAFT POSITION SENSOR A CIRCUIT RANGE  PERFORMANCE BANK 2. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P0346) CAMSHAFT POSITION SENSOR A CIRCUIT RANGE/PERF BANK 2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>CAMSHAFT POSITION SENSOR A CIRCUIT RANGE  PERFORMANCE BANK 2. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
 
@@ -6642,7 +6755,11 @@
 		<description>CAMSHAFT POSITION SENSOR 'B' CIRCUIT (BANK 1). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
 
-	<table name="(P0366) CAMSHAFT POSITION SENSOR B CIRCUIT RANGE  PERFORMANCE BANK 1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+	<table name="(P0366) CAMSHAFT POS. SENSOR B CIRCUIT RANGE/PERF BANK 1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CAMSHAFT POSITION SENSOR B CIRCUIT RANGE  PERFORMANCE BANK 1. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+
+	<table name="(P0366) CAMSHAFT POSITION SENSOR B CIRCUIT RANGE/PERF BANK 1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>CAMSHAFT POSITION SENSOR B CIRCUIT RANGE  PERFORMANCE BANK 1. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
 
@@ -6654,7 +6771,11 @@
 		<description>CAMSHAFT POSITION SENSOR 'B' CIRCUIT (BANK 2). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
 
-	<table name="(P0391) CAMSHAFT POSITION SENSOR B CIRCUIT RANGE  PERFORMANCE BANK 2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+	<table name="(P0391) CAMSHAFT POS. SENSOR B CIRCUIT RANGE/PERF BANK 2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CAMSHAFT POSITION SENSOR B CIRCUIT RANGE  PERFORMANCE BANK 2. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+
+	<table name="(P0391) CAMSHAFT POSITION SENSOR B CIRCUIT RANGE/PERF BANK 2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>CAMSHAFT POSITION SENSOR B CIRCUIT RANGE  PERFORMANCE BANK 2. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
 
@@ -6834,7 +6955,7 @@
 		<description>ALTERNATOR CIRCUIT HIGH. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
 
-	<table name="(P0560) SYSTEM VOLTAGE" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+	<table name="(P0560) BACKUP POWER SUPPLY" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>SYSTEM VOLTAGE. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
 
@@ -6866,7 +6987,7 @@
 		<description>INTERNAL CONTROL MODULE READ ONLY MEMORY (ROM) ERROR. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
 
-	<table name="(P0606) ECM  PCM PROCESSOR" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+	<table name="(P0606) MICRO-COMPUTER (CPU FAILURE)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>ECM  PCM PROCESSOR. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
 
@@ -6882,11 +7003,11 @@
 		<description>(P060B) INTERNAL CONTROL MODULE A/D PROCESSING PERFORMANCE. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
 
-	<table name="(P0616) STARTER RELAY CIRCUIT LOW" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+	<table name="(P0616) STARTER RELAY CIRCUIT (LOW)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>STARTER RELAY CIRCUIT LOW. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
 
-	<table name="(P0617) STARTER RELAY CIRCUIT HIGH" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+	<table name="(P0617) STARTER RELAY CIRCUIT (HIGH)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>STARTER RELAY CIRCUIT HIGH. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
 
@@ -6894,7 +7015,7 @@
 		<description>NO. 1 FUEL INJECTOR DRIVER CIRCUIT PERFORMANCE. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
 
-	<table name="(P062F)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+	<table name="(P062F) EEPROM ERROR" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>(P062F). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
 
@@ -6986,7 +7107,7 @@
 		<description>AT 2-4 BRAKE TIMING SOLENOID VALVE CIRCUIT MALFUNCTION. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
 
-	<table name="(P081A)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+	<table name="(P081A) STARTER CUT RELAY SYSTEM CIRCUIT (LOW)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>(P081A). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
 
@@ -7394,7 +7515,7 @@
 		<description>THROTTLE/PEDAL POSITION SENSOR A MINIMUM STOP PERFORMANCE. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
 
-	<table name="(P2119) THROTTLE ACTUATOR CONTROL THROTTLE BODY RANGE  PERFORMANCE" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+	<table name="(P2119) THROTTLE CONTROL CIRCUIT RANGE/PERF PROBLEM" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>THROTTLE ACTUATOR CONTROL THROTTLE BODY RANGE  PERFORMANCE. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
 
@@ -7422,11 +7543,11 @@
 		<description>THROTTLE/PEDAL POSITION SENSOR/ SWITCH 'D'/'E' VOLTAGE RATIONALITY. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
 
-	<table name="(P2195) OXYGEN AF SENSOR SIGNAL STUCK LEAN BANK 1 SENSOR 1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+	<table name="(P2195) O2 SENSOR SIGNAL BIASED/STUCK LEAN BANK 1 SENSOR 1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>OXYGEN AF SENSOR SIGNAL STUCK LEAN BANK 1 SENSOR 1. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
 
-	<table name="(P2196) OXYGEN AF SENSOR SIGNAL STUCK RICH BANK 1 SENSOR 1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+	<table name="(P2196) O2 SENSOR SIGNAL BIASED/STUCK RICH BANK 1 SENSOR 1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>OXYGEN AF SENSOR SIGNAL STUCK RICH BANK 1 SENSOR 1. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
 
@@ -7450,11 +7571,19 @@
 		<description>BAROMETRIC PRESSURE CIRCUIT HIGH INPUT. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
 
-	<table name="(P2270) REAR O2 SENSOR SIGNAL BIASED/STUCK LEAN" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+	<table name="(P2257) AIR SYSTEM CONTROL A CIRCUIT LOW" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>AIR SYSTEM CONTROL A CIRCUIT LOW. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P2258) AIR SYSTEM CONTROL A CIRCUIT HIGH" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>(P2258) AIR SYSTEM CONTROL A CIRCUIT HIGH. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+
+	<table name="(P2270) O2 SENSOR SIGNAL BIASED/STUCK LEAN BANK 1 SENSOR 2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>REAR O2 SENSOR SIGNAL BIASED/STUCK LEAN. Change to disabled to deactivate. Off-road use only.</description>
 	</table>
 
-	<table name="(P2271) REAR O2 SENSOR SIGNAL BIASED/STUCK RICH" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+	<table name="(P2271) O2 SENSOR SIGNAL BIASED/STUCK RICH BANK 1 SENSOR 2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>REAR O2 SENSOR SIGNAL BIASED/STUCK RICH. Change to disabled to deactivate. Off-road use only.</description>
 	</table>
 
