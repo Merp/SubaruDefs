@@ -1,0 +1,2136 @@
+<rom>
+	<romid>
+		<xmlid>32BITDIESELBASE</xmlid>
+		<internalidaddress>4000</internalidaddress>
+		<make>Subaru</make>
+	</romid>
+
+	<scaling name="AcceleratorPosition_4byte" units="%" toexpr="x" frexpr="x" format="%.1f" min="-100" max="100" inc="0.1" storagetype="float" endian="big"/>
+	<scaling name="AirMass" units="mg/st" toexpr="x*0.05" frexpr="x/0.05" format="%.0f" min="0" max="2500" inc="2" storagetype="uint16" endian="big"/>
+	<scaling name="AirMass1" units="mg/st" toexpr="x*0.1" frexpr="x/0.1" format="%.1f" min="0" max="2500" inc="1" storagetype="uint16" endian="big"/>
+	<scaling name="AirMass2" units="mg/h" toexpr="x*10" frexpr="x/10" format="%.0f" min="0" max="2550" inc="10" storagetype="uint8" endian="big"/>
+	<scaling name="AirMass3" units="mg/h" toexpr="x" frexpr="x" format="%.0f" min="0" max="255" inc="10" storagetype="uint8" endian="big"/>
+	<scaling name="AirMass_4byte" units="mg/st" toexpr="x" frexpr="x" format="%.0f" min="0" max="2500" inc="1" storagetype="float" endian="big"/>
+	<scaling name="AmbientTemp_4byte" units="degC" toexpr="x" frexpr="x" format="%.1f" min="-50" max="85" inc="0.1" storagetype="float" endian="big"/>
+	<scaling name="AthmosphericPressure_4byte" units="kPa" toexpr="x" frexpr="x" format="%.2f" min="0" max="150" inc="2" storagetype="float" endian="big"/>
+	<scaling name="AthmosphericPressure_Sensor_Linearisation_4byte" units="kPa/Volt" toexpr="x" frexpr="x" format="%.3f" min="-1000" max="1000" inc="2" storagetype="float" endian="big"/>
+	<scaling name="ChargeAirPressure" units="kPa" toexpr="x" frexpr="x" format="%.0f" min="0" max="255" inc="1" storagetype="uint8" endian="big"/>
+	<scaling name="ChargeAirPressure1" units="kPa" toexpr="x*0.1" frexpr="x/0.1" format="%.1f" min="0" max="350" inc="1" storagetype="int16" endian="big"/>
+	<scaling name="ChargeAirPressureTUN" units="kPa" toexpr="x*1.25" frexpr="x/1.25" format="%.2f" min="0" max="320" inc="0.25" storagetype="uint8" endian="big"/>
+	<scaling name="ChargeAirPressure_4byte" units="kPa" toexpr="x" frexpr="x" format="%.2f" min="0" max="350" inc="0.25" storagetype="float" endian="big"/>
+	<scaling name="ChargeAirSensor_Linearisation_4byte" units="kPa/Volt" toexpr="x" frexpr="x" format="%.3f" min="-1000" max="1000" inc="0.001" storagetype="float" endian="big"/>
+	<scaling name="ChargeAirTemp_4byte" units="degC" toexpr="x" frexpr="x" format="%.2f" min="-1000" max="1000" inc="0.001" storagetype="float" endian="big"/>
+	<scaling name="ChargeAirTemperature" units="degC" toexpr="x" frexpr="x" format="%.1f" min="0" max="320" inc="0.1" storagetype="float" endian="big"/>
+	<scaling name="CoolantTempSensor_Linearisation" units="degC" toexpr="x-40" frexpr="x+40" format="%.0f" min="-40" max="200" inc="1" storagetype="uint8" endian="big"/>
+	<scaling name="CoolantTemp_4byte" units="degC" toexpr="x" frexpr="x" format="%.2f" min="-1000" max="1000" inc="0.001" storagetype="float" endian="big"/>
+	<scaling name="DPFDifferentialPressure1_4byte" units="Pa" toexpr="x" frexpr="x" format="%.0f" min="-100" max="300" inc="1" storagetype="float" endian="big"/>
+	<scaling name="DPFDifferentialPressureLinearisation_4byte" units="kPa/V" toexpr="x" frexpr="x" format="%.3f" min="-100" max="100" inc="0.001" storagetype="float" endian="big"/>
+	<scaling name="DPFDifferentialPressure_4byte" units="kPa" toexpr="x" frexpr="x" format="%.2f" min="-100" max="300" inc="0.1" storagetype="float" endian="big"/>
+	<scaling name="DieselTemp_4byte" units="degC" toexpr="x" frexpr="x" format="%.2f" min="-1000" max="1000" inc="0.001" storagetype="float" endian="big"/>
+	<scaling name="DifferentialEngineSpeed_4byte" units="rpm" toexpr="x" frexpr="x" format="%.0f" min="-5500" max="5500" inc="1" storagetype="float" endian="big"/>
+	<scaling name="Distance" units="km" toexpr="x*100" frexpr="x/100" format="%.0f" min="0" max="25500" inc="1" storagetype="uint8" endian="big"/>
+	<scaling name="EngineSpeed" units="rpm" toexpr="x" frexpr="x" format="%.0f" min="0" max="16000" inc="1" storagetype="float" endian="big"/>
+	<scaling name="EngineSpeed1" units="rpm" toexpr="x-50" frexpr="x+50" format="%.0f" min="50" max="6000" inc="1" storagetype="uint16" endian="big"/>
+	<scaling name="EngineSpeed2" units="rpm" toexpr="x*0.1-50" frexpr="(x+50)/0.1" format="%.0f" min="-50" max="5800" inc="1" storagetype="uint16" endian="big"/>
+	<scaling name="EngineSpeed_4byte" units="rpm" toexpr="x" frexpr="x" format="%.0f" min="0" max="16000" inc="1" storagetype="float" endian="big"/>
+	<scaling name="EngineTemp_4byte" units="degC" toexpr="x" frexpr="x" format="%.2f" min="-1000" max="1000" inc="0.001" storagetype="float" endian="big"/>
+	<scaling name="ExhaustGasTemp" units="degC" toexpr="x" frexpr="x" format="%.0f" min="-50" max="1200" inc="1" storagetype="uint16" endian="big"/>
+	<scaling name="ExhaustGasTempSensor_Voltage_4byte" units="Volt" toexpr="x" frexpr="x" format="%.3f" min="-1" max="10" inc="0.001" storagetype="float" endian="big"/>
+	<scaling name="ExhaustGasTemp_4byte" units="degC" toexpr="x" frexpr="x" format="%.0f" min="-50" max="1200" inc="1" storagetype="float" endian="big"/>
+	<scaling name="Factor" units="Factor" toexpr="x*0.01" frexpr="x/0.01" format="%.2f" min="0" max="2" inc="0.01" storagetype="uint8" endian="big"/>
+	<scaling name="Factor1" units="Factor" toexpr="x*0.001" frexpr="x/0.001" format="%.2f" min="0" max="2" inc="0.001" storagetype="uint16" endian="big"/>
+	<scaling name="FactorOnIQ" units="FactorOnIQ" toexpr="x*0.01" frexpr="x/0.01" format="%.2f" min="0" max="2" inc="0.01" storagetype="uint8" endian="big"/>
+	<scaling name="Flashcouter" units="Counter" toexpr="x" frexpr="x" format="%.0f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
+	<scaling name="FlashcouterInvers" units="Counter" toexpr="(-x)+65535" frexpr="(x-65535)*-1" format="%.0f" min="0" max="255" inc="1" storagetype="uint16" endian="big"/>
+	<scaling name="Gear_4byte" units="Gear" toexpr="x" frexpr="x" format="%.2f" min="-1000" max="1000" inc="0.001" storagetype="float" endian="big"/>
+	<scaling name="InjectionDuration" units="ms" toexpr="(x*0.0002)" frexpr="(x/0.0002)" format="%.3f" min="-7" max="7" inc="0.001" storagetype="int16" endian="big"/>
+	<scaling name="InjectionDuration_4byte" units="ms" toexpr="x" frexpr="x" format="%.3f" min="-5" max="5" inc="0.001" storagetype="float" endian="big"/>
+	<scaling name="InjectionQuantity" units="mm3/st" toexpr="(x*0.5)-20" frexpr="(x+20)/0.5" format="%.1f" min="0" max="125" inc="0.1" storagetype="uint8" endian="big"/>
+	<scaling name="InjectionQuantity1" units="mm3/st" toexpr="(x*0.5)" frexpr="(x)/0.5" format="%.1f" min="0" max="125" inc="0.1" storagetype="uint8" endian="big"/>
+	<scaling name="InjectionQuantity2" units="mm3/st" toexpr="(x*0.01953125)" frexpr="(x/0.01953125)" format="%.2f" min="-255" max="255" inc="0.1" storagetype="int16" endian="big"/>
+	<scaling name="InjectionQuantity3" units="mm3/st" toexpr="(x*0.01)-30" frexpr="(x+30)/0.01" format="%.2f" min="0" max="255" inc="0.1" storagetype="uint16" endian="big"/>
+	<scaling name="InjectionQuantity4" units="mm3/st" toexpr="x*0.01" frexpr="x/0.01" format="%.2f" min="0" max="255" inc="0.1" storagetype="uint16" endian="big"/>
+	<scaling name="InjectionQuantity5" units="mm3/st" toexpr="(x-30)" frexpr="(x+30)" format="%.0f" min="0" max="150" inc="0.1" storagetype="uint8" endian="big"/>
+	<scaling name="InjectionQuantity6" units="mm3/st" toexpr="x*0.1" frexpr="x/0.1" format="%.2f" min="-30" max="255" inc="1" storagetype="int16" endian="big"/>
+	<scaling name="InjectionQuantity7" units="mm3/st" toexpr="(x*0.5)-10" frexpr="(x+10)/0.5" format="%.1f" min="0" max="125" inc="0.1" storagetype="uint8" endian="big"/>
+	<scaling name="InjectionQuantity_4byte" units="mm3/st" toexpr="x" frexpr="x" format="%.2f" min="-255" max="255" inc="0.05" storagetype="float" endian="big"/>
+	<scaling name="InjectionQuantity_PostInj" units="mm3/st" toexpr="(x*0.2)" frexpr="(x/0.2)" format="%.1f" min="0" max="15" inc="0.1" storagetype="int8" endian="big"/>
+	<scaling name="InjectionQuantity_PreInj" units="mm3/st" toexpr="(x*0.02)" frexpr="(x/0.02)" format="%.2f" min="0" max="5" inc="0.01" storagetype="uint8" endian="big"/>
+	<scaling name="InletAirTempSensor_Voltage_4byte" units="Volt" toexpr="x" frexpr="x" format="%.3f" min="-1000" max="1000" inc="0.001" storagetype="float" endian="big"/>
+	<scaling name="InletAirTemp_4byte" units="degC" toexpr="x" frexpr="x" format="%.1f" min="-255" max="255" inc="0.1" storagetype="float" endian="big"/>
+	<scaling name="ManifoldAirTempSensor_Voltage_4byte" units="Volt" toexpr="x" frexpr="x" format="%.3f" min="-1000" max="1000" inc="0.001" storagetype="float" endian="big"/>
+	<scaling name="ManifoldAirTemp_4byte" units="degC" toexpr="x" frexpr="x" format="%.1f" min="-255" max="255" inc="0.05" storagetype="float" endian="big"/>
+	<scaling name="MassAirFlowSensor_Voltage_4byte" units="Volt" toexpr="x" frexpr="x" format="%.3f" min="-1000" max="1000" inc="0.001" storagetype="float" endian="big"/>
+	<scaling name="MassAirFlow_4byte" units="kg/h" toexpr="x" frexpr="x" format="%.2f" min="-100" max="1500" inc="0.01" storagetype="float" endian="big"/>
+	<scaling name="OilDilutionEvaporationFactor" units="Factor" toexpr="(x*0.01)" frexpr="(x/0.01)" format="%.2f" min="0" max="2.55" inc="0.01" storagetype="uint8" endian="big"/>
+	<scaling name="OilDilution_4byte" units="%" toexpr="x" frexpr="x" format="%.2f" min="0" max="25" inc="0.01" storagetype="float" endian="big"/>
+	<scaling name="PWM-VNG" units="%" toexpr="(x*0.5)" frexpr="(x/0.5)" format="%.1f" min="0" max="115" inc="0.01" storagetype="uint8" endian="big"/>
+	<scaling name="PWM-VNG1" units="%" toexpr="(x*0.5)-20" frexpr="(x+20)/0.5" format="%.1f" min="0" max="125" inc="0.1" storagetype="uint8" endian="big"/>
+	<scaling name="PWM-VNG2" units="%" toexpr="(x*0.1)" frexpr="(x)/0.1" format="%.2f" min="0" max="125" inc="0.1" storagetype="uint16" endian="big"/>
+	<scaling name="PWM-VNG3" units="%" toexpr="(x*0.01)" frexpr="(x/0.01)" format="%.1f" min="0" max="11.5" inc="0.01" storagetype="uint8" endian="big"/>
+	<scaling name="PWM-VNG4" units="%" toexpr="(x*0.1)" frexpr="(x)/0.1" format="%.1f" min="0" max="12.5" inc="0.1" storagetype="uint8" endian="big"/>
+	<scaling name="PWM-VNG5" units="%" toexpr="(x*0.2)+25" frexpr="(x-25)/0.2" format="%.1f" min="0" max="100" inc="0.1" storagetype="uint8" endian="big"/>
+	<scaling name="Railpressure" units="MPa" toexpr="x" frexpr="x" format="%.0f" min="0" max="255" inc="1" storagetype="uint8" endian="big"/>
+	<scaling name="Railpressure1" units="MPa" toexpr="x*0.01" frexpr="x/0.01" format="%.0f" min="-50" max="250" inc="0.01" storagetype="uint16" endian="big"/>
+	<scaling name="Railpressure2" units="MPa" toexpr="(x*0.01)-30" frexpr="(x+30)/0.01" format="%.0f" min="-50" max="250" inc="0.01" storagetype="uint16" endian="big"/>
+	<scaling name="Railpressure3" units="MPa" toexpr="(x*0.003906)" frexpr="(x/0.003906)" format="%.1f" min="-50" max="250" inc="0.1" storagetype="uint16" endian="big"/>
+	<scaling name="Railpressure_4byte" units="MPa" toexpr="x" frexpr="x" format="%.2f" min="-1000" max="1000" inc="0.01" storagetype="float" endian="big"/>
+	<scaling name="Railpressure_Sensor_Linearisation_4byte" units="MPa/V" toexpr="x" frexpr="x" format="%.3f" min="-1000" max="1000" inc="0.001" storagetype="float" endian="big"/>
+	<scaling name="Rohvalue_4byte" units="-" toexpr="x" frexpr="x" format="%.4f" min="-1000" max="1000" inc="0.0001" storagetype="float" endian="big"/>
+	<scaling name="SootLoadCoeffizient" units="Coeffizient" toexpr="(x*0.00001)" frexpr="(x/0.00001)" format="%.3f" min="-1.5" max="1.5" inc="0.001" storagetype="uint16" endian="big"/>
+	<scaling name="SootReductionCoeffizient" units="Coeffizient" toexpr="x*0.01" frexpr="x/0.01" format="%.2f" min="-1.5" max="1.5" inc="0.01" storagetype="uint8" endian="big"/>
+	<scaling name="StartofInjection" units="deg BTDP" toexpr="(x*0.023437)" frexpr="(x/0.023437)" format="%.2f" min="-85" max="85" inc="0.1" storagetype="int16" endian="big"/>
+	<scaling name="StartofInjection1" units="deg BTDP" toexpr="(x*0.1)" frexpr="(x/0.1)" format="%.2f" min="-85" max="85" inc="0.1" storagetype="int16" endian="big"/>
+	<scaling name="StartofInjection2" units="deg BTDP" toexpr="(x)" frexpr="(x)" format="%.0f" min="-85" max="85" inc="1" storagetype="int8" endian="big"/>
+	<scaling name="ThrottleAngle" units="degree" toexpr="x*0.5" frexpr="x/0.5" format="%.1f" min="0" max="125" inc="0.1" storagetype="uint8" endian="big"/>
+	<scaling name="ThrottleAngle_4byte" units="degree" toexpr="x" frexpr="x" format="%.2f" min="-1000" max="1000" inc="0.01" storagetype="float" endian="big"/>
+	<scaling name="Torque" units="Nm" toexpr="x*0.02-200" frexpr="(x+200)/0.02" format="%.0f" min="-200" max="550" inc="0.1" storagetype="uint16" endian="big"/>
+	<scaling name="Torque1" units="Nm" toexpr="x*0.02-600" frexpr="(x+600)/0.02" format="%.0f" min="-600" max="350" inc="1" storagetype="uint16" endian="big"/>
+	<scaling name="Torque2" units="Nm" toexpr="x*0.01951" frexpr="x/0.01951" format="%.0f" min="-600" max="550" inc="1" storagetype="int16" endian="big"/>
+	<scaling name="Torque3" units="Nm" toexpr="x*0.02-20" frexpr="(x+20)/0.02" format="%.0f" min="-20" max="550" inc="1" storagetype="uint16" endian="big"/>
+	<scaling name="Torque4" units="Nm" toexpr="x*0.0078125" frexpr="x/0.0078125" format="%.0f" min="-20" max="550" inc="1" storagetype="uint16" endian="big"/>
+	<scaling name="Torque_4byte" units="Nm" toexpr="x" frexpr="x" format="%.0f" min="-600" max="550" inc="1" storagetype="float" endian="big"/>
+	<scaling name="VehicleSpeed_4byte" units="km/h" toexpr="x" frexpr="x" format="%.2f" min="-1000" max="1000" inc="0.01" storagetype="float" endian="big"/>
+	<scaling name="VNG-Travel" units="%" toexpr="(x*0.003906)" frexpr="(x/0.003906)" format="%.2f" min="0" max="125" inc="0.01" storagetype="uint16" endian="big"/>
+	<scaling name="volts" units="volts" toexpr="x" frexpr="x" format="%.2f" min="0.2" max="16.5" inc="0.01" storagetype="float" endian="big"/>
+	<scaling name="PXXXX enable" storagetype="bloblist">
+		<data name="disabled" value="00"/>
+		<data name="enabled" value="01"/>
+	</scaling>
+	<table name="Boost pressure base map (Engine Speed, Injection Quantity)" category="Boost Control - Target" type="3D" level="4" scaling="ChargeAirPressure">
+		<description>Base map for boost pressure P_boost = f(Engine Speed, Injection Quantity). This map provides the set value for boost which is the base for having more air mass to change the lambda and somkebehaviour of the engine. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="Boost pressure base map (Engine Speed, Injection Quantity) TUN" category="Boost Control - Target" type="3D" level="4" scaling="ChargeAirPressureTUN">
+		<description>Base map for boost pressure P_boost = f(Engine Speed, Injection Quantity). This map provides the set value for boost which is the base for having more air mass to change the lambda and somkebehaviour of the engine. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="CAT Boost pressure reduction (Engine Speed, Charge Air Temperature)" category="Boost Control - Target" type="3D" level="3" scaling="ChargeAirPressure">
+		<description>Charge Air Temperature dependent reduction of Boost Pressure P_boostred. = f(Engine Speed, charge air temp). This map provides a reduction of the set value for boost</description>
+		<table name="EngineSpeed" type="X Axis" elements="10" scaling="EngineSpeed"/>
+		<table name="ChargeAirTemperature" type="Y Axis" elements="10" scaling="ChargeAirTemperature"/>
+	</table>
+
+	<table name="Limiter Boost pressure (Engine Speed, athmos. pressure)" category="Boost Control - Limits" type="3D" level="4" scaling="ChargeAirPressure">
+		<description>Ahtmosphaeric pressure reduction of Boost Pressure P_boostred. = f(Engine Speed, charge air temp). This map provides a reduction of the set value for boost</description>
+		<table name="EngineSpeed" type="X Axis" elements="10" scaling="EngineSpeed"/>
+		<table name="AthmosphericPressure" type="Y Axis" elements="10" scaling="AthmosphericPressure_4byte"/>
+	</table>
+
+	<table name="Limiter Boost pressure (Engine Speed, athmos. pressure) TUN" category="Boost Control - Limits" type="3D" level="4" scaling="ChargeAirPressureTUN">
+		<description>Ahtmosphaeric pressure dependent reduction of Boost Pressure P_boostred. = f(Engine Speed, charge air temp). This map provides a reduction of the set value for boost</description>
+		<table name="EngineSpeed" type="X Axis" elements="10" scaling="EngineSpeed"/>
+		<table name="AthmosphericPressure" type="Y Axis" elements="10" scaling="AthmosphericPressure_4byte"/>
+	</table>
+
+	<table name="Limiter Boost pressure (Low RPM)(Engine Speed, athmos. pressure)" category="Boost Control - Limits" type="3D" level="4" scaling="ChargeAirPressure_4byte">
+		<description>Ahtmosphaeric pressure dependent reduction of Boost Pressure P_boostred. = f(Engine Speed, charge air temp) at low Load and Engine Speed. This map provides a reduction of the set value for boost</description>
+		<table name="EngineSpeed" type="X Axis" elements="10" scaling="EngineSpeed"/>
+		<table name="AthmosphericPressure" type="Y Axis" elements="10" scaling="AthmosphericPressure_4byte"/>
+	</table>
+
+	<table name="Upper Limit of Pilot control #1 (Engine Speed)" category="Boost Control - VNG" type="2D" level="2" scaling="PWM-VNG1">
+		<description>Pilot control of the boost pressure control valve PWM = f(Engine Speed, Injection Quantity). Pilot control is a controlled add on value for boost value control.  Changing set value of boost request will need a change of the control map two, if the control should not be very spiky. It also has an influence to the response of the boost when changing from low to high boost requests. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="23" scaling="EngineSpeed"/>
+	</table>
+
+	<table name="Upper Limit of Pilot control #2 (Engine Speed)" category="Boost Control - VNG" type="2D" level="2" scaling="PWM-VNG1">
+		<description>Pilot control of the boost pressure control valve PWM = f(Engine Speed, Injection Quantity). Pilot control is a controlled add on value for boost value control.  Changing set value of boost request will need a change of the control map two, if the control should not be very spiky. It also has an influence to the response of the boost when changing from low to high boost requests. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="23" scaling="EngineSpeed"/>
+	</table>
+
+	<table name="Pilot control of boost pressure control valve #1 (Engine Speed, Injection Quantity)" category="Boost Control - VNG" type="3D" level="3" scaling="PWM-VNG">
+		<description>Pilot control of the boost pressure control valve PWM = f(Engine Speed, Injection Quantity). Pilot control is a controlled add on value for boost value control.  Changing set value of boost request will need a change of the control map two, if the control should not be very spiky. It also has an influence to the response of the boost when changing from low to high boost requests. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+	
+	<table name="Pilot control of boost pressure control valve #1 E5 (Engine Speed, Injection Quantity)" category="Boost Control - VNG" type="3D" level="3" scaling="PWM-VNG5">
+		<description>Pilot control of the boost pressure control valve PWM = f(Engine Speed, Injection Quantity). Pilot control is a controlled add on value for boost value control.  Changing set value of boost request will need a change of the control map two, if the control should not be very spiky. It also has an influence to the response of the boost when changing from low to high boost requests. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="Charge air dep. corr. of pilot control #1.1 (Engine Speed, Charge Air Temp)" category="Boost Control - VNG" type="3D" level="3" scaling="PWM-VNG3">
+		<description>Charge air dependent correction of pilot control of the boost pressure control valve PWM = f(Engine Speed, Injection Quantity) at higher engine speeds.</description>
+		<table name="EngineSpeed" type="X Axis" elements="10" scaling="EngineSpeed"/>
+		<table name="ChargeAirTemperature" type="Y Axis" elements="10" scaling="ChargeAirTemperature"/>
+	</table>
+
+	<table name="Charge air dep. corr. of pilot control #1.2 (Engine Speed, Charge Air Temp)" category="Boost Control - VNG" type="3D" level="3" scaling="PWM-VNG4">
+		<description>Charge air dependent correction of pilot control of the boost pressure control valve PWM = f(Engine Speed, Injection Quantity) at lower engine speeds.</description>
+		<table name="EngineSpeed" type="X Axis" elements="10" scaling="EngineSpeed"/>
+		<table name="ChargeAirTemperature" type="Y Axis" elements="10" scaling="ChargeAirTemperature"/>
+	</table>
+
+	<table name="Pilot control of boost pressure control valve #2 (Engine Speed, Injection Quantity)" category="Boost Control - VNG" type="3D" level="3" scaling="PWM-VNG">
+		<description>Pilot control of the boost pressure control valve PWM = f(Engine Speed, Injection Quantity). Pilot control is a controlled add on value for boost value control.  Changing set value of boost request will need a change of the control map two, if the control should not be very spiky. It also has an influence to the response of the boost when changing from low to high boost requests. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+	
+	<table name="Pilot control of boost pressure control valve #2 E5 (Engine Speed, Injection Quantity)" category="Boost Control - VNG" type="3D" level="3" scaling="PWM-VNG5">
+		<description>Pilot control of the boost pressure control valve PWM = f(Engine Speed, Injection Quantity). Pilot control is a controlled add on value for boost value control.  Changing set value of boost request will need a change of the control map two, if the control should not be very spiky. It also has an influence to the response of the boost when changing from low to high boost requests. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="Charge air dep. corr. of pilot control #2.1 (Engine Speed, Charge Air Temp)" category="Boost Control - VNG" type="3D" level="3" scaling="PWM-VNG3">
+		<description>Charge air dependent correction of pilot control of the boost pressure control valve PWM = f(Engine Speed, Injection Quantity) at higher engine speeds.</description>
+		<table name="EngineSpeed" type="X Axis" elements="10" scaling="EngineSpeed"/>
+		<table name="ChargeAirTemperature" type="Y Axis" elements="10" scaling="ChargeAirTemperature"/>
+	</table>
+
+	<table name="Charge air dep. corr. of pilot control #2.2 (Engine Speed, Charge Air Temp)" category="Boost Control - VNG" type="3D" level="3" scaling="PWM-VNG">
+		<description>Charge air dependent correction of pilot control of the boost pressure control valve PWM = f(Engine Speed, Injection Quantity) at lower engine speeds.</description>
+		<table name="EngineSpeed" type="X Axis" elements="10" scaling="EngineSpeed"/>
+		<table name="ChargeAirTemperature" type="Y Axis" elements="10" scaling="ChargeAirTemperature"/>
+	</table>
+
+	<table name="Pilot control of boost pressure control valve #3 (Engine Speed, Injection Quantity)" category="Boost Control - VNG" type="3D" level="3" scaling="PWM-VNG">
+		<description>Pilot control of the boost pressure control valve PWM = f(Engine Speed, Injection Quantity). Pilot control is a controlled add on value for boost value control.  Changing set value of boost request will need a change of the control map two, if the control should not be very spiky. It also has an influence to the response of the boost when changing from low to high boost requests. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="Charge air dep. corr. of pilot control #3.1 (Engine Speed, Charge Air Temp)" category="Boost Control - VNG" type="3D" level="3" scaling="PWM-VNG3">
+		<description>Charge air dependent correction of pilot control of the boost pressure control valve PWM = f(Engine Speed, Injection Quantity) at higher engine speeds.</description>
+		<table name="EngineSpeed" type="X Axis" elements="10" scaling="EngineSpeed"/>
+		<table name="ChargeAirTemperature" type="Y Axis" elements="10" scaling="ChargeAirTemperature"/>
+	</table>
+
+	<table name="Charge air dep. corr. of pilot control #3.2 (Engine Speed, Charge Air Temp)" category="Boost Control - VNG" type="3D" level="3" scaling="PWM-VNG">
+		<description>Charge air dependent correction of pilot control of the boost pressure control valve PWM = f(Engine Speed, Injection Quantity) at lower engine speeds.</description>
+		<table name="EngineSpeed" type="X Axis" elements="10" scaling="EngineSpeed"/>
+		<table name="ChargeAirTemperature" type="Y Axis" elements="10" scaling="ChargeAirTemperature"/>
+	</table>
+	
+	<table name="maximal allowed VNG travel (Engine Speed, Air Mass)" category="Boost Control - VNG" type="3D" level="3" scaling="VNG-Travel">
+		<description>maximal allowed travel of VNT-controller at turbo Travel(%) = f(Engine Speed, Air Mass).This control saves the turbo, if there is leakage in the boost system. It needs to be extended, if the engine provides more air mass.</description>
+		<table name="EngineSpeed" type="X Axis" elements="26" scaling="EngineSpeed"/>
+		<table name="AirMass" type="Y Axis" elements="28" scaling="AirMass_4byte"/>
+	</table>
+	
+	<table name="Air Mass dep. pilote control of boost pressure control valve (Engine Speed, Air Mass)" category="Boost Control - VNG" type="3D" level="3" scaling="VNG-Travel">
+		<description>Pilot control of the boost pressure control valve PWM = f(Engine Speed, Injection Quantity). Pilot control is a controlled add on value for boost value control.  Changing set value of boost request will need a change of the control map two, if the control should not be very spiky. It also has an influence to the response of the boost when changing from low to high boost requests. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="26" scaling="EngineSpeed"/>
+		<table name="AirMass" type="Y Axis" elements="28" scaling="AirMass_4byte"/>
+	</table>
+
+	<table name="Boost pressure failsafe value" category="Manifold -  Pressure Sensor Scalings" type="1D" level="2" scaling="ChargeAirPressure_4byte">
+		<description>value, when boost pressure sensor is made and software gets to failsafe mode for the sensor</description>
+	</table>
+
+	<table name="Boost pressure sensor linearization" category="Manifold -  Pressure Sensor Scalings" type="2D" level="3" scaling="ChargeAirSensor_Linearisation_4byte">
+		<description>Sensor calibration of Boost pressure sensor (main flound pressure) P_boost = factor * V_sensor + offset</description>
+		<table name="MAP Voltage to Boost Absolute Pressure" type="Static Y Axis" elements="2">
+			<data>Multiplier (kPa)</data>
+			<data>Offset (kPa)</data>
+		</table>
+	</table>
+
+	<table name="Limits of boost pressure sensor linearization" category="Manifold -  Pressure Sensor Scalings" type="2D" level="3" scaling="ChargeAirPressure_4byte">
+		<description>range of values, the boost pressure sensor can provide</description>
+		<table name="Sensor Limits of boost pressure sensor" type="Static Y Axis" elements="2">
+			<data>minimal Value (kPa)</data>
+			<data>maximal Value (kPa)</data>
+		</table>
+	</table>
+
+	<table name="Athmos. pressure failsafe value" category="Manifold -  Pressure Sensor Scalings" type="1D" level="2" scaling="AthmosphericPressure_4byte">
+		<description>value, when athmos. pressure sensor is made and software gets to failsafe mode for the sensor</description>
+	</table>
+
+	<table name="Athmos. pressure sensor linearization" category="Manifold -  Pressure Sensor Scalings" type="2D" level="3" scaling="AthmosphericPressure_Sensor_Linearisation_4byte">
+		<description>Sensor calibration of Boost pressure sensor (athmos. pressure) P_athmos = factor * V_sensor + offset</description>
+		<table name="APS Voltage to Athmos. Absolute Pressure" type="Static Y Axis" elements="2">
+			<data>Multiplier (kPa)</data>
+			<data>Offset (kPa)</data>
+		</table>
+	</table>
+
+	<table name="Limits of athmos. pressure sensor linearization" category="Manifold -  Pressure Sensor Scalings" type="2D" level="3" scaling="AthmosphericPressure_4byte">
+		<description>range of values, the boost pressure sensor can provide</description>
+		<table name="Sensor Limits of boost pressure sensor" type="Static Y Axis" elements="2">
+			<data>minimal Value (kPa)</data>
+			<data>maximal Value (kPa)</data>
+		</table>
+	</table>
+
+	<table name="Manifold Air Temp sensor failsafe value" category="Manifold -  Temperature Sensor Scalings" type="1D" level="2" scaling="ManifoldAirTemp_4byte">
+		<description>value, when manifold air temp. sensor is made and software gets to failsafe mode for the sensor</description>
+	</table>
+
+	<table name="Calibration Manifold Air Temp sensor" category="Manifold -  Temperature Sensor Scalings" type="2D" level="3" scaling="ManifoldAirTemp_4byte">
+		<description>Calibration Manifold Air Temp T_air = f(U_MatS). With turbo charged engines this temperature is also called charge air temperatur</description>
+		<table name="MAT Voltage" type="X Axis" elements="20" scaling="ManifoldAirTempSensor_Voltage_4byte"/>
+	</table>
+
+	<table name="Inlet Air Temp sensor failsafe value" category="Manifold -  Temperature Sensor Scalings" type="1D" level="2" scaling="InletAirTemp_4byte">
+		<description>value, when inlet air temp. sensor is made and software gets to failsafe mode for the sensor</description>
+	</table>
+
+	<table name="Calibration Inlet Air Temp sensor" category="Manifold -  Temperature Sensor Scalings" type="2D" level="3" scaling="InletAirTemp_4byte">
+		<description>Calibration Inlet Air Temp T_air = f(U_MatS). With turbo charged engines this temperature is also called charge air temperatur</description>
+		<table name="Inlet Temperatur Sensor Voltage" type="X Axis" elements="20" scaling="InletAirTempSensor_Voltage_4byte"/>
+	</table>
+
+	<table name="Calibration Air Mass Sensor (MAF)" category="Mass Air Flow - Sensor Scalings" type="2D" level="3" scaling="MassAirFlow_4byte">
+		<description>Calibration Mass Flow Sensor MAF = f(U_MafS).</description>
+		<table name="MAF Sensor Voltage" type="X Axis" elements="40" scaling="MassAirFlowSensor_Voltage_4byte"/>
+	</table>
+	
+	<table name="Calibration opening angle EGR actor" category="Mass Air Flow - Sensor Scalings" type="2D" level="3" scaling="MassAirFlow_4byte">
+		<description>Calibration opening angle of the exhaust gas return actor EGR actor [deg] = f(U_sensor).</description>
+		<table name="EGR Opening Angle Sensor Voltage" type="X Axis" elements="11" scaling="MassAirFlowSensor_Voltage_4byte"/>
+	</table>
+
+	<table name="Calibration opening angel throttle sensor" category="Mass Air Flow - Sensor Scalings" type="2D" level="3" scaling="ThrottleAngle_4byte">
+		<description>Calibration opening angel throttle sensor opening angle Throttle [deg] = f(U_sensor).</description>
+		<table name="Throttle Opening Angle Sensor Voltage" type="X Axis" elements="11" scaling="MassAirFlowSensor_Voltage_4byte"/>
+	</table>
+
+	<table name="Switch-off hysteresis of EGR control (low airmass)" category="Mass Air Flow - Exhaust Gas Return" type="2D" level="3" scaling="InjectionQuantity">
+		<description>minimal IQ amount, which will turn off the EGR:	EGT_off = f(n), ECU turns off the EGR at loads which are higher than the IQ value in this characteristic linea. ECU got two different levels for EGR air mass set values.</description>
+		<table name="EngineSpeed" type="X Axis" elements="20" scaling="EngineSpeed"/>
+	</table>
+
+	<table name="Switch-on hysteresis of EGR control (low airmass)" category="Mass Air Flow - Exhaust Gas Return" type="2D" level="3" scaling="InjectionQuantity">
+		<description>minimal IQ amount, which will turn on the EGR: 	EGT_on = f(n), ECU turns on the EGR at loads which are lower than the IQ value in this characteristic linea. ECU got two different levels for EGR air mass set values.</description>
+		<table name="EngineSpeed" type="X Axis" elements="20" scaling="EngineSpeed"/>
+	</table>
+
+	<table name="Switch-off hysteresis of EGR control (high airmass)" category="Mass Air Flow - Exhaust Gas Return" type="2D" level="3" scaling="InjectionQuantity1">
+		<description>minimal IQ amount, which will turn off the EGR:	EGT_off = f(n), ECU turns off the EGR at loads which are higher than the IQ value in this characteristic linea. ECU got two different levels for EGR air mass set values.</description>
+		<table name="EngineSpeed" type="X Axis" elements="20" scaling="EngineSpeed"/>
+	</table>
+
+	<table name="Switch-on hysteresis of EGR control (high airmass)" category="Mass Air Flow - Exhaust Gas Return" type="2D" level="3" scaling="InjectionQuantity1">
+		<description>minimal IQ amount, which will turn on the EGR: 	EGT_on = f(n), ECU turns on the EGR at loads which are lower than the IQ value in this characteristic linea. ECU got two different levels for EGR air mass set values.</description>
+		<table name="EngineSpeed" type="X Axis" elements="20" scaling="EngineSpeed"/>
+	</table>
+
+	<table name="Target angle of EGR-valve (low air mass) (Engine Speed, Injection Quantity)" category="Mass Air Flow - Exhaust Gas Return" type="3D" level="2" scaling="ThrottleAngle">
+		<description>minimal IQ amount, which will turn on the EGR: 	EGT_on = f(n), ECU turns on the EGR at loads which are lower than the IQ value in this characteristic linea. ECU got two different levels for EGR air mass set values.</description>
+		<table name="EngineSpeed" type="X Axis" elements="20" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="23" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="Target angle of EGR-valve (high air mass) (Engine Speed, Injection Quantity)" category="Mass Air Flow - Exhaust Gas Return" type="3D" level="2" scaling="ThrottleAngle">
+		<description>minimal IQ amount, which will turn on the EGR: 	EGT_on = f(n), ECU turns on the EGR at loads which are lower than the IQ value in this characteristic linea. ECU got two different levels for EGR air mass set values.</description>
+		<table name="EngineSpeed" type="X Axis" elements="20" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="23" scaling="InjectionQuantity_4byte"/>
+	</table>
+	
+	<table name="Allowed difference of air mass (high air mass) (Engine Speed, Injection Quantity)" category="Mass Air Flow - Exhaust Gas Return" type="3D" level="2" scaling="AirMass3">
+		<description>maximal allowed difference between set-value and actual-value of expacted air mass Air Mass = f(n/IQ), If difference is higher then the value in the map, a DTC is storred and MIL will turned on.</description>
+		<table name="EngineSpeed" type="X Axis" elements="8" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="10" scaling="InjectionQuantity_4byte"/>
+	</table>
+	
+	<table name="Allowed difference of air mass (low air mass) (Engine Speed, Injection Quantity)" category="Mass Air Flow - Exhaust Gas Return" type="3D" level="2" scaling="AirMass3">
+		<description>maximal allowed difference between set-value and actual-value of expacted air mass Air Mass = f(n/IQ), If difference is higher then the value in the map, a DTC is storred and MIL will turned on.</description>
+		<table name="EngineSpeed" type="X Axis" elements="8" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="10" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="Pilot control of throttle (mode 1) (Engine Speed, Injection Quantity)" category="Mass Air Flow - Exhaust Gas Return" type="3D" level="2" scaling="PWM-VNG">
+		<description>Pilot control of throttle for  PMW =f(n,IQ). Pilot control is a controlled add on value for the throttle regulation. Throttle is only activated in low engine speeds and low IQ. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="17" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="14" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="Pilot control of throttle (mode 2) (Engine Speed, Injection Quantity)" category="Mass Air Flow - Exhaust Gas Return" type="3D" level="2" scaling="PWM-VNG">
+		<description>Pilot control of throttle for  PMW =f(n,IQ). Pilot control is a controlled add on value for the throttle regulation. Throttle is only activated in low engine speeds and low IQ. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="17" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="14" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="Pilot control of throttle (mode 3) (Engine Speed, Injection Quantity)" category="Mass Air Flow - Exhaust Gas Return" type="3D" level="2" scaling="PWM-VNG">
+		<description>Pilot control of throttle for  PMW =f(n,IQ). Pilot control is a controlled add on value for the throttle regulation. Throttle is only activated in low engine speeds and low IQ. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="17" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="14" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="Pilot control of throttle in idle (Engine Speed, Injection Quantity)" category="Mass Air Flow - Exhaust Gas Return" type="3D" level="2" scaling="PWM-VNG">
+		<description>Pilot control of throttle when engine is in idle PMW =f(n,IQ). Pilot control is a controlled add on value for the throttle regulation. Throttle is only activated in low engine speeds and low IQ.</description>
+		<table name="EngineSpeed" type="X Axis" elements="6" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="14" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="Pilot control of throttle (High airmass) (Engine Speed, Injection Quantity)" category="Mass Air Flow - Exhaust Gas Return" type="3D" level="2" scaling="PWM-VNG">
+		<description>Pilot control of throttle  in high airmass mode PMW =f(n,IQ). Pilot control is a controlled add on value for the throttle regulation. Throttle is only activated in low engine speeds and low IQ. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="17" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="14" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="Pilot control of throttle in idle (High airmass) (Engine Speed, Injection Quantity)" category="Mass Air Flow - Exhaust Gas Return" type="3D" level="2" scaling="PWM-VNG">
+		<description>Pilot control of throttle when engine is in idle at high airmass mode PMW =f(n,IQ). Pilot control is a controlled add on value for the throttle regulation. Throttle is only activated in low engine speeds and low IQ.</description>
+		<table name="EngineSpeed" type="X Axis" elements="6" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="14" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="EGR base map air-mass setvalue (Low airmass) (Engine Speed, Injection Quantity)" category="Mass Air Flow - Exhaust Gas Return" type="3D" level="2" scaling="AirMass">
+		<description>Base map for Exhaust gas return for low airmass  air mass =f(n,IQ). EGR got two status : low airmass, high air mass. The level of the set value of air mass is different between this controls.</description>
+		<table name="EngineSpeed" type="X Axis" elements="20" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="23" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="EGR base map air-mass setvalue (Low airmass) E5 (Engine Speed, Injection Quantity)" category="Mass Air Flow - Exhaust Gas Return" type="3D" level="2" scaling="AirMass">
+		<description>Base map for Exhaust gas return for low airmass  air mass =f(n,IQ). EGR got two status : low airmass, high air mass. The level of the set value of air mass is different between this controls.</description>
+		<table name="EngineSpeed" type="X Axis" elements="26" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="23" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="EGR base map air-mass setvalue (high airmass) (Engine Speed, Injection Quantity)" category="Mass Air Flow - Exhaust Gas Return" type="3D" level="2" scaling="AirMass">
+		<description>Base map for Exhaust gas return for low airmass  air mass =f(n,IQ). EGR got two status : low airmass, high air mass. The level of the set value of air mass is different between this controls.</description>
+		<table name="EngineSpeed" type="X Axis" elements="26" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="28" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="EGR base map air-mass setvalue (high airmass) E5 (Engine Speed, Injection Quantity)" category="Mass Air Flow - Exhaust Gas Return" type="3D" level="2" scaling="AirMass">
+		<description>Base map for Exhaust gas return for low airmass  air mass =f(n,IQ). EGR got two status : low airmass, high air mass. The level of the set value of air mass is different between this controls.</description>
+		<table name="EngineSpeed" type="X Axis" elements="20" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="23" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="EGR charge air dep. expected airmass (Engine Speed, Charge Air Pressure)" category="Mass Air Flow - Exhaust Gas Return" type="3D" level="2" scaling="AirMass2">
+		<description>Expected airmass depending on charge air pressure  air mass =f(n,boost).</description>
+		<table name="EngineSpeed" type="X Axis" elements="8" scaling="EngineSpeed"/>
+		<table name="ChargeAirPressure" type="Y Axis" elements="11" scaling="ChargeAirPressure_4byte"/>
+	</table>
+	
+	<table name="EGR athmos. Pressure dep. corr. of expected airmass (Engine Speed, athmos. Pressure)" category="Mass Air Flow - Exhaust Gas Return" type="3D" level="2" scaling="FactorOnIQ">
+		<description>athmospheric pressure dependent limiter of expected airmass  air mass = F (n, p_ambient). This map limitates the requested airmass</description>
+		<table name="EngineSpeed" type="X Axis" elements="12" scaling="EngineSpeed"/>
+		<table name="AthmosphericPressure" type="Y Axis" elements="6" scaling="AthmosphericPressure_4byte"/>
+	</table>
+
+	<table name="Initial Value Injection Quantity" category="Fueling - Injection Quantity Limiter" type="1D" level="2" scaling="InjectionQuantity_4byte">
+		<description>Initial Value of Injection Quanitiy Limiter line: if you want to inject more then 100mm3/st, you need to increase the initial value</description>
+	</table>
+	
+	<table name="Initial Value Injection Quantity 2" category="Fueling - Injection Quantity Limiter" type="1D" level="2" scaling="InjectionQuantity_4byte">
+		<description>Initial Value of Injection Quanitiy Limiter line: if you want to inject more then 100mm3/st, you need to increase the initial value</description>
+	</table>
+
+	<table name="Injection Quantity limiter main (Engine Speed)" category="Fueling - Injection Quantity Limiter" type="2D" level="4" scaling="InjectionQuantity3">
+		<description>secondary injection quantity limiter. maximum possible IQ (with-out any other active limiter). This limiter will protoduce the shape of the maximum output torque of the engine IQ = f(n) This map is dobble, it can be used bye map-Switching ( has to be verifiyed!)</description>
+		<table name="EngineSpeed" type="X Axis" elements="23" scaling="EngineSpeed"/>
+	</table>
+
+	<table name="Injection Quantity limiter sec. (Engine Speed)" category="Fueling - Injection Quantity Limiter" type="2D" level="4" scaling="InjectionQuantity2">
+		<description>main injection quantity limiter, maximum possible IQ (with-out any other active limiter). This limiter will protoduce the shape of the maximum output torque of the engine IQ = f(n)</description>
+		<table name="EngineSpeed" type="X Axis" elements="23" scaling="EngineSpeed"/>
+	</table>
+
+	<table name="Injection Quantity limiter third. (Engine Speed)" category="Fueling - Injection Quantity Limiter" type="2D" level="4" scaling="InjectionQuantity4">
+		<description>third injection quantity limiter. Only need to change when IQ will be raised high IQ = f(n)</description>
+		<table name="EngineSpeed" type="X Axis" elements="15" scaling="EngineSpeed"/>
+	</table>
+
+	<table name="Injection Quantity limiter third. E5 (Engine Speed)" category="Fueling - Injection Quantity Limiter" type="2D" level="4" scaling="InjectionQuantity6">
+		<description>third injection quantity limiter. Only need to change when IQ will be raised high IQ = f(n)</description>
+		<table name="EngineSpeed" type="X Axis" elements="15" scaling="EngineSpeed"/>
+	</table>
+
+	<table name="ColdCoolant dep. Injection Quantitiy limiter (Engine Speed, Coolant temp)" category="Fueling - Injection Quantity Limiter" type="3D" level="2" scaling="InjectionQuantity2">
+		<description>This map limits injection quantity when coolant temperatur is too low IQ = f(Engine Speed, Injection Quantity).</description>
+		<table name="EngineSpeed" type="X Axis" elements="23" scaling="EngineSpeed"/>
+		<table name="CoolantTemperature" type="Y Axis" elements="9" scaling="CoolantTemp_4byte"/>
+	</table>
+
+	<table name="ColdCoolant dep. Injection Quantitiy limiter 2 (Engine Speed, Coolant temp)" category="Fueling - Injection Quantity Limiter" type="3D" level="2" scaling="InjectionQuantity3">
+		<description>This map limits injection quantity when coolant temperatur is too low IQ = f(Engine Speed, Injection Quantity).</description>
+		<table name="EngineSpeed" type="X Axis" elements="23" scaling="EngineSpeed"/>
+		<table name="CoolantTemperature" type="Y Axis" elements="11" scaling="CoolantTemp_4byte"/>
+	</table>
+
+	<table name="Coolant dep. Injection Quantity limiter (Vehicle Speed, Coolant Temp)" category="Fueling - Injection Quantity Limiter" type="3D" level="2" scaling="InjectionQuantity">
+		<description>Coolant dependent Injection Quantity Limiter: IQ = f(Vehicle Speed,T_coolant), This map can be used to reduce IQ ( -> torque) depending on actual coolant temperature and vehicle speed. This maps is an overheating protection</description>
+		<table name="VehicleSpeed" type="X Axis" elements="13" scaling="VehicleSpeed_4byte"/>
+		<table name="CoolantTemperature" type="Y Axis" elements="11" scaling="CoolantTemp_4byte"/>
+	</table>
+
+	<table name="Railpressure dep. Injection Quantity limiter (Engine Speed, Railpressure)" category="Fueling - Injection Quantity Limiter" type="3D" level="2" scaling="InjectionQuantity">
+		<description>Railpressure dependent Injection Quantity Limiter: IQ = f(Engine Speed, Railpressure), This map can be used to reduce IQ ( -> torque) depending on actual railpressure. Smokebehaviour is getting less, when railpressure drops, so there is an direct influence of rail pressure and smoke behaviour. This map got the same duty as the somke limiter maps.</description>
+		<table name="EngineSpeed" type="X Axis" elements="11" scaling="EngineSpeed"/>
+		<table name="Railpressure" type="Y Axis" elements="8" scaling="Railpressure_4byte"/>
+	</table>
+
+	<table name="overboost dep. Injection Quantity limiter (Engine Speed, charge air pressure)" category="Fueling - Injection Quantity Limiter" type="3D" level="2" scaling="FactorOnIQ">
+		<description>Overboost dependent Injection Quantity Limiter: IQ = f(Engine Speed,P_charge air pres), This map is used to reduce IQ ( -> torque) depending on actual overboost while too mutch boost depention on spiking or failure. This maps is an protection of the charge air control and turbo charger. It must set up, if you rise the boost.</description>
+		<table name="EngineSpeed" type="X Axis" elements="8" scaling="EngineSpeed"/>
+		<table name="ChargeAirPressure" type="Y Axis" elements="7" scaling="ChargeAirPressure_4byte"/>
+	</table>
+
+	<table name="Charge air temp dep. Injection Quantity limiter (Engine Speed, charge air temp)" category="Fueling - Injection Quantity Limiter" type="3D" level="2" scaling="InjectionQuantity">
+		<description>Charge air temp dependent Injection Quantity Limiter: IQ = f(Engine Speed,P_charge air pres), This map is used to reduce IQ ( -> torque) depending on actual charge air temperature. This maps is an protection of the charge air control and turbo charger</description>
+		<table name="EngineSpeed" type="X Axis" elements="9" scaling="EngineSpeed"/>
+		<table name="ChargeAirTemp" type="Y Axis" elements="8" scaling="ChargeAirTemp_4byte"/>
+	</table>
+
+	<table name="athmos. Pressure dep. Torque limiter (Engine Speed, athmos. Pressure)" category="Fueling - Injection Quantity Limiter" type="3D" level="2" scaling="FactorOnIQ">
+		<description>athmospheric pressure dependent limiter of maximal lowed torque  M = F (n, p_ambient). This map limitates the requested torque</description>
+		<table name="EngineSpeed" type="X Axis" elements="12" scaling="EngineSpeed"/>
+		<table name="AthmosphericPressure" type="Y Axis" elements="6" scaling="AthmosphericPressure_4byte"/>
+	</table>
+
+	<table name="Gear dep. Injection Quantity limiter (Engine Speed, Gear)" category="Fueling - Injection Quantity Limiter" type="3D" level="2" scaling="InjectionQuantity5">
+		<description>Gear dependent Injection Quantity Limiter: IQ = f(Engine Speed, Gear), This map can be used to reduce IQ ( -> torque) seperatly in every gear</description>
+		<table name="EngineSpeed" type="X Axis" elements="23" scaling="EngineSpeed"/>
+		<table name="ActualGear" type="Y Axis" elements="7" scaling="Gear_4byte"/>
+	</table>
+
+	<table name="Rail pressure limiter (main) (Engine Speed)" category="Fueling - Railpressure" type="2D" level="2" scaling="Railpressure1">
+		<description>Maximal lowed Rail pressure P_rail = F (n). This line limitates the maximum Rail pressure</description>
+		<table name="EngineSpeed" type="X Axis" elements="10" scaling="EngineSpeed"/>
+	</table>
+
+	<table name="Rail pressure limiter (sec) (Engine Speed)" category="Fueling - Railpressure" type="2D" level="2" scaling="Railpressure2">
+		<description>Maximal lowed Rail pressure P_rail = F (n). This line limitates the maximum Rail pressure</description>
+		<table name="EngineSpeed" type="X Axis" elements="10" scaling="EngineSpeed"/>
+	</table>
+
+	<table name="Railpressure base map low (Engine Speed, Injection Quantity)" category="Fueling - Railpressure" type="3D" level="2" scaling="Railpressure">
+		<description>Railpressure basic map for low load P_rail = f(Engine Speed, Injection Quantity). This map provides the set value for rail pressure control. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="Railpressure base map high (Engine Speed, Injection Quantity)" category="Fueling - Railpressure" type="3D" level="2" scaling="Railpressure">
+		<description>secound Railpressure map for high load P_rail = f(Engine Speed, Injection Quantity). This map provides the set value for rail pressure control. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="Railpressure cranking map (Engine Speed, Temperature)" category="Fueling - Railpressure" type="3D" level="2" scaling="Railpressure">
+		<description>Railpressure cranking map P_rail = f(Engine Speed, T_coolant). This map provides the set value for rail pressure during cranking.</description>
+		<table name="EngineSpeed" type="X Axis" elements="14" scaling="EngineSpeed"/>
+		<table name="CoolantTemperature" type="Y Axis" elements="11" scaling="CoolantTemp_4byte"/>
+	</table>
+
+	<table name="Diesel Temp dep. Railpressure Limiter map (Engine Speed, Temperature)" category="Fueling - Railpressure" type="3D" level="2" scaling="Railpressure3">
+		<description>Railpressure cranking map P_rail = f(Engine Speed, T_coolant). This map provides the set value for rail pressure during cranking.</description>
+		<table name="EngineSpeed" type="X Axis" elements="7" scaling="EngineSpeed"/>
+		<table name="DieselTemperature" type="Y Axis" elements="5" scaling="DieselTemp_4byte"/>
+	</table>
+
+	<table name="Rail pressure failsafe value" category="Fueling - Railpressure Sensor Scalings" type="1D" level="2" scaling="Railpressure_4byte">
+		<description>value, when rail pressure sensor is made and software gets to failsafe mode for the sensor</description>
+	</table>
+
+	<table name="Rail pressure sensor linearization" category="Fueling - Railpressure Sensor Scalings" type="2D" level="3" scaling="Railpressure_Sensor_Linearisation_4byte">
+		<description>Sensor calibration of Rail pressure sensor (athmos. pressure) P_athmos = factor * V_sensor + offset</description>
+		<table name="RPS Voltage to Rail Pressure" type="Static Y Axis" elements="2">
+			<data>Multiplier (MPa/V)</data>
+			<data>Offset (MPa)</data>
+		</table>
+	</table>
+
+	<table name="Limits of rail pressure sensor linearization" category="Fueling - Railpressure Sensor Scalings" type="2D" level="3" scaling="Railpressure_4byte">
+		<description>range of values, the rail pressure sensor can provide</description>
+		<table name="Sensor Limits of Rail pressure sensor" type="Static Y Axis" elements="2">
+			<data>minimal Value (MPa)</data>
+			<data>maximal Value (MPa)</data>
+		</table>
+	</table>
+
+	<table name="air mass dep. smoke limiter (1) (Engine Speed, air mass)" category="Fueling - Smoke Limiter" type="3D" level="2" scaling="InjectionQuantity2">
+		<description>This map limits injection quantity depending on air mass: IQ = f(Engine Speed, air mass). It is called "somke limiter" because it has a direct influence to the smoke behaviour of the engine. To get an direction how to treat this map, calculate Lambda of the map (Lambda = Air mass / IQ /14,7). The lower lambda is, the more smokey the engine will be. Another point: effectivity of the air mass system is getting lower with raising engine speed ( -> effec. of the turbo charger). Because of this, IQ has to fall at same air mass and raising enginespeed. Be carefull with this map ! DPF cannot handle a lot of smoke ! .</description>
+		<table name="EngineSpeed" type="X Axis" elements="23" scaling="EngineSpeed"/>
+		<table name="AirMass" type="Y Axis" elements="11" scaling="AirMass_4byte"/>
+	</table>
+
+	<table name="air mass dep. smoke limiter (2) (Engine Speed, air mass)" category="Fueling - Smoke Limiter" type="3D" level="2" scaling="InjectionQuantity2">
+		<description>This map limits injection quantity depending on air mass: IQ = f(Engine Speed, air mass). It is called "somke limiter" because it has a direct influence to the smoke behaviour of the engine. To get an direction how to treat this map, calculate Lambda of the map (Lambda = Air mass / IQ /14,7). The lower lambda is, the more smokey the engine will be. Another point: effectivity of the air mass system is getting lower with raising engine speed ( -> effec. of the turbo charger). Because of this, IQ has to fall at same air mass and raising enginespeed. Be carefull with this map ! DPF cannot handle a lot of smoke ! .</description>
+		<table name="EngineSpeed" type="X Axis" elements="23" scaling="EngineSpeed"/>
+		<table name="AirMass" type="Y Axis" elements="11" scaling="AirMass_4byte"/>
+	</table>
+
+	<table name="air mass dep. smoke limiter (3) (Engine Speed, air mass)" category="Fueling - Smoke Limiter" type="3D" level="2" scaling="InjectionQuantity2">
+		<description>This map limits injection quantity depending on air mass: IQ = f(Engine Speed, air mass). It is called "somke limiter" because it has a direct influence to the smoke behaviour of the engine. To get an direction how to treat this map, calculate Lambda of the map (Lambda = Air mass / IQ /14,7). The lower lambda is, the more smokey the engine will be. Another point: effectivity of the air mass system is getting lower with raising engine speed ( -> effec. of the turbo charger). Because of this, IQ has to fall at same air mass and raising enginespeed. Be carefull with this map ! DPF cannot handle a lot of smoke ! .</description>
+		<table name="EngineSpeed" type="X Axis" elements="23" scaling="EngineSpeed"/>
+		<table name="AirMass" type="Y Axis" elements="11" scaling="AirMass_4byte"/>
+	</table>
+
+	<table name="air mass dep. smoke limiter (4) (Engine Speed, air mass)" category="Fueling - Smoke Limiter" type="3D" level="2" scaling="InjectionQuantity2">
+		<description>This map limits injection quantity depending on air mass: IQ = f(Engine Speed, air mass). It is called "somke limiter" because it has a direct influence to the smoke behaviour of the engine. To get an direction how to treat this map, calculate Lambda of the map (Lambda = Air mass / IQ /14,7). The lower lambda is, the more smokey the engine will be. Another point: effectivity of the air mass system is getting lower with raising engine speed ( -> effec. of the turbo charger). Because of this, IQ has to fall at same air mass and raising enginespeed. Be carefull with this map ! DPF cannot handle a lot of smoke ! .</description>
+		<table name="EngineSpeed" type="X Axis" elements="23" scaling="EngineSpeed"/>
+		<table name="AirMass" type="Y Axis" elements="11" scaling="AirMass_4byte"/>
+	</table>
+
+	<table name="Pre- Injection base map (Engine Speed, Injection Quantity)" category="Fueling - Pre-Injection" type="3D" level="3" scaling="InjectionQuantity_PreInj">
+		<description>Pre-Injection base map IQ = f(Engine Speed, Injection Quantity). This map provides the set value for IQ of Pre-Injection. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="expac. leaging losses (Engine Speed, Rail pressure)" category="Fueling - Injectors" type="3D" level="3" scaling="InjectionQuantity2">
+		<description>This map provides the expected leaging loss of the injector injection quantity = f(Engine speed, Railpressure). The values of this map is based on the injector, so no need to change when you do not change the injectors itself</description>
+		<table name="EngineSpeed" type="X Axis" elements="26" scaling="EngineSpeed"/>
+		<table name="RailPressure" type="Y Axis" elements="14" scaling="Railpressure_4byte"/>
+	</table>
+
+	<table name="expac. leaging losses (2) (Engine Speed, Rail pressure)" category="Fueling - Injectors" type="3D" level="3" scaling="InjectionQuantity2">
+		<description>This map provides the expected leaging loss of the injector injection quantity = f(Engine speed, Railpressure). The values of this map is based on the injector, so no need to change when you do not change the injectors itself</description>
+		<table name="EngineSpeed" type="X Axis" elements="26" scaling="EngineSpeed"/>
+		<table name="RailPressure" type="Y Axis" elements="14" scaling="Railpressure_4byte"/>
+	</table>
+	
+	<table name="expac. leaging losses (3) (Engine Speed, Rail pressure)" category="Fueling - Injectors" type="3D" level="3" scaling="InjectionQuantity2">
+		<description>This map provides the expected leaging loss of the injector injection quantity = f(Engine speed, Railpressure). The values of this map is based on the injector, so no need to change when you do not change the injectors itself</description>
+		<table name="EngineSpeed" type="X Axis" elements="26" scaling="EngineSpeed"/>
+		<table name="RailPressure" type="Y Axis" elements="14" scaling="Railpressure_4byte"/>
+	</table>
+
+	<table name="Conversation Injection duration to Injection Quantity (Rail pressure, Injection duration)" category="Fueling - Injectors" type="3D" level="3" scaling="InjectionQuantity2">
+		<description>This map is a conversation injection duration to IQ depeding on rail pressure = f(Rail pressure, injection duration). The map can be used for a re-calculation of the injection duration map, so If you change this map, you have to change duration map simular !</description>
+		<table name="RailPressure" type="X Axis" elements="14" scaling="Railpressure_4byte"/>
+		<table name="InjectionDuration" type="Y Axis" elements="15" scaling="InjectionDuration_4byte"/>
+	</table>
+
+	<table name="Conversation Injection duration to Injection Quantity (2) (Rail pressure, Injection duration)" category="Fueling - Injectors" type="3D" level="3" scaling="InjectionQuantity2">
+		<description>This map is a conversation injection duration to IQ depeding on rail pressure = f(Rail pressure, injection duration). The map can be used for a re-calculation of the injection duration map, so If you change this map, you have to change duration map simular !</description>
+		<table name="RailPressure" type="X Axis" elements="14" scaling="Railpressure_4byte"/>
+		<table name="InjectionDuration" type="Y Axis" elements="15" scaling="InjectionDuration_4byte"/>
+	</table>
+
+	<table name="Injection duration (Rail pressure, Injection Quantity)" category="Fueling - Injectors" type="3D" level="3" scaling="InjectionDuration">
+		<description>This map provides the injection duration of the injector for injection quantity depending on Rail pressure  duration = f(Railpressure, Injection quantity). The values of the map are based on the injector, so no need to change when you do not change the injectors itself</description>
+		<table name="RailPressure" type="X Axis" elements="17" scaling="Railpressure_4byte"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="34" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="Injection duration E5 (Rail pressure, Injection Quantity)" category="Fueling - Injectors" type="3D" level="3" scaling="InjectionDuration">
+		<description>This map provides the injection duration of the injector for injection quantity depending on Rail pressure  duration = f(Railpressure, Injection quantity). The values of the map are based on the injector, so no need to change when you do not change the injectors itself</description>
+		<table name="RailPressure" type="X Axis" elements="18" scaling="Railpressure_4byte"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="34" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="SOI of 4. pre injection during cranking (Engine Speed, Fuel temp)" category="Fueling - Injection Timing" type="3D" level="3" scaling="StartofInjection">
+		<description>Start of injection of the 4. pre-injection during cranking of the engine SOI = f(Engine Speed, Fuel Temp).</description>
+		<table name="EngineSpeed" type="X Axis" elements="11" scaling="EngineSpeed"/>
+		<table name="DieselTemp" type="Y Axis" elements="11" scaling="DieselTemp_4byte"/>
+	</table>
+
+	<table name="SOI 4. pre injection (Engine Speed, Injection Quantity)" category="Fueling - Injection Timing" type="3D" level="3" scaling="StartofInjection">
+		<description>Start of injection of the 4. pre-injection SOI = f(Engine Speed, Fuel Temp). Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="SOI of 3. pre injection during cranking (Engine Speed, Fuel temp)" category="Fueling - Injection Timing" type="3D" level="3" scaling="StartofInjection">
+		<description>Start of injection of the 3. pre-injection during cranking of the engine SOI = f(Engine Speed, Fuel Temp).</description>
+		<table name="EngineSpeed" type="X Axis" elements="11" scaling="EngineSpeed"/>
+		<table name="DieselTemp" type="Y Axis" elements="11" scaling="DieselTemp_4byte"/>
+	</table>
+
+	<table name="SOI 3. pre injection (Engine Speed, Injection Quantity)" category="Fueling - Injection Timing" type="3D" level="3" scaling="StartofInjection">
+		<description>Start of injection of the 3. pre-injection SOI = f(Engine Speed, Fuel Temp). Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="SOI of 2. pre injection during cranking (Engine Speed, Fuel temp)" category="Fueling - Injection Timing" type="3D" level="3" scaling="StartofInjection">
+		<description>Start of injection of the 2. pre-injection during cranking of the engine SOI = f(Engine Speed, Fuel Temp).</description>
+		<table name="EngineSpeed" type="X Axis" elements="11" scaling="EngineSpeed"/>
+		<table name="DieselTemp" type="Y Axis" elements="11" scaling="DieselTemp_4byte"/>
+	</table>
+
+	<table name="SOI 2. pre injection 1(Engine Speed, Injection Quantity)" category="Fueling - Injection Timing" type="3D" level="3" scaling="StartofInjection">
+		<description>Start of injection of the 2. pre-injection SOI = f(Engine Speed, Fuel Temp). Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="SOI 2. pre injection 2(Engine Speed, Injection Quantity)" category="Fueling - Injection Timing" type="3D" level="3" scaling="StartofInjection">
+		<description>Start of injection of the 2. pre-injection SOI = f(Engine Speed, Fuel Temp). Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="SOI of main injection during cranking (Engine Speed, Fuel temp)" category="Fueling - Injection Timing" type="3D" level="3" scaling="StartofInjection">
+		<description>Start of injection of the 2. pre-injection during cranking of the engine SOI = f(Engine Speed, Fuel Temp).</description>
+		<table name="EngineSpeed" type="X Axis" elements="11" scaling="EngineSpeed"/>
+		<table name="DieselTemp" type="Y Axis" elements="11" scaling="DieselTemp_4byte"/>
+	</table>
+
+	<table name="SOI main injection 1(Engine Speed, Injection Quantity)" category="Fueling - Injection Timing" type="3D" level="3" scaling="StartofInjection">
+		<description>Start of injection of the 2. pre-injection SOI = f(Engine Speed, Fuel Temp). Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="SOI main injection 2(Engine Speed, Injection Quantity)" category="Fueling - Injection Timing" type="3D" level="3" scaling="StartofInjection">
+		<description>Start of injection of the 2. pre-injection SOI = f(Engine Speed, Fuel Temp). Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="fuel temp based corr of SOI 4.injection (T_Fuel)" category="Fueling - Injection Timing" type="2D" level="3" scaling="StartofInjection">
+		<description>advance of start of  injection depending on fuel temperatur SOI = f(Fuel Temp). Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="DieselTemp" type="X Axis" elements="4" scaling="DieselTemp_4byte"/>
+	</table>
+
+	<table name="fuel temp based corr of SOI 4. injection E5 (EngineSpeed, T_Fuel)" category="Fueling - Injection Timing" type="3D" level="3" scaling="StartofInjection">
+		<description>advance of start of  injection depending on fuel temperatur SOI = f(EngineSpeed, Fuel Temp). Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="13" scaling="EngineSpeed_4byte"/>
+		<table name="DieselTemp" type="Y Axis" elements="7" scaling="DieselTemp_4byte"/>
+	</table>
+
+	<table name="fuel temp based corr of SOI 3.injection (T_Fuel)" category="Fueling - Injection Timing" type="2D" level="3" scaling="StartofInjection">
+		<description>advance of start of  injection depending on fuel temperatur SOI = f(Fuel Temp). Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="DieselTemp" type="X Axis" elements="4" scaling="DieselTemp_4byte"/>
+	</table>
+
+	<table name="fuel temp based corr of SOI 3. injection E5 (EngineSpeed, T_Fuel)" category="Fueling - Injection Timing" type="3D" level="3" scaling="StartofInjection">
+		<description>advance of start of  injection depending on fuel temperatur SOI = f(EngineSpeed, Fuel Temp). Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="13" scaling="EngineSpeed_4byte"/>
+		<table name="DieselTemp" type="Y Axis" elements="7" scaling="DieselTemp_4byte"/>
+	</table>
+
+	<table name="fuel temp based corr of SOI 2.injection (T_Fuel)" category="Fueling - Injection Timing" type="2D" level="3" scaling="StartofInjection">
+		<description>advance of start of  injection depending on fuel temperatur SOI = f(Fuel Temp). Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="DieselTemp" type="X Axis" elements="4" scaling="DieselTemp_4byte"/>
+	</table>
+
+	<table name="fuel temp based corr of SOI 2. injection E5 (EngineSpeed, T_Fuel)" category="Fueling - Injection Timing" type="3D" level="3" scaling="StartofInjection">
+		<description>advance of start of  injection depending on fuel temperatur SOI = f(EngineSpeed, Fuel Temp). Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="13" scaling="EngineSpeed_4byte"/>
+		<table name="DieselTemp" type="Y Axis" elements="7" scaling="DieselTemp_4byte"/>
+	</table>
+
+	<table name="fuel temp based corr of SOI main injection (T_Fuel)" category="Fueling - Injection Timing" type="2D" level="3" scaling="StartofInjection">
+		<description>advance of start of  injection depending on fuel temperatur SOI = f(Fuel Temp). Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="DieselTemp" type="X Axis" elements="4" scaling="DieselTemp_4byte"/>
+	</table>
+
+	<table name="fuel temp based corr of SOI main injection E5 (EngineSpeed, T_Fuel)" category="Fueling - Injection Timing" type="3D" level="3" scaling="StartofInjection">
+		<description>advance of start of  injection depending on fuel temperatur SOI = f(EngineSpeed, Fuel Temp). Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="13" scaling="EngineSpeed_4byte"/>
+		<table name="DieselTemp" type="Y Axis" elements="7" scaling="DieselTemp_4byte"/>
+	</table>
+
+	<table name="injection quantity during cranking #1 (EngineSpeed, T_Engine)" category="Fueling - Cranking" type="3D" level="3" scaling="InjectionQuantity7">
+		<description>controled injection amount during cranking of the engine IQ = f(EngineSpeed, Engine Temp). MAP is used on first start of engine</description>
+		<table name="EngineSpeed" type="X Axis" elements="14" scaling="EngineSpeed_4byte"/>
+		<table name="EngineTemp" type="Y Axis" elements="10" scaling="EngineTemp_4byte"/>
+	</table>
+
+	<table name="injection quantity during cranking #2 (EngineSpeed, T_Engine)" category="Fueling - Cranking" type="3D" level="3" scaling="InjectionQuantity">
+		<description>controled injection amount during cranking of the engine IQ = f(EngineSpeed, Engine Temp). MAP is used on first start of engine</description>
+		<table name="EngineSpeed" type="X Axis" elements="19" scaling="EngineSpeed_4byte"/>
+		<table name="EngineTemp" type="Y Axis" elements="9" scaling="EngineTemp_4byte"/>
+	</table>
+
+	<table name="Torque Demand-drivers request(Engine Speed, Accelerator Pos)" category="Drive-by-Wire - Throttle" type="3D" level="2" scaling="Torque">
+		<description>Torque Demand (drivers request)  = f(Engine Speed, Accelerator Position). This map requests initial torque, not output torque</description>
+		<table name="EngineSpeed" type="X Axis" elements="15" scaling="EngineSpeed"/>
+		<table name="AcceleratorPosition" type="Y Axis" elements="11" scaling="AcceleratorPosition_4byte"/>
+	</table>
+
+	<table name="Torque Demand-drivers request (mode1) (Engine Speed, Accelerator Pos)" category="Drive-by-Wire - Throttle" type="3D" level="2" scaling="Torque">
+		<description>Torque Demand(drivers request) mode 1 = f(Engine Speed, Accelerator Position). This map requests initial torque, not output torque</description>
+		<table name="EngineSpeed" type="X Axis" elements="15" scaling="EngineSpeed"/>
+		<table name="AcceleratorPosition" type="Y Axis" elements="11" scaling="AcceleratorPosition_4byte"/>
+	</table>
+
+	<table name="Torque Demand-drivers request (mode2) (Engine Speed, Accelerator Pos)" category="Drive-by-Wire - Throttle" type="3D" level="2" scaling="Torque">
+		<description>Torque Demand(drivers request) mode 2 = f(Engine Speed, Accelerator Position). This map requests initial torque, not output torque</description>
+		<table name="EngineSpeed" type="X Axis" elements="15" scaling="EngineSpeed"/>
+		<table name="AcceleratorPosition" type="Y Axis" elements="11" scaling="AcceleratorPosition_4byte"/>
+	</table>
+
+	<table name="Torque Demand-drivers request (mode3) (Engine Speed, Accelerator Pos)" category="Drive-by-Wire - Throttle" type="3D" level="2" scaling="Torque">
+		<description>Torque Demand(drivers request) mode 3 = f(Engine Speed, Accelerator Position). This map requests initial torque, not output torque</description>
+		<table name="EngineSpeed" type="X Axis" elements="15" scaling="EngineSpeed"/>
+		<table name="AcceleratorPosition" type="Y Axis" elements="11" scaling="AcceleratorPosition_4byte"/>
+	</table>
+
+	<table name="corr. of Torque Demand dep. on diff. engine speed to idle target (diff Engine Speed, Gear)" category="Drive-by-Wire - Throttle" type="3D" level="3" scaling="Torque1">
+		<description>correction of Torque Demand (drivers request) depending of differencial engine speed to idle target  = f(Engine Speed, Gear). This map requests initial torque, not output torque</description>
+		<table name="EngineSpeed" type="X Axis" elements="13" scaling="EngineSpeed"/>
+		<table name="Gear" type="Y Axis" elements="7" scaling="Gear_4byte"/>
+	</table>
+
+	<table name="Torque Friction loss (Engine Speed)" category="Drive-by-Wire - Torque model" type="2D" level="3" scaling="Torque">
+		<description>mechanical friction loss torque of engine depending on engine speed Nm-loss = f(engine speed). Initial - friction loss torque will provide engine output torque at fly-wheel</description>
+		<table name="EngineSpeed" type="X Axis" elements="27" scaling="EngineSpeed"/>
+	</table>
+
+	<table name="Coolant dep. correction of Torque Friction loss (Coolant Temp)" category="Drive-by-Wire - Torque model" type="2D" level="3" scaling="Factor1">
+		<description>Coolant depented corretion of mechanical friction loss torque of engine  correction = f(coolant temp). Initial - friction loss torque will provide engine output torque at fly-wheel</description>
+		<table name="CoolantTemp" type="X Axis" elements="16" scaling="CoolantTemp_4byte"/>
+	</table>
+
+	<table name="Conversation Torque to Injection Quatity (1) (Engine Speed, Torque)" category="Drive-by-Wire - Torque model" type="3D" level="2" scaling="InjectionQuantity2">
+		<description>Torque Demand (drivers request)  = f(Engine Speed, Accelerator Position). This map requests initial torque, not output torque</description>
+		<table name="EngineSpeed" type="X Axis" elements="23" scaling="EngineSpeed"/>
+		<table name="Torque" type="Y Axis" elements="18" scaling="Torque_4byte"/>
+	</table>
+
+	<table name="Conversation Torque to Injection Quatity (2) (Engine Speed, Torque)" category="Drive-by-Wire - Torque model" type="3D" level="2" scaling="InjectionQuantity2">
+		<description>Torque Demand (drivers request)  = f(Engine Speed, Accelerator Position). This map requests initial torque, not output torque</description>
+		<table name="EngineSpeed" type="X Axis" elements="23" scaling="EngineSpeed"/>
+		<table name="Torque" type="Y Axis" elements="18" scaling="Torque_4byte"/>
+	</table>
+
+	<table name="Conversation Injection Quatity to Torque (Engine Speed, Injection Quantity)" category="Drive-by-Wire - Torque model" type="3D" level="2" scaling="Torque2">
+		<description>This map is a conversation of IQ to troque depeding on engine speed Torque = f(Engine Speed, Injection Quantity). The map provides initiatil torque, not output torque of the engine</description>
+		<table name="EngineSpeed" type="X Axis" elements="23" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="21" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="Torque limiter (Engine Speed)" category="Drive-by-Wire - Torque Limiter" type="2D" level="2" scaling="Torque3">
+		<description>Maximal lowed torque of the torque modell M = F (n). This line limitates the requested torque</description>
+		<table name="EngineSpeed" type="X Axis" elements="27" scaling="EngineSpeed"/>
+	</table>
+
+	<table name="Speed Limiter (Throttle) #1" category="Miscellaneous - Limits" type="2D" level="3" scaling="VehicleSpeed_4byte">
+		<description>The vehicle speed at witch the throttle (driver request) is reduced</description>
+		<table name="Throttle Reduction" type="Static Y Axis" elements="2">
+			<data>None Below</data>
+			<data>High About</data>
+		</table>
+	</table>
+
+	<table name="Speed Limiter (Throttle) #2" category="Miscellaneous - Limits" type="2D" level="3" scaling="VehicleSpeed_4byte">
+		<description>The vehicle speed at witch the throttle (driver request) is reduced</description>
+		<table name="Throttle Reduction" type="Static Y Axis" elements="2">
+			<data>None Below</data>
+			<data>High About</data>
+		</table>
+	</table>
+
+	<table name="Coolant Temp Sensor failsafe value" category="Miscellaneous - Sensors Scalings" type="1D" level="2" scaling="CoolantTemp_4byte">
+		<description>value, when coolant Temp Sensor is made and software gets to failsafe mode for the sensor</description>
+	</table>
+
+	<table name="Calibration Coolant Temp Sensor" category="Miscellaneous - Sensors Scalings" type="2D" level="3" scaling="CoolantTempSensor_Linearisation">
+		<description>Calibration Inlet Air Temp T_air = f(U_MatS). With turbo charged engines this temperature is also called charge air temperatur</description>
+		<table name="NTC Sensor Voltage" type="X Axis" elements="29" scaling="InletAirTempSensor_Voltage_4byte"/>
+	</table>
+
+	<table name="Fuel temperatur sensor failsafe value" category="Miscellaneous - Sensors Scalings" type="1D" level="2" scaling="DieselTemp_4byte">
+		<description>value, when fuel temperatur sensor is made and software gets to failsafe mode for the sensor</description>
+	</table>
+
+	<table name="Calibration fuel temperatur sensor" category="Miscellaneous - Sensors Scalings" type="2D" level="3" scaling="DieselTemp_4byte">
+		<description>Calibration fuel temperature sensor T_fuel = f(U_FTS)</description>
+		<table name="NTC Sensor Voltage" type="X Axis" elements="20" scaling="InletAirTempSensor_Voltage_4byte"/>
+	</table>
+
+	<table name="Exhaust Gas Temp before CAT failsafe value" category="Regeneration - Sensors Scalings" type="1D" level="3" scaling="ExhaustGasTemp_4byte">
+		<description>value, when EGT before catalyst sensor sensor is made and software gets to failsafe mode for the sensor</description>
+	</table>
+
+	<table name="Calibration Exhaust Gas Temp sensor before CAT" category="Regeneration - Sensors Scalings" type="2D" level="3" scaling="ExhaustGasTemp_4byte">
+		<description>Calibration Exhaust Gas temperature before catalyst T_EHGT = f(U_ExHGS). This sensor is located before the catalysit in DPF inlet. It measures the output temperature of Exhaust gas of the turbo charger</description>
+		<table name="NTC Sensor Voltage" type="X Axis" elements="22" scaling="ExhaustGasTempSensor_Voltage_4byte"/>
+	</table>
+
+	<table name="Exhaust Gas Temp before DPF failsafe value" category="Regeneration - Sensors Scalings" type="1D" level="3" scaling="ExhaustGasTemp_4byte">
+		<description>>value, when EGT before DPF sensor sensor is made and software gets to failsafe mode for the sensor</description>
+	</table>
+
+	<table name="Calibration Exhaust Gas Temp sensor before DPF" category="Regeneration - Sensors Scalings" type="2D" level="3" scaling="ExhaustGasTemp_4byte">
+		<description>Calibration Exhaust Gas temperature before DieselParticleFilter T_EHGT = f(U_ExHGS). This sensor is located in DPF. It measures the temperature of Exhaust gas inside the DPF. During a regeneration this temperatur is higher than the DPF inlet temperature (as well passive regeration, as well active regeneration</description>
+		<table name="NTC Sensor Voltage" type="X Axis" elements="22" scaling="ExhaustGasTempSensor_Voltage_4byte"/>
+	</table>
+
+	<table name="DPF differential pressure failsafe value" category="Regeneration - Sensors Scalings" type="1D" level="3" scaling="DPFDifferentialPressure_4byte">
+		<description>>value, when DPF differential pressure sensor is made and software gets to failsafe mode for the sensor</description>
+	</table>
+
+	<table name="DPF differential pressure sensor linearization" category="Regeneration - Sensors Scalings" type="2D" level="3" scaling="DPFDifferentialPressureLinearisation_4byte">
+		<description>Sensor calibration of differential pressure sensor P_diff = factor * V_sensor + offset</description>
+		<table name="DPS Voltage to Rail Pressure" type="Static Y Axis" elements="2">
+			<data>Multiplier (kPa/V)</data>
+			<data>Offset (kPa)</data>
+		</table>
+	</table>
+
+	<table name="Limits of DPF differential pressure sensor linearization" category="Regeneration - Sensors Scalings" type="2D" level="3" scaling="DPFDifferentialPressure_4byte">
+		<description>range of  values, the differential pressure sensor can provide</description>
+		<table name="Sensor Limits of Rail pressure sensor" type="Static Y Axis" elements="2">
+			<data>minimal Value (kPa)</data>
+			<data>maximal Value (kPa)</data>
+		</table>
+	</table>
+
+	<table name="Boost pressure during Regeneration 1 (Engine Speed, Injection Quantity)" category="Regeneration - Boost Control Target" type="3D" level="3" scaling="ChargeAirPressure1">
+		<description>Base map for boost pressure during regeneration P_boost = f(Engine Speed, Injection Quantity). This map provides the set value for boost which is be base for having more air mass to change the lambda and smokebehaviour of the engine. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="Boost pressure during Regeneration 2 (Engine Speed, Injection Quantity)" category="Regeneration - Boost Control Target" type="3D" level="3" scaling="ChargeAirPressure1">
+		<description>Base map for boost pressure during regeneration P_boost = f(Engine Speed, Injection Quantity). This map provides the set value for boost which is be base for having more air mass to change the lambda and smokebehaviour of the engine. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="Boost pressure during Regeneration 3 (Engine Speed, Injection Quantity)" category="Regeneration - Boost Control Target" type="3D" level="3" scaling="ChargeAirPressure1">
+		<description>Base map for boost pressure during regeneration P_boost = f(Engine Speed, Injection Quantity). This map provides the set value for boost which is be base for having more air mass to change the lambda and smokebehaviour of the engine. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="Pilot control of boost pressure value during Regeneration 1 (Engine Speed, Injection Quantity)" category="Regeneration - Boost Control VNG" type="3D" level="3" scaling="PWM-VNG2">
+		<description>Base map for pre control of the boost pressure control valve during regeneration PMW = f(Engine Speed, Injection Quantity). This map provides the set value for boost which is be base for having more air mass to change the lambda and smokebehaviour of the engine. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="Pilot control of boost pressure value during Regeneration 2 (Engine Speed, Injection Quantity)" category="Regeneration - Boost Control VNG" type="3D" level="3" scaling="PWM-VNG2">
+		<description>Base map for pre control of the boost pressure control valve during regeneration PMW = f(Engine Speed, Injection Quantity). This map provides the set value for boost which is be base for having more air mass to change the lambda and smokebehaviour of the engine. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="Pilot control of boost pressure value during Regeneration 3 (Engine Speed, Injection Quantity)" category="Regeneration - Boost Control VNG" type="3D" level="3" scaling="PWM-VNG2">
+		<description>Base map for pre control of the boost pressure control valve during regeneration PMW = f(Engine Speed, Injection Quantity). This map provides the set value for boost which is be base for having more air mass to change the lambda and smokebehaviour of the engine. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="EGR base map air-mass setvalue during regeneration 1 (Engine Speed, Injection Quantity)" category="Regeneration - Exhaust gas return" type="3D" level="3" scaling="AirMass1">
+		<description>Base map for set value of air-mass during regeneration PMW = f(Engine Speed, Injection Quantity). This map provides the set value for boost which is be base for having more air mass to change the lambda and smokebehaviour of the engine. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="EGR base map air-mass setvalue during regeneration 2 (Engine Speed, Injection Quantity)" category="Regeneration - Exhaust gas return" type="3D" level="3" scaling="AirMass1">
+		<description>Base map for set value of air-mass during regeneration PMW = f(Engine Speed, Injection Quantity). This map provides the set value for boost which is be base for having more air mass to change the lambda and smokebehaviour of the engine. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="EGR base map air-mass setvalue during regeneration 3 (Engine Speed, Injection Quantity)" category="Regeneration - Exhaust gas return" type="3D" level="3" scaling="AirMass1">
+		<description>Base map for set value of air-mass during regeneration PMW = f(Engine Speed, Injection Quantity). This map provides the set value for boost which is be base for having more air mass to change the lambda and smokebehaviour of the engine. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+	
+	<table name="EGR base map air-mass setvalue during regeneration 4 (Engine Speed, Injection Quantity)" category="Regeneration - Exhaust gas return" type="3D" level="3" scaling="AirMass1">
+		<description>Base map for set value of air-mass during regeneration PMW = f(Engine Speed, Injection Quantity). This map provides the set value for boost which is be base for having more air mass to change the lambda and smokebehaviour of the engine. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="Pilot control of throttle during Regeneration 1 (Engine Speed, Injection Quantity)" category="Regeneration - Exhaust gas return" type="3D" level="3" scaling="PWM-VNG">
+		<description>Base map for control of throttle during regeneration PMW = f(Engine Speed, Injection Quantity). This map provides the set value for boost which is be base for having more air mass to change the lambda and smokebehaviour of the engine. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="Pilot control of throttle during Regeneration 2 (Engine Speed, Injection Quantity)" category="Regeneration - Exhaust gas return" type="3D" level="3" scaling="PWM-VNG">
+		<description>Base map for control of throttle during regeneration PMW = f(Engine Speed, Injection Quantity). This map provides the set value for boost which is be base for having more air mass to change the lambda and smokebehaviour of the engine. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="Pilot control of throttle during Regeneration 3 (Engine Speed, Injection Quantity)" category="Regeneration - Exhaust gas return" type="3D" level="3" scaling="PWM-VNG">
+		<description>Base map for control of throttle during regeneration PMW = f(Engine Speed, Injection Quantity). This map provides the set value for boost which is be base for having more air mass to change the lambda and smokebehaviour of the engine. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+	
+	<table name="Pilot control of throttle during Regeneration 4 (Engine Speed, Injection Quantity)" category="Regeneration - Exhaust gas return" type="3D" level="3" scaling="PWM-VNG">
+		<description>Base map for control of throttle during regeneration PMW = f(Engine Speed, Injection Quantity). This map provides the set value for boost which is be base for having more air mass to change the lambda and smokebehaviour of the engine. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="Maximum allowed EGT during Regeneration 1 (Engine Speed, Injection Quantity)" category="Regeneration - Exhaust gas temperatur" type="3D" level="3" scaling="ExhaustGasTemp">
+		<description>Base map for maximal allowed Exhause Gas Temperatur during regenration T_EGT = f(Engine Speed, Injection Quantity).  Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="Maximum allowed EGT during Regeneration 2 (Engine Speed, Injection Quantity)" category="Regeneration - Exhaust gas temperatur" type="3D" level="3" scaling="ExhaustGasTemp">
+		<description>Base map for maximal allowed Exhause Gas Temperatur during regenration T_EGT = f(Engine Speed, Injection Quantity).  Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="Maximum allowed EGT during Regeneration 3 (Engine Speed, Injection Quantity)" category="Regeneration - Exhaust gas temperatur" type="3D" level="3" scaling="ExhaustGasTemp">
+		<description>Base map for maximal allowed Exhause Gas Temperatur during regenration T_EGT = f(Engine Speed, Injection Quantity).  Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="Railpressure base map (low) during regeneration 1 (Engine Speed, Injection Quantity)" category="Regeneration - Railpressure" type="3D" level="3" scaling="Railpressure">
+		<description>Base map for set value of railpressure during regeneration R_rail = f(Engine Speed, Injection Quantity). This map provides the set value for boost which is be base for having more air mass to change the lambda and smokebehaviour of the engine. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="Railpressure base map (low) during regeneration 2 (Engine Speed, Injection Quantity)" category="Regeneration - Railpressure" type="3D" level="3" scaling="Railpressure">
+		<description>Base map for set value of railpressure during regeneration R_rail = f(Engine Speed, Injection Quantity). This map provides the set value for boost which is be base for having more air mass to change the lambda and smokebehaviour of the engine. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="Railpressure base map (high) during regeneration 2 (Engine Speed, Injection Quantity)" category="Regeneration - Railpressure" type="3D" level="3" scaling="Railpressure">
+		<description>Base map for set value of railpressure during regeneration R_rail = f(Engine Speed, Injection Quantity). This map provides the set value for boost which is be base for having more air mass to change the lambda and smokebehaviour of the engine. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="Railpressure base map (low) during regeneration 3 (Engine Speed, Injection Quantity)" category="Regeneration - Railpressure" type="3D" level="3" scaling="Railpressure">
+		<description>Base map for set value of railpressure during regeneration R_rail = f(Engine Speed, Injection Quantity). This map provides the set value for boost which is be base for having more air mass to change the lambda and smokebehaviour of the engine. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="Railpressure base map (high) during regeneration 3 (Engine Speed, Injection Quantity)" category="Regeneration - Railpressure" type="3D" level="3" scaling="Railpressure">
+		<description>Base map for set value of railpressure during regeneration R_rail = f(Engine Speed, Injection Quantity). This map provides the set value for boost which is be base for having more air mass to change the lambda and smokebehaviour of the engine. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="SOI main injection during regeneration 1.1 (Engine Speed, Injection Quantity)" category="Regeneration - Injection Timing" type="3D" level="3" scaling="StartofInjection1">
+		<description>Base map for set value of SOI of main injection high load during regeneration SOI = f(Engine Speed, Injection Quantity). This map provides the set value for boost which is be base for having more air mass to change the lambda and smokebehaviour of the engine. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="SOI main injection during regeneration 2.1 (Engine Speed, Injection Quantity)" category="Regeneration - Injection Timing" type="3D" level="3" scaling="StartofInjection1">
+		<description>Base map for set value of SOI of main injection high load during regeneration SOI = f(Engine Speed, Injection Quantity). This map provides the set value for boost which is be base for having more air mass to change the lambda and smokebehaviour of the engine. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="SOI main injection during regeneration 2.2 (Engine Speed, Injection Quantity)" category="Regeneration - Injection Timing" type="3D" level="3" scaling="StartofInjection1">
+		<description>Base map for set value of SOI of main injection high load during regeneration SOI = f(Engine Speed, Injection Quantity). This map provides the set value for boost which is be base for having more air mass to change the lambda and smokebehaviour of the engine. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="SOI main injection during regeneration 3.1 (Engine Speed, Injection Quantity)" category="Regeneration - Injection Timing" type="3D" level="3" scaling="StartofInjection1">
+		<description>Base map for set value of SOI of main injection high load during regeneration SOI = f(Engine Speed, Injection Quantity). This map provides the set value for boost which is be base for having more air mass to change the lambda and smokebehaviour of the engine. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="SOI main injection during regeneration 3.2 (Engine Speed, Injection Quantity)" category="Regeneration - Injection Timing" type="3D" level="3" scaling="StartofInjection1">
+		<description>Base map for set value of SOI of main injection high load during regeneration SOI = f(Engine Speed, Injection Quantity). This map provides the set value for boost which is be base for having more air mass to change the lambda and smokebehaviour of the engine. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="SOI pre injection during regeneration 1.2 (Engine Speed, Injection Quantity)" category="Regeneration - Injection Timing" type="3D" level="3" scaling="StartofInjection1">
+		<description>Base map for set value of SOI of first pre injection high load during regeneration SOI = f(Engine Speed, Injection Quantity). This map provides the set value for boost which is be base for having more air mass to change the lambda and smokebehaviour of the engine. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="SOI pre injection during regeneration 2.1 (Engine Speed, Injection Quantity)" category="Regeneration - Injection Timing" type="3D" level="3" scaling="StartofInjection1">
+		<description>Base map for set value of SOI of first pre injection high load during regeneration SOI = f(Engine Speed, Injection Quantity). This map provides the set value for boost which is be base for having more air mass to change the lambda and smokebehaviour of the engine. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="SOI pre injection during regeneration 2.2 (Engine Speed, Injection Quantity)" category="Regeneration - Injection Timing" type="3D" level="3" scaling="StartofInjection1">
+		<description>Base map for set value of SOI of first pre injection high load during regeneration SOI = f(Engine Speed, Injection Quantity). This map provides the set value for boost which is be base for having more air mass to change the lambda and smokebehaviour of the engine. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="SOI pre injection during regeneration 3.1 (Engine Speed, Injection Quantity)" category="Regeneration - Injection Timing" type="3D" level="3" scaling="StartofInjection1">
+		<description>Base map for set value of SOI of first pre injection high load during regeneration SOI = f(Engine Speed, Injection Quantity). This map provides the set value for boost which is be base for having more air mass to change the lambda and smokebehaviour of the engine. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="SOI pre injection during regeneration 3.2 (Engine Speed, Injection Quantity)" category="Regeneration - Injection Timing" type="3D" level="3" scaling="StartofInjection1">
+		<description>Base map for set value of SOI of first pre injection high load during regeneration SOI = f(Engine Speed, Injection Quantity). This map provides the set value for boost which is be base for having more air mass to change the lambda and smokebehaviour of the engine. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="SOI 1. post injection during regeneration 1 (Engine Speed, Injection Quantity)" category="Regeneration - Injection Timing" type="3D" level="3" scaling="StartofInjection2">
+		<description>Base map for set value of SOI of first post injection during regeneration SOI = f(Engine Speed, Injection Quantity). Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="SOI 1. post injection during regeneration 2 (Engine Speed, Injection Quantity)" category="Regeneration - Injection Timing" type="3D" level="3" scaling="StartofInjection2">
+		<description>Base map for set value of SOI of first post injection during regeneration SOI = f(Engine Speed, Injection Quantity). Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="SOI 1. post injection during regeneration 3 (Engine Speed, Injection Quantity)" category="Regeneration - Injection Timing" type="3D" level="3" scaling="StartofInjection2">
+		<description>Base map for set value of SOI of first post injection during regeneration SOI = f(Engine Speed, Injection Quantity). Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="1. Post Injection base map during regeneration 1 (Engine Speed, Injection Quantity)" category="Regeneration - Post-Injection" type="3D" level="3" scaling="InjectionQuantity_PostInj">
+		<description>Base map for set value of first post injection quantity during regeneration EQ = f(Engine Speed, Injection Quantity). Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="1. Post Injection base map during regeneration 2 (Engine Speed, Injection Quantity)" category="Regeneration - Post-Injection" type="3D" level="3" scaling="InjectionQuantity_PostInj">
+		<description>Base map for set value of first post injection quantity during regeneration EQ = f(Engine Speed, Injection Quantity). Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="1. Post Injection base map during regeneration 2.2 (Engine Speed, Injection Quantity)" category="Regeneration - Post-Injection" type="3D" level="3" scaling="InjectionQuantity_PostInj">
+		<description>Base map for set value of first post injection quantity during regeneration EQ = f(Engine Speed, Injection Quantity). Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="1. Post Injection base map during regeneration 3 (Engine Speed, Injection Quantity)" category="Regeneration - Post-Injection" type="3D" level="3" scaling="InjectionQuantity_PostInj">
+		<description>Base map for set value of first post injection quantity during regeneration EQ = f(Engine Speed, Injection Quantity). Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="1. Post Injection base map during regeneration 3.2 (Engine Speed, Injection Quantity)" category="Regeneration - Post-Injection" type="3D" level="3" scaling="InjectionQuantity_PostInj">
+		<description>Base map for set value of first post injection quantity during regeneration EQ = f(Engine Speed, Injection Quantity). Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="1. Post Injection base map during regeneration 4 (Engine Speed, Injection Quantity)" category="Regeneration - Post-Injection" type="3D" level="3" scaling="InjectionQuantity_PostInj">
+		<description>Base map for set value of first post injection quantity during regeneration EQ = f(Engine Speed, Injection Quantity). Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="1. Post Injection base map during regeneration 4.2 (Engine Speed, Injection Quantity)" category="Regeneration - Post-Injection" type="3D" level="3" scaling="InjectionQuantity_PostInj">
+		<description>Base map for set value of first post injection quantity during regeneration EQ = f(Engine Speed, Injection Quantity). Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="2. Post Injection base map during regeneration 1 (Engine Speed, Injection Quantity)" category="Regeneration - Post-Injection" type="3D" level="3" scaling="InjectionQuantity_PostInj">
+		<description>Base map for set value of second post injection quantity during regeneration EQ = f(Engine Speed, Injection Quantity). Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="13" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="10" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="2. Post Injection base map during regeneration 2 (Engine Speed, Injection Quantity)" category="Regeneration - Post-Injection" type="3D" level="3" scaling="InjectionQuantity_PostInj">
+		<description>Base map for set value of second post injection quantity during regeneration EQ = f(Engine Speed, Injection Quantity). Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
+		<table name="EngineSpeed" type="X Axis" elements="13" scaling="EngineSpeed"/>
+		<table name="InjectionQuantity" type="Y Axis" elements="10" scaling="InjectionQuantity_4byte"/>
+	</table>
+
+	<table name="Soot Load Coeffizient (Differential Pressure, Air Mass)" category="Regeneration - DPF Load" type="3D" level="3" scaling="SootLoadCoeffizient">
+		<description>Base map of load coeffizient of DPF  = f(Differential Pressure, Air Mass). This coeffizient is used to calculate the actual soot depenting on differential pressure at DPF and air mass to cummulate the soot aculumation of the DPF!</description>
+		<table name="DifferentialPressure" type="X Axis" elements="26" scaling="DPFDifferentialPressure1_4byte"/>
+		<table name="AirMass" type="Y Axis" elements="28" scaling="AirMass_4byte"/>
+	</table>
+
+	<table name="Soot Reduction Coeffizient (Differential Pressure, Exhaust Gas Temp)" category="Regeneration - DPF Load" type="3D" level="3" scaling="SootReductionCoeffizient">
+		<description>Base map of load coeffizient of DPF  = f(Differential Pressure, Air Mass). This coeffizient is used to calculate the actual soot depenting on differential pressure at DPF and air mass to cummulate the soot aculumation of the DPF!</description>
+		<table name="DifferentialPressure" type="X Axis" elements="26" scaling="DPFDifferentialPressure1_4byte"/>
+		<table name="ExhausGasTemperature" type="Y Axis" elements="28" scaling="ExhaustGasTemp_4byte"/>
+	</table>
+
+	<table name="Distance to Oil Change (Oil Dilution Ratio)" category="Other" type="2D" level="3" scaling="Distance">
+		<description>Closed DPF system only. Estimated Distance to Oil Change = f(Oil Dilution Ratio)</description>
+		<table name="OilDilution" type="X Axis" elements="8" scaling="OilDilution_4byte"/>
+	</table>
+
+	<table name="Oil Dilution Evaporation Factor (Oil Dilution, Coolant Temp)" category="Other" type="3D" level="3" scaling="OilDilutionEvaporationFactor">
+		<description>factor of oil dilution evapaorting depenting on oil dilution and coolant temp. Oil dulition of smoos gets less, because of evaporation when engine is warm. This map provides the factor to calculate the evaporation of the soot.</description>
+		<table name="OilDilution" type="X Axis" elements="11" scaling="OilDilution_4byte"/>
+		<table name="CoolantTemperature" type="Y Axis" elements="11" scaling="CoolantTemp_4byte"/>
+	</table>
+
+	<table name="Idle Speed Target A" category="Idle Control" type="2D" level="3" scaling="EngineSpeed1">
+		<description>target idle speed depending on ambient temperature engine_speed = f(T_ambinet)</description>
+		<table name="AmbientTemperature" type="Y Axis" elements="12" scaling="AmbientTemp_4byte"/>
+	</table>
+
+	<table name="Idle Speed Target A E5" category="Idle Control" type="2D" level="3" scaling="EngineSpeed1">
+		<description>target idle speed depending on ambient temperature engine_speed = f(T_ambinet)</description>
+		<table name="AmbientTemperature" type="Y Axis" elements="11" scaling="AmbientTemp_4byte"/>
+	</table>
+
+	<table name="Idle Speed Target B" category="Idle Control" type="2D" level="3" scaling="EngineSpeed1">
+		<description>target idle speed depending on ambient temperature engine_speed = f(T_ambinet)</description>
+		<table name="AmbientTemperature" type="Y Axis" elements="12" scaling="AmbientTemp_4byte"/>
+	</table>
+
+	<table name="Idle Speed Target B E5" category="Idle Control" type="2D" level="3" scaling="EngineSpeed1">
+		<description>target idle speed depending on ambient temperature engine_speed = f(T_ambinet)</description>
+		<table name="AmbientTemperature" type="Y Axis" elements="11" scaling="AmbientTemp_4byte"/>
+	</table>
+
+	<table name="Idle Speed Target C" category="Idle Control" type="2D" level="3" scaling="EngineSpeed2">
+		<description>target idle speed depending on ambient temperature engine_speed = f(T_ambinet)</description>
+		<table name="AmbientTemperature" type="Y Axis" elements="11" scaling="AmbientTemp_4byte"/>
+	</table>
+
+	<table name="Idle Speed Target C E5" category="Idle Control" type="2D" level="3" scaling="EngineSpeed1">
+		<description>target idle speed depending on ambient temperature engine_speed = f(T_ambinet)</description>
+		<table name="AmbientTemperature" type="Y Axis" elements="11" scaling="AmbientTemp_4byte"/>
+	</table>
+
+	<table name="IQ adaption dep. on differencial engine speed" category="Idle Control" type="2D" level="3" scaling="Factor1">
+		<description>adaption of IQ depending on differential engine speed to target idle speed  factor IQ = f(diff_engine_speed)</description>
+		<table name="DifferentialEngineSpeed" type="X Axis" elements="14" scaling="DifferentialEngineSpeed_4byte"/>
+	</table>
+
+	<table name="Checksum Fix" category="Checksum Fix" type="1D" scaling="ChecksumFix">
+		<description>The checksum issue will be fixed automatically when the rom is saved (regardless of check box).</description>
+	</table>
+
+	<table name="Force Pass Readiness Monitors" category="OBD-II" type="1D" scaling="ForcePassReadinessMonitors">
+		<description>Off-road and racing use only. Must NEVER be enabled on vehicles that will be driven on public roads.</description>
+	</table>
+
+	<table name="Force Pass Readiness Monitors_" category="OBD-II" type="1D" scaling="ForcePassReadinessMonitors_">
+		<description>Off-road and racing use only. Must NEVER be enabled on vehicles that will be driven on public roads.</description>
+	</table>
+
+	<table name="Flashcounter" category="ECU Security" type="1D" level="2" scaling="Flashcouter">
+		<description>Counter how many times the ECU is flashed by a Subaru Station Flasher</description>
+	</table>
+
+	<table name="Flashcounter Invers" category="ECU Security" type="1D" level="2" scaling="FlashcouterInvers">
+		<description>Counter how many times the ECU is flashed by a Subaru Station Flasher</description>
+	</table>
+	<table name="(P0000) PASS CODE (NO DTC DETECTED)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>PASS CODE (NO DTC DETECTED). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0000) PASS CODE (NO DTC DETECTED)_" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>PASS CODE (NO DTC DETECTED). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0011) CAMSHAFT POS. - TIMING OVER-ADVANCED 1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>EXHAUST AVCS SYSTEM 1 RANGE/PERFORMANCE. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0014) EXHAUST AVCS SYSTEM 1 RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>EXHAUST AVCS SYSTEM 1 RANGE/PERFORMANCE. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0016) CRANKSHAFT/CAMSHAFT CORRELATION 1A" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CRANKSHAFT POSITION - CAMSHAFT POSITION CORRELATION BANK 1 SENSOR A. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0017) CRANK/CAM TIMING B FAILURE 1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CRANK AND CAM TIMING B SYSTEM FAILURE (BANK 1). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0018) CRANKSHAFT/CAMSHAFT CORRELATION 2A" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CRANKSHAFT POSITION - CAMSHAFT POSITION CORRELATION BANK 2 SENSOR A. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0019) CRANK/CAM TIMING B FAILURE 2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CRANK AND CAM TIMING B SYSTEM FAILURE (BANK 2). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0021) CAMSHAFT POS. - TIMING OVER-ADVANCED 2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CAMSHAFT POSITION - TIMING OVER-ADVANCED OR SYSTEM PERFORMANCE (BANK 2). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0024) EXHAUST AVCS SYSTEM 2 RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>EXHAUST AVCS SYSTEM 2 RANGE/PERFORMANCE. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0026) OSV SOLENOID VALVE CIRCUIT RANGE/PERF B1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>INTAKE VALVE CONTROL SOLENOID CIRCUIT RANGE/PERFORMANCE (BANK 1). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0028) OSV SOLENOID VALVE CIRCUIT RANGE/PERF B2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>INTAKE VALVE CONTROL SOLENOID CIRCUIT RANGE/PERFORMANCE (BANK 2). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0030) FRONT O2 SENSOR RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>FRONT OXYGEN SENSOR CONTROL CIRCUIT (BANK 1 SENSOR 1). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0031) FRONT O2 SENSOR LOW INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>FRONT OXYGEN SENSOR CIRCUIT LOW (BANK 1 SENSOR 1). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0032) FRONT O2 SENSOR HIGH INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>FRONT OXYGEN SENSOR CIRCUIT HIGH (BANK 1 SENSOR 1). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0037) REAR O2 SENSOR LOW INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>REAR OXYGEN SENSOR CIRCUIT LOW (BANK 1 SENSOR 2). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0038) REAR O2 SENSOR HIGH INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>REAR OXYGEN SENSOR CIRCUIT HIGH (BANK 1 SENSOR 2). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0043) HO2S CIRCUIT LOW B1 S3" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>HO2S HEATER CONTROL CIRCUIT LOW BANK 1 SENSOR 3. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0044) HO2S CIRCUIT HIGH B1 S3" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>H02S HEATER CONTROL CIRCUIT HIGH BANK 1 SENSOR 3. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0046)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0050) HO2S CIRCUIT RANGE/PERF B2 S1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>HO2S HEATER CONTROL CIRCUIT RANGE/PERFORMANCE (BANK 2, SENSOR 1). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0051) HO2S CIRCUIT LOW B2 S1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>HO2S HEATER CONTROL CIRCUIT LOW  (BANK 2 SENSOR 1). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0052) HO2S CIRCUIT HIGH B2 S1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>HO2S HEATER CONTROL CIRCUIT HIGH (BANK 2 SENSOR 1). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0057) HO2S CIRCUIT LOW B2 S2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>HO2S HEATER CONTROL CIRCUIT LOW BANK 2 SENSOR 2. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0058) HO2S CIRCUIT HIGH B2 S2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>HO2S HEATER CONTROL CIRCUIT HIGH BANK 2 SENSOR 2. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0068) MAP SENSOR RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>MANIFOLD ABSOLUTE PRESSURE/BAROMETRIC PRESSURE CIRCUIT RANGE/PERFORMANCE. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0076) INTAKE VALVE CIRCUIT LOW (BANK 1)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>OSV SOLENOID VALVE L CIRCUIT MALFUNCTION LOW. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0077) INTAKE VALVE CONTROL HIGH (BANK 1)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>OSV SOLENOID VALVE L CIRCUIT MALFUNCTION HIGH. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0082) INTAKE VALVE CONTROL LOW (BANK 2)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>OSV SOLENOID VALVE L CIRCUIT MALFUNCTION LOW. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0083) INTAKE VALVE CONTROL HIGH (BANK 2)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>OSV SOLENOID VALVE L CIRCUIT MALFUNCTION HIGH. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+	<table name="(P0087) FUEL RAIL  SYSTEM PRESSURE  TOO LOW" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>FUEL RAIL  SYSTEM PRESSURE  TOO LOW. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+
+	<table name="(P0088) FUEL RAIL  SYSTEM PRESSURE  TOO HIGH" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable (FF FF)">
+		<description>FUEL RAIL  SYSTEM PRESSURE  TOO HIGH. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P0089) FUEL PRESSURE REGULATOR PERF (OPEN PROBLEM)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable (FF FF)">
+		<description>FUEL PRESSURE REGULATOR PERF (OPEN PROBLEM). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P0093) FUEL SYSTEM LEAK DETECTED LARGE LEAK" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable (FF FF)">
+		<description>FUEL SYSTEM LEAK DETECTED LARGE LEAK DETECTED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P0096) IAT SENSOR 2 RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable (00 00)">
+		<description>IAT SENSOR 2 RANGE/PERF . To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P0097) IAT SENSOR 2 CIRCUIT (LOW)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable (1F 40)">
+		<description>IAT SENSOR 2 CIRCUIT (LOW) DETECTED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P0098) IAT SENSOR 2 CIRCUIT (HIGH)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable (1F 40)">
+		<description>  IAT SENSOR 2 CIRCUIT (HIGH) DETECTED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	<table name="(P0101) MAF SENSOR RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>MASS AIR FLOW CIRCUIT RANGE/PERFORMANCE. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0102) MAF SENSOR LOW INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>MASS AIR FLOW CIRCUIT LOW INPUT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0103) MAF SENSOR HIGH INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>MASS AIR FLOW CIRCUIT HIGH INPUT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0107) MAP SENSOR LOW INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>PRESSURE SENSOR CIRCUIT LOW INPUT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0108) MAP SENSOR HIGH INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>PRESSURE SENSOR CIRCUIT HIGH INPUT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0111) IAT SENSOR RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>INTAKE AIR TEMPERATURE CIRCUIT RANGE/PERFORMANCE. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0112) IAT SENSOR LOW INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>INTAKE AIR TEMPERATURE CIRCUIT LOW INPUT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0113) IAT SENSOR HIGH INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>INTAKE AIR TEMPERATURE CIRCUIT HIGH INPUT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+	
+	<table name="(P0116) ENGINE COOLANT TEMPERATURE CIRCUIT RANGE  PERFORMANCE PROBLEM" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable (0C 80)">
+		<description>ENGINE COOLANT TEMPERATURE CIRCUIT RANGE  PERFORMANCE PROBLEM. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P0117) COOLANT TEMP SENSOR LOW INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>ENGINE COOLANT TEMPERATURE CIRCUIT LOW INPUT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0118) COOLANT TEMP SENSOR HIGH INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>ENGINE COOLANT TEMPERATURE CIRCUIT HIGH INPUT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0121) TPS RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>THROTTLE POSITION SENSOR CIRCUIT RANGE/PERFORMANCE PROBLEM (HIGH INPUT). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0122) TPS A LOW INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>THROTTLE/PEDAL POSITION SENSOR/SWITCH 'A' CIRCUIT LOW INPUT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0123) TPS A HIGH INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>THROTTLE/PEDAL POSITION SENSOR/SWITCH 'A' CIRCUIT HIGH INPUT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0125) INSUFFICIENT COOLANT TEMP (FUELING)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>INSUFFICIENT COOLANT TEMPERATURE FOR CLOSED LOOP FUEL CONTROL. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0126) INSUFFICIENT COOLANT TEMP (OPERATION)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>INSUFFICIENT COOLANT TEMPERATURE FOR STABLE OPERATION. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0128) THERMOSTAT MALFUNCTION" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>COOLANT THERMOSTAT (COOLANT TEMPERATURE BELOW THERMOSTAT REGULATING TEMPERATURE). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0129) ATMOS. PRESSURE SENSOR RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>ATMOSPHERIC PRESSURE SENSOR CIRCUIT RANGE/PERFORMANCE. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0131) FRONT O2 SENSOR LOW INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>FRONT OXYGEN (A/F) SENSOR CIRCUIT RANGE/PERFORMANCE PROBLEM (LOW INPUT). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0132) FRONT O2 SENSOR HIGH INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>FRONT OXYGEN (A/F) SENSOR CIRCUIT RANGE/PERFORMANCE PROBLEM (HIGH INPUT). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0133) FRONT O2 SENSOR SLOW RESPONSE" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>FRONT OXYGEN SENSOR CIRCUIT SLOW RESPONSE. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0134) FRONT O2 SENSOR NO ACTIVITY" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>FRONT O2 SENSOR CIRCUIT NO ACTIVITY DETECTED (BANK 1 SENSOR 1). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0137) REAR O2 SENSOR LOW VOLTAGE" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>REAR O2 SENSOR CIRCUIT LOW VOLTAGE (BANK 1 SENSOR 2). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0138) REAR O2 SENSOR HIGH VOLTAGE" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>REAR O2 SENSOR CIRCUIT HIGH VOLTAGE (BANK 1 SENSOR 2). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0139) REAR O2 SENSOR SLOW RESPONSE" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>REAR O2 SENSOR CIRCUIT SLOW RESPONSE (BANK 1 SENSOR 2). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P013A) O2 SENSOR SLOW RESPONSE RICH TO LEAN B1 S2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>O2 SENSOR SLOW RESPONSE RICH TO LEAN B1 S2. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P013B) O2 SENSOR SLOW RESPONSE LEAN TO RICH B1 S2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>O2 SENSOR SLOW RESPONSE LEAN TO RICH B1 S2. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P013E) O2 SENSOR DELAYED RESPONSE RICH TO LEAN B1 S2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>O2 SENSOR DELAYED RESPONSE RICH TO LEAN B1 S2. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P013F) O2 SENSOR DELAYED RESPONSE LEAN TO RICH B1 S2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>O2 SENSOR DELAYED RESPONSE LEAN TO RICH B1 S2. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0140) REAR O2 SENSOR NO ACTIVITY" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>REAR O2 CIRCUIT NO ACTIVITY DETECTED (BANK 1, SENSOR 2). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0141) REAR O2 SENSOR MALFUNCTION" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>REAR O2 CIRCUIT MALFUNCTION DETECTED (BANK 1, SENSOR 2). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0143) O2 SENSOR CIRCUIT LOW B1 S3" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>O2 SENSOR CIRCUIT LOW VOLTAGE BANK 1 SENSOR 3. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0144) O2 SENSOR CIRCUIT HIGH B1 S3" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>O2 SENSOR CIRCUIT HIGH VOLTAGE BANK 1 SENSOR 3. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0145) O2 SENSOR CIRCUIT SLOW RESPONSE B1 S3" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>O2 SENSOR CIRCUIT SLOW RESPONSE BANK 1 SENSOR 3. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P014C) O2 SENSOR SLOW RESPONSE RICH TO LEAN B1 S1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>O2 SENSOR SLOW RESPONSE RICH TO LEAN B1 S1. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P014D) O2 SENSOR SLOW RESPONSE LEAN TO RICH B1 S1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>O2 SENSOR SLOW RESPONSE LEAN TO RICH B1 S1. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P015A) O2 SENSOR DELAYED RESPONSE RICH TO LEAN B1 S1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>O2 SENSOR DELAYED RESPONSE RICH TO LEAN B1 S1. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P015B) O2 SENSOR DELAYED RESPONSE LEAN TO RICH B1 S1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>O2 SENSOR DELAYED RESPONSE LEAN TO RICH B1 S1. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0151) O2 SENSOR CIRCUIT LOW B2 S1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>O2 SENSOR CIRCUIT LOW VOLTAGE (BANK 2 SENSOR 1). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0152) O2 SENSOR CIRCUIT HIGH B2 S1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>O2 SENSOR CIRCUIT HIGH VOLTAGE (BANK 2 SENSOR 1). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0153) O2 SENSOR CIRCUIT SLOW RESPONSE B2 S1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>O2 SENSOR CIRCUIT SLOW RESPONSE (BANK 2 SENSOR 1). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0154) O2 SENSOR CIRCUIT OPEN B2 S1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>O2 SENSOR CIRCUIT OPEN BANK 2 SENSOR 1. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0157) O2 SENSOR CIRCUIT LOW B2 S2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>O2 SENSOR CIRCUIT LOW VOLTAGE BANK 2 SENSOR 2. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0158) O2 SENSOR CIRCUIT HIGH B2 S2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>O2 SENSOR CIRCUIT HIGH VOLTAGE BANK 2 SENSOR 2. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0159) O2 SENSOR CIRCUIT SLOW RESPONSE B2 S2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>O2 SENSOR CIRCUIT SLOW RESPONSE BANK 2 SENSOR 2. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0160) O2 SENSOR NO ACTIVITY B2 S2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>O2 CIRCUIT NO ACTIVITY DETECTED (BANK 2, SENSOR 2). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0161) O2 SENSOR HEATER CIRCUIT MALFUNCTION B2 S2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>SENSOR HEATER CIRCUIT MALFUNCTION (BANK 2, SENSOR 2). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0171) SYSTEM TOO LEAN" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>SYSTEM TOO LEAN (BANK 1). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0172) SYSTEM TOO RICH" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>SYSTEM TOO RICH (BANK 1). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0174) SYSTEM TOO LEAN B2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>SYSTEM TOO LEAN (BANK 2). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0175) SYSTEM TOO RICH B2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>SYSTEM TOO RICH (BANK 2). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0181) FUEL TEMP SENSOR A RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>FUEL TEMPERATURE SENSOR 'A' CIRCUIT RANGE/PERFORMANCE. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0182) FUEL TEMP SENSOR A LOW INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>FUEL TEMPERATURE SENSOR 'A' CIRCUIT LOW INPUT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0183) FUEL TEMP SENSOR A HIGH INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>FUEL TEMPERATURE SENSOR 'A' CIRCUIT HIGH INPUT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0191) FUEL RAIL PRESSURE SENSOR CIRCUIT RANGE  PERFORMANCE" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable (07 2C)">
+		<description>FUEL RAIL PRESSURE SENSOR CIRCUIT RANGE  PERFORMANCE. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+
+	<table name="(P0192) FUEL RAIL PRESSURE SENSOR CIRCUIT LOW INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable (0F A0)">
+		<description>FUEL RAIL PRESSURE SENSOR CIRCUIT LOW INPUT. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+
+	<table name="(P0193) FUEL RAIL PRESSURE SENSOR CIRCUIT HIGH INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable (0F A0)">
+		<description>FUEL RAIL PRESSURE SENSOR CIRCUIT HIGH INPUT. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+
+	<table name="(P0196) OIL TEMP SENSOR RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>OIL TEMPERATURE SENSOR CIRCUIT RANGE/PERFORMANCE PROBLEM. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0197) OIL TEMP SENSOR LOW" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>OIL TEMPERATURE SENSOR CIRCUIT MALFUNCTION LOW. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0198) OIL TEMP SENSOR HIGH" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>OIL TEMPERATURE SENSOR CIRCUIT MALFUNCTION HIGH. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0201) INJECTOR CIRCUIT MALFUNCTION CYLINDER 1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>INJECTOR CIRCUIT MALFUNCTION CYLINDER 1. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0202) INJECTOR CIRCUIT MALFUNCTION CYLINDER 2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>INJECTOR CIRCUIT MALFUNCTION CYLINDER 2. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0203) INJECTOR CIRCUIT MALFUNCTION CYLINDER 3" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>INJECTOR CIRCUIT MALFUNCTION CYLINDER 3. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0204) INJECTOR CIRCUIT MALFUNCTION CYLINDER 4" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>INJECTOR CIRCUIT MALFUNCTION CYLINDER 4. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0222) TPS B LOW INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>THROTTLE/PEDAL POSITION SENSOR/SWITCH 'B' CIRCUIT LOW INPUT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0223) TPS B HIGH INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>THROTTLE/PEDAL POSITION SENSOR/SWITCH 'B' CIRCUIT HIGH INPUT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0230) FUEL PUMP PRIMARY CIRCUIT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>FUEL PUMP PRIMARY CIRCUIT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0244) WASTEGATE SOLENOID A RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>WASTEGATE SOLENOID 'A' RANGE/PERFORMANCE. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0245) WASTEGATE SOLENOID A LOW" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>WASTEGATE SOLENOID 'A' LOW. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0246) WASTEGATE SOLENOID A HIGH" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>WASTEGATE SOLENOID 'A' HIGH. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0261) FUEL INJECTOR #1 CIRCUIT LOW" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CYLINDER 1 INJECTOR CIRCUIT LOW. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0264) FUEL INJECTOR #2 CIRCUIT LOW" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CYLINDER 2 INJECTOR CIRCUIT LOW. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0267) FUEL INJECTOR #3 CIRCUIT LOW" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CYLINDER 3 INJECTOR CIRCUIT LOW. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0270) FUEL INJECTOR #4 CIRCUIT LOW" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CYLINDER 4 INJECTOR CIRCUIT LOW. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0301) MISFIRE CYLINDER 1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CYLINDER 1 MISFIRE DETECTED. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0302) MISFIRE CYLINDER 2" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CYLINDER 2 MISFIRE DETECTED. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0303) MISFIRE CYLINDER 3" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CYLINDER 3 MISFIRE DETECTED. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0304) MISFIRE CYLINDER 4" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CYLINDER 4 MISFIRE DETECTED. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0305) MISFIRE CYLINDER 5" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CYLINDER 5 MISFIRE DETECTED. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0306) MISFIRE CYLINDER 6" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CYLINDER 6 MISFIRE DETECTED. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0327) KNOCK SENSOR 1 LOW INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>KNOCK SENSOR 1 CIRCUIT LOW INPUT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0328) KNOCK SENSOR 1 HIGH INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>KNOCK SENSOR 1 CIRCUIT HIGH INPUT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0332) KNOCK SENSOR 2 LOW INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>KNOCK SENSOR 2 CIRCUIT LOW INPUT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0333) KNOCK SENSOR 2 HIGH INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>KNOCK SENSOR 2 CIRCUIT HIGH INPUT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0335) CRANKSHAFT POS. SENSOR A MALFUNCTION" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CRANKSHAFT POSITION SENSOR 'A' CIRCUIT. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0336) CRANKSHAFT POS. SENSOR A RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CRANKSHAFT POSITION SENSOR 'A' CIRCUIT RANGE/PERFORMANCE. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0340) CAMSHAFT POS. SENSOR A MALFUNCTION" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CAMSHAFT POSITION SENSOR 'A' CIRCUIT (BANK 1 OR SINGLE SENSOR). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0340) CAMSHAFT POS. SENSOR A MALFUNCTION_" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CAMSHAFT POSITION SENSOR 'A' CIRCUIT (BANK 1 OR SINGLE SENSOR). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0341) CAMSHAFT POS. SENSOR A RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CAMSHAFT POSITION SENSOR 'A' CIRCUIT RANGE/PERFORMANCE (BANK 1 OR SINGLE SENSOR). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+	
+	<table name="(P0401) EGR FLOW INSUFFICIENT DETECTED" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>EGR FLOW INSUFFICIENT DETECTED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P0402) EGR FLOW EXCESSIVE DETECTED" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>EGR FLOW EXCESSIVE DETECTED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P0403)  EGR SYSTEM FAILURE (CIRCUIT DUTY)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description> EGR SYSTEM FAILURE (CIRCUIT DUTY). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P0404) EGR OPERATION CIRCUIT ABNORMAL" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>EGR OPERATION CIRCUIT ABNORMAL. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P0405) EGR POSITION SENSOR CIRCUIT (LOW)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>EGR POSITION SENSOR CIRCUIT (LOW) DETECTED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P0406) EGR POSITION SENSOR CIRCUIT (HIGH)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>EGR POSITION SENSOR CIRCUIT (HIGH) DETECTED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P0407) EGR POSITION SENSOR PERFORMANCE" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>EGR POSITION SENSOR PERFORMANCE DETECTED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P0409) EGR POSITION SENSOR PERFORMANCE" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>EGR POSITION SENSOR PERFORMANCE DETECTED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P0461) FUEL LEVEL SENSOR RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>FUEL LEVEL SENSOR RANGE/PERF DETECTED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P0462) FUEL LEVEL SENSOR LOW INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>FUEL LEVEL SENSOR LOW INPUT DETECTED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P0463) FUEL LEVEL SENSOR HIGH INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>FUEL LEVEL SENSOR HIGH INPUT DETECTED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+
+	<table name="(P0500) VEHICLE SPEED SENSOR A" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>VEHICLE SPEED SENSOR A. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+
+	<table name="(P0512) STARTER REQUEST CIRCUIT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>STARTER REQUEST CIRCUIT. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+
+	<table name="(P0513) INCORRECT IMMOBILIZER KEY" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description> INCORRECT IMMOBILIZER KEY. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P0516) BATTERY TEMPERATURE SENSOR CIRCUIT (LOW)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>BATTERY TEMPERATURE SENSOR CIRCUIT (LOW). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+
+	<table name="(P0517) BATTERY TEMPERATURE SENSOR CIRCUIT (HIGH)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description> BATTERY TEMPERATURE SENSOR CIRCUIT (HIGH). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P0545) EGT SENSOR CIRCUIT LOW" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>EGT SENSOR CIRCUIT LOW DETECTED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P0546) EGT SENSOR CIRCUIT HIGH" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>EGT SENSOR CIRCUIT HIGH DETECTED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+		<table name="(P0579) CRUISE CONTROL SWITCH CIRCUIT RANGE/PERF (HIGH) INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CRUISE CONTROL SWITCH CIRCUIT RANGE/PERF (HIGH) INPUT DETECTED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P0562) SYSTEM VOLTAGE (LOW)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>SYSTEM VOLTAGE (LOW) DETECTED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+		
+	<table name="(P0563) SYSTEM VOLTAGE (HIGH)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>SYSTEM VOLTAGE (HIGH) DETECTED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P0600) SERIAL COMMUNICATION LINK" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>SERIAL COMMUNICATION LINK. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P0604) CONTROL MODULE RAM ERROR" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CONTROL MODULE RAM ERROR. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P0605) CONTROL MODULE ROM ERROR" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CONTROL MODULE ROM ERROR. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+
+	<table name="(P0606) CPU FAILURE" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CPU FAILURE. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+
+	<table name="(P0628)FUEL PUMP SUCTION CONTROL VALVE CIRCUIT (SHORT TO GROUND)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>FUEL PUMP SUCTION CONTROL VALVE CIRCUIT (SHORT TO GROUND). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+
+	<table name="(P0629) FUEL PUMP SUCTION CONTROL VALVE CIRCUIT (SHORT TO POSITIVE)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>FUEL PUMP SUCTION CONTROL VALVE CIRCUIT (SHORT TO POSITIVE). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P0638) THROTTLE ACTUATOR RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>THROTTLE ACTUATOR RANGE/PERF. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+
+	<table name="(P0700) TRANSMISSION CONTROL SYSTEM" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description> TRANSMISSION CONTROL SYSTEM. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0704) CLUTCH SWITCH CIRCUIT MALFUNCTION" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CLUTCH SWITCH CIRCUIT MALFUNCTION. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+
+	<table name="(P081A) STARTER CUT RELAY SYSTEM CIRCUIT (LOW)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>STARTER CUT RELAY SYSTEM CIRCUIT (LOW). Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+	
+	<table name="(P0850) NEUTRAL POSITION SWITCH CIRCUIT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>NEUTRAL POSITION SWITCH CIRCUIT. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P0851) NEUTRAL SWITCH INPUT LOW" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>NEUTRAL SWITCH INPUT LOW. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P0852) NEUTRAL SWITCH INPUT HIGH" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>. NEUTRAL SWITCH INPUT HIGHChange to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P1201) INJECTOR CODE FAILURE (NOT WRITTEN)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>INJECTOR CODE FAILURE (NOT WRITTEN). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+
+	<table name="(P1202) INJECTOR CODE DATA ABNORMAL" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>INJECTOR CODE DATA ABNORMAL. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+
+	<table name="(P1203) INJECTOR CODE INPUT FAILURE" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>INJECTOR CODE INPUT FAILURE. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+
+	<table name="(P1213) INJECTOR DRIVER LOW CHARGE" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>INJECTOR DRIVER LOW CHARGE. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P1214) INJECTOR DRIVER OVER CHARGE" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description> INJECTOR DRIVER OVER CHARGE. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+
+	<table name="(P1232) FUEL PUMP MALFUNCTION" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>FUEL PUMP MALFUNCTION. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P1233)FUEL PRESSURE ABNORMAL (PUMP FAILURE 1)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>FUEL PRESSURE ABNORMAL (PUMP FAILURE 1). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P1234) FUEL PRESSURE ABNORMAL (PUMP FAILURE 2)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>FUEL PRESSURE ABNORMAL (PUMP FAILURE 2). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+
+	<table name="(P1380) GLOW RELAY CIRCUIT (LOW)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>GLOW RELAY CIRCUIT (LOW). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+
+	<table name="(P1382) GLOW RELAY CIRCUIT (HIGH)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>GLOW RELAY CIRCUIT (HIGH). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P1465) DPF PARTICULATE OVERFILL" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>DPF PARTICULATE OVERFILL. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P1466) DPF SUBSTRATE DAMAGED" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>DPF SUBSTRATE DAMAGED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P1467) DPF ASH OVERFILL" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description> DPF ASH OVERFILL. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P1468) OIL DILUTION" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>OIL DILUTION. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P1469) DPF LIMP-HOME MODE" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>DPF LIMP-HOME MODE. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P1471) DPF DIFFERENTIAL PRESSURE SENSOR UPSTREAM PIPING TROUBLE" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description> DPF DIFFERENTIAL PRESSURE SENSOR UPSTREAM PIPING TROUBLE. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P1472) DPF INLET/OUTLET PRESSURE DEVIATION SENSOR (LOW)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>DPF INLET/OUTLET PRESSURE DEVIATION SENSOR (LOW). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P1473) DPF INLET/OUTLET PRESSURE DEVIATION SENSOR (HIGH)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>DPF INLET/OUTLET PRESSURE DEVIATION SENSOR (HIGH). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P1518) STARTER SWITCH LOW INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>STARTER SWITCH LOW INPUT DETECTED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+
+	<table name="(P1519) IMRC STUCK CLOSED" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>IMRC STUCK CLOSED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+
+	<table name="(P1520) IMRC CIRCUIT MALFUNCTION" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>IMRC CIRCUIT MALFUNCTION. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P1530) BATTERY CURRENT SENSOR CIRCUIT (LOW)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>BATTERY CURRENT SENSOR CIRCUIT (LOW) DETECTED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P1531) BATTERY CURRENT SENSOR CIRCUIT (HIGH)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>BATTERY CURRENT SENSOR CIRCUIT (HIGH) DETECTED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P1532) CHARGE CONTROL SYSTEM ABNORMAL" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CHARGE CONTROL SYSTEM ABNORMAL DETECTED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P1560) BACK-UP VOLTAGE MALFUNCTION" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description> BACK-UP VOLTAGE MALFUNCTION. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+
+	<table name="(P1570) ANTENNA" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>ANTENNA. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P1571) REFERENCE CODE INCOMPATIBILITY" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>REFERENCE CODE INCOMPATIBILITY. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P1572) IMMOBILZER CIRCUIT FAILURE (EXCEPT ANTENNA CIRCUIT)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>IMMOBILZER CIRCUIT FAILURE (EXCEPT ANTENNA CIRCUIT). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P1574) KEY COMMUNICATION FAILURE" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>KEY COMMUNICATION FAILURE. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P1576) EGI CONTROL MODULE EEPROM ERROR" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>EGI CONTROL MODULE EEPROM ERROR. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P1577) IMMOBILIZER CONTROL MODULE EEPROM ERRORR" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>IMMOBILIZER CONTROL MODULE EEPROM ERROR. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P1578) METER FAILURE" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>METER FAILURE. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+
+	<table name="(P1607) MONITORING CIRCUIT ABNORMAL" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description> MONITORING CIRCUIT ABNORMAL. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P1616) START RELAY LOCK SYSTEM CIRCUIT (LOW)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>START RELAY LOCK SYSTEM CIRCUIT (LOW). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+
+	<table name="(P2002) DPF EFFICIENCY BELOW THRESHOLD BANK 1" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>DPF EFFICIENCY BELOW THRESHOLD BANK 1. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+
+	<table name="(P2032) EGT SENSOR 2 (LOW)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>EGT SENSOR 2 (LOW). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P2033) EGT SENSOR 2 (HIGH)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>EGT SENSOR 2 (HIGH). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+
+	<table name="(P2101) THROTTLE ACTUATOR CIRCUIT RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>THROTTLE ACTUATOR CIRCUIT RANGE/PERF. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+
+	<table name="(P2122) TPS D CIRCUIT LOW INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description> TPS D CIRCUIT LOW INPUT. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P2123) TPS D CIRCUIT HIGH INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description> TPS D CIRCUIT HIGH INPUT. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P2127) TPS E CIRCUIT LOW INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description> TPS E CIRCUIT LOW INPUT. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P2128) TPS E CIRCUIT HIGH INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description> TPS E CIRCUIT HIGH INPUT. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P2138) TPS D/E VOLTAGE" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>TPS D/E VOLTAGE. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+
+	<table name="(P2146) FUEL INJECTOR POWER SUPPLY A OPEN CIRCUIT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>FUEL INJECTOR POWER SUPPLY A OPEN CIRCUIT. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P2147) INJECTOR DRIVER (SHORT TO GROUND)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description> INJECTOR DRIVER (SHORT TO GROUND). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P2148) INJECTOR DRIVER (SHORT TO POSITIVE)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description> INJECTOR DRIVER (SHORT TO POSITIVE). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P2149) FUEL INJECTOR POWER SUPPLY B OPEN CIRCUIT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description> FUEL INJECTOR POWER SUPPLY B OPEN CIRCUIT. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+
+	<table name="(P2150)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>Change to disabled to deactivate. Off-road use only.</description>
+	</table>	
+
+	<table name="(P2151)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2227) BARO. PRESSURE CIRCUIT RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>BARO. PRESSURE CIRCUIT RANGE/PERF. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P2228) BARO. PRESSURE CIRCUIT LOW INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>BARO. PRESSURE CIRCUIT LOW INPUT. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P2229) BARO. PRESSURE CIRCUIT HIGH INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>BARO. PRESSURE CIRCUIT HIGH INPUT. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P2413) EGR VALVE STICKING" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>EGR VALVE STICKING. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2454)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+	
+	<table name="(P2455)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2463)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P246C)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+	
+	<table name="(P2564) VNT POSITION SENSOR LOW INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>VNT POSITION SENSOR LOW INPUT DETECTED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P2565) VNT POSITION SENSOR HIGH INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>VNT POSITION SENSOR HIGH INPUT DETECTED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+
+	<table name="(P2633) SUB FUEL PUMP RELAY (LOW)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description> SUB FUEL PUMP RELAY (LOW). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P2634) SUB FUEL PUMP RELAY (HIGH)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>SUB FUEL PUMP RELAY (HIGH). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+	
+	<table name="(P2635) FUEL PUMP SUCTION CONTROL VALVE STICKS" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>FUEL PUMP SUCTION CONTROL VALVE STICKS. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
+	</table>
+
+	<table name="(P268A)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P2696)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(P037E)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+	
+	<table name="(P037F)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(U0073) CAN COMMUNICATION BUS A OFF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CAN COMMUNICATION BUS A OFF. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(U0101) CAN LOST COMMUNICATION WITH TCM" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CAN LOST COMMUNICATION WITH TCM. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(U0122) CAN LOST COMMUNICATION WITH VDC" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CAN LOST COMMUNICATION WITH VDC. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(U0140) CAN LOST COMMUNICATION WITH BIU" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CAN LOST COMMUNICATION WITH BIU. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+	
+	<table name="(U0402) CAN INVALID DATA RECEIVED FROM TCM" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CAN INVALID DATA RECEIVED FROM TCM. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(U0416) CAN INVALID DATA RECEIVED FROM VDC" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CAN INVALID DATA RECEIVED FROM VDC. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+
+	<table name="(U0422) CAN INVALID DATA RECEIVED FROM BIU" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
+		<description>CAN INVALID DATA RECEIVED FROM BIU. Change to disabled to deactivate. Off-road use only.</description>
+	</table>
+</rom>
