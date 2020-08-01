@@ -2139,6 +2139,23 @@ These definitions are created for FREE without any sort of guarantee. The develo
     </table>
     <description>When engine speed is greater than or equal to the disable value, 'Per Injector Primary Fuel Offset Compensations' will not be applied. When engine speed is less than the enable value, these compensations will be applied.</description>
   </table>
+  <table name="Low Pulsewidth Compensation" category="Fueling - Injectors" type="3D" level="4" scaling="Percent">
+    <table name="Base Pulsewidth" type="X Axis" elements="18" scaling="Ms" />
+    <table name="Battery Volts" type="Y Axis" elements="5" scaling="Battery Volts 1" />
+    <description></description>
+  </table>   
+  <table name="Low Pulsewidth Compensation - Maximum Base Pulsewidth" category="Fueling - Injectors" type="2D" level="2" scaling="g/rev">
+    <table name="" type="Static Y Axis" elements="1">
+      <data>Base Pulsewidth Activation Threshold</data>
+    </table>
+    <description></description>
+  </table> 
+    <table name="Minimum Injector Pulsewidth" category="Fueling - Injectors" type="2D" level="2" scaling="Injector Pulsewidth (ms)">
+    <table name="Per Injector Compensation" type="Static Y Axis" elements="1">
+      <data>Minimum Pulsewidth</data>
+    </table>
+    <description>This is the minimum injector pulsewidth at idle</description>
+  </table>
   <table name="Cranking Fuel Injector Pulse Width A (ECT)" category="Fueling - Cranking" type="2D" level="1" scaling="InjectorPulseWidth(ms)">
     <table name="Coolant Temperature (F)" type="Static Y Axis" elements="16">
       <data>-40</data>
@@ -4749,23 +4766,7 @@ These definitions are created for FREE without any sort of guarantee. The develo
   <table name="(P2229) BARO. PRESSURE CIRCUIT HIGH INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="(P2229)BARO.PRESSURECIRCUITHIGHINPUT" description="BAROMETRIC PRESSURE CIRCUIT HIGH INPUT. Change to disabled to deactivate. Off-road use only." />
   <table name="(P2503) CHARGING SYSTEM VOLTAGE LOW" category="Diagnostic Trouble Codes" type="1D" scaling="(P2503)CHARGINGSYSTEMVOLTAGELOW" description="CHARGING SYSTEM VOLTAGE LOW. Change to disabled to deactivate. Off-road use only." />
   <table name="(P2504) CHARGING SYSTEM VOLTAGE HIGH" category="Diagnostic Trouble Codes" type="1D" scaling="(P2504)CHARGINGSYSTEMVOLTAGEHIGH" description="CHARGING SYSTEM VOLTAGE HIGH. Change to disabled to deactivate. Off-road use only." />
-  <table name="Low Pulsewidth Compensation" category="Fueling - Injectors" type="3D" level="4" scaling="Percent">
-    <table name="Base Pulsewidth" type="X Axis" elements="18" scaling="Ms" />
-    <table name="Battery Volts" type="Y Axis" elements="5" scaling="Battery Volts 1" />
-    <description></description>
-  </table>   
-  <table name="Low Pulsewidth Compensation - Maximum Base Pulsewidth" category="Fueling - Injectors" type="2D" level="2" scaling="g/rev">
-    <table name="" type="Static Y Axis" elements="1">
-      <data>Base Pulsewidth Activation Threshold</data>
-    </table>
-    <description></description>
-  </table> 
-    <table name="Minimum Injector Pulsewidth" category="Fueling - Injectors" type="2D" level="2" scaling="Injector Pulsewidth (ms)">
-    <table name="Per Injector Compensation" type="Static Y Axis" elements="1">
-      <data>Minimum Pulsewidth</data>
-    </table>
-    <description>This is the minimum injector pulsewidth at idle</description>
-  </table>
+
     <table name="Fuel Pump Duty (Idle)" category="Miscellaneous - Thresholds" type="2D" level="2" scaling="dutycycle">
     <table name="Fuel Pump Duty (Idle)" type="Static Y Axis" elements="1">
       <data>Fuel Pump Duty During Idle Conditions</data>
