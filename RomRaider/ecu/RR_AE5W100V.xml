@@ -100,6 +100,10 @@
       <table type="X Axis" storageaddress="D6050" />
       <table type="Y Axis" storageaddress="D609C" />
     </table>
+    <table name="Primary Open Loop Fueling High Accelerator Position" storageaddress="D62D0" sizex="19">
+      <table type="X Axis" storageaddress="D623C" />
+      <table type="Y Axis" storageaddress="D6288" />
+    </table>
     <table name="Primary Open Loop Fuel Map Switch (IAM)" storageaddress="D108C" />
     <table name="Minimum Active Primary Open Loop Enrichment" storageaddress="D1090" />
     <table name="Primary Open Loop Fueling Compensation (Timing Compensation) " storageaddress="D1DC0">
@@ -129,11 +133,34 @@
       <table type="Y Axis" storageaddress="D71C0" />
     </table>
     <table name="CL Fueling Target Compensation (ECT) Disable" storageaddress="D0F58" />
+    <table name="Closed Loop Fueling Target Dynamic Lean Limit Floor" storageaddress="D9F00" sizex="19">
+      <table type="X Axis" storageaddress="D9E6C" />
+      <table type="Y Axis" storageaddress="D9EB8" />
+    </table>
+    <table name="Closed Loop Fueling Target Force Open Loop Exit (Lean Limit)" storageaddress="D0E3C" />
+    <table name="Closed Loop Fueling Target Force Open Loop Exit (Rich Limit)" storageaddress="D0E38" />
     <table name="CL to OL Transition with Delay (Base Pulse Width)" storageaddress="D33E4">
       <table type="Y Axis" storageaddress="D33A4" />
     </table>
     <table name="CL to OL Transition with Delay BPW Hysteresis" storageaddress="D1094" />
     <table name="CL Delay Minimum (ECT)" storageaddress="D1098" />
+    <table name="Closed to Open Loop Delays Barometric" storageaddress="D3418">
+      <table type="Y Axis" storageaddress="D3410" />
+    </table>
+    <table name="Closed Loop Delay Max Load (RPM)" storageaddress="D345C">
+      <table type="Y Axis" storageaddress="D341C" />
+    </table>
+    <table name="Closed Loop Delay Max. Load (RPM) Hysteresis" storageaddress="D34BC">
+      <table type="Y Axis" storageaddress="D347C" />
+    </table>
+    <table name="Closed Loop Delay Max Load vs RPM Component Threshold (Smoothing Factor 1)" storageaddress="D10A8" />
+    <table name="Closed Loop Delay Max Load vs RPM Component Threshold (Smoothing Factor 2)" storageaddress="D10B8" />
+    <table name="Closed Loop Delay Max Load vs RPM Component Threshold (Smoothing Factor 3)" storageaddress="D10C8" />
+    <table name="Closed Loop Delay Max RPM" storageaddress="D109C" />
+    <table name="Closed Loop Delay Max RPM (Counter Based)" storageaddress="D10A4" />
+    <table name="Closed Loop Delay Max. RPM (Counter Based) Threshold" storageaddress="D0C04" />
+    <table name="Closed/Open Loop Transition Main (Closed Loop Fueling Target)(Closed Loop Switch Lean Threshold)" storageaddress="D0E60" />
+    <table name="Closed/Open Loop Transition Main (Closed Loop Fueling Target)(Open Loop Switch Rich Adder)" storageaddress="D0E64" />
     <table name="Injector Latency " storageaddress="D6D20">
       <table type="X Axis" storageaddress="D6D00" />
       <table type="Y Axis" storageaddress="D6D14" />
@@ -957,6 +984,13 @@
       </table>
       <description>Fuel cut will be activated when actual boost exceeds the corresponding threshold in this table.</description>
     </table>
+    <table type="2D" name="Boost Limit (Fuel Cut)  " category="Boost Control - Limits" storagetype="uint16" endian="big" sizey="15" userlevel="1" logparam="E52">
+      <scaling units="psi absolute" expression="x*.01933677" to_byte="x/.01933677" format="0.00" fineincrement=".01" coarseincrement=".1" />
+      <table type="Y Axis" name="Atmospheric Pressure" storagetype="float" endian="little" logparam="P24">
+        <scaling units="psi" expression="x*.01933677" to_byte="x/.01933677" format="0.00" fineincrement=".1" coarseincrement="1" />
+      </table>
+      <description>Fuel cut will be activated when actual boost exceeds the corresponding threshold in this table multiplied by an atmospheric pressure multiplier.</description>
+    </table>
     <table type="2D" name="Boost Control Disable (IAM)" category="Boost Control - Limits" storagetype="float" endian="little" sizey="2" userlevel="2">
       <scaling units="Ignition Advance Multiplier (IAM)" expression="x" to_byte="x" format="0.0000" fineincrement=".0625" coarseincrement=".125" />
       <table type="Static Y Axis" name="Boost Control" sizey="2">
@@ -1635,6 +1669,16 @@
       </table>
       <description>This fuel map is used in open loop when the ignition advance multiplier (IAM) drops below the threshold specified by the 'Primary Open Loop Fuel Map Switch (IAM)' table. Because there is no feedback in open loop, the actual AFR may differ from the values presented in this table. In addition, the ECU applies a long-term correction (A/F Learning) to open loop fueling from patterns it recognizes in closed loop fueling. Other compensations and minimum enrichment factors exist as well. Because the underlying values of this table are enrichment offsets relative to stoichiometric, AFRs leaner than 14.7, as presented, are not valid. The switching between the high and low tables occurs based on the current portion of 'Knock Correction Advance Additive Max' that is being applied. This is determined by many factors, including knock, knock history and conditions that may support knock. The result is a KCA additive multiplier. This multiplier ranges from 0 to 1, with 0 being high knock and/or conditions and 1 being low knock and/or conditions. The final table result will be calculated as follows: (high table * multiplier) + (low table * (1.0 - multiplier)).</description>
     </table>
+    <table type="3D" name="Primary Open Loop Fueling High Accelerator Position" category="Fueling - Primary Open Loop" storagetype="uint8" endian="big" sizex="15" sizey="18" userlevel="1" logparam="P58">
+      <scaling units="Estimated Air/Fuel Ratio" expression="14.7/(1+x*0.00390625)" to_byte="(14.7/x-1)/0.00390625" format="0.00" fineincrement=".06" coarseincrement=".5" />
+      <table type="X Axis" name="Engine Load" storagetype="float" endian="little" logparam="E32">
+        <scaling units="g/rev" expression="x" to_byte="x" format="0.00" fineincrement=".01" coarseincrement=".1" />
+      </table>
+      <table type="Y Axis" name="Engine Speed" storagetype="float" endian="little" logparam="P8">
+        <scaling units="RPM" expression="x" to_byte="x" format="#" fineincrement="50" coarseincrement="100" />
+      </table>
+      <description>This fuel map is used in open loop when the ignition advance multiplier (IAM) drops below the threshold specified by the 'Primary Open Loop Fuel Map Switch (IAM)' table. Because there is no feedback in open loop, the actual AFR may differ from the values presented in this table. In addition, the ECU applies a long-term correction (A/F Learning) to open loop fueling from patterns it recognizes in closed loop fueling. Other compensations and minimum enrichment factors exist as well. Because the underlying values of this table are enrichment offsets relative to stoichiometric, AFRs leaner than 14.7, as presented, are not valid. The switching between the high and low tables occurs based on the current portion of 'Knock Correction Advance Additive Max' that is being applied. This is determined by many factors, including knock, knock history and conditions that may support knock. The result is a KCA additive multiplier. This multiplier ranges from 0 to 1, with 0 being high knock and/or conditions and 1 being low knock and/or conditions. The final table result will be calculated as follows: (high table * multiplier) + (low table * (1.0 - multiplier)).</description>
+    </table>
     <table type="3D" name="Primary Open Loop Fueling (KCA Alternate Mode)" category="Fueling - Primary Open Loop" storagetype="uint8" endian="big" sizex="15" sizey="18" userlevel="1" logparam="P58">
       <scaling units="Estimated Air/Fuel Ratio" expression="14.7/(1+x*.0078125)" to_byte="(14.7/x-1)/.0078125" format="0.00" fineincrement=".06" coarseincrement=".5" />
       <table type="X Axis" name="Engine Load" storagetype="float" endian="little" logparam="E32">
@@ -1912,6 +1956,32 @@
         <data>Above</data>
       </table>
       <description>When coolant temp is greater than or equal to this value, the 'CL Fueling Target Compensation (ECT)' is no longer applied.</description>
+    </table>
+    <table type="3D" name="Closed Loop Fueling Target Dynamic Lean Limit Floor" category="Fueling - Primary Open Loop" storagetype="uint16" endian="big" sizex="15" sizey="18" userlevel="1" logparam="P58">
+      <scaling units="Estimated Air/Fuel Ratio" expression="(x*.00012207031-1)*14.7" to_byte="((x/14.7)+1)/.00012207031)" format="0.00" fineincrement=".06" coarseincrement=".5" />
+      <table type="X Axis" name="Engine Load" storagetype="float" endian="little" logparam="E32">
+        <scaling units="g/rev" expression="x" to_byte="x" format="0.00" fineincrement=".01" coarseincrement=".1" />
+      </table>
+      <table type="Y Axis" name="Engine Speed" storagetype="float" endian="little" logparam="P8">
+        <scaling units="RPM" expression="x" to_byte="x" format="#" fineincrement="50" coarseincrement="100" />
+      </table>
+      <description>This table is the floor to a dynamic lean limit of the closed loop fueling target. That is, this dynamic lean limit cannot be richer than this table's value. Changing this table to a leaner value will allow for leaner closed loop fueling targets if called for in the calibration (not leaner than stoichiometric however) when the dynamic lean limit is active.</description>
+    </table>
+    <table type="2D" name="Closed Loop Fueling Target Force Open Loop Exit (Lean Limit)" category="Fueling - Closed Loop" storagetype="float" endian="little" sizey="1" userlevel="4">
+      <scaling units="Air/Fuel Ratio" expression="x*14.7" to_byte="x/14.7" format="0.00" fineincrement=".06" coarseincrement=".5" />
+      <table type="Static Y Axis" name="Capped Limit" sizey="1">
+        <data>
+        </data>
+      </table>
+      <description>When the final closed loop fueling target (without rear o2-based correction applied), is leaner than this table's threshold, the ECU will not allow exiting from a forced open loop state even if conditions no longer dictate forcing open loop. Forced open loop occurs when certain conditions are met such as those dictated by the "Closed Loop Fueling Target Compensation (Load and Rear O2) Force Open Loop (Rich Limit) Primary" and "Closed Loop Fueling Target Compensation (Load and Rear O2) Force Open Loop (Rich Limit) Secondary" tables.</description>
+    </table>
+    <table type="2D" name="Closed Loop Fueling Target Force Open Loop Exit (Rich Limit)" category="Fueling - Closed Loop" storagetype="float" endian="little" sizey="1" userlevel="4">
+      <scaling units="Air/Fuel Ratio" expression="x*14.7" to_byte="x/14.7" format="0.00" fineincrement=".06" coarseincrement=".5" />
+      <table type="Static Y Axis" name="Capped Limit" sizey="1">
+        <data>
+        </data>
+      </table>
+      <description>When the final closed loop fueling target (without rear o2-based correction applied), is richer than this table's threshold, the ECU will not allow exiting from a forced open loop state even if conditions no longer dictate forcing open loop. Forced open loop occurs when certain conditions are met such as those dictated by the "Closed Loop Fueling Target Compensation (Load and Rear O2) Force Open Loop (Rich Limit) Primary" and "Closed Loop Fueling Target Compensation (Load and Rear O2) Force Open Loop (Rich Limit) Secondary" tables.</description>
     </table>
     <table type="2D" name="CL to OL Delay" category="Fueling - CL/OL Transition" storagetype="uint16" endian="big" sizey="9" userlevel="3">
       <scaling units="counter threshold" expression="x" to_byte="x" format="#" fineincrement="1" coarseincrement="100" />
@@ -2214,6 +2284,90 @@
         <data>(Above) - Clear CL Delay</data>
       </table>
       <description>When throttle position is greater than or equal to the selected value in this table, the closed loop delay value is set to zero which can result in switching from closed loop to open loop depending on the current enrichment value as determined by the 'Open Loop Fueling' map. When throttle position is less than the selected value, other specific closed loop triggers are reviewed. If all these triggers are below their thresholds, then the closed loop delay is determined from the 'CL to OL Delay' table. In this case, assuming a non-zero delay value, the 'CL to OL Transition with Delay (Base Pulse Width)' and 'CL to OL Transition with Delay (Throttle)' are used to determine the open loop to close loop transition and vice versa.</description>
+    </table>
+    <table type="2D" name="Closed to Open Loop Delays Barometric" category="Fueling - CL/OL Transition" storagetype="uint16" endian="big" sizey="2" userlevel="2">
+      <scaling units="counter threshold" expression="x" to_byte="x" format="#" fineincrement="1" coarseincrement="100" />
+      <table type="Y Axis" name="Atmospheric Pressure" storagetype="float" endian="little" logparam="P24">
+        <scaling units="psi" expression="x*.01933677" to_byte="x/.01933677" format="0.00" fineincrement=".1" coarseincrement="1" />
+      </table>
+      <description>This is the delay value that represent a time period over which a specific threshold must be continuously exceeded before the closed loop to open loop transition can potentially occur. The threshold is determined by the "Closed/Open Loop Transition with Delay (Min. Base Pulse Width" table. Other factors, such as the final primary open loop fueling value, impact the final decision to switch to open loop.</description>
+    </table>
+    <table type="2D" name="Closed Loop Delay Max Load (RPM)" category="Fueling - CL/OL Transition" storagetype="uint16" endian="big" sizey="16" userlevel="2">
+      <scaling units="Engine Load (g/rev)" expression="x*.00015259022" to_byte="x/.00015259022" format="0.00" fineincrement=".01" coarseincrement=".1" />
+      <table type="Y Axis" name="Engine Speed" storagetype="float" endian="little" logparam="P8">
+        <scaling units="RPM" expression="x" to_byte="x" format="#" fineincrement="50" coarseincrement="100" />
+      </table>
+      <description>This is the maximum calculated load to allow for a delay (if one is called for by the "Closed to Open Loop Delays" table) when the decision to switch from closed loop to open loop fueling is made. If calculated load is greater than or equal to this value, the current delay will be set to zero and the "Primary Open Loop Fueling Compensation (Closed Loop Delay Max. Load Not Exceeded)..." tables will not come into play. When calculated load drops below this value (with hysteresis), this table will have no effect on the delay and the "Primary Open Loop Fueling Compensation (Closed Loop Delay Max. Load Not Exceeded)..." tables will be active.</description>
+    </table>
+    <table type="2D" name="Closed Loop Delay Max. Load (RPM) Hysteresis" category="Fueling - CL/OL Transition" storagetype="uint16" endian="big" sizey="16" userlevel="2">
+      <scaling units="Engine Load (g/rev)" expression="x*.00015259022" to_byte="x/.00015259022" format="0.00" fineincrement=".01" coarseincrement=".1" />
+      <table type="Y Axis" name="Engine Speed" storagetype="float" endian="little" logparam="P8">
+        <scaling units="RPM" expression="x" to_byte="x" format="#" fineincrement="50" coarseincrement="100" />
+      </table>
+      <description>If calculated load drops below the Max. Load threshold less this value, the Max. Load table will have no effect on the delay and the "Primary Open Loop Fueling Compensation (Closed Loop Delay Max. Load Not Exceeded)..." tables will be active.</description>
+    </table>
+    <table type="2D" name="Closed Loop Delay Max Load vs RPM Component Threshold (Smoothing Factor 1)" category="Fueling - CL/OL Transition" storagetype="float" endian="little" sizey="2" userlevel="2">
+      <scaling units="Smoothing Factor" expression="x" to_byte="x" format="0.0" fineincrement="1" coarseincrement="10" />
+      <table type="Static Y Axis" name="Factor" sizey="2">
+        <data>A</data>
+        <data>B</data>
+      </table>
+      <description>This is the maximum Load vs. RPM component value to allow for a delay (if one is called for by the "Closed to Open Loop Delays" table) when the decision to switch from closed loop to open loop fueling is made. The Load vs. RPM component value is determined by applying smoothing (with potentially variable smoothing factor unique to this table's threshold) to the value determined by the "Closed Loop Delay Max. Load vs. RPM Component Determine..." tables (not exposed for some ECUs - value is generally higher with higher load/rpm). If this smoothed Load vs. RPM component value exceeds the table's threshold, the current delay will be set to zero, otherwise the table will have no effect on the delay.</description>
+    </table>
+    <table type="2D" name="Closed Loop Delay Max Load vs RPM Component Threshold (Smoothing Factor 2)" category="Fueling - CL/OL Transition" storagetype="float" endian="little" sizey="2" userlevel="2">
+      <scaling units="Smoothing Factor" expression="x" to_byte="x" format="0.0" fineincrement="1" coarseincrement="10" />
+      <table type="Static Y Axis" name="Factor" sizey="2">
+        <data>A</data>
+        <data>B</data>
+      </table>
+      <description>This is the maximum Load vs. RPM component value to allow for a delay (if one is called for by the "Closed to Open Loop Delays" table) when the decision to switch from closed loop to open loop fueling is made. The Load vs. RPM component value is determined by applying smoothing (with potentially variable smoothing factor unique to this table's threshold) to the value determined by the "Closed Loop Delay Max. Load vs. RPM Component Determine..." tables (not exposed for some ECUs - value is generally higher with higher load/rpm). If this smoothed Load vs. RPM component value exceeds the table's threshold, the current delay will be set to zero, otherwise the table will have no effect on the delay.</description>
+    </table>
+    <table type="2D" name="Closed Loop Delay Max Load vs RPM Component Threshold (Smoothing Factor 3)" category="Fueling - CL/OL Transition" storagetype="float" endian="little" sizey="2" userlevel="2">
+      <scaling units="Smoothing Factor" expression="x" to_byte="x" format="0.0" fineincrement="1" coarseincrement="10" />
+      <table type="Static Y Axis" name="Factor" sizey="2">
+        <data>A</data>
+        <data>B</data>
+      </table>
+      <description>This is the maximum Load vs. RPM component value to allow for a delay (if one is called for by the "Closed to Open Loop Delays" table) when the decision to switch from closed loop to open loop fueling is made. The Load vs. RPM component value is determined by applying smoothing (with potentially variable smoothing factor unique to this table's threshold) to the value determined by the "Closed Loop Delay Max. Load vs. RPM Component Determine..." tables (not exposed for some ECUs - value is generally higher with higher load/rpm). If this smoothed Load vs. RPM component value exceeds the table's threshold, the current delay will be set to zero, otherwise the table will have no effect on the delay.</description>
+    </table>
+    <table type="2D" name="Closed Loop Delay Max RPM" category="Fueling - CL/OL Transition" storagetype="float" endian="little" sizey="2" userlevel="2">
+      <scaling units="Engine Speed (RPM)" expression="x" to_byte="x" format="#" fineincrement="50" coarseincrement="100" />
+      <table type="Static Y Axis" name="(Condition) - Result" sizey="2">
+        <data>A</data>
+        <data>B</data>
+      </table>
+      <description>This is the maximum RPM to allow for a delay (if one is called for by the "Closed to Open Loop Delays" table) when the decision to switch from closed loop to open loop fueling is made. For tables with two values: If RPM is greater than or equal to the second value, the current delay will be set to zero and when RPM drops below the first value, this table will have no effect on the delay. For tables with one value: If RPM is greater than or equal to this value, the current delay will be set to zero and when RPM drops below this value (with hysteresis), this table will have no effect on the delay.</description>
+    </table>
+    <table type="2D" name="Closed Loop Delay Max RPM (Counter Based)" category="Fueling - CL/OL Transition" storagetype="float" endian="little" sizey="1" userlevel="2">
+      <scaling units="Engine Speed (RPM)" expression="x" to_byte="x" format="#" fineincrement="50" coarseincrement="100" />
+      <table type="Static Y Axis" name="(Condition) - Result" sizey="1">
+        <data>A</data>
+      </table>
+      <description>When RPM is continuously held above this table's value for the period defined by the "Closed Loop Delay Max. RPM (Counter Based) Threshold" table, the current closed to open Loop delay value will be set to zero. If RPM drops below this table's value or has not been held continuously above it for the specified period, this table will have no effect on the delay.</description>
+    </table>
+    <table type="2D" name="Closed Loop Delay Max. RPM (Counter Based) Threshold" category="Fueling - CL/OL Transition" storagetype="uint16" endian="big" sizey="1" userlevel="2">
+      <scaling units="counter threshold" expression="x" to_byte="x" format="#" fineincrement="1" coarseincrement="100" />
+      <table type="Static Y Axis" name="(Condition) - Result" sizey="1">
+        <data>
+        </data>
+      </table>
+      <description>This is the threshold that is involved in determining the switching from closed to open loop fueling operation and back again. When the closed loop fuel target is leaner than this threshold, the ECU will switch to closed loop operation. When the closed loop fuel target is richer than (this threshold + "...Open Loop Switch Rich Adder"), the ECU will switch to open loop operation. The other CL/OL tables will dictate when primary open loop fueling is active (i.e. not a stoichiometric target) but not the switching from closed loop to open loop (or vice versa). When primary open loop fueling is active, it will be directly transferred to the closed loop target during closed loop operation or used as the primary target in open loop as normal.</description>
+    </table>
+    <table type="2D" name="Closed/Open Loop Transition Main (Closed Loop Fueling Target)(Closed Loop Switch Lean Threshold)" category="Fueling - Closed Loop" storagetype="float" endian="little" sizey="1" userlevel="4">
+      <scaling units="Air/Fuel Ratio" expression="x*14.7" to_byte="x/14.7" format="0.00" fineincrement=".06" coarseincrement=".5" />
+      <table type="Static Y Axis" name="Capped Limit" sizey="1">
+        <data>
+        </data>
+      </table>
+      <description>This is the threshold that is involved in determining the switching from closed to open loop fueling operation and back again. When the closed loop fuel target is leaner than this threshold, the ECU will switch to closed loop operation. When the closed loop fuel target is richer than (this threshold + "...Open Loop Switch Rich Adder"), the ECU will switch to open loop operation. The other CL/OL tables will dictate when primary open loop fueling is active (i.e. not a stoichiometric target) but not the switching from closed loop to open loop (or vice versa). When primary open loop fueling is active, it will be directly transferred to the closed loop target during closed loop operation or used as the primary target in open loop as normal.</description>
+    </table>
+    <table type="2D" name="Closed/Open Loop Transition Main (Closed Loop Fueling Target)(Open Loop Switch Rich Adder)" category="Fueling - Closed Loop" storagetype="float" endian="little" sizey="1" userlevel="4">
+      <scaling units="Air/Fuel Ratio" expression="x*14.7" to_byte="x/14.7" format="0.00" fineincrement=".06" coarseincrement=".5" />
+      <table type="Static Y Axis" name="Capped Limit" sizey="1">
+        <data>
+        </data>
+      </table>
+      <description>When the closed loop fuel target is richer than the "Closed/Open Loop Transition Main (Closed Loop Fueling Target)(Closed Loop Switch Lean Threshold)" table + this adder, the ECU will switch to open loop operation. The other CL/OL tables will dictate when primary open loop fueling is active (i.e. not a stoichiometric target) but not the switching from closed loop to open loop (or vice versa). When primary open loop fueling is active, it will be directly transferred to the closed loop target during closed loop operation or used as the primary target in open loop as normal.</description>
     </table>
     <table type="3D" name="Injector Latency " category="Fueling - Injectors" storagetype="uint16" endian="big" sizex="5" sizey="3" userlevel="4" logparam="E50">
       <scaling units="Latency (ms)" expression="x*.00025" to_byte="x/.00025" format="0.00" fineincrement=".01" coarseincrement=".1" />
