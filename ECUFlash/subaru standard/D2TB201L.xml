@@ -1,0 +1,170 @@
+<rom>
+	<romid>
+		<xmlid>D2TB201L</xmlid>
+		<internalidaddress>2000</internalidaddress>
+		<internalidstring>D2TB201L</internalidstring>
+		<ecuid>524A344007</ecuid>
+		<make>Subaru</make>
+		<market>EDM</market>
+		<model>Legacy</model>
+		<submodel>3.0R</submodel>
+		<transmission>6MT</transmission>
+		<year>08</year>
+		<flashmethod>subarucan</flashmethod>
+		<memmodel>SH7058</memmodel>
+		<checksummodule>subarudbw</checksummodule>
+	</romid>
+
+	<include>32BITBASE</include>
+
+	<table name="Info Panel Fuel Consumption Correction" category="Fuel" address="c0808" type="2D" level="1" scaling="rawecuvalue">
+		<description>This is the correction applied to the fuel efficiency calculation to account for injector size change. Adjust this value by the same percentage as used for injector scaling. NewCorrection = CurrentCorrection * (NewInjectorScale / OldInjectorScale)</description>
+		<table name="Fuel Efficiency Correction" type="Static Y Axis" elements="1">
+			<data>Value</data>
+		</table>
+	</table>
+
+	<table name="Load B Max(RPM) mul" category="Mass Airflow / Engine Load" address="946b0" type="2D" level="4" scaling="multiplier">
+		<description>Change this value to change the maximum  of the Engine Load Limit B Maximum (RPM) table from it's nominal value.  By setting this field to twice (x2) of it's nominal value you will increase the cap of the Engine Load Limit B Maximum (RPM) to double it's nomial value.</description>
+		<table type="Static Y Axis" elements="1">
+			<data>Value</data>
+		</table>
+	</table>
+
+	<table name="Injector Latency_" address="cd4d0">
+		<table name="Battery Output" address="cd4b0"/>
+		<table name="Manifold Pressure" address="cd4c4"/>
+	</table>
+
+	<table name="Injector Flow Scaling_" address="c5b4c">
+	</table>
+
+	<table name="Cranking Fuel Injector Pulse Width A (ECT)" address="c66a2">
+		<table name="Coolant Temperature" address="c60cc"/>
+	</table>
+
+	<table name="Cranking Fuel Injector Pulse Width B (ECT)" address="c66c2">
+		<table name="Coolant Temperature" address="c60cc"/>
+	</table>
+
+	<table name="Cranking Fuel Injector Pulse Width C (ECT)" address="c66e2">
+		<table name="Coolant Temperature" address="c60cc"/>
+	</table>
+
+	<table name="Cranking Fuel Injector Pulse Width D (ECT)" address="c6702">
+		<table name="Coolant Temperature" address="c60cc"/>
+	</table>
+
+	<table name="Throttle Tip-in Enrichment A" address="c6f80">
+		<table name="Throttle Angle Change" address="c6f6c" elements="5"/>
+	</table>
+
+	<table name="Throttle Tip-in Enrichment B" address="c6fa0">
+		<table name="Throttle Angle Change" address="c6f8c" elements="5"/>
+	</table>
+
+	<table name="Minimum Tip-in Enrichment Activation" address="c5fa0">
+	</table>
+
+	<table name="Engine Load Limit B Maximum (RPM)" address="c33ac">
+		<table name="Engine Speed" address="c336c" elements="16" scaling="CoolantTemp(DegreesF)"/>
+	</table>
+
+	<table name="Base Timing A" address="c9a60">
+		<table name="Engine Load" address="c8b1c"/>
+		<table name="Engine Speed" address="c9a28" elements="14"/>
+	</table>
+
+	<table name="Base Timing B" address="c9b6c">
+		<table name="Engine Load" address="c8b1c"/>
+		<table name="Engine Speed" address="c9b34" elements="14"/>
+	</table>
+
+	<table name="Base Timing C" address="c9c90">
+		<table name="Engine Load" address="c8b1c"/>
+		<table name="Engine Speed" address="c9c40" elements="20"/>
+	</table>
+
+	<table name="Base Timing D" address="c9e0c">
+		<table name="Engine Load" address="c8b1c"/>
+		<table name="Engine Speed" address="c9dbc" elements="20"/>
+	</table>
+
+	<table name="Base Timing E" address="c9f70">
+		<table name="Engine Load" address="c8b1c"/>
+		<table name="Engine Speed" address="c9f38" elements="14"/>
+	</table>
+
+	<table name="Base Timing F" address="ca07c">
+		<table name="Engine Load" address="c8b1c"/>
+		<table name="Engine Speed" address="ca044" elements="14"/>
+	</table>
+
+	<table name="Base Timing G" address="ca1a0">
+		<table name="Engine Load" address="c8b1c"/>
+		<table name="Engine Speed" address="ca150" elements="20"/>
+	</table>
+
+	<table name="Base Timing H" address="ca31c">
+		<table name="Engine Load" address="c8b1c"/>
+		<table name="Engine Speed" address="ca2cc" elements="20"/>
+	</table>
+
+	<table name="Base Timing Idle" address="c8d04">
+		<table name="Coolant Temperature" address="c8af8" elements="9"/>
+	</table>
+
+	<table name="Base Timing Idle (Below Speed Threshold)_" address="c8cfb">
+		<table name="Engine Speed" address="c8af8"/>
+	</table>
+
+	<table name="Base Timing Idle (Above Speed Threshold)" address="c8cf2">
+		<table name="Engine Speed" address="c8af8"/>
+	</table>
+
+	<table name="Base Timing Idle Vehicle Speed Threshold" address="c8868">
+	</table>
+
+	<table name="Knock Correction Advance Max A" address="ca504">
+		<table name="Engine Load" address="ca490" elements="15"/>
+		<table name="Engine Speed" address="ca4cc" elements="14"/>
+	</table>
+
+	<table name="Knock Correction Advance Max B" address="ca664">
+		<table name="Engine Load" address="ca5d8" elements="15"/>
+		<table name="Engine Speed" address="ca614" elements="20"/>
+	</table>
+
+	<table name="Fine Correction Range (RPM)" address="c8a90">
+	</table>
+
+	<table name="Fine Correction Range (Load)" address="c8a28">
+	</table>
+
+	<table name="Fine Correction Rows (RPM)_" address="c8a54">
+	</table>
+
+	<table name="Fine Correction Columns (Load)_" address="c8ab0">
+	</table>
+
+	<table name="Target Throttle Plate Position (Requested Torque)" address="dbc7c">
+		<table name="Requested Torque" address="dbbbc" elements="27"/>
+		<table name="Engine Speed" address="dbc28" elements="21"/>
+	</table>
+
+	<table name="Target Throttle Plate Position Maximum (Requested Torque)" address="dc1ac">
+		<table name="Requested Torque" address="dc0ec" elements="27"/>
+		<table name="Engine Speed" address="dc158" elements="21"/>
+	</table>
+
+	<table name="(P0420) CAT EFFICIENCY BELOW THRESHOLD" address="91a4c"/>
+
+	<table name="Calculated Engine Torque A" address="c11e8">
+		<table name="Engine Load" address="c1168" elements="14"/>
+		<table name="Engine Speed" address="c11a0" elements="18"/>
+	</table>
+
+	<table name="Low pulse width fuel injector compensation maximum IPW" address="336cc">
+	</table>
+
+</rom>

@@ -17,69 +17,7 @@
 
 	<include>32BITBASE</include>
 
-	<table name="Front Oxygen Sensor Compensation (Atmosphere)" address="c21f4"/>
-
-	<table name="CL to OL Delay A (Atmospheric Pressure)" address="c8248"/>
-
-	<table name="CL to OL Delay B (Atmospheric Pressure)" address="c8274"/>
-
-	<table name="CL Delay Minimum Coolant Temperature" address="c66cc"/>
-
-	<table name="CL Delay Maximum Throttle A" address="c66d0"/>
-
-	<table name="CL Delay Maximum Throttle B (Coolant Temp)" address="c6ff4"/>
-
-	<table name="Tip-in Enrichment Compensation A (Coolant Temp)" address="c71e1"/>
-
-	<table name="Tip-in Enrichment Compensation B (Coolant Temp)" address="c8898"/>
-
-	<table name="Tip-in Enrichment Compensation C (Coolant Temp)" address="c88b8"/>
-
-	<table name="Tip-in Enrichment Compensation D (Coolant Temp)" address="c88f8"/>
-
-	<table name="Tip-in Enrichment Compensation D (Coolant Temp) Activation" address="c68a4"/>
-
-	<table name="MAF Compensation (Intake Temp)" address="c2670"/>
-
-	<table name="Timing Advance A (Maximum)" address="cd640"/>
-
-	<table name="Timing Advance B (Maximum)" address="cd7d0"/>
-
-	<table name="Timing Compensation (Intake Temp)" address="cc1ac"/>
-
-	<table name="Timing Compensation (Intake Temp) Activation" address="cdfcc"/>
-
-	<table name="Timing Compensation A (Coolant Temp)" address="cc129"/>
-
-	<table name="Timing Compensation B (Coolant Temp)" address="cc139"/>
-
-	<table name="Timing Compensation C (Coolant Temp)" address="cc149"/>
-
-	<table name="Timing Compensation D (Coolant Temp)" address="cc159"/>
-
-	<table name="Rough Correction Minimum Timing Advance Map Value" address="cba84"/>
-
-	<table name="Speed Limiting A (Fuel Cut)" address="c6974"/>
-
-	<table name="Speed Limiting B (Fuel Cut)" address="c697c"/>
-
-	<table name="Radiator Fan Modes A (Coolant Temp)" address="d127c"/>
-
-	<table name="Radiator Fan Modes B (Coolant Temp)" address="d128c"/>
-
-	<table name="Radiator Fan Modes (Vehicle Speed)" address="d129c"/>
-
-	<table name="Idle Speed A (Coolant Temp)" address="cf040"/>
-
-	<table name="Idle Speed B (Coolant Temp)" address="cf080"/>
-
-	<table name="Idle Speed C (Coolant Temp)" address="cf0c0"/>
-
-	<table name="Idle Speed D (Coolant Temp)" address="cf0e0"/>
-
-	<table name="Idle Speed E (Coolant Temp)" address="cf120"/>
-
-	<table name="Idle Speed F (Coolant Temp)" address="cf160"/>
+	<table name="(P0000) PASS CODE (NO DTC DETECTED)_"/>
 
 	<table name="Manifold Pressure Sensor Scaling_" address="d1a5c">
 	</table>
@@ -637,8 +575,6 @@
 
 	<table name="(P0000) PASS CODE (NO DTC DETECTED)"/>
 
-	<table name="(P0000) PASS CODE (NO DTC DETECTED)_"/>
-
 	<table name="(P0026) OSV SOLENOID VALVE CIRCUIT RANGE/PERF B1" address="7de38"/>
 
 	<table name="(P0028) OSV SOLENOID VALVE CIRCUIT RANGE/PERF B2" address="7de35"/>
@@ -708,6 +644,8 @@
 	<table name="(P0139) REAR O2 SENSOR SLOW RESPONSE" address="7ddd4"/>
 
 	<table name="(P0140) REAR O2 SENSOR NO ACTIVITY" address="7de55"/>
+
+	<table name="(P0141) REAR O2 SENSOR MALFUNCTION" address="7ddd2"/>
 
 	<table name="(P0171) SYSTEM TOO LEAN" address="7dddd"/>
 
@@ -874,5 +812,138 @@
 	<table name="(P2228) BARO. PRESSURE CIRCUIT LOW INPUT" address="7de44"/>
 
 	<table name="(P2229) BARO. PRESSURE CIRCUIT HIGH INPUT" address="7de43"/>
+
+	<table name="Ignition Timing Compensation Idle Target In Error Range A" address="cf138">
+		<table name="Idle Speed Error" address="cf0f0"/>
+		<table name="Engine Speed Delta" address="cf114" elements="3"/>
+	</table>
+
+	<table name="Ignition Timing Compensation Idle Target Out of Error Range A" address="cf0d4">
+		<table name="Idle Speed Error" address="cf0a4"/>
+		<table name="Idle Speed Target" address="cf0c8" elements="3"/>
+	</table>
+
+	<table name="Ignition Timing Compensation Idle Target Load Change A" address="cf1bc">
+		<table name="Engine Speed Delta" address="cf18c"/>
+		<table name="Idle Speed Target" address="cf1b0" elements="3"/>
+	</table>
+
+	<table name="Cruise Control Speed Limit Minimum A" address="c1588"/>
+
+	<table name="Cruise Control Speed Limit Minimum B" address="c158c"/>
+
+	<table name="Cruise Control Speed Limit Maximum A" address="c1590"/>
+
+	<table name="Cruise Control Speed Limit Maximum B" address="c1594"/>
+
+	<table name="Knock Sensor Calibration" address="cdca8">
+		<table name="Volts" address="cdba4"/>
+	</table>
+
+	<table name="Knock Threshold Filter Final Limit Minimum" address="cddd4">
+		<table name="Volts" address="cddac"/>
+	</table>
+
+	<table name="Knock Threshold Filter Final Limit Maximum Cylinder 1" address="cde24">
+		<table name="Volts" address="cddfc"/>
+	</table>
+
+	<table name="Knock Threshold Filter Final Limit Maximum Cylinder 2" address="cde74">
+		<table name="Volts" address="cde4c"/>
+	</table>
+
+	<table name="Knock Threshold Filter Final Limit Maximum Cylinder 3" address="cdec4">
+		<table name="Volts" address="cde9c"/>
+	</table>
+
+	<table name="Knock Threshold Filter Final Limit Maximum Cylinder 4" address="cdf14">
+		<table name="Volts" address="cdeec"/>
+	</table>
+
+	<table name="Knock Threshold Weighing Factor" address="cdb5c">
+		<table name="X" address="cdb14"/>
+	</table>
+
+	<table name="Knock Threshold Filter Background Noise interval Weighting Factor Low RPM Delta" address="cd874">
+		<table name="Engine Speed" address="cd858"/>
+	</table>
+
+	<table name="Knock Threshold Filter Background Noise interval Weighting Factor High RPM Delta" address="cd8a0">
+		<table name="Engine Speed" address="cd884"/>
+	</table>
+
+	<table name="Background Noise Delta Smoothing Weighting Factor RPM Delta Threshold Immediate" address="ccb18"/>
+
+	<table name="Background Noise Delta Smoothing Weighting Factor RPM Delta Threshold Short" address="ccb1c"/>
+
+	<table name="Background Noise Base Smoothing Factor High Rpm Delta" address="ccb24"/>
+
+	<table name="Background Noise Base Smoothing Factor Low Rpm Delta" address="ccb2c"/>
+
+	<table name="Background Noise Delta Weighting Factor High RPM Delta" address="ccb28"/>
+
+	<table name="Background Noise Delta Weighting Factor Low RPM Delta" address="ccb20"/>
+
+	<table name="Knock Threshhold Filter Background Noise Interval Weighting Factor RPM Delta Short" address="ccb30"/>
+
+	<table name="Knock Threshhold Filter Background Noise Interval Weighting Factor High RPM Delta Limit Maximum" address="ccb34"/>
+
+	<table name="Knock Threshhold Filter Background Noise Interval Weighting Factor High RPM Delta RPM Delta Ratio" address="ccb38"/>
+
+	<table name="Knock threshhold Filter Final Limit Maximum Modify Pre Final Limit" address="ccb3c"/>
+
+	<table name="Knock Threshhold Level Final Limit Minimum" address="ccb40"/>
+
+	<table name="Knock Threshhold Level Final Limit Maximum" address="ccb44"/>
+
+	<table name="Filter Noise Level Weighting Factor" address="ccb48"/>
+
+	<table name="Filter Reference Maximum Range Hysteresis Correction Knock Sensor Output Modify" address="ccaa9"/>
+
+	<table name="Knock Detection Minimum Engine Run Time" address="ccacc"/>
+
+	<table name="Target Throttle Angle Idle Airflow Target" address="dca8c">
+		<table name="Target Throttle Plate Position %" address="dc9f8" elements="37"/>
+	</table>
+
+	<table name="Target Throttle Angle Idle Airflow Target Base Minimum" address="d1300">
+		<table name="Engine Speed" address="d1284" elements="14"/>
+		<table name="Requested Torque" address="d12bc" elements="17"/>
+	</table>
+
+	<table name="Target Throttle Angle Idle Airflow Target Minimum" address="cf64c"/>
+
+	<table name="AF 3 CL Target Compensation Limits" address="2ec24">
+	</table>
+
+	<table name="AF 3 Correction Limits" address="304d8">
+	</table>
+
+	<table name="AF 3 Learning Limits" address="30d0c">
+	</table>
+
+	<table name="Idle Airflow Min Target Decel Adder A" address="d0018">
+		<table name="Engine Speed" address="cffd8" elements="16"/>
+	</table>
+
+	<table name="Idle Speed Stability A" address="d0d1c">
+		<table name="Idle Speed Error" address="d0cbc" elements="17"/>
+		<table name="Engine Speed Delta" address="d0d00" elements="7"/>
+	</table>
+
+	<table name="Idle Speed Stability B" address="d0e6c">
+		<table name="Idle Speed Error" address="d0e0c" elements="17"/>
+		<table name="Engine Speed Delta" address="d0e50" elements="7"/>
+	</table>
+
+	<table name="Idle Airflow Min Target Decel Adder Active Veh Speed A" address="cf798"/>
+
+	<table name="Idle Airflow Min Target Decel Initial Idle Min Airflow A" address="cf7a0"/>
+
+	<table name="Idle Airflow Min Target Decel Initial Idle Activation Max Mode Counter" address="cf54c"/>
+
+	<table name="Idle Airflow Min Target Decel Ramping Adder Decreasing" address="cf7c4"/>
+
+	<table name="Idle Airflow Min Target Decel Ramping Adder Increasing" address="cf7c8"/>
 
 </rom>
