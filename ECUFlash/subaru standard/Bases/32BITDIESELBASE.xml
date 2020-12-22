@@ -97,6 +97,18 @@
 		<data name="disabled" value="00"/>
 		<data name="enabled" value="01"/>
 	</scaling>
+	<scaling name="PXXXX enable (00 00)" storagetype="bloblist">
+		<data name="disabled" value="00"/>
+		<data name="enabled" value="00"/>
+	</scaling>
+	<scaling name="PXXXX enable (07 2C)" storagetype="bloblist">
+		<data name="disabled" value="07"/>
+		<data name="enabled" value="2C"/>
+	</scaling>
+	<scaling name="PXXXX enable (0F A0)" storagetype="bloblist">
+		<data name="disabled" value="0F"/>
+		<data name="enabled" value="A0"/>
+	</scaling>
 	<table name="Boost pressure base map (Engine Speed, Injection Quantity)" category="Boost Control - Target" type="3D" level="4" scaling="ChargeAirPressure">
 		<description>Base map for boost pressure P_boost = f(Engine Speed, Injection Quantity). This map provides the set value for boost which is the base for having more air mass to change the lambda and somkebehaviour of the engine. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
 		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
@@ -1189,6 +1201,9 @@
 		<description>The checksum issue will be fixed automatically when the rom is saved (regardless of check box).</description>
 	</table>
 
+<!--
+	Undefined scaling `ForcePassReadinessMonitors` for 32BITDIESELBASE
+
 	<table name="Force Pass Readiness Monitors" category="OBD-II" type="1D" scaling="ForcePassReadinessMonitors">
 		<description>Off-road and racing use only. Must NEVER be enabled on vehicles that will be driven on public roads.</description>
 	</table>
@@ -1196,6 +1211,7 @@
 	<table name="Force Pass Readiness Monitors_" category="OBD-II" type="1D" scaling="ForcePassReadinessMonitors_">
 		<description>Off-road and racing use only. Must NEVER be enabled on vehicles that will be driven on public roads.</description>
 	</table>
+-->
 
 	<table name="Flashcounter" category="ECU Security" type="1D" level="2" scaling="Flashcouter">
 		<description>Counter how many times the ECU is flashed by a Subaru Station Flasher</description>
@@ -1334,8 +1350,8 @@
 	<table name="(P0093) FUEL SYSTEM LEAK DETECTED LARGE LEAK" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>FUEL SYSTEM LEAK DETECTED LARGE LEAK DETECTED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
-	<table name="(P0096) IAT SENSOR 2 RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable (00 00)">
+
+	<table name="(P0096) IAT SENSOR 2 RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>IAT SENSOR 2 RANGE/PERF . To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
 	
