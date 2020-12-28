@@ -15,55 +15,55 @@
 		<checksummodule>subarudbw</checksummodule>
 	</romid>
 	<include>32BITBASE</include>
-	
+
 	<!-- Idle stability airflow scaling & tables-->
 	<table name="Idle Speed Stability A" address="d46c4">
 		<table name="Idle Speed Error" address="d4634" elements="25"/>
 		<table name="Engine Speed Delta" address="d4698" elements="11"/>
 	</table>
-   
+
 	<table name="Idle Speed Stability B" address="d497c">
 		<table name="Idle Speed Error" address="d48ec" elements="25"/>
 		<table name="Engine Speed Delta" address="d4950" elements="11"/>
-	</table>	
+	</table>
 
 	<table name="Idle Airflow Min Target Decel Adder" address="d4474">
 		<table name="Engine Speed" address="d43fc" elements="16"/>
 		<table name="Coolant Temp" address="d443c" elements="13"/>
 	</table>
-   
+
 	<table name="Idle Airflow Min Target Decel Adder Active Veh Speed" address="d2a9c"/>
-   
+
 	<table name="Idle Airflow Min Target Decel Initial Idle Min Airflow" address="d2aa0"/>
 
 	<table name="Idle Airflow Min Target Decel Initial Idle Activation Max Mode Counter" address="d2928"/>
-   
+
 	<table name="Idle Airflow Min Target Decel Ramping Adder Decreasing" address="d2ac0"/>
-   
+
 	<table name="Idle Airflow Min Target Decel Ramping Adder Increasing" address="d2aa0"/>
 
 	<!-- OverRun Fueling Scalings & Tables -->
-	
+
 	<table name="Overrun Fueling RPM Resume Threshold" address="cbdaa">
 		<table name="X" address="c96ac"/>
 	</table>
-		
+
 	<table name="Overrun Enrich RPM Delta Activation" address="c956c"/>
 
 	<table name="Overrun initial injector enrichment (pulsewidth)" address="c9570"/>
-	
+
 	<table name="Overrun Fueling Cut Counter RPM Threshold" address="c95d8"/>
-	
+
 	<!-- Alpha hot start tables: -->
-      
+
 	<table name="Hotstart Enrichment Decay Delay" address="c8e1c"/>
-	
+
 	<table name="Hotstart Enrichment Decay Step" address="c92f8"/>
-	
+
 	<table name="Initial Hotstart Enrichment (High)" address="c92ec"/>
-	
+
 	<table name="Hotstart High Enrichment Activation Threshold (Coolant Temperature)" address="c92dc"/>
-	
+
 	<table name="Hotstart High Enrichment Activation Threshold (Intake Air Temperature)" address="c92e0"/>
 
 	<table name="Initial Hotstart Enrichment (Low)" address="c92f0"/>
@@ -73,9 +73,9 @@
 	<table name="Hotstart Low Enrichment Activation Threshold (Minimum Intake Air Temperature)" address="c92e8"/>
 
 	<table name="Maximum Non-Idle Hotstart Enrichment (Post Delay)" address="c92fc"/>
-	
+
 	<table name="Hotstart Maximum Non-Idle Enrichment Delay" address="c8e20"/>
-	
+
 	<table name="Hotstart Minimum Enrichment Limit Runtime" address="c8e1e1"/>
 
 	<table name="Hotstart Minimum Enrichment (During Delay and Runtime)" address="c92f4"/>
@@ -145,7 +145,7 @@
 
 	<table name="Map_Switching_Cruise_Thresholds_Min_Delay" category="Map Switching" address="d789c" type="1D" level="1" scaling="Map_Switching_Cruise_Switch_Min_Delay"/>
 
-	
+
 		<table name="Target Throttle_Angle_Idle_Airflow_Target" category="EXPERIMENTAL - idle tables" address="DCA40" type="2D" level="1" scaling="%1">
 		<table name="Target Throttle Plate Position %" address="DC9E0" type="X Axis" elements="24" scaling="%"/>
 	</table>
@@ -158,7 +158,7 @@
 	<table name="Target Throttle_Angle_Idle_Airflow_Target_Base_Min_App_Max" category="EXPERIMENTAL - idle tables" address="D2E14" type="1D" level="1" scaling="%1"/>
 
 
-	
+
 
 	<table name="MAP_Switch_Cruise_REq_Torque_Thresh_Max_A" category="Map Switching" address="d7a04" type="2D" level="1" scaling="Requested Torque (Map Switch)">
 		<table name="Engine Speed" address="d79c4" type="Y Axis" elements="16" scaling="RPM"/>
@@ -287,7 +287,7 @@
 		<table name="Engine Speed" address="c6b64" type="Y Axis" elements="14" scaling="RPM"/>
 	</table>
 
-	
+
 	<table name="Table_Post_Start_Enrich_High_Speed_Decay_Initial_Start_1A" category="Post Start Enrichment" address="ca3b2" type="2D" level="1" scaling="Post_Start_Enrich_Decay">
 		<table name="Coolant Temperature" address="c96ac" type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
 	</table>
@@ -339,7 +339,7 @@
 	<table name="Table_Post_Start_Enrich_Low_Speed_Decay_Delay_Multiplier" category="Post Start Enrichment" address="c9989" type="2D" level="1" scaling="Post_Start_Enrich_Decay4">
 		<table name="Coolant Temperature" address="c96ac" type="X Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
 	</table>
-	
+
 	  <table name="Fuel Pump Duty High Injector Duty Cycle" category="FUEL PUMP DUTY Experimental" address="D27C0" type="3D" level="1" scaling="IDC">
       <table name="Battery Voltage" address="D27B0" type="X Axis" elements="2" scaling="rawecuvalue"/>
       <table name="Manifold Relative Pressure" address="D27B8" type="Y Axis" elements="2" scaling="Pressure (bar)"/>
@@ -358,7 +358,7 @@
 		<table name="Vehicle Speed" address="CE958" type="X Axis" elements="2" scaling="VehicleSpeed(MPH)"/>
 		<table name="RPM" address="CE960" type="Y Axis" elements="2" scaling="RPM"/>
 	</table>
-   
+
    	<table name="TPS_Related_Fuel_Activation_Min_TPS_Target_Delta_Hysteresis" category="TPS Related" address="C930C" type="1D" level="1" scaling="ThrottlePlateOpeningAngle(%)"/>
 
 	<table name="TPS_Related_Fuel_Adder_Low_A" category="TPS Related" address="C9328" type="1D" level="1" scaling="rawecuvalue"/>
@@ -390,9 +390,9 @@
 	<table name="Ignition Timing Maximum" address="3F89C" type="1D" level="1" scaling="BaseIgnitionTiming(degreesBTDC)"/>
 
 	<table address="cf6dc" type="Static X Axis" elements="1" scaling="rawecuvalue">
-		<data>Multiplier</data> 
+		<data>Multiplier</data>
 	</table>
-	
+
 	<!--Stable defs -->
 
 	<table name="Target Boost_" address="c0bf8">
@@ -880,7 +880,7 @@
 
 	<table name="Timing Compensation Per Gear Activation (Load)" address="cf6d0">
 	</table>
-	
+
 	<table name="Timing Compensation Per Gear Conversion Multiplier" category="Ignition Timing - Compensation" address="cf6dc" type="1D" level="1" scaling="rawecuvalue"/>
 
 	<table name="Feedback Correction Range (RPM)" address="CF1D0">
@@ -1038,7 +1038,7 @@
 
 	<table name="Radiator Fan Modes B (ECT)" address="D7408">
 	</table>
-	
+
 		<table name="Radiator Fan Modes C (ECT)" address="D7418">
 	</table>
 

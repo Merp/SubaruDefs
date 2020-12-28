@@ -97,6 +97,18 @@
 		<data name="disabled" value="00"/>
 		<data name="enabled" value="01"/>
 	</scaling>
+	<scaling name="PXXXX enable (00 00)" storagetype="bloblist">
+		<data name="disabled" value="00"/>
+		<data name="enabled" value="00"/>
+	</scaling>
+	<scaling name="PXXXX enable (07 2C)" storagetype="bloblist">
+		<data name="disabled" value="07"/>
+		<data name="enabled" value="2C"/>
+	</scaling>
+	<scaling name="PXXXX enable (0F A0)" storagetype="bloblist">
+		<data name="disabled" value="0F"/>
+		<data name="enabled" value="A0"/>
+	</scaling>
 	<table name="Boost pressure base map (Engine Speed, Injection Quantity)" category="Boost Control - Target" type="3D" level="4" scaling="ChargeAirPressure">
 		<description>Base map for boost pressure P_boost = f(Engine Speed, Injection Quantity). This map provides the set value for boost which is the base for having more air mass to change the lambda and somkebehaviour of the engine. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
 		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
@@ -148,7 +160,7 @@
 		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
 		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
 	</table>
-	
+
 	<table name="Pilot control of boost pressure control valve #1 E5 (Engine Speed, Injection Quantity)" category="Boost Control - VNG" type="3D" level="3" scaling="PWM-VNG5">
 		<description>Pilot control of the boost pressure control valve PWM = f(Engine Speed, Injection Quantity). Pilot control is a controlled add on value for boost value control.  Changing set value of boost request will need a change of the control map two, if the control should not be very spiky. It also has an influence to the response of the boost when changing from low to high boost requests. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
 		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
@@ -172,7 +184,7 @@
 		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
 		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
 	</table>
-	
+
 	<table name="Pilot control of boost pressure control valve #2 E5 (Engine Speed, Injection Quantity)" category="Boost Control - VNG" type="3D" level="3" scaling="PWM-VNG5">
 		<description>Pilot control of the boost pressure control valve PWM = f(Engine Speed, Injection Quantity). Pilot control is a controlled add on value for boost value control.  Changing set value of boost request will need a change of the control map two, if the control should not be very spiky. It also has an influence to the response of the boost when changing from low to high boost requests. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
 		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
@@ -208,13 +220,13 @@
 		<table name="EngineSpeed" type="X Axis" elements="10" scaling="EngineSpeed"/>
 		<table name="ChargeAirTemperature" type="Y Axis" elements="10" scaling="ChargeAirTemperature"/>
 	</table>
-	
+
 	<table name="maximal allowed VNG travel (Engine Speed, Air Mass)" category="Boost Control - VNG" type="3D" level="3" scaling="VNG-Travel">
 		<description>maximal allowed travel of VNT-controller at turbo Travel(%) = f(Engine Speed, Air Mass).This control saves the turbo, if there is leakage in the boost system. It needs to be extended, if the engine provides more air mass.</description>
 		<table name="EngineSpeed" type="X Axis" elements="26" scaling="EngineSpeed"/>
 		<table name="AirMass" type="Y Axis" elements="28" scaling="AirMass_4byte"/>
 	</table>
-	
+
 	<table name="Air Mass dep. pilote control of boost pressure control valve (Engine Speed, Air Mass)" category="Boost Control - VNG" type="3D" level="3" scaling="VNG-Travel">
 		<description>Pilot control of the boost pressure control valve PWM = f(Engine Speed, Injection Quantity). Pilot control is a controlled add on value for boost value control.  Changing set value of boost request will need a change of the control map two, if the control should not be very spiky. It also has an influence to the response of the boost when changing from low to high boost requests. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
 		<table name="EngineSpeed" type="X Axis" elements="26" scaling="EngineSpeed"/>
@@ -283,7 +295,7 @@
 		<description>Calibration Mass Flow Sensor MAF = f(U_MafS).</description>
 		<table name="MAF Sensor Voltage" type="X Axis" elements="40" scaling="MassAirFlowSensor_Voltage_4byte"/>
 	</table>
-	
+
 	<table name="Calibration opening angle EGR actor" category="Mass Air Flow - Sensor Scalings" type="2D" level="3" scaling="MassAirFlow_4byte">
 		<description>Calibration opening angle of the exhaust gas return actor EGR actor [deg] = f(U_sensor).</description>
 		<table name="EGR Opening Angle Sensor Voltage" type="X Axis" elements="11" scaling="MassAirFlowSensor_Voltage_4byte"/>
@@ -325,13 +337,13 @@
 		<table name="EngineSpeed" type="X Axis" elements="20" scaling="EngineSpeed"/>
 		<table name="InjectionQuantity" type="Y Axis" elements="23" scaling="InjectionQuantity_4byte"/>
 	</table>
-	
+
 	<table name="Allowed difference of air mass (high air mass) (Engine Speed, Injection Quantity)" category="Mass Air Flow - Exhaust Gas Return" type="3D" level="2" scaling="AirMass3">
 		<description>maximal allowed difference between set-value and actual-value of expacted air mass Air Mass = f(n/IQ), If difference is higher then the value in the map, a DTC is storred and MIL will turned on.</description>
 		<table name="EngineSpeed" type="X Axis" elements="8" scaling="EngineSpeed"/>
 		<table name="InjectionQuantity" type="Y Axis" elements="10" scaling="InjectionQuantity_4byte"/>
 	</table>
-	
+
 	<table name="Allowed difference of air mass (low air mass) (Engine Speed, Injection Quantity)" category="Mass Air Flow - Exhaust Gas Return" type="3D" level="2" scaling="AirMass3">
 		<description>maximal allowed difference between set-value and actual-value of expacted air mass Air Mass = f(n/IQ), If difference is higher then the value in the map, a DTC is storred and MIL will turned on.</description>
 		<table name="EngineSpeed" type="X Axis" elements="8" scaling="EngineSpeed"/>
@@ -403,7 +415,7 @@
 		<table name="EngineSpeed" type="X Axis" elements="8" scaling="EngineSpeed"/>
 		<table name="ChargeAirPressure" type="Y Axis" elements="11" scaling="ChargeAirPressure_4byte"/>
 	</table>
-	
+
 	<table name="EGR athmos. Pressure dep. corr. of expected airmass (Engine Speed, athmos. Pressure)" category="Mass Air Flow - Exhaust Gas Return" type="3D" level="2" scaling="FactorOnIQ">
 		<description>athmospheric pressure dependent limiter of expected airmass  air mass = F (n, p_ambient). This map limitates the requested airmass</description>
 		<table name="EngineSpeed" type="X Axis" elements="12" scaling="EngineSpeed"/>
@@ -413,7 +425,7 @@
 	<table name="Initial Value Injection Quantity" category="Fueling - Injection Quantity Limiter" type="1D" level="2" scaling="InjectionQuantity_4byte">
 		<description>Initial Value of Injection Quanitiy Limiter line: if you want to inject more then 100mm3/st, you need to increase the initial value</description>
 	</table>
-	
+
 	<table name="Initial Value Injection Quantity 2" category="Fueling - Injection Quantity Limiter" type="1D" level="2" scaling="InjectionQuantity_4byte">
 		<description>Initial Value of Injection Quanitiy Limiter line: if you want to inject more then 100mm3/st, you need to increase the initial value</description>
 	</table>
@@ -581,7 +593,7 @@
 		<table name="EngineSpeed" type="X Axis" elements="26" scaling="EngineSpeed"/>
 		<table name="RailPressure" type="Y Axis" elements="14" scaling="Railpressure_4byte"/>
 	</table>
-	
+
 	<table name="expac. leaging losses (3) (Engine Speed, Rail pressure)" category="Fueling - Injectors" type="3D" level="3" scaling="InjectionQuantity2">
 		<description>This map provides the expected leaging loss of the injector injection quantity = f(Engine speed, Railpressure). The values of this map is based on the injector, so no need to change when you do not change the injectors itself</description>
 		<table name="EngineSpeed" type="X Axis" elements="26" scaling="EngineSpeed"/>
@@ -916,7 +928,7 @@
 		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
 		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
 	</table>
-	
+
 	<table name="EGR base map air-mass setvalue during regeneration 4 (Engine Speed, Injection Quantity)" category="Regeneration - Exhaust gas return" type="3D" level="3" scaling="AirMass1">
 		<description>Base map for set value of air-mass during regeneration PMW = f(Engine Speed, Injection Quantity). This map provides the set value for boost which is be base for having more air mass to change the lambda and smokebehaviour of the engine. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
 		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
@@ -940,7 +952,7 @@
 		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
 		<table name="InjectionQuantity" type="Y Axis" elements="22" scaling="InjectionQuantity_4byte"/>
 	</table>
-	
+
 	<table name="Pilot control of throttle during Regeneration 4 (Engine Speed, Injection Quantity)" category="Regeneration - Exhaust gas return" type="3D" level="3" scaling="PWM-VNG">
 		<description>Base map for control of throttle during regeneration PMW = f(Engine Speed, Injection Quantity). This map provides the set value for boost which is be base for having more air mass to change the lambda and smokebehaviour of the engine. Map uses common axis, so be careful when changing them, it will have an affect to a lot of other maps !</description>
 		<table name="EngineSpeed" type="X Axis" elements="24" scaling="EngineSpeed"/>
@@ -1189,6 +1201,9 @@
 		<description>The checksum issue will be fixed automatically when the rom is saved (regardless of check box).</description>
 	</table>
 
+<!--
+	Undefined scaling `ForcePassReadinessMonitors` for 32BITDIESELBASE
+
 	<table name="Force Pass Readiness Monitors" category="OBD-II" type="1D" scaling="ForcePassReadinessMonitors">
 		<description>Off-road and racing use only. Must NEVER be enabled on vehicles that will be driven on public roads.</description>
 	</table>
@@ -1196,6 +1211,7 @@
 	<table name="Force Pass Readiness Monitors_" category="OBD-II" type="1D" scaling="ForcePassReadinessMonitors_">
 		<description>Off-road and racing use only. Must NEVER be enabled on vehicles that will be driven on public roads.</description>
 	</table>
+-->
 
 	<table name="Flashcounter" category="ECU Security" type="1D" level="2" scaling="Flashcouter">
 		<description>Counter how many times the ECU is flashed by a Subaru Station Flasher</description>
@@ -1326,23 +1342,23 @@
 	<table name="(P0088) FUEL RAIL  SYSTEM PRESSURE  TOO HIGH" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>FUEL RAIL  SYSTEM PRESSURE  TOO HIGH. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P0089) FUEL PRESSURE REGULATOR PERF (OPEN PROBLEM)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>FUEL PRESSURE REGULATOR PERF (OPEN PROBLEM). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P0093) FUEL SYSTEM LEAK DETECTED LARGE LEAK" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>FUEL SYSTEM LEAK DETECTED LARGE LEAK DETECTED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
-	<table name="(P0096) IAT SENSOR 2 RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable (00 00)">
+
+	<table name="(P0096) IAT SENSOR 2 RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>IAT SENSOR 2 RANGE/PERF . To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P0097) IAT SENSOR 2 CIRCUIT (LOW)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>IAT SENSOR 2 CIRCUIT (LOW) DETECTED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P0098) IAT SENSOR 2 CIRCUIT (HIGH)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>  IAT SENSOR 2 CIRCUIT (HIGH) DETECTED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
@@ -1377,11 +1393,11 @@
 	<table name="(P0113) IAT SENSOR HIGH INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>INTAKE AIR TEMPERATURE CIRCUIT HIGH INPUT. Change to disabled to deactivate. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P0116) ENGINE COOLANT TEMPERATURE CIRCUIT RANGE  PERFORMANCE PROBLEM" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>ENGINE COOLANT TEMPERATURE CIRCUIT RANGE  PERFORMANCE PROBLEM. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P0117) COOLANT TEMP SENSOR LOW INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>ENGINE COOLANT TEMPERATURE CIRCUIT LOW INPUT. Change to disabled to deactivate. Off-road use only.</description>
 	</table>
@@ -1701,47 +1717,47 @@
 	<table name="(P0341) CAMSHAFT POS. SENSOR A RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>CAMSHAFT POSITION SENSOR 'A' CIRCUIT RANGE/PERFORMANCE (BANK 1 OR SINGLE SENSOR). Change to disabled to deactivate. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P0401) EGR FLOW INSUFFICIENT DETECTED" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>EGR FLOW INSUFFICIENT DETECTED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P0402) EGR FLOW EXCESSIVE DETECTED" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>EGR FLOW EXCESSIVE DETECTED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P0403)  EGR SYSTEM FAILURE (CIRCUIT DUTY)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description> EGR SYSTEM FAILURE (CIRCUIT DUTY). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P0404) EGR OPERATION CIRCUIT ABNORMAL" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>EGR OPERATION CIRCUIT ABNORMAL. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P0405) EGR POSITION SENSOR CIRCUIT (LOW)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>EGR POSITION SENSOR CIRCUIT (LOW) DETECTED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P0406) EGR POSITION SENSOR CIRCUIT (HIGH)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>EGR POSITION SENSOR CIRCUIT (HIGH) DETECTED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P0407) EGR POSITION SENSOR PERFORMANCE" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>EGR POSITION SENSOR PERFORMANCE DETECTED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P0409) EGR POSITION SENSOR PERFORMANCE" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>EGR POSITION SENSOR PERFORMANCE DETECTED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P0461) FUEL LEVEL SENSOR RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>FUEL LEVEL SENSOR RANGE/PERF DETECTED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P0462) FUEL LEVEL SENSOR LOW INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>FUEL LEVEL SENSOR LOW INPUT DETECTED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P0463) FUEL LEVEL SENSOR HIGH INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>FUEL LEVEL SENSOR HIGH INPUT DETECTED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
@@ -1757,7 +1773,7 @@
 	<table name="(P0513) INCORRECT IMMOBILIZER KEY" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description> INCORRECT IMMOBILIZER KEY. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P0516) BATTERY TEMPERATURE SENSOR CIRCUIT (LOW)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>BATTERY TEMPERATURE SENSOR CIRCUIT (LOW). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
@@ -1765,35 +1781,35 @@
 	<table name="(P0517) BATTERY TEMPERATURE SENSOR CIRCUIT (HIGH)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description> BATTERY TEMPERATURE SENSOR CIRCUIT (HIGH). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P0545) EGT SENSOR CIRCUIT LOW" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>EGT SENSOR CIRCUIT LOW DETECTED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P0546) EGT SENSOR CIRCUIT HIGH" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>EGT SENSOR CIRCUIT HIGH DETECTED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 		<table name="(P0579) CRUISE CONTROL SWITCH CIRCUIT RANGE/PERF (HIGH) INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>CRUISE CONTROL SWITCH CIRCUIT RANGE/PERF (HIGH) INPUT DETECTED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P0562) SYSTEM VOLTAGE (LOW)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>SYSTEM VOLTAGE (LOW) DETECTED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-		
+
 	<table name="(P0563) SYSTEM VOLTAGE (HIGH)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>SYSTEM VOLTAGE (HIGH) DETECTED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P0600) SERIAL COMMUNICATION LINK" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>SERIAL COMMUNICATION LINK. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P0604) CONTROL MODULE RAM ERROR" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>CONTROL MODULE RAM ERROR. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P0605) CONTROL MODULE ROM ERROR" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>CONTROL MODULE ROM ERROR. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
@@ -1809,7 +1825,7 @@
 	<table name="(P0629) FUEL PUMP SUCTION CONTROL VALVE CIRCUIT (SHORT TO POSITIVE)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>FUEL PUMP SUCTION CONTROL VALVE CIRCUIT (SHORT TO POSITIVE). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P0638) THROTTLE ACTUATOR RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>THROTTLE ACTUATOR RANGE/PERF. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
@@ -1829,11 +1845,11 @@
 	<table name="(P0850) NEUTRAL POSITION SWITCH CIRCUIT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>NEUTRAL POSITION SWITCH CIRCUIT. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P0851) NEUTRAL SWITCH INPUT LOW" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>NEUTRAL SWITCH INPUT LOW. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P0852) NEUTRAL SWITCH INPUT HIGH" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>NEUTRAL SWITCH INPUT HIGH. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
@@ -1853,7 +1869,7 @@
 	<table name="(P1213) INJECTOR DRIVER LOW CHARGE" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>INJECTOR DRIVER LOW CHARGE. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P1214) INJECTOR DRIVER OVER CHARGE" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description> INJECTOR DRIVER OVER CHARGE. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
@@ -1861,11 +1877,11 @@
 	<table name="(P1232) FUEL PUMP MALFUNCTION" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>FUEL PUMP MALFUNCTION. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P1233)FUEL PRESSURE ABNORMAL (PUMP FAILURE 1)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>FUEL PRESSURE ABNORMAL (PUMP FAILURE 1). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P1234) FUEL PRESSURE ABNORMAL (PUMP FAILURE 2)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>FUEL PRESSURE ABNORMAL (PUMP FAILURE 2). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
@@ -1877,39 +1893,39 @@
 	<table name="(P1382) GLOW RELAY CIRCUIT (HIGH)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>GLOW RELAY CIRCUIT (HIGH). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P1465) DPF PARTICULATE OVERFILL" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>DPF PARTICULATE OVERFILL. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P1466) DPF SUBSTRATE DAMAGED" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>DPF SUBSTRATE DAMAGED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P1467) DPF ASH OVERFILL" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description> DPF ASH OVERFILL. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P1468) OIL DILUTION" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>OIL DILUTION. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P1469) DPF LIMP-HOME MODE" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>DPF LIMP-HOME MODE. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P1471) DPF DIFFERENTIAL PRESSURE SENSOR UPSTREAM PIPING TROUBLE" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description> DPF DIFFERENTIAL PRESSURE SENSOR UPSTREAM PIPING TROUBLE. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P1472) DPF INLET/OUTLET PRESSURE DEVIATION SENSOR (LOW)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>DPF INLET/OUTLET PRESSURE DEVIATION SENSOR (LOW). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P1473) DPF INLET/OUTLET PRESSURE DEVIATION SENSOR (HIGH)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>DPF INLET/OUTLET PRESSURE DEVIATION SENSOR (HIGH). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P1518) STARTER SWITCH LOW INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>STARTER SWITCH LOW INPUT DETECTED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
@@ -1921,19 +1937,19 @@
 	<table name="(P1520) IMRC CIRCUIT MALFUNCTION" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>IMRC CIRCUIT MALFUNCTION. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P1530) BATTERY CURRENT SENSOR CIRCUIT (LOW)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>BATTERY CURRENT SENSOR CIRCUIT (LOW) DETECTED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P1531) BATTERY CURRENT SENSOR CIRCUIT (HIGH)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>BATTERY CURRENT SENSOR CIRCUIT (HIGH) DETECTED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P1532) CHARGE CONTROL SYSTEM ABNORMAL" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>CHARGE CONTROL SYSTEM ABNORMAL DETECTED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P1560) BACK-UP VOLTAGE MALFUNCTION" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description> BACK-UP VOLTAGE MALFUNCTION. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
@@ -1941,27 +1957,27 @@
 	<table name="(P1570) ANTENNA" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>ANTENNA. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P1571) REFERENCE CODE INCOMPATIBILITY" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>REFERENCE CODE INCOMPATIBILITY. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P1572) IMMOBILZER CIRCUIT FAILURE (EXCEPT ANTENNA CIRCUIT)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>IMMOBILZER CIRCUIT FAILURE (EXCEPT ANTENNA CIRCUIT). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P1574) KEY COMMUNICATION FAILURE" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>KEY COMMUNICATION FAILURE. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P1576) EGI CONTROL MODULE EEPROM ERROR" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>EGI CONTROL MODULE EEPROM ERROR. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P1577) IMMOBILIZER CONTROL MODULE EEPROM ERRORR" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>IMMOBILIZER CONTROL MODULE EEPROM ERROR. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P1578) METER FAILURE" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>METER FAILURE. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
@@ -1969,7 +1985,7 @@
 	<table name="(P1607) MONITORING CIRCUIT ABNORMAL" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description> MONITORING CIRCUIT ABNORMAL. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P1616) START RELAY LOCK SYSTEM CIRCUIT (LOW)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>START RELAY LOCK SYSTEM CIRCUIT (LOW). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
@@ -1981,7 +1997,7 @@
 	<table name="(P2032) EGT SENSOR 2 (LOW)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>EGT SENSOR 2 (LOW). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P2033) EGT SENSOR 2 (HIGH)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>EGT SENSOR 2 (HIGH). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
@@ -1993,19 +2009,19 @@
 	<table name="(P2122) TPS D CIRCUIT LOW INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description> TPS D CIRCUIT LOW INPUT. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P2123) TPS D CIRCUIT HIGH INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description> TPS D CIRCUIT HIGH INPUT. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P2127) TPS E CIRCUIT LOW INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description> TPS E CIRCUIT LOW INPUT. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P2128) TPS E CIRCUIT HIGH INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description> TPS E CIRCUIT HIGH INPUT. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P2138) TPS D/E VOLTAGE" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>TPS D/E VOLTAGE. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
@@ -2013,15 +2029,15 @@
 	<table name="(P2146) FUEL INJECTOR POWER SUPPLY A OPEN CIRCUIT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>FUEL INJECTOR POWER SUPPLY A OPEN CIRCUIT. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P2147) INJECTOR DRIVER (SHORT TO GROUND)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description> INJECTOR DRIVER (SHORT TO GROUND). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P2148) INJECTOR DRIVER (SHORT TO POSITIVE)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description> INJECTOR DRIVER (SHORT TO POSITIVE). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P2149) FUEL INJECTOR POWER SUPPLY B OPEN CIRCUIT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description> FUEL INJECTOR POWER SUPPLY B OPEN CIRCUIT. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
@@ -2029,23 +2045,23 @@
 	<table name="(P2227) BARO. PRESSURE CIRCUIT RANGE/PERF" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>BARO. PRESSURE CIRCUIT RANGE/PERF. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P2228) BARO. PRESSURE CIRCUIT LOW INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>BARO. PRESSURE CIRCUIT LOW INPUT. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P2229) BARO. PRESSURE CIRCUIT HIGH INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>BARO. PRESSURE CIRCUIT HIGH INPUT. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P2413) EGR VALVE STICKING" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>EGR VALVE STICKING. Change to disabled to deactivate. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P2564) VNT POSITION SENSOR LOW INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>VNT POSITION SENSOR LOW INPUT DETECTED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P2565) VNT POSITION SENSOR HIGH INPUT" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>VNT POSITION SENSOR HIGH INPUT DETECTED. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
@@ -2053,11 +2069,11 @@
 	<table name="(P2633) SUB FUEL PUMP RELAY (LOW)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description> SUB FUEL PUMP RELAY (LOW). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P2634) SUB FUEL PUMP RELAY (HIGH)" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>SUB FUEL PUMP RELAY (HIGH). To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
-	
+
 	<table name="(P2635) FUEL PUMP SUCTION CONTROL VALVE STICKS" category="Diagnostic Trouble Codes" type="1D" scaling="PXXXX enable">
 		<description>FUEL PUMP SUCTION CONTROL VALVE STICKS. To disable this DTC, make sure the box above is unchecked. Off-road use only.</description>
 	</table>
