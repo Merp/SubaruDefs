@@ -669,15 +669,19 @@
 
 	<table name="Flashcounter Invers" address="ffb02"/>
 
-	<table name="(P0000) PASS CODE (NO DTC DETECTED)" address="14bac6"/> 
+	<table name="(P0000) PASS CODE (NO DTC DETECTED)" address="14bac6"/>
 
 	<table name="(P0016) CRANKSHAFT/CAMSHAFT CORRELATION 1A" address="14b9f8"/>
 
+	<table name="(P0046)" address="14ba0e"/>
+
 	<table name="(P0088) FUEL RAIL  SYSTEM PRESSURE  TOO HIGH" address="14b9ff"/>
 
-	<table name="(P0097) IAT SENSOR 2 CIRCUIT (LOW)" address="14b9b5"/>
+	<table name="(P0093) FUEL SYSTEM LEAK DETECTED LARGE LEAK" address="14b9e8"/>
 
-	<table name="(P0098) IAT SENSOR 2 CIRCUIT (HIGH)" address="14b9b4"/>
+	<table name="(P0097) IAT SENSOR 2 CIRCUIT (LOW)" address="14b9b5" scaling="PXXXX enable"/>
+
+	<table name="(P0098) IAT SENSOR 2 CIRCUIT (HIGH)" address="14b9b4" scaling="PXXXX enable"/>
 
 	<table name="(P0101) MAF SENSOR RANGE/PERF" address="14b9cd"/>
 
@@ -695,7 +699,7 @@
 
 	<table name="(P0113) IAT SENSOR HIGH INPUT" address="14b9b7"/>
 
-	<table name="(P0116) ENGINE COOLANT TEMPERATURE CIRCUIT RANGE  PERFORMANCE PROBLEM" address="14b9b3"/>
+	<table name="(P0116) ENGINE COOLANT TEMPERATURE CIRCUIT RANGE  PERFORMANCE PROBLEM" address="14b9b3" scaling="PXXXX enable"/>
 
 	<table name="(P0117) COOLANT TEMP SENSOR LOW INPUT" address="14b9b2"/>
 
@@ -709,11 +713,11 @@
 
 	<table name="(P0183) FUEL TEMP SENSOR A HIGH INPUT" address="14b9ba"/>
 
-	<table name="(P0191) FUEL RAIL PRESSURE SENSOR CIRCUIT RANGE  PERFORMANCE" address="14b9bf"/>
+	<table name="(P0191) FUEL RAIL PRESSURE SENSOR CIRCUIT RANGE  PERFORMANCE" address="14b9bf" scaling="PXXXX enable"/>
 
-	<table name="(P0192) FUEL RAIL PRESSURE SENSOR CIRCUIT LOW INPUT" address="14b9be"/>
+	<table name="(P0192) FUEL RAIL PRESSURE SENSOR CIRCUIT LOW INPUT" address="14b9be" scaling="PXXXX enable"/>
 
-	<table name="(P0193) FUEL RAIL PRESSURE SENSOR CIRCUIT HIGH INPUT" address="14b9bd"/>
+	<table name="(P0193) FUEL RAIL PRESSURE SENSOR CIRCUIT HIGH INPUT" address="14b9bd" scaling="PXXXX enable"/>
 
 	<table name="(P0201) INJECTOR CIRCUIT MALFUNCTION CYLINDER 1" address="14b9df"/>
 
@@ -739,6 +743,18 @@
 
 	<table name="(P0341) CAMSHAFT POS. SENSOR A RANGE/PERF" address="14b9ea"/>
 
+	<table name="(P0401) EGR FLOW INSUFFICIENT DETECTED" address="14b9f5"/>
+
+	<table name="(P0403)  EGR SYSTEM FAILURE (CIRCUIT DUTY)" address="14ba1b"/>
+
+	<table name="(P0404) EGR OPERATION CIRCUIT ABNORMAL" address="14ba1c"/>
+
+	<table name="(P0405) EGR POSITION SENSOR CIRCUIT (LOW)" address="14b9cf"/>
+
+	<table name="(P0406) EGR POSITION SENSOR CIRCUIT (HIGH)" address="14b9ce"/>
+
+	<table name="(P0409) EGR POSITION SENSOR PERFORMANCE" address="14ba1a"/>
+
 	<table name="(P0462) FUEL LEVEL SENSOR LOW INPUT" address="14ba24"/>
 
 	<table name="(P0463) FUEL LEVEL SENSOR HIGH INPUT" address="14ba23"/>
@@ -763,6 +779,10 @@
 
 	<table name="(P0606) CPU FAILURE" address="14ba02"/>
 
+	<table name="(P0628)FUEL PUMP SUCTION CONTROL VALVE CIRCUIT (SHORT TO GROUND)" address="14b9e7"/>
+
+	<table name="(P0629) FUEL PUMP SUCTION CONTROL VALVE CIRCUIT (SHORT TO POSITIVE)" address="14b9e6"/>
+
 	<table name="(P0638) THROTTLE ACTUATOR RANGE/PERF" address="14ba09"/>
 
 	<table name="(P0700) TRANSMISSION CONTROL SYSTEM" address="14ba16"/>
@@ -773,6 +793,16 @@
 
 	<table name="(P0852) NEUTRAL SWITCH INPUT HIGH" address="14ba0c"/>
 
+	<table name="(P1213) INJECTOR DRIVER LOW CHARGE" address="14b9de"/>
+
+	<table name="(P1214) INJECTOR DRIVER OVER CHARGE" address="14b9e5"/>
+
+	<table name="(P1232) FUEL PUMP MALFUNCTION" address="14ba04"/>
+
+	<table name="(P1233)FUEL PRESSURE ABNORMAL (PUMP FAILURE 1)" address="14ba05"/>
+
+	<table name="(P1234) FUEL PRESSURE ABNORMAL (PUMP FAILURE 2)" address="14ba06"/>
+
 	<table name="(P1518) STARTER SWITCH LOW INPUT" address="14ba1d"/>
 
 	<table name="(P1519) IMRC STUCK CLOSED" address="14ba31"/>
@@ -780,6 +810,14 @@
 	<table name="(P1520) IMRC CIRCUIT MALFUNCTION" address="14ba30"/>
 
 	<table name="(P1560) BACK-UP VOLTAGE MALFUNCTION" address="14ba27"/>
+
+	<table name="(P1607) MONITORING CIRCUIT ABNORMAL" address="14ba01"/>
+
+	<table name="(P2002) DPF EFFICIENCY BELOW THRESHOLD BANK 1" address="14ba11"/>
+
+	<table name="(P2032) EGT SENSOR 2 (LOW)" address="14b9d4"/>
+
+	<table name="(P2033) EGT SENSOR 2 (HIGH)" address="14b9d5"/>
 
 	<table name="(P2101) THROTTLE ACTUATOR CIRCUIT RANGE/PERF" address="14ba0a"/>
 
@@ -793,11 +831,51 @@
 
 	<table name="(P2138) TPS D/E VOLTAGE" address="14b9c8"/>
 
+	<table name="(P2146) FUEL INJECTOR POWER SUPPLY A OPEN CIRCUIT" address="14b9e3"/>
+
+	<table name="(P2147) INJECTOR DRIVER (SHORT TO GROUND)" address="14b9db"/>
+
+	<table name="(P2148) INJECTOR DRIVER (SHORT TO POSITIVE)" address="14b9da"/>
+
+	<table name="(P2149) FUEL INJECTOR POWER SUPPLY B OPEN CIRCUIT" address="14b9e4"/>
+
+	<table name="(P2150)" address="14b9dd"/>
+
+	<table name="(P2151)" address="14b9dc"/>
+
 	<table name="(P2227) BARO. PRESSURE CIRCUIT RANGE/PERF" address="14b9c5"/>
 
 	<table name="(P2228) BARO. PRESSURE CIRCUIT LOW INPUT" address="14b9c4"/>
 
 	<table name="(P2229) BARO. PRESSURE CIRCUIT HIGH INPUT" address="14b9c3"/>
+
+	<table name="(P2413) EGR VALVE STICKING" address="14b9f6"/>
+
+	<table name="(P2454)" address="14b9d7"/>
+
+	<table name="(P2455)" address="14b9d6"/>
+
+	<table name="(P2463)" address="14ba0b"/>
+
+	<table name="(P246C)" address="14ba37"/>
+
+	<table name="(P2564) VNT POSITION SENSOR LOW INPUT" address="14ba43"/>
+
+	<table name="(P2565) VNT POSITION SENSOR HIGH INPUT" address="14ba42"/>
+
+	<table name="(P2633) SUB FUEL PUMP RELAY (LOW)" address="14ba26"/>
+
+	<table name="(P2634) SUB FUEL PUMP RELAY (HIGH)" address="14ba25"/>
+
+	<table name="(P2635) FUEL PUMP SUCTION CONTROL VALVE STICKS" address="14b9fe"/>
+
+	<table name="(P268A)" address="14ba17"/>
+
+	<table name="(P2696)" address="14ba18"/>
+
+	<table name="(P037E)" address="14b9d9"/>
+
+	<table name="(P037F)" address="14b9d8"/>
 
 	<table name="(U0073) CAN COMMUNICATION BUS A OFF" address="14ba41"/>
 
