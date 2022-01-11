@@ -1,0 +1,64 @@
+	<!-- Idle Airflow Stability Tables
+	Currently Implemented in the following definitions:
+	A2UJ000J - td-d & Merp
+	AE5I500G - td-d & Merp
+	AZ1G101N - td-d & Merp
+	
+	Changelog:
+	8/29/12 Merp: Added negative (rawecudata) scaling to template
+	8/29/12 Merp: Converted to base inheritance schema
+	-->
+
+	<!-- the following tables are used for A/B -->
+    <table name="Idle Airflow Min Target Decel Adder A" address="">
+		<table name="Engine Speed" address="" elements="2"/>
+    </table>
+
+	<table name="Idle Airflow Min Target Decel Adder B" address="">
+		<table name="Engine Speed" address="" elements="16"/>
+    </table>
+
+	<table name="Idle Speed Stability A" address="">
+		<table name="Idle Speed Error" address="" elements="25"/>
+		<table name="Engine Speed Delta" address="" elements="11"/>
+	</table>
+   
+	<table name="Idle Speed Stability B" address="">
+		<table name="Idle Speed Error" address="" elements="25"/>
+		<table name="Engine Speed Delta" address="" elements="11"/>
+	</table>	
+
+    <table name="Idle Airflow Min Target Decel Adder Active Veh Speed A" address=""/>
+   
+	<table name="Idle Airflow Min Target Decel Adder Active Veh Speed B" address=""/>
+   
+    <table name="Idle Airflow Min Target Decel Initial Idle Min Airflow A" address=""/>
+   
+	<table name="Idle Airflow Min Target Decel Initial Idle Min Airflow B" address=""/>
+   
+    <!-- The following tables are used for single branch roms(non-A/B) -->
+	<table name="Idle Airflow Min Target Decel Adder (RPM x ECT)" address="">
+		<table name="Engine Speed" address="" elements="16"/>
+		<table name="Coolant Temp" address="" elements="13"/>
+	</table>
+	
+	<table name="Idle Airflow Min Target Decel Adder (RPM)" address="">
+		<table name="Engine Speed" address="" elements="16"/>
+		<table name="Coolant Temp" address="" elements="13"/>
+	</table>
+   
+   <table name="Idle Speed Stability" address="">
+		<table name="Idle Speed Error" address="" elements="25"/>
+		<table name="Engine Speed Delta" address="" elements="11"/>
+	</table>
+   
+   <table name="Idle Airflow Min Target Decel Adder Active Veh Speed" address=""/>
+   
+   <table name="Idle Airflow Min Target Decel Initial Idle Min Airflow" address=""/>
+
+   <!-- The following tables are used in all types of roms -->
+   <table name="Idle Airflow Min Target Decel Initial Idle Activation Max Mode Counter" address=""/>
+   
+   <table name="Idle Airflow Min Target Decel Ramping Adder Decreasing" address=""/>
+   
+   <table name="Idle Airflow Min Target Decel Ramping Adder Increasing" address=""/>

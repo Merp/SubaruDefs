@@ -15,6 +15,59 @@
     <checksummodule>subarudbw</checksummodule>
   </romid>
   <include>32BITBASE</include>
+
+  <!-- Fuel Consumption Tables -->
+
+  <table name="Cluster Display Fuel Consumption Correction" address="C0E14"/>
+  
+  	<!-- Ignition Dwell Table -->
+	
+	<table name="Ignition Dwell" address="D4640">
+		<table name="X" address="D45EC"/>
+		<table name="Y" address="D462C"/>
+	</table>
+  
+  <!-- Engine Load Limit B Multiplier -->
+	
+	<table name="Engine Load Limit B Maximum (RPM) - Multiplier" address="8708C"/>
+  
+  	<!-- Alpha Fuel pump duty tables -->
+	
+	<table name="Fuel Pump Duty" address="43450"/>
+	
+	<table name="Fuel Pump Duty High Injector Duty Cycle" address="D1354">
+		<table name="X" address="D1340"/>
+		<table name="Y" address="D1348"/>
+	</table>
+
+	<table name="Fuel Pump Duty Medium Injector Duty Cycle" address="D137C">
+		<table name="X" address="D136C"/>
+		<table name="Y" address="D1374"/>
+	</table>
+  
+  <!-- A/F #1 Learning Min/Max Thresholds -->
+	
+	<table name="A/F #1 Learning Max Threshold" address="C7AF8"/>
+	<table name="A/F #1 Learning Min Threshold" address="C7AE8"/>
+  
+  <!-- AF 3 Correction Limits -->
+  
+	<table name="AF 3 Correction Limits" address="2FAE0"/>
+
+  <!-- OverRun Fueling Scalings & Tables -->
+	
+	<table name="Overrun Fueling RPM Resume Threshold" address="Ca8d4">
+		<table name="X" address="C7ff4"/>
+	</table>
+		
+	<table name="Overrun Enrich RPM Delta Activation" address="C7EAC"/>
+
+	<table name="Overrun initial injector enrichment (pulsewidth)" address="C7EB0"/>
+	
+	<table name="Overrun Fueling Cut Counter RPM Threshold" address="C7F00"/>
+	
+	<!-- Stable defs -->
+	
   <table name="Target Boost_" address="c0bcc">
     <table name="X" address="c0b5c" elements="14" />
     <table name="Y" address="c0b94" elements="14" />

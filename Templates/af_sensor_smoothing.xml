@@ -1,0 +1,27 @@
+    <!-- Front AF sensor smoothing
+	RomRaider discussion thread:
+	http://www.romraider.com/forum/viewtopic.php?f=34&t=8746
+	
+	Currently Implemented in the following definitions:
+	A2UJ000J - Merp
+	
+	Changelog: 
+	8/29/12 Merp: Converted to base inheritance schema
+	-->
+	
+	<!-- alpha Front AF sensor smoothing table -->
+	
+	<table name="Front AF Sensor Smoothing Table" address="">
+		<table name="X" address="" />
+		<table name="Y" address="" />
+	</table>
+
+	<!-- base table -->
+
+	<scaling name="SmoothingFactor" units="Smoothing Factor (%)" toexpr="(x*(-100))+100" frexpr="(x-100)/(-100)" format="%.1f" min="0" max="100" inc="5" storagetype="float" endian="big"/>
+
+	<table name="Front AF Sensor Smoothing Table" category="Front O2 Sensor Smoothing" type="3D" level="2" scaling="SmoothingFactor" address="20">
+		<description>Front AF Sensor Smoothing Factor Table, lower values = less smoothing, DO NOT SET TO ZERO OR LOWER.</description>
+		<table name="Smoothed MAF" type="X Axis" elements="4" scaling="g/s" address="0" />
+		<table name="Engine Load" type="Y Axis" elements="4" scaling="g/rev" address="10" />
+	</table>
