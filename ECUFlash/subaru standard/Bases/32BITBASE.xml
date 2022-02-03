@@ -7807,6 +7807,11 @@
 		<table name="Gear" type="Y Axis" elements="6" scaling="Gear"/>
 	</table>
 
+	<table name="Requested Torque Limit (Per Gear)" category="ALPHA Per Gear Requested Torque" type="2D" level="4" scaling="RequestedTorque(rawecuvalue)1">
+		<description>This table determines the Max requested torque based on calculated Gear and engine speed.</description>
+		<table name="Gear" type="Y Axis" elements="6" scaling="Gear"/>
+	</table>
+
 	<table name="Requested Torque Limit (IAM)" category="Drive-by-Wire Throttle (DBW)" type="3D" level="4" scaling="RequestedTorque(rawecuvalue)">
 		<description>This table determines the Max requested torque based on IAM.</description>
 		<table name="IAM" type="X Axis" elements="2" scaling="IgnitionAdvanceMultiplier(IAM)"/>
@@ -8205,6 +8210,16 @@
 		<table name="psi absolute" type="Y Axis" elements="13" scaling="psiabsolute4"/>
 	</table>
 
+	<table name="Wall Wetting Comp Group 1A Base Adder A" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau1">
+		<description>This is a base adder that, with its corresponding group 1 corrections applied, is added to the commanded fuel final target (EQ ratio) as part of the group 1 wall wetting compensation. Increasing a value in this table will result in a potentially richer fuel target at the given group 1 manifold absolute pressure (MAP) delta (current MAP - previous MAP), as long the current output of any corresponding group 1 correction is not set to zero. Decreasing a value in this table, will have the opposite effect. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table name="psi absolute" type="Y Axis" elements="13" scaling="psiabsolute4"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 1A Base Adder B" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau1">
+		<description>This is a base adder that, with its corresponding group 1 corrections applied, is added to the commanded fuel final target (EQ ratio) as part of the group 1 wall wetting compensation. Increasing a value in this table will result in a potentially richer fuel target at the given group 1 manifold absolute pressure (MAP) delta (current MAP - previous MAP), as long the current output of any corresponding group 1 correction is not set to zero. Decreasing a value in this table, will have the opposite effect. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
+		<table name="psi absolute" type="Y Axis" elements="13" scaling="psiabsolute4"/>
+	</table>
+
 	<table name="Wall Wetting Comp Group 1 Load Based Correction Neg Delta" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau">
 		<description>This table's multiplier, based on the load, is applied to the "Wall Wetting Comp (Group 1) Base Adder" table when the group 1 load delta is negative (load is decreasing). For example, if this table's multiplier is 1.2 and the current group 1 base adder is -0.2, the adder (eq ratio) for group 1 would be -0.24 (1.2 * -0.2). The other correction factors for group 1 are applied in the same way to determine the final adder (eq ratio) for group 1. If the current output for any currently active correction table in group 1 is zero, the final group 1 adder (eq ratio) will also be zero. Increasing this table's value will result in a potentially leaner fuel target at the given load when the corresponding group 1 adder (negative) is active. Decreasing this table's value will have the opposite effect. Wall wetting compensation corrects fueling for the effects of fuel puddling on the manifold walls and back of intake valves (and subsequent evaporation from these surfaces).</description>
 		<table name="Engine Load" type="Y Axis" elements="11" scaling="EngineLoad(g/rev)1"/>
@@ -8535,7 +8550,12 @@
 		<table name="Coolant Temperature" type="Y Axis" elements="16" scaling="DegreesF"/>
 	</table>
 
-	<table name="Wall Wetting Comp Group 4 Low Speed Decay Step Value " category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau9">
+	<table name="Wall Wetting Comp Group 4 Low Speed Decay Step Value" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau9">
+		<description>This is the decay step value for the post-start low speed group 4 value. The low speed group 4 value starts at the initial value and, over time, is reduced by the decay step value until it is reaches 1. This value is added to the high speed value to determine the final group 4 multiplier that is applied to the final group 1-3 (or group 1-2 depending on ECU) wall wetting compensation when the current delta (MAP or load depending on ECU) is positive.</description>
+		<table name="Coolant Temperature" type="Y Axis" elements="16" scaling="DegreesF"/>
+	</table>
+
+	<table name="Wall Wetting Comp Group 4 Low Speed Decay Step Value_" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau9">
 		<description>This is the decay step value for the post-start low speed group 4 value. The low speed group 4 value starts at the initial value and, over time, is reduced by the decay step value until it is reaches 1. This value is added to the high speed value to determine the final group 4 multiplier that is applied to the final group 1-3 (or group 1-2 depending on ECU) wall wetting compensation when the current delta (MAP or load depending on ECU) is positive.</description>
 		<table name="Coolant Temperature" type="Y Axis" elements="16" scaling="DegreesF"/>
 	</table>
@@ -8543,6 +8563,16 @@
 	<table name="Wall Wetting Comp Group 4 High Speed Decay Step Value_" category="ALPHA Transient Fueling (Tau)" type="2D" level="1" scaling="Tau9">
 		<description>This is the decay step value for the post-start low speed group 4 value. The low speed group 4 value starts at the initial value and, over time, is reduced by the decay step value until it is reaches 1. This value is added to the high speed value to determine the final group 4 multiplier that is applied to the final group 1-3 (or group 1-2 depending on ECU) wall wetting compensation when the current delta (MAP or load depending on ECU) is positive.</description>
 		<table name="Coolant Temperature" type="Y Axis" elements="16" scaling="DegreesF"/>
+	</table>
+
+	<table name="Ignition Timing Compensation Retard on Shift" category="ALPHA - Ignition Timing Compensation" type="2D" level="1" scaling="IgnitionTimingCorrection(degrees)">
+		<description>Compensation to ignition timing under overrrun conditions in AT roms.</description>
+		<table name="Accelerator Pedal Opening %" type="Y Axis" elements="6" scaling="rawecuvalue"/>
+	</table>
+
+	<table name="Ignition Timing Compensation Overrun" category="ALPHA - Ignition Timing Compensation" type="2D" level="1" scaling="IgnitionTimingCorrection(degrees)">
+		<description>Compensation to ignition timing under overrrun conditions.</description>
+		<table name="Coolant Temperature" type="Y Axis" elements="16" scaling="CoolantTemp(DegreesF)"/>
 	</table>
 
 </rom>
